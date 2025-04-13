@@ -262,7 +262,7 @@ a:before, a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/connect-tag-header.jpg) no-repeat center top;
+	background: url(https://connecttag.org/img/connect-tag-header.jpg) no-repeat center top;
 	margin-top: -50px;
 	padding-top: 120px;
 	text-align: center;
