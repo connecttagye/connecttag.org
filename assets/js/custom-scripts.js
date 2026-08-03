@@ -15,3 +15,17 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
+// Sidebar Overlay Logic
+$(document).ready(function() {
+    $('.navbar-toggle').click(function() {
+        if (!$('.nav-overlay').length) {
+            $('body').append('<div class="nav-overlay"></div>');
+        }
+        $('.nav-overlay').fadeToggle(300);
+    });
+
+    $(document).on('click', '.nav-overlay', function() {
+        $('.navbar-toggle').click();
+    });
+});
