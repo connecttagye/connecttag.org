@@ -62,17 +62,50 @@
 
     /* Config Box */
     .config-box {
-        background: #fff9f0;
-        border-right: 5px solid #e89a2f;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
         padding: 30px;
-        border-radius: 0 20px 20px 0;
+        border-radius: 25px;
         margin-top: 40px;
+        position: relative;
+        overflow: hidden;
     }
-    .config-box h4 { font-weight: 800; color: #d18721; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-    .config-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(232, 154, 47, 0.1); }
-    .config-item:last-child { border: none; }
-    .config-label { font-weight: 700; color: #7c5e10; }
-    .config-value { font-family: monospace; font-weight: bold; color: #333; direction: ltr; }
+    .config-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(to left, #e89a2f, #006b98);
+    }
+    .config-box h4 { font-weight: 800; color: #1e293b; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; font-size: 18px; }
+    .config-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 15px;
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #f1f5f9;
+        margin-bottom: 15px;
+    }
+    .config-item:last-child { margin-bottom: 0; }
+    .config-label { font-weight: 700; color: #64748b; font-size: 13px; }
+    .config-value-wrapper { display: flex; justify-content: space-between; align-items: center; }
+    .config-value { font-family: 'Courier New', monospace; font-weight: bold; color: #006b98; font-size: 16px; direction: ltr; }
+    .btn-copy-sm {
+        background: #f1f5f9;
+        border: none;
+        color: #64748b;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .btn-copy-sm:hover { background: #006b98; color: #fff; }
+    .config-link { color: #006b98; text-decoration: underline; font-weight: 800; }
 
     .btn-action-group { display: flex; gap: 15px; margin-top: 40px; }
     .btn-main {
@@ -178,28 +211,29 @@
 
                     <!-- Config Box -->
                     <div id="config-panel" class="config-box" style="display:none;">
-                        <h4><i class="fa fa-terminal"></i> إعدادات الوصول الافتراضية</h4>
+                        <h4><i class="fa fa-shield"></i> بيانات الدخول للوحة التحكم</h4>
                         <div class="config-item">
-                            <span class="config-label">رابط لوحة التحكم:</span>
-                            <span class="config-value" id="conf-link">-</span>
+                            <span class="config-label">رابط الإعدادات المباشر</span>
+                            <div class="config-value-wrapper">
+                                <a id="conf-link" href="#" target="_blank" class="config-value config-link">-</a>
+                                <button class="btn-copy-sm" onclick="copyText('conf-link')"><i class="fa fa-external-link"></i></button>
+                            </div>
                         </div>
                         <div class="config-item">
-                            <span class="config-label">اسم المستخدم:</span>
-                            <span class="config-value" id="conf-user">-</span>
+                            <span class="config-label">اسم المستخدم الافتراضي</span>
+                            <div class="config-value-wrapper">
+                                <span class="config-value" id="conf-user">-</span>
+                                <button class="btn-copy-sm" onclick="copyText('conf-user')"><i class="fa fa-copy"></i></button>
+                            </div>
                         </div>
                         <div class="config-item">
-                            <span class="config-label">كلمة المرور:</span>
-                            <span class="config-value" id="conf-pass">-</span>
+                            <span class="config-label">كلمة المرور الافتراضية</span>
+                            <div class="config-value-wrapper">
+                                <span class="config-value" id="conf-pass">-</span>
+                                <button class="btn-copy-sm" onclick="copyText('conf-pass')"><i class="fa fa-copy"></i></button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="btn-action-group">
-                        <a href="../../contact.html" class="btn-main btn-primary-blue">
-                            اطلب الآن <i class="fa fa-shopping-cart"></i>
-                        </a>
-                        <a href="https://t.me/connecttagye" target="_blank" class="btn-main" style="background: #f1f5f9; color: #006b98;">
-                            دعم فني تليجرام <i class="fa fa-paper-plane"></i>
-                        </a>
+                        <p style="font-size: 12px; color: #94a3b8; margin-top: 15px;"><i class="fa fa-info-circle"></i> يرجى التأكد من اتصالك بشبكة المودم قبل محاولة الدخول للرابط.</p>
                     </div>
                 </div>
             </div>
@@ -316,12 +350,21 @@
             if (m.additional && m.additional.modemSettings) {
                 const s = m.additional.modemSettings;
                 $('#config-panel').show();
-                $('#conf-link').text(s.loginLink || '-');
+
+                const link = s.loginLink || 'http://192.168.0.1';
+                $('#conf-link').text(link).attr('href', link);
                 $('#conf-user').text(s.defaultUserName || 'admin');
                 $('#conf-pass').text(s.defaultPass || 'admin');
             }
         }
     });
+
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('تم النسخ: ' + text);
+        });
+    }
 </script>
 </body>
 </html>
