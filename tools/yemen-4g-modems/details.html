@@ -14,7 +14,32 @@
 <style>
     body { font-family: 'Cairo', sans-serif; background-color: #fff; }
 
-    .modem-details-container { padding: 60px 0 100px; }
+    /* New Unified Tools Header - White Style */
+    .page-header-unified {
+        background: #ffffff;
+        padding: 60px 0 40px;
+        color: #333;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+    .page-header-unified h1 {
+        font-weight: 800;
+        font-size: 32px;
+        color: #006b98 !important;
+        margin-bottom: 15px;
+    }
+    .breadcrumb-tools {
+        list-style: none;
+        display: flex;
+        justify-content: center; gap: 10px; padding: 0; margin: 0;
+    }
+    .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 14px; }
+    .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.3s; }
+    .breadcrumb-tools li a:hover { color: #e89a2f; }
+    .breadcrumb-tools li:not(:last-child)::after {
+        content: '\f104'; font-family: FontAwesome; margin-right: 10px; font-size: 12px; color: #ccc;
+    }
+    .breadcrumb-tools li.active { color: #e89a2f; }
 
     /* Product Section */
     .product-showcase {
@@ -174,11 +199,11 @@
 <div class="page-header-unified">
     <div class="container">
         <h1 id="page-title">المواصفات التقنية</h1>
-        <ul class="breadcrumb-custom list-inline">
+        <ul class="breadcrumb-tools">
             <li><a href="../../index.html">الرئيسية</a></li>
-            <li><a href="../index.html"> / الأدوات</a></li>
-            <li><a href="./index.html"> / المودمات</a></li>
-            <li class="active" id="breadcrumb-active"> / ...</li>
+            <li><a href="../index.html">الأدوات</a></li>
+            <li><a href="./index.html">المودمات</a></li>
+            <li class="active" id="breadcrumb-active">المواصفات</li>
         </ul>
     </div>
 </div>
@@ -346,7 +371,7 @@
 
         function renderDetails(m) {
             document.title = `${m.arabicName} ${m.modelOrVersion} - دليل المواصفات - كونكت تاق`;
-            $('#breadcrumb-active').text(` / ${m.modelOrVersion}`);
+            $('#breadcrumb-active').text(m.modelOrVersion);
             $('#modem-image').attr('src', m.image.content);
             $('#modem-title').text(`${m.arabicName} ${m.modelOrVersion}`);
             $('#modem-brand').text(m.brand);

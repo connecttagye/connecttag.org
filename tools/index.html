@@ -14,7 +14,38 @@
 <script src="../assets/js/jquery.min.js"></script>
 
 <style>
-    .tools-list-container { padding: 80px 0; background: #fff; }
+    /* New Unified Tools Header - White Style */
+    .page-header-unified {
+        background: #ffffff;
+        padding: 100px 0 60px;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        border: none;
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+    .page-header-unified h1 {
+        font-weight: 800;
+        font-size: 42px;
+        color: #006b98 !important;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+    .breadcrumb-tools {
+        list-style: none;
+        display: flex;
+        justify-content: center; gap: 10px; padding: 0; margin: 0;
+        position: relative; z-index: 1;
+    }
+    .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 14px; }
+    .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.3s; }
+    .breadcrumb-tools li a:hover { color: #e89a2f; }
+    .breadcrumb-tools li:not(:last-child)::after {
+        content: '\f104'; font-family: FontAwesome; margin-right: 10px; font-size: 12px; color: #ccc;
+    }
+    .breadcrumb-tools li.active { color: #e89a2f; }
     .tool-card {
         background: #f9f9f9;
         border-radius: 20px;
@@ -78,9 +109,9 @@
 <div class="page-header-unified">
     <div class="container">
         <h1>الأدوات والخدمات التقنية</h1>
-        <ul class="breadcrumb-custom list-inline">
-            <li><a href="../">الرئيسية</a></li>
-            <li class="active"> / الأدوات</li>
+        <ul class="breadcrumb-tools">
+            <li><a href="../index.html">الرئيسية</a></li>
+            <li class="active">الأدوات التقنية</li>
         </ul>
     </div>
 </div>
