@@ -128,7 +128,19 @@
     }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;" style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
+
+<script type="text/javascript">
+    // منع اختصارات لوحة المفاتيح
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 73 || e.keyCode === 74)) {
+            return false;
+        }
+        if (e.keyCode === 123) { // F12
+            return false;
+        }
+    };
+</script>
 
 <div id="loading-screen" class="loading-overlay">
     <i class="fa fa-circle-o-notch fa-spin fa-3x" style="color: #006b98;"></i>
@@ -176,7 +188,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="product-showcase">
-                    <img id="modem-image" src="" class="img-responsive" alt="صورة المودم">
+                    <img id="modem-image" src="" class="img-responsive" alt="صورة المودم" oncontextmenu="return false;" draggable="false">
                 </div>
             </div>
 

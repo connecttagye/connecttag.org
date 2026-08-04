@@ -136,7 +136,19 @@
     }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;" style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
+
+<script type="text/javascript">
+    // منع اختصارات لوحة المفاتيح (Ctrl+U, Ctrl+S, Ctrl+C, F12, etc.)
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 73 || e.keyCode === 74)) {
+            return false;
+        }
+        if (e.keyCode === 123) { // F12
+            return false;
+        }
+    };
+</script>
 
 <div id="navbar-main">
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -298,7 +310,7 @@
                         <div class="modem-card">
                             ${badge}
                             <div class="image-wrapper">
-                                <img src="${item.image.content}" alt="${item.arabicName} ${item.modelOrVersion}" loading="lazy">
+                                <img src="${item.image.content}" alt="${item.arabicName} ${item.modelOrVersion}" loading="lazy" oncontextmenu="return false;" draggable="false">
                             </div>
                             <div class="content">
                                 <span class="category">${item.category}</span>

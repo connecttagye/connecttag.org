@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>دليل شركات الاتصالات اليمنية - كونكت تاق</title>
+<link href="../../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../../assets/css/styles.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="../../assets/js/jquery.min.js"></script>
+
+<style>
+    body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+    .page-header { background: linear-gradient(135deg, #006b98 0%, #004d6e 100%); padding: 80px 0; color: #fff; text-align: center; margin: 0; border: none; }
+    .page-header h1 { font-weight: 800; margin-bottom: 10px; }
+
+    .companies-container { padding: 60px 0; }
+    .company-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        border: 1px solid #f1f5f9;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .company-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-color: #006b98; }
+    .company-logo { width: 100px; height: 100px; object-fit: contain; margin-bottom: 20px; }
+    .company-name { font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 10px; }
+    .company-desc { color: #64748b; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    .btn-details { background: #006b98; color: #fff; border-radius: 12px; padding: 10px 25px; font-weight: 700; text-decoration: none; margin-top: auto; }
+    .btn-details:hover { background: #004d6e; color: #fff; }
+
+    .loading-overlay { text-align: center; padding: 50px; }
+</style>
+</head>
+<body>
+
+<div id="navbar-main">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+	   <div class="pull-right logo">
+        <a href="../../index.html"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+       </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-left">
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../../about/our-company.html">من نحن</a></li>
+          <li><a href="../../services/web-app-development.html">خدماتنا</a></li>
+          <li><a href="../../projects/index.html">أعمالنا</a></li>
+          <li><a href="../../blog/index.html">المدونة</a></li>
+          <li class="active"><a href="../index.html">الأدوات</a></li>
+          <li><a href="../../contact.html" class="nav-cta-btn">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+    <div class="container">
+        <h1>دليل شركات الاتصالات</h1>
+        <p>استعرض الخدمات، الأكواد، وباقات الإنترنت لكافة شركات الاتصالات في اليمن</p>
+    </div>
+</div>
+
+<div class="companies-container">
+    <div class="container">
+        <div class="row" id="companies-grid">
+            <div class="loading-overlay col-xs-12">
+                <i class="fa fa-circle-o-notch fa-spin fa-3x" style="color: #006b98;"></i>
+                <p style="margin-top: 15px;">جاري تحميل قائمة الشركات...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer-advanced">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>عن كونكت تاق</h4>
+        <p>شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية والتسويق الرقمي بأعلى معايير الجودة والاحترافية.</p>
+      </div>
+      <div class="col-md-3">
+        <h4>من نحن وهويتنا</h4>
+        <ul>
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../index.html">الأدوات التقنية</a></li>
+          <li><a href="../../contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>تواصل معنا</h4>
+        <p><i class="fa fa-map-marker"></i> اليمن، صنعاء</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        const apiUrl = 'https://api.connecttag.app/v5/yemen4g/initial-data';
+        const apiKey = 'ws9syryf5hyd';
+
+        $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            headers: { 'X-Api-Key': apiKey },
+            success: function(response) {
+                if (response.success && response.result && response.result.companies) {
+                    renderCompanies(response.result.companies);
+                } else {
+                    $('#companies-grid').html('<div class="col-xs-12 text-center">عذراً، فشل تحميل البيانات.</div>');
+                }
+            },
+            error: function() {
+                $('#companies-grid').html('<div class="col-xs-12 text-center">حدث خطأ في الاتصال بالسيرفر.</div>');
+            }
+        });
+
+        function renderCompanies(companies) {
+            const grid = $('#companies-grid');
+            grid.empty();
+
+            companies.forEach(c => {
+                const card = `
+                    <div class="col-md-4 col-sm-6">
+                        <div class="company-card" onclick="location.href='details.html?id=${c.id}'">
+                            <img src="${c.logo}" alt="${c.arName}" class="company-logo" onerror="this.src='../../assets/img/connect-tag-official-logo.webp'">
+                            <h3 class="company-name">${c.arName}</h3>
+                            <p class="company-desc">${c.arDescription || 'شركة اتصالات يمنية رائدة تقدم خدمات الجوال والإنترنت.'}</p>
+                            <a href="details.html?id=${c.id}" class="btn-details">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                `;
+                grid.append(card);
+            });
+        }
+    });
+</script>
+</body>
+</html>
