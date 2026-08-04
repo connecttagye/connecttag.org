@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>دليل مودمات يمن فورجي 4G - كونكت تاق</title>
+<meta name="description" content="تعرف على كافة أنواع وموديلات مودمات يمن فورجي (Yemen 4G) الرسمية، مواصفاتها، وأسعارها. اختر المودم الأنسب لتغطيتك.">
+<link rel="canonical" href="https://connecttag.org/tools/yemen-4g-modems/" />
+
+<link href="../../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../../assets/css/styles.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="../../assets/js/jquery.min.js"></script>
+
+<style>
+    .modem-list-container { padding: 80px 0; background: #fbfbfb; }
+    .modem-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        transition: transform 0.3s;
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .modem-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .modem-card .image-wrapper { position: relative; padding-top: 75%; background: #f9f9f9; }
+    .modem-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+    .modem-card .content { padding: 20px; flex-grow: 1; }
+    .modem-card h3 { font-size: 18px; color: #006b98; font-weight: bold; margin-bottom: 10px; height: 44px; overflow: hidden; }
+    .modem-card .brand { font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+    .modem-card .short-desc { color: #666; font-size: 14px; margin-bottom: 15px; height: 40px; overflow: hidden; }
+    .modem-card .price-status { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; border-top: 1px dashed #eee; }
+    .modem-card .price { font-weight: bold; color: #e89a2f; font-size: 16px; }
+    .modem-card .status { font-size: 12px; padding: 3px 10px; border-radius: 20px; }
+    .status-available { background: #e8f5e9; color: #2e7d32; }
+    .status-unavailable { background: #ffebee; color: #c62828; }
+
+    .loading-spinner { text-align: center; padding: 50px; }
+    .error-msg { text-align: center; color: #c62828; padding: 50px; }
+</style>
+</head>
+<body>
+
+<div id="navbar-main">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+	   <div class="pull-right logo">
+        <a  href="../../"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+       </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-left">
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../projects/">أعمالنا</a></li>
+          <li><a href="../../blog/">المدونة</a></li>
+          <li><a href="../../tools/">الأدوات</a></li>
+          <li><a href="../../contact" class="nav-cta-btn">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1>دليل مودمات يمن فورجي 4G</h1>
+        <ul class="breadcrumb-custom list-inline">
+            <li><a href="../../">الرئيسية</a></li>
+            <li><a href="../"> / الأدوات</a></li>
+            <li class="active"> / المودمات</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modem-list-container">
+    <div class="container">
+        <div class="row" id="modems-grid">
+            <div class="loading-spinner col-xs-12">
+                <i class="fa fa-spinner fa-spin fa-3x"></i>
+                <p>جاري تحميل المودمات...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer-advanced">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>عن كونكت تاق</h4>
+        <p>شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية والتسويق الرقمي بأعلى معايير الجودة والاحترافية.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/connecttagye" target="_blank" rel="noopener" title="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="https://x.com/connecttagye" target="_blank" rel="noopener" title="X (Twitter)"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.instagram.com/connecttagye/" target="_blank" rel="noopener" title="Instagram"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/connecttagye" target="_blank" rel="noopener" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          <a href="https://www.pinterest.com/connecttagye/" target="_blank" rel="noopener" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+          <a href="https://www.youtube.com/connecttagye" target="_blank" rel="noopener" title="YouTube"><i class="fa fa-youtube"></i></a>
+          <a href="https://t.me/connecttagye" target="_blank" rel="noopener" title="Telegram"><i class="fa fa-paper-plane"></i></a>
+          <a href="https://github.com/connecttagye" target="_blank" rel="noopener" title="GitHub"><i class="fa fa-github"></i></a>
+          <a href="https://gitlab.com/connecttagye" target="_blank" rel="noopener" title="GitLab"><i class="fa fa-gitlab"></i></a>
+          <a href="#" title="QR Code"><i class="fa fa-qrcode"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>من نحن وهويتنا</h4>
+        <ul>
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../blog/">المدونة التقنية</a></li>
+          <li><a href="../">الأدوات التقنية</a></li>
+          <li><a href="../../faq">الأسئلة الشائعة</a></li>
+          <li><a href="../../contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>أعمالنا وخدماتنا</h4>
+        <ul>
+          <li><a href="../../projects/">أعمالنا الشاملة</a></li>
+          <li><a href="../../projects/apps/">تطبيقاتنا</a></li>
+          <li><a href="../../projects/sites/">أعمال الويب</a></li>
+          <li><a href="../../services/hardware-solutions">المنتجات</a></li>
+          <li><a href="../../about/about-site">حول الموقع</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>تواصل معنا</h4>
+        <p><i class="fa fa-map-marker"></i> اليمن، صنعاء، أمانة العاصمة</p>
+        <p><i class="fa fa-envelope"></i> info@connecttag.org</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
+      <ul class="list-inline">
+        <li><a href="../../privacy-policy">سياسة الخصوصية</a></li>
+        <li><a href="../../terms-of-use">اتفاقية الاستخدام</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        const apiUrl = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
+
+        $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            dataType: 'json',
+            // حذفنا الـ headers لتجنب الـ Preflight OPTIONS request (CORS fix)
+            success: function(response) {
+                console.log("API Response:", response);
+                if (response.success && response.result && response.result.items) {
+                    renderModems(response.result.items);
+                } else {
+                    showError('عذراً، فشل تحميل البيانات من السيرفر.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", status, error);
+                showError('حدث خطأ في الـ CORS. السيرفر لا يسمح بالطلب من localhost حالياً.');
+            }
+        });
+
+        function renderModems(items) {
+            const grid = $('#modems-grid');
+            grid.empty();
+
+            items.forEach(item => {
+                const isAvailable = item.availabilityStatus === 'متوفر';
+                const statusClass = isAvailable ? 'status-available' : 'status-unavailable';
+                const priceText = (item.price && item.price.currentValue > 0) ?
+                                 `${item.price.currentValue.toLocaleString()} ${item.price.currency === 'RYE' ? 'ريال' : '$'}` :
+                                 'اتصل لمعرفة السعر';
+
+                const cardHtml = `
+                    <div class="col-md-4 col-sm-6">
+                        <div class="modem-card">
+                            <div class="image-wrapper">
+                                <img src="${item.image.content}" alt="${item.arabicName} ${item.modelOrVersion}" loading="lazy">
+                            </div>
+                            <div class="content">
+                                <span class="brand">${item.brand}</span>
+                                <h3>${item.arabicName} ${item.modelOrVersion}</h3>
+                                <p class="short-desc">${item.shortDescription || item.summary || 'لا يوجد وصف متاح'}</p>
+                                <div class="price-status">
+                                    <span class="price">${priceText}</span>
+                                    <span class="status ${statusClass}">${item.availabilityStatus}</span>
+                                </div>
+                                <a href="details.html?slug=${item.slug}" class="btn btn-primary btn-block" style="margin-top: 15px; background: #006b98; border: none;">التفاصيل والمواصفات</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.append(cardHtml);
+            });
+        }
+
+        function showError(message) {
+            $('#modems-grid').html(`<div class="error-msg col-xs-12"><i class="fa fa-exclamation-triangle fa-3x"></i><p>${message}</p></div>`);
+        }
+    });
+</script>
+</body>
+</html>

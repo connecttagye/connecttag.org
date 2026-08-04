@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>فحص IMEI و TAC للأجهزة - كونكت تاق</title>
+<meta name="description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC. اعرف مواصفات جهازك وهويته التقنية.">
+<link rel="canonical" href="https://connecttag.org/tools/check-imei/" />
+
+<link href="../../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../../assets/css/styles.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="../../assets/js/jquery.min.js"></script>
+
+<style>
+    body { font-family: 'Cairo', sans-serif; background-color: #f4f7f6; }
+
+    /* Advanced Header */
+    .checker-header {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 100px 0 150px;
+        color: #fff;
+        text-align: center;
+        clip-path: ellipse(150% 100% at 50% 0%);
+    }
+    .checker-header h1 { font-weight: 800; font-size: 38px; margin-bottom: 15px; }
+    .checker-header p { font-size: 18px; opacity: 0.9; }
+
+    .checker-container { margin-top: -80px; padding-bottom: 80px; }
+
+    /* Modern Search Box */
+    .search-box-wrapper {
+        background: #fff;
+        padding: 45px;
+        border-radius: 25px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0, 107, 152, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .search-type-selector {
+        margin-bottom: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .type-chip {
+        cursor: pointer;
+        padding: 8px 25px;
+        border-radius: 50px;
+        background: #f0f4f8;
+        color: #555;
+        font-weight: 600;
+        transition: 0.3s;
+        border: 2px solid transparent;
+    }
+    .search-type-selector input { display: none; }
+    .search-type-selector input:checked + .type-chip {
+        background: #006b98;
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(0, 107, 152, 0.3);
+    }
+
+    .input-main-group { position: relative; }
+    .input-main-group .form-control {
+        height: 65px;
+        border-radius: 15px !important;
+        border: 2px solid #e1e8ed;
+        padding: 0 25px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: 0.3s;
+        box-shadow: none;
+    }
+    .input-main-group .form-control:focus { border-color: #006b98; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
+
+    .btn-search-glow {
+        height: 65px;
+        border-radius: 15px !important;
+        background: #e89a2f;
+        border: none;
+        color: #fff;
+        font-weight: 800;
+        font-size: 18px;
+        padding: 0 40px;
+        transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(232, 154, 47, 0.2);
+    }
+    .btn-search-glow:hover { background: #d18721; transform: scale(1.02); color: #fff; }
+
+    /* Result Card Glassmorphism */
+    .result-card {
+        background: #fff;
+        border-radius: 25px;
+        padding: 40px;
+        border: 1px solid #eef2f3;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        display: none;
+        animation: slideUp 0.5s ease-out;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .result-header { text-align: center; margin-bottom: 35px; }
+    .result-header .status-icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        background: #e6f7ed;
+        color: #2ecc71;
+        border-radius: 50%;
+        font-size: 35px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .info-list { list-style: none; padding: 0; }
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+        border-bottom: 1px solid #f0f4f8;
+    }
+    .info-item:last-child { border: none; }
+    .info-label { color: #888; font-weight: 600; }
+    .info-value { color: #333; font-weight: 800; font-size: 17px; }
+
+    .error-card {
+        background: #fff5f5;
+        color: #c53030;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid #feb2b2;
+        display: none;
+        text-align: center;
+        margin-top: 25px;
+        font-weight: 600;
+    }
+
+    .loading-spinner { display: none; text-align: center; padding: 30px; }
+
+    /* Help & FAQ section */
+    .help-section { margin-top: 80px; }
+    .help-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px;
+        border-right: 6px solid #e89a2f;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+    .help-card h4 { font-weight: 800; color: #333; margin-bottom: 20px; }
+    .help-card ul li { margin-bottom: 12px; color: #666; font-size: 15px; }
+
+    @media (max-width: 768px) {
+        .checker-header { padding: 80px 0 120px; }
+        .checker-header h1 { font-size: 28px; }
+        .search-box-wrapper { padding: 25px; }
+        .btn-search-glow { width: 100%; margin-top: 15px; border-radius: 15px !important; }
+        .input-main-group .form-control { border-radius: 15px !important; }
+        .info-item { flex-direction: column; text-align: center; gap: 5px; }
+    }
+</style>
+</head>
+<body>
+
+<div id="navbar-main">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+	   <div class="pull-right logo">
+        <a  href="../../"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+       </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-left">
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../projects/">أعمالنا</a></li>
+          <li><a href="../../blog/">المدونة</a></li>
+          <li class="active"><a href="../">الأدوات</a></li>
+          <li><a href="../../contact" class="nav-cta-btn">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="checker-header">
+    <div class="container">
+        <h1>فحص هُوية الأجهزة الذكية</h1>
+        <p>الأداة التقنية الأدق للتحقق من مواصفات وأصالة الهواتف والمودمات عبر IMEI و TAC</p>
+    </div>
+</div>
+
+<div class="checker-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+                <div class="search-box-wrapper">
+                    <div class="search-type-selector">
+                        <label>
+                            <input type="radio" name="searchType" value="imei" checked>
+                            <span class="type-chip">رقم الـ IMEI</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="searchType" value="tac">
+                            <span class="type-chip">رقم الـ TAC</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="searchType" value="q">
+                            <span class="type-chip">بحث بالاسم</span>
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="input-main-group">
+                                <input type="text" id="searchInput" class="form-control text-center" placeholder="أدخل 15 رقماً هنا..." dir="ltr">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-search-glow btn-block" type="button" id="btnSearch">
+                                فحص <i class="fa fa-bolt" style="margin-right: 5px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="loading-spinner">
+                        <i class="fa fa-circle-o-notch fa-spin fa-3x" style="color: #006b98; margin-bottom: 15px;"></i>
+                        <p style="font-weight: 600; color: #006b98;">جاري جلب بيانات الجهاز...</p>
+                    </div>
+
+                    <div id="errorMessage" class="error-card"></div>
+                </div>
+
+                <!-- Result Card -->
+                <div id="resultCard" class="result-card">
+                    <div class="result-header">
+                        <div class="status-icon"><i class="fa fa-shield"></i></div>
+                        <h3>بيانات الهوية التقنية</h3>
+                    </div>
+
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-label">الشركة المصنعة</span>
+                            <span class="info-value" id="resBrand"></span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">الموديل والمواصفات</span>
+                            <span class="info-value" id="resSpecs"></span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">رقم الـ TAC المعتمد</span>
+                            <span class="info-value" id="resTac"></span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">حالة الفحص</span>
+                            <span class="info-value" style="color: #2ecc71;">مطابق للمواصفات الرسمية <i class="fa fa-check-circle"></i></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="help-section">
+                    <div class="help-card">
+                        <h4><i class="fa fa-question-circle" style="color: #e89a2f;"></i> كيف تجد الأرقام المطلوبة؟</h4>
+                        <ul>
+                            <li><strong>للهواتف:</strong> اطلب الكود <code>*#06#</code> وسيظهر لك رقم IMEI فوراً.</li>
+                            <li><strong>للمودمات:</strong> ستجد الرقم مطبوعاً على الملصق خلف الجهاز أو أسفل البطارية.</li>
+                            <li><strong>TAC:</strong> هو اختصار لـ Type Allocation Code ويمثل أول 8 أرقام من الـ IMEI.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer-advanced">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>عن كونكت تاق</h4>
+        <p>شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية والتسويق الرقمي بأعلى معايير الجودة والاحترافية.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/connecttagye" target="_blank" rel="noopener" title="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="https://x.com/connecttagye" target="_blank" rel="noopener" title="X (Twitter)"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.instagram.com/connecttagye/" target="_blank" rel="noopener" title="Instagram"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/connecttagye" target="_blank" rel="noopener" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          <a href="https://www.pinterest.com/connecttagye/" target="_blank" rel="noopener" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+          <a href="https://www.youtube.com/connecttagye" target="_blank" rel="noopener" title="YouTube"><i class="fa fa-youtube"></i></a>
+          <a href="https://t.me/connecttagye" target="_blank" rel="noopener" title="Telegram"><i class="fa fa-paper-plane"></i></a>
+          <a href="https://github.com/connecttagye" target="_blank" rel="noopener" title="GitHub"><i class="fa fa-github"></i></a>
+          <a href="https://gitlab.com/connecttagye" target="_blank" rel="noopener" title="GitLab"><i class="fa fa-gitlab"></i></a>
+          <a href="#" title="QR Code"><i class="fa fa-qrcode"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>من نحن وهويتنا</h4>
+        <ul>
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../blog/">المدونة التقنية</a></li>
+          <li><a href="../">الأدوات التقنية</a></li>
+          <li><a href="../../faq">الأسئلة الشائعة</a></li>
+          <li><a href="../../contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>أعمالنا وخدماتنا</h4>
+        <ul>
+          <li><a href="../../projects/">أعمالنا الشاملة</a></li>
+          <li><a href="../../projects/apps/">تطبيقاتنا</a></li>
+          <li><a href="../../projects/sites/">أعمال الويب</a></li>
+          <li><a href="../../services/hardware-solutions">المنتجات</a></li>
+          <li><a href="../../about/about-site">حول الموقع</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>تواصل معنا</h4>
+        <p><i class="fa fa-map-marker"></i> اليمن، صنعاء، أمانة العاصمة</p>
+        <p><i class="fa fa-envelope"></i> info@connecttag.org</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
+      <ul class="list-inline">
+        <li><a href="../../privacy-policy">سياسة الخصوصية</a></li>
+        <li><a href="../../terms-of-use">اتفاقية الاستخدام</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#btnSearch').click(function() {
+            performSearch();
+        });
+
+        $('#searchInput').keypress(function(e) {
+            if(e.which == 13) performSearch();
+        });
+
+        function performSearch() {
+            const val = $('#searchInput').val().trim();
+            const type = $('input[name="searchType"]:checked').val();
+
+            if(!val) {
+                showError('يرجى إدخال قيمة للبحث.');
+                return;
+            }
+
+            // UI Reset
+            $('#resultCard').hide();
+            $('#errorMessage').hide();
+            $('.loading-spinner').fadeIn();
+
+            const apiUrl = 'https://api.connecttag.app/v5/yemen4g/tac/search';
+            const apiKey = 'ktmo5flizpu';
+
+            let queryParams = `?X-Api-Key=${apiKey}`;
+            queryParams += `&${type}=${val}`;
+
+            $.ajax({
+                url: apiUrl + queryParams,
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    $('.loading-spinner').hide();
+                    console.log("Search Response:", response);
+
+                    if (response.success && response.result && !response.result.error) {
+                        displayResult(response.result);
+                    } else {
+                        const msg = (response.result && response.result.error) ? response.result.error : 'لم يتم العثور على سجلات تطابق هذا الرقم.';
+                        showError(msg);
+                    }
+                },
+                error: function(xhr) {
+                    $('.loading-spinner').hide();
+                    showError('عذراً، حدث خطأ تقني. تأكد من صحة الرقم واتصالك بالإنترنت.');
+                }
+            });
+        }
+
+        function displayResult(data) {
+            $('#resBrand').text(data.canonical_brand || 'غير معروف');
+            $('#resSpecs').text(data.canonical_specs || 'لا يوجد مواصفات مسجلة');
+            $('#resTac').text(data.tac || '-');
+            $('#resultCard').fadeIn();
+
+            // Scroll to result on mobile
+            if($(window).width() < 768) {
+                $('html, body').animate({ scrollTop: $('#resultCard').offset().top - 100 }, 500);
+            }
+        }
+
+        function showError(msg) {
+            $('#errorMessage').text(msg).fadeIn();
+        }
+
+        // Auto-change placeholder based on type
+        $('input[name="searchType"]').change(function() {
+            const type = $(this).val();
+            const input = $('#searchInput');
+            if(type === 'imei') input.attr('placeholder', 'أدخل 15 رقماً هنا...');
+            else if(type === 'tac') input.attr('placeholder', 'أدخل 8 أرقام...');
+            else input.attr('placeholder', 'اسم الجهاز أو الموديل...');
+        });
+    });
+</script>
+</body>
+</html>

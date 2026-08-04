@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فريق الموقع - كاتب في مدونة كونكت تاق</title>
-<meta name="description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين الذين يسعون لتقديم أفضل الشروحات والحلول البرمجية.">
-<link rel="canonical" href="https://connecttag.org/author/" />
+<meta name="robots" content="noindex, nofollow">
+<title>أدوات كونكت تاق التقنية - حلول ذكية</title>
+<meta name="description" content="مجموعة من الأدوات والحلول التقنية المساعدة لمشتركي الإنترنت في اليمن، بما في ذلك دليل المودمات وخدمات الاستعلام.">
+<link rel="canonical" href="https://connecttag.org/tools/" />
 
 <link href="../assets/css/bootstrap.css" rel="stylesheet">
 <link href="../assets/css/styles.min.css" rel="stylesheet">
@@ -13,13 +14,39 @@
 <script src="../assets/js/jquery.min.js"></script>
 
 <style>
-    .author-profile { padding: 120px 0 80px; background: #fff; }
-    .author-card { background: #f9f9f9; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .author-card img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #006b98; margin-bottom: 20px; }
-    .author-card h1 { color: #006b98; font-weight: bold; margin-bottom: 10px; }
-    .author-card p { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; margin: 0 auto 30px; }
-    .latest-posts { margin-top: 60px; }
-    .latest-posts h2 { color: #333; font-weight: bold; margin-bottom: 40px; border-right: 5px solid #006b98; padding-right: 15px; }
+    .tools-list-container { padding: 80px 0; background: #fff; }
+    .tool-card {
+        background: #f9f9f9;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        transition: all 0.3s;
+        border: 1px solid #eee;
+        margin-bottom: 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .tool-card:hover {
+        background: #fff;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border-color: #006b98;
+    }
+    .tool-card i { font-size: 50px; color: #006b98; margin-bottom: 25px; }
+    .tool-card h3 { font-weight: bold; color: #333; margin-bottom: 15px; }
+    .tool-card p { color: #777; line-height: 1.6; margin-bottom: 25px; }
+    .tool-btn {
+        background: #006b98;
+        color: #fff;
+        padding: 10px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .tool-btn:hover { background: #004d6e; color: #fff; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -39,8 +66,8 @@
           <li><a href="../about/our-company">من نحن</a></li>
           <li><a href="../services/web-app-development">خدماتنا</a></li>
           <li><a href="../projects/">أعمالنا</a></li>
-          <li class="active"><a href="../blog/">المدونة</a></li>
-          <li><a href="../tools/">الأدوات</a></li>
+          <li><a href="../blog/">المدونة</a></li>
+          <li class="active"><a href="./">الأدوات</a></li>
           <li><a href="../contact" class="nav-cta-btn">تواصل معنا</a></li>
         </ul>
       </div>
@@ -48,36 +75,46 @@
   </div>
 </div>
 
-<div class="author-profile">
+<div class="page-header-unified">
+    <div class="container">
+        <h1>الأدوات والخدمات التقنية</h1>
+        <ul class="breadcrumb-custom list-inline">
+            <li><a href="../">الرئيسية</a></li>
+            <li class="active"> / الأدوات</li>
+        </ul>
+    </div>
+</div>
+
+<div class="tools-list-container">
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="author-card">
-                    <img src="../assets/img/connect-tag-official-logo.webp" alt="فريق الموقع">
-                    <h1>فريق الموقع (Connect Tag Team)</h1>
-                    <p>نحن فريق من المطورين، المصممين، والمحررين التقنيين في شركة كونكت تاق. نعمل معاً على تقديم محتوى تقني دقيق ومحدث لمساعدة المستخدمين والشركات في اليمن والوطن العربي على فهم واستخدام أحدث الحلول البرمجية والتقنية.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/connecttagye" target="_blank" class="btn btn-primary" style="background: #3b5998; border: none;"><i class="fa fa-facebook"></i> تابعنا</a>
-                        <a href="../contact" class="btn btn-info" style="background: #006b98; border: none;"><i class="fa fa-envelope"></i> تواصل معنا</a>
-                    </div>
+            <!-- Tool 1: Modem Guide -->
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa fa-wifi"></i>
+                    <h3>دليل مودمات 4G</h3>
+                    <p>استعرض كافة أنواع مودمات يمن فورجي المتوفرة، قارن بين مواصفاتها، واعرف الإعدادات الافتراضية لكل موديل.</p>
+                    <a href="yemen-4g-modems/" class="tool-btn">دخول الدليل</a>
                 </div>
+            </div>
 
-                <div class="latest-posts">
-                    <h2>آخر المقالات بواسطة فريق الموقع:</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="../blog/how-to-check-yemen-4g-balance"><img src="../upload/yemen-4g.webp" class="img-responsive" style="border-radius: 10px;" alt="رصيد يمن فورجي"></a>
-                                <h3 style="font-size: 20px;"><a href="../blog/how-to-check-yemen-4g-balance" style="color: #333;">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="../blog/yemen-internet-comparison-4g-adsl-fiber"><img src="../upload/yemen-internet-comparison.webp" class="img-responsive" style="border-radius: 10px;" alt="مقارنة إنترنت اليمن"></a>
-                                <h3 style="font-size: 20px;"><a href="../blog/yemen-internet-comparison-4g-adsl-fiber" style="color: #333;">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة</a></h3>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Tool 2: IMEI Checker -->
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa fa-barcode"></i>
+                    <h3>فحص IMEI و TAC</h3>
+                    <p>تحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI. اعرف مواصفات هاتفك أو المودم وهل هو أصلي ومعتمد.</p>
+                    <a href="check-imei/" class="tool-btn">ابدأ الفحص</a>
+                </div>
+            </div>
+
+            <!-- Tool 3: Balance Check -->
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa fa-search"></i>
+                    <h3>الاستعلام عن الرصيد</h3>
+                    <p>روابط سريعة ومباشرة للاستعلام عن رصيد إنترنت يمن فورجي و ADSL عبر البوابة الرسمية للمؤسسة.</p>
+                    <a href="../blog/how-to-check-yemen-4g-balance" class="tool-btn">شرح الطريقة</a>
                 </div>
             </div>
         </div>
@@ -110,7 +147,7 @@
           <li><a href="../about/our-company">من نحن</a></li>
           <li><a href="../services/web-app-development">خدماتنا</a></li>
           <li><a href="../blog/">المدونة التقنية</a></li>
-          <li><a href="../tools/">الأدوات التقنية</a></li>
+          <li><a href="./">الأدوات التقنية</a></li>
           <li><a href="../faq">الأسئلة الشائعة</a></li>
           <li><a href="../contact">تواصل معنا</a></li>
         </ul>

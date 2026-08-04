@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>تفاصيل المودم - كونكت تاق</title>
+<link href="../../assets/css/bootstrap.css" rel="stylesheet">
+<link href="../../assets/css/styles.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="../../assets/js/jquery.min.js"></script>
+
+<style>
+    .modem-details-container { padding: 80px 0; background: #fff; }
+    .modem-header { margin-bottom: 40px; }
+    .modem-header h1 { color: #006b98; font-weight: bold; margin-bottom: 10px; }
+    .modem-main-img { border-radius: 20px; background: #f9f9f9; padding: 40px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+    .specs-box { background: #f0f7fa; border-right: 5px solid #006b98; padding: 25px; border-radius: 0 15px 15px 0; margin-bottom: 30px; }
+    .specs-box h4 { color: #006b98; font-weight: bold; margin-bottom: 20px; }
+    .spec-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .spec-label { font-weight: bold; color: #555; }
+    .spec-value { color: #777; }
+    .availability-tag { display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
+    .available { background: #e8f5e9; color: #2e7d32; }
+    .unavailable { background: #ffebee; color: #c62828; }
+    .price-tag { font-size: 24px; color: #e89a2f; font-weight: bold; margin-bottom: 20px; }
+
+    .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
+</style>
+</head>
+<body>
+
+<div id="loading-screen" class="loading-overlay">
+    <i class="fa fa-spinner fa-spin fa-3x" style="color: #006b98;"></i>
+    <p style="margin-top: 20px;">جاري تحميل تفاصيل المودم...</p>
+</div>
+
+<div id="navbar-main">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+	   <div class="pull-right logo">
+        <a  href="../../"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+       </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-left">
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../projects/">أعمالنا</a></li>
+          <li><a href="../../blog/">المدونة</a></li>
+          <li><a href="../../tools/">الأدوات</a></li>
+          <li><a href="../../contact" class="nav-cta-btn">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1 id="page-title">تفاصيل المودم</h1>
+        <ul class="breadcrumb-custom list-inline">
+            <li><a href="../../">الرئيسية</a></li>
+            <li><a href="../"> / الأدوات</a></li>
+            <li><a href="./"> / المودمات</a></li>
+            <li class="active" id="breadcrumb-active"> / ...</li>
+        </ul>
+    </div>
+</div>
+
+<div class="modem-details-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="modem-main-img">
+                    <img id="modem-image" src="" class="img-responsive center-block" alt="صورة المودم">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="modem-header">
+                    <span id="availability-tag" class="availability-tag"></span>
+                    <h1 id="modem-title"></h1>
+                    <p id="modem-brand" style="color: #777; font-size: 18px; margin-bottom: 20px;"></p>
+                    <div id="price-tag" class="price-tag"></div>
+                    <hr>
+                    <p id="modem-description" style="line-height: 1.8; font-size: 16px; color: #555;"></p>
+                </div>
+
+                <div class="specs-box">
+                    <h4>المواصفات الفنية</h4>
+                    <div id="specs-list">
+                        <!-- Specs will be injected here -->
+                    </div>
+                </div>
+
+                <div id="modem-settings" class="alert alert-info" style="display:none;">
+                    <strong><i class="fa fa-cog"></i> إعدادات المودم الافتراضية:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li id="login-link"></li>
+                        <li id="login-credentials"></li>
+                    </ul>
+                </div>
+
+                <a href="../../contact" class="btn btn-primary btn-lg" style="background: #006b98; border: none; margin-top: 20px;">اطلب المودم الآن</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="footer-advanced">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>عن كونكت تاق</h4>
+        <p>شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية والتسويق الرقمي بأعلى معايير الجودة والاحترافية.</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/connecttagye" target="_blank" rel="noopener" title="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="https://x.com/connecttagye" target="_blank" rel="noopener" title="X (Twitter)"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.instagram.com/connecttagye/" target="_blank" rel="noopener" title="Instagram"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/connecttagye" target="_blank" rel="noopener" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+          <a href="https://www.pinterest.com/connecttagye/" target="_blank" rel="noopener" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+          <a href="https://www.youtube.com/connecttagye" target="_blank" rel="noopener" title="YouTube"><i class="fa fa-youtube"></i></a>
+          <a href="https://t.me/connecttagye" target="_blank" rel="noopener" title="Telegram"><i class="fa fa-paper-plane"></i></a>
+          <a href="https://github.com/connecttagye" target="_blank" rel="noopener" title="GitHub"><i class="fa fa-github"></i></a>
+          <a href="https://gitlab.com/connecttagye" target="_blank" rel="noopener" title="GitLab"><i class="fa fa-gitlab"></i></a>
+          <a href="#" title="QR Code"><i class="fa fa-qrcode"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>من نحن وهويتنا</h4>
+        <ul>
+          <li><a href="../../">الرئيسية</a></li>
+          <li><a href="../../about/our-company">من نحن</a></li>
+          <li><a href="../../services/web-app-development">خدماتنا</a></li>
+          <li><a href="../../blog/">المدونة التقنية</a></li>
+          <li><a href="../">الأدوات التقنية</a></li>
+          <li><a href="../../faq">الأسئلة الشائعة</a></li>
+          <li><a href="../../contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>أعمالنا وخدماتنا</h4>
+        <ul>
+          <li><a href="../../projects/">أعمالنا الشاملة</a></li>
+          <li><a href="../../projects/apps/">تطبيقاتنا</a></li>
+          <li><a href="../../projects/sites/">أعمال الويب</a></li>
+          <li><a href="../../services/hardware-solutions">المنتجات</a></li>
+          <li><a href="../../about/about-site">حول الموقع</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h4>تواصل معنا</h4>
+        <p><i class="fa fa-map-marker"></i> اليمن، صنعاء، أمانة العاصمة</p>
+        <p><i class="fa fa-envelope"></i> info@connecttag.org</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
+      <ul class="list-inline">
+        <li><a href="../../privacy-policy">سياسة الخصوصية</a></li>
+        <li><a href="../../terms-of-use">اتفاقية الاستخدام</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+        const apiUrl = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
+
+        if (!slug) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        $.ajax({
+            url: apiUrl,
+            method: 'GET',
+            dataType: 'json',
+            // حذفنا الـ headers لتجنب الـ Preflight OPTIONS request
+            success: function(response) {
+                console.log("API Response:", response);
+                if (response.success && response.result && response.result.items) {
+                    const modem = response.result.items.find(item => item.slug === slug);
+                    if (modem) {
+                        renderDetails(modem);
+                        $('#loading-screen').fadeOut();
+                    } else {
+                        alert('عذراً، المودم غير موجود.');
+                        window.location.href = 'index.html';
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", status, error);
+                alert('حدث خطأ في الـ CORS. السيرفر لا يسمح بالطلب من localhost.');
+                window.location.href = 'index.html';
+            }
+        });
+
+        function renderDetails(m) {
+            document.title = `${m.arabicName} ${m.modelOrVersion} - كونكت تاق`;
+            $('#page-title').text(`${m.arabicName} ${m.modelOrVersion}`);
+            $('#breadcrumb-active').text(` / ${m.modelOrVersion}`);
+            $('#modem-image').attr('src', m.image.content);
+            $('#modem-title').text(`${m.arabicName} ${m.modelOrVersion}`);
+            $('#modem-brand').text(`العلامة التجارية: ${m.brand}`);
+            $('#modem-description').text(m.description);
+
+            const isAvailable = m.availabilityStatus === 'متوفر';
+            $('#availability-tag').text(m.availabilityStatus).addClass(isAvailable ? 'available' : 'unavailable');
+
+            const priceText = (m.price && m.price.currentValue > 0) ?
+                             `${m.price.currentValue.toLocaleString()} ${m.price.currency === 'RYE' ? 'ريال' : '$'}` :
+                             'اتصل لمعرفة السعر';
+            $('#price-tag').text(priceText);
+
+            // Build specs
+            const specs = [
+                { label: 'الموديل', value: m.modelOrVersion },
+                { label: 'النوع', value: m.typeName },
+                { label: 'التصنيف', value: m.category },
+                { label: 'سنة الإصدار', value: m.modelYear },
+                { label: 'الحالة', value: m.condition }
+            ];
+
+            let specsHtml = '';
+            specs.forEach(s => {
+                if(s.value) {
+                    specsHtml += `<div class="spec-item"><span class="spec-label">${s.label}</span><span class="spec-value">${s.value}</span></div>`;
+                }
+            });
+            $('#specs-list').html(specsHtml);
+
+            // Modem Settings
+            if (m.additional && m.additional.modemSettings) {
+                const settings = m.additional.modemSettings;
+                $('#modem-settings').show();
+                if (settings.loginLink) $('#login-link').html(`رابط الإعدادات: <a href="${settings.loginLink}" target="_blank">${settings.loginLink}</a>`);
+                if (settings.defaultUserName || settings.defaultPass) {
+                    $('#login-credentials').text(`بيانات الدخول: ${settings.defaultUserName || ''} / ${settings.defaultPass || ''}`);
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
