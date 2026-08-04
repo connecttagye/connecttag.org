@@ -8,31 +8,98 @@
 <link href="../../assets/css/bootstrap.css" rel="stylesheet">
 <link href="../../assets/css/styles.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="../../assets/js/jquery.min.js"></script>
 
 <style>
-    .modem-details-container { padding: 80px 0; background: #fff; }
-    .modem-header { margin-bottom: 40px; }
-    .modem-header h1 { color: #006b98; font-weight: bold; margin-bottom: 10px; }
-    .modem-main-img { border-radius: 20px; background: #f9f9f9; padding: 40px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
-    .specs-box { background: #f0f7fa; border-right: 5px solid #006b98; padding: 25px; border-radius: 0 15px 15px 0; margin-bottom: 30px; }
-    .specs-box h4 { color: #006b98; font-weight: bold; margin-bottom: 20px; }
-    .spec-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .spec-label { font-weight: bold; color: #555; }
-    .spec-value { color: #777; }
-    .availability-tag { display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-bottom: 20px; }
-    .available { background: #e8f5e9; color: #2e7d32; }
-    .unavailable { background: #ffebee; color: #c62828; }
-    .price-tag { font-size: 24px; color: #e89a2f; font-weight: bold; margin-bottom: 20px; }
+    body { font-family: 'Cairo', sans-serif; background-color: #fff; }
+
+    .modem-details-container { padding: 60px 0 100px; }
+
+    /* Product Section */
+    .product-showcase {
+        background: #fdfdfd;
+        border-radius: 30px;
+        padding: 50px;
+        text-align: center;
+        border: 1px solid #f1f5f9;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+    }
+    .product-showcase img {
+        max-width: 100%;
+        max-height: 400px;
+        margin: 0 auto;
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08));
+    }
+
+    .modem-info-panel h1 { font-weight: 800; color: #1e293b; font-size: 32px; margin-bottom: 10px; }
+    .brand-tag {
+        display: inline-block;
+        background: #f1f5f9;
+        color: #64748b;
+        padding: 5px 15px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    .description-text { font-size: 16px; line-height: 1.8; color: #475569; margin-bottom: 35px; }
+
+    /* Specs Grid */
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .spec-card {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid #edf2f7;
+        transition: 0.3s;
+    }
+    .spec-card:hover { background: #fff; border-color: #006b98; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .spec-card i { color: #006b98; font-size: 20px; margin-bottom: 10px; display: block; }
+    .spec-card .label { display: block; color: #94a3b8; font-size: 12px; font-weight: 700; margin-bottom: 5px; }
+    .spec-card .value { display: block; color: #1e293b; font-size: 15px; font-weight: 800; }
+
+    /* Config Box */
+    .config-box {
+        background: #fff9f0;
+        border-right: 5px solid #e89a2f;
+        padding: 30px;
+        border-radius: 0 20px 20px 0;
+        margin-top: 40px;
+    }
+    .config-box h4 { font-weight: 800; color: #d18721; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .config-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(232, 154, 47, 0.1); }
+    .config-item:last-child { border: none; }
+    .config-label { font-weight: 700; color: #7c5e10; }
+    .config-value { font-family: monospace; font-weight: bold; color: #333; direction: ltr; }
+
+    .btn-action-group { display: flex; gap: 15px; margin-top: 40px; }
+    .btn-main {
+        flex: 1;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-weight: 800;
+        text-align: center;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .btn-primary-blue { background: #006b98; color: #fff; }
+    .btn-primary-blue:hover { background: #004d6e; color: #fff; transform: translateY(-3px); }
 
     .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
+
+    @media (max-width: 768px) {
+        .btn-action-group { flex-direction: column; }
+        .product-showcase { padding: 30px 15px; }
+    }
 </style>
 </head>
 <body>
 
 <div id="loading-screen" class="loading-overlay">
-    <i class="fa fa-spinner fa-spin fa-3x" style="color: #006b98;"></i>
-    <p style="margin-top: 20px;">جاري تحميل تفاصيل المودم...</p>
+    <i class="fa fa-circle-o-notch fa-spin fa-3x" style="color: #006b98;"></i>
+    <p style="margin-top: 20px; font-weight: 700;">جاري تحميل تفاصيل المودم...</p>
 </div>
 
 <div id="navbar-main">
@@ -40,19 +107,19 @@
     <div class="container">
       <div class="navbar-header">
 	   <div class="pull-right logo">
-        <a  href="../../"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+        <a  href="../../index.html"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
        </div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-left">
-          <li><a href="../../">الرئيسية</a></li>
-          <li><a href="../../about/our-company">من نحن</a></li>
-          <li><a href="../../services/web-app-development">خدماتنا</a></li>
-          <li><a href="../../projects/">أعمالنا</a></li>
-          <li><a href="../../blog/">المدونة</a></li>
-          <li><a href="../../tools/">الأدوات</a></li>
-          <li><a href="../../contact" class="nav-cta-btn">تواصل معنا</a></li>
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../../about/our-company.html">من نحن</a></li>
+          <li><a href="../../services/web-app-development.html">خدماتنا</a></li>
+          <li><a href="../../projects/index.html">أعمالنا</a></li>
+          <li><a href="../../blog/index.html">المدونة</a></li>
+          <li class="active"><a href="../index.html">الأدوات</a></li>
+          <li><a href="../../contact.html" class="nav-cta-btn">تواصل معنا</a></li>
         </ul>
       </div>
     </div>
@@ -61,11 +128,11 @@
 
 <div class="page-header-unified">
     <div class="container">
-        <h1 id="page-title">تفاصيل المودم</h1>
+        <h1 id="page-title">المواصفات التقنية</h1>
         <ul class="breadcrumb-custom list-inline">
-            <li><a href="../../">الرئيسية</a></li>
-            <li><a href="../"> / الأدوات</a></li>
-            <li><a href="./"> / المودمات</a></li>
+            <li><a href="../../index.html">الرئيسية</a></li>
+            <li><a href="../index.html"> / الأدوات</a></li>
+            <li><a href="./index.html"> / المودمات</a></li>
             <li class="active" id="breadcrumb-active"> / ...</li>
         </ul>
     </div>
@@ -75,36 +142,66 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="modem-main-img">
-                    <img id="modem-image" src="" class="img-responsive center-block" alt="صورة المودم">
+                <div class="product-showcase">
+                    <img id="modem-image" src="" class="img-responsive" alt="صورة المودم">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="modem-header">
-                    <span id="availability-tag" class="availability-tag"></span>
-                    <h1 id="modem-title"></h1>
-                    <p id="modem-brand" style="color: #777; font-size: 18px; margin-bottom: 20px;"></p>
-                    <div id="price-tag" class="price-tag"></div>
-                    <hr>
-                    <p id="modem-description" style="line-height: 1.8; font-size: 16px; color: #555;"></p>
-                </div>
 
-                <div class="specs-box">
-                    <h4>المواصفات الفنية</h4>
-                    <div id="specs-list">
-                        <!-- Specs will be injected here -->
+            <div class="col-md-6">
+                <div class="modem-info-panel">
+                    <span id="modem-brand" class="brand-tag"></span>
+                    <h1 id="modem-title"></h1>
+                    <p id="modem-description" class="description-text"></p>
+
+                    <div class="specs-grid">
+                        <div class="spec-card">
+                            <i class="fa fa-tag"></i>
+                            <span class="label">الموديل</span>
+                            <span class="value" id="spec-model">-</span>
+                        </div>
+                        <div class="spec-card">
+                            <i class="fa fa-wifi"></i>
+                            <span class="label">نوع الاتصال</span>
+                            <span class="value" id="spec-type">-</span>
+                        </div>
+                        <div class="spec-card">
+                            <i class="fa fa-calendar"></i>
+                            <span class="label">سنة الإصدار</span>
+                            <span class="value" id="spec-year">-</span>
+                        </div>
+                        <div class="spec-card">
+                            <i class="fa fa-info-circle"></i>
+                            <span class="label">الحالة</span>
+                            <span class="value" id="spec-condition">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Config Box -->
+                    <div id="config-panel" class="config-box" style="display:none;">
+                        <h4><i class="fa fa-terminal"></i> إعدادات الوصول الافتراضية</h4>
+                        <div class="config-item">
+                            <span class="config-label">رابط لوحة التحكم:</span>
+                            <span class="config-value" id="conf-link">-</span>
+                        </div>
+                        <div class="config-item">
+                            <span class="config-label">اسم المستخدم:</span>
+                            <span class="config-value" id="conf-user">-</span>
+                        </div>
+                        <div class="config-item">
+                            <span class="config-label">كلمة المرور:</span>
+                            <span class="config-value" id="conf-pass">-</span>
+                        </div>
+                    </div>
+
+                    <div class="btn-action-group">
+                        <a href="../../contact.html" class="btn-main btn-primary-blue">
+                            اطلب الآن <i class="fa fa-shopping-cart"></i>
+                        </a>
+                        <a href="https://t.me/connecttagye" target="_blank" class="btn-main" style="background: #f1f5f9; color: #006b98;">
+                            دعم فني تليجرام <i class="fa fa-paper-plane"></i>
+                        </a>
                     </div>
                 </div>
-
-                <div id="modem-settings" class="alert alert-info" style="display:none;">
-                    <strong><i class="fa fa-cog"></i> إعدادات المودم الافتراضية:</strong>
-                    <ul style="margin-top: 10px;">
-                        <li id="login-link"></li>
-                        <li id="login-credentials"></li>
-                    </ul>
-                </div>
-
-                <a href="../../contact" class="btn btn-primary btn-lg" style="background: #006b98; border: none; margin-top: 20px;">اطلب المودم الآن</a>
             </div>
         </div>
     </div>
@@ -132,23 +229,23 @@
       <div class="col-md-3">
         <h4>من نحن وهويتنا</h4>
         <ul>
-          <li><a href="../../">الرئيسية</a></li>
-          <li><a href="../../about/our-company">من نحن</a></li>
-          <li><a href="../../services/web-app-development">خدماتنا</a></li>
-          <li><a href="../../blog/">المدونة التقنية</a></li>
-          <li><a href="../">الأدوات التقنية</a></li>
-          <li><a href="../../faq">الأسئلة الشائعة</a></li>
-          <li><a href="../../contact">تواصل معنا</a></li>
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../../about/our-company.html">من نحن</a></li>
+          <li><a href="../../services/web-app-development.html">خدماتنا</a></li>
+          <li><a href="../../blog/index.html">المدونة التقنية</a></li>
+          <li><a href="../index.html">الأدوات التقنية</a></li>
+          <li><a href="../../faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="../../contact.html">تواصل معنا</a></li>
         </ul>
       </div>
       <div class="col-md-3">
         <h4>أعمالنا وخدماتنا</h4>
         <ul>
-          <li><a href="../../projects/">أعمالنا الشاملة</a></li>
-          <li><a href="../../projects/apps/">تطبيقاتنا</a></li>
-          <li><a href="../../projects/sites/">أعمال الويب</a></li>
-          <li><a href="../../services/hardware-solutions">المنتجات</a></li>
-          <li><a href="../../about/about-site">حول الموقع</a></li>
+          <li><a href="../../projects/index.html">أعمالنا الشاملة</a></li>
+          <li><a href="../../projects/apps/index.html">تطبيقاتنا</a></li>
+          <li><a href="../../projects/sites/index.html">أعمال الويب</a></li>
+          <li><a href="../../services/hardware-solutions.html">المنتجات</a></li>
+          <li><a href="../../about/about-site.html">حول الموقع</a></li>
         </ul>
       </div>
       <div class="col-md-3">
@@ -160,8 +257,8 @@
     <div class="footer-bottom">
       <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
       <ul class="list-inline">
-        <li><a href="../../privacy-policy">سياسة الخصوصية</a></li>
-        <li><a href="../../terms-of-use">اتفاقية الاستخدام</a></li>
+        <li><a href="../../privacy-policy.html">سياسة الخصوصية</a></li>
+        <li><a href="../../terms-of-use.html">اتفاقية الاستخدام</a></li>
       </ul>
     </div>
   </div>
@@ -183,9 +280,7 @@
             url: apiUrl,
             method: 'GET',
             dataType: 'json',
-            // حذفنا الـ headers لتجنب الـ Preflight OPTIONS request
             success: function(response) {
-                console.log("API Response:", response);
                 if (response.success && response.result && response.result.items) {
                     const modem = response.result.items.find(item => item.slug === slug);
                     if (modem) {
@@ -197,55 +292,33 @@
                     }
                 }
             },
-            error: function(xhr, status, error) {
-                console.error("AJAX Error:", status, error);
-                alert('حدث خطأ في الـ CORS. السيرفر لا يسمح بالطلب من localhost.');
+            error: function() {
+                alert('حدث خطأ في الاتصال بالخادم. تأكد من تفعيل CORS.');
                 window.location.href = 'index.html';
             }
         });
 
         function renderDetails(m) {
-            document.title = `${m.arabicName} ${m.modelOrVersion} - كونكت تاق`;
-            $('#page-title').text(`${m.arabicName} ${m.modelOrVersion}`);
+            document.title = `${m.arabicName} ${m.modelOrVersion} - دليل المواصفات - كونكت تاق`;
             $('#breadcrumb-active').text(` / ${m.modelOrVersion}`);
             $('#modem-image').attr('src', m.image.content);
             $('#modem-title').text(`${m.arabicName} ${m.modelOrVersion}`);
-            $('#modem-brand').text(`العلامة التجارية: ${m.brand}`);
+            $('#modem-brand').text(m.brand);
             $('#modem-description').text(m.description);
 
-            const isAvailable = m.availabilityStatus === 'متوفر';
-            $('#availability-tag').text(m.availabilityStatus).addClass(isAvailable ? 'available' : 'unavailable');
+            // Fill Specs
+            $('#spec-model').text(m.modelOrVersion || '-');
+            $('#spec-type').text(m.category || '-');
+            $('#spec-year').text(m.modelYear || '-');
+            $('#spec-condition').text(m.condition || '-');
 
-            const priceText = (m.price && m.price.currentValue > 0) ?
-                             `${m.price.currentValue.toLocaleString()} ${m.price.currency === 'RYE' ? 'ريال' : '$'}` :
-                             'اتصل لمعرفة السعر';
-            $('#price-tag').text(priceText);
-
-            // Build specs
-            const specs = [
-                { label: 'الموديل', value: m.modelOrVersion },
-                { label: 'النوع', value: m.typeName },
-                { label: 'التصنيف', value: m.category },
-                { label: 'سنة الإصدار', value: m.modelYear },
-                { label: 'الحالة', value: m.condition }
-            ];
-
-            let specsHtml = '';
-            specs.forEach(s => {
-                if(s.value) {
-                    specsHtml += `<div class="spec-item"><span class="spec-label">${s.label}</span><span class="spec-value">${s.value}</span></div>`;
-                }
-            });
-            $('#specs-list').html(specsHtml);
-
-            // Modem Settings
+            // Modem Settings (Config Box)
             if (m.additional && m.additional.modemSettings) {
-                const settings = m.additional.modemSettings;
-                $('#modem-settings').show();
-                if (settings.loginLink) $('#login-link').html(`رابط الإعدادات: <a href="${settings.loginLink}" target="_blank">${settings.loginLink}</a>`);
-                if (settings.defaultUserName || settings.defaultPass) {
-                    $('#login-credentials').text(`بيانات الدخول: ${settings.defaultUserName || ''} / ${settings.defaultPass || ''}`);
-                }
+                const s = m.additional.modemSettings;
+                $('#config-panel').show();
+                $('#conf-link').text(s.loginLink || '-');
+                $('#conf-user').text(s.defaultUserName || 'admin');
+                $('#conf-pass').text(s.defaultPass || 'admin');
             }
         }
     });

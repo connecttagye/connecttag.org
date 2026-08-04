@@ -15,7 +15,7 @@
 <script src="../../assets/js/jquery.min.js"></script>
 
 <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #f4f7f6; }
+    body { font-family: 'Cairo', sans-serif; background-color: #f4f7f6; overflow-x: hidden; }
 
     /* Advanced Header */
     .checker-header {
@@ -37,7 +37,29 @@
         border-radius: 25px;
         box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         border: 1px solid rgba(0, 107, 152, 0.1);
-        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Scanning Animation */
+    .scanner-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, transparent, #e89a2f, transparent);
+        box-shadow: 0 0 15px #e89a2f;
+        z-index: 5;
+        display: none;
+    }
+    @keyframes scan {
+        0% { top: 0; }
+        100% { top: 100%; }
+    }
+    .scanning .scanner-line {
+        display: block;
+        animation: scan 2s linear infinite;
     }
 
     .search-type-selector {
@@ -76,7 +98,8 @@
         transition: 0.3s;
         box-shadow: none;
     }
-    .input-main-group .form-control:focus { border-color: #006b98; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
+    .input-main-group .form-control:focus { border-color: #006b98; }
+    .valid-input { border-color: #2ecc71 !important; background-color: #f0fff4 !important; }
 
     .btn-search-glow {
         height: 65px;
@@ -92,7 +115,19 @@
     }
     .btn-search-glow:hover { background: #d18721; transform: scale(1.02); color: #fff; }
 
-    /* Result Card Glassmorphism */
+    /* Skeleton Loading */
+    .skeleton {
+        background: #eee;
+        background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+        border-radius: 10px;
+        background-size: 200% 100%;
+        animation: 1.5s shine linear infinite;
+    }
+    @keyframes shine { to { background-position-x: -200%; } }
+    .skeleton-text { height: 20px; margin-bottom: 10px; width: 100%; }
+    .skeleton-icon { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; }
+
+    /* Result Card */
     .result-card {
         background: #fff;
         border-radius: 25px;
@@ -100,11 +135,12 @@
         border: 1px solid #eef2f3;
         box-shadow: 0 15px 35px rgba(0,0,0,0.05);
         display: none;
+        margin-top: 30px;
         animation: slideUp 0.5s ease-out;
     }
     @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    .result-header { text-align: center; margin-bottom: 35px; }
+    .result-header { text-align: center; margin-bottom: 35px; position: relative; }
     .result-header .status-icon {
         width: 80px;
         height: 80px;
@@ -128,6 +164,32 @@
     .info-label { color: #888; font-weight: 600; }
     .info-value { color: #333; font-weight: 800; font-size: 17px; }
 
+    /* History Section */
+    .history-section { margin-top: 40px; padding: 20px; background: #fff; border-radius: 20px; border: 1px solid #eee; }
+    .history-title { font-weight: 700; color: #555; margin-bottom: 15px; font-size: 14px; border-bottom: 1px solid #f5f5f5; padding-bottom: 10px; }
+    .history-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .history-item {
+        padding: 5px 15px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 13px;
+        color: #006b98;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .history-item:hover { background: #006b98; color: #fff; }
+
+    /* Action Buttons */
+    .action-row { display: flex; gap: 10px; margin-top: 30px; }
+    .btn-action { flex: 1; padding: 12px; border-radius: 12px; font-weight: 700; border: none; transition: 0.3s; }
+    .btn-copy { background: #f1f5f9; color: #006b98; }
+    .btn-share { background: #25d366; color: #fff; }
+    .btn-action:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .qr-container { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #eee; }
+    .qr-container img { width: 120px; background: #fff; padding: 5px; border: 1px solid #eee; }
+
     .error-card {
         background: #fff5f5;
         color: #c53030;
@@ -140,26 +202,11 @@
         font-weight: 600;
     }
 
-    .loading-spinner { display: none; text-align: center; padding: 30px; }
-
-    /* Help & FAQ section */
-    .help-section { margin-top: 80px; }
-    .help-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 30px;
-        border-right: 6px solid #e89a2f;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-    }
-    .help-card h4 { font-weight: 800; color: #333; margin-bottom: 20px; }
-    .help-card ul li { margin-bottom: 12px; color: #666; font-size: 15px; }
-
     @media (max-width: 768px) {
         .checker-header { padding: 80px 0 120px; }
         .checker-header h1 { font-size: 28px; }
         .search-box-wrapper { padding: 25px; }
-        .btn-search-glow { width: 100%; margin-top: 15px; border-radius: 15px !important; }
-        .input-main-group .form-control { border-radius: 15px !important; }
+        .btn-search-glow { width: 100%; margin-top: 15px; }
         .info-item { flex-direction: column; text-align: center; gap: 5px; }
     }
 </style>
@@ -171,19 +218,19 @@
     <div class="container">
       <div class="navbar-header">
 	   <div class="pull-right logo">
-        <a  href="../../"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
+        <a href="../../index.html"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
        </div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-left">
-          <li><a href="../../">الرئيسية</a></li>
-          <li><a href="../../about/our-company">من نحن</a></li>
-          <li><a href="../../services/web-app-development">خدماتنا</a></li>
-          <li><a href="../../projects/">أعمالنا</a></li>
-          <li><a href="../../blog/">المدونة</a></li>
-          <li class="active"><a href="../">الأدوات</a></li>
-          <li><a href="../../contact" class="nav-cta-btn">تواصل معنا</a></li>
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../../about/our-company.html">من نحن</a></li>
+          <li><a href="../../services/web-app-development.html">خدماتنا</a></li>
+          <li><a href="../../projects/index.html">أعمالنا</a></li>
+          <li><a href="../../blog/index.html">المدونة</a></li>
+          <li class="active"><a href="../index.html">الأدوات</a></li>
+          <li><a href="../../contact.html" class="nav-cta-btn">تواصل معنا</a></li>
         </ul>
       </div>
     </div>
@@ -202,7 +249,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-                <div class="search-box-wrapper">
+                <div class="search-box-wrapper" id="searchBox">
+                    <div class="scanner-line"></div>
                     <div class="search-type-selector">
                         <label>
                             <input type="radio" name="searchType" value="imei" checked>
@@ -231,22 +279,31 @@
                         </div>
                     </div>
 
-                    <div class="loading-spinner">
-                        <i class="fa fa-circle-o-notch fa-spin fa-3x" style="color: #006b98; margin-bottom: 15px;"></i>
-                        <p style="font-weight: 600; color: #006b98;">جاري جلب بيانات الجهاز...</p>
+                    <div id="historySection" class="history-section" style="display:none;">
+                        <div class="history-title">عمليات البحث الأخيرة:</div>
+                        <div class="history-list" id="historyList"></div>
                     </div>
 
                     <div id="errorMessage" class="error-card"></div>
                 </div>
 
+                <!-- Skeleton Loading -->
+                <div id="skeletonLoader" class="result-card" style="display:none;">
+                    <div class="skeleton-icon skeleton"></div>
+                    <div class="skeleton-text skeleton" style="width: 60%; margin: 0 auto 30px;"></div>
+                    <div class="skeleton-text skeleton"></div>
+                    <div class="skeleton-text skeleton"></div>
+                    <div class="skeleton-text skeleton"></div>
+                </div>
+
                 <!-- Result Card -->
                 <div id="resultCard" class="result-card">
                     <div class="result-header">
-                        <div class="status-icon"><i class="fa fa-shield"></i></div>
+                        <div class="status-icon" id="resIcon"><i class="fa fa-shield"></i></div>
                         <h3>بيانات الهوية التقنية</h3>
                     </div>
 
-                    <ul class="info-list">
+                    <ul class="info-list" id="printableArea">
                         <li class="info-item">
                             <span class="info-label">الشركة المصنعة</span>
                             <span class="info-value" id="resBrand"></span>
@@ -261,19 +318,42 @@
                         </li>
                         <li class="info-item">
                             <span class="info-label">حالة الفحص</span>
-                            <span class="info-value" style="color: #2ecc71;">مطابق للمواصفات الرسمية <i class="fa fa-check-circle"></i></span>
+                            <span class="info-value" style="color: #2ecc71;">أصلي ومعتمد <i class="fa fa-check-circle"></i></span>
                         </li>
                     </ul>
+
+                    <div class="action-row">
+                        <button class="btn-action btn-copy" id="btnCopy"><i class="fa fa-copy"></i> نسخ التفاصيل</button>
+                        <button class="btn-action btn-share" id="btnShare"><i class="fa fa-whatsapp"></i> مشاركة</button>
+                    </div>
+
+                    <div class="qr-container">
+                        <img id="resQR" src="" alt="QR Code">
+                        <p style="font-size: 11px; color: #999; margin-top: 5px;">امسح الكود لحفظ المعلومات</p>
+                    </div>
                 </div>
 
                 <div class="help-section">
                     <div class="help-card">
                         <h4><i class="fa fa-question-circle" style="color: #e89a2f;"></i> كيف تجد الأرقام المطلوبة؟</h4>
-                        <ul>
-                            <li><strong>للهواتف:</strong> اطلب الكود <code>*#06#</code> وسيظهر لك رقم IMEI فوراً.</li>
-                            <li><strong>للمودمات:</strong> ستجد الرقم مطبوعاً على الملصق خلف الجهاز أو أسفل البطارية.</li>
-                            <li><strong>TAC:</strong> هو اختصار لـ Type Allocation Code ويمثل أول 8 أرقام من الـ IMEI.</li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5>للهواتف الذكية:</h5>
+                                <ul>
+                                    <li>اطلب الكود <code>*#06#</code></li>
+                                    <li>انظر خلف البطارية</li>
+                                    <li>تحقق من ملصق الكرتون</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <h5>لأجهزة المودم:</h5>
+                                <ul>
+                                    <li>الملصق الخلفي (IMEI)</li>
+                                    <li>صفحة الإعدادات (Status)</li>
+                                    <li>أول 8 أرقام تمثل الـ TAC</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -304,23 +384,23 @@
       <div class="col-md-3">
         <h4>من نحن وهويتنا</h4>
         <ul>
-          <li><a href="../../">الرئيسية</a></li>
-          <li><a href="../../about/our-company">من نحن</a></li>
-          <li><a href="../../services/web-app-development">خدماتنا</a></li>
-          <li><a href="../../blog/">المدونة التقنية</a></li>
-          <li><a href="../">الأدوات التقنية</a></li>
-          <li><a href="../../faq">الأسئلة الشائعة</a></li>
-          <li><a href="../../contact">تواصل معنا</a></li>
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../../about/our-company.html">من نحن</a></li>
+          <li><a href="../../services/web-app-development.html">خدماتنا</a></li>
+          <li><a href="../../blog/index.html">المدونة التقنية</a></li>
+          <li><a href="../index.html">الأدوات التقنية</a></li>
+          <li><a href="../../faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="../../contact.html">تواصل معنا</a></li>
         </ul>
       </div>
       <div class="col-md-3">
         <h4>أعمالنا وخدماتنا</h4>
         <ul>
-          <li><a href="../../projects/">أعمالنا الشاملة</a></li>
-          <li><a href="../../projects/apps/">تطبيقاتنا</a></li>
-          <li><a href="../../projects/sites/">أعمال الويب</a></li>
-          <li><a href="../../services/hardware-solutions">المنتجات</a></li>
-          <li><a href="../../about/about-site">حول الموقع</a></li>
+          <li><a href="../../projects/index.html">أعمالنا الشاملة</a></li>
+          <li><a href="../../projects/apps/index.html">تطبيقاتنا</a></li>
+          <li><a href="../../projects/sites/index.html">أعمال الويب</a></li>
+          <li><a href="../../services/hardware-solutions.html">المنتجات</a></li>
+          <li><a href="../../about/about-site.html">حول الموقع</a></li>
         </ul>
       </div>
       <div class="col-md-3">
@@ -332,8 +412,8 @@
     <div class="footer-bottom">
       <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
       <ul class="list-inline">
-        <li><a href="../../privacy-policy">سياسة الخصوصية</a></li>
-        <li><a href="../../terms-of-use">اتفاقية الاستخدام</a></li>
+        <li><a href="../../privacy-policy.html">سياسة الخصوصية</a></li>
+        <li><a href="../../terms-of-use.html">اتفاقية الاستخدام</a></li>
       </ul>
     </div>
   </div>
@@ -342,6 +422,21 @@
 <script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        loadHistory();
+
+        // Real-time Validation
+        $('#searchInput').on('input', function() {
+            const val = $(this).val().replace(/\D/g, '');
+            $(this).val(val); // Keep only numbers
+
+            const type = $('input[name="searchType"]:checked').val();
+            if((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8)) {
+                $(this).addClass('valid-input');
+            } else {
+                $(this).removeClass('valid-input');
+            }
+        });
+
         $('#btnSearch').click(function() {
             performSearch();
         });
@@ -350,71 +445,118 @@
             if(e.which == 13) performSearch();
         });
 
+        $(document).on('click', '.history-item', function() {
+            $('#searchInput').val($(this).text());
+            performSearch();
+        });
+
         function performSearch() {
             const val = $('#searchInput').val().trim();
             const type = $('input[name="searchType"]:checked').val();
 
             if(!val) {
-                showError('يرجى إدخال قيمة للبحث.');
+                showError('يرجى إدخال رقم الـ IMEI أو الـ TAC أولاً.');
                 return;
             }
 
-            // UI Reset
+            // Visual Start
             $('#resultCard').hide();
             $('#errorMessage').hide();
-            $('.loading-spinner').fadeIn();
+            $('#searchBox').addClass('scanning');
+            $('#skeletonLoader').fadeIn();
 
             const apiUrl = 'https://api.connecttag.app/v5/yemen4g/tac/search';
             const apiKey = 'ktmo5flizpu';
 
-            let queryParams = `?X-Api-Key=${apiKey}`;
-            queryParams += `&${type}=${val}`;
-
             $.ajax({
-                url: apiUrl + queryParams,
+                url: `${apiUrl}?X-Api-Key=${apiKey}&${type}=${val}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function(response) {
-                    $('.loading-spinner').hide();
-                    console.log("Search Response:", response);
+                    setTimeout(() => { // Small delay for the "scanning" feel
+                        $('#searchBox').removeClass('scanning');
+                        $('#skeletonLoader').hide();
 
-                    if (response.success && response.result && !response.result.error) {
-                        displayResult(response.result);
-                    } else {
-                        const msg = (response.result && response.result.error) ? response.result.error : 'لم يتم العثور على سجلات تطابق هذا الرقم.';
-                        showError(msg);
-                    }
+                        if (response.success && response.result && !response.result.error) {
+                            displayResult(response.result);
+                            saveToHistory(val);
+                        } else {
+                            const msg = (response.result && response.result.error) ? response.result.error : 'لم يتم العثور على سجلات لهذا الرقم.';
+                            showError(msg);
+                        }
+                    }, 1200);
                 },
-                error: function(xhr) {
-                    $('.loading-spinner').hide();
-                    showError('عذراً، حدث خطأ تقني. تأكد من صحة الرقم واتصالك بالإنترنت.');
+                error: function() {
+                    $('#searchBox').removeClass('scanning');
+                    $('#skeletonLoader').hide();
+                    showError('عذراً، حدث خطأ في الاتصال بالسيرفر.');
                 }
             });
         }
 
         function displayResult(data) {
             $('#resBrand').text(data.canonical_brand || 'غير معروف');
-            $('#resSpecs').text(data.canonical_specs || 'لا يوجد مواصفات مسجلة');
+            const specs = data.canonical_specs || 'لا يوجد مواصفات مسجلة';
+            $('#resSpecs').text(specs);
             $('#resTac').text(data.tac || '-');
+
+            // Generate QR Code
+            const qrData = `Brand: ${data.canonical_brand}\nSpecs: ${specs}\nTAC: ${data.tac}`;
+            $('#resQR').attr('src', `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`);
+
+            // Dynamic Icon
+            const icon = specs.toLowerCase().includes('mobile') || specs.toLowerCase().includes('phone') ? 'fa-mobile' : 'fa-wifi';
+            $('#resIcon').html(`<i class="fa ${icon}"></i>`);
+
             $('#resultCard').fadeIn();
 
-            // Scroll to result on mobile
+            // Setup Copy & Share
+            $('#btnCopy').off().click(() => {
+                const text = `بيانات الجهاز من كونكت تاق:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nTAC: ${data.tac}`;
+                navigator.clipboard.writeText(text);
+                alert('تم نسخ تفاصيل الجهاز بنجاح!');
+            });
+
+            $('#btnShare').off().click(() => {
+                const text = `فحص هُوية الجهاز:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nرابط الفحص: ${window.location.href}`;
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
+            });
+
             if($(window).width() < 768) {
-                $('html, body').animate({ scrollTop: $('#resultCard').offset().top - 100 }, 500);
+                $('html, body').animate({ scrollTop: $('#resultCard').offset().top - 50 }, 500);
             }
         }
 
         function showError(msg) {
             $('#errorMessage').text(msg).fadeIn();
+            $('#searchBox').removeClass('scanning');
         }
 
-        // Auto-change placeholder based on type
+        function saveToHistory(val) {
+            let history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
+            if(!history.includes(val)) {
+                history.unshift(val);
+                if(history.length > 5) history.pop();
+                localStorage.setItem('check_imei_history', JSON.stringify(history));
+                loadHistory();
+            }
+        }
+
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
+            if(history.length > 0) {
+                $('#historySection').show();
+                $('#historyList').html(history.map(item => `<span class="history-item">${item}</span>`).join(''));
+            }
+        }
+
         $('input[name="searchType"]').change(function() {
             const type = $(this).val();
             const input = $('#searchInput');
             if(type === 'imei') input.attr('placeholder', 'أدخل 15 رقماً هنا...');
             else if(type === 'tac') input.attr('placeholder', 'أدخل 8 أرقام...');
             else input.attr('placeholder', 'اسم الجهاز أو الموديل...');
+            input.removeClass('valid-input');
         });
     });
 </script>
