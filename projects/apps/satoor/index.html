@@ -25,6 +25,8 @@
 
 <link href="../../../assets/css/bootstrap.css" rel="stylesheet">
 <link href="../../../assets/css/styles.min.css" rel="stylesheet">
+<link href="../../../assets/css/components.css" rel="stylesheet">
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="../../../assets/js/jquery.min.js"></script>
 
@@ -59,29 +61,8 @@
 </style>
 </head>
 <body>
-<div id="navbar-main">
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-	   <div class="pull-right logo">
-        <a  href="../../../"><img src="../../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
-       </div>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-left">
-          <li><a href="../../../">الرئيسية</a></li>
-          <li><a href="../../../about/our-company">من نحن</a></li>
-          <li><a href="../../../services/web-app-development">خدماتنا</a></li>
-          <li class="active"><a href="../../../projects/">أعمالنا</a></li>
-          <li><a href="../../../blog/">المدونة</a></li>
-          <li><a href="../../../tools/">الأدوات</a></li>
-          <li><a href="../../../contact" class="nav-cta-btn">تواصل معنا</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modular Web Component: Header -->
+<site-header></site-header>
 
 <div class="page-header-unified">
     <div class="container">
@@ -143,103 +124,12 @@
     </div>
 </div>
 
-<footer id="footer-advanced">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <h4>عن كونكت تاق</h4>
-        <p>شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية والتسويق الرقمي بأعلى معايير الجودة والاحترافية.</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/connecttagye" target="_blank" rel="noopener" title="Facebook"><i class="fa fa-facebook"></i></a>
-          <a href="https://x.com/connecttagye" target="_blank" rel="noopener" title="X (Twitter)"><i class="fa fa-twitter"></i></a>
-          <a href="https://www.instagram.com/connecttagye/" target="_blank" rel="noopener" title="Instagram"><i class="fa fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/connecttagye" target="_blank" rel="noopener" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-          <a href="https://www.pinterest.com/connecttagye/" target="_blank" rel="noopener" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-          <a href="https://www.youtube.com/connecttagye" target="_blank" rel="noopener" title="YouTube"><i class="fa fa-youtube"></i></a>
-          <a href="https://t.me/connecttagye" target="_blank" rel="noopener" title="Telegram"><i class="fa fa-paper-plane"></i></a>
-          <a href="https://github.com/connecttagye" target="_blank" rel="noopener" title="GitHub"><i class="fa fa-github"></i></a>
-          <a href="https://gitlab.com/connecttagye" target="_blank" rel="noopener" title="GitLab"><i class="fa fa-gitlab"></i></a>
-          <a href="#" title="QR Code"><i class="fa fa-qrcode"></i></a>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <h4>من نحن وهويتنا</h4>
-        <ul>
-          <li><a href="../../../">الرئيسية</a></li>
-          <li><a href="../../../about/our-company">من نحن</a></li>
-          <li><a href="../../../services/web-app-development">خدماتنا</a></li>
-          <li><a href="../../../blog/">المدونة التقنية</a></li>
-          <li><a href="../../../tools/">الأدوات التقنية</a></li>
-          <li><a href="../../../faq">الأسئلة الشائعة</a></li>
-          <li><a href="../../../contact">تواصل معنا</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h4>أعمالنا وخدماتنا</h4>
-        <ul>
-          <li><a href="../../../projects/">أعمالنا الشاملة</a></li>
-          <li><a href="../../../projects/apps/">تطبيقاتنا</a></li>
-          <li><a href="../../../projects/sites/">أعمال الويب</a></li>
-          <li><a href="../../../services/hardware-solutions">حلول العتاد</a></li>
-          <li><a href="../../../about/about-site">حول الموقع</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h4>تواصل معنا</h4>
-        <p><i class="fa fa-map-marker"></i> اليمن، صنعاء، أمانة العاصمة</p>
-        <p><i class="fa fa-envelope"></i> info@connecttag.org</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Copyright &copy; 2026 . All Rights Reserved | Design by <a href="https://connecttag.org/" target="_blank" rel="noopener">Connect Tag</a></p>
-      <ul class="list-inline">
-        <li><a href="../../../privacy-policy">سياسة الخصوصية</a></li>
-        <li><a href="../../../terms-of-use">اتفاقية الاستخدام</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
 
+<script src="../../../assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="../../../assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-  // Active Link Highlighting
-  $(document).ready(function () {
-      var path = window.location.pathname;
-      var page = path.split("/").pop();
-      if (page === "" || page === "index.html") page = "./";
-
-      $('.navbar-nav li').removeClass('active');
-
-      $('.navbar-nav li a').each(function () {
-          var href = $(this).attr('href');
-          var cleanHref = href ? href.replace(".html", "") : "";
-          var cleanPage = page.replace(".html", "");
-
-          if (cleanHref === cleanPage || (cleanPage === "./" && (href === "./" || href === "index.html" || href === "#home"))) {
-              $(this).parent().addClass('active');
-          }
-
-          if (path.includes(cleanHref) && cleanHref !== "" && cleanHref !== "/" && !href.startsWith("#")) {
-              $(this).parent().addClass('active');
-          }
-      });
-  });
-  // Cookie Consent Logic
-  $(document).ready(function() {
-    if (!localStorage.getItem('cookieAccepted')) {
-      $('#cookie-consent').css('display', 'flex').hide().fadeIn(1000);
-    }
-    $('#accept-cookies').click(function() {
-      localStorage.setItem('cookieAccepted', 'true');
-      $('#cookie-consent').fadeOut();
-    });
-  });
-</script>
-<div id="cookie-consent">
-    <div class="cookie-content">
-        <p>نحن نستخدم ملفات تعريف الارتباط (Cookies) لضمان حصولك على أفضل تجربة على موقعنا. <a href="../../../privacy-policy">تعرف على المزيد</a></p>
-    </div>
-    <button class="cookie-btn" id="accept-cookies">موافق</button>
-</div>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
 </body>
 </html>

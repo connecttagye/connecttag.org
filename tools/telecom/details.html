@@ -8,6 +8,8 @@
 <title>تفاصيل الشركة - كونكت تاق</title>
 <link href="../../assets/css/bootstrap.css" rel="stylesheet">
 <link href="../../assets/css/styles.min.css" rel="stylesheet">
+<link href="../../assets/css/components.css" rel="stylesheet">
+<script src="../../assets/js/components/components-bundle.js" defer></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="../../assets/js/jquery.min.js"></script>
@@ -51,26 +53,8 @@
     <p style="margin-top: 20px; font-weight: 700;">جاري تحميل معلومات الشركة...</p>
 </div>
 
-<div id="navbar-main">
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-	   <div class="pull-right logo">
-        <a href="../../index.html"><img src="../../assets/img/connect-tag-official-logo.webp" alt="كونكت تاق" loading="lazy"/></a>
-       </div>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-left">
-          <li><a href="../../index.html">الرئيسية</a></li>
-          <li><a href="../../about/our-company.html">من نحن</a></li>
-          <li class="active"><a href="../index.html">الأدوات</a></li>
-          <li><a href="../../contact.html" class="nav-cta-btn">تواصل معنا</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modular Web Component: Header -->
+<site-header></site-header>
 
 <div id="company-content" style="display:none;">
     <div class="company-header">
@@ -175,5 +159,9 @@
         }
     });
 </script>
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
 </body>
 </html>

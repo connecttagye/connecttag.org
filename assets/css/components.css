@@ -1,0 +1,548 @@
+/* ==========================================================================
+   Connect Tag - Modular Components Design System & Styles
+   SEO, AdSense Policy Compliant & Modern Web Standards
+   ========================================================================== */
+
+:root {
+  --ct-primary: #00adef;
+  --ct-primary-hover: #008cc3;
+  --ct-secondary: #25d366;
+  --ct-dark-bg: #0d001a;
+  --ct-card-bg: #1a0033;
+  --ct-text-light: #ffffff;
+  --ct-text-muted: #a0a0a0;
+  --ct-text-dark: #222222;
+  --ct-border: rgba(255, 255, 255, 0.1);
+  --ct-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --ct-ad-bg: #f8f9fa;
+  --ct-ad-border: #e9ecef;
+  --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   1. Dynamic Ad Banner Container (AdSense Policy Compliant & CLS Shield)
+   -------------------------------------------------------------------------- */
+ad-banner {
+  display: block;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.ct-ad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--ct-ad-bg);
+  border: 1px dashed var(--ct-ad-border);
+  border-radius: 12px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: var(--ct-transition);
+  margin: 0 auto;
+}
+
+/* Explicit minimum heights to prevent CLS */
+.ct-ad-container.ad-responsive { min-height: 120px; width: 100%; }
+.ct-ad-container.ad-rectangle { min-height: 280px; max-width: 336px; }
+.ct-ad-container.ad-leaderboard { min-height: 100px; max-width: 728px; }
+.ct-ad-container.ad-banner-large { min-height: 260px; max-width: 970px; }
+
+/* Clear Mandatory Ad Labeling (AdSense Requirement) */
+.ct-ad-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  user-select: none;
+}
+
+.ct-ad-label::before,
+.ct-ad-label::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.ct-ad-slot-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90px;
+}
+
+/* Placeholder for dev/testing or blocked ads */
+.ct-ad-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 13px;
+  padding: 20px;
+}
+
+.ct-ad-placeholder i {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: var(--ct-primary);
+}
+
+/* --------------------------------------------------------------------------
+   2. Header Component Styles (<site-header>)
+   -------------------------------------------------------------------------- */
+site-header {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+.ct-header-navbar {
+  background-color: rgba(13, 0, 26, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ct-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transition: var(--ct-transition);
+}
+
+.ct-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ct-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+}
+
+.ct-logo-brand img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.ct-logo-brand:hover img {
+  transform: scale(1.05);
+}
+
+.ct-nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+}
+
+.ct-nav-item {
+  position: relative;
+}
+
+.ct-nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: var(--ct-transition);
+  display: inline-block;
+}
+
+.ct-nav-link:hover,
+.ct-nav-item.active .ct-nav-link {
+  color: var(--ct-primary);
+  background: rgba(0, 173, 239, 0.1);
+}
+
+.ct-nav-cta {
+  background: linear-gradient(135deg, #00adef 0%, #0077b6 100%);
+  color: #ffffff !important;
+  border-radius: 25px;
+  padding: 8px 20px;
+  box-shadow: 0 4px 15px rgba(0, 173, 239, 0.3);
+}
+
+.ct-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 173, 239, 0.5);
+  background: linear-gradient(135deg, #00c3ff 0%, #0088cc 100%);
+}
+
+.ct-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--ct-border);
+  color: #fff;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--ct-transition);
+}
+
+.ct-mobile-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ct-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. Breadcrumb Component Styles (<site-breadcrumb>)
+   -------------------------------------------------------------------------- */
+site-breadcrumb {
+  display: block;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+  margin-bottom: 30px;
+}
+
+.ct-breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ct-breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.ct-breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666666;
+}
+
+.ct-breadcrumb-item a {
+  color: var(--ct-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--ct-transition);
+}
+
+.ct-breadcrumb-item a:hover {
+  color: var(--ct-primary-hover);
+  text-decoration: underline;
+}
+
+.ct-breadcrumb-separator {
+  color: #999999;
+  font-size: 11px;
+}
+
+.ct-breadcrumb-item.active {
+  color: #333333;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   4. Footer Component Styles (<site-footer>)
+   -------------------------------------------------------------------------- */
+site-footer {
+  display: block;
+  width: 100%;
+  background: var(--ct-dark-bg);
+  color: #e0e0e0;
+  border-top: 2px solid var(--ct-primary);
+  margin-top: auto;
+}
+
+.ct-footer-main {
+  padding: 60px 0 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ct-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 35px;
+  padding: 0 20px;
+}
+
+.ct-footer-col h4 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.ct-footer-col h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--ct-primary);
+  border-radius: 2px;
+}
+
+.ct-footer-col p {
+  color: var(--ct-text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ct-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ct-footer-links li {
+  margin-bottom: 10px;
+}
+
+.ct-footer-links a {
+  color: var(--ct-text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: var(--ct-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ct-footer-links a:hover {
+  color: var(--ct-primary);
+  transform: translateX(-5px);
+}
+
+.ct-social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.ct-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  font-size: 16px;
+  transition: var(--ct-transition);
+}
+
+.ct-social-btn:hover {
+  background: var(--ct-primary);
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 173, 239, 0.4);
+}
+
+.ct-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 0;
+  margin-top: 40px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ct-footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.ct-footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ct-footer-legal-links a {
+  color: var(--ct-text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  transition: var(--ct-transition);
+}
+
+.ct-footer-legal-links a:hover {
+  color: var(--ct-primary);
+}
+
+/* --------------------------------------------------------------------------
+   5. Cookie Consent Component (<cookie-consent>)
+   -------------------------------------------------------------------------- */
+cookie-consent {
+  display: block;
+}
+
+.ct-cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(13, 0, 26, 0.96);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ct-primary);
+  border-radius: 16px;
+  padding: 18px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 99999;
+  color: #fff;
+  transition: var(--ct-transition);
+}
+
+.ct-cookie-banner.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(30px);
+}
+
+.ct-cookie-text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ct-cookie-text a {
+  color: var(--ct-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.ct-cookie-btn {
+  background: var(--ct-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--ct-transition);
+  box-shadow: 0 4px 15px rgba(0, 173, 239, 0.4);
+}
+
+.ct-cookie-btn:hover {
+  background: var(--ct-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Back to Top Floating Button */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--ct-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 5px 20px rgba(0, 173, 239, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--ct-transition);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  transform: translateY(-5px);
+  background: var(--ct-primary-hover);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 991px) {
+  .ct-mobile-toggle {
+    display: block;
+  }
+
+  .ct-nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: rgba(13, 0, 26, 0.98);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    padding: 20px;
+    gap: 12px;
+    border-bottom: 1px solid var(--ct-border);
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .ct-nav-menu.open {
+    display: flex;
+    animation: fadeInDown 0.3s ease;
+  }
+
+  .ct-nav-link {
+    width: 100%;
+    text-align: right;
+  }
+
+  .ct-footer-bottom-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
