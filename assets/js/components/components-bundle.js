@@ -20,7 +20,6 @@
   loadScript(basePath + 'head-includes.js');
   loadScript(basePath + 'site-header.js');
   loadScript(basePath + 'site-footer.js');
-  loadScript(basePath + 'ad-banner.js');
   loadScript(basePath + 'site-breadcrumb.js');
   loadScript(basePath + 'cookie-consent.js');
 })();
