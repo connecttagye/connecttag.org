@@ -1,16 +1,22 @@
 /**
- * Connect Tag - Head Includes & Core Resource Manager
- * Ensures critical styles, font preloading, and global configurations are injected seamlessly.
+ * Connect Tag - Head Includes (Styles & Meta)
+ * Handles CSS injection and meta tags. Scripts are managed by components-bundle.js
  */
 (function () {
   'use strict';
 
-  const baseUrl = 'https://connecttag.org/';
-  window.CT_PATH_PREFIX = baseUrl;
+  // Detect Root Path
+  const scripts = document.getElementsByTagName('script');
+  const bundleScript = Array.from(scripts).find(s => s.src.includes('components-bundle.js'));
+  let rootPath = 'https://connecttag.org/';
+
+  if (bundleScript) {
+      rootPath = bundleScript.src.split('assets/js/components/')[0];
+  }
 
   // Helper to add link tags
   const addLink = (rel, href, type = null) => {
-    const fullHref = href.startsWith('http') ? href : baseUrl + href;
+    const fullHref = href.startsWith('http') ? href : rootPath + href;
     if (!document.querySelector(`link[href="${fullHref}"]`)) {
       const link = document.createElement('link');
       link.rel = rel;
@@ -30,19 +36,8 @@
     }
   };
 
-  // Helper to add script tags
-  const addScript = (src, type = 'text/javascript') => {
-    const fullSrc = src.startsWith('http') ? src : baseUrl + src;
-    if (!document.querySelector(`script[src="${fullSrc}"]`)) {
-      const script = document.createElement('script');
-      script.src = fullSrc;
-      script.type = type;
-      document.head.appendChild(script);
-    }
-  };
-
   // Favicon
-  addLink('icon', 'https://connecttag.org/favicon.webp', 'image/webp');
+  addLink('icon', rootPath + 'favicon.webp', 'image/webp');
 
   // Theme colors & mobile web app capability
   addMeta('theme-color', '#317EFB');
@@ -58,13 +53,7 @@
   addLink('stylesheet', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
   addLink('stylesheet', 'assets/css/animate-custom.css');
 
-  // Scripts
-  addScript('assets/js/jquery.min.js');
-  addScript('assets/js/modernizr.custom.js');
-  addScript('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
-  addScript('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
-
-  // Preconnect to Google Fonts & AdSense domains for performance (Core Web Vitals)
+  // Preconnect
   const preconnectDomains = [
     'https://fonts.googleapis.com',
     'https://fonts.gstatic.com',

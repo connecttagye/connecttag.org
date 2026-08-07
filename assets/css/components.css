@@ -598,3 +598,141 @@ cookie-consent {
     transform: translateY(0);
 }
 
+/* --------------------------------------------------------------------------
+   7. Blog Components Styles
+   -------------------------------------------------------------------------- */
+
+/* Article Meta */
+.ct-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  color: #777;
+  font-size: 14px;
+}
+.ct-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ct-meta-item i {
+  color: var(--ct-primary);
+}
+.ct-meta-item a {
+  color: var(--ct-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Share Buttons */
+.ct-share-container {
+  margin-top: 40px;
+  padding: 25px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+.ct-share-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.ct-share-grid {
+  display: flex;
+  gap: 12px;
+}
+.ct-share-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff !important;
+  font-size: 20px;
+  transition: var(--ct-transition);
+}
+.ct-share-btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+.ct-share-btn.whatsapp { background: #25d366; }
+.ct-share-btn.facebook { background: #3b5998; }
+.ct-share-btn.twitter { background: #1da1f2; }
+.ct-share-btn.telegram { background: #0088cc; }
+.ct-share-btn.linkedin { background: #0077b5; }
+
+/* Article Card */
+.ct-article-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: var(--ct-transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ct-article-card:hover { transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.ct-card-img img { width: 100%; height: 200px; object-fit: cover; }
+.ct-card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.ct-card-date { font-size: 12px; color: #999; margin-bottom: 10px; display: block; }
+.ct-card-title { font-size: 18px; margin-bottom: 12px; font-weight: 700; line-height: 1.4; }
+.ct-card-title a { color: #333; text-decoration: none; }
+.ct-card-title a:hover { color: var(--ct-primary); }
+.ct-card-excerpt { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+.ct-card-link { margin-top: auto; font-weight: 700; color: var(--ct-primary); text-decoration: none; }
+
+/* Related Posts Section */
+.ct-related-posts { margin-top: 60px; padding-top: 40px; border-top: 1px solid #eee; }
+.ct-section-title { font-size: 24px; font-weight: 800; margin-bottom: 30px; text-align: center; }
+.ct-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+/* --------------------------------------------------------------------------
+   8. App Components Styles
+   -------------------------------------------------------------------------- */
+
+/* App Header */
+.ct-app-header { padding: 140px 0 80px; background: #fff; border-bottom: 1px solid #eee; }
+.ct-app-logo { width: 120px; height: 120px; border-radius: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.ct-app-title { font-size: 36px; font-weight: 800; color: #333; margin-bottom: 15px; }
+.ct-app-subtitle { font-size: 18px; color: #777; }
+
+/* Download Buttons */
+.ct-app-downloads { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px; }
+.ct-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #222;
+  color: #fff !important;
+  padding: 10px 25px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  transition: var(--ct-transition);
+  min-width: 200px;
+  text-align: right;
+}
+.ct-download-btn:hover { transform: translateY(-5px); background: #000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.ct-download-btn i { font-size: 28px; }
+.ct-download-btn .btn-text { display: flex; flex-direction: column; }
+.ct-download-btn .small-text { font-size: 11px; opacity: 0.8; }
+.ct-download-btn .large-text { font-size: 18px; font-weight: 700; }
+
+.ct-download-btn.google-play { background: #000; }
+.ct-download-btn.app-store { background: #000; }
+.ct-download-btn.apk { background: #006b98; }
+
+/* Features Grid */
+.ct-app-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+.ct-feature-card { background: #f0f7f9; padding: 30px; border-radius: 15px; text-align: center; }
+.ct-feature-card i { font-size: 32px; color: var(--ct-primary); margin-bottom: 15px; display: block; }
+.ct-feature-label { display: block; font-size: 28px; font-weight: bold; color: #e89a2f; margin-bottom: 5px; }
+.ct-feature-text { margin: 0; color: #555; }
+
+@media (max-width: 768px) {
+  .ct-app-header { padding: 100px 0 60px; }
+  .ct-app-title { font-size: 28px; }
+  .ct-download-btn { width: 100%; justify-content: center; }
+}
+

@@ -27,6 +27,7 @@
 
 
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/apps-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -75,13 +76,7 @@
     </div>
 </div>
 
-<div class="case-header">
-    <div class="container text-center">
-        <img src="../../../assets/img/apps/kabeer-info-app.webp" width="120" style="border-radius: 20%; margin-bottom: 20px;" alt="تطبيق خبير" loading="lazy">
-        <h1>تطبيق خبير معلومات الجهاز</h1>
-        <p>مختبرك التقني الشامل في تطبيق واحد</p>
-    </div>
-</div>
+<site-app-header title="تطبيق خبير معلومات الجهاز" subtitle="مختبرك التقني الشامل في تطبيق واحد" logo="../../../assets/img/apps/kabeer-info-app.webp"></site-app-header>
 
 <div class="case-content">
     <div class="container">
@@ -100,30 +95,13 @@
                     <li><strong>مستشعرات الجهاز:</strong> قائمة بكافة المستشعرات (Sensors) المتوفرة في الجهاز وحالتها.</li>
                 </ul>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>دقيق</span>
-                            <p>بيانات تقنية لحظية</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>شامل</span>
-                            <p>يغطي كافة جوانب الهاتف</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>آمن</span>
-                            <p>يحترم خصوصية بياناتك</p>
-                        </div>
-                    </div>
-                </div>
+                <site-app-features>
+                    <site-app-feature-item title="دقيق" description="بيانات تقنية لحظية"></site-app-feature-item>
+                    <site-app-feature-item title="شامل" description="يغطي كافة جوانب الهاتف"></site-app-feature-item>
+                    <site-app-feature-item title="آمن" description="يحترم خصوصية بياناتك"></site-app-feature-item>
+                </site-app-features>
 
-                <div class="text-center" style="margin-top: 50px;">
-                    <a href="https://play.google.com/store/apps/details?id=com.tool.expert" target="_blank" rel="noopener" class="btn btn-lg btn-primary">تحميل من جوجل بلاي</a>
-                </div>
+                <site-app-downloads google-play="https://play.google.com/store/apps/details?id=com.tool.expert"></site-app-downloads>
             </div>
         </div>
     </div>

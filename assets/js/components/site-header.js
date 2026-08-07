@@ -4,20 +4,22 @@
  */
 class SiteHeader extends HTMLElement {
   connectedCallback() {
-    const currentPath = window.location.pathname;
+    const rootPath = window.CT_ROOT_PATH || 'https://connecttag.org/';
+    const currentHref = window.location.href.replace(/\/$/, '');
 
-    // Check active link logic - Robust version for absolute URLs
+    // Check active link logic
     const isActive = (targetUrl) => {
-      const currentHref = window.location.href.replace(/\/$/, '');
       const target = targetUrl.replace(/\/$/, '');
       return currentHref === target || currentHref.startsWith(target + '/');
     };
 
+    const getLink = (path) => rootPath + path;
+
     this.innerHTML = `
       <header class="ct-header-navbar">
         <div class="ct-header-container">
-          <a href="https://connecttag.org/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+          <a href="${getLink('')}" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
+            <img src="${getLink('assets/img/connect-tag-official-logo.webp')}" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
           <button class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" id="ct-menu-btn">
@@ -26,26 +28,26 @@ class SiteHeader extends HTMLElement {
 
           <nav aria-label="التنقل الرئيسي">
             <ul class="ct-nav-menu" id="ct-nav-menu">
-              <li class="ct-nav-item ${isActive('https://connecttag.org/') ? 'active' : ''}">
-                <a href="https://connecttag.org/" class="ct-nav-link">الرئيسية</a>
+              <li class="ct-nav-item ${isActive(getLink('')) ? 'active' : ''}">
+                <a href="${getLink('')}" class="ct-nav-link">الرئيسية</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/about/our-company') ? 'active' : ''}">
-                <a href="https://connecttag.org/about/our-company" class="ct-nav-link">من نحن</a>
+              <li class="ct-nav-item ${isActive(getLink('about/our-company')) ? 'active' : ''}">
+                <a href="${getLink('about/our-company')}" class="ct-nav-link">من نحن</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/services/web-app-development') ? 'active' : ''}">
-                <a href="https://connecttag.org/services/web-app-development" class="ct-nav-link">خدماتنا</a>
+              <li class="ct-nav-item ${isActive(getLink('services/web-app-development')) ? 'active' : ''}">
+                <a href="${getLink('services/web-app-development')}" class="ct-nav-link">خدماتنا</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/projects/') ? 'active' : ''}">
-                <a href="https://connecttag.org/projects/" class="ct-nav-link">أعمالنا</a>
+              <li class="ct-nav-item ${isActive(getLink('projects/')) ? 'active' : ''}">
+                <a href="${getLink('projects/')}" class="ct-nav-link">أعمالنا</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/blog/') ? 'active' : ''}">
-                <a href="https://connecttag.org/blog/" class="ct-nav-link">المدونة</a>
+              <li class="ct-nav-item ${isActive(getLink('blog/')) ? 'active' : ''}">
+                <a href="${getLink('blog/')}" class="ct-nav-link">المدونة</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/tools/') ? 'active' : ''}">
-                <a href="https://connecttag.org/tools/" class="ct-nav-link">الأدوات</a>
+              <li class="ct-nav-item ${isActive(getLink('tools/')) ? 'active' : ''}">
+                <a href="${getLink('tools/')}" class="ct-nav-link">الأدوات</a>
               </li>
-              <li class="ct-nav-item ${isActive('https://connecttag.org/contact') ? 'active' : ''}">
-                <a href="https://connecttag.org/contact" class="ct-nav-link ct-nav-cta">تواصل معنا</a>
+              <li class="ct-nav-item ${isActive(getLink('contact')) ? 'active' : ''}">
+                <a href="${getLink('contact')}" class="ct-nav-link ct-nav-cta">تواصل معنا</a>
               </li>
             </ul>
           </nav>

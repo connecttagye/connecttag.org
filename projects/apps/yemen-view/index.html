@@ -27,6 +27,7 @@
 
 
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/apps-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -75,13 +76,7 @@
     </div>
 </div>
 
-<div class="case-header">
-    <div class="container text-center">
-        <img src="../../../assets/img/apps/yemen-view-app.webp" width="120" style="border-radius: 20%; margin-bottom: 20px;" alt="تطبيق يمن فيو" loading="lazy">
-        <h1>تطبيق يمن فيو (Yemen View)</h1>
-        <p>الحل الشامل لخدمات الاتصالات في اليمن</p>
-    </div>
-</div>
+<site-app-header title="تطبيق يمن فيو (Yemen View)" subtitle="الحل الشامل لخدمات الاتصالات في اليمن" logo="../../../assets/img/apps/yemen-view-app.webp"></site-app-header>
 
 <div class="case-content">
     <div class="container">
@@ -99,30 +94,13 @@
                     <li><strong>سهولة الوصول:</strong> واجهة بسيطة تمكنك من الوصول للخدمة المطلوبة بنقرة واحدة.</li>
                 </ul>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>+100K</span>
-                            <p>عملية تحميل</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>4.5/5</span>
-                            <p>تقييم المستخدمين</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="result-box">
-                            <span>100%</span>
-                            <p>سهولة استخدام</p>
-                        </div>
-                    </div>
-                </div>
+                <site-app-features>
+                    <site-app-feature-item title="+100K" description="عملية تحميل"></site-app-feature-item>
+                    <site-app-feature-item title="4.5/5" description="تقييم المستخدمين"></site-app-feature-item>
+                    <site-app-feature-item title="100%" description="سهولة استخدام"></site-app-feature-item>
+                </site-app-features>
 
-                <div class="text-center" style="margin-top: 50px;">
-                    <a href="https://play.google.com/store/apps/details?id=com.telecom.yemenview" target="_blank" rel="noopener" class="btn btn-lg btn-success">مشاهدة التطبيق على المتجر</a>
-                </div>
+                <site-app-downloads google-play="https://play.google.com/store/apps/details?id=com.telecom.yemenview"></site-app-downloads>
 
                 <div class="text-center" style="margin-top: 30px; font-size: 14px;">
                     <a href="privacy-policy.html" style="color: #777; margin: 0 10px;">سياسة الخصوصية</a> |

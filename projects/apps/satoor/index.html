@@ -27,6 +27,7 @@
 
 
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/apps-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -75,13 +76,7 @@
     </div>
 </div>
 
-<div class="case-header">
-    <div class="container text-center">
-        <img src="../../../assets/img/apps/satoor-quotes-app.webp" width="120" style="border-radius: 20%; margin-bottom: 20px;" alt="تطبيق سطور" loading="lazy">
-        <h1>تطبيق سطور</h1>
-        <p>عالم من الكلمات والخواطر في جيبك</p>
-    </div>
-</div>
+<site-app-header title="تطبيق سطور" subtitle="عالم من الكلمات والخواطر في جيبك" logo="../../../assets/img/apps/satoor-quotes-app.webp"></site-app-header>
 
 <div class="case-content">
     <div class="container">
@@ -100,24 +95,12 @@
                     <li><strong>واجهة مريحة:</strong> تصميم بسيط وجذاب يسهل عملية القراءة والتنقل بين التصنيفات.</li>
                 </ul>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="result-box">
-                            <span>متنوع</span>
-                            <p>يناسب جميع الأذواق والمناسبات</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="result-box">
-                            <span>سهل</span>
-                            <p>تجربة مستخدم سلسة وسريعة</p>
-                        </div>
-                    </div>
-                </div>
+                <site-app-features>
+                    <site-app-feature-item title="متنوع" description="يناسب جميع الأذواق والمناسبات"></site-app-feature-item>
+                    <site-app-feature-item title="سهل" description="تجربة مستخدم سلسة وسريعة"></site-app-feature-item>
+                </site-app-features>
 
-                <div class="text-center" style="margin-top: 50px;">
-                    <a href="#" class="btn btn-lg btn-warning">تحميل التطبيق (قريباً)</a>
-                </div>
+                <site-app-downloads></site-app-downloads>
             </div>
         </div>
     </div>

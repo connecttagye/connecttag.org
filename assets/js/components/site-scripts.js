@@ -183,6 +183,45 @@
 
             if (textArray.length) setTimeout(type, newTextDelay + 250);
         }
+
+        // 6. Smooth Page Scroll
+        $('a.page-scroll').bind('click', function(event) {
+            var $anchor = $(this);
+            var href = $anchor.attr('href');
+            if (href.startsWith('#') && $(href).length) {
+                $('html, body').stop().animate({
+                    scrollTop: ($(href).offset().top - 70)
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            }
+        });
+
+        // 7. ScrollSpy Logic
+        if ($('body').scrollspy) {
+            $('body').scrollspy({
+                target: '.ct-header-navbar',
+                offset: 100
+            });
+        }
+
+        // 8. Mobile Menu Auto-Close & Overlay Logic
+        $(document).on('click', '.ct-nav-link', function() {
+            const $menu = $('#ct-nav-menu');
+            if ($menu.hasClass('open')) {
+                $('#ct-menu-btn').click();
+            }
+        });
+
+        $(document).on('click', '.ct-mobile-toggle', function() {
+            if (!$('.nav-overlay').length) {
+                $('body').append('<div class="nav-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:998;"></div>');
+            }
+            $('.nav-overlay').fadeToggle(300);
+        });
+
+        $(document).on('click', '.nav-overlay', function() {
+            $('#ct-menu-btn').click();
+        });
     }
 
     // Wait for jQuery to be available

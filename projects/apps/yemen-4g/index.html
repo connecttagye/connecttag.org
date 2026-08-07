@@ -27,6 +27,7 @@
 
 
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/apps-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -75,13 +76,7 @@
     </div>
 </div>
 
-<div class="case-header">
-    <div class="container text-center">
-        <img src="../../../assets/img/apps/yemen-4g-app.webp" width="120" style="border-radius: 20%; margin-bottom: 20px;" alt="تطبيق رصيد يمن فورجي" loading="lazy">
-        <h1>تطبيق رصيد يمن فورجي (Yemen 4G Connect)</h1>
-        <p>إدارة متكاملة لخدمة الإنترنت اللاسلكي في اليمن</p>
-    </div>
-</div>
+<site-app-header title="تطبيق رصيد يمن فورجي (Yemen 4G Connect)" subtitle="إدارة متكاملة لخدمة الإنترنت اللاسلكي في اليمن" logo="../../../assets/img/apps/yemen-4g-app.webp"></site-app-header>
 
 <div class="case-content">
     <div class="container">
@@ -98,24 +93,12 @@
                     <li><strong>خدمات إضافية:</strong> يوفر التطبيق ميزات إضافية تساعدك في إدارة اشتراكك بكفاءة عالية.</li>
                 </ul>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="result-box">
-                            <span>سريع</span>
-                            <p>تحديث فوري للبيانات</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="result-box">
-                            <span>بسيط</span>
-                            <p>واجهة مستخدم بديهية</p>
-                        </div>
-                    </div>
-                </div>
+                <site-app-features>
+                    <site-app-feature-item title="سريع" description="تحديث فوري للبيانات"></site-app-feature-item>
+                    <site-app-feature-item title="بسيط" description="واجهة مستخدم بديهية"></site-app-feature-item>
+                </site-app-features>
 
-                <div class="text-center" style="margin-top: 50px;">
-                    <a href="https://play.google.com/store/apps/details?id=com.telecom.yemen4g" target="_blank" rel="noopener" class="btn btn-lg btn-success">تحميل من جوجل بلاي</a>
-                </div>
+                <site-app-downloads google-play="https://play.google.com/store/apps/details?id=com.telecom.yemen4g"></site-app-downloads>
             </div>
         </div>
     </div>

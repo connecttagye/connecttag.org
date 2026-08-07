@@ -25,6 +25,7 @@
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
+<script src="../assets/js/components/blog-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -135,11 +136,10 @@
                 <a href="./" style="color: #006b98; font-weight: bold;"><i class="fa fa-arrow-right"></i> العودة للمدونة</a>
                 <h1>كيفية الاستعلام عن رصيد يمن فورجي 4G: دليل شامل ومحدث 2026</h1>
 
-                <div class="post-meta" style="margin-bottom: 25px; color: #777; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-                    <span style="margin-left: 15px;"><i class="fa fa-user" style="color: #006b98;"></i> الكاتب: <a href="../author/" style="color: #006b98; font-weight: bold;">فريق الموقع</a></span>
-                    <span style="margin-left: 15px;"><i class="fa fa-calendar" style="color: #006b98;"></i> تاريخ النشر: 1 أغسطس 2026</span>
-                    <span><i class="fa fa-refresh" style="color: #006b98;"></i> آخر تحديث: 6 أغسطس 2026</span>
-                </div>
+                <site-article-meta
+                  date="1 أغسطس 2026"
+                  updated="6 أغسطس 2026"
+                ></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="../upload/yemen-4g.webp" class="img-responsive" alt="دليل طرق الاستعلام عن رصيد يمن فورجي Yemen 4G لعام 2026" loading="lazy">
@@ -204,20 +204,14 @@
                     <p>لاحظ العديد من المشتركين أن صفحة الاستعلام لا تفتح أو تعطي خطأ في التحميل؛ والسبب الرئيسي هو أن النظام <strong>لا يعمل في حال تشغيل برامج VPN</strong> أو عند محاولة الوصول إليه من <strong>خارج اليمن</strong>. تأكد من إيقاف أي تطبيق VPN واستخدام اتصال يمن فورجي المباشر عند الاستعلام.</p>
                 </div>
 
-                <div class="sidebar-card">
-                    <h3>هل تواجه مشاكل في إعدادات مودم يمن فورجي؟</h3>
-                    <p>فريقنا التقني في كونكت تاق جاهز لمساعدتك في إعداد وتأمين شبكتك المنزلية بأعلى معايير الأمان.</p>
-                    <a href="../contact" class="btn btn-primary" style="background:#006b98; border:none;">احصل على دعم فني الآن</a>
-                </div>
+                <!-- Dynamic Share Component -->
+                <site-share-buttons></site-share-buttons>
 
-                <!-- Social Share -->
-                <div class="social-share">
-                    <h4>شارك المحتوى:</h4>
-                    <a href="https://api.whatsapp.com/send?text=طرق الاستعلام عن رصيد يمن فورجي 4G https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="share-btn share-whatsapp" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="share-btn share-facebook" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-                    <a href="https://twitter.com/intent/tweet?text=طرق الاستعلام عن رصيد يمن فورجي 4G&url=https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="share-btn share-twitter" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
-                </div>
+                <!-- Related Posts Component -->
+                <site-related-posts></site-related-posts>
             </div>
+
+
         </div>
     </div>
 </div>

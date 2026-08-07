@@ -26,6 +26,7 @@
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
+<script src="../assets/js/components/blog-bundle.js" defer></script>
 
 
 <script type="application/ld+json">
@@ -109,11 +110,10 @@
                 <a href="./" style="color: #006b98; font-weight: bold;"><i class="fa fa-arrow-right"></i> العودة للمدونة</a>
                 <h1>أهمية التسويق الرقمي للشركات الناشئة في عام 2026</h1>
 
-                <div class="post-meta" style="margin-bottom: 25px; color: #777; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-                    <span style="margin-left: 15px;"><i class="fa fa-user" style="color: #006b98;"></i> الكاتب: <a href="../author/" style="color: #006b98; font-weight: bold;">فريق الموقع</a></span>
-                    <span style="margin-left: 15px;"><i class="fa fa-calendar" style="color: #006b98;"></i> تاريخ النشر: 1 أغسطس 2026</span>
-                    <span><i class="fa fa-refresh" style="color: #006b98;"></i> آخر تحديث: 4 أغسطس 2026</span>
-                </div>
+                <site-article-meta
+                  date="1 أغسطس 2026"
+                  updated="4 أغسطس 2026"
+                ></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="../upload/marketing-in-yout-company.webp" class="img-responsive" alt="التسويق الرقمي" loading="lazy">
@@ -129,20 +129,14 @@
                 <h2>3. قياس النتائج بدقة</h2>
                 <p>على عكس الإعلانات المطبوعة، يمكنك في التسويق الرقمي معرفة عدد الأشخاص الذين شاهدوا إعلانك بالضبط، وكم منهم قام بالشراء أو التواصل معك، مما يساعدك على تحسين استراتيجيتك باستمرار.</p>
 
-                <div class="sidebar-card">
-                    <h3>ابدأ رحلة نموك الرقمي اليوم</h3>
-                    <p>نحن في كونكت تاق نساعدك على إدارة حملاتك الإعلانية وبناء استراتيجية تسويق رقمي تضمن لك أفضل وصول لعملائك.</p>
-                    <a href="../contact" class="btn btn-primary" style="background:#006b98; border:none;">تواصل مع خبراء التسويق لدينا</a>
-                </div>
+                <!-- Dynamic Share Component -->
+                <site-share-buttons></site-share-buttons>
 
-                <!-- Social Share -->
-                <div class="social-share">
-                    <h4>شارك المحتوى:</h4>
-                    <a href="https://api.whatsapp.com/send?text=أهمية التسويق الرقمي للشركات الناشئة https://connecttag.org/blog/digital-marketing-importance" class="share-btn share-whatsapp" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://connecttag.org/blog/digital-marketing-importance" class="share-btn share-facebook" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-                    <a href="https://twitter.com/intent/tweet?text=أهمية التسويق الرقمي للشركات الناشئة&url=https://connecttag.org/blog/digital-marketing-importance" class="share-btn share-twitter" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
-                </div>
+                <!-- Related Posts Component -->
+                <site-related-posts></site-related-posts>
             </div>
+
+
         </div>
     </div>
 </div>

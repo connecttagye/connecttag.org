@@ -4,13 +4,15 @@
  */
 class SiteFooter extends HTMLElement {
   connectedCallback() {
+    const rootPath = window.CT_ROOT_PATH || 'https://connecttag.org/';
     const currentYear = new Date().getFullYear();
+    const getLink = (path) => rootPath + path;
 
     this.innerHTML = `
       <footer class="ct-footer-main">
         <div class="ct-footer-grid">
           <div class="ct-footer-col">
-            <h4>عن كونكت تاق</h4>
+            <h4>كونكت تاق</h4>
             <p>كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي. شركة يمنية رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية بأعلى معايير الجودة والاحترافية.</p>
             <div class="ct-social-icons">
               <a href="https://www.facebook.com/connecttagye" target="_blank" rel="noopener noreferrer" class="ct-social-btn" title="Facebook"><i class="fa fa-facebook"></i></a>
@@ -26,24 +28,24 @@ class SiteFooter extends HTMLElement {
           <div class="ct-footer-col">
             <h4>من نحن وهويتنا</h4>
             <ul class="ct-footer-links">
-              <li><a href="https://connecttag.org/"><i class="fa fa-angle-left"></i> الرئيسية</a></li>
-              <li><a href="https://connecttag.org/about/our-company"><i class="fa fa-angle-left"></i> من نحن</a></li>
-              <li><a href="https://connecttag.org/services/web-app-development"><i class="fa fa-angle-left"></i> خدماتنا التقنية</a></li>
-              <li><a href="https://connecttag.org/blog/"><i class="fa fa-angle-left"></i> المدونة التقنية</a></li>
-              <li><a href="https://connecttag.org/tools/"><i class="fa fa-angle-left"></i> الأدوات المجانية</a></li>
-              <li><a href="https://connecttag.org/faq"><i class="fa fa-angle-left"></i> الأسئلة الشائعة</a></li>
-              <li><a href="https://connecttag.org/contact"><i class="fa fa-angle-left"></i> اتصل بنا</a></li>
+              <li><a href="${getLink('')}"><i class="fa fa-angle-left"></i> الرئيسية</a></li>
+              <li><a href="${getLink('about/our-company')}"><i class="fa fa-angle-left"></i> من نحن</a></li>
+              <li><a href="${getLink('services/web-app-development')}"><i class="fa fa-angle-left"></i> خدماتنا التقنية</a></li>
+              <li><a href="${getLink('blog/')}"><i class="fa fa-angle-left"></i> المدونة التقنية</a></li>
+              <li><a href="${getLink('tools/')}"><i class="fa fa-angle-left"></i> الأدوات المجانية</a></li>
+              <li><a href="${getLink('faq')}"><i class="fa fa-angle-left"></i> الأسئلة الشائعة</a></li>
+              <li><a href="${getLink('contact')}"><i class="fa fa-angle-left"></i> اتصل بنا</a></li>
             </ul>
           </div>
 
           <div class="ct-footer-col">
             <h4>أعمالنا وخدماتنا</h4>
             <ul class="ct-footer-links">
-              <li><a href="https://connecttag.org/projects/"><i class="fa fa-angle-left"></i> معرض الأعمال</a></li>
-              <li><a href="https://connecttag.org/projects/apps/"><i class="fa fa-angle-left"></i> تطبيق المحفظة والأنظمة</a></li>
-              <li><a href="https://connecttag.org/projects/sites/"><i class="fa fa-angle-left"></i> تطوير المواقع والأنظمة</a></li>
-              <li><a href="https://connecttag.org/services/hardware-solutions"><i class="fa fa-angle-left"></i> المستلزمات البرمجية</a></li>
-              <li><a href="https://connecttag.org/about/about-site"><i class="fa fa-angle-left"></i> حول هذا الموقع</a></li>
+              <li><a href="${getLink('projects/')}"><i class="fa fa-angle-left"></i> معرض الأعمال</a></li>
+              <li><a href="${getLink('projects/apps/')}"><i class="fa fa-angle-left"></i> تطبيق المحفظة والأنظمة</a></li>
+              <li><a href="${getLink('projects/sites/')}"><i class="fa fa-angle-left"></i> تطوير المواقع والأنظمة</a></li>
+              <li><a href="${getLink('services/hardware-solutions')}"><i class="fa fa-angle-left"></i> المستلزمات البرمجية</a></li>
+              <li><a href="${getLink('about/about-site')}"><i class="fa fa-angle-left"></i> حول هذا الموقع</a></li>
             </ul>
           </div>
 
@@ -58,14 +60,14 @@ class SiteFooter extends HTMLElement {
         <div class="ct-footer-bottom">
           <div class="ct-footer-bottom-container">
             <p style="margin: 0; font-size: 13px; color: var(--ct-text-muted);">
-              جميع الحقوق محفوظة &copy; ${currentYear} | تطوير بواسطة 
-              <a href="https://connecttag.org/" style="color: var(--ct-primary); font-weight: 700; text-decoration: none;">Connect Tag</a>
+              جميع الحقوق محفوظة &copy; ${currentYear} | تم التطوير بواسطة
+              <a href="${getLink('')}" style="color: var(--ct-primary); font-weight: 700; text-decoration: none;">Connect Tag</a>
             </p>
             
             <ul class="ct-footer-legal-links">
-              <li><a href="https://connecttag.org/privacy-policy">سياسة الخصوصية</a></li>
-              <li><a href="https://connecttag.org/terms-of-use">اتفاقية الاستخدام</a></li>
-              <li><a href="https://connecttag.org/contact">الدعم الفني</a></li>
+              <li><a href="${getLink('privacy-policy')}">سياسة الخصوصية</a></li>
+              <li><a href="${getLink('terms-of-use')}">اتفاقية الاستخدام</a></li>
+              <li><a href="${getLink('contact')}">الدعم الفني</a></li>
             </ul>
           </div>
         </div>
