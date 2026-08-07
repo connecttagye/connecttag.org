@@ -4,7 +4,7 @@
  */
 class SiteHeader extends HTMLElement {
   connectedCallback() {
-    const rootPath = window.CT_ROOT_PATH || 'https://connecttag.org/';
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const currentHref = window.location.href.replace(/\/$/, '');
 
     // Check active link logic
@@ -13,7 +13,7 @@ class SiteHeader extends HTMLElement {
       return currentHref === target || currentHref.startsWith(target + '/');
     };
 
-    const getLink = (path) => rootPath + path;
+    const getLink = (path) => baseUrl + path;
 
     this.innerHTML = `
       <header class="ct-header-navbar">

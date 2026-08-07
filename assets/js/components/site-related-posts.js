@@ -4,9 +4,9 @@
  */
 class SiteRelatedPosts extends HTMLElement {
   connectedCallback() {
-    const rootPath = window.CT_ROOT_PATH || 'https://connecttag.org/';
-    const getLink = (path) => rootPath + path;
-    const getImg = (path) => rootPath + path;
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
+    const getLink = (path) => baseUrl + path;
+    const getImg = (path) => baseUrl + path;
 
     this.innerHTML = `
       <section class="ct-related-posts">

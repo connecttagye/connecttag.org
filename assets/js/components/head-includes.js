@@ -5,18 +5,12 @@
 (function () {
   'use strict';
 
-  // Detect Root Path
-  const scripts = document.getElementsByTagName('script');
-  const bundleScript = Array.from(scripts).find(s => s.src.includes('components-bundle.js'));
-  let rootPath = 'https://connecttag.org/';
-
-  if (bundleScript) {
-      rootPath = bundleScript.src.split('assets/js/components/')[0];
-  }
+  // Use global base URL
+  const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
 
   // Helper to add link tags
   const addLink = (rel, href, type = null) => {
-    const fullHref = href.startsWith('http') ? href : rootPath + href;
+    const fullHref = href.startsWith('http') ? href : baseUrl + href;
     if (!document.querySelector(`link[href="${fullHref}"]`)) {
       const link = document.createElement('link');
       link.rel = rel;
@@ -37,7 +31,7 @@
   };
 
   // Favicon
-  addLink('icon', rootPath + 'favicon.webp', 'image/webp');
+  addLink('icon', baseUrl + 'favicon.webp', 'image/webp');
 
   // Theme colors & mobile web app capability
   addMeta('theme-color', '#317EFB');

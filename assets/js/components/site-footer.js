@@ -4,9 +4,9 @@
  */
 class SiteFooter extends HTMLElement {
   connectedCallback() {
-    const rootPath = window.CT_ROOT_PATH || 'https://connecttag.org/';
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const currentYear = new Date().getFullYear();
-    const getLink = (path) => rootPath + path;
+    const getLink = (path) => baseUrl + path;
 
     this.innerHTML = `
       <footer class="ct-footer-main">

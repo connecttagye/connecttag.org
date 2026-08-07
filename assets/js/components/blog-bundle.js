@@ -5,17 +5,11 @@
 (function() {
   'use strict';
 
-  // Detect Root Path
-  const scripts = document.getElementsByTagName('script');
-  const currentScript = Array.from(scripts).find(s => s.src.includes('blog-bundle.js'));
-  let rootPath = 'https://connecttag.org/';
-
-  if (currentScript) {
-    rootPath = currentScript.src.split('assets/js/components/')[0];
-  }
+  // Use global base URL
+  const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
 
   function loadScript(src) {
-    const fullSrc = src.startsWith('http') ? src : rootPath + src;
+    const fullSrc = src.startsWith('http') ? src : baseUrl + src;
     if (document.querySelector(`script[src="${fullSrc}"]`)) return;
 
     const s = document.createElement('script');
