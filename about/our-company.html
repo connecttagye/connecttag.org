@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../favicon.webp" type="image/webp">
+
 <title>من نحن - شركة كونكت تاق للخدمات التقنية</title>
 <meta name="description" content="تعرف على قصة نجاح كونكت تاق، رؤيتنا الاستراتيجية، وقيمنا التي تدفعنا للابتكار في تقديم الحلول البرمجية والتقنية.">
 <link rel="canonical" href="https://connecttag.org/about/our-company" />
 
-<!-- OpenGraph meta -->
+
+
+  <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/about/our-company" />
 <meta property="og:type" content="website">
 <meta property="og:title" content="من نحن - كونكت تاق">
@@ -23,12 +25,9 @@
 <meta name="twitter:description" content="تعرف على شركة كونكت تاق، رؤيتنا، رسالتنا، وأهدافنا." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
-<link href="../assets/css/bootstrap.css" rel="stylesheet">
-<link href="../assets/css/styles.min.css" rel="stylesheet">
-<link href="../assets/css/components.css" rel="stylesheet">
+
 <script src="../assets/js/components/components-bundle.js" defer></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 <body data-target="#navbar-main">
 <!-- Modular Web Component: Header -->
@@ -187,43 +186,7 @@
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
 
-<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script type="text/javascript">
-  AOS.init({ duration: 1000, once: true });
 
-  // Statistics Counter Animation
-  var counted = 0;
-  $(window).scroll(function() {
-    var statsElement = $('#stats');
-    if (statsElement.length) {
-        var oTop = statsElement.offset().top - window.innerHeight;
-        if (counted == 0 && $(window).scrollTop() > oTop) {
-          $('.counter').each(function() {
-            var $this = $(this),
-              countTo = $this.attr('data-target');
-            $({
-              countNum: $this.text()
-            }).animate({
-                countNum: countTo
-              },
-              {
-                duration: 2000,
-                easing: 'swing',
-                step: function() {
-                  $this.text(Math.floor(this.countNum));
-                },
-                complete: function() {
-                  $this.text(this.countNum + "+");
-                }
-              });
-          });
-          counted = 1;
-        }
-    }
-  });
-</script>
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 </body>

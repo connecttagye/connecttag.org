@@ -22,4 +22,6 @@
   loadScript(basePath + 'site-footer.js');
   loadScript(basePath + 'site-breadcrumb.js');
   loadScript(basePath + 'cookie-consent.js');
+  loadScript(basePath + 'body-includes.js');
+  loadScript(basePath + 'site-scripts.js');
 })();
