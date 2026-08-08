@@ -28,7 +28,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+  <link rel="preload" href="../../assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../assets/css/bootstrap.css"></noscript>
   <link rel="stylesheet" href="../../assets/css/styles.min.css">
   <link rel="stylesheet" href="../../assets/css/components.css">
   <style>
@@ -38,9 +39,20 @@
       src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
     }
   </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../../assets/css/animate-custom.css">
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+  <link rel="preload" href="../../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../../assets/css/animate-custom.css"></noscript>
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+  </style>
 
 
 
@@ -80,7 +92,32 @@
     .download-btns a:hover { color: #e89a2f; }
 </style>
 </head>
-<body data-target="#navbar-main">
+<body data-target="#navbar-main" class="preloader-visible">
+
+<!-- Enhanced Preloader -->
+<div id="preloader">
+    <div class="preloader-bg"></div>
+    <div class="preloader-content">
+        <div class="loader-logo">
+            <i class="fa fa-terminal"></i>
+            <span>ConnectTag</span>
+        </div>
+        <div id="loader-log" class="loader-status">> System Ready...</div>
+        <div class="progress-container">
+            <div id="progress-fill" class="progress-bar"></div>
+        </div>
+    </div>
+</div>
+<script>
+  (function() {
+    var home = document.getElementById('home-content');
+    if (home) {
+      home.style.opacity = '1';
+      home.style.visibility = 'visible';
+    }
+  })();
+</script>
+<div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
@@ -160,7 +197,7 @@
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
 
-
+</div>
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 </body>

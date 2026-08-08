@@ -46,6 +46,14 @@
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
   <link rel="preload" href="assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/animate-custom.css"></noscript>
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+  </style>
 
 
 <script src="assets/js/components/components-bundle.js" defer></script>
@@ -70,7 +78,32 @@
 </script>
 
 </head>
-<body data-target="#navbar-main">
+<body data-target="#navbar-main" class="preloader-visible">
+
+<!-- Enhanced Preloader -->
+<div id="preloader">
+    <div class="preloader-bg"></div>
+    <div class="preloader-content">
+        <div class="loader-logo">
+            <i class="fa fa-terminal"></i>
+            <span>ConnectTag</span>
+        </div>
+        <div id="loader-log" class="loader-status">> System Ready...</div>
+        <div class="progress-container">
+            <div id="progress-fill" class="progress-bar"></div>
+        </div>
+    </div>
+</div>
+<script>
+  (function() {
+    var home = document.getElementById('home-content');
+    if (home) {
+      home.style.opacity = '1';
+      home.style.visibility = 'visible';
+    }
+  })();
+</script>
+<div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
@@ -129,6 +162,9 @@
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
+
+</div>
+
 
 
 <script type="text/javascript">
