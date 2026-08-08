@@ -120,6 +120,9 @@
             let charIndex = 0;
 
             function type() {
+                if (charIndex === 0) {
+                    typedTextSpan.textContent = "";
+                }
                 if (charIndex < textArray[textArrayIndex].length) {
                     typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
                     charIndex++;
