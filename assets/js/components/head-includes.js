@@ -1,6 +1,6 @@
 /**
- * Connect Tag - Head Includes (Styles & Meta)
- * Handles CSS injection and meta tags. Scripts are managed by components-bundle.js
+ * Connect Tag - Head Includes (Meta & SEO)
+ * Handles meta tags. CSS is now loaded directly in HTML to prevent flicker.
  */
 (function () {
   'use strict';
@@ -8,7 +8,7 @@
   // Use global base URL
   const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
 
-  // Helper to add link tags
+  // Helper to add link tags (used for icons)
   const addLink = (rel, href, type = null) => {
     const fullHref = href.startsWith('http') ? href : baseUrl + href;
     if (!document.querySelector(`link[href="${fullHref}"]`)) {
@@ -38,30 +38,5 @@
   addMeta('msapplication-navbutton-color', '#d69503');
   addMeta('apple-mobile-web-app-capable', 'yes');
   addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
-
-  // Stylesheets
-  addLink('stylesheet', 'assets/css/bootstrap.css');
-  addLink('stylesheet', 'assets/css/styles.min.css');
-  addLink('stylesheet', 'assets/css/components.css');
-  addLink('stylesheet', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-  addLink('stylesheet', 'https://unpkg.com/aos@2.3.1/dist/aos.css');
-  addLink('stylesheet', 'assets/css/animate-custom.css');
-
-  // Preconnect
-  const preconnectDomains = [
-    'https://fonts.googleapis.com',
-    'https://fonts.gstatic.com',
-    'https://pagead2.googlesyndication.com'
-  ];
-
-  preconnectDomains.forEach(domain => {
-    if (!document.querySelector(`link[href="${domain}"]`)) {
-      const pLink = document.createElement('link');
-      pLink.rel = 'preconnect';
-      pLink.href = domain;
-      if (domain.includes('gstatic')) pLink.crossOrigin = 'anonymous';
-      document.head.appendChild(pLink);
-    }
-  });
 
 })();

@@ -34,9 +34,6 @@ class SiteHeader extends HTMLElement {
               <li class="ct-nav-item ${isActive(getLink('about/our-company')) ? 'active' : ''}">
                 <a href="${getLink('about/our-company')}" class="ct-nav-link">من نحن</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('services/web-app-development')) ? 'active' : ''}">
-                <a href="${getLink('services/web-app-development')}" class="ct-nav-link">خدماتنا</a>
-              </li>
               <li class="ct-nav-item ${isActive(getLink('projects/')) ? 'active' : ''}">
                 <a href="${getLink('projects/')}" class="ct-nav-link">أعمالنا</a>
               </li>
@@ -46,9 +43,7 @@ class SiteHeader extends HTMLElement {
               <li class="ct-nav-item ${isActive(getLink('tools/')) ? 'active' : ''}">
                 <a href="${getLink('tools/')}" class="ct-nav-link">الأدوات</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('contact')) ? 'active' : ''}">
-                <a href="${getLink('contact')}" class="ct-nav-link ct-nav-cta">تواصل معنا</a>
-              </li>
+
             </ul>
           </nav>
         </div>

@@ -36,15 +36,31 @@
 (function() {
     'use strict';
 
-    document.addEventListener('DOMContentLoaded', function() {
-
+    function initSiteLogic() {
         // --- AOS Initialization ---
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: 1000,
-                once: true
-            });
+        function triggerAOS() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true
+                });
+            } else {
+                // Safety Fallback: If AOS doesn't load within 2 seconds, show content anyway
+                setTimeout(() => {
+                    if (typeof AOS === 'undefined') {
+                        document.querySelectorAll('[data-aos]').forEach(el => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'none';
+                            el.style.visibility = 'visible';
+                        });
+                    } else {
+                        AOS.init({ duration: 1000, once: true });
+                    }
+                }, 1500);
+            }
         }
+
+        triggerAOS();
 
         // --- Back to Top Scroll Handler ---
         const backToTop = document.getElementById('back-to-top');
@@ -85,11 +101,10 @@
                 counters.forEach(counter => {
                     const target = parseInt(counter.getAttribute('data-target'));
                     const duration = 2000; // 2 seconds
-                    const stepTime = Math.abs(Math.floor(duration / target));
                     let current = 0;
 
                     const timer = setInterval(() => {
-                        current += Math.ceil(target / (duration / 50)); // Increment logic
+                        current += Math.ceil(target / (duration / 50));
                         if (current >= target) {
                             counter.innerText = target + "+";
                             clearInterval(timer);
@@ -170,8 +185,7 @@
             let current = "";
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 100)) {
+                if (window.pageYOffset >= (sectionTop - 100)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -201,15 +215,24 @@
                     });
                 }
 
-                const isOpen = document.getElementById('ct-nav-menu').classList.contains('open');
-                if (isOpen) {
-                    overlay.style.display = 'block';
-                    overlay.style.opacity = '1';
-                } else {
-                    overlay.style.opacity = '0';
-                    setTimeout(() => { overlay.style.display = 'none'; }, 300);
-                }
+                setTimeout(() => {
+                    const isOpen = document.getElementById('ct-nav-menu').classList.contains('open');
+                    if (isOpen) {
+                        overlay.style.display = 'block';
+                        overlay.style.opacity = '1';
+                    } else {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => { overlay.style.display = 'none'; }, 300);
+                    }
+                }, 10);
             });
         }
-    });
+    }
+
+    // Run initialization
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSiteLogic);
+    } else {
+        initSiteLogic();
+    }
 })();

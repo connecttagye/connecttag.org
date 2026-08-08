@@ -28,6 +28,7 @@ site-header {
   width: 100%;
   position: relative;
   z-index: 1000;
+  min-height: 70px; /* Prevent layout shift */
 }
 
 .ct-header-navbar {
@@ -200,6 +201,7 @@ site-footer {
   color: #e0e0e0;
   border-top: 2px solid var(--ct-primary);
   margin-top: auto;
+  min-height: 400px; /* Prevent layout shift at the bottom */
 }
 
 .ct-footer-main {

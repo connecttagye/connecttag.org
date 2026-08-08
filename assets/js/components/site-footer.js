@@ -30,9 +30,8 @@ class SiteFooter extends HTMLElement {
             <ul class="ct-footer-links">
               <li><a href="${getLink('')}"><i class="fa fa-angle-left"></i> الرئيسية</a></li>
               <li><a href="${getLink('about/our-company')}"><i class="fa fa-angle-left"></i> من نحن</a></li>
-              <li><a href="${getLink('services/web-app-development')}"><i class="fa fa-angle-left"></i> خدماتنا التقنية</a></li>
-              <li><a href="${getLink('blog/')}"><i class="fa fa-angle-left"></i> المدونة التقنية</a></li>
-              <li><a href="${getLink('tools/')}"><i class="fa fa-angle-left"></i> الأدوات المجانية</a></li>
+              <li><a href="${getLink('blog/')}"><i class="fa fa-angle-left"></i> المدونة</a></li>
+              <li><a href="${getLink('tools/')}"><i class="fa fa-angle-left"></i> الأدوات</a></li>
               <li><a href="${getLink('faq')}"><i class="fa fa-angle-left"></i> الأسئلة الشائعة</a></li>
               <li><a href="${getLink('contact')}"><i class="fa fa-angle-left"></i> اتصل بنا</a></li>
             </ul>
@@ -42,9 +41,9 @@ class SiteFooter extends HTMLElement {
             <h4>أعمالنا وخدماتنا</h4>
             <ul class="ct-footer-links">
               <li><a href="${getLink('projects/')}"><i class="fa fa-angle-left"></i> معرض الأعمال</a></li>
-              <li><a href="${getLink('projects/apps/')}"><i class="fa fa-angle-left"></i> تطبيق المحفظة والأنظمة</a></li>
-              <li><a href="${getLink('projects/sites/')}"><i class="fa fa-angle-left"></i> تطوير المواقع والأنظمة</a></li>
-              <li><a href="${getLink('services/hardware-solutions')}"><i class="fa fa-angle-left"></i> المستلزمات البرمجية</a></li>
+              <li><a href="${getLink('projects/apps/')}"><i class="fa fa-angle-left"></i> التطبيقات</a></li>
+              <li><a href="${getLink('projects/sites/')}"><i class="fa fa-angle-left"></i> المواقع</a></li>
+              <li><a href="${getLink('services/hardware-solutions')}"><i class="fa fa-angle-left"></i> متجر المنتجات</a></li>
               <li><a href="${getLink('about/about-site')}"><i class="fa fa-angle-left"></i> حول هذا الموقع</a></li>
             </ul>
           </div>
