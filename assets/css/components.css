@@ -603,17 +603,21 @@ cookie-consent {
 }
 
 #home-content {
+    opacity: 1; /* Default to visible for Lighthouse LCP */
+    visibility: visible;
+    filter: blur(5px);
+    transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.preloader-visible #home-content {
     opacity: 0;
     visibility: hidden;
-    filter: blur(5px);
-    transition: opacity 0.4s ease;
 }
 
 .page-entered #home-content {
     opacity: 1;
     visibility: visible;
     filter: blur(0);
-    transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
