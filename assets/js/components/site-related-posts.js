@@ -69,14 +69,17 @@ class SiteRelatedPosts extends HTMLElement {
       <section class="ct-related-posts">
         <h3 class="ct-section-title">${customTitle}</h3>
         <div class="ct-related-grid">
-          ${displayPosts.map(post => `
+          ${displayPosts.map(post => {
+            const imgUrl = post.image.startsWith('http') ? post.image : baseUrl + post.image;
+            const linkUrl = post.link.startsWith('http') ? post.link : baseUrl + post.link;
+            return `
             <site-article-card
               title="${post.title}"
-              link="${baseUrl + post.link}"
-              image="${baseUrl + post.image}"
+              link="${linkUrl}"
+              image="${imgUrl}"
               excerpt="${post.excerpt}"
             ></site-article-card>
-          `).join('')}
+          `}).join('')}
         </div>
       </section>
     `;

@@ -51,9 +51,8 @@ class SiteFooter extends HTMLElement {
 
           <div class="ct-footer-col">
             <h4>معلومات التواصل</h4>
-            <p><i class="fa fa-map-marker" style="color: var(--ct-primary);"></i> اليمن، صنعاء، أمانة العاصمة</p>
+            <p><i class="fa fa-map-marker" style="color: var(--ct-primary);"></i> اليمن، صنعاء</p>
             <p><i class="fa fa-envelope" style="color: var(--ct-primary);"></i> info@connecttag.org</p>
-            <p><i class="fa fa-clock-o" style="color: var(--ct-primary);"></i> السبت - الخميس: 8:00 صباحاً - 8:00 مساءً</p>
           </div>
         </div>
 
