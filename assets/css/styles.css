@@ -199,8 +199,8 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   min-width: 250px; /* Reserved space for the longest word */
   text-align: right;
-  vertical-align: bottom;
-  line-height: 1.2;
+  vertical-align: middle;
+  line-height: 1;
 }
 h2 {
 	font-size: 34px;
@@ -307,6 +307,7 @@ a:hover, a:focus {
 }
 #headerwrap .container {
     width: 100%;
+    min-height: 450px; /* Reserved vertical area to prevent jitter */
 }
 #headerwrap h1 {
 	color: #ffffff;
@@ -330,9 +331,13 @@ a:hover, a:focus {
 	color: #0077b6;
 	padding-bottom: 30px;
 	font-size: 90px;
-	width: 90px;
-	height: 90px;
-	display: inline-block;
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
 }
 #headerwrap .btn {
 	font-weight: 700;
