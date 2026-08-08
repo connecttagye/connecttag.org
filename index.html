@@ -112,16 +112,124 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+
   <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
+    /* Critical CSS: Root Variables */
+    :root {
+      --ct-primary: #0077b6;
+      --ct-primary-hover: #005b8a;
+      --ct-secondary: #25d366;
+      --ct-dark-bg: #0d001a;
+      --ct-card-bg: #1a0033;
+      --ct-text-light: #ffffff;
+      --ct-text-muted: #a0a0a0;
+      --ct-text-dark: #222222;
+      --ct-border: rgba(255,255,255,0.1);
+      --ct-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    /* Critical CSS: Base & LCP Optimization */
+    html, body {
+      background-color: #0d001a;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    #home-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    .page-entered #home-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Critical CSS: Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #050505;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+      overflow: hidden;
+    }
+
+    .preloader-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 119, 182, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 40%);
+      filter: blur(80px);
+      animation: bgMove 10s ease infinite alternate;
+    }
+
+    @keyframes bgMove {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.2) translate(2%, 2%); }
+    }
+
+    .preloader-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .loader-logo {
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .loader-logo i {
+      font-size: 40px;
+      color: #0077b6;
+    }
+
+    .loader-logo span {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .progress-container {
+      width: 280px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00adef, #25d366);
+      transition: width 0.4s ease;
+    }
+
+    .preloader-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Zero CLS Font Matching */
     @font-face {
       font-family: 'Cairo-Fallback';
       src: local('Arial');
@@ -136,10 +244,16 @@
     }
   </style>
   <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+
+  <!-- Non-blocking CSS -->
   <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css"></noscript>
-  <link rel="stylesheet" href="assets/css/styles.min.css">
-  <link rel="stylesheet" href="assets/css/components.min.css">
+
+  <link rel="preload" href="assets/css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css"></noscript>
+
+  <link rel="preload" href="assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css"></noscript>
   <style>
     @font-face {
       font-family: 'FontAwesome';
