@@ -13,6 +13,7 @@
 
         // Force immediate visual transition
         preloader.classList.add('preloader-hidden');
+        document.body.classList.remove('preloader-visible');
         document.body.classList.add('loaded');
         document.body.classList.add('page-entered');
         document.body.style.overflow = 'auto';
