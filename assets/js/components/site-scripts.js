@@ -55,18 +55,22 @@
 
         triggerAOS();
 
-        // --- Back to Top Scroll Handler ---
+        // --- Back to Top Toggle (Optimized with IntersectionObserver) ---
         const backToTop = document.getElementById('back-to-top');
-        if (backToTop) {
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTop.style.display = "block";
-                    backToTop.style.opacity = "1";
-                } else {
-                    backToTop.style.opacity = "0";
-                    setTimeout(() => { if(window.pageYOffset <= 300) backToTop.style.display = "none"; }, 300);
-                }
-            });
+        const homeSection = document.getElementById('home');
+        if (backToTop && homeSection) {
+            const bttObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        backToTop.style.opacity = "0";
+                        setTimeout(() => { if(!backToTop.matches(':hover')) backToTop.style.display = "none"; }, 300);
+                    } else {
+                        backToTop.style.display = "flex";
+                        setTimeout(() => { backToTop.style.opacity = "1"; }, 10);
+                    }
+                });
+            }, { threshold: 0.1 });
+            bttObserver.observe(homeSection);
 
             backToTop.addEventListener('click', function(e) {
                 e.preventDefault();
