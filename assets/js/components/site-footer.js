@@ -59,7 +59,7 @@ class SiteFooter extends HTMLElement {
           <div class="ct-footer-bottom-container">
             <p style="margin: 0; font-size: 13px; color: var(--ct-text-muted);">
               جميع الحقوق محفوظة &copy; ${currentYear} | تم التطوير بواسطة
-              <a href="${getLink('')}" style="color: var(--ct-primary); font-weight: 700; text-decoration: none;">Connect Tag</a>
+              <a href="${getLink('')}" class="ct-footer-credit-link">Connect Tag</a>
             </p>
             
             <ul class="ct-footer-legal-links">

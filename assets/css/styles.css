@@ -9,7 +9,7 @@
 html, button, input, select, textarea {
 	color: #222;
 	text-align: right;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
 }
 ::-moz-selection {
@@ -39,7 +39,9 @@ hr {
 img {
 	vertical-align: middle;
 }
- 
+
+img.img-responsive { aspect-ratio: attr(width) / attr(height); }
+
 textarea {
 	resize: vertical;
 }
@@ -77,7 +79,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fff;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
 	font-size: 16px;
 	color: #444;
