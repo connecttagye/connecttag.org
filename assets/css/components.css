@@ -25,9 +25,9 @@
    -------------------------------------------------------------------------- */
 site-header {
   display: block;
-  min-height: 80px;
+  min-height: 70px;
   content-visibility: auto;
-  contain-intrinsic-size: 100% 80px;
+  contain-intrinsic-size: 100% 70px;
 }
 
 .ct-header-navbar {
