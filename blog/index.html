@@ -27,12 +27,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="preload" href="../assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="../assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/bootstrap.css"></noscript>
   <link rel="stylesheet" href="../assets/css/styles.min.css">
   <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../assets/css/animate-custom.css">
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+  <link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
@@ -60,6 +65,8 @@
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
+<main id="main-content">
+
 <div class="page-header-unified">
     <div class="container">
         <h1>المدونة التقنية</h1>
@@ -77,7 +84,7 @@
             <div class="col-md-6">
                 <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
                     <a href="yemen-internet-comparison-4g-adsl-fiber">
-                        <img src="../upload/yemen-internet-comparison.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" loading="lazy">
+                        <img src="../upload/yemen-internet-comparison.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="مقارنة إنترنت اليمن 4G ADSL Fiber">
                     </a>
                     <h2 style="margin-top: 10px;"><a href="yemen-internet-comparison-4g-adsl-fiber" style="color: #333;">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لعام 2026</a></h2>
                     <p style="color: #777;">تعرف على الفروقات الجوهرية بين تقنيات الإنترنت المتاحة في اليمن من حيث السرعة، الاستقرار، والتكلفة لتتمكن من اختيار الخدمة الأنسب لعملك أو منزلك...</p>
@@ -89,7 +96,7 @@
             <div class="col-md-6">
                 <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
                     <a href="how-to-check-yemen-4g-balance">
-                        <img src="../upload/yemen-4g.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="استعلام رصيد يمن فورجي" loading="lazy">
+                        <img src="../upload/yemen-4g.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="استعلام رصيد يمن فورجي">
                     </a>
                     <h2 style="margin-top: 10px;"><a href="how-to-check-yemen-4g-balance" style="color: #333;">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h2>
                     <p style="color: #777;">دليل شامل يشرح كافة الطرق الرسمية والميسرة للاستعلام عن رصيد إنترنت يمن فورجي، سواء عبر البوابة الإلكترونية، الرسائل النصية، أو الاتصال بالدعم...</p>
@@ -135,6 +142,8 @@
         </div>
     </div>
 </div>
+
+</main>
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>

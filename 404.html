@@ -28,12 +28,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.css"></noscript>
   <link rel="stylesheet" href="assets/css/styles.min.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="assets/css/animate-custom.css">
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+  <link rel="preload" href="assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/animate-custom.css"></noscript>
 
 
 
@@ -41,15 +46,17 @@
 
 <style>
     .error-page { padding: 150px 0; text-align: center; background: #fff; min-height: 80vh; }
-    .error-page h1 { font-size: 120px; color: #00adef; font-weight: bold; margin-bottom: 20px; }
+    .error-page h1 { font-size: 120px; color: #0077b6; font-weight: bold; margin-bottom: 20px; }
     .error-page h2 { font-size: 30px; color: #333; margin-bottom: 30px; }
     .error-page p { font-size: 18px; color: #777; margin-bottom: 40px; }
-    .error-page .btn { background: #00adef; color: #fff; padding: 12px 40px; border-radius: 30px; font-size: 18px; border: none; }
+    .error-page .btn { background: #0077b6; color: #fff; padding: 12px 40px; border-radius: 30px; font-size: 18px; border: none; }
 </style>
 </head>
 <body>
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
+
+<main id="main-content">
 
 <div class="error-page">
     <div class="container">
@@ -60,6 +67,8 @@
         <a href="./" class="btn"><i class="fa fa-home"></i> العودة للرئيسية</a>
     </div>
 </div>
+
+</main>
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>

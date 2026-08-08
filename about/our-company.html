@@ -28,12 +28,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="preload" href="../assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="../assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/bootstrap.css"></noscript>
   <link rel="stylesheet" href="../assets/css/styles.min.css">
   <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../assets/css/animate-custom.css">
+  <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+  <link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
@@ -42,6 +47,8 @@
 <body data-target="#navbar-main">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
+
+<main id="main-content">
 
 <!-- Parallax Header -->
 <div class="page-header-unified" style="background-attachment: fixed;">
@@ -77,21 +84,21 @@
             <div class="timeline-item" data-aos="fade-right">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h4 style="color: #00adef; font-weight: bold;">البداية والفكرة</h4>
+                    <h4 style="color: #0077b6; font-weight: bold;">البداية والفكرة</h4>
                     <p>اجتماع نخبة من الخبراء لرسم خارطة طريق لشركة تقنية تهدف لتغيير سوق الأنظمة المحاسبية.</p>
                 </div>
             </div>
             <div class="timeline-item" data-aos="fade-left">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h4 style="color: #00adef; font-weight: bold;">إطلاق أولى المنتجات</h4>
+                    <h4 style="color: #0077b6; font-weight: bold;">إطلاق أولى المنتجات</h4>
                     <p>تطوير وإطلاق تطبيقات ذكية حققت نجاحاً واسعاً مثل "يمن فيو" و "خبير".</p>
                 </div>
             </div>
             <div class="timeline-item" data-aos="fade-right">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h4 style="color: #00adef; font-weight: bold;">التوسع والريادة</h4>
+                    <h4 style="color: #0077b6; font-weight: bold;">التوسع والريادة</h4>
                     <p>الوصول إلى آلاف المستخدمين وتقديم حلول ويب متكاملة للشركات والمؤسسات.</p>
                 </div>
             </div>
@@ -105,14 +112,14 @@
         <div class="row">
             <div class="col-md-6" data-aos="flip-right">
                 <div class="glass-card" style="height: 100%;">
-                    <i class="fa fa-eye fa-3x" style="color: #00adef; margin-bottom: 20px;"></i>
+                    <i class="fa fa-eye fa-3x" style="color: #0077b6; margin-bottom: 20px;"></i>
                     <h3 style="color: #fff; font-weight: 800;">رؤيتنا</h3>
                     <p style="color: #e0e0e0;">أن نكون الخيار الأول والشركة الرائدة في تقديم الحلول التقنية المبتكرة التي تساهم في التحول الرقمي الشامل للمجتمع العربي، وتحسين حياة الأفراد والمؤسسات عبر التكنولوجيا.</p>
                 </div>
             </div>
             <div class="col-md-6" data-aos="flip-left">
                 <div class="glass-card" style="height: 100%;">
-                    <i class="fa fa-rocket fa-3x" style="color: #00adef; margin-bottom: 20px;"></i>
+                    <i class="fa fa-rocket fa-3x" style="color: #0077b6; margin-bottom: 20px;"></i>
                     <h3 style="color: #fff; font-weight: 800;">رسالتنا</h3>
                     <p style="color: #e0e0e0;">بناء فريق قوي ومواكبة التطورات العالمية في هندسة البرمجيات، ودمجها في منتجات محلية تُسهم في خلق ثورة إدارية ومحاسبية تلبي تطلعات عملائنا.</p>
                 </div>
@@ -183,7 +190,7 @@
         <div class="row">
             <div class="col-lg-12 centered" data-aos="zoom-in">
                 <div style="background:#fff; padding:60px 40px; border-radius:25px; border:1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-                    <i class="fa fa-briefcase fa-4x" style="color:#00adef; margin-bottom:25px;"></i>
+                    <i class="fa fa-briefcase fa-4x" style="color:#0077b6; margin-bottom:25px;"></i>
                     <h3>معرض أعمالنا ومشاريعنا</h3>
                     <p style="max-width: 600px; margin: 0 auto 30px;">استكشف مجموعتنا الكاملة من تطبيقات الهواتف الذكية المبتكرة ومشاريع الويب المتطورة التي نفخر بتطويرها.</p>
                     <a href="../projects/" class="btn btn-lg" style="background:#1a0033; color:#fff; border-radius:30px; padding:15px 50px; font-weight:700;">تصفح كافة المشاريع</a>
@@ -192,6 +199,8 @@
         </div>
     </div>
 </div>
+
+</main>
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
