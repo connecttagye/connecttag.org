@@ -42,8 +42,28 @@
 <script src="../../assets/js/components/components-bundle.js" defer></script>
 
 
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
+  </style>
+
 <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+    body { background-color: #f8fafc; }
 
     /* Advanced Header - White Style */
     .modems-header {
@@ -183,8 +203,12 @@
 
 <div class="modems-header">
     <div class="container">
-        <h1>دليل مودمات يمن فورجي</h1>
-        <p>استكشف المواصفات التقنية الكاملة لمودمات Yemen 4G المعتمدة واختر ما يناسب احتياجاتك</p>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>دليل مودمات يمن فورجي</h1>
+                <p>استكشف المواصفات التقنية الكاملة لمودمات Yemen 4G المعتمدة واختر ما يناسب احتياجاتك</p>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -54,6 +54,17 @@
       visibility: visible !important;
       filter: none !important;
     }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
   </style>
 
 
@@ -94,11 +105,15 @@
 <!-- Parallax Header -->
 <div class="page-header-unified" style="background-attachment: fixed;">
     <div class="container">
-        <h1 data-aos="zoom-out">قصة ابتكار وبناء</h1>
-        <ul class="breadcrumb-custom list-inline" data-aos="fade-up">
-            <li><a href="../">الرئيسية</a></li>
-            <li class="active"> / من نحن</li>
-        </ul>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 data-aos="zoom-out">قصة ابتكار وبناء</h1>
+                <ul class="breadcrumb-custom list-inline" data-aos="fade-up">
+                    <li><a href="../">الرئيسية</a></li>
+                    <li class="active"> / من نحن</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

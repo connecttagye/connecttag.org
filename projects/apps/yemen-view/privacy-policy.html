@@ -38,6 +38,25 @@
 
 
 
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
+  </style>
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
 <script src="../../../assets/js/components/policy-bundle.js" defer></script>
 

@@ -82,6 +82,26 @@
 }
 </script>
 <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
+</style>
+
+<style>
     .web-project-card { background: #fff; border-radius: 20px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
     .web-project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
     .project-img-wrapper { position: relative; overflow: hidden; height: 250px; border-bottom: 1px solid #eee; }
@@ -126,11 +146,15 @@
 
 <div class="page-header-unified">
     <div class="container">
-        <h1>مشاريعنا في الويب</h1>
-        <ul class="breadcrumb-custom list-inline">
-            <li><a href="../../">الرئيسية</a></li>
-            <li class="active"> / أعمال الويب</li>
-        </ul>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>مشاريعنا في الويب</h1>
+                <ul class="breadcrumb-custom list-inline">
+                    <li><a href="../../">الرئيسية</a></li>
+                    <li class="active"> / أعمال الويب</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

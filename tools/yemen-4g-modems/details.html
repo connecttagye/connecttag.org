@@ -39,8 +39,28 @@
 <script src="../../assets/js/components/components-bundle.js" defer></script>
 
 
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
+  </style>
+
 <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #fff; }
+    body { background-color: #fff; }
 
     /* New Unified Tools Header - White Style */
     .page-header-unified {
@@ -205,13 +225,17 @@
 
 <div class="page-header-unified">
     <div class="container">
-        <h1 id="page-title">المواصفات التقنية</h1>
-        <ul class="breadcrumb-tools">
-            <li><a href="../../index.html">الرئيسية</a></li>
-            <li><a href="../index.html">الأدوات</a></li>
-            <li><a href="./index.html">المودمات</a></li>
-            <li class="active" id="breadcrumb-active">المواصفات</li>
-        </ul>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 id="page-title">المواصفات التقنية</h1>
+                <ul class="breadcrumb-tools">
+                    <li><a href="../../index.html">الرئيسية</a></li>
+                    <li><a href="../index.html">الأدوات</a></li>
+                    <li><a href="./index.html">المودمات</a></li>
+                    <li class="active" id="breadcrumb-active">المواصفات</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

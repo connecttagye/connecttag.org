@@ -65,6 +65,26 @@
 }
 </script>
 <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
+</style>
+
+<style>
     .case-header { padding: 150px 0 80px; background: #fff; border-bottom: 1px solid #eee; }
     .case-content { padding: 60px 0; }
     .case-content h2 { color: #006b98; margin-top: 40px; }
@@ -78,13 +98,17 @@
 
 <div class="page-header-unified">
     <div class="container">
-        <div class="h1">تطبيق يمن فورجي</div>
-        <ul class="breadcrumb-custom list-inline">
-            <li><a href="../../../">الرئيسية</a></li>
-            <li><a href="../../"> / أعمالنا</a></li>
-            <li><a href="../"> / تطبيقاتنا</a></li>
-            <li class="active"> / يمن فورجي</li>
-        </ul>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="h1">تطبيق يمن فورجي</div>
+                <ul class="breadcrumb-custom list-inline">
+                    <li><a href="../../../">الرئيسية</a></li>
+                    <li><a href="../../"> / أعمالنا</a></li>
+                    <li><a href="../"> / تطبيقاتنا</a></li>
+                    <li class="active"> / يمن فورجي</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

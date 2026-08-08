@@ -54,6 +54,17 @@
       visibility: visible !important;
       filter: none !important;
     }
+
+    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
+      src: local('Arial');
+    }
+
+    body {
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    }
   </style>
 
 
@@ -112,11 +123,15 @@
 
 <div class="page-header-unified">
     <div class="container">
-        <h1>تواصل معنا</h1>
-        <ul class="breadcrumb-custom list-inline">
-            <li><a href="./">الرئيسية</a></li>
-            <li class="active"> / تواصل معنا</li>
-        </ul>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>تواصل معنا</h1>
+                <ul class="breadcrumb-custom list-inline">
+                    <li><a href="./">الرئيسية</a></li>
+                    <li class="active"> / تواصل معنا</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
