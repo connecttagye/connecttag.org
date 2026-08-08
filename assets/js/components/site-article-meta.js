@@ -4,11 +4,11 @@
  */
 class SiteArticleMeta extends HTMLElement {
   connectedCallback() {
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const author = this.getAttribute('author') || 'فريق كونكت تاق';
-    const authorLink = this.getAttribute('author-link') || 'https://connecttag.org/author/';
+    const authorLink = this.getAttribute('author-link') || baseUrl + 'author/';
     const date = this.getAttribute('date') || '';
     const updated = this.getAttribute('updated') || '';
-    const readTime = this.getAttribute('read-time') || '5 دقائق';
 
     this.innerHTML = `
       <div class="ct-article-meta">
@@ -26,10 +26,6 @@ class SiteArticleMeta extends HTMLElement {
           <i class="fa fa-refresh"></i>
           <span>آخر تحديث: ${updated}</span>
         </div>` : ''}
-        <div class="ct-meta-item">
-          <i class="fa fa-clock-o"></i>
-          <span>وقت القراءة: ${readTime}</span>
-        </div>
       </div>
     `;
   }

@@ -4,6 +4,7 @@
  */
 class SiteBreadcrumb extends HTMLElement {
   connectedCallback() {
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const itemsAttr = this.getAttribute('items');
     
     let breadcrumbItems = [];
@@ -19,15 +20,38 @@ class SiteBreadcrumb extends HTMLElement {
     // Default fallback if no custom items supplied
     if (!breadcrumbItems.length) {
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
-      breadcrumbItems.push({ title: 'الرئيسية', url: 'https://connecttag.org/' });
+      breadcrumbItems.push({ title: 'الرئيسية', url: baseUrl });
       
-      let currentAccUrl = 'https://connecttag.org/';
+      const segmentMap = {
+        'blog': 'المدونة',
+        'projects': 'أعمالنا',
+        'apps': 'تطبيقاتنا'
+      };
+
+      let currentAccUrl = baseUrl;
       pathSegments.forEach((seg, idx) => {
-        if (seg === 'index.html' || seg === '') return;
+        // Skip root folder name or index files
+        if (seg.toLowerCase() === 'connecttag.org' || seg === 'index.html' || seg === 'index.php' || seg === '') return;
+
         currentAccUrl += seg + '/';
-        const formattedTitle = decodeURIComponent(seg).replace(/-/g, ' ');
+
+        let title = decodeURIComponent(seg);
+
+        // Remove extensions from titles
+        title = title.replace(/\.(html|php)$/i, '');
+
+        // Map common segments or clean up
+        if (segmentMap[title.toLowerCase()]) {
+          title = segmentMap[title.toLowerCase()];
+        } else {
+          // Clean up title (replace dashes with spaces)
+          title = title.replace(/-/g, ' ');
+          // Capitalize first letter
+          title = title.charAt(0).toUpperCase() + title.slice(1);
+        }
+
         breadcrumbItems.push({
-          title: formattedTitle.charAt(0).toUpperCase() + formattedTitle.slice(1),
+          title: title,
           url: currentAccUrl
         });
       });
@@ -57,6 +81,7 @@ class SiteBreadcrumb extends HTMLElement {
   }
 
   injectSchema(items) {
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -64,7 +89,7 @@ class SiteBreadcrumb extends HTMLElement {
         "@type": "ListItem",
         "position": index + 1,
         "name": item.title,
-        "item": item.url.startsWith('http') ? item.url : ('https://connecttag.org/' + item.url.replace(/^\.?\//, '')).replace(/\/+$/, '')
+        "item": item.url.startsWith('http') ? item.url : (baseUrl + item.url.replace(/^\.?\//, '')).replace(/\/+$/, '')
       }))
     };
 

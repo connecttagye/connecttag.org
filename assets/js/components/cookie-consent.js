@@ -8,12 +8,14 @@ class CookieConsent extends HTMLElement {
       return; // Already accepted
     }
 
+    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
+
     this.innerHTML = `
       <div class="ct-cookie-banner" id="ct-cookie-banner">
         <div class="ct-cookie-text">
           <p>
             نحن نستخدم ملفات تعريف الارتباط (Cookies) لضمان تقديم أفضل تجربة للمستخدم وتحسين خدماتنا وإعلاناتنا وفقاً لـ 
-            <a href="https://connecttag.org/privacy-policy">سياسة الخصوصية</a>.
+            <a href="${baseUrl}privacy-policy">سياسة الخصوصية</a>.
           </p>
         </div>
         <button class="ct-cookie-btn" id="ct-accept-cookies">موافق ومتابعة</button>
