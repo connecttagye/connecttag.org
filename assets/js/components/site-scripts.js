@@ -3,7 +3,7 @@
  * Optimized for performance, removing jQuery dependencies.
  */
 
-// 1. Optimized Professional Preloader Logic
+// 1. Optimized Professional Preloader Logic (Ultra-Fast)
 (function() {
     'use strict';
 
@@ -11,25 +11,27 @@
         const preloader = document.getElementById('preloader');
         if (!preloader || preloader.classList.contains('preloader-hidden')) return;
 
+        // Force immediate visual transition
         preloader.classList.add('preloader-hidden');
         document.body.classList.add('loaded');
+        document.body.classList.add('page-entered');
+        document.body.style.overflow = 'auto';
 
+        // Clean up memory
         setTimeout(() => {
-            document.body.classList.add('page-entered');
-            document.body.style.overflow = 'auto';
-            setTimeout(() => { preloader.style.display = 'none'; }, 1000);
-        }, 300);
+            preloader.style.display = 'none';
+        }, 500);
     }
 
-    // Run when EVERYTHING is loaded (including images)
-    if (document.readyState === 'complete') {
+    // Trigger as soon as the DOM is ready (Lighthouse/FCP/LCP win)
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
         hidePreloader();
     } else {
-        window.addEventListener('load', hidePreloader);
+        document.addEventListener('DOMContentLoaded', hidePreloader);
     }
 
-    // Safety timeout: 5 seconds max for preloader
-    setTimeout(hidePreloader, 5000);
+    // Final safety fallback
+    setTimeout(hidePreloader, 3000);
 })();
 
 // 2. Core Site Logic (Independent of jQuery)
