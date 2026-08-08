@@ -39,25 +39,15 @@
     function initSiteLogic() {
         // --- AOS Initialization ---
         function triggerAOS() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1000,
-                    once: true
-                });
-            } else {
-                // Safety Fallback: If AOS doesn't load within 2 seconds, show content anyway
-                setTimeout(() => {
-                    if (typeof AOS === 'undefined') {
-                        document.querySelectorAll('[data-aos]').forEach(el => {
-                            el.style.opacity = '1';
-                            el.style.transform = 'none';
-                            el.style.visibility = 'visible';
-                        });
-                    } else {
-                        AOS.init({ duration: 1000, once: true });
-                    }
-                }, 1500);
-            }
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        once: true,
+                        startEvent: 'DOMContentLoaded'
+                    });
+                }
+            }, 100);
         }
 
         triggerAOS();
