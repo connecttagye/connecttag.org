@@ -57,8 +57,11 @@
     /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
     @font-face {
       font-family: 'Cairo-Fallback';
-      size-adjust: 105.7%; /* Cairo is slightly larger than system fonts */
-      src: local('Arial');
+      size-adjust: 100%; /* Reset to standard and use ascent-override if needed, but let's try 100% first with better fallback list */
+      src: local('Segoe UI'), local('Arial');
+      ascent-override: 95%;
+      descent-override: 25%;
+      line-gap-override: 0%;
     }
 
     body {

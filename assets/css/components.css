@@ -25,11 +25,9 @@
    -------------------------------------------------------------------------- */
 site-header {
   display: block;
-  width: 100%;
-  position: relative;
-  z-index: 1000;
-  min-height: 80px; /* Prevent layout shift */
-  contain: layout size; /* Optimize rendering and prevent shifts */
+  min-height: 80px;
+  content-visibility: auto;
+  contain-intrinsic-size: 100% 80px;
 }
 
 .ct-header-navbar {
@@ -197,13 +195,9 @@ site-breadcrumb {
    -------------------------------------------------------------------------- */
 site-footer {
   display: block;
-  width: 100%;
-  background: var(--ct-dark-bg);
-  color: #e0e0e0;
-  border-top: 2px solid var(--ct-primary);
-  margin-top: auto;
-  min-height: 450px; /* Prevent layout shift at the bottom */
-  contain: layout size; /* Optimize rendering and prevent shifts */
+  min-height: 450px;
+  content-visibility: auto;
+  contain-intrinsic-size: 100% 450px;
 }
 
 .ct-footer-main {
