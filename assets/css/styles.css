@@ -308,21 +308,26 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 	color: #1a0033;
 }
+#typed-text {
+  display: inline-block;
+  min-width: 150px; /* Reserve space for the longest word */
+  text-align: right;
+}
 h2 {
 	font-size: 34px;
 	position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 25px; /* Increased to accommodate absolute decoration line */
 }
 h2::after {
     content: '';
-    display: block;
     position: absolute;
-    bottom: 0;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
     background: #0077b6;
+    /* Absolute positioning ensures width animations don't trigger layout shifts */
 }
 h3 {
 	font-size: 24px;
@@ -767,9 +772,6 @@ a:hover, a:focus {
     box-shadow: 0 20px 40px rgba(0, 173, 239, 0.1) !important;
 }
 
-/* AOS Customization Support */
-.aos-animate { pointer-events: auto; }
-
 /* Cookie Consent Banner */
 #cookie-consent {
     position: fixed;
@@ -897,6 +899,7 @@ a:hover, a:focus {
     background: #fdfdfd;
     white-space: nowrap;
     position: relative;
+    height: 160px; /* Fixed height for stability */
 }
 .tech-slide-track {
     display: inline-block;
@@ -913,6 +916,22 @@ a:hover, a:focus {
 @keyframes scroll-rtl {
     0% { transform: translateX(0); }
     100% { transform: translateX(100%); }
+}
+
+/* AOS Layout Stability */
+[data-aos] {
+    pointer-events: none;
+    transition-property: transform, opacity;
+}
+.aos-animate {
+    pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 
