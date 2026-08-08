@@ -112,6 +112,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
 
@@ -239,8 +242,10 @@
       size-adjust: 106%;
     }
 
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    /* LCP Optimization: Typed text placeholder */
+    #typed-text:empty::before {
+      content: 'كونكت تاق';
+      opacity: 0.5;
     }
   </style>
   <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">

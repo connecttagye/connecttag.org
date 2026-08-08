@@ -173,27 +173,34 @@
             });
         });
 
-        // --- ScrollSpy Replacement ---
+        // --- ScrollSpy Replacement (Optimized with IntersectionObserver) ---
         const sections = document.querySelectorAll('div[id]');
         const navItems = document.querySelectorAll('.ct-nav-item');
 
-        window.addEventListener('scroll', () => {
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
+        if (sections.length > 0 && navItems.length > 0) {
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px',
+                threshold: 0
+            };
 
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                const link = item.querySelector('a');
-                if (link && link.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                }
-            });
-        });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                            const link = item.querySelector('a');
+                            if (link && link.getAttribute('href') === `#${id}`) {
+                                item.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        }
 
         // --- Mobile Menu Overlay Logic ---
         const mobileToggle = document.getElementById('ct-menu-btn');
