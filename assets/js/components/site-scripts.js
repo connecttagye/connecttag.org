@@ -1,84 +1,44 @@
 /**
- * Connect Tag - Site Specific Scripts
- * Extracted logic for UI interactions, animations, and preloader.
+ * Connect Tag - Site Specific Scripts (Vanilla JS Version)
+ * Optimized for performance, removing jQuery dependencies.
  */
 
-// 1. Optimized Professional Preloader Logic (Independent of jQuery)
+// 1. Optimized Professional Preloader Logic
 (function() {
     'use strict';
 
-    function runPreloader() {
+    function hidePreloader() {
         const preloader = document.getElementById('preloader');
-        const logElement = document.getElementById('loader-log');
-        const progressFill = document.getElementById('progress-fill');
+        if (!preloader || preloader.classList.contains('preloader-hidden')) return;
 
-        if (!preloader) return;
+        preloader.classList.add('preloader-hidden');
+        document.body.classList.add('loaded');
 
-        // Force show if it was stuck
-        preloader.style.display = 'flex';
-
-        const steps = [
-            { text: "> Initializing core...", delay: 200, progress: 20 },
-            { text: "> Checking security protocols...", delay: 400, progress: 45 },
-            { text: "> Optimizing UI assets...", delay: 300, progress: 75 },
-            { text: "> Establishing secure link...", delay: 400, progress: 90 },
-            { text: "> Welcome to Connect Tag", delay: 300, progress: 100 }
-        ];
-
-        let currentStep = 0;
-
-        function processStep() {
-            if (currentStep < steps.length) {
-                const step = steps[currentStep];
-                if (logElement) logElement.innerHTML = step.text;
-                if (progressFill) progressFill.style.width = step.progress + "%";
-
-                if (logElement && (step.text.includes("Success") || step.progress === 100)) {
-                    logElement.style.color = "#25d366";
-                }
-
-                currentStep++;
-                setTimeout(processStep, step.delay);
-            } else {
-                setTimeout(() => {
-                    preloader.classList.add('preloader-hidden');
-                    document.body.classList.add('loaded');
-
-                    setTimeout(() => {
-                        document.body.classList.add('page-entered');
-                        document.body.style.overflow = 'auto';
-                        // Final backup to ensure it's gone
-                        setTimeout(() => { preloader.style.display = 'none'; }, 1000);
-                    }, 300);
-                }, 500);
-            }
-        }
-
-        processStep();
-    }
-
-    if (document.readyState === 'complete') {
-        runPreloader();
-    } else {
-        window.addEventListener('load', runPreloader);
-    }
-
-    // Safety timeout: if preloader is still visible after 10 seconds, hide it
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        if (preloader && !preloader.classList.contains('preloader-hidden')) {
-            preloader.classList.add('preloader-hidden');
+        setTimeout(() => {
+            document.body.classList.add('page-entered');
             document.body.style.overflow = 'auto';
-        }
-    }, 10000);
+            setTimeout(() => { preloader.style.display = 'none'; }, 1000);
+        }, 300);
+    }
+
+    // Run when EVERYTHING is loaded (including images)
+    if (document.readyState === 'complete') {
+        hidePreloader();
+    } else {
+        window.addEventListener('load', hidePreloader);
+    }
+
+    // Safety timeout: 5 seconds max for preloader
+    setTimeout(hidePreloader, 5000);
 })();
 
-// 2. jQuery Dependent Logic
+// 2. Core Site Logic (Independent of jQuery)
 (function() {
     'use strict';
 
-    function initSiteLogic($) {
-        // Initialize AOS (Animate On Scroll)
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- AOS Initialization ---
         if (typeof AOS !== 'undefined') {
             AOS.init({
                 duration: 1000,
@@ -86,70 +46,62 @@
             });
         }
 
-        // Back to Top Scroll Handler
-        const $backToTop = $('#back-to-top');
-        if ($backToTop.length) {
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 300) {
-                    $backToTop.fadeIn();
+        // --- Back to Top Scroll Handler ---
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.style.display = "block";
+                    backToTop.style.opacity = "1";
                 } else {
-                    $backToTop.fadeOut();
+                    backToTop.style.opacity = "0";
+                    setTimeout(() => { if(window.pageYOffset <= 300) backToTop.style.display = "none"; }, 300);
                 }
             });
 
-            $backToTop.click(function() {
-                $('html, body').animate({scrollTop : 0}, 800);
-                return false;
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-        // Statistics Counter Animation
-        const $stats = $('#stats');
-        if ($stats.length) {
-            let counted = 0;
-            $(window).scroll(function() {
-                const oTop = $stats.offset().top - window.innerHeight;
-                if (counted === 0 && $(window).scrollTop() > oTop) {
-                    $('.counter').each(function() {
-                        const $this = $(this),
-                              countTo = $this.attr('data-target');
-                        $({
-                            countNum: $this.text()
-                        }).animate({
-                            countNum: countTo
-                        }, {
-                            duration: 2000,
-                            easing: 'swing',
-                            step: function() {
-                                $this.text(Math.floor(this.countNum));
-                            },
-                            complete: function() {
-                                $this.text(this.countNum + "+");
-                            }
-                        });
-                    });
-                    counted = 1;
-                }
-            });
+        // --- Statistics Counter Animation (IntersectionObserver) ---
+        const statsSection = document.getElementById('stats');
+        const counters = document.querySelectorAll('.counter');
+
+        if (statsSection && counters.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+
+            function startCounters() {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const stepTime = Math.abs(Math.floor(duration / target));
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += Math.ceil(target / (duration / 50)); // Increment logic
+                        if (current >= target) {
+                            counter.innerText = target + "+";
+                            clearInterval(timer);
+                        } else {
+                            counter.innerText = current;
+                        }
+                    }, 50);
+                });
+            }
         }
 
-        // Active Link Highlighting
-        const path = window.location.pathname;
-        let page = path.split("/").pop();
-        if (page === "" || page === "index") page = "index";
-
-        $('.navbar-nav li').removeClass('active');
-        $('.navbar-nav li a').each(function() {
-            const href = $(this).attr('href');
-            if (href === page || (page === "index" && (href === "./" || href === "#home"))) {
-                $(this).parent().addClass('active');
-            }
-            if (path.includes(href) && href !== "" && href !== "/" && !href.startsWith("#")) {
-                $(this).parent().addClass('active');
-            }
-        });
-
-        // Typing Effect
+        // --- Typing Effect ---
         const typedTextSpan = document.querySelector("#typed-text");
         if (typedTextSpan) {
             const textArray = ["كونكت تاق", "حلولك التقنية", "شريكك الرقمي"];
@@ -184,54 +136,80 @@
             if (textArray.length) setTimeout(type, newTextDelay + 250);
         }
 
-        // 6. Smooth Page Scroll
-        $('a.page-scroll').bind('click', function(event) {
-            var $anchor = $(this);
-            var href = $anchor.attr('href');
-            if (href.startsWith('#') && $(href).length) {
-                $('html, body').stop().animate({
-                    scrollTop: ($(href).offset().top - 70)
-                }, 1500, 'easeInOutExpo');
-                event.preventDefault();
-            }
+        // --- Smooth Page Scroll & Active Link highlighting ---
+        const navLinks = document.querySelectorAll('.ct-nav-link, .page-scroll');
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#') && href.length > 1) {
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const offsetTop = targetElement.offsetTop - 70;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+
+                        // Auto-close mobile menu if open
+                        const menu = document.getElementById('ct-nav-menu');
+                        if (menu && menu.classList.contains('open')) {
+                            const btn = document.getElementById('ct-menu-btn');
+                            if (btn) btn.click();
+                        }
+                    }
+                }
+            });
         });
 
-        // 7. ScrollSpy Logic
-        if ($('body').scrollspy) {
-            $('body').scrollspy({
-                target: '.ct-header-navbar',
-                offset: 100
+        // --- ScrollSpy Replacement ---
+        const sections = document.querySelectorAll('div[id]');
+        const navItems = document.querySelectorAll('.ct-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                const link = item.querySelector('a');
+                if (link && link.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- Mobile Menu Overlay Logic ---
+        const mobileToggle = document.getElementById('ct-menu-btn');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', function() {
+                let overlay = document.querySelector('.nav-overlay');
+                if (!overlay) {
+                    overlay = document.createElement('div');
+                    overlay.className = 'nav-overlay';
+                    overlay.style.cssText = "display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:998;";
+                    document.body.appendChild(overlay);
+
+                    overlay.addEventListener('click', () => {
+                        mobileToggle.click();
+                    });
+                }
+
+                const isOpen = document.getElementById('ct-nav-menu').classList.contains('open');
+                if (isOpen) {
+                    overlay.style.display = 'block';
+                    overlay.style.opacity = '1';
+                } else {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => { overlay.style.display = 'none'; }, 300);
+                }
             });
         }
-
-        // 8. Mobile Menu Auto-Close & Overlay Logic
-        $(document).on('click', '.ct-nav-link', function() {
-            const $menu = $('#ct-nav-menu');
-            if ($menu.hasClass('open')) {
-                $('#ct-menu-btn').click();
-            }
-        });
-
-        $(document).on('click', '.ct-mobile-toggle', function() {
-            if (!$('.nav-overlay').length) {
-                $('body').append('<div class="nav-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:998;"></div>');
-            }
-            $('.nav-overlay').fadeToggle(300);
-        });
-
-        $(document).on('click', '.nav-overlay', function() {
-            $('#ct-menu-btn').click();
-        });
-    }
-
-    // Wait for jQuery to be available
-    function checkJQuery() {
-        if (window.jQuery) {
-            initSiteLogic(window.jQuery);
-        } else {
-            setTimeout(checkJQuery, 50);
-        }
-    }
-
-    checkJQuery();
+    });
 })();

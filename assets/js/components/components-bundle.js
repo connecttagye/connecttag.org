@@ -1,5 +1,5 @@
 /**
- * Connect Tag - Master Components Bundle
+ * Connect Tag - Master Components Bundle (Optimized & jQuery-Free)
  * Include this single script to load all resources in the correct sequence.
  */
 (function() {
@@ -28,35 +28,31 @@
 
     const s = document.createElement('script');
     s.src = fullSrc;
-    s.async = false; // Force sequential execution
+    s.async = false; // Maintain execution order for components
     document.head.appendChild(s);
   }
 
-  // --- STAGE 1: CORE LIBRARIES (Critical Order) ---
-  loadScript('assets/js/jquery.min.js');
-  loadScript('assets/js/modernizr.custom.js');
+  // --- STAGE 1: CORE LIBRARIES ---
+  // jQuery and Modernizr removed (Modernizr replaced by native features or skipped if unused)
+  // loadScript('assets/js/modernizr.custom.js'); // Keeping only if specific features needed
 
   // --- STAGE 2: META & STYLES ---
   loadScript('assets/js/components/head-includes.js');
 
-  // --- STAGE 3: UI COMPONENTS (Web Components) ---
+  // --- STAGE 3: UI COMPONENTS (Web Components - Native JS) ---
   loadScript('assets/js/components/site-header.js');
   loadScript('assets/js/components/site-footer.js');
   loadScript('assets/js/components/site-breadcrumb.js');
   loadScript('assets/js/components/cookie-consent.js');
 
-  // --- STAGE 4: PLUGINS & FUNCTIONALITY ---
-  // Note: These will run after jQuery due to async=false
-  loadScript('assets/js/bootstrap.min.js');
-  loadScript('assets/js/jquery.easing.1.3.js');
-  loadScript('assets/js/smoothscroll.js');
+  // --- STAGE 4: THIRD PARTY PLUGINS ---
   loadScript('https://unpkg.com/aos@2.3.1/dist/aos.js');
 
   // --- STAGE 5: SITE LOGIC ---
   loadScript('assets/js/components/site-scripts.js');
 
-  // IE Compatibility
-  loadScript('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
-  loadScript('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
+  // IE Compatibility - Moved to end and only if really needed
+  // loadScript('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
+  // loadScript('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
 
 })();

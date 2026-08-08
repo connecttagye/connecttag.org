@@ -78,21 +78,7 @@ class SiteFooter extends HTMLElement {
       </div>
     `;
 
-    // Back to top scroll handler
-    const backBtn = this.querySelector('#back-to-top');
-    if (backBtn) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backBtn.classList.add('visible');
-        } else {
-          backBtn.classList.remove('visible');
-        }
-      });
-
-      backBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
+    // Back to top scroll handler is now managed in site-scripts.js for consistency
   }
 }
 
