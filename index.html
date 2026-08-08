@@ -112,6 +112,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/cairo/v28/slXGc1nY6HkbksIdTlu6K72S.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
+    #home-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+  </style>
   <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
   <link rel="preload" href="assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/bootstrap.css"></noscript>
@@ -151,6 +160,16 @@
         </div>
     </div>
 </div>
+<script>
+  // Faster LCP: Show content as soon as possible without waiting for external JS
+  (function() {
+    var home = document.getElementById('home-content');
+    if (home) {
+      home.style.opacity = '1';
+      home.style.visibility = 'visible';
+    }
+  })();
+</script>
 <div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
