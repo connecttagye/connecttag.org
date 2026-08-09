@@ -42,7 +42,8 @@ export default class AnalyzerCore {
 
     async checkExtraFiles(baseUrl) {
         const fileChecks = [
-            { name: 'robots', url: `${baseUrl}/robots.txt` }
+            { name: 'robots', url: `${baseUrl}/robots.txt` },
+            { name: 'sitemap', url: `${baseUrl}/sitemap.xml` }
         ];
 
         const results = await Promise.all(fileChecks.map(f =>

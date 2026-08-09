@@ -249,7 +249,7 @@ class SiteCheckerApp {
                 cms: cms,
                 ads: pubMatch ? `مفعلة (${pubMatch[0]})` : 'غير نشطة ❌',
                 analytics: gaMatch ? `موجودة (${gaMatch[0].slice(0, 10)}...)` : 'غير موجودة ❌',
-                sitemap: hasSitemap ? 'مكتشفة ✅' : 'غير محددة ❌',
+                sitemap: files.sitemap ? 'مكتشفة ✅' : 'غير محددة ❌',
                 isRoot: urlObj.pathname === '/' || urlObj.pathname === '',
                 typeLabel: (urlObj.pathname === '/' || urlObj.pathname === '') ? 'رابط رئيسي' : 'صفحة فرعية',
                 protocol: urlObj.protocol.replace(':', '').toUpperCase(),
