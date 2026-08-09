@@ -59,40 +59,6 @@ export function checkLanguages(doc) {
     };
 }
 
-export function checkAnalytics(d, html) {
-    const ga = html.match(/G-[A-Z0-9]+/);
-    return {
-        title: 'إحصائيات جوجل',
-        value: ga ? `موجودة (${ga[0]})` : 'غير موجودة',
-        status: ga ? 'pass' : 'warn',
-        weight: 5,
-        priority: 'moderate'
-    };
-}
-
-export function checkAdSense(d, html) {
-    const p = html.match(/pub-\d+/);
-    const f = html.includes('adsbygoogle');
-    return {
-        title: 'شفرة أدسنس',
-        value: f ? `مفعلة (${p ? p[0] : '...'})` : 'غير موجودة',
-        status: 'pass',
-        weight: 10,
-        priority: 'moderate'
-    };
-}
-
-export function checkPixels(d, html) {
-    let p = html.includes('facebook.net') ? 'Facebook' : '';
-    return {
-        title: 'بكسلات التتبع',
-        value: p ? `<span class="tech-badge">${p}</span>` : 'لا توجد',
-        status: p ? 'pass' : 'warn',
-        weight: 8,
-        priority: 'minor'
-    };
-}
-
 export function checkSocialPresence(doc) {
     const f = ['facebook.com', 'twitter.com', 'instagram.com', 'linkedin.com'].some(p => doc.documentElement.innerHTML.includes(p));
     return {

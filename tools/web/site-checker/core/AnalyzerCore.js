@@ -17,9 +17,6 @@ export default class AnalyzerCore {
         if ((type === 'trust' || type === 'all') && !this.auditors.security) {
             promises.push(import('../auditors/security.js').then(m => this.auditors.security = m));
         }
-        if ((type === 'tech' || type === 'all' || type === 'monetize') && !this.auditors.tech) {
-            promises.push(import('../auditors/tech.js').then(m => this.auditors.tech = m));
-        }
         await Promise.all(promises);
     }
 
@@ -28,16 +25,24 @@ export default class AnalyzerCore {
         if (!response.ok) throw new Error('Failed to fetch page');
 
         const html = await response.text();
-        const securityHeader = response.headers.get('X-Security-Audit');
-        const securityHeaders = securityHeader ? JSON.parse(securityHeader) : {};
+        const pageSize = (new TextEncoder().encode(html).length / 1024).toFixed(1); // Size in KB
 
-        return { html, securityHeaders };
+        const auditHeader = response.headers.get('X-Security-Audit');
+        const fullAudit = auditHeader ? JSON.parse(auditHeader) : {};
+
+        return {
+            html,
+            securityHeaders: fullAudit.security || {},
+            pageSize,
+            server: fullAudit.server || 'N/A',
+            performance: fullAudit.performance || {},
+            redirects: fullAudit.redirects || {}
+        };
     }
 
     async checkExtraFiles(baseUrl) {
         const fileChecks = [
-            { name: 'robots', url: `${baseUrl}/robots.txt` },
-            { name: 'ads', url: `${baseUrl}/ads.txt` }
+            { name: 'robots', url: `${baseUrl}/robots.txt` }
         ];
 
         const results = await Promise.all(fileChecks.map(f =>
@@ -51,19 +56,17 @@ export default class AnalyzerCore {
         return status;
     }
 
-    runAudits(doc, html, url, files, security, currentTool) {
+    runAudits(doc, html, url, files, security, currentTool, performance = {}, redirects = {}) {
         let audits = [];
         const addAudit = (fn, cat) => {
             if (!fn) return;
-            const r = fn(doc, html, url, files, security);
+            const r = fn(doc, html, url, files, security, performance, redirects);
             if (r) audits.push({ ...r, category: cat });
         };
 
         const { seo, security: sec, tech, content } = this.auditors;
 
         if (['all', 'seo'].includes(currentTool) && seo) {
-            addAudit(seo.checkTitle, 'SEO');
-            addAudit(seo.checkDescription, 'SEO');
             addAudit(seo.checkHeadings, 'SEO');
             addAudit(seo.checkHeadingStructure, 'SEO');
             addAudit(seo.checkKeywordGap, 'SEO');
@@ -75,42 +78,14 @@ export default class AnalyzerCore {
             }
         }
 
-        if (['all', 'tech'].includes(currentTool) && tech) {
-            addAudit(tech.checkCMS, 'Technical');
-            addAudit(tech.checkTechStack, 'Technical');
-            addAudit(tech.checkSemanticHTML, 'Technical');
-        }
-
         if (['all', 'trust'].includes(currentTool) && sec) {
-            addAudit(sec.checkSecurity, 'Security');
             addAudit(sec.checkSecHeaders, 'Security');
-            if (tech) addAudit(tech.checkLinkHealth, 'Technical');
-            addAudit(sec.checkPagePrivacy, 'Policy');
-            audits.push({
-                title: 'ملف robots.txt',
-                value: files.robots ? 'موجود ✅' : 'غير موجود ❌',
-                status: files.robots ? 'pass' : 'warn',
-                weight: 8,
-                category: 'Technical',
-                priority: 'moderate'
-            });
-        }
-
-        if (['all', 'monetize'].includes(currentTool) && tech) {
-            addAudit(tech.checkAdSense, 'Monetization');
-            addAudit(tech.checkAnalytics, 'Technical');
-            addAudit(tech.checkPixels, 'Monetization');
-            audits.push({
-                title: 'ملف ads.txt',
-                value: files.ads ? 'موجود ✅' : 'غير موجود ❌',
-                status: files.ads ? 'pass' : 'warn',
-                weight: 10,
-                category: 'Monetization',
-                priority: 'moderate'
-            });
+            addAudit(sec.checkRedirectionRules, 'Security');
         }
 
         if (tech) {
+            addAudit(tech.checkSemanticHTML, 'Technical');
+            addAudit(tech.checkLinkHealth, 'Technical');
             audits.push({ ...tech.checkSocialPresence(doc), category: 'Social' });
             audits.push({ ...tech.checkOpenGraph(doc), category: 'Social' });
         }

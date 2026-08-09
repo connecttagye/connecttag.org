@@ -45,7 +45,11 @@ export default class UIEngine {
     }
 
     renderResults(audits, categories, finalScore, siteMeta) {
-        if (siteMeta) this.renderSummaryCard(siteMeta);
+        if (siteMeta) {
+            this.renderSummaryCard(siteMeta);
+            this.renderBasicPagesCard(siteMeta.basicPages);
+            if (siteMeta.social) this.renderSocialPreviews(siteMeta.social);
+        }
         this.renderAuditCards(audits);
         this.renderCategoryScores(categories);
         this.updateFinalScore(finalScore);
@@ -54,6 +58,9 @@ export default class UIEngine {
     renderSummaryCard(meta) {
         const container = document.getElementById('results-dashboard');
         if (!container) return;
+
+        const totalResources = meta.resources.scripts + meta.resources.styles + meta.resources.images;
+        const isHeavy = totalResources > 50;
 
         // Remove existing summary card if any
         const existing = document.getElementById('site-summary-card');
@@ -65,44 +72,165 @@ export default class UIEngine {
 
         card.innerHTML = `
             <div class="summary-header">
-                <div class="d-flex align-items-center gap-3">
-                    <div class="site-icon-box">
-                        <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="text-start">
-                        <h4 class="mb-1 fw-900 text-white">${meta.title}</h4>
-                        <span class="text-white-50 small ltr-text">${meta.url}</span>
-                    </div>
+                <div class="site-icon-box border">
+                    ${meta.favicon ? `<img src="${meta.favicon}" width="32" height="32" alt="favicon">` : '<i class="fa fa-globe text-primary"></i>'}
                 </div>
-                <div class="ms-auto">
-                    <span class="badge-link ${meta.isRoot ? 'badge-primary-soft' : 'badge-warning-soft'}">
+                <div class="flex-grow-1">
+                    <h4 class="mb-1 fw-900 text-dark d-flex align-items-center flex-wrap gap-2">
+                        ${meta.title}
+                        <span class="badge bg-primary-soft text-primary px-3 py-2" style="font-size: 11px; border-radius: 8px;">
+                            <i class="fa fa-cog"></i> ${meta.cms}
+                        </span>
+                    </h4>
+                    <span class="text-muted small ltr-text">${meta.url}</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    ${isHeavy ? '<span class="badge bg-danger rounded-pill px-3 py-2" style="font-size:11px"><i class="fa fa-warning"></i> موقع ثقيل</span>' : ''}
+                    <span class="badge-link ${meta.isRoot ? 'badge-internal' : 'badge-external'} px-3 py-2">
                         <i class="fa ${meta.isRoot ? 'fa-home' : 'fa-sitemap'}"></i> ${meta.typeLabel}
                     </span>
                 </div>
             </div>
             <div class="summary-body grid-stats">
                 <div class="stat-item">
-                    <span class="label">البروتوكول</span>
-                    <span class="value ${meta.protocol === 'HTTPS' ? 'text-success' : 'text-danger'}">
-                        <i class="fa ${meta.protocol === 'HTTPS' ? 'fa-lock' : 'fa-unlock'}"></i> ${meta.protocol}
+                    <span class="label">الخادم</span>
+                    <span class="value"><i class="fa fa-server text-primary"></i> ${meta.server}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">حجم الصفحة</span>
+                    <span class="value"><i class="fa fa-hdd-o text-primary"></i> ${meta.pageSize} KB</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">الأرشفة</span>
+                    <span class="value">${meta.isIndexable}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">ملف Robots</span>
+                    <span class="value">${meta.robots || 'N/A'}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">ميزانية الموارد</span>
+                    <div class="resource-mini-grid">
+                        <div class="res-mini-item"><i class="fa fa-css3 text-primary"></i>${meta.resources.styles}</div>
+                        <div class="res-mini-item"><i class="fa fa-code text-warning"></i>${meta.resources.scripts}</div>
+                        <div class="res-mini-item"><i class="fa fa-image text-success"></i>${meta.resources.images}</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="label">الروابط</span>
+                    <span class="value">
+                        <span class="text-primary">${meta.links.internal}</span> / <span class="text-success">${meta.links.external}</span>
                     </span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">النطاق (TLD)</span>
-                    <span class="value text-primary">${meta.tld}</span>
+                    <span class="label">اللغة / التشفير</span>
+                    <span class="value text-uppercase">${meta.lang} / ${meta.charset.split('-').pop()}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">تشفير الصفحة</span>
-                    <span class="value">${meta.charset}</span>
+                    <span class="label">الإعلانات</span>
+                    <span class="value small text-primary">${meta.ads}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="label">اللغة</span>
-                    <span class="value text-uppercase">${meta.lang}</span>
+                    <span class="label">الإحصائيات</span>
+                    <span class="value small text-success">${meta.analytics}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">خريطة الموقع</span>
+                    <span class="value small">${meta.sitemap}</span>
                 </div>
             </div>
         `;
 
         container.prepend(card);
+    }
+
+    renderBasicPagesCard(pages) {
+        const container = document.getElementById('results-dashboard');
+        if (!container || !pages) return;
+
+        // Remove existing if any
+        const existing = document.getElementById('basic-pages-card');
+        if (existing) existing.remove();
+
+        const card = document.createElement('div');
+        card.id = 'basic-pages-card';
+        card.className = 'summary-card-pro mb-4 p-4';
+
+        const renderItem = (found, text, icon) => `
+            <div class="stat-item border bg-light flex-row justify-content-between px-3 w-100 mb-2">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="fa ${icon} text-primary"></i>
+                    <span class="fw-bold text-dark">${text}</span>
+                </div>
+                <span class="badge ${found ? 'bg-success' : 'bg-danger'} rounded-pill px-3 py-1">
+                    ${found ? 'موجودة ✅' : 'مفقودة ❌'}
+                </span>
+            </div>
+        `;
+
+        card.innerHTML = `
+            <h5 class="fw-900 text-dark mb-4 px-2"><i class="fa fa-file-text-o text-primary"></i> الصفحات الأساسية للموقع</h5>
+            <div class="d-grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                ${renderItem(pages.privacy, 'سياسة الخصوصية', 'fa-shield')}
+                ${renderItem(pages.about, 'حول الموقع / من نحن', 'fa-info-circle')}
+                ${renderItem(pages.terms, 'سياسة الاستخدام / الشروط', 'fa-legal')}
+                ${renderItem(pages.contact, 'تواصل معنا / اتصل بنا', 'fa-envelope')}
+            </div>
+        `;
+
+        // Insert after summary card
+        const summaryCard = document.getElementById('site-summary-card');
+        if (summaryCard) summaryCard.parentNode.insertBefore(card, summaryCard.nextSibling);
+        else container.prepend(card);
+    }
+
+    renderSocialPreviews(data) {
+        const container = document.getElementById('seo-specialized');
+        if (!container) return;
+
+        // Remove existing preview if any
+        const existing = document.getElementById('social-preview-section');
+        if (existing) existing.remove();
+
+        const section = document.createElement('div');
+        section.id = 'social-preview-section';
+        section.className = 'mt-5';
+        section.innerHTML = `
+            <h2 class="section-title"><i class="fa fa-share-alt"></i> محاكي المعاينة الاجتماعية</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h6 class="fw-bold mb-3"><i class="fa fa-facebook-official text-primary"></i> فيسبوك</h6>
+                    <div class="social-card-fb">
+                        <div class="fb-img-box" style="background-image: url('${data.image || ''}')">
+                            ${!data.image ? '<i class="fa fa-image text-muted"></i>' : ''}
+                        </div>
+                        <div class="fb-content">
+                            <div class="fb-domain text-uppercase">${new URL(data.url || 'https://example.com').hostname}</div>
+                            <div class="fb-title">${data.title}</div>
+                            <div class="fb-desc">${data.description?.slice(0, 100)}...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="fw-bold mb-3"><i class="fa fa-twitter text-info"></i> تويتر (X)</h6>
+                    <div class="social-card-tw">
+                        <div class="tw-img-box" style="background-image: url('${data.image || ''}')">
+                            ${!data.image ? '<i class="fa fa-image text-muted"></i>' : ''}
+                        </div>
+                        <div class="tw-content">
+                            <div class="tw-title">${data.title}</div>
+                            <div class="tw-desc">${data.description?.slice(0, 100)}...</div>
+                            <div class="tw-domain"><i class="fa fa-link"></i> ${new URL(data.url || 'https://example.com').hostname}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Insert after Google Preview
+        const googlePreview = document.querySelector('.serp-container');
+        if (googlePreview) googlePreview.parentNode.insertBefore(section, googlePreview.nextSibling);
+        else container.appendChild(section);
     }
 
     renderAuditCards(audits) {

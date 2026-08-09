@@ -154,11 +154,19 @@ class SiteCheckerApp {
             let filesStatus = {};
             let securityHeaders = {};
             let finalUrl = urlInput;
+            let pageSize = 0;
+            let server = 'N/A';
+            let performance = {};
+            let redirects = {};
 
             if (this.mode === 'url') {
                 const data = await this.core.fetchPageData(document.getElementById('siteUrl').value);
                 htmlContent = data.html;
                 securityHeaders = data.securityHeaders;
+                pageSize = data.pageSize;
+                server = data.server;
+                performance = data.performance;
+                redirects = data.redirects;
 
                 const baseUrl = new URL(document.getElementById('siteUrl').value).origin;
                 filesStatus = await this.core.checkExtraFiles(baseUrl);
@@ -166,9 +174,10 @@ class SiteCheckerApp {
             } else {
                 htmlContent = htmlInput;
                 finalUrl = 'Manual Code';
+                pageSize = (new TextEncoder().encode(htmlContent).length / 1024).toFixed(1);
             }
 
-            this.processResults(htmlContent, finalUrl, filesStatus, securityHeaders);
+            this.processResults(htmlContent, finalUrl, filesStatus, securityHeaders, pageSize, server, performance, redirects);
         } catch (err) {
             console.error(err);
             window.showToast?.('فشل الاتصال بالموقع أو تحليل البيانات', 'error');
@@ -176,61 +185,119 @@ class SiteCheckerApp {
         }
     }
 
-    processResults(html, url, files, security) {
+    processResults(html, url, files, security, pageSize, server, performance, redirects) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html || '<html></html>', 'text/html');
 
-        const audits = this.core.runAudits(doc, html, url, files, security, this.currentTool);
+        const audits = this.core.runAudits(doc, html, url, files, security, this.currentTool, performance, redirects);
 
         // Specialized specialized UI updates
         document.getElementById('seo-specialized').style.display = (this.currentTool === 'all' || this.currentTool === 'seo') ? 'block' : 'none';
-        document.getElementById('tech-specialized').style.display = (this.currentTool === 'all' || this.currentTool === 'tech') ? 'block' : 'none';
 
         if (this.core.auditors.seo) {
             this.core.auditors.seo.updateSocialPreview(doc, url);
             this.core.auditors.seo.analyzeKeywords(doc);
+            this.core.auditors.seo.exploreLinks(doc, url);
         }
         if (this.core.auditors.content) {
             this.core.auditors.content.updateContentDashboard(doc);
         }
-        if (this.core.auditors.tech) {
-            this.core.auditors.tech.exploreLinks(doc, url);
-            this.core.auditors.tech.updateResourceMap(doc, url);
-            this.updateResourceStats(doc);
-        }
-
-        this.checkSmartRecommendations(audits);
-        this.history.save(doc.querySelector('title')?.innerText || 'تحليل جديد', url);
-        this.renderHistory();
+        this.updateResourceStats(doc);
 
         const { categories, finalScore } = this.calculateScores(audits);
 
         // Prepare Site Meta for Summary Card
         let siteMeta = null;
+
+        const scripts = doc.querySelectorAll('script[src]').length;
+        const styles = doc.querySelectorAll('link[rel="stylesheet"]').length;
+        const images = doc.querySelectorAll('img').length;
+
         if (url !== 'Manual Code') {
             const urlObj = new URL(url);
+            const canonical = doc.querySelector('link[rel="canonical"]')?.href;
+            const robots = doc.querySelector('meta[name="robots"]')?.content.toLowerCase() || '';
+            const isIndexable = !robots.includes('noindex');
+
+            // Social Tags
+            const ogTitle = doc.querySelector('meta[property="og:title"]')?.content || doc.querySelector('title')?.innerText;
+            const ogDesc = doc.querySelector('meta[property="og:description"]')?.content || doc.querySelector('meta[name="description"]')?.content;
+            const ogImage = doc.querySelector('meta[property="og:image"]')?.content;
+
+            // CMS Detection
+            let cms = 'مخصص / أخرى';
+            if (html.includes('wp-content')) cms = 'WordPress';
+            else if (html.includes('blogger.com') || html.includes('pub-')) cms = 'Blogger';
+            else if (html.includes('wix.com')) cms = 'Wix';
+            else if (html.includes('shopify.com')) cms = 'Shopify';
+
+            // Ads and Analytics Detection
+            const pubMatch = html.match(/pub-\d+/);
+            const gaMatch = html.match(/G-[A-Z0-9]+|UA-\d+-\d+/);
+            const hasSitemap = html.includes('sitemap.xml') || !!doc.querySelector('link[type="application/xml"][title="Sitemap"]');
+
+            // Basic Pages Detection
+            const links = Array.from(doc.querySelectorAll('a'));
+            const checkLink = (keywords) => links.some(a =>
+                keywords.some(k => a.innerText.toLowerCase().includes(k) || (a.href && a.href.toLowerCase().includes(k)))
+            );
+
             siteMeta = {
                 title: doc.querySelector('title')?.innerText || 'بدون عنوان',
                 url: url,
+                favicon: `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=64`,
+                cms: cms,
+                ads: pubMatch ? `مفعلة (${pubMatch[0]})` : 'غير نشطة ❌',
+                analytics: gaMatch ? `موجودة (${gaMatch[0].slice(0, 10)}...)` : 'غير موجودة ❌',
+                sitemap: hasSitemap ? 'مكتشفة ✅' : 'غير محددة ❌',
                 isRoot: urlObj.pathname === '/' || urlObj.pathname === '',
                 typeLabel: (urlObj.pathname === '/' || urlObj.pathname === '') ? 'رابط رئيسي' : 'صفحة فرعية',
                 protocol: urlObj.protocol.replace(':', '').toUpperCase(),
                 tld: '.' + urlObj.hostname.split('.').pop(),
                 charset: doc.characterSet || 'UTF-8',
-                lang: doc.documentElement.lang || 'ar'
+                lang: doc.documentElement.lang || 'ar',
+                pageSize: pageSize || '0',
+                server: server || 'N/A',
+                robots: files.robots ? 'موجود ✅' : 'مفقود ❌',
+                canonical: canonical ? (new URL(canonical, url).href === url ? 'مطابق ✅' : 'مختلف ⚠️') : 'غير محدد ❌',
+                isIndexable: isIndexable ? 'مسموح ✅' : 'ممنوع ❌',
+                links: {
+                    internal: links.filter(a => a.href && !a.href.startsWith('http')).length,
+                    external: links.filter(a => a.href && a.href.startsWith('http')).length
+                },
+                resources: { scripts, styles, images },
+                social: { title: ogTitle, description: ogDesc, image: ogImage, url: url },
+                basicPages: {
+                    privacy: checkLink(['خصوصية', 'privacy', 'legal']),
+                    about: checkLink(['حول', 'about', 'من نحن', 'قصتنا']),
+                    terms: checkLink(['استخدام', 'terms', 'شروط']),
+                    contact: checkLink(['تواصل', 'contact', 'اتصل', 'راسلنا'])
+                }
             };
         } else {
             siteMeta = {
                 title: 'تحليل كود يدوي',
                 url: 'محلي',
+                favicon: null,
                 isRoot: false,
                 typeLabel: 'كود برمجى',
                 protocol: 'N/A',
                 tld: 'N/A',
                 charset: 'UTF-8',
-                lang: 'ar'
+                lang: 'ar',
+                pageSize: pageSize || '0',
+                server: 'N/A',
+                canonical: 'N/A',
+                isIndexable: 'N/A',
+                links: { internal: 0, external: 0 },
+                resources: { scripts, styles, images },
+                social: null
             };
         }
+
+        this.checkSmartRecommendations(audits, siteMeta?.isRoot);
+        this.history.save(doc.querySelector('title')?.innerText || 'تحليل جديد', url);
+        this.renderHistory();
 
         this.ui.renderResults(audits, categories, finalScore, siteMeta);
         this.ui.hideLoader();
@@ -248,7 +315,7 @@ class SiteCheckerApp {
     }
 
     calculateScores(audits) {
-        const categories = { SEO: { s: 0, w: 0 }, Technical: { s: 0, w: 0 }, Monetization: { s: 0, w: 0 }, Policy: { s: 0, w: 0 }, Security: { s: 0, w: 0 }, Social: { s: 0, w: 0 }, UX: { s: 0, w: 0 } };
+        const categories = { SEO: { s: 0, w: 0 }, Technical: { s: 0, w: 0 }, Policy: { s: 0, w: 0 }, Security: { s: 0, w: 0 }, Social: { s: 0, w: 0 }, UX: { s: 0, w: 0 } };
 
         audits.forEach(audit => {
             let score = audit.status === 'pass' ? 100 : (audit.status === 'warn' ? 50 : 0);
@@ -270,9 +337,15 @@ class SiteCheckerApp {
         return { categories, finalScore: Math.round(totalScore / count) || 0 };
     }
 
-    checkSmartRecommendations(audits) {
+    checkSmartRecommendations(audits, isRoot) {
         const recBox = document.getElementById('smart-recommendation');
         if (!recBox) return;
+
+        // Only show the big recommendation banner for Root URLs
+        if (!isRoot) {
+            recBox.style.display = 'none';
+            return;
+        }
 
         const privacyAudit = audits.find(a => a.title === 'سياسة الخصوصية');
         if (privacyAudit && privacyAudit.status === 'fail') {

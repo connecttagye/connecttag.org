@@ -25,6 +25,33 @@ export function checkSecHeaders(d, h, u, f, security) {
     };
 }
 
+export function checkRedirectionRules(doc, html, url, files, security, performance, redirects) {
+    if (!redirects || Object.keys(redirects).length === 0) return null;
+
+    const hasProtocolRedirect = redirects.protocolUpgrade;
+    const hasWwwConsistency = redirects.wwwConsistency;
+
+    let status = (hasProtocolRedirect || redirects.isHttps) ? 'pass' : 'fail';
+    let msg = 'نظام التحويل (HTTPS/WWW) يعمل بشكل صحيح.';
+
+    if (!redirects.isHttps) {
+        status = 'fail';
+        msg = 'الموقع لا يجبر استخدام HTTPS. هذا يشكل خطراً أمنياً.';
+    } else if (!hasWwwConsistency) {
+        status = 'warn';
+        msg = 'يوجد تضارب في استخدام www. قد يؤدي ذلك لمحتوى مكرر في جوجل.';
+    }
+
+    return {
+        title: 'قواعد التحويل (Redirection)',
+        value: redirects.isHttps ? 'HTTPS مفعل ✅' : 'HTTP فقط ❌',
+        status: status,
+        weight: 12,
+        priority: status === 'fail' ? 'critical' : 'moderate',
+        msg: msg
+    };
+}
+
 export function checkPagePrivacy(doc) {
     const found = Array.from(doc.querySelectorAll('a')).some(a => ['خصوصية', 'privacy', 'legal'].some(k => a.innerText.toLowerCase().includes(k) || a.href.toLowerCase().includes(k)));
     return {
