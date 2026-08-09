@@ -422,38 +422,42 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const btnSearch = document.getElementById('btnSearch');
+        const resultCard = document.getElementById('resultCard');
+        const errorMessage = document.getElementById('errorMessage');
+        const searchBox = document.getElementById('searchBox');
+        const skeletonLoader = document.getElementById('skeletonLoader');
+        const historySection = document.getElementById('historySection');
+        const historyList = document.getElementById('historyList');
+
         loadHistory();
 
         // Real-time Validation
-        $('#searchInput').on('input', function() {
-            const val = $(this).val().replace(/\D/g, '');
-            $(this).val(val); // Keep only numbers
+        searchInput.addEventListener('input', function() {
+            let val = this.value.replace(/\D/g, '');
+            this.value = val; // Keep only numbers
 
-            const type = $('input[name="searchType"]:checked').val();
+            const type = document.querySelector('input[name="searchType"]:checked').value;
             if((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8)) {
-                $(this).addClass('valid-input');
+                this.classList.add('valid-input');
             } else {
-                $(this).removeClass('valid-input');
+                this.classList.remove('valid-input');
             }
         });
 
-        $('#btnSearch').click(function() {
+        btnSearch.addEventListener('click', function() {
             performSearch();
         });
 
-        $('#searchInput').keypress(function(e) {
+        searchInput.addEventListener('keypress', function(e) {
             if(e.which == 13) performSearch();
         });
 
-        $(document).on('click', '.history-item', function() {
-            $('#searchInput').val($(this).text());
-            performSearch();
-        });
-
         function performSearch() {
-            const val = $('#searchInput').val().trim();
-            const type = $('input[name="searchType"]:checked').val();
+            const val = searchInput.value.trim();
+            const type = document.querySelector('input[name="searchType"]:checked').value;
 
             if(!val) {
                 showError('يرجى إدخال رقم الـ IMEI أو الـ TAC أولاً.');
@@ -461,76 +465,75 @@
             }
 
             // Visual Start
-            $('#resultCard').hide();
-            $('#errorMessage').hide();
-            $('#searchBox').addClass('scanning');
-            $('#skeletonLoader').fadeIn();
+            resultCard.style.display = 'none';
+            errorMessage.style.display = 'none';
+            searchBox.classList.add('scanning');
+            skeletonLoader.style.display = 'block';
 
             const apiUrl = 'https://api.connecttag.app/v5/yemen4g/tac/search';
             const apiKey = 'ktmo5flizpu';
 
-            $.ajax({
-                url: `${apiUrl}?X-Api-Key=${apiKey}&${type}=${val}`,
-                method: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    setTimeout(() => { // Small delay for the "scanning" feel
-                        $('#searchBox').removeClass('scanning');
-                        $('#skeletonLoader').hide();
+            fetch(`${apiUrl}?X-Api-Key=${apiKey}&${type}=${val}`)
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(() => { // Small delay for the "scanning" feel
+                    searchBox.classList.remove('scanning');
+                    skeletonLoader.style.display = 'none';
 
-                        if (response.success && response.result && !response.result.error) {
-                            displayResult(response.result);
-                            saveToHistory(val);
-                        } else {
-                            const msg = (response.result && response.result.error) ? response.result.error : 'لم يتم العثور على سجلات لهذا الرقم.';
-                            showError(msg);
-                        }
-                    }, 1200);
-                },
-                error: function() {
-                    $('#searchBox').removeClass('scanning');
-                    $('#skeletonLoader').hide();
-                    showError('عذراً، حدث خطأ في الاتصال بالسيرفر.');
-                }
+                    if (data.success && data.result && !data.result.error) {
+                        displayResult(data.result);
+                        saveToHistory(val);
+                    } else {
+                        const msg = (data.result && data.result.error) ? data.result.error : 'لم يتم العثور على سجلات لهذا الرقم.';
+                        showError(msg);
+                    }
+                }, 1200);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                searchBox.classList.remove('scanning');
+                skeletonLoader.style.display = 'none';
+                showError('عذراً، حدث خطأ في الاتصال بالسيرفر.');
             });
         }
 
         function displayResult(data) {
-            $('#resBrand').text(data.canonical_brand || 'غير معروف');
+            document.getElementById('resBrand').textContent = data.canonical_brand || 'غير معروف';
             const specs = data.canonical_specs || 'لا يوجد مواصفات مسجلة';
-            $('#resSpecs').text(specs);
-            $('#resTac').text(data.tac || '-');
+            document.getElementById('resSpecs').textContent = specs;
+            document.getElementById('resTac').textContent = data.tac || '-';
 
             // Generate QR Code
             const qrData = `Brand: ${data.canonical_brand}\nSpecs: ${specs}\nTAC: ${data.tac}`;
-            $('#resQR').attr('src', `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`);
+            document.getElementById('resQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
 
             // Dynamic Icon
             const icon = specs.toLowerCase().includes('mobile') || specs.toLowerCase().includes('phone') ? 'fa-mobile' : 'fa-wifi';
-            $('#resIcon').html(`<i class="fa ${icon}"></i>`);
+            document.getElementById('resIcon').innerHTML = `<i class="fa ${icon}"></i>`;
 
-            $('#resultCard').fadeIn();
+            resultCard.style.display = 'block';
 
             // Setup Copy & Share
-            $('#btnCopy').off().click(() => {
+            document.getElementById('btnCopy').onclick = () => {
                 const text = `بيانات الجهاز من كونكت تاق:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nTAC: ${data.tac}`;
                 navigator.clipboard.writeText(text);
                 alert('تم نسخ تفاصيل الجهاز بنجاح!');
-            });
+            };
 
-            $('#btnShare').off().click(() => {
+            document.getElementById('btnShare').onclick = () => {
                 const text = `فحص هُوية الجهاز:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nرابط الفحص: ${window.location.href}`;
                 window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
-            });
+            };
 
-            if($(window).width() < 768) {
-                $('html, body').animate({ scrollTop: $('#resultCard').offset().top - 50 }, 500);
+            if(window.innerWidth < 768) {
+                window.scrollTo({ top: resultCard.offsetTop - 50, behavior: 'smooth' });
             }
         }
 
         function showError(msg) {
-            $('#errorMessage').text(msg).fadeIn();
-            $('#searchBox').removeClass('scanning');
+            errorMessage.textContent = msg;
+            errorMessage.style.display = 'block';
+            searchBox.classList.remove('scanning');
         }
 
         function saveToHistory(val) {
@@ -546,18 +549,26 @@
         function loadHistory() {
             const history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
             if(history.length > 0) {
-                $('#historySection').show();
-                $('#historyList').html(history.map(item => `<span class="history-item">${item}</span>`).join(''));
+                historySection.style.display = 'block';
+                historyList.innerHTML = history.map(item => `<span class="history-item">${item}</span>`).join('');
+
+                document.querySelectorAll('.history-item').forEach(item => {
+                    item.onclick = function() {
+                        searchInput.value = this.textContent;
+                        performSearch();
+                    };
+                });
             }
         }
 
-        $('input[name="searchType"]').change(function() {
-            const type = $(this).val();
-            const input = $('#searchInput');
-            if(type === 'imei') input.attr('placeholder', 'أدخل 15 رقماً هنا...');
-            else if(type === 'tac') input.attr('placeholder', 'أدخل 8 أرقام...');
-            else input.attr('placeholder', 'اسم الجهاز أو الموديل...');
-            input.removeClass('valid-input');
+        document.querySelectorAll('input[name="searchType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const type = this.value;
+                if(type === 'imei') searchInput.placeholder = 'أدخل 15 رقماً هنا...';
+                else if(type === 'tac') searchInput.placeholder = 'أدخل 8 أرقام...';
+                else searchInput.placeholder = 'اسم الجهاز أو الموديل...';
+                searchInput.classList.remove('valid-input');
+            });
         });
     });
 </script>

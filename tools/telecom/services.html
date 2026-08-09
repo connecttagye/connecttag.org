@@ -214,7 +214,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const companyId = urlParams.get('companyId');
         const apiUrl = 'https://api.connecttag.app/v5/yemenview/initial-data';
@@ -227,30 +227,33 @@
         }
 
         // Fetch Data
-        $.ajax({
-            url: apiUrl,
+        fetch(apiUrl, {
             method: 'GET',
-            headers: { 'X-Api-Key': apiKey },
-            success: function(response) {
-                if (response.success && response.result) {
-                    const comp = response.result.companies.find(c => c.id === companyId);
-                    if(comp) {
-                        $('#comp-name-header').text(comp.arName);
-                        $('#comp-logo-header').attr('src', comp.logo).show();
-                    }
-
-                    allServices = response.result.services.filter(s => s.companyId === companyId);
-                    renderServices(allServices);
+            headers: { 'X-Api-Key': apiKey }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.result) {
+                const comp = data.result.companies.find(c => c.id === companyId);
+                if(comp) {
+                    document.getElementById('comp-name-header').textContent = comp.arName;
+                    const logoHeader = document.getElementById('comp-logo-header');
+                    logoHeader.src = comp.logo;
+                    logoHeader.style.display = 'block';
                 }
-            },
-            error: function() {
-                $('#services-list').html('<p class="text-center col-xs-12">عذراً، حدث خطأ أثناء تحميل البيانات.</p>');
+
+                allServices = data.result.services.filter(s => s.companyId === companyId);
+                renderServices(allServices);
             }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            document.getElementById('services-list').innerHTML = '<p class="text-center col-xs-12">عذراً، حدث خطأ أثناء تحميل البيانات.</p>';
         });
 
         // Search Logic
-        $('#serviceSearch').on('input', function() {
-            const query = $(this).val().toLowerCase();
+        document.getElementById('serviceSearch').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
             const filtered = allServices.filter(s =>
                 s.arTitle.toLowerCase().includes(query) ||
                 (s.actions && s.actions[0] && s.actions[0].content.includes(query))
@@ -259,32 +262,32 @@
         });
 
         function renderServices(services) {
-            const list = $('#services-list');
-            list.empty();
+            const list = document.getElementById('services-list');
+            list.innerHTML = '';
 
             if(services.length === 0) {
-                list.html('<div class="col-xs-12 text-center" style="padding: 50px;"><i class="fa fa-search fa-3x" style="color: #cbd5e1; margin-bottom: 20px;"></i><p style="color: #64748b; font-weight: 700;">لا توجد نتائج تطابق بحثك</p></div>');
+                list.innerHTML = '<div class="col-xs-12 text-center" style="padding: 50px;"><i class="fa fa-search fa-3x" style="color: #cbd5e1; margin-bottom: 20px;"></i><p style="color: #64748b; font-weight: 700;">لا توجد نتائج تطابق بحثك</p></div>';
                 return;
             }
 
             services.forEach(s => {
                 const action = s.actions && s.actions[0] ? s.actions[0].content : '';
-                const item = `
-                    <div class="service-card">
-                        <div class="card-top">
-                            <div class="service-icon-box"><i class="fa ${getIcon(s.arTitle)}"></i></div>
-                            <div class="service-meta">
-                                <span class="service-label">كود تفعيل</span>
-                                <h3 class="service-title">${s.arTitle}</h3>
-                            </div>
-                        </div>
-                        <div class="code-action-box" onclick="copyToClipboard('${action}')">
-                            <span class="code-text" dir="ltr">${action}</span>
-                            <div class="btn-copy-action"><i class="fa fa-copy"></i></div>
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="service-icon-box"><i class="fa ${getIcon(s.arTitle)}"></i></div>
+                        <div class="service-meta">
+                            <span class="service-label">كود تفعيل</span>
+                            <h3 class="service-title">${s.arTitle}</h3>
                         </div>
                     </div>
+                    <div class="code-action-box" onclick="copyToClipboard('${action}')">
+                        <span class="code-text" dir="ltr">${action}</span>
+                        <div class="btn-copy-action"><i class="fa fa-copy"></i></div>
+                    </div>
                 `;
-                list.append(item);
+                list.appendChild(card);
             });
         }
 
@@ -301,7 +304,6 @@
     function copyToClipboard(text) {
         if(!text) return;
         navigator.clipboard.writeText(text).then(() => {
-            // Success visual feedback could be added here
             const msg = "تم نسخ الكود: " + text;
             alert(msg);
         });

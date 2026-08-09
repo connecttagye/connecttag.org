@@ -316,7 +316,7 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const slug = urlParams.get('slug');
         const apiUrl = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
@@ -326,51 +326,51 @@
             return;
         }
 
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.success && response.result && response.result.items) {
-                    const modem = response.result.items.find(item => item.slug === slug);
-                    if (modem) {
-                        renderDetails(modem);
-                        $('#loading-screen').fadeOut();
-                    } else {
-                        alert('عذراً، المودم غير موجود.');
-                        window.location.href = 'index.html';
-                    }
+        fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.result && data.result.items) {
+                const modem = data.result.items.find(item => item.slug === slug);
+                if (modem) {
+                    renderDetails(modem);
+                    document.getElementById('loading-screen').style.display = 'none';
+                } else {
+                    alert('عذراً، المودم غير موجود.');
+                    window.location.href = 'index.html';
                 }
-            },
-            error: function() {
-                alert('حدث خطأ في الاتصال بالخادم. تأكد من تفعيل CORS.');
-                window.location.href = 'index.html';
             }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            alert('حدث خطأ في الاتصال بالخادم.');
+            window.location.href = 'index.html';
         });
 
         function renderDetails(m) {
             document.title = `${m.arabicName} ${m.modelOrVersion} - دليل المواصفات - كونكت تاق`;
-            $('#breadcrumb-active').text(m.modelOrVersion);
-            $('#modem-image').attr('src', m.image.content);
-            $('#modem-title').text(`${m.arabicName} ${m.modelOrVersion}`);
-            $('#modem-brand').text(m.brand);
-            $('#modem-description').text(m.description);
+            document.getElementById('breadcrumb-active').textContent = m.modelOrVersion;
+            document.getElementById('modem-image').src = m.image.content;
+            document.getElementById('modem-title').textContent = `${m.arabicName} ${m.modelOrVersion}`;
+            document.getElementById('modem-brand').textContent = m.brand;
+            document.getElementById('modem-description').textContent = m.description;
 
             // Fill Specs
-            $('#spec-model').text(m.modelOrVersion || '-');
-            $('#spec-type').text(m.category || '-');
-            $('#spec-year').text(m.modelYear || '-');
-            $('#spec-condition').text(m.condition || '-');
+            document.getElementById('spec-model').textContent = m.modelOrVersion || '-';
+            document.getElementById('spec-type').textContent = m.category || '-';
+            document.getElementById('spec-year').textContent = m.modelYear || '-';
+            document.getElementById('spec-condition').textContent = m.condition || '-';
 
             // Modem Settings (Config Box)
             if (m.additional && m.additional.modemSettings) {
                 const s = m.additional.modemSettings;
-                $('#config-panel').show();
+                document.getElementById('config-panel').style.display = 'block';
 
                 const link = s.loginLink || 'http://192.168.0.1';
-                $('#conf-link').text(link).attr('href', link);
-                $('#conf-user').text(s.defaultUserName || 'admin');
-                $('#conf-pass').text(s.defaultPass || 'admin');
+                const confLink = document.getElementById('conf-link');
+                confLink.textContent = link;
+                confLink.href = link;
+                document.getElementById('conf-user').textContent = s.defaultUserName || 'admin';
+                document.getElementById('conf-pass').textContent = s.defaultPass || 'admin';
             }
         }
     });

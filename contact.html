@@ -187,25 +187,28 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#contact2').on('submit', function(e) {
-      e.preventDefault();
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact2');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-      var name = $('#name').val();
-      var email = $('#email').val();
-      var message = $('#message').val();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
 
-      var subject = "رسالة تواصل من: " + name;
-      var body = "الاسم: " + name + "\n" +
-                 "البريد الإلكتروني: " + email + "\n\n" +
-                 "الرسالة:\n" + message;
+        const subject = "رسالة تواصل من: " + name;
+        const body = "الاسم: " + name + "\n" +
+                     "البريد الإلكتروني: " + email + "\n\n" +
+                     "الرسالة:\n" + message;
 
-      var mailtoLink = "mailto:info@connecttag.org" +
-                       "?subject=" + encodeURIComponent(subject) +
-                       "&body=" + encodeURIComponent(body);
+        const mailtoLink = "mailto:info@connecttag.org" +
+                         "?subject=" + encodeURIComponent(subject) +
+                         "&body=" + encodeURIComponent(body);
 
-      window.location.href = mailtoLink;
-    });
+        window.location.href = mailtoLink;
+      });
+    }
   });
 </script>
 <!-- Modular Web Component: Cookie Consent -->

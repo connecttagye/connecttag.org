@@ -119,48 +119,54 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const companyId = urlParams.get('companyId');
         const apiUrl = 'https://api.connecttag.app/v5/yemenview/initial-data';
         const apiKey = 'ws9syryf5hyd';
 
-        $.ajax({
-            url: apiUrl,
+        fetch(apiUrl, {
             method: 'GET',
-            headers: { 'X-Api-Key': apiKey },
-            success: function(response) {
-                if (response.success && response.result) {
-                    const comp = response.result.companies.find(c => c.id === companyId);
-                    $('#comp-name-header').text(comp ? comp.arName : '');
+            headers: { 'X-Api-Key': apiKey }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.result) {
+                const comp = data.result.companies.find(c => c.id === companyId);
+                document.getElementById('comp-name-header').textContent = comp ? comp.arName : '';
 
-                    const packages = response.result.packages.filter(p => p.companyId === companyId);
-                    renderPackages(packages);
-                }
+                const packages = data.result.packages.filter(p => p.companyId === companyId);
+                renderPackages(packages);
             }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            document.getElementById('packages-list').innerHTML = '<p class="text-center">حدث خطأ أثناء تحميل البيانات.</p>';
         });
 
         function renderPackages(packages) {
-            const list = $('#packages-list');
+            const list = document.getElementById('packages-list');
+            list.innerHTML = '';
+
             if(packages.length === 0) {
-                list.html('<p class="text-center">لا توجد باقات مسجلة حالياً لهذه الشركة.</p>');
+                list.innerHTML = '<p class="text-center">لا توجد باقات مسجلة حالياً لهذه الشركة.</p>';
                 return;
             }
 
             packages.forEach(p => {
-                const item = `
-                    <div class="pkg-card">
-                        <div class="pkg-title">${p.arTitle}</div>
-                        <div class="pkg-price">${p.price.toLocaleString()} <small>ريال</small></div>
-                        <div class="pkg-duration"><i class="fa fa-clock-o"></i> صلاحية ${p.duration}</div>
+                const card = document.createElement('div');
+                card.className = 'pkg-card';
+                card.innerHTML = `
+                    <div class="pkg-title">${p.arTitle}</div>
+                    <div class="pkg-price">${p.price.toLocaleString()} <small>ريال</small></div>
+                    <div class="pkg-duration"><i class="fa fa-clock-o"></i> صلاحية ${p.duration}</div>
 
-                        <div class="activate-box" onclick="copyToClipboard('${p.codeActivate}')">
-                            <span class="activate-label">كود التفعيل</span>
-                            <span class="activate-code">${p.codeActivate} <i class="fa fa-copy" style="font-size: 14px;"></i></span>
-                        </div>
+                    <div class="activate-box" onclick="copyToClipboard('${p.codeActivate}')">
+                        <span class="activate-label">كود التفعيل</span>
+                        <span class="activate-code">${p.codeActivate} <i class="fa fa-copy" style="font-size: 14px;"></i></span>
                     </div>
                 `;
-                list.append(item);
+                list.appendChild(card);
             });
         }
     });
