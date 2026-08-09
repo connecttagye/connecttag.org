@@ -242,6 +242,19 @@ class SiteCheckerApp {
                 keywords.some(k => a.innerText.toLowerCase().includes(k) || (a.href && a.href.toLowerCase().includes(k)))
             );
 
+            // Social Presence Detection
+            const socialPlatforms = {
+                facebook: ['facebook.com', 'fb.com', 'fb.me'],
+                twitter: ['twitter.com', 'x.com'],
+                instagram: ['instagram.com', 'instagr.am'],
+                linkedin: ['linkedin.com'],
+                youtube: ['youtube.com', 'youtu.be'],
+                tiktok: ['tiktok.com']
+            };
+            const socialLinksCount = links.filter(a =>
+                Object.values(socialPlatforms).flat().some(domain => a.href?.toLowerCase().includes(domain))
+            ).length;
+
             siteMeta = {
                 title: doc.querySelector('title')?.innerText || 'بدون عنوان',
                 url: url,
@@ -263,7 +276,8 @@ class SiteCheckerApp {
                 isIndexable: isIndexable ? 'مسموح ✅' : 'ممنوع ❌',
                 links: {
                     internal: links.filter(a => a.href && !a.href.startsWith('http')).length,
-                    external: links.filter(a => a.href && a.href.startsWith('http')).length
+                    external: links.filter(a => a.href && a.href.startsWith('http')).length,
+                    social: socialLinksCount
                 },
                 resources: { scripts, styles, images },
                 social: { title: ogTitle, description: ogDesc, image: ogImage, url: url },

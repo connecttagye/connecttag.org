@@ -118,9 +118,14 @@ export default class UIEngine {
                 </div>
                 <div class="stat-item">
                     <span class="label">الروابط</span>
-                    <span class="value">
-                        <span class="text-primary">${meta.links.internal}</span> / <span class="text-success">${meta.links.external}</span>
-                    </span>
+                    <div class="d-flex flex-column gap-1">
+                        <span class="value text-dark" style="font-size: 11px;">
+                            <i class="fa fa-link text-primary"></i> <span class="text-primary">${meta.links.internal}</span> / <span class="text-success">${meta.links.external}</span>
+                        </span>
+                        <span class="small fw-bold text-muted">
+                            <i class="fa fa-share-alt text-info"></i> اجتماعياً: <span class="text-info">${meta.links.social}</span>
+                        </span>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <span class="label">اللغة / التشفير</span>
