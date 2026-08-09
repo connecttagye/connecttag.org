@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد الوثائق القانونية الاحترافي - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لإنشاء سياسة الخصوصية والشروط والأحكام وشرائط ملفات تعريف الارتباط للتطبيقات والمواقع.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #25d366;
+        --bg-light: #f4f7f9;
+        --text-dark: #2c3e50;
+        --border-color: #e1e8ed;
+    }
+
+    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-dark); }
+
+    .page-header-unified {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 80px 0 60px;
+        color: white;
+        text-align: center;
+    }
+    .page-header-unified h1 { font-weight: 800; font-size: 32px; margin-bottom: 10px; }
+
+    .progress-sticky {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #fff;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 700; font-size: 13px; }
+    .progress-track { height: 8px; background: #eee; border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--secondary-color); width: 0%; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    .generator-container { padding: 40px 0; }
+
+    .form-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+        border: 1px solid var(--border-color);
+        margin-bottom: 25px;
+    }
+    .form-card h2 { color: var(--primary-color); font-weight: 800; font-size: 19px; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+    .form-card h2 span { width: 30px; height: 30px; background: rgba(0,107,152,0.1); display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 14px; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    .service-chip {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 8px;
+        background: #fff;
+        border: 2px solid #f0f0f0;
+        border-radius: 15px;
+        transition: all 0.3s;
+        text-align: center;
+        gap: 6px;
+        user-select: none;
+    }
+    .service-chip i { font-size: 18px; color: #777; }
+    .service-chip span { font-size: 11px; font-weight: 700; color: #555; }
+    .service-chip input { display: none; }
+    .service-chip:hover { border-color: var(--primary-color); transform: translateY(-3px); }
+    .service-chip.active { border-color: var(--primary-color); background: #f0faff; box-shadow: 0 5px 15px rgba(0,107,152,0.1); }
+    .service-chip.active i { color: var(--primary-color); }
+
+    .preview-section { position: sticky; top: 100px; }
+    .paper-document {
+        background: #fff;
+        width: 100%;
+        min-height: 600px;
+        padding: 40px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        border-radius: 2px;
+        border-top: 5px solid var(--primary-color);
+        font-size: 13px;
+        line-height: 1.8;
+        color: #444;
+    }
+    .paper-document.en { direction: ltr; text-align: left; }
+    .paper-document h2, .paper-document h3 { color: var(--primary-color); font-weight: 800; margin-top: 25px; margin-bottom: 15px; }
+    .paper-document h2 { font-size: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .paper-document h3 { font-size: 17px; }
+    .paper-document p { margin-bottom: 15px; }
+    .paper-document ul { margin-bottom: 15px; padding-right: 20px; }
+    .paper-document.en ul { padding-right: 0; padding-left: 20px; }
+    .paper-document li { margin-bottom: 5px; list-style-type: disc; }
+
+    .btn-action-group { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .btn-custom { border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; font-size: 12px; }
+    .btn-copy { background: var(--secondary-color); color: white; }
+    .btn-format { background: #6c757d; color: white; }
+    .btn-dl { background: var(--primary-color); color: white; }
+    .btn-prt { background: #34495e; color: white; }
+    .btn-custom:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+    .tabs-container { display: flex; gap: 10px; margin-bottom: 20px; }
+    .main-tab {
+        flex: 1;
+        padding: 12px;
+        text-align: center;
+        background: #eee;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 800;
+        transition: 0.3s;
+        border: 2px solid transparent;
+    }
+    .main-tab.active { background: #fff; border-color: var(--primary-color); color: var(--primary-color); }
+
+    .lang-tabs { display: inline-flex; background: #eee; padding: 4px; border-radius: 10px; margin-bottom: 15px; }
+    .lang-tab { padding: 5px 15px; cursor: pointer; border-radius: 8px; font-weight: 700; font-size: 13px; }
+    .lang-tab.active { background: #fff; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+    .help-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background: #ddd;
+        color: #666;
+        border-radius: 50%;
+        font-size: 10px;
+        cursor: help;
+        margin-right: 5px;
+        position: relative;
+    }
+    .help-icon:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 125%;
+        right: 0;
+        background: #333;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        width: 200px;
+        font-size: 11px;
+        line-height: 1.4;
+        z-index: 100;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Cookie Banner Customizer */
+    .cookie-preview-box {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px dashed #ccc;
+        margin-top: 20px;
+        position: relative;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cookie-banner-mock {
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        font-size: 13px;
+    }
+    .cookie-banner-mock button {
+        border: none;
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .code-output {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: monospace;
+        font-size: 12px;
+        overflow-x: auto;
+        white-space: pre;
+        margin-top: 20px;
+    }
+
+    @media print {
+        body * { visibility: hidden; }
+        .paper-document, .paper-document * { visibility: visible; }
+        .paper-document { position: absolute; left: 0; top: 0; box-shadow: none; width: 100%; border: none; }
+    }
+</style>
+</head>
+<body>
+<site-toast></site-toast>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1 data-aos="zoom-in">مولد الوثائق القانونية الذكي</h1>
+        <p data-aos="fade-up" data-aos-delay="100">سياسة الخصوصية، الشروط، وأدوات الامتثال في مكان واحد</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">مولد الخصوصية</li>
+        </ul>
+    </div>
+</div>
+
+<div class="progress-sticky" id="progress-area">
+    <div class="container">
+        <div class="progress-label">
+            <span>مدى اكتمال البيانات</span>
+            <span id="prog-val">0%</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="prog-fill"></div>
+        </div>
+    </div>
+</div>
+
+<div class="generator-container">
+    <div class="container">
+        <!-- Document Type Switcher -->
+        <div class="tabs-container" data-aos="fade-down">
+            <div class="main-tab active" id="tab-policy" onclick="setDocType('policy')">سياسة الخصوصية</div>
+            <div class="main-tab" id="tab-terms" onclick="setDocType('terms')">الشروط والأحكام</div>
+            <div class="main-tab" id="tab-cookie" onclick="setDocType('cookie')">شريط الكوكيز</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6" id="form-side">
+                <div id="main-form-content">
+                    <!-- Step 1 -->
+                    <div class="form-card" data-aos="fade-left">
+                        <div class="lang-tabs">
+                            <div class="lang-tab active" onclick="setLang('ar')">العربية</div>
+                            <div class="lang-tab" onclick="setLang('en')">English</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2><span>1</span> المعلومات الأساسية</h2>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary" onclick="exportJSON()"><i class="fa fa-upload"></i> تصدير إعدادات</button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('importFile').click()"><i class="fa fa-download"></i> استيراد إعدادات</button>
+                                <input type="file" id="importFile" style="display:none" onchange="importJSON(event)">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>المنصة:</label>
+                            <div class="d-flex gap-20 mt-1">
+                                <label><input type="radio" name="pType" value="app" checked onchange="liveUpdate()"> تطبيق</label>
+                                <label><input type="radio" name="pType" value="web" onchange="liveUpdate()"> موقع</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6"><label>اسم المشروع *</label><input type="text" id="appName" class="form-control" placeholder="اسم التطبيق/الموقع" oninput="liveUpdate()"></div>
+                            <div class="col-sm-6"><label>المطور / الشركة</label><input type="text" id="company" class="form-control" placeholder="اسم الجهة المالكة" oninput="liveUpdate()"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-6"><label>البريد الإلكتروني *</label><input type="email" id="email" class="form-control" placeholder="contact@example.com" oninput="liveUpdate()"></div>
+                            <div class="col-sm-6">
+                                <label>جهة الاختصاص (الدولة)</label>
+                                <select id="jurisdiction" class="form-control" onchange="liveUpdate()">
+                                    <option value="المملكة العربية السعودية">السعودية</option>
+                                    <option value="الإمارات العربية المتحدة">الإمارات</option>
+                                    <option value="جمهورية مصر العربية">مصر</option>
+                                    <option value="الكويت">الكويت</option>
+                                    <option value="قطر">قطر</option>
+                                    <option value="الأردن">الأردن</option>
+                                    <option value="المغرب">المغرب</option>
+                                    <option value="الولايات المتحدة الأمريكية">الولايات المتحدة</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-12">
+                                <label>نوع الكيان</label>
+                                <select id="entity" class="form-control" onchange="liveUpdate()">
+                                    <option value="شركة">شركة / مؤسسة</option>
+                                    <option value="فرد">فرد / مطور مستقل</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-card" data-aos="fade-left" data-aos-delay="100">
+                        <h2><span>2</span> الامتثال والمعايير</h2>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="service-chip" onclick="toggleSelection(this)">
+                                    <input type="checkbox" id="isGDPR">
+                                    <i class="fa fa-balance-scale"></i>
+                                    <span>تفعيل GDPR
+                                        <span class="help-icon" data-tooltip="اللائحة العامة لحماية البيانات للاتحاد الأوروبي. مطلوبة إذا كان لديك مستخدمون من أوروبا.">?</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="service-chip" onclick="toggleSelection(this)">
+                                    <input type="checkbox" id="isCCPA">
+                                    <i class="fa fa-shield"></i>
+                                    <span>تفعيل CCPA
+                                        <span class="help-icon" data-tooltip="قانون خصوصية المستهلك في كاليفورنيا. مطلوب إذا كان لديك مستخدمون من كاليفورنيا.">?</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-card" data-aos="fade-left" data-aos-delay="200">
+                        <h2><span>3</span> الخدمات المرتبطة</h2>
+
+                        <label class="mb-2 d-block small fw-bold">الخدمات التقنية:</label>
+                        <div class="services-grid mb-4">
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Google Play"><i class="fa fa-google"></i><span>Google Play</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="App Store"><i class="fa fa-apple"></i><span>App Store</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Huawei AppGallery"><i class="fa fa-modx"></i><span>Huawei AppGallery</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="AdMob"><i class="fa fa-adn"></i><span>AdMob</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Firebase"><i class="fa fa-fire"></i><span>Firebase</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="OneSignal"><i class="fa fa-bell"></i><span>OneSignal</span></label>
+                        </div>
+
+                        <label class="mb-2 d-block small fw-bold">الدفع والتتبع والأخطاء:</label>
+                        <div class="services-grid">
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="PayPal"><i class="fa fa-paypal"></i><span>PayPal</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Apple Pay"><i class="fa fa-apple"></i><span>Apple Pay</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Stripe"><i class="fa fa-cc-stripe"></i><span>Stripe</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Hotjar"><i class="fa fa-eye"></i><span>Hotjar</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Sentry"><i class="fa fa-bug"></i><span>Sentry</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="form-card" data-aos="fade-left" data-aos-delay="250">
+                        <h2><span>4</span> بنود مخصصة إضافية</h2>
+                        <div class="form-group">
+                            <label>إضافة نص خاص بك (اختياري)</label>
+                            <textarea id="customClause" class="form-control" rows="3" placeholder="أضف أي بنود قانونية إضافية ترغب في دمجها بالوثيقة..." oninput="liveUpdate()"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cookie-form-content" style="display:none">
+                    <div class="form-card" data-aos="fade-left">
+                        <h2><span>1</span> تخصيص شريط الكوكيز</h2>
+                        <div class="form-group mb-3">
+                            <label>نص الرسالة</label>
+                            <input type="text" id="cookieMsg" class="form-control" value="نحن نستخدم ملفات تعريف الارتباط لضمان حصولك على أفضل تجربة على موقعنا." oninput="updateCookiePreview()">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>نص زر الموافقة</label>
+                            <input type="text" id="cookieBtnText" class="form-control" value="موافق!" oninput="updateCookiePreview()">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>لون الخلفية</label>
+                                <input type="color" id="cookieBg" class="form-control" value="#006b98" style="height:45px" oninput="updateCookiePreview()">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>لون النص</label>
+                                <input type="color" id="cookieTextCol" class="form-control" value="#ffffff" style="height:45px" oninput="updateCookiePreview()">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-6">
+                                <label>لون زر الموافقة</label>
+                                <input type="color" id="cookieBtnBg" class="form-control" value="#25d366" style="height:45px" oninput="updateCookiePreview()">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>لون نص الزر</label>
+                                <input type="color" id="cookieBtnTextCol" class="form-control" value="#ffffff" style="height:45px" oninput="updateCookiePreview()">
+                            </div>
+                        </div>
+
+                        <div class="cookie-preview-box">
+                            <div id="cookieMock" class="cookie-banner-mock">
+                                <span id="mockMsg">نحن نستخدم ملفات تعريف الارتباط...</span>
+                                <button id="mockBtn">موافق!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="preview-section" data-aos="fade-up">
+                    <div id="doc-actions" class="btn-action-group">
+                        <button class="btn-custom btn-copy" onclick="copyText('plain')"><i class="fa fa-copy"></i> نص</button>
+                        <button class="btn-custom btn-format" onclick="copyText('html')"><i class="fa fa-code"></i> HTML</button>
+                        <button class="btn-custom btn-format" onclick="copyText('md')"><i class="fa fa-file-text-o"></i> Markdown</button>
+                        <button class="btn-custom btn-dl" onclick="downloadDoc()"><i class="fa fa-download"></i> تحميل</button>
+                        <button class="btn-custom btn-prt" onclick="window.print()"><i class="fa fa-print"></i> طباعة</button>
+                    </div>
+                    <div id="cookie-actions" class="btn-action-group" style="display:none">
+                        <button class="btn-custom btn-copy" onclick="copyCookieCode()"><i class="fa fa-copy"></i> نسخ الكود بالكامل</button>
+                    </div>
+
+                    <div id="policyPreview" class="paper-document">
+                        <!-- Rich HTML Preview will be rendered here -->
+                    </div>
+
+                    <div id="cookieCodeArea" style="display:none">
+                        <div class="code-output" id="cookieCode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+let lang = 'ar';
+let docType = 'policy';
+
+const templates = {
+    policy: {
+        ar: {
+            t: "سياسة الخصوصية لـ {n}",
+            up: "آخر تحديث: {d}",
+            in: "نحن في <strong>{c}</strong> نولي أهمية قصوى لخصوصية مستخدمينا. تم بناء {type} <strong>{n}</strong> كـ {e} {st}. تهدف هذه السياسة لإطلاعكم على كيفية جمع بياناتكم واستخدامها وحمايتها.",
+            c1: "<h2>1. المعلومات التي نجمعها</h2><p>نقوم بجمع نوعين من المعلومات:</p><ul><li><strong>المعلومات الشخصية:</strong> مثل البريد الإلكتروني الذي تقدمه لنا طواعية.</li><li><strong>المعلومات التقنية:</strong> نجمع تلقائياً معلومات مثل عنوان IP، نوع الجهاز، نظام التشغيل، ومعرفات الجهاز الفريدة، ونشاطك داخل الخدمة.</li></ul>",
+            c2: "<h2>2. الغرض من جمع البيانات</h2><p>تُستخدم البيانات التي نجمعها لتشغيل وصيانة وتطوير الخدمة، وتحسين تجربة المستخدم، والتواصل معك بشأن التحديثات الفنية والأمنية.</p>",
+            c3: "<h2>3. ملفات تعريف الارتباط (Cookies)</h2><p>نستخدم ملفات تعريف الارتباط لتخزين تفضيلاتك وتتبع تفاعلك مع الخدمة. يمكنك ضبط إعدادات جهازك لرفض هذه الملفات، ولكن قد يؤثر ذلك على عمل بعض أجزاء الخدمة.</p>",
+            c4: "<h2>4. الاحتفاظ بالبيانات وحقوق الحذف</h2><p>نحتفظ ببياناتك فقط للفترة الضرورية لتحقيق الأغراض الموضحة. يحق لك طلب الوصول إلى بياناتك أو طلب حذفها نهائياً عبر التواصل معنا.</p>",
+            c5: "<h2>5. خصوصية الأطفال</h2><p>خدماتنا لا تخاطب الأشخاص الذين تقل أعمارهم عن 13 عاماً. نحن لا نجمع بيانات الأطفال عن عمد، وإذا اكتشفنا ذلك، فسنقوم بحذفها فوراً.</p>",
+            gdpr: "<h2>6. الامتثال للائحة (GDPR)</h2><p>بالنسبة للمستخدمين في الاتحاد الأوروبي، نحن نعالج بياناتك بناءً على موافقتك. نضمن لك حقوقك في نقل البيانات والاعتراض على المعالجة والحق في النسيان.</p>",
+            ccpa: "<h2>7. حقوق الخصوصية (CCPA)</h2><p>نضمن لمواطني كاليفورنيا حق معرفة البيانات الشخصية التي نجمعها، ونؤكد أننا لا نبيع بياناتك الشخصية لأي أطراف ثالثة.</p>",
+            law: "<h2>8. القانون المعمول به</h2><p>تخضع هذه السياسة وتفسر وفقاً لقوانين <strong>{j}</strong>، وتخضع أي نزاعات للاختصاص الحصري للمحاكم هناك.</p>",
+            mail: "<h2>9. التواصل معنا</h2><p>إذا كان لديك أي استفسارات حول هذه السياسة، يمكنك التواصل معنا عبر البريد الإلكتروني: <a href='mailto:{m}'>{m}</a></p>",
+            srv: "<h3>خدمات الطرف الثالث المستخدمة</h3><p>يستخدم المشروع خدمات خارجية قد تقوم بجمع بياناتك وفقاً لسياساتها الخاصة:</p><ul>"
+        },
+        en: {
+            t: "Privacy Policy for {n}",
+            up: "Last Updated: {d}",
+            in: "At <strong>{c}</strong>, your privacy is our top priority. The <strong>{n}</strong> {type} was built as a {e} {st}. This policy informs you of our practices regarding data collection and use.",
+            c1: "<h2>1. Information Collection and Use</h2><p>We collect two types of information:</p><ul><li><strong>Personal Data:</strong> Such as your email address when provided voluntarily.</li><li><strong>Technical Data:</strong> Automatically collected IP addresses, device types, OS versions, unique device identifiers, and usage patterns.</li></ul>",
+            c2: "<h2>2. Purpose of Processing</h2><p>Your data is used to maintain, improve, and personalize the service, and to communicate updates or provide technical support.</p>",
+            c3: "<h2>3. Cookies and Tracking</h2><p>We use cookies to store your preferences. You can instruct your browser to refuse all cookies, though some parts of the service may not function correctly.</p>",
+            c4: "<h2>4. Data Retention and Rights</h2><p>We retain data only as long as necessary. You have the right to request access, correction, or deletion of your personal information from our systems.</p>",
+            c5: "<h2>5. Children's Privacy</h2><p>Our services do not address anyone under the age of 13. We do not knowingly collect personal data from children.</p>",
+            gdpr: "<h2>6. GDPR Compliance (EEA Users)</h2><p>For users in the EEA, we ensure your rights to data portability, objection, and the 'right to be forgotten'.</p>",
+            ccpa: "<h2>7. CCPA Privacy Rights</h2><p>We guarantee California residents the right to know what data is collected and confirm that we do not sell your personal information.</p>",
+            law: "<h2>8. Governing Law</h2><p>This policy is governed by the laws of <strong>{j}</strong>, and any disputes are subject to the exclusive jurisdiction of the courts there.</p>",
+            mail: "<h2>9. Contact Us</h2><p>If you have any questions about this Privacy Policy, please contact us at: <a href='mailto:{m}'>{m}</a></p>",
+            srv: "<h3>Third-Party Services</h3><p>We use external services that may collect data under their own privacy policies:</p><ul>"
+        }
+    },
+    terms: {
+        ar: {
+            t: "الشروط والأحكام لـ {n}",
+            up: "آخر تحديث: {d}",
+            in: "مرحباً بكم في <strong>{n}</strong>. باستخدامك لهذا الـ {type}، فإنك توافق على الالتزام بالشروط والأحكام التالية. يرجى قراءتها بعناية.",
+            c1: "<h2>1. قبول الشروط</h2><p>من خلال الوصول إلى {n}، فإنك تقر بأنك قرأت وفهمت وتوافق على الالتزام بهذه الشروط.</p>",
+            c2: "<h2>2. حسابات المستخدمين</h2><p>عند إنشاء حساب، يجب عليك تزويدنا بمعلومات دقيقة. أنت مسؤول عن حماية كلمة المرور الخاصة بك وعن أي نشاط يتم تحت حسابك.</p>",
+            c3: "<h2>3. الملكية الفكرية</h2><p>جميع المحتويات والعلامات التجارية الموجودة في {n} هي ملك لـ <strong>{c}</strong> ومحمية بقوانين الملكية الفكرية الدولية.</p>",
+            c4: "<h2>4. الاستخدام المقبول</h2><p>تتعهد بعدم استخدام الخدمة لأي غرض غير قانوني أو ينتهك حقوق الآخرين، وعدم محاولة إتلاف الخدمة أو تعطيلها.</p>",
+            c5: "<h2>5. إخلاء المسؤولية</h2><p>يتم تقديم الخدمة 'كما هي' دون أي ضمانات. لا نتحمل المسؤولية عن أي أضرار ناتجة عن استخدام أو عدم القدرة على استخدام الخدمة.</p>",
+            law: "<h2>6. القانون المعمول به</h2><p>تخضع هذه الشروط وتفسر وفقاً لقوانين <strong>{j}</strong>، وتخضع أي نزاعات للاختصاص الحصري للمحاكم هناك.</p>",
+            mail: "<h2>7. اتصل بنا</h2><p>لأي استفسارات حول هذه الشروط، يمكنك التواصل معنا عبر: <a href='mailto:{m}'>{m}</a></p>"
+        },
+        en: {
+            t: "Terms and Conditions for {n}",
+            up: "Last Updated: {d}",
+            in: "Welcome to <strong>{n}</strong>. By using this {type}, you agree to comply with and be bound by the following terms. Please read them carefully.",
+            c1: "<h2>1. Acceptance of Terms</h2><p>By accessing {n}, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>",
+            c2: "<h2>2. User Accounts</h2><p>When creating an account, you must provide accurate info. You are responsible for safeguarding your password and for any activity under your account.</p>",
+            c3: "<h2>3. Intellectual Property</h2><p>All content and trademarks on {n} are the property of <strong>{c}</strong> and are protected by international IP laws.</p>",
+            c4: "<h2>4. Acceptable Use</h2><p>You agree not to use the service for any illegal purpose or to violate anyone's rights, nor to attempt to damage or disrupt the service.</p>",
+            c5: "<h2>5. Disclaimer</h2><p>The service is provided 'as is' without warranties. We are not liable for any damages resulting from your use of the service.</p>",
+            law: "<h2>6. Governing Law</h2><p>These terms are governed by the laws of <strong>{j}</strong>, and any disputes are subject to the exclusive jurisdiction of the courts there.</p>",
+            mail: "<h2>7. Contact Us</h2><p>For any questions regarding these terms, please contact us at: <a href='mailto:{m}'>{m}</a></p>"
+        }
+    }
+};
+
+function toggleSelection(el) {
+    const input = el.querySelector('input');
+    input.checked = !input.checked;
+    el.classList.toggle('active', input.checked);
+    liveUpdate();
+}
+
+function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('policyPreview').classList.toggle('en', l === 'en');
+    liveUpdate();
+}
+
+function setDocType(t) {
+    docType = t;
+    document.querySelectorAll('.main-tab').forEach(tab => tab.classList.remove('active'));
+    document.getElementById('tab-' + t).classList.add('active');
+
+    if(t === 'cookie') {
+        document.getElementById('main-form-content').style.display = 'none';
+        document.getElementById('cookie-form-content').style.display = 'block';
+        document.getElementById('doc-actions').style.display = 'none';
+        document.getElementById('cookie-actions').style.display = 'flex';
+        document.getElementById('policyPreview').style.display = 'none';
+        document.getElementById('cookieCodeArea').style.display = 'block';
+        document.getElementById('progress-area').style.display = 'none';
+        updateCookiePreview();
+    } else {
+        document.getElementById('main-form-content').style.display = 'block';
+        document.getElementById('cookie-form-content').style.display = 'none';
+        document.getElementById('doc-actions').style.display = 'flex';
+        document.getElementById('cookie-actions').style.display = 'none';
+        document.getElementById('policyPreview').style.display = 'block';
+        document.getElementById('cookieCodeArea').style.display = 'none';
+        document.getElementById('progress-area').style.display = 'block';
+        liveUpdate();
+    }
+}
+
+function liveUpdate() {
+    const n = document.getElementById('appName').value;
+    const c = document.getElementById('company').value || "[Company Name]";
+    const m = document.getElementById('email').value || "[Contact Email]";
+    const j = document.getElementById('jurisdiction').value;
+    const type = document.querySelector('input[name="pType"]:checked').value;
+    const ent = document.getElementById('entity').value;
+    const custom = document.getElementById('customClause').value;
+
+    // Auto-save to LocalStorage
+    const formData = {
+        appName: n,
+        company: document.getElementById('company').value,
+        email: document.getElementById('email').value,
+        jurisdiction: j,
+        pType: type,
+        entity: ent,
+        customClause: custom,
+        gdpr: document.getElementById('isGDPR').checked,
+        ccpa: document.getElementById('isCCPA').checked,
+        services: Array.from(document.querySelectorAll('.srv:checked')).map(s => s.value)
+    };
+    localStorage.setItem('privacy_gen_data', JSON.stringify(formData));
+
+    // Progress
+    let score = 0;
+    if(n) score += 40;
+    if(document.getElementById('email').value) score += 40;
+    if(document.getElementById('company').value) score += 20;
+    document.getElementById('prog-fill').style.width = score + '%';
+    document.getElementById('prog-val').innerText = score + '%';
+
+    const ctx = templates[docType][lang];
+    const date = new Date().toLocaleDateString(lang === 'ar' ? 'ar-YE' : 'en-US', {year:'numeric', month:'long', day:'numeric'});
+
+    let pType = lang === 'ar' ? (type==='app'?'تطبيق':'موقع') : (type==='app'?'app':'website');
+    let sType = lang === 'ar' ? (type==='app'?'خدمة':'موقع إلكتروني') : (type==='app'?'service':'website');
+
+    let html = `<h1>${ctx.t.replace('{n}', n || '[...]')}</h1><p><strong>${ctx.up.replace('{d}', date)}</strong></p><br>`;
+    html += ctx.in.replace(/{c}/g, c).replace(/{n}/g, n || '[...]').replace(/{type}/g, pType).replace(/{e}/g, ent).replace(/{st}/g, sType) + "<br>";
+
+    html += ctx.c1 + ctx.c2 + ctx.c3 + ctx.c4 + ctx.c5;
+
+    // Custom Clause
+    if(custom) {
+        html += (lang === 'ar' ? "<h2>10. بنود إضافية</h2><p>" : "<h2>10. Additional Provisions</h2><p>") + custom + "</p>";
+    }
+
+    // Services (Privacy Only)
+    if(docType === 'policy') {
+        const srvs = document.querySelectorAll('.srv:checked');
+        if(srvs.length > 0) {
+            html += ctx.srv.replace('{type}', pType);
+            srvs.forEach(s => html += `<li>${s.value}</li>`);
+            html += "</ul>";
+        }
+        if(document.getElementById('isGDPR').checked) html += ctx.gdpr;
+        if(document.getElementById('isCCPA').checked) html += ctx.ccpa;
+    }
+
+    html += ctx.law.replace('{j}', j);
+    html += ctx.mail.replace(/{m}/g, m);
+
+    document.getElementById('policyPreview').innerHTML = html;
+}
+
+function updateCookiePreview() {
+    const msg = document.getElementById('cookieMsg').value;
+    const btnText = document.getElementById('cookieBtnText').value;
+    const bg = document.getElementById('cookieBg').value;
+    const textCol = document.getElementById('cookieTextCol').value;
+    const btnBg = document.getElementById('cookieBtnBg').value;
+    const btnTextCol = document.getElementById('cookieBtnTextCol').value;
+
+    const mock = document.getElementById('cookieMock');
+    mock.style.backgroundColor = bg;
+    mock.style.color = textCol;
+
+    const mockBtn = document.getElementById('mockBtn');
+    mockBtn.style.backgroundColor = btnBg;
+    mockBtn.style.color = btnTextCol;
+
+    document.getElementById('mockMsg').innerText = msg;
+    mockBtn.innerText = btnText;
+
+    const code = `<!-- Cookie Consent Banner Generated by ConnectTag -->
+<div id="cookie-banner" style="position:fixed;bottom:20px;left:20px;right:20px;background:${bg};color:${textCol};padding:15px 25px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:space-between;z-index:9999;font-family:sans-serif;">
+    <span style="font-size:14px;line-height:1.5;">${msg}</span>
+    <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookieConsent','true');" style="background:${btnBg};color:${btnTextCol};border:none;padding:8px 20px;border-radius:5px;cursor:pointer;font-weight:bold;white-space:nowrap;margin-left:15px;">${btnText}</button>
+</div>
+
+<script>
+    if(localStorage.getItem('cookieConsent') === 'true') {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+<\/script>`;
+
+    document.getElementById('cookieCode').innerText = code;
+}
+
+function exportJSON() {
+    const data = localStorage.getItem('privacy_gen_data');
+    if(!data) return;
+    const blob = new Blob([data], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'privacy-config.json';
+    a.click();
+}
+
+function importJSON(event) {
+    const file = event.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            localStorage.setItem('privacy_gen_data', JSON.stringify(data));
+            loadSavedData();
+            liveUpdate();
+        } catch(err) {
+            alert('خطأ في قراءة الملف!');
+        }
+    };
+    reader.readAsText(file);
+}
+
+function loadSavedData() {
+    const saved = localStorage.getItem('privacy_gen_data');
+    if(!saved) return;
+    const data = JSON.parse(saved);
+
+    document.getElementById('appName').value = data.appName || '';
+    document.getElementById('company').value = data.company || '';
+    document.getElementById('email').value = data.email || '';
+    document.getElementById('jurisdiction').value = data.jurisdiction || 'المملكة العربية السعودية';
+    document.getElementById('entity').value = data.entity || 'شركة';
+    document.getElementById('customClause').value = data.customClause || '';
+
+    if(data.pType) {
+        document.querySelector(`input[name="pType"][value="${data.pType}"]`).checked = true;
+    }
+
+    document.getElementById('isGDPR').checked = data.gdpr || false;
+    document.getElementById('isCCPA').checked = data.ccpa || false;
+
+    // Reset Chips
+    document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('active'));
+
+    if(data.gdpr) document.getElementById('isGDPR').parentElement.classList.add('active');
+    if(data.ccpa) document.getElementById('isCCPA').parentElement.classList.add('active');
+
+    const srvInputs = document.querySelectorAll('.srv');
+    srvInputs.forEach(input => {
+        if(data.services && data.services.includes(input.value)) {
+            input.checked = true;
+            input.parentElement.classList.add('active');
+        }
+    });
+}
+
+function copyText(mode) {
+    let content = document.getElementById('policyPreview').innerHTML;
+    let textToCopy = "";
+
+    if(mode === 'plain') {
+        textToCopy = document.getElementById('policyPreview').innerText;
+    } else if(mode === 'html') {
+        textToCopy = content;
+    } else if(mode === 'md') {
+        textToCopy = content
+            .replace(/<h1>(.*?)<\/h1>/g, "# $1\n\n")
+            .replace(/<h2>(.*?)<\/h2>/g, "## $1\n\n")
+            .replace(/<h3>(.*?)<\/h3>/g, "### $1\n\n")
+            .replace(/<strong>(.*?)<\/strong>/g, "**$1**")
+            .replace(/<p>(.*?)<\/p>/g, "$1\n\n")
+            .replace(/<li>(.*?)<\/li>/g, "* $1\n")
+            .replace(/<br>/g, "\n")
+            .replace(/<.*?>/g, "");
+    }
+
+    navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+        window.showToast('تم نسخ النص بنجاح!', 'success');
+    });
+}
+
+function copyCookieCode() {
+    const code = document.getElementById('cookieCode').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        window.showToast('تم نسخ كود شريط الكوكيز بنجاح!', 'success');
+    });
+}
+
+function downloadDoc() {
+    const t = document.getElementById('policyPreview').innerHTML;
+    const blob = new Blob([`<!DOCTYPE html><html lang="${lang}" dir="${lang==='ar'?'rtl':'ltr'}"><head><meta charset="UTF-8"><style>body{font-family:sans-serif;padding:50px;line-height:1.8;max-width:800px;margin:auto;}h1,h2,h3{color:#006b98;}</style></head><body>${t}</body></html>`], {type:'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `${docType}-doc.html`;
+    a.click();
+}
+
+window.onload = () => { AOS.init({duration: 800, once: true}); loadSavedData(); liveUpdate(); };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أداة فحص الـ SEO والكلمات الدلالية - كونكت تاق</title>
+<meta name="description" content="حلل سيو موقعك، افحص الكلمات المفتاحية، وعاين نتائج البحث مجاناً مع أداة تحليل SEO المتقدمة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+<link rel="stylesheet" href="site-checker.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="site-checker.js" defer></script>
+
+</head>
+<body data-theme="light">
+<site-toast></site-toast>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container" data-aos="fade-down">
+        <h1>محلل الـ SEO الاحترافي</h1>
+        <p>أداة متكاملة لتحليل بنية الموقع، الكلمات المفتاحية، وتصدر نتائج البحث</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">فاحص الـ SEO</li>
+        </ul>
+    </div>
+</div>
+
+<div class="checker-container">
+    <div class="container">
+        <!-- Tool Selector -->
+        <div class="tool-selector" data-aos="fade-up">
+            <div class="tool-tile" id="tool-all" onclick="selectTool('all')">
+                <i class="fa fa-th-large"></i><span>الفحص الشامل</span>
+            </div>
+            <div class="tool-tile active" id="tool-seo" onclick="selectTool('seo')">
+                <i class="fa fa-rocket"></i><span>محلل الـ SEO</span>
+            </div>
+            <div class="tool-tile" id="tool-tech" onclick="selectTool('tech')">
+                <i class="fa fa-terminal"></i><span>كاشف التقنيات</span>
+            </div>
+            <div class="tool-tile" id="tool-trust" onclick="selectTool('trust')">
+                <i class="fa fa-user-shield"></i><span>الموثوقية والأمان</span>
+            </div>
+            <div class="tool-tile" id="tool-monetize" onclick="selectTool('monetize')">
+                <i class="fa fa-credit-card"></i><span>فحص الأرباح</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="tabs-custom no-print" data-aos="fade-up">
+                    <div class="tab-item active" onclick="switchMode('url')">فحص رابط (URL)</div>
+                    <div class="tab-item" onclick="switchMode('code')">فحص الكود (HTML)</div>
+                </div>
+
+                <div class="search-card" data-aos="fade-up">
+                    <div id="url-mode">
+                        <div class="input-group-custom">
+                            <input type="url" id="siteUrl" class="url-input" placeholder="https://example.com">
+                            <button class="btn-analyze" onclick="startAnalysis()">تحليل الآن</button>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button class="btn btn-sm btn-link text-decoration-none fw-bold" onclick="loadDemoData()">
+                                <i class="fa fa-magic"></i> جرب الأداة ببيانات تجريبية
+                            </button>
+                        </div>
+                    </div>
+                    <div id="code-mode" style="display:none">
+                        <textarea id="htmlCode" class="code-editor" placeholder="ألصق كود الـ HTML هنا..."></textarea>
+                        <button class="btn-analyze w-100 mt-4 h-50px" onclick="startAnalysis()">تحليل الكود المكتوب</button>
+                    </div>
+                </div>
+
+                <div id="loader" class="loader-wrapper">
+                    <div class="spinner"></div>
+                    <h4 id="loader-text" class="fw-bold">جاري تحليل البيانات…</h4>
+                </div>
+
+                <div id="results-dashboard" class="results-dashboard">
+                    <div id="smart-recommendation" class="smart-rec"></div>
+                    <div class="category-scores" id="category-scores"></div>
+
+                    <div id="res-map-container" class="mb-5">
+                        <h2 class="section-title"><i class="fa fa-server"></i> توزيع استهلاك الموارد</h2>
+                        <div class="chart-container">
+                            <canvas id="resourceChart"></canvas>
+                        </div>
+                        <div class="res-map d-flex flex-wrap gap-3" id="res-map" style="display:none !important"></div>
+                    </div>
+
+                    <div id="analysis-results"></div>
+
+                    <div id="seo-specialized" class="mt-5">
+                        <h2 class="section-title"><i class="fa fa-pencil-square-o"></i> تحليل جودة المحتوى</h2>
+                        <div id="content-quality-stats"></div>
+
+                        <h2 class="section-title"><i class="fa fa-google"></i> محاكي نتائج بحث جوجل</h2>
+                        <div class="serp-container mb-4">
+                            <div class="serp-url" id="google-url">...</div>
+                            <div class="serp-title" id="google-title">...</div>
+                            <div class="serp-desc" id="google-desc">...</div>
+                        </div>
+                        <div class="d-flex gap-3 mb-4">
+                            <span class="badge bg-primary rounded-pill">العنوان: <span id="title-char-count">0</span>/60</span>
+                            <span class="badge bg-secondary rounded-pill">الوصف: <span id="desc-char-count">0</span>/160</span>
+                        </div>
+                        <h2 class="section-title"><i class="fa fa-tags"></i> تحليل الكلمات والعبارات</h2>
+                        <div id="keyword-results" class="mb-3"></div>
+                        <div id="phrase-results" class="mb-4"></div>
+                    </div>
+
+                    <div id="tech-specialized" class="mt-5">
+                        <h2 class="section-title"><i class="fa fa-link"></i> مستكشف الروابط</h2>
+                        <div class="table-container shadow-sm">
+                            <table class="links-table mb-0">
+                                <thead><tr><th>نص الرابط</th><th>النوع</th><th>الرابط</th></tr></thead>
+                                <tbody id="links-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="results-dashboard">
+                    <div class="score-card mb-4" data-aos="zoom-in">
+                        <h5 class="fw-bold mb-4">النتيجة النهائية</h5>
+                        <div class="score-circle">
+                            <span id="total-score">0</span>
+                            <svg width="140" height="140">
+                                <circle cx="70" cy="70" r="62" fill="transparent" stroke="#eee" stroke-width="10" stroke-dasharray="390" stroke-dashoffset="0"></circle>
+                                <circle cx="70" cy="70" r="62" fill="transparent" stroke="var(--brand-primary)" stroke-width="10" stroke-dasharray="390" stroke-dashoffset="390" id="score-circle-bar"></circle>
+                            </svg>
+                        </div>
+                        <p id="score-msg" class="h5 fw-bold mb-4"></p>
+                        <div class="stats-grid mb-4">
+                            <div class="stat-box p-3 rounded-4 bg-light">
+                                <span class="stat-val h4 d-block fw-800" id="stat-words">0</span>
+                                <span class="small text-muted">كلمة</span>
+                            </div>
+                            <div class="stat-box p-3 rounded-4 bg-light">
+                                <span class="stat-val h4 d-block fw-800" id="stat-res">0</span>
+                                <span class="small text-muted">موارد تقنية</span>
+                            </div>
+                        </div>
+                        <button class="btn-analyze w-100 no-print" style="padding:15px; border-radius:18px;" onclick="window.print()">
+                            <i class="fa fa-file-pdf-o"></i> تحميل التقرير PDF
+                        </button>
+                    </div>
+                </div>
+                <div class="history-card no-print">
+                    <h5 class="fw-bold mb-4"><i class="fa fa-clock-o"></i> السجل الأخير</h5>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fixModal" class="fix-modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h4 id="modalTitle" class="fw-bold mb-3 text-primary">دليل الإصلاح السريع</h4>
+        <p id="modalDesc" class="text-muted mb-3"></p>
+        <div class="snippet-box" id="modalSnippet"></div>
+        <button class="btn-analyze w-100 mt-4" onclick="copySnippet()"><i class="fa fa-clone"></i> نسخ الكود البرمجي</button>
+    </div>
+</div>
+
+
+</div>
+
+<site-footer></site-footer>
+
+</body>
+</html>

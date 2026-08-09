@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد الروابط العميقة (Deep Links) - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لمطوري أندرويد لإنشاء واختبار الروابط العميقة (Deep Links) بصيغة intent:// و https:// بسهولة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --bg-editor: #f8fafc;
+    }
+
+    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
+
+    .tool-container { padding-top: 120px; padding-bottom: 80px; max-width: 1000px; margin: 0 auto; }
+    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
+
+    .input-section { margin-bottom: 30px; }
+    .label-custom { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; color: #1e293b; }
+
+    .custom-input {
+        border: 2px solid #f1f5f9; border-radius: 12px; padding: 12px 15px; width: 100%;
+        font-weight: 600; transition: 0.3s; outline: none; margin-bottom: 15px;
+    }
+    .custom-input:focus { border-color: var(--primary-color); }
+
+    .result-box {
+        background: #f8fafc; border: 2px solid #f1f5f9; border-radius: 15px; padding: 20px;
+        position: relative; margin-bottom: 20px; animation: slideIn 0.4s ease;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn-copy {
+        position: absolute; top: 10px; left: 10px; background: #e2e8f0; color: #475569;
+        border: none; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .btn-copy:hover { background: #cbd5e1; }
+
+    .qr-container { text-align: center; margin-top: 20px; padding: 20px; background: #fff; border-radius: 15px; border: 1px solid #eee; display: inline-block; width: 100%; }
+    #qrcode { display: inline-block; margin-bottom: 15px; }
+
+    .badge-type { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; margin-bottom: 8px; }
+    .badge-intent { background: #fee2e2; color: #991b1b; }
+    .badge-uri { background: #dcfce7; color: #166534; }
+
+    .info-alert { background: #f0f9ff; border: 1px solid #e0f2fe; border-radius: 15px; padding: 15px; margin-top: 30px; font-size: 13px; line-height: 1.6; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<!-- QRCode.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<site-header></site-header>
+
+<div class="tool-container container">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">مولد الروابط</li>
+        </ul>
+        <h1 style="font-weight: 900; color: var(--primary-color);">مولد الروابط العميقة (Deep Links)</h1>
+        <p class="text-muted">قم بإنشاء روابط مخصصة لفتح صفحات محددة داخل تطبيقك مباشرة</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="main-card">
+                <div class="input-section">
+                    <label class="label-custom">البروتوكول (Scheme):</label>
+                    <input type="text" id="scheme" class="custom-input" placeholder="مثال: myapp" oninput="generateLinks()">
+
+                    <label class="label-custom">المضيف (Host / Domain):</label>
+                    <input type="text" id="host" class="custom-input" placeholder="مثال: profile" oninput="generateLinks()">
+
+                    <label class="label-custom">المسار (Path - اختياري):</label>
+                    <input type="text" id="path" class="custom-input" placeholder="مثال: /settings" oninput="generateLinks()">
+
+                    <label class="label-custom">اسم الحزمة (Package Name - لروابط Intent):</label>
+                    <input type="text" id="package" class="custom-input" placeholder="مثal: com.example.app" oninput="generateLinks()">
+                </div>
+
+                <div class="info-alert">
+                    <i class="fa fa-lightbulb-o"></i> <strong>نصيحة:</strong> تأكد من إعداد <code>&lt;intent-filter&gt;</code> في ملف Manifest الخاص بتطبيقك ليتوافق مع هذه القيم.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="main-card">
+                <div id="results-area">
+                    <label class="label-custom">الرابط المباشر (Custom URI):</label>
+                    <div class="result-box">
+                        <span class="badge-type badge-uri">URI SCHEME</span>
+                        <button class="btn-copy" onclick="copyText('uri-result')">نسخ</button>
+                        <p id="uri-result" style="margin: 0; word-break: break-all; font-family: monospace; font-weight: 700;">-</p>
+                    </div>
+
+                    <label class="label-custom">رابط الـ Intent (Android):</label>
+                    <div class="result-box">
+                        <span class="badge-type badge-intent">ANDROID INTENT</span>
+                        <button class="btn-copy" onclick="copyText('intent-result')">نسخ</button>
+                        <p id="intent-result" style="margin: 0; word-break: break-all; font-family: monospace; font-size: 13px;">-</p>
+                    </div>
+
+                    <div class="qr-container">
+                        <div id="qrcode"></div>
+                        <p class="small text-muted mb-0">امسح الكود بالكاميرا لاختبار الرابط على هاتفك</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+
+<script>
+    let qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 160,
+        height: 160,
+        colorDark : "#006b98",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    function generateLinks() {
+        const scheme = document.getElementById('scheme').value.trim();
+        const host = document.getElementById('host').value.trim();
+        const path = document.getElementById('path').value.trim();
+        const pkg = document.getElementById('package').value.trim();
+
+        if (!scheme || !host) {
+            document.getElementById('uri-result').textContent = "-";
+            document.getElementById('intent-result').textContent = "-";
+            return;
+        }
+
+        // Generate Custom URI
+        const fullUri = `${scheme}://${host}${path}`;
+        document.getElementById('uri-result').textContent = fullUri;
+
+        // Generate Intent URI
+        let intentUri = `intent://${host}${path}#Intent;scheme=${scheme};`;
+        if (pkg) intentUri += `package=${pkg};`;
+        intentUri += `end`;
+        document.getElementById('intent-result').textContent = intentUri;
+
+        // Update QR
+        qrcode.clear();
+        qrcode.makeCode(fullUri);
+    }
+
+    function copyText(id) {
+        const text = document.getElementById(id).textContent;
+        if (text === "-") return;
+        navigator.clipboard.writeText(text).then(() => alert('تم النسخ بنجاح!'));
+    }
+
+    // Initial QR
+    qrcode.makeCode("https://connecttag.org");
+</script>
+</body>
+</html>

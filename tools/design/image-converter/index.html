@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>محول الصور المتقدم - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لتحويل الصور إلى WebP و SVG و PNG و JPEG مع التحكم في الجودة، تغيير الحجم، وإضافة العلامات المائية.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #25d366;
+        --bg-light: #f4f7f9;
+        --text-dark: #2c3e50;
+        --border-color: #e1e8ed;
+    }
+
+    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-dark); }
+
+    .page-header-unified {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 80px 0 60px;
+        color: white;
+        text-align: center;
+    }
+
+    .converter-container { padding: 40px 0; }
+
+    .main-card {
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        padding: 30px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 30px;
+    }
+
+    .format-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .format-tile {
+        cursor: pointer;
+        padding: 10px 5px;
+        background: #f8f9fa;
+        border: 2px solid #eee;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 800;
+        transition: 0.3s;
+        color: #666;
+        font-size: 12px;
+    }
+    .format-tile.active {
+        background: #eef9ff;
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        box-shadow: 0 5px 15px rgba(0,107,152,0.1);
+    }
+
+    .controls { background: #fdfdfd; padding: 15px; border-radius: 12px; border: 1px solid #f0f0f0; }
+
+    .quality-box { display: flex; align-items: center; gap: 15px; }
+    .quality-box input { flex: 1; accent-color: var(--primary-color); }
+    .quality-label { font-weight: 700; font-size: 13px; min-width: 70px; }
+
+    .upload-zone {
+        border: 3px dashed #ddd;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        background: #fff;
+        margin-top: 20px;
+    }
+    .upload-zone:hover, .upload-zone.dragover { border-color: var(--primary-color); background: #f0f7fa; }
+    .upload-zone i { font-size: 40px; color: var(--primary-color); margin-bottom: 15px; }
+    .upload-zone h4 { font-weight: 800; }
+
+    .image-list { margin-top: 30px; }
+    .image-item {
+        background: #fff;
+        padding: 15px;
+        border-radius: 16px;
+        border: 1px solid #eee;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: 0.3s;
+    }
+    .image-item:hover { box-shadow: 0 5px 15px rgba(0,107,152,0.05); }
+    .thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
+    .info { flex: 1; }
+    .name { font-weight: 700; font-size: 14px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .sizes { font-size: 11px; color: #888; display: flex; gap: 10px; }
+    .size-reduction { color: var(--secondary-color); font-weight: 700; }
+
+    .actions { display: flex; gap: 8px; }
+    .btn-action {
+        width: 35px; height: 35px;
+        border: none; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; transition: 0.2s;
+    }
+    .btn-dl { background: #e8f5e9; color: #2e7d32; }
+    .btn-rm { background: #ffebee; color: #c62828; }
+
+    .batch-actions { display: flex; gap: 15px; margin-top: 25px; }
+    .btn-main {
+        flex: 1; border: none; padding: 12px; border-radius: 12px; font-weight: 800;
+        cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-dl-all { background: var(--secondary-color); color: #fff; }
+    .btn-clear { background: #6c757d; color: #fff; flex: 0.3; }
+
+    .effect-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f8f9fa;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 1px solid #eee;
+        cursor: pointer;
+        user-select: none;
+    }
+    .effect-pill input { cursor: pointer; }
+    .effect-pill.active { border-color: var(--primary-color); background: #eef9ff; color: var(--primary-color); }
+
+    @media (max-width: 768px) {
+        .batch-actions { flex-direction: column; }
+        .image-item { flex-direction: column; text-align: center; }
+    }
+</style>
+</head>
+<body>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1>محول الصور المتقدم</h1>
+        <p>تحويل، ضغط، تغيير حجم، وإضافة علامات مائية بكل سهولة</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
+            <li><a href="../../index.html" style="color:white !important; opacity:0.8;">الأدوات</a></li>
+            <li class="active" style="color:white !important; font-weight:800;">محول الصور</li>
+        </ul>
+    </div>
+</div>
+
+<div class="converter-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-card" data-aos="fade-up">
+                    <div class="row">
+                        <!-- 1. Formats -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold mb-2">نوع المصدر:</h6>
+                            <div class="format-grid" id="sourceGrid">
+                                <div class="format-tile active" onclick="setSourceFilter(this, 'all')">الكل</div>
+                                <div class="format-tile" onclick="setSourceFilter(this, 'png')">PNG</div>
+                                <div class="format-tile" onclick="setSourceFilter(this, 'jpeg')">JPG</div>
+                                <div class="format-tile" onclick="setSourceFilter(this, 'webp')">WebP</div>
+                            </div>
+                            <h6 class="fw-bold mb-2">تنسيق الإخراج:</h6>
+                            <div class="format-grid" id="targetGrid">
+                                <div class="format-tile active" onclick="setFormat(this, 'webp')">WebP</div>
+                                <div class="format-tile" onclick="setFormat(this, 'png')">PNG</div>
+                                <div class="format-tile" onclick="setFormat(this, 'jpeg')">JPEG</div>
+                                <div class="format-tile" onclick="setFormat(this, 'svg')">SVG</div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Resize & Quality -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold mb-2">الإعدادات الفنية:</h6>
+                            <div class="controls">
+                                <div class="quality-box mb-3">
+                                    <span class="quality-label">الجودة: <span id="q-val">90%</span></span>
+                                    <input type="range" id="qualityRange" min="10" max="100" value="90" oninput="updateQuality(this.value)">
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-6"><input type="number" id="resizeWidth" class="form-control form-control-sm" placeholder="العرض" oninput="liveUpdate()"></div>
+                                    <div class="col-6"><input type="number" id="resizeHeight" class="form-control form-control-sm" placeholder="الارتفاع" oninput="liveUpdate()"></div>
+                                </div>
+                                <div class="mt-2">
+                                    <label class="small fw-bold" style="font-size:10px; cursor:pointer;">
+                                        <input type="checkbox" id="maintainAspect" checked onchange="liveUpdate()"> الحفاظ على التناسب الذكي
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Effects & Watermark -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold mb-2">الفلاتر والعلامة المائية:</h6>
+                            <div class="controls">
+                                <div class="d-flex gap-2 mb-3">
+                                    <label class="effect-pill" id="bw-pill">
+                                        <input type="checkbox" id="grayscaleCheck" onchange="toggleBW()"> أبيض وأسود
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="watermarkText" class="form-control form-control-sm mb-2" placeholder="نص العلامة المائية..." oninput="liveUpdate()">
+                                    <div class="d-flex align-items:center gap-2">
+                                        <span class="small text-muted">اللون:</span>
+                                        <input type="color" id="watermarkColor" value="#ffffff" oninput="liveUpdate()" style="width:30px;height:20px;padding:0;border:none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <i class="fa fa-cloud-upload"></i>
+                        <h4>اسحب وأفلت الصور هنا</h4>
+                        <p class="text-muted" id="acceptText">أو اضغط Ctrl+V للصق من الحافظة</p>
+                        <input type="file" id="fileInput" multiple accept="image/*">
+                    </div>
+
+                    <div id="fileList" class="image-list"></div>
+
+                    <div class="batch-actions" id="batchActions" style="display: none;">
+                        <button class="btn-main btn-clear" onclick="clearAll()"><i class="fa fa-trash"></i> مسح</button>
+                        <button class="btn-main btn-dl-all" onclick="downloadAllZip()"><i class="fa fa-file-archive-o"></i> تحميل الكل (ZIP)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+let targetFormat = 'webp';
+let sourceFilter = 'all';
+let quality = 0.9;
+let filesToProcess = [];
+let processedResults = [];
+
+function setSourceFilter(el, type) {
+    sourceFilter = type;
+    document.querySelectorAll('#sourceGrid .format-tile').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    const input = document.getElementById('fileInput');
+    const acceptText = document.getElementById('acceptText');
+    if (type === 'all') { input.accept = 'image/*'; acceptText.innerText = 'أو اضغط Ctrl+V للصق من الحافظة'; }
+    else { input.accept = `image/${type === 'jpeg' ? 'jpeg' : type}`; acceptText.innerText = `يتم قبول صور ${type.toUpperCase()} فقط الآن`; }
+    processAll();
+}
+
+function setFormat(el, f) {
+    targetFormat = f;
+    document.querySelectorAll('#targetGrid .format-tile').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelector('.quality-box').parentElement.style.opacity = (f === 'webp' || f === 'jpeg') ? '1' : '0.4';
+    if (filesToProcess.length > 0) processAll();
+}
+
+function updateQuality(v) {
+    quality = v / 100;
+    document.getElementById('q-val').innerText = v + '%';
+    if (filesToProcess.length > 0) processAll();
+}
+
+function toggleBW() {
+    document.getElementById('bw-pill').classList.toggle('active', document.getElementById('grayscaleCheck').checked);
+    liveUpdate();
+}
+
+function liveUpdate() { if (filesToProcess.length > 0) processAll(); }
+
+window.addEventListener('paste', e => {
+    const items = e.clipboardData.items;
+    for (let item of items) {
+        if (item.type.indexOf('image') !== -1) {
+            const blob = item.getAsFile();
+            handleFiles([new File([blob], `pasted-${Date.now()}.png`, { type: blob.type })]);
+        }
+    }
+});
+
+const fileInput = document.getElementById('fileInput');
+const dropZone = document.getElementById('dropZone');
+fileInput.onchange = e => handleFiles(e.target.files);
+dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('dragover'); };
+dropZone.ondragleave = () => dropZone.classList.remove('dragover');
+dropZone.ondrop = e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); };
+
+function handleFiles(files) {
+    filesToProcess = [...filesToProcess, ...Array.from(files)];
+    processAll();
+}
+
+async function processAll() {
+    const list = document.getElementById('fileList');
+    list.innerHTML = '';
+    processedResults = [];
+    const filtered = filesToProcess.filter(f => sourceFilter === 'all' || f.type.includes(sourceFilter));
+    document.getElementById('batchActions').style.display = filtered.length > 0 ? 'flex' : 'none';
+
+    for (let i = 0; i < filtered.length; i++) {
+        const file = filtered[i];
+        const item = document.createElement('div');
+        item.className = 'image-item';
+        item.innerHTML = `<img class="thumb" src="${URL.createObjectURL(file)}"><div class="info"><span class="name">${file.name}</span><div class="sizes"><span>${(file.size/1024).toFixed(1)} KB</span> <span id="new-size-${i}">...</span></div></div><div class="actions"><button class="btn-action btn-dl" id="dl-${i}" disabled><i class="fa fa-download"></i></button><button class="btn-action btn-rm" onclick="removeFile('${file.name}')"><i class="fa fa-times"></i></button></div>`;
+        list.appendChild(item);
+
+        try {
+            const result = await convertImage(file, targetFormat);
+            processedResults.push(result);
+            const reduction = ((1 - result.blob.size / file.size) * 100).toFixed(0);
+            document.getElementById(`new-size-${i}`).innerHTML = `➜ ${(result.blob.size/1024).toFixed(1)} KB <span class="size-reduction">(${reduction > 0 ? '-' : '+'}${Math.abs(reduction)}%)</span>`;
+            const dl = document.getElementById(`dl-${i}`); dl.disabled = false; dl.onclick = () => downloadOne(result);
+        } catch (err) { }
+    }
+}
+
+function convertImage(file, format) {
+    const rWidth = document.getElementById('resizeWidth').value;
+    const rHeight = document.getElementById('resizeHeight').value;
+    const isAspect = document.getElementById('maintainAspect').checked;
+    const isBW = document.getElementById('grayscaleCheck').checked;
+    const wmText = document.getElementById('watermarkText').value;
+    const wmColor = document.getElementById('watermarkColor').value;
+
+    return new Promise((resolve, reject) => {
+        if (format === 'svg') {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><image href="${e.target.result}" width="100%" height="100%"/></svg>`;
+                resolve({ blob: new Blob([svg], {type: 'image/svg+xml'}), name: file.name.replace(/\.[^/.]+$/, "") + '.svg' });
+            };
+            reader.readAsDataURL(file);
+            return;
+        }
+
+        const img = new Image();
+        img.src = URL.createObjectURL(file);
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width, h = img.height;
+
+            if (rWidth && rHeight) {
+                if (isAspect) {
+                    const ratio = Math.min(parseInt(rWidth) / img.width, parseInt(rHeight) / img.height);
+                    w = img.width * ratio;
+                    h = img.height * ratio;
+                } else {
+                    w = parseInt(rWidth);
+                    h = parseInt(rHeight);
+                }
+            }
+            else if (rWidth) { h = (img.height / img.width) * parseInt(rWidth); w = parseInt(rWidth); }
+            else if (rHeight) { w = (img.width / img.height) * parseInt(rHeight); h = parseInt(rHeight); }
+
+            canvas.width = w; canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            if (isBW) ctx.filter = 'grayscale(100%)';
+            ctx.drawImage(img, 0, 0, w, h);
+
+            if (wmText) {
+                ctx.filter = 'none';
+                ctx.font = `${Math.max(w,h) * 0.03}px Cairo`;
+                ctx.fillStyle = wmColor;
+                ctx.globalAlpha = 0.5;
+                ctx.textAlign = "right";
+                ctx.fillText(wmText, w - 20, h - 20);
+            }
+
+            canvas.toBlob(blob => {
+                resolve({ blob, name: file.name.replace(/\.[^/.]+$/, "") + '.' + format });
+            }, `image/${format === 'jpeg' ? 'jpeg' : format}`, quality);
+        };
+        img.onerror = reject;
+    });
+}
+
+function downloadOne(r) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(r.blob);
+    a.download = r.name;
+    a.click();
+    window.showToast("تم تحميل الصورة", "success");
+}
+
+async function downloadAllZip() {
+    const zip = new JSZip();
+    processedResults.forEach(r => zip.file(r.name, r.blob));
+    const content = await zip.generateAsync({type: "blob"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(content);
+    a.download = `images-${Date.now()}.zip`;
+    a.click();
+    window.showToast("تم تحميل جميع الصور في ملف ZIP", "success");
+}
+
+function removeFile(n) { filesToProcess = filesToProcess.filter(f => f.name !== n); processAll(); }
+function clearAll() { filesToProcess = []; processAll(); }
+window.onload = () => AOS.init({ duration: 800, once: true });
+</script>
+
+</body>
+</html>

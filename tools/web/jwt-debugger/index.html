@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>فاحص ومحلل JWT - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لمطوري الويب لفك تشفير وتحليل توكن JWT (JSON Web Token) ورؤية محتويات الـ Header والـ Payload بسهولة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --bg-editor: #f8fafc;
+        --jwt-red: #fb7185;
+        --jwt-purple: #c084fc;
+        --jwt-blue: #38bdf8;
+    }
+
+    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
+
+    .tool-container { padding-top: 120px; padding-bottom: 80px; }
+    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
+
+    .jwt-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
+
+    .label-custom { font-weight: 800; font-size: 14px; margin-bottom: 12px; display: block; color: #1e293b; }
+
+    /* Encoded Side */
+    .encoded-area {
+        width: 100%; height: 500px; border-radius: 15px; border: 2px solid #f1f5f9;
+        padding: 20px; font-family: 'Courier New', monospace; font-size: 15px; line-height: 1.6;
+        word-break: break-all; resize: none; outline: none; transition: 0.3s;
+    }
+    .encoded-area:focus { border-color: var(--primary-color); background: #fff; }
+
+    /* Decoded Side */
+    .decoded-section {
+        background: #0f172a; border-radius: 15px; padding: 25px; color: #f8fafc;
+        font-family: 'Courier New', monospace; height: 100%; display: flex; flex-direction: column; gap: 20px;
+    }
+    .decoded-block { position: relative; }
+    .block-header { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 8px; }
+    .block-content {
+        background: rgba(255,255,255,0.03); border-radius: 10px; padding: 15px;
+        white-space: pre-wrap; font-size: 13px; overflow: auto;
+    }
+
+    .color-header { color: var(--jwt-red); }
+    .color-payload { color: var(--jwt-purple); }
+    .color-signature { color: var(--jwt-blue); }
+
+    .status-badge {
+        display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
+        margin-top: 10px;
+    }
+    .status-valid { background: #dcfce7; color: #166534; }
+    .status-invalid { background: #fee2e2; color: #991b1b; }
+
+    @media (max-width: 992px) {
+        .jwt-grid { grid-template-columns: 1fr; }
+        .encoded-area { height: 250px; }
+    }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="tool-container container">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">فاحص JWT</li>
+        </ul>
+        <h1 style="font-weight: 900; color: var(--primary-color);">فاحص ومحلل JWT</h1>
+        <p class="text-muted">قم بفك تشفير توكن JWT الخاص بك وتحليل محتوياته فورياً</p>
+    </div>
+
+    <div class="main-card">
+        <div class="jwt-grid">
+            <!-- Left: Encoded -->
+            <div>
+                <label class="label-custom" for="jwt-input">أدخل التوكن المشفر (Encoded):</label>
+                <textarea id="jwt-input" class="encoded-area" placeholder="أدخل التوكن هنا (Header.Payload.Signature)"></textarea>
+                <div id="status-area"></div>
+            </div>
+
+            <!-- Right: Decoded -->
+            <div>
+                <label class="label-custom">محتويات التوكن (Decoded):</label>
+                <div class="decoded-section">
+                    <!-- Header -->
+                    <div class="decoded-block">
+                        <div class="block-header color-header">HEADER: <small>ALGORITHM & TOKEN TYPE</small></div>
+                        <div id="header-out" class="block-content color-header">{ "alg": "HS256", "typ": "JWT" }</div>
+                    </div>
+
+                    <!-- Payload -->
+                    <div class="decoded-block">
+                        <div class="block-header color-payload">PAYLOAD: <small>DATA</small></div>
+                        <div id="payload-out" class="block-content color-payload">{ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }</div>
+                    </div>
+
+                    <!-- Signature -->
+                    <div class="decoded-block">
+                        <div class="block-header color-signature">VERIFY SIGNATURE</div>
+                        <div id="signature-out" class="block-content color-signature">Signature Content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JWT Info -->
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="p-3">
+                <h6 style="font-weight: 800;"><i class="fa fa-info-circle text-primary"></i> ما هو JWT؟</h6>
+                <p class="small text-muted">JSON Web Token هو وسيلة آمنة لنقل المعلومات بين طرفين ككائن JSON. يتميز بأنه مدمج وذاتي الاحتواء.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3">
+                <h6 style="font-weight: 800;"><i class="fa fa-lock text-success"></i> أمان البيانات</h6>
+                <p class="small text-muted">يتم فك التشفير محلياً في متصفحك. لا نقوم بحفظ أو إرسال أي توكنات إلى خوادمنا نهائياً.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3">
+                <h6 style="font-weight: 800;"><i class="fa fa-code text-info"></i> الاستخدام البرمجي</h6>
+                <p class="small text-muted">يستخدم JWT غالباً في عمليات تسجيل الدخول (Authentication) وتمرير بيانات المستخدم بين الواجهة الأمامية والخلفية.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById('jwt-input');
+    const headerOut = document.getElementById('header-out');
+    const payloadOut = document.getElementById('payload-out');
+    const signatureOut = document.getElementById('signature-out');
+    const statusArea = document.getElementById('status-area');
+
+    input.addEventListener('input', decodeJWT);
+
+    function decodeBase64Url(str) {
+        try {
+            // Add padding if needed
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) str += '=';
+            return decodeURIComponent(atob(str).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function decodeJWT() {
+        const token = input.value.trim();
+        if (!token) {
+            resetFields();
+            return;
+        }
+
+        const parts = token.split('.');
+
+        if (parts.length !== 3) {
+            statusArea.innerHTML = '<span class="status-badge status-invalid">بنية التوكن غير صحيحة (يجب أن يحتوي على 3 أجزاء)</span>';
+            return;
+        }
+
+        const header = decodeBase64Url(parts[0]);
+        const payload = decodeBase64Url(parts[1]);
+
+        if (!header || !payload) {
+            statusArea.innerHTML = '<span class="status-badge status-invalid">فشل في فك ترميز البيانات</span>';
+            return;
+        }
+
+        try {
+            headerOut.textContent = JSON.stringify(JSON.parse(header), null, 4);
+            payloadOut.textContent = JSON.stringify(JSON.parse(payload), null, 4);
+            signatureOut.textContent = parts[2];
+            statusArea.innerHTML = '<span class="status-badge status-valid">تم تحليل التوكن بنجاح</span>';
+            window.showToast('تم تحليل التوكن بنجاح', 'success');
+        } catch (e) {
+            statusArea.innerHTML = '<span class="status-badge status-invalid">البيانات بداخل التوكن ليست JSON صحيح</span>';
+            window.showToast('بيانات التوكن غير صالحة', 'error');
+        }
+    }
+
+    function resetFields() {
+        headerOut.textContent = '{ "alg": "HS256", "typ": "JWT" }';
+        payloadOut.textContent = '{ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }';
+        signatureOut.textContent = 'Signature Content';
+        statusArea.innerHTML = '';
+    }
+
+    // Default sample (optional)
+    const sample = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvbm5lY3QgVGFnIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+    input.placeholder = sample;
+</script>
+
+
+<site-footer></site-footer>
+</body>
+</html>

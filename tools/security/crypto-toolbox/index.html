@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أدوات التشفير والترميز الشاملة - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لتشفير النصوص بكلمة سر (AES)، تحويل الترميز (Base64, URL)، وتوليد الهاش (MD5, SHA256).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --bg-editor: #f8fafc;
+    }
+
+    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
+
+    .crypto-container { padding-top: 120px; padding-bottom: 80px; max-width: 1000px; margin: 0 auto; }
+    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
+
+    .nav-tabs-custom { background: #f1f5f9; padding: 5px; border-radius: 15px; border: none; margin-bottom: 30px; display: flex; }
+    .nav-tabs-custom .nav-link {
+        flex: 1; border: none; border-radius: 12px; color: #64748b; font-weight: 700;
+        transition: 0.3s; padding: 12px; text-align: center; font-size: 14px;
+    }
+    .nav-tabs-custom .nav-link.active { background: #fff; color: var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+    .input-group-custom { margin-bottom: 20px; }
+    .label-custom { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; color: #1e293b; }
+
+    textarea.form-control {
+        border-radius: 15px; border: 2px solid #f1f5f9; padding: 15px; font-family: 'Courier New', monospace;
+        font-size: 14px; transition: 0.3s; background: #fcfdfe;
+    }
+    textarea.form-control:focus { border-color: var(--primary-color); box-shadow: none; background: #fff; }
+
+    .secret-input {
+        border: 2px solid #f1f5f9; border-radius: 12px; padding: 12px 15px; width: 100%;
+        font-weight: 700; transition: 0.3s; margin-bottom: 20px; outline: none;
+    }
+    .secret-input:focus { border-color: var(--primary-color); }
+
+    .action-row { display: flex; gap: 10px; margin-bottom: 25px; }
+    .btn-crypto {
+        flex: 1; padding: 14px; border-radius: 12px; border: none; font-weight: 800;
+        transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-encrypt { background: var(--primary-color); color: #fff; }
+    .btn-encrypt:hover { background: var(--secondary-color); transform: translateY(-2px); }
+    .btn-decrypt { background: #1e293b; color: #fff; }
+    .btn-decrypt:hover { background: #0f172a; transform: translateY(-2px); }
+
+    .result-box {
+        background: #f8fafc; border: 2px solid #f1f5f9; border-radius: 15px; padding: 20px;
+        position: relative; animation: slideIn 0.4s ease;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn-copy {
+        position: absolute; top: 10px; left: 10px; background: #e2e8f0; color: #475569;
+        border: none; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .btn-copy:hover { background: #cbd5e1; }
+
+    .hash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    .hash-item { background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #f1f5f9; }
+    .hash-label { font-weight: 800; font-size: 12px; color: var(--primary-color); margin-bottom: 5px; display: block; }
+    .hash-value { font-family: monospace; font-size: 12px; word-break: break-all; color: #475569; }
+
+    /* Fix Visibility */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block !important; opacity: 1 !important; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+<!-- CryptoJS Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="crypto-container container">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">أدوات التشفير</li>
+        </ul>
+        <h1 style="font-weight: 900; color: var(--primary-color);">حقيبة أدوات التشفير والترميز</h1>
+        <p class="text-muted">تشفير AES بكلمة سر، تحويل الصيغ (Base64)، وتوليد بصمات SHA256/MD5 في مكان واحد</p>
+    </div>
+
+    <div class="main-card">
+        <!-- Tabs -->
+        <nav class="nav nav-tabs nav-tabs-custom" id="crypto-tabs" role="tablist">
+            <button class="nav-link active" id="tab-aes" data-bs-toggle="tab" data-bs-target="#content-aes" type="button">تشفير AES (بكلمة سر)</button>
+            <button class="nav-link" id="tab-encode" data-bs-toggle="tab" data-bs-target="#content-encode" type="button">ترميز (Base64/URL)</button>
+            <button class="nav-link" id="tab-hash" data-bs-toggle="tab" data-bs-target="#content-hash" type="button">توليد هاش (SHA/MD5)</button>
+        </nav>
+
+        <div class="tab-content" id="crypto-tab-content">
+            <!-- AES SECTION -->
+            <div class="tab-pane active" id="content-aes">
+                <div class="input-group-custom">
+                    <label class="label-custom" for="aes-input">النص المراد معالجته:</label>
+                    <textarea id="aes-input" class="form-control" rows="5" placeholder="أدخل النص هنا..." style="position: relative; z-index: 10;"></textarea>
+                </div>
+                <div class="input-group-custom">
+                    <label class="label-custom" for="aes-key">كلمة السر (Secret Key):</label>
+                    <input type="text" id="aes-key" class="secret-input" placeholder="أدخل مفتاح التشفير السري..." style="position: relative; z-index: 10;">
+                </div>
+                <div class="action-row">
+                    <button class="btn-crypto btn-encrypt" onclick="processAES('encrypt')"><i class="fa fa-lock"></i> تشفير النص</button>
+                    <button class="btn-crypto btn-decrypt" onclick="processAES('decrypt')"><i class="fa fa-unlock"></i> فك التشفير</button>
+                </div>
+                <div id="aes-result-wrapper" style="display: none;">
+                    <label class="label-custom">النتيجة:</label>
+                    <div class="result-box">
+                        <button class="btn-copy" onclick="copyToClipboard('aes-result')">نسخ</button>
+                        <p id="aes-result" style="margin: 0; word-break: break-all; font-family: monospace;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENCODING SECTION -->
+            <div class="tab-pane" id="content-encode">
+                <div class="input-group-custom">
+                    <label class="label-custom" for="encode-input">النص الأساسي:</label>
+                    <textarea id="encode-input" class="form-control" rows="5" placeholder="أدخل النص للتحويل..." style="position: relative; z-index: 10;"></textarea>
+                </div>
+                <div class="action-row">
+                    <button class="btn-crypto btn-encrypt" onclick="processEncode('base64', true)">Base64 Encode</button>
+                    <button class="btn-crypto btn-decrypt" onclick="processEncode('base64', false)">Base64 Decode</button>
+                </div>
+                <div class="action-row">
+                    <button class="btn-crypto btn-encrypt" style="background: #6366f1;" onclick="processEncode('url', true)">URL Encode</button>
+                    <button class="btn-crypto btn-decrypt" style="background: #4f46e5;" onclick="processEncode('url', false)">URL Decode</button>
+                </div>
+                <div id="encode-result-wrapper" style="display: none;">
+                    <label class="label-custom">النتيجة:</label>
+                    <div class="result-box">
+                        <button class="btn-copy" onclick="copyToClipboard('encode-result')">نسخ</button>
+                        <p id="encode-result" style="margin: 0; word-break: break-all; font-family: monospace;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HASH SECTION -->
+            <div class="tab-pane" id="content-hash">
+                <div class="input-group-custom">
+                    <label class="label-custom" for="hash-input">النص لتوليد الهاش:</label>
+                    <textarea id="hash-input" class="form-control" rows="4" placeholder="أدخل النص هنا..." oninput="generateHashes()" style="position: relative; z-index: 10;"></textarea>
+                </div>
+                <div class="hash-grid">
+                    <div class="hash-item">
+                        <span class="hash-label">MD5</span>
+                        <div class="hash-value" id="hash-md5">-</div>
+                    </div>
+                    <div class="hash-item">
+                        <span class="hash-label">SHA-1</span>
+                        <div class="hash-value" id="hash-sha1">-</div>
+                    </div>
+                    <div class="hash-item">
+                        <span class="hash-label">SHA-256</span>
+                        <div class="hash-value" id="hash-sha256">-</div>
+                    </div>
+                    <div class="hash-item">
+                        <span class="hash-label">SHA-512</span>
+                        <div class="hash-value" id="hash-sha512">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Info -->
+    <div class="mt-5 p-4" style="background: #f0fdf4; border-radius: 15px; border: 1px solid #bbf7d0;">
+        <h6 style="font-weight: 800; color: #166534;"><i class="fa fa-shield"></i> ملاحظة أمنية هامة:</h6>
+        <p class="small mb-0 text-success">تتم جميع عمليات التشفير والفك داخل متصفحك محلياً باستخدام JavaScript. لا يتم إرسال نصوصك أو كلمات السر الخاصة بك إلى أي خادم (Server)، مما يضمن خصوصيتك التامة.</p>
+    </div>
+</div>
+
+<script>
+    // AES Logic
+    function processAES(type) {
+        const text = document.getElementById('aes-input').value.trim();
+        const key = document.getElementById('aes-key').value.trim();
+        const resultEl = document.getElementById('aes-result');
+        const wrapper = document.getElementById('aes-result-wrapper');
+
+        if (!text || !key) {
+            window.showToast('يرجى إدخال النص وكلمة السر', 'warn');
+            return;
+        }
+
+        try {
+            let result = '';
+            if (type === 'encrypt') {
+                result = CryptoJS.AES.encrypt(text, key).toString();
+                window.showToast('تم التشفير بنجاح', 'success');
+            } else {
+                const bytes = CryptoJS.AES.decrypt(text, key);
+                result = bytes.toString(CryptoJS.enc.Utf8);
+                if (!result) throw new Error();
+                window.showToast('تم فك التشفير بنجاح', 'success');
+            }
+            resultEl.textContent = result;
+            wrapper.style.display = 'block';
+        } catch (e) {
+            window.showToast('خطأ: فشل في فك التشفير. تأكد من كلمة السر.', 'error');
+            wrapper.style.display = 'none';
+        }
+    }
+
+    // Encoding Logic
+    function processEncode(mode, isEncode) {
+        const text = document.getElementById('encode-input').value.trim();
+        const resultEl = document.getElementById('encode-result');
+        const wrapper = document.getElementById('encode-result-wrapper');
+
+        if (!text) return;
+
+        try {
+            let result = '';
+            if (mode === 'base64') {
+                if (isEncode) result = btoa(unescape(encodeURIComponent(text)));
+                else result = decodeURIComponent(escape(atob(text)));
+            } else if (mode === 'url') {
+                if (isEncode) result = encodeURIComponent(text);
+                else result = decodeURIComponent(text);
+            }
+            resultEl.textContent = result;
+            wrapper.style.display = 'block';
+            window.showToast('تمت العملية بنجاح', 'success');
+        } catch (e) {
+            window.showToast('حدث خطأ في معالجة النص', 'error');
+        }
+    }
+
+    // Hash Logic
+    function generateHashes() {
+        const text = document.getElementById('hash-input').value;
+        if (!text) {
+            document.getElementById('hash-md5').textContent = '-';
+            document.getElementById('hash-sha1').textContent = '-';
+            document.getElementById('hash-sha256').textContent = '-';
+            document.getElementById('hash-sha512').textContent = '-';
+            return;
+        }
+
+        document.getElementById('hash-md5').textContent = CryptoJS.MD5(text).toString();
+        document.getElementById('hash-sha1').textContent = CryptoJS.SHA1(text).toString();
+        document.getElementById('hash-sha256').textContent = CryptoJS.SHA256(text).toString();
+        document.getElementById('hash-sha512').textContent = CryptoJS.SHA512(text).toString();
+    }
+
+    // Utils
+    function copyToClipboard(id) {
+        const text = document.getElementById(id).textContent;
+        navigator.clipboard.writeText(text).then(() => window.showToast('تم النسخ!', 'success'));
+    }
+
+    // Manual Bootstrap Tab Trigger (since we might not have BS JS loaded)
+    document.querySelectorAll('.nav-link').forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-bs-target');
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('show', 'active'));
+            document.querySelectorAll('.nav-link').forEach(nav => nav.classList.remove('active'));
+
+            button.classList.add('active');
+            document.querySelector(target).classList.add('show', 'active');
+        });
+    });
+</script>
+
+
+
+<site-footer></site-footer>
+</body>
+</html>

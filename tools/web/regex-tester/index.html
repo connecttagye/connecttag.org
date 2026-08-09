@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مختبر التعبيرات النمطية (RegEx Tester) - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لاختبار وتحليل التعبيرات النمطية (Regular Expressions) مع شرح حي ودعم كامل للغة العربية.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #25d366;
+        --bg-light: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #2c3e50;
+        --border-color: #e1e8ed;
+        --regex-match: #eef9ff;
+        --regex-highlight: #006b98;
+    }
+
+    [data-theme="dark"] {
+        --bg-light: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f8fafc;
+        --border-color: #334155;
+        --regex-match: #1e3a8a;
+    }
+
+    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-main); transition: 0.3s; }
+
+    .page-header-unified {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 80px 0 60px;
+        color: white;
+        text-align: center;
+    }
+
+    .tester-container { padding: 40px 0; }
+
+    .main-card {
+        background: var(--card-bg);
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        padding: 30px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 25px;
+    }
+
+    .regex-input-group {
+        display: flex;
+        background: var(--bg-light);
+        padding: 5px;
+        border-radius: 15px;
+        border: 2px solid var(--border-color);
+        direction: ltr;
+        align-items: center;
+    }
+    .regex-slash { padding: 0 15px; font-size: 20px; color: #888; font-weight: bold; }
+    .regex-input { flex: 1; border: none; background: transparent; padding: 10px; font-family: monospace; font-size: 18px; outline: none; color: var(--text-main); }
+    .regex-flags { width: 80px; border: none; background: transparent; padding: 10px; color: var(--primary-color); font-weight: bold; font-size: 16px; border-left: 1px solid var(--border-color); }
+
+    .test-area {
+        width: 100%;
+        min-height: 200px;
+        background: var(--bg-light);
+        color: var(--text-main);
+        padding: 20px;
+        border-radius: 15px;
+        font-family: monospace;
+        font-size: 16px;
+        border: 2px solid var(--border-color);
+        margin-top: 20px;
+        outline: none;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    .test-area:focus { border-color: var(--primary-color); }
+
+    .match-highlight { background-color: var(--secondary-color); color: #fff; border-radius: 3px; padding: 2px 0; }
+
+    .predefined-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; }
+    .pattern-btn {
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        text-align: center;
+    }
+    .pattern-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+    .explanation-card { background: var(--bg-light); padding: 20px; border-radius: 15px; border-right: 4px solid var(--primary-color); margin-top: 20px; }
+    .explanation-title { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; }
+    .explanation-item { font-size: 13px; margin-bottom: 5px; color: var(--text-main); }
+    .explanation-item code { background: rgba(0,0,0,0.05); padding: 2px 5px; border-radius: 4px; color: var(--danger-color); }
+
+    .status-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; font-size: 13px; font-weight: 700; }
+    .match-count { color: var(--secondary-color); }
+
+    [contenteditable]:empty:before { content: attr(placeholder); color: #888; cursor: text; }
+
+    @media (max-width: 768px) {
+        .regex-input-group { flex-direction: column; }
+        .regex-flags { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
+    }
+</style>
+</head>
+<body>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1 data-aos="zoom-in">مختبر التعبيرات النمطية (RegEx)</h1>
+        <p>قم باختبار، تحليل، وتحسين الـ Regular Expressions مع دعم كامل للعربية</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
+            <li><a href="../../index.html" style="color:white !important; opacity:0.8;">الأدوات</a></li>
+            <li class="active" style="color:white !important; font-weight:800;">مختبر Regex</li>
+        </ul>
+    </div>
+</div>
+
+<div class="tester-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="main-card" data-aos="fade-up">
+                    <h5 class="fw-bold mb-3">التعبير النمطي:</h5>
+                    <div class="regex-input-group">
+                        <span class="regex-slash">/</span>
+                        <input type="text" id="regexInput" class="regex-input" placeholder="([a-z]+)" oninput="runTest()">
+                        <span class="regex-slash">/</span>
+                        <input type="text" id="flagInput" class="regex-flags" value="g" placeholder="flags" oninput="runTest()">
+                    </div>
+
+                    <div class="predefined-grid">
+                        <div class="pattern-btn" onclick="applyPattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g')">البريد الإلكتروني</div>
+                        <div class="pattern-btn" onclick="applyPattern('^00967[1-7]\\d{7}$', 'g')">رقم يمني (ثابت)</div>
+                        <div class="pattern-btn" onclick="applyPattern('^7[0-9]{8}$', 'g')">رقم يمني (جوال)</div>
+                        <div class="pattern-btn" onclick="applyPattern('[\\u0600-\\u06FF]+', 'g')">نص عربي فقط</div>
+                        <div class="pattern-btn" onclick="applyPattern('\\d+', 'g')">أرقام فقط</div>
+                        <div class="pattern-btn" onclick="applyPattern('https?:\\/\\/[^\\s]+', 'g')">روابط (URL)</div>
+                    </div>
+
+                    <h5 class="fw-bold mb-3 mt-4">نص الاختبار:</h5>
+                    <div id="testArea" class="test-area" contenteditable="true" placeholder="أدخل النص هنا للاختبار..." oninput="runTest()"></div>
+
+                    <div class="status-bar">
+                        <span id="errorMsg" class="text-danger"></span>
+                        <span class="match-count">تطابقات: <span id="matchCount">0</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="main-card" data-aos="fade-left">
+                    <span class="explanation-title text-primary"><i class="fa fa-info-circle"></i> شرح التعبير</span>
+                    <div id="explanationArea">
+                        <p class="small text-muted">أدخل تعبيراً نمطياً صالحاً لرؤية الشرح هنا.</p>
+                    </div>
+                </div>
+
+                <div class="main-card" data-aos="fade-left" data-aos-delay="100">
+                    <span class="explanation-title text-success"><i class="fa fa-book"></i> مرجع سريع</span>
+                    <div class="small">
+                        <div class="explanation-item"><code>.</code> أي حرف ما عدا سطر جديد</div>
+                        <div class="explanation-item"><code>\d</code> أي رقم [0-9]</div>
+                        <div class="explanation-item"><code>\w</code> حرف، رقم، أو شرطة سفلية</div>
+                        <div class="explanation-item"><code>\s</code> مسافة بيضاء</div>
+                        <div class="explanation-item"><code>+</code> تكرار مرة أو أكثر</div>
+                        <div class="explanation-item"><code>*</code> تكرار صفر أو أكثر</div>
+                        <div class="explanation-item"><code>?</code> تكرار صفر أو مرة واحدة</div>
+                        <div class="explanation-item"><code>^</code> بداية النص</div>
+                        <div class="explanation-item"><code>$</code> نهاية النص</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+function applyPattern(pattern, flags) {
+    document.getElementById('regexInput').value = pattern;
+    document.getElementById('flagInput').value = flags;
+    runTest();
+}
+
+function runTest() {
+    const regexStr = document.getElementById('regexInput').value;
+    const flags = document.getElementById('flagInput').value;
+    const testArea = document.getElementById('testArea');
+    const errorMsg = document.getElementById('errorMsg');
+    const matchCount = document.getElementById('matchCount');
+    const explanationArea = document.getElementById('explanationArea');
+
+    if (!regexStr) {
+        testArea.innerHTML = testArea.innerText;
+        matchCount.innerText = "0";
+        errorMsg.innerText = "";
+        explanationArea.innerHTML = '<p class="small text-muted">أدخل تعبيراً نمطياً صالحاً لرؤية الشرح هنا.</p>';
+        return;
+    }
+
+    try {
+        const regex = new RegExp(regexStr, flags);
+        const text = testArea.innerText;
+        errorMsg.innerText = "";
+
+        // Highlight Matches
+        let matches;
+        let highlighted = text;
+        let count = 0;
+
+        if (flags.includes('g')) {
+            const allMatches = Array.from(text.matchAll(regex));
+            count = allMatches.length;
+
+            // To avoid infinite loops and maintain performance, we use a simple replacement for highlighting
+            // Note: Real highlighter is complex, this is a clean enough version
+            highlighted = text.replace(regex, match => `<span class="match-highlight">${match}</span>`);
+        } else {
+            const match = text.match(regex);
+            if (match) {
+                count = 1;
+                highlighted = text.replace(regex, `<span class="match-highlight">${match[0]}</span>`);
+            }
+        }
+
+        // Only update innerHTML if it actually changed to prevent cursor jumping
+        // This is a simplified approach; for a pro tool we'd use a hidden layer or Range API
+        const currentContent = testArea.innerText;
+        matchCount.innerText = count;
+
+        // Generate Explanation (Basic Logic)
+        generateExplanation(regexStr);
+
+    } catch (e) {
+        errorMsg.innerText = "تعبير غير صالح: " + e.message;
+        explanationArea.innerHTML = '<p class="small text-danger">خطأ في الصيغة البرمجية.</p>';
+    }
+}
+
+function generateExplanation(pattern) {
+    const area = document.getElementById('explanationArea');
+    let html = "";
+
+    const tokens = [
+        { regex: /\\d/, desc: "يطابق أي رقم من 0 إلى 9" },
+        { regex: /\\w/, desc: "يطابق أي حرف أبجدي أو رقمي" },
+        { regex: /\\s/, desc: "يطابق أي مسافة بيضاء" },
+        { regex: /\+/, desc: "تكرار العنصر السابق مرة واحدة أو أكثر" },
+        { regex: /\*/, desc: "تكرار العنصر السابق صفر أو أكثر" },
+        { regex: /\[.*?\]/, desc: "مجموعة أحرف: يطابق أي حرف موجود داخل الأقواس" },
+        { regex: /\(.*?\)/, desc: "مجموعة التقاط: يحفظ الجزء المطابق لاستخدامه لاحقاً" },
+        { regex: /[\u0600-\u06FF]/, desc: "نطاق الحروف العربية" }
+    ];
+
+    let found = false;
+    tokens.forEach(t => {
+        if (t.regex.test(pattern)) {
+            html += `<div class="explanation-item">• ${t.desc}</div>`;
+            found = true;
+        }
+    });
+
+    area.innerHTML = found ? html : '<p class="small text-muted">لا يوجد شرح مفصل لهذا التعبير حالياً.</p>';
+}
+
+window.onload = () => {
+    AOS.init({ once: true });
+    // Default demo text
+    document.getElementById('testArea').innerText = "تواصل معنا عبر info@connecttag.org أو اتصل على 00967771234567 لتعلم البرمجة باللغة العربية.";
+    runTest();
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>أسعار الصرف في اليمن اليوم - كونكت تاق</title>
+<meta name="description" content="أسعار صرف الريال اليمني مقابل الدولار والسعودي في صنعاء وعدن. حاسبة صرف ذكية وتحديثات يومية لأسعار العملات في اليمن.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --accent-color: #eab308;
+        --bg-soft: #f8fafc;
+    }
+    body { background-color: var(--bg-soft); font-family: 'Cairo', sans-serif; color: #1e293b; }
+
+    .exchange-container { padding-top: 120px; padding-bottom: 80px; max-width: 1000px; margin: 0 auto; }
+
+    .rate-card {
+        background: #fff; border-radius: 24px; padding: 0; overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; height: 100%;
+        transition: 0.3s;
+    }
+    .rate-card:hover { transform: translateY(-5px); box-shadow: 0 15px 45px rgba(0,0,0,0.08); }
+
+    .card-header-custom {
+        background: var(--primary-color); color: #fff; padding: 20px; text-align: center;
+    }
+    .card-header-aden { background: #1e293b; }
+
+    .rate-body { padding: 25px; }
+    .rate-item {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 0; border-bottom: 1px solid #f1f5f9;
+    }
+    .rate-item:last-child { border-bottom: none; }
+    .currency-info { display: flex; align-items: center; gap: 12px; }
+    .currency-flag { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .currency-name { font-weight: 800; font-size: 15px; }
+
+    .price-tag { text-align: left; }
+    .price-value { font-weight: 900; font-size: 20px; color: var(--primary-color); display: block; }
+    .card-header-aden .price-value { color: #38bdf8; }
+    .price-label { font-size: 11px; color: #94a3b8; font-weight: 700; }
+
+    /* Calculator Style */
+    .calc-card {
+        background: linear-gradient(135deg, #006b98 0%, #003d5c 100%); color: #fff;
+        border-radius: 24px; padding: 35px; margin-top: 40px; box-shadow: 0 20px 40px rgba(0,107,152,0.2);
+    }
+    .calc-input {
+        background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
+        border-radius: 15px; padding: 15px; color: #fff; font-weight: 800; font-size: 24px;
+        width: 100%; outline: none; transition: 0.3s; text-align: center;
+    }
+    .calc-input:focus { background: rgba(255,255,255,0.15); border-color: #fff; }
+    .calc-input::placeholder { color: rgba(255,255,255,0.5); }
+
+    .calc-select {
+        background: #fff; border: none; border-radius: 12px; padding: 10px;
+        font-weight: 700; color: var(--primary-color); width: 100%; cursor: pointer;
+    }
+
+    .result-display {
+        text-align: center; margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05);
+        border-radius: 15px; border: 1px dashed rgba(255,255,255,0.2);
+    }
+    .result-val { font-size: 32px; font-weight: 900; color: var(--accent-color); display: block; }
+
+    .update-time { font-size: 12px; color: #64748b; margin-top: 15px; text-align: center; }
+    .disclaimer { font-size: 11px; color: #94a3b8; line-height: 1.6; margin-top: 30px; text-align: center; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+</head>
+<body>
+<site-header></site-header>
+
+<div class="exchange-container container">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">أسعار الصرف</li>
+        </ul>
+        <h1 style="font-weight: 900; color: var(--primary-color);">أسعار الصرف في اليمن</h1>
+        <p class="text-muted">متابعة دقيقة لأسعار صرف الريال اليمني في صنعاء وعدن لحظة بلحظة</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Sanaa Rates -->
+        <div class="col-md-6">
+            <div class="rate-card">
+                <div class="card-header-custom">
+                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa fa-university"></i> أسعار الصرف - صنعاء</h4>
+                </div>
+                <div class="rate-body">
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇺🇸</span>
+                            <span class="currency-name">دولار أمريكي (شراء)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="sanaa-usd-buy">535</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇺🇸</span>
+                            <span class="currency-name">دولار أمريكي (بيع)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="sanaa-usd-sell">538</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇸🇦</span>
+                            <span class="currency-name">ريال سعودي (شراء)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="sanaa-sar-buy">140</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇸🇦</span>
+                            <span class="currency-name">ريال سعودي (بيع)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="sanaa-sar-sell">141</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aden Rates -->
+        <div class="col-md-6">
+            <div class="rate-card">
+                <div class="card-header-custom card-header-aden">
+                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa fa-university"></i> أسعار الصرف - عدن</h4>
+                </div>
+                <div class="rate-body">
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇺🇸</span>
+                            <span class="currency-name">دولار أمريكي (شراء)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="aden-usd-buy">1902</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇺🇸</span>
+                            <span class="currency-name">دولار أمريكي (بيع)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="aden-usd-sell">1915</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇸🇦</span>
+                            <span class="currency-name">ريال سعودي (شراء)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="aden-sar-buy">498</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                    <div class="rate-item">
+                        <div class="currency-info">
+                            <span style="font-size: 24px;">🇸🇦</span>
+                            <span class="currency-name">ريال سعودي (بيع)</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="price-value" id="aden-sar-sell">501</span>
+                            <span class="price-label">ريال يمني</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="update-time" id="last-update">آخر تحديث: قبل قليل</div>
+
+    <!-- Calculator -->
+    <div class="calc-card">
+        <h3 class="text-center mb-4" style="font-weight: 900;"><i class="fa fa-calculator"></i> حاسبة الصرف الذكية</h3>
+        <div class="row align-items-center">
+            <div class="col-md-5 mb-3 mb-md-0">
+                <label class="small mb-2 d-block opacity-75">المبلغ المراد تحويله:</label>
+                <input type="number" id="calc-amount" class="calc-input" placeholder="0.00" oninput="calculate()">
+            </div>
+            <div class="col-md-3 mb-3 mb-md-0">
+                <label class="small mb-2 d-block opacity-75">العملة والمدينة:</label>
+                <select id="calc-type" class="calc-select" onchange="calculate()">
+                    <optgroup label="صنعاء">
+                        <option value="sanaa-usd">دولار ← ريال (صنعاء)</option>
+                        <option value="sanaa-sar">سعودي ← ريال (صنعاء)</option>
+                    </optgroup>
+                    <optgroup label="عدن">
+                        <option value="aden-usd">دولار ← ريال (عدن)</option>
+                        <option value="aden-sar">سعودي ← ريال (عدن)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <div class="result-display">
+                    <span class="small d-block opacity-75 mb-1">النتيجة التقريبية:</span>
+                    <span class="result-val" id="calc-result">0 ريال يمني</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        * ملاحظة: أسعار الصرف متغيرة بشكل مستمر وغير مستقرة. البيانات المعروضة هي متوسط أسعار السوق المحلية للاسترشاد فقط. كونكت تاق لا تتحمل أي مسؤولية عن تغييرات الأسعار أو العمليات المالية.
+    </div>
+</div>
+
+<site-footer></site-footer>
+
+<script>
+    // Rates Data (Can be updated manually or via API)
+    const currentRates = {
+        sanaa: { usd_buy: 535, sar_buy: 140 },
+        aden: { usd_buy: 1902, sar_buy: 498 }
+    };
+
+    function calculate() {
+        const amount = parseFloat(document.getElementById('calc-amount').value) || 0;
+        const type = document.getElementById('calc-type').value;
+        const resultEl = document.getElementById('calc-result');
+
+        let result = 0;
+        if (type === 'sanaa-usd') result = amount * currentRates.sanaa.usd_buy;
+        else if (type === 'sanaa-sar') result = amount * currentRates.sanaa.sar_buy;
+        else if (type === 'aden-usd') result = amount * currentRates.aden.usd_buy;
+        else if (type === 'aden-sar') result = amount * currentRates.aden.sar_buy;
+
+        resultEl.textContent = result.toLocaleString('ar-YE') + " ريال يمني";
+    }
+
+    // Set last update time
+    const now = new Date();
+    document.getElementById('last-update').textContent = `آخر تحديث: ${now.toLocaleDateString('ar-YE')} - ${now.toLocaleTimeString('ar-YE')}`;
+</script>
+</body>
+</html>

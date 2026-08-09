@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>حاسبة استهلاك الطاقة الشاملة - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لحساب استهلاك الكهرباء وتصميم أنظمة الطاقة الشمسية بناءً على أحمالك المنزلية وموقعك الجغرافي.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
+
+<style>
+    :root {
+        --brand-primary: #006b98;
+        --brand-secondary: #10b981;
+        --brand-warning: #f59e0b;
+        --brand-danger: #ef4444;
+        --bg-app: #f1f5f9;
+        --surface-card: #ffffff;
+        --text-heading: #1e293b;
+        --text-body: #475569;
+        --border-subtle: #e2e8f0;
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+
+    [data-theme="dark"] {
+        --bg-app: #0f172a;
+        --surface-card: #1e293b;
+        --text-heading: #f8fafc;
+        --text-body: #94a3b8;
+        --border-subtle: #334155;
+    }
+
+    body { background-color: var(--bg-app); font-family: 'Cairo', sans-serif; color: var(--text-body); transition: 0.3s; }
+
+    .page-header-unified {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 100px 0 80px;
+        color: white;
+        text-align: center;
+        clip-path: ellipse(150% 100% at 50% 0%);
+    }
+
+    .theme-toggle { position: absolute; left: 30px; top: 30px; z-index: 1000; }
+    .btn-theme {
+        background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 20px;
+        border-radius: 50px; cursor: pointer; font-size: 14px; font-weight: 700;
+    }
+
+    .calc-container { padding: 40px 0; margin-top: -60px; }
+
+    .main-card {
+        background: var(--surface-card);
+        padding: 35px;
+        border-radius: 32px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        border: 1px solid var(--border-subtle);
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-weight: 800; color: var(--brand-primary); margin: 30px 0 20px;
+        padding-bottom: 12px; display: flex; align-items: center; gap: 12px;
+        border-bottom: 2px solid var(--border-subtle);
+    }
+
+    /* Mode Switcher */
+    .mode-tabs { display: flex; gap: 10px; margin-bottom: 25px; background: var(--bg-app); padding: 5px; border-radius: 15px; }
+    .mode-tab { flex: 1; text-align: center; padding: 12px; border-radius: 12px; cursor: pointer; font-weight: 800; transition: 0.3s; font-size: 14px; color: var(--text-muted); }
+    .mode-tab.active { background: var(--surface-card); color: var(--brand-primary); box-shadow: var(--shadow-md); }
+
+    /* Appliance Grid */
+    .appliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .appliance-item {
+        background: var(--bg-app);
+        padding: 20px 10px;
+        border-radius: 20px;
+        border: 2px solid transparent;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .appliance-item:hover { border-color: var(--brand-primary); transform: translateY(-5px); }
+    .appliance-item i { font-size: 30px; color: var(--brand-primary); margin-bottom: 10px; display: block; }
+    .appliance-item span { font-weight: 800; font-size: 12px; color: var(--text-heading); display: block; }
+    .appliance-item small { font-size: 10px; color: var(--text-muted); }
+
+    /* Selected List */
+    .selected-list { margin-top: 20px; }
+    .selected-item {
+        background: var(--surface-card);
+        padding: 15px 20px;
+        border-radius: 20px;
+        border: 1px solid var(--border-subtle);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        animation: fadeIn 0.3s ease;
+    }
+    .selected-item .icon { width: 40px; height: 40px; background: var(--bg-app); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--brand-primary); }
+    .selected-item .info { flex: 1; }
+    .selected-item .name { font-weight: 800; font-size: 14px; display: block; }
+    .selected-item .controls { display: flex; align-items: center; gap: 10px; }
+    .qty-ctrl { display: flex; align-items: center; background: var(--bg-app); border-radius: 10px; padding: 2px; }
+    .btn-qty { width: 30px; height: 30px; border: none; background: transparent; cursor: pointer; font-weight: 800; color: var(--text-heading); }
+    .qty-val { width: 30px; text-align: center; font-weight: 800; font-size: 14px; color: var(--text-heading); }
+
+    .watt-input, .hours-input {
+        background: var(--bg-app);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 5px 10px;
+        width: 70px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 13px;
+        outline: none;
+        color: var(--text-heading);
+    }
+
+    /* Results Dashboard */
+    .results-sidebar { position: sticky; top: 20px; }
+    .result-score-card {
+        background: var(--brand-primary);
+        color: white;
+        padding: 30px;
+        border-radius: 32px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 15px 35px rgba(0, 107, 152, 0.2);
+    }
+    .result-score-card h2 { font-weight: 800; margin-bottom: 5px; font-size: 20px; }
+    .total-watt-value { font-size: 38px; font-weight: 900; display: block; margin: 10px 0; }
+
+    .suggestion-card {
+        background: var(--surface-card);
+        padding: 25px;
+        border-radius: 24px;
+        border: 1px solid var(--border-subtle);
+        margin-bottom: 15px;
+    }
+    .suggest-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border-subtle); }
+    .suggest-item:last-child { border-bottom: none; }
+    .suggest-label { font-weight: 700; font-size: 13px; }
+    .suggest-val { font-weight: 800; color: var(--brand-primary); }
+
+    .btn-action {
+        width: 100%; padding: 15px; border-radius: 16px; border: none;
+        font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 10px;
+    }
+    .btn-pdf { background: #34495e; color: white; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media print {
+        .checker-container { margin-top: 0; }
+        .page-header-unified, .appliance-grid, .mode-tabs, .no-print { display: none !important; }
+        .main-card { box-shadow: none; border: 1px solid #ddd; }
+    }
+</style>
+</head>
+<body>
+
+<div class="theme-toggle no-print">
+    <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">
+        <i class="fa fa-moon-o"></i> الوضع المظلم
+    </button>
+</div>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container" data-aos="fade-down">
+        <h1>حاسبة استهلاك الطاقة الشاملة</h1>
+        <p>احسب استهلاكك للكهرباء المنزلية أو صمم نظامك الشمسي المتكامل بدقة</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
+            <li><a href="../../index.html" style="color:white !important; opacity:0.8;">الأدوات</a></li>
+            <li class="active" style="color:white !important; font-weight:800;">حاسبة الطاقة</li>
+        </ul>
+    </div>
+</div>
+
+<div class="calc-container">
+    <div class="container">
+        <!-- Calculation Mode Switcher -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="mode-tabs no-print">
+                    <div class="mode-tab active" id="mode-solar" onclick="setMode('solar')">
+                        <i class="fa fa-sun-o"></i> نظام طاقة شمسية
+                    </div>
+                    <div class="mode-tab" id="mode-grid" onclick="setMode('grid')">
+                        <i class="fa fa-bolt"></i> فاتورة الكهرباء
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- 1. General Settings -->
+                <div class="main-card" data-aos="fade-up">
+                    <h2 class="section-title"><i class="fa fa-cog"></i> إعدادات الحساب</h2>
+
+                    <!-- Solar Settings -->
+                    <div id="solar-settings">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold mb-2 small">المدينة (ساعات الشمس):</label>
+                                <select id="location" class="form-control rounded-4 p-3 fw-bold" onchange="calculate()">
+                                    <option value="5.5">صنعاء (5.5 ساعة ذروة)</option>
+                                    <option value="5.2">عدن (5.2 ساعة ذروة)</option>
+                                    <option value="5.4">تعز (5.4 ساعة ذروة)</option>
+                                    <option value="5.8">حضرموت (5.8 ساعة ذروة)</option>
+                                    <option value="5.0">أخرى (5.0 ساعة ذروة)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="fw-bold mb-2 small">نوع البطاريات:</label>
+                                <select id="batteryType" class="form-control rounded-4 p-3 fw-bold" onchange="calculate()">
+                                    <option value="0.5">Gel / Lead Acid (تفريغ 50%)</option>
+                                    <option value="0.8">Lithium LiFePO4 (تفريغ 80%)</option>
+                                    <option value="0.4">بطاريات سائلة (تفريغ 40%)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid Settings -->
+                    <div id="grid-settings" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="fw-bold mb-2 small">سعر الكيلو واط (اختياري):</label>
+                                <div class="input-group-custom">
+                                    <input type="number" id="kwhPrice" class="url-input" placeholder="مثال: 300" oninput="calculate()">
+                                    <span class="p-3 fw-bold">ريال / كيلوواط</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Appliance Selection -->
+                <div class="main-card" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-title"><i class="fa fa-plug"></i> اختر الأجهزة المتوفرة</h2>
+                    <div class="appliance-grid" id="applianceGrid">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <h2 class="section-title"><i class="fa fa-list-ul"></i> قائمة الأحمال المختارة</h2>
+                    <div class="selected-list" id="selectedList">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="results-sidebar" data-aos="fade-left">
+                    <div class="result-score-card">
+                        <h2 id="resTitle">إجمالي الاستهلاك اليومي</h2>
+                        <span class="total-watt-value" id="totalWh">0</span>
+                        <span class="fw-bold" id="resUnit">واط / ساعة</span>
+                        <div class="mt-3 small opacity-80">أقصى حمل لحظي: <span id="maxWatt">0</span> واط</div>
+                    </div>
+
+                    <!-- Solar Results -->
+                    <div class="suggestion-card" id="solar-results">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2 text-primary">النظام الشمسي المقترح:</h5>
+                        <div class="suggest-item">
+                            <span class="suggest-label">حجم الإنفيرتر:</span>
+                            <span class="suggest-val" id="resInverter">-</span>
+                        </div>
+                        <div class="suggest-item">
+                            <span class="suggest-label">سعة البطاريات (12V):</span>
+                            <span class="suggest-val" id="resBattery">-</span>
+                        </div>
+                        <div class="suggest-item">
+                            <span class="suggest-label">قدرة الألواح:</span>
+                            <span class="suggest-val" id="resPanels">-</span>
+                        </div>
+                        <div class="suggest-item">
+                            <span class="suggest-label">منظم الشحن:</span>
+                            <span class="suggest-val" id="resController">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Grid Results -->
+                    <div class="suggestion-card" id="grid-results" style="display: none;">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2 text-success">تقدير فاتورة الكهرباء:</h5>
+                        <div class="suggest-item">
+                            <span class="suggest-label">الاستهلاك اليومي:</span>
+                            <span class="suggest-val" id="resKwhDay">0 kWh</span>
+                        </div>
+                        <div class="suggest-item">
+                            <span class="suggest-label">الاستهلاك الشهري:</span>
+                            <span class="suggest-val" id="resKwhMonth">0 kWh</span>
+                        </div>
+                        <div id="cost-area" style="display: none;">
+                            <div class="suggest-item">
+                                <span class="suggest-label">التكلفة اليومية:</span>
+                                <span class="suggest-val" id="resCostDay">-</span>
+                            </div>
+                            <div class="suggest-item">
+                                <span class="suggest-label">التكلفة الشهرية:</span>
+                                <span class="suggest-val" id="resCostMonth" style="font-size: 18px; color: var(--brand-secondary);">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="no-print">
+                        <button class="btn-action btn-pdf" onclick="window.print()">
+                            <i class="fa fa-file-pdf-o"></i> تحميل تقرير الفحص الكامل
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+let currentMode = 'solar';
+const appliancesData = [
+    { id: 'led', name: 'إضاءة LED', icon: 'lightbulb-o', watt: 12, hours: 6 },
+    { id: 'tv', name: 'تلفزيون LED', icon: 'television', watt: 80, hours: 5 },
+    { id: 'fridge', name: 'ثلاجة إنفيرتر', icon: 'snowflake-o', watt: 150, hours: 24 },
+    { id: 'fan', name: 'مروحة سقف', icon: 'wind', watt: 60, hours: 8 },
+    { id: 'laptop', name: 'لابتوب', icon: 'laptop', watt: 65, hours: 4 },
+    { id: 'phone', name: 'شاحن جوال', icon: 'mobile', watt: 15, hours: 3 },
+    { id: 'modem', name: 'مودم انترنت', icon: 'wifi', watt: 10, hours: 24 },
+    { id: 'pump', name: 'دينمو ماء', icon: 'tint', watt: 750, hours: 0.5 }
+];
+
+let selectedAppliance = [];
+
+function toggleTheme() {
+    const isDark = document.body.getAttribute('data-theme') === 'dark';
+    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa fa-moon-o"></i> الوضع المظلم' : '<i class="fa fa-sun-o"></i> الوضع الفاتح';
+    localStorage.setItem('solar_calc_theme', isDark ? 'light' : 'dark');
+}
+
+function setMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('mode-' + mode).classList.add('active');
+
+    document.getElementById('solar-settings').style.display = mode === 'solar' ? 'block' : 'none';
+    document.getElementById('grid-settings').style.display = mode === 'grid' ? 'block' : 'none';
+    document.getElementById('solar-results').style.display = mode === 'solar' ? 'block' : 'none';
+    document.getElementById('grid-results').style.display = mode === 'grid' ? 'block' : 'none';
+
+    calculate();
+}
+
+function initGrid() {
+    document.getElementById('applianceGrid').innerHTML = appliancesData.map(app => `
+        <div class="appliance-item" onclick="addAppliance('${app.id}')">
+            <i class="fa fa-${app.icon}"></i>
+            <span>${app.name}</span>
+            <small>${app.watt} واط</small>
+        </div>
+    `).join('');
+}
+
+function addAppliance(id) {
+    const template = appliancesData.find(a => a.id === id);
+    const existing = selectedAppliance.find(a => a.id === id);
+    if (existing) existing.qty++;
+    else selectedAppliance.push({ ...template, qty: 1 });
+    renderSelected(); calculate(); saveData();
+}
+
+function updateItem(index, field, value) {
+    selectedAppliance[index][field] = parseFloat(value) || 0;
+    calculate(); saveData();
+}
+
+function removeItem(index) {
+    selectedAppliance.splice(index, 1);
+    renderSelected(); calculate(); saveData();
+}
+
+function renderSelected() {
+    const list = document.getElementById('selectedList');
+    if (selectedAppliance.length === 0) {
+        list.innerHTML = `<div class="text-center py-5 text-muted"><i class="fa fa-shopping-basket fa-3x mb-3 opacity-20"></i><p class="fw-bold">اختر الأجهزة من القائمة أعلاه للبدء</p></div>`;
+        return;
+    }
+    list.innerHTML = selectedAppliance.map((app, i) => `
+        <div class="selected-item">
+            <div class="icon"><i class="fa fa-${app.icon}"></i></div>
+            <div class="info">
+                <span class="name">${app.name}</span>
+                <div class="d-flex gap-3 mt-2 flex-wrap">
+                    <div class="qty-ctrl">
+                        <button class="btn-qty" onclick="updateItem(${i}, 'qty', ${app.qty - 1}); renderSelected();">-</button>
+                        <span class="qty-val">${app.qty}</span>
+                        <button class="btn-qty" onclick="updateItem(${i}, 'qty', ${app.qty + 1}); renderSelected();">+</button>
+                    </div>
+                    <div><input type="number" class="watt-input" value="${app.watt}" oninput="updateItem(${i}, 'watt', this.value)"> <small>واط</small></div>
+                    <div><input type="number" class="hours-input" value="${app.hours}" oninput="updateItem(${i}, 'hours', this.value)"> <small>ساعة</small></div>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-link text-danger" onclick="removeItem(${i})"><i class="fa fa-trash"></i></button>
+        </div>
+    `).join('');
+}
+
+function calculate() {
+    let totalWh = 0;
+    let maxInstantWatt = 0;
+    selectedAppliance.forEach(app => {
+        totalWh += (app.watt * app.qty * app.hours);
+        maxInstantWatt += (app.watt * app.qty);
+    });
+
+    document.getElementById('totalWh').innerText = Math.round(totalWh).toLocaleString();
+    document.getElementById('maxWatt').innerText = Math.round(maxInstantWatt).toLocaleString();
+
+    if (currentMode === 'solar') {
+        if (totalWh > 0) {
+            const sunHours = parseFloat(document.getElementById('location').value);
+            const dod = parseFloat(document.getElementById('batteryType').value);
+            const invSize = Math.ceil((maxInstantWatt * 1.25) / 500) * 500;
+            document.getElementById('resInverter').innerText = invSize >= 1000 ? (invSize/1000).toFixed(1) + ' KVA' : invSize + ' Watt';
+            document.getElementById('resBattery').innerText = Math.ceil(totalWh / (12 * dod)) + ' Ah (12V)';
+            document.getElementById('resPanels').innerText = Math.ceil(totalWh / (sunHours * 0.8)) + ' Watt';
+            document.getElementById('resController').innerText = Math.ceil(Math.ceil(totalWh / (sunHours * 0.8)) / 12) + ' Amp MPPT';
+        }
+    } else {
+        const kwhDay = totalWh / 1000;
+        const kwhMonth = kwhDay * 30;
+        document.getElementById('resKwhDay').innerText = kwhDay.toFixed(2) + ' kWh';
+        document.getElementById('resKwhMonth').innerText = kwhMonth.toFixed(2) + ' kWh';
+
+        const price = parseFloat(document.getElementById('kwhPrice').value);
+        if (price > 0) {
+            document.getElementById('cost-area').style.display = 'block';
+            document.getElementById('resCostDay').innerText = Math.round(kwhDay * price).toLocaleString() + ' ريال';
+            document.getElementById('resCostMonth').innerText = Math.round(kwhMonth * price).toLocaleString() + ' ريال';
+        } else {
+            document.getElementById('cost-area').style.display = 'none';
+        }
+    }
+}
+
+function saveData() { localStorage.setItem('solar_calc_data', JSON.stringify(selectedAppliance)); }
+function loadData() {
+    const saved = localStorage.getItem('solar_calc_data');
+    if (saved) { selectedAppliance = JSON.parse(saved); renderSelected(); calculate(); }
+}
+
+window.onload = () => { initGrid(); loadData(); const theme = localStorage.getItem('solar_calc_theme'); if(theme === 'dark') toggleTheme(); AOS.init({ once: true }); };
+</script>
+
+</body>
+</html>

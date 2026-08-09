@@ -36,7 +36,8 @@
   // Theme colors & mobile web app capability
   addMeta('theme-color', '#317EFB');
   addMeta('msapplication-navbutton-color', '#d69503');
-  addMeta('apple-mobile-web-app-capable', 'yes');
+  addMeta('mobile-web-app-capable', 'yes'); // Standard
+  addMeta('apple-mobile-web-app-capable', 'yes'); // Legacy
   addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
 
 })();

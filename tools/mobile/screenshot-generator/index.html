@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد لقطات المتاجر الاحترافي - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لمطوري التطبيقات لتصميم لقطات شاشة جذابة لمتجر جوجل بلاي وآب ستور مع إطارات هواتف متنوعة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Almarai:wght@300;400;700;800&family=Tajawal:wght@300;400;700;800&family=Montserrat:wght@300;400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --bg-editor: #f8fafc;
+        --sidebar-width: 400px;
+        --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; overflow: hidden; color: #1e293b; }
+
+    .editor-wrapper { display: flex; height: 100vh; padding-top: 70px; }
+
+    /* Modern Sidebar with Tabs */
+    .sidebar-editor {
+        width: var(--sidebar-width); background: #ffffff; border-left: 1px solid #e2e8f0;
+        display: flex; flex-direction: column; z-index: 1000;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.02);
+    }
+
+    .sidebar-tabs {
+        display: flex; background: #f8fafc; border-bottom: 1px solid #e2e8f0;
+        padding: 5px; gap: 5px;
+    }
+    .tab-btn {
+        flex: 1; border: none; background: transparent; padding: 10px 5px;
+        border-radius: 10px; font-size: 12px; font-weight: 700; color: #64748b;
+        transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px;
+    }
+    .tab-btn i { font-size: 16px; }
+    .tab-btn.active { background: #fff; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+    .sidebar-content { flex-grow: 1; overflow-y: auto; padding: 25px; }
+    .tab-pane { display: none; animation: fadeIn 0.3s ease; }
+    .tab-pane.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section-header {
+        font-weight: 800; font-size: 14px; color: var(--primary-color);
+        margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
+        text-transform: uppercase;
+    }
+    .section-header::after { content: ''; flex-grow: 1; height: 1px; background: #f1f5f9; }
+
+    .control-item { margin-bottom: 20px; }
+    .control-label { font-weight: 700; font-size: 13px; color: #1e293b; margin-bottom: 8px; display: block; }
+
+    .custom-input {
+        border: 2px solid #f1f5f9; border-radius: 12px; padding: 10px; font-size: 13px;
+        transition: 0.3s; width: 100%; outline: none;
+    }
+    .custom-input:focus { border-color: var(--primary-color); }
+
+    .visual-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .visual-item {
+        border: 2px solid #f1f5f9; border-radius: 12px; padding: 12px;
+        text-align: center; cursor: pointer; transition: 0.2s; position: relative;
+    }
+    .visual-item:hover { border-color: var(--primary-color); }
+    .visual-item.active { border-color: var(--primary-color); background: #f0f9ff; }
+    .visual-item i { font-size: 18px; color: #94a3b8; display: block; margin-bottom: 5px; }
+    .visual-item.active i { color: var(--primary-color); }
+
+    .palette-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+    .palette-item {
+        width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+        border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.2s;
+    }
+    .palette-item.active { transform: scale(1.1); box-shadow: 0 0 0 2px var(--primary-color); }
+
+    /* Preview Stage */
+    .stage-container {
+        flex-grow: 1; display: flex; align-items: center; justify-content: center;
+        background: #f1f5f9; padding: 30px; overflow: auto; position: relative;
+    }
+
+    #design-canvas {
+        width: 400px; height: 860px;
+        background: #ffffff; background-size: cover; background-position: center;
+        box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+        position: relative; overflow: hidden; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center; flex-shrink: 0;
+        perspective: 1500px;
+    }
+
+    .screenshot-wrapper {
+        position: absolute; z-index: 2; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background-size: cover; background-position: top center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.25); overflow: hidden;
+        transform-style: preserve-3d;
+    }
+
+    /* Reflections & FX */
+    .reflection-layer {
+        position: absolute; bottom: -60%; left: 0; width: 100%; height: 100%;
+        background: inherit; transform: scaleY(-1); opacity: 0.15;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+        z-index: 1; pointer-events: none; display: none;
+    }
+    .screen-glare {
+        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 50%);
+        transform: rotate(-15deg); z-index: 4; pointer-events: none; display: none;
+    }
+
+    .bg-blobs { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.25; background: #fff; }
+    .blob-1 { width: 300px; height: 300px; top: -50px; left: -100px; }
+    .blob-2 { width: 250px; height: 250px; bottom: 50px; right: -50px; }
+
+    .bg-pattern { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.1; pointer-events: none; }
+    .pattern-dots { background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px; }
+    .pattern-grid { background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 20px 20px; }
+
+    .phone-detail {
+        position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+        width: 110px; height: 28px; background: #0f172a; border-radius: 20px;
+        z-index: 10; display: none; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .phone-detail::after {
+        content: ''; position: absolute; right: 25px; top: 50%; transform: translateY(-50%);
+        width: 8px; height: 8px; background: #1e293b; border-radius: 50%;
+    }
+
+    .typography-layer {
+        position: absolute; left: 0; width: 100%; text-align: center;
+        color: #1e293b; padding: 0 35px; z-index: 5; transition: 0.4s;
+    }
+    .typography-layer h2 {
+        font-weight: 900; font-size: 34px; margin-bottom: 12px; line-height: 1.2;
+        position: relative; display: inline-block;
+    }
+    .typography-layer h2::after {
+        content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+        width: 60px; height: 4px; background: var(--primary-color); border-radius: 2px;
+    }
+    .typography-layer p { font-size: 18px; font-weight: 400; opacity: 0.9; line-height: 1.6; margin-top: 15px; }
+
+    .branding-layer {
+        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+        width: 100px; height: 100px; z-index: 6; display: flex; align-items: center; justify-content: center;
+        transition: 0.4s;
+    }
+    .branding-layer img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    /* Layouts */
+    .layout-top .typography-layer { top: 70px; }
+    .layout-top .screenshot-wrapper { top: 250px; left: 50%; transform: translateX(-50%); }
+    .layout-bottom .typography-layer { bottom: 100px; }
+    .layout-bottom .screenshot-wrapper { top: 80px; left: 50%; transform: translateX(-50%); }
+
+    .sidebar-footer { padding: 20px; border-top: 1px solid #f1f5f9; background: #fff; }
+    .btn-export-main {
+        background: var(--primary-color); color: #fff; border: none; padding: 15px;
+        border-radius: 12px; width: 100%; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px;
+        transition: 0.3s; cursor: pointer;
+    }
+    .btn-export-main:hover { background: var(--secondary-color); transform: translateY(-2px); }
+
+    .form-range::-webkit-slider-runnable-track { background: #f1f5f9; height: 6px; border-radius: 10px; }
+    .form-range::-webkit-slider-thumb { background: var(--primary-color); margin-top: -5px; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="editor-wrapper">
+    <div class="sidebar-editor">
+        <!-- Tool Title & Description -->
+        <div style="padding: 20px 25px; border-bottom: 1px solid #f1f5f9; background: #fff;">
+            <h1 style="font-size: 18px; font-weight: 900; color: var(--primary-color); margin: 0;">مولد لقطات المتاجر</h1>
+            <ul class="breadcrumb-custom p-0 m-0 mt-1" style="font-size: 10px;">
+                <li><a href="../../../index.html">الرئيسية</a></li>
+                <li><a href="../../index.html">الأدوات</a></li>
+                <li class="active">مولد اللقطات</li>
+            </ul>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="sidebar-tabs">
+            <button class="tab-btn active" onclick="switchTab('assets')"><i class="fa fa-folder-open"></i><span>الصور</span></button>
+            <button class="tab-btn" onclick="switchTab('text')"><i class="fa fa-text-height"></i><span>النصوص</span></button>
+            <button class="tab-btn" onclick="switchTab('device')"><i class="fa fa-mobile"></i><span>الهاتف</span></button>
+            <button class="tab-btn" onclick="switchTab('style')"><i class="fa fa-paint-brush"></i><span>التصميم</span></button>
+            <button class="tab-btn" onclick="switchTab('fx')"><i class="fa fa-magic"></i><span>إضافات</span></button>
+        </div>
+
+        <div class="sidebar-content">
+            <!-- TAB 1: ASSETS -->
+            <div id="tab-assets" class="tab-pane active">
+                <div class="section-header">لقطات الشاشة والشعار</div>
+                <div class="control-item">
+                    <label class="control-label">لقطة الشاشة الرئيسية</label>
+                    <input type="file" id="imageInput" class="custom-input" accept="image/*">
+                </div>
+                <div id="dual-image-control" class="control-item" style="display: none;">
+                    <label class="control-label">لقطة الشاشة الثانية (للوضع المزدوج)</label>
+                    <input type="file" id="imageInput2" class="custom-input" accept="image/*">
+                </div>
+                <div class="control-item">
+                    <label class="control-label" for="logoInput">شعار التطبيق (اختياري)</label>
+                    <input type="file" id="logoInput" class="custom-input" accept="image/*">
+                    <div id="logo-controls" style="display: none;" class="mt-3">
+                        <label class="control-label" style="font-size: 11px;">حجم الشعار</label>
+                        <input type="range" id="logoScale" min="0.2" max="2" step="0.1" value="1" class="form-range" oninput="updateLogoTransform()">
+                        <input type="range" id="logoMoveY" min="-600" max="600" value="0" class="form-range mt-2" oninput="updateLogoTransform()">
+                        <small class="text-muted" style="font-size: 10px;">تحريك الشعار رأسياً</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: TEXT -->
+            <div id="tab-text" class="tab-pane">
+                <div class="section-header">المحتوى التسويقي</div>
+                <div class="control-item">
+                    <label class="control-label">العنوان الرئيسي</label>
+                    <input type="text" id="titleInput" class="custom-input" placeholder="اكتب عنواناً جذاباً..." maxlength="50">
+                </div>
+                <div class="control-item">
+                    <label class="control-label">تمييز كلمة (Highlight)</label>
+                    <div class="d-flex gap-2">
+                        <input type="text" id="highlightWord" class="custom-input" placeholder="الكلمة..." oninput="updateTextStyles()">
+                        <input type="color" id="highlightColor" value="#006b98" class="form-control" style="width: 50px; height: 38px; padding: 2px;" oninput="updateTextStyles()">
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">الوصف الفرعي</label>
+                    <textarea id="descInput" class="custom-input" rows="2" placeholder="اشرح ميزة تطبيقك..." maxlength="100"></textarea>
+                </div>
+                <div class="section-header">تنسيق الخطوط</div>
+                <div class="control-item">
+                    <label class="control-label">نوع الخط</label>
+                    <select id="fontSelect" class="custom-input" onchange="updateTextStyles()">
+                        <option value="'Cairo', sans-serif">Cairo</option>
+                        <option value="'Almarai', sans-serif">Almarai</option>
+                        <option value="'Tajawal', sans-serif">Tajawal</option>
+                        <option value="'Montserrat', sans-serif">Montserrat</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">حجم العنوان ومكانه</label>
+                    <input type="range" id="titleSize" min="20" max="60" value="34" class="form-range" oninput="updateTextStyles()">
+                    <input type="range" id="textY" min="-300" max="600" value="0" class="form-range mt-2" oninput="updateTextStyles()">
+                </div>
+                <div class="control-item">
+                    <label class="control-label">ألوان النصوص</label>
+                    <div class="d-flex gap-3">
+                        <div><small>العنوان</small><input type="color" id="titleColor" value="#1e293b" class="form-control mt-1" oninput="updateTextStyles()"></div>
+                        <div><small>الوصف</small><input type="color" id="descColor" value="#64748b" class="form-control mt-1" oninput="updateTextStyles()"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: DEVICE -->
+            <div id="tab-device" class="tab-pane">
+                <div class="section-header">إعدادات العرض</div>
+                <div class="control-item">
+                    <label class="control-label">نوع الجهاز المختار</label>
+                    <div class="visual-grid">
+                        <div class="visual-item active" onclick="setDevice('iphone')"><i class="fa fa-apple"></i><small>iPhone Pro</small></div>
+                        <div class="visual-item" onclick="setDevice('pixel')"><i class="fa fa-android"></i><small>Android Flat</small></div>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">حجم التصميم (Target Size)</label>
+                    <div class="visual-grid">
+                        <div class="visual-item active" onclick="setCanvasSize('phone')"><i class="fa fa-mobile"></i><small>هاتف</small></div>
+                        <div class="visual-item" onclick="setCanvasSize('tablet')"><i class="fa fa-tablet"></i><small>آيباد</small></div>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">قالب التخطيط</label>
+                    <div class="visual-grid">
+                        <div class="visual-item active" onclick="setLayout('top')"><small>نص علوي</small></div>
+                        <div class="visual-item" onclick="setLayout('bottom')"><small>نص سفلي</small></div>
+                        <div class="visual-item" onclick="setLayout('dual')"><small>مزدوج</small></div>
+                    </div>
+                </div>
+                <div class="section-header">تحريك وتدوير (3D)</div>
+                <div class="control-item">
+                    <label class="control-label">الحجم (Scale)</label>
+                    <input type="range" id="phoneScale" min="0.5" max="1.5" step="0.05" value="1" class="form-range" oninput="updatePhoneTransform()">
+                </div>
+                <div class="control-item">
+                    <label class="control-label">التدوير والميلان</label>
+                    <input type="range" id="phoneRotate" min="-45" max="45" value="0" class="form-range" oninput="updatePhoneTransform()">
+                    <input type="range" id="phoneTilt" min="-180" max="180" value="0" class="form-range mt-2" oninput="updatePhoneTransform()">
+                </div>
+                <div class="control-item">
+                    <label class="control-label">الموضع الدقيق (X & Y)</label>
+                    <input type="range" id="moveX" min="-250" max="250" value="0" class="form-range" oninput="updatePhoneTransform()">
+                    <input type="range" id="moveY" min="-400" max="400" value="0" class="form-range mt-2" oninput="updatePhoneTransform()">
+                </div>
+                <button class="btn btn-sm btn-outline-secondary w-100" onclick="resetPhone()">إعادة ضبط الوضع الافتراضي</button>
+            </div>
+
+            <!-- TAB 4: STYLE -->
+            <div id="tab-style" class="tab-pane">
+                <div class="section-header">الخلفية والألوان</div>
+                <div class="control-item">
+                    <label class="control-label">ألوان جاهزة</label>
+                    <div class="palette-grid">
+                        <div class="palette-item active" style="background: #ffffff" onclick="setCanvasBg('#ffffff', this)"></div>
+                        <div class="palette-item" style="background: linear-gradient(135deg, #006b98 0%, #003d5c 100%)" onclick="setCanvasBg(this.style.background, this)"></div>
+                        <div class="palette-item" style="background: linear-gradient(135deg, #4f46e5 0%, #312e81 100%)" onclick="setCanvasBg(this.style.background, this)"></div>
+                        <div class="palette-item" style="background: #0f172a" onclick="setCanvasBg('#0f172a', this)"></div>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">تدرج لوني مخصص</label>
+                    <div class="d-flex gap-2">
+                        <input type="color" id="customColor1" value="#006b98" class="form-control" oninput="updateCustomGradient()">
+                        <input type="color" id="customColor2" value="#003d5c" class="form-control" oninput="updateCustomGradient()">
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label class="control-label">صورة خلفية مخصصة</label>
+                    <input type="file" id="bgImageInput" class="custom-input" accept="image/*" onchange="setCustomBgImage(this)">
+                </div>
+                <div class="control-item">
+                    <label class="control-label">نمط الخلفية (Texture)</label>
+                    <div class="visual-grid">
+                        <div class="visual-item active" onclick="setPattern('none')"><small>بدون</small></div>
+                        <div class="visual-item" onclick="setPattern('dots')"><small>نقاط</small></div>
+                        <div class="visual-item" onclick="setPattern('grid')"><small>شبكة</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: FX -->
+            <div id="tab-fx" class="tab-pane">
+                <div class="section-header">مؤثرات بصرية إضافية</div>
+                <div class="control-item">
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="showReflection" onchange="toggleFX('reflection')">
+                        <label class="form-check-label">انعكاس سفلي (Reflection)</label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="showGlare" onchange="toggleFX('glare')">
+                        <label class="form-check-label">بريق الشاشة (Screen Glare)</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="showBlobs" checked onchange="toggleFX('blobs')">
+                        <label class="form-check-label">فقاعات الخلفية (Blobs)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <button class="btn-export-main" onclick="startExport()">
+                <i class="fa fa-cloud-download"></i> تصدير وحفظ الصورة
+            </button>
+        </div>
+    </div>
+
+    <div class="stage-container">
+        <div id="design-canvas" class="layout-top">
+            <div id="canvas-pattern" class="bg-pattern"></div>
+            <div class="bg-blobs" id="canvas-blobs">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+
+            <div class="typography-layer" id="view-text-layer">
+                <h2 id="view-title" style="display: none;"></h2>
+                <p id="view-desc" style="display: none;"></p>
+            </div>
+
+            <div class="screenshot-wrapper" id="view-screenshot">
+                <div class="phone-detail" id="view-island"></div>
+                <div class="reflection-layer" id="view-reflection"></div>
+                <div class="screen-glare" id="view-glare"></div>
+            </div>
+
+            <div class="screenshot-wrapper" id="view-screenshot-2" style="display: none;">
+                <div class="phone-detail" id="view-island-2"></div>
+                <div class="reflection-layer" id="view-reflection-2"></div>
+                <div class="screen-glare" id="view-glare-2"></div>
+            </div>
+
+            <div class="branding-layer" id="view-branding" style="display: none;">
+                <img id="logo-preview" src="" alt="شعار التطبيق">
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" onclick="adjustZoom(0.1)" title="تكبير المعاينة"><i class="fa fa-plus"></i></button>
+            <button class="zoom-btn" onclick="adjustZoom(-0.1)" title="تصغير المعاينة"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const titleIn = document.getElementById('titleInput');
+    const descIn = document.getElementById('descInput');
+    const imageIn = document.getElementById('imageInput');
+    const imageIn2 = document.getElementById('imageInput2');
+    const logoIn = document.getElementById('logoInput');
+    const bgImageIn = document.getElementById('bgImageInput');
+    const viewTitle = document.getElementById('view-title');
+    const viewDesc = document.getElementById('view-desc');
+    const viewScreenshot = document.getElementById('view-screenshot');
+    const viewScreenshot2 = document.getElementById('view-screenshot-2');
+    const viewIsland = document.getElementById('view-island');
+    const viewIsland2 = document.getElementById('view-island-2');
+    const viewBranding = document.getElementById('view-branding');
+    const logoPreview = document.getElementById('logo-preview');
+    const designCanvas = document.getElementById('design-canvas');
+
+    let currentZoom = 0.85;
+    let currentAlign = 'center';
+    let currentLayout = 'top';
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+        event.currentTarget.classList.add('active');
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+
+    titleIn.addEventListener('input', updateTextStyles);
+    descIn.addEventListener('input', () => {
+        viewDesc.textContent = descIn.value;
+        viewDesc.style.display = descIn.value.trim() === "" ? 'none' : 'block';
+    });
+
+    [imageIn, imageIn2].forEach((input, index) => {
+        input.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                const target = index === 0 ? viewScreenshot : viewScreenshot2;
+                reader.onload = (ev) => target.style.backgroundImage = `url(${ev.target.result})`;
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+
+    logoIn.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                logoPreview.src = ev.target.result;
+                viewBranding.style.display = 'flex';
+                document.getElementById('logo-controls').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function setCustomBgImage(input) {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (ev) => designCanvas.style.backgroundImage = `url(${ev.target.result})`;
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function setPattern(type) {
+        const p = document.getElementById('canvas-pattern');
+        p.className = 'bg-pattern';
+        if(type !== 'none') p.classList.add(`pattern-${type}`);
+        updateVisualSelection(event.currentTarget);
+    }
+
+    function updateLogoTransform() {
+        const scale = document.getElementById('logoScale').value;
+        const moveY = document.getElementById('logoMoveY').value;
+        viewBranding.style.transform = `translateX(-50%) translateY(${moveY}px) scale(${scale})`;
+    }
+
+    const deviceConfigs = {
+        'iphone': { border: '14px solid #1e293b', radius: '45px', width: '80%', height: '76%', island: 'block' },
+        'pixel': { border: '8px solid #334155', radius: '20px', width: '82%', height: '78%', island: 'none' }
+    };
+
+    function setDevice(type) {
+        const config = deviceConfigs[type];
+        [viewScreenshot, viewScreenshot2].forEach(v => {
+            v.style.border = config.border;
+            v.style.borderRadius = config.radius;
+            v.style.width = config.width;
+            v.style.height = config.height;
+        });
+        viewIsland.style.display = config.island;
+        viewIsland2.style.display = config.island;
+        updateVisualSelection(event.currentTarget);
+    }
+
+    function setLayout(type) {
+        currentLayout = type;
+        designCanvas.className = `layout-${type}`;
+        const isDual = type === 'dual';
+        viewScreenshot2.style.display = isDual ? 'block' : 'none';
+        document.getElementById('dual-image-control').style.display = isDual ? 'block' : 'none';
+
+        if (isDual) {
+            viewScreenshot.style.transform = 'translateX(-70%) scale(0.85) rotateY(15deg)';
+            viewScreenshot2.style.transform = 'translateX(-20%) scale(0.85) rotateY(-15deg)';
+            viewScreenshot2.style.top = '280px';
+            viewScreenshot2.style.left = '50%';
+        } else {
+            updatePhoneTransform();
+        }
+        updateVisualSelection(event.currentTarget);
+        setCanvasBg(designCanvas.style.background);
+    }
+
+    function setCanvasBg(bg, el) {
+        designCanvas.style.background = bg;
+        if(el) {
+            document.querySelectorAll('#tab-style .palette-item').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+        }
+        const isWhite = bg.includes('#ffffff') || bg.includes('255, 255, 255');
+        document.getElementById('view-text-layer').style.color = isWhite ? '#1e293b' : '#ffffff';
+    }
+
+    function updateVisualSelection(el) {
+        if(!el) return;
+        el.parentElement.querySelectorAll('.visual-item').forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    function setAlign(type) {
+        currentAlign = type;
+        designCanvas.classList.remove('pos-center', 'pos-left', 'pos-right');
+        designCanvas.classList.add(`pos-${type}`);
+        updatePhoneTransform();
+        updateVisualSelection(event.currentTarget);
+    }
+
+    function updatePhoneTransform() {
+        if(currentLayout === 'dual') return;
+        const scale = document.getElementById('phoneScale').value;
+        const rotY = document.getElementById('phoneRotate').value;
+        const tilt = document.getElementById('phoneTilt').value;
+        const mx = document.getElementById('moveX').value;
+        const my = document.getElementById('moveY').value;
+
+        let t = '';
+        if (currentAlign === 'center') t += 'translateX(-50%) ';
+        t += `translate(${mx}px, ${my}px) scale(${scale}) rotateY(${rotY}deg) rotateZ(${tilt}deg)`;
+        viewScreenshot.style.transform = t;
+    }
+
+    function resetPhone() {
+        ['phoneScale', 'phoneRotate', 'phoneTilt', 'moveX', 'moveY'].forEach(id => {
+            document.getElementById(id).value = id === 'phoneScale' ? 1 : 0;
+        });
+        updatePhoneTransform();
+    }
+
+    function updateTextStyles() {
+        const titleText = titleIn.value;
+        const highlight = document.getElementById('highlightWord').value;
+        const hColor = document.getElementById('highlightColor').value;
+        const font = document.getElementById('fontSelect').value;
+
+        const layer = document.getElementById('view-text-layer');
+        layer.style.fontFamily = font;
+        layer.style.transform = `translateY(${document.getElementById('textY').value}px)`;
+
+        if (titleText.trim() === "") {
+            viewTitle.style.display = 'none';
+        } else {
+            viewTitle.style.display = 'inline-block';
+            viewTitle.style.fontSize = document.getElementById('titleSize').value + 'px';
+            viewTitle.style.color = document.getElementById('titleColor').value;
+
+            if (highlight && titleText.includes(highlight)) {
+                const regex = new RegExp(`(${highlight})`, 'gi');
+                viewTitle.innerHTML = titleText.replace(regex, `<span style="color: ${hColor}">$1</span>`);
+            } else {
+                viewTitle.textContent = titleText;
+            }
+        }
+        viewDesc.style.color = document.getElementById('descColor').value;
+    }
+
+    function toggleFX(type) {
+        const show = document.getElementById(`show${type.charAt(0).toUpperCase() + type.slice(1)}`).checked;
+        if(type === 'reflection') {
+            [viewReflection, document.getElementById('view-reflection-2')].forEach(r => r.style.display = show ? 'block' : 'none');
+        } else if(type === 'glare') {
+            [viewGlare, document.getElementById('view-glare-2')].forEach(g => g.style.display = show ? 'block' : 'none');
+        } else {
+            document.getElementById('canvas-blobs').style.display = show ? 'block' : 'none';
+        }
+    }
+
+    function setCanvasSize(type) {
+        designCanvas.style.width = type === 'tablet' ? '640px' : '400px';
+        designCanvas.style.height = type === 'tablet' ? '850px' : '860px';
+        updateVisualSelection(event.currentTarget);
+    }
+
+    function updateCustomGradient() {
+        const c1 = document.getElementById('customColor1').value;
+        const c2 = document.getElementById('customColor2').value;
+        setCanvasBg(`linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`);
+    }
+
+    function adjustZoom(delta) {
+        currentZoom = Math.max(0.3, Math.min(1.5, currentZoom + delta));
+        designCanvas.style.transform = `scale(${currentZoom})`;
+    }
+
+    function startExport() {
+        if(!imageIn.files[0]) { window.showToast("يرجى اختيار لقطة شاشة للتطبيق أولاً", "warn"); return; }
+        const btn = document.querySelector('.btn-export-main');
+        btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> جاري الحفظ...';
+        const prevZoom = currentZoom;
+
+        // Performance Optimization: Hide heavy FX during export if needed
+        const blobs = document.getElementById('canvas-blobs');
+        const originalBlobsDisplay = blobs.style.display;
+        if(window.innerWidth < 768) blobs.style.display = 'none';
+
+        designCanvas.style.transform = 'scale(1)';
+
+        html2canvas(designCanvas, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: null,
+            logging: false
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `connecttag-screenshot-${Date.now()}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+
+            btn.innerHTML = '<i class="fa fa-cloud-download"></i> تصدير وحفظ الصورة';
+            designCanvas.style.transform = `scale(${prevZoom})`;
+            blobs.style.display = originalBlobsDisplay;
+            window.showToast("تم تصدير الصورة بنجاح!", "success");
+        });
+    }
+
+    // Default init
+    setDevice('iphone');
+    updateTextStyles();
+</script>
+
+
+<site-footer></site-footer>
+</body>
+</html>

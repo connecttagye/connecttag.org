@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد كلمات المرور الآمنة (Secure Password) - كونكت تاق</title>
+<meta name="description" content="أداة مجانية لتوليد كلمات مرور قوية وغير قابلة للاختراق مع التحكم في الطول والأنواع وفحص القوة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #25d366;
+        --bg-light: #f4f7f9;
+        --card-bg: #ffffff;
+        --text-main: #2c3e50;
+        --border-color: #e1e8ed;
+    }
+
+    [data-theme="dark"] {
+        --bg-light: #0f172a;
+        --card-bg: #1e293b;
+        --text-main: #f8fafc;
+        --border-color: #334155;
+    }
+
+    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-main); transition: 0.3s; }
+
+    .page-header-unified {
+        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
+        padding: 80px 0 60px;
+        color: white;
+        text-align: center;
+    }
+
+    .gen-container { padding: 40px 0; }
+
+    .main-card {
+        background: var(--card-bg);
+        border-radius: 32px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        padding: 40px;
+        border: 1px solid var(--border-color);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .output-area {
+        background: var(--bg-light);
+        padding: 25px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        border: 2px solid var(--border-color);
+        position: relative;
+    }
+    .password-display {
+        flex: 1;
+        font-family: monospace;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+        word-break: break-all;
+        letter-spacing: 2px;
+    }
+    .btn-icon {
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 12px;
+        background: var(--primary-color);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-icon:hover { transform: scale(1.1); background: var(--secondary-color); }
+
+    .strength-meter { height: 6px; background: #eee; border-radius: 10px; margin-top: 10px; overflow: hidden; }
+    .strength-fill { height: 100%; width: 0%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    .setting-item { margin-bottom: 25px; }
+    .setting-label { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 10px; }
+
+    .range-slider { width: 100%; accent-color: var(--primary-color); cursor: pointer; }
+
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--bg-light);
+        padding: 12px 15px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .check-item:hover { background: var(--border-color); }
+    .check-item input { width: 18px; height: 18px; cursor: pointer; }
+
+    .btn-generate {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 16px;
+        background: var(--primary-color);
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-generate:hover { background: #004d6e; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+    .badge-secure { font-size: 10px; padding: 3px 8px; border-radius: 5px; background: #e8f5e9; color: #2e7d32; }
+</style>
+</head>
+<body>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1 data-aos="zoom-in">مولد كلمات المرور الآمنة</h1>
+        <p>أنشئ كلمات مرور قوية لا يمكن كسرها لحماية حساباتك الرقمية</p>
+        <ul class="breadcrumb-custom mt-3">
+            <li><a href="../../../index.html" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
+            <li><a href="../../index.html" style="color:white !important; opacity:0.8;">الأدوات</a></li>
+            <li class="active" style="color:white !important; font-weight:800;">مولد كلمات المرور</li>
+        </ul>
+    </div>
+</div>
+
+<div class="gen-container">
+    <div class="container">
+        <div class="main-card" data-aos="fade-up">
+            <div class="output-area">
+                <div class="password-display" id="passwordResult">P@ssw0rd123</div>
+                <button class="btn-icon" onclick="copyPassword()" title="نسخ الكلمة"><i class="fa fa-copy"></i></button>
+                <button class="btn-icon" onclick="generate()" title="تحديث"><i class="fa fa-refresh"></i></button>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="small fw-bold">قوة كلمة المرور: <span id="strengthText">متوسطة</span></span>
+                </div>
+                <div class="strength-meter">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <div class="setting-label">
+                    <span>طول الكلمة</span>
+                    <span class="text-primary" id="lengthVal">16</span>
+                </div>
+                <input type="range" class="range-slider" id="lengthSlider" min="8" max="50" value="16" oninput="updateUI()">
+            </div>
+
+            <div class="check-grid">
+                <label class="check-item"><input type="checkbox" id="checkUpper" checked onchange="generate()"> أحرف كبيرة (A-Z)</label>
+                <label class="check-item"><input type="checkbox" id="checkLower" checked onchange="generate()"> أحرف صغيرة (a-z)</label>
+                <label class="check-item"><input type="checkbox" id="checkNumbers" checked onchange="generate()"> أرقام (0-9)</label>
+                <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()"> رموز خاصّة (!@#)</label>
+            </div>
+
+            <button class="btn-generate" onclick="generate()"><i class="fa fa-shield"></i> توليد كلمة مرور جديدة</button>
+
+            <div class="text-center mt-4 small text-muted">
+                <i class="fa fa-lock"></i> يتم التوليد محلياً في متصفحك لضمان أقصى درجات الأمان.
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+const charset = {
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lower: 'abcdefghijklmnopqrstuvwxyz',
+    numbers: '0123456789',
+    symbols: '!@#$%^&*()_+~`|}{[]:;?><,./-='
+};
+
+function updateUI() {
+    document.getElementById('lengthVal').innerText = document.getElementById('lengthSlider').value;
+    generate();
+}
+
+function generate() {
+    const length = parseInt(document.getElementById('lengthSlider').value);
+    const upper = document.getElementById('checkUpper').checked;
+    const lower = document.getElementById('checkLower').checked;
+    const numbers = document.getElementById('checkNumbers').checked;
+    const symbols = document.getElementById('checkSymbols').checked;
+
+    let availableChars = '';
+    if (upper) availableChars += charset.upper;
+    if (lower) availableChars += charset.lower;
+    if (numbers) availableChars += charset.numbers;
+    if (symbols) availableChars += charset.symbols;
+
+    if (!availableChars) {
+        document.getElementById('passwordResult').innerText = 'اختر خياراً واحداً!';
+        return;
+    }
+
+    let password = '';
+    const crypto = window.crypto || window.msCrypto;
+    const array = new Uint32Array(length);
+    crypto.getRandomValues(array);
+
+    for (let i = 0; i < length; i++) {
+        password += availableChars[array[i] % availableChars.length];
+    }
+
+    document.getElementById('passwordResult').innerText = password;
+    calculateStrength(password);
+}
+
+function calculateStrength(pw) {
+    let score = 0;
+    if (pw.length > 12) score += 25;
+    if (pw.length > 20) score += 15;
+    if (/[A-Z]/.test(pw)) score += 15;
+    if (/[0-9]/.test(pw)) score += 15;
+    if (/[^A-Za-z0-9]/.test(pw)) score += 30;
+
+    const fill = document.getElementById('strengthFill');
+    const text = document.getElementById('strengthText');
+
+    fill.style.width = score + '%';
+    if (score < 40) {
+        fill.style.background = '#ef4444';
+        text.innerText = 'ضعيفة جداً';
+    } else if (score < 70) {
+        fill.style.background = '#f59e0b';
+        text.innerText = 'متوسطة';
+    } else {
+        fill.style.background = '#10b981';
+        text.innerText = 'قوية جداً ✅';
+    }
+}
+
+function copyPassword() {
+    const pw = document.getElementById('passwordResult').innerText;
+    if (pw === 'اختر خياراً واحداً!') return;
+
+    navigator.clipboard.writeText(pw).then(() => {
+        const btn = document.querySelector('.btn-icon');
+        const oldIcon = btn.innerHTML;
+        btn.innerHTML = '<i class="fa fa-check"></i>';
+        btn.style.background = '#10b981';
+        setTimeout(() => {
+            btn.innerHTML = oldIcon;
+            btn.style.background = '';
+        }, 2000);
+    });
+}
+
+window.onload = () => {
+    AOS.init({ once: true });
+    generate();
+};
+</script>
+
+</body>
+</html>

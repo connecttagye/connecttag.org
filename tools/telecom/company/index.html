@@ -25,13 +25,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../../assets/css/styles.min.css">
-  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../../../assets/css/styles.min.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../../assets/css/animate-custom.css">
+  <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
 
 
@@ -57,7 +57,8 @@
       font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
     }
   </style>
-<script src="../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
 
 <style>
     /* New Unified Tools Header - White Style */
@@ -102,8 +103,7 @@
     .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.3s; }
     .breadcrumb-tools li a:hover { color: #e89a2f; }
     .breadcrumb-tools li:not(:last-child)::after {
-        content: '\f104';
-        font-family: FontAwesome;
+        content: ">";
         margin-right: 10px;
         font-size: 12px;
         color: #ccc;
@@ -137,6 +137,7 @@
 </style>
 </head>
 <body>
+<site-toast></site-toast>
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
@@ -180,22 +181,45 @@
         const apiKey = 'ws9syryf5hyd';
         const grid = document.getElementById('companies-grid');
 
-        fetch(apiUrl, {
-            method: 'GET',
-            headers: { 'X-Api-Key': apiKey }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.result && data.result.companies) {
-                renderCompanies(data.result.companies);
-            } else {
-                grid.innerHTML = '<div class="col-xs-12 text-center">عذراً، فشل تحميل البيانات.</div>';
+        // Cache Logic
+        const CACHE_KEY = 'telecom_companies_cache';
+        const CACHE_TIME = 24 * 60 * 60 * 1000;
+
+        function loadFromCache() {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < CACHE_TIME) return data;
             }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            grid.innerHTML = '<div class="col-xs-12 text-center">حدث خطأ في الاتصال بالسيرفر.</div>';
-        });
+            return null;
+        }
+
+        function saveToCache(data) {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+        }
+
+        const cachedData = loadFromCache();
+        if (cachedData) {
+            renderCompanies(cachedData);
+        } else {
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: { 'X-Api-Key': apiKey }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.result && data.result.companies) {
+                    saveToCache(data.result.companies);
+                    renderCompanies(data.result.companies);
+                } else {
+                    grid.innerHTML = '<div class="col-xs-12 text-center">عذراً، فشل تحميل البيانات.</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                grid.innerHTML = '<div class="col-xs-12 text-center">حدث خطأ في الاتصال بالسيرفر.</div>';
+            });
+        }
 
         function renderCompanies(companies) {
             grid.innerHTML = '';
@@ -205,7 +229,7 @@
                 cardCol.className = 'col-md-4 col-sm-6';
                 cardCol.innerHTML = `
                     <div class="company-card" onclick="location.href='details.html?id=${c.id}'">
-                        <img src="${c.logo}" alt="${c.arName}" class="company-logo" onerror="this.src='../../assets/img/connect-tag-official-logo.webp'">
+                        <img src="${c.logo}" alt="${c.arName}" class="company-logo" onerror="this.src='../../../assets/img/connect-tag-official-logo.webp'">
                         <h3 class="company-name">${c.arName}</h3>
                         <p class="company-desc">${c.arDescription || 'شركة اتصالات يمنية رائدة تقدم خدمات الجوال والإنترنت.'}</p>
                         <a href="details.html?id=${c.id}" class="btn-details">عرض التفاصيل</a>

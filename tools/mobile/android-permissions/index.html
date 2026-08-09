@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد صلاحيات الأندرويد - كونكت تاق</title>
+<meta name="description" content="أداة ذكية لمطوري أندرويد لاختيار وتوليد أكواد الصلاحيات لملف AndroidManifest.xml بسهولة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
+    .gen-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 30px; }
+    .permission-item {
+        padding: 12px 15px; border: 1px solid #edf2f7; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;
+        display: flex; align-items: center; gap: 12px;
+    }
+    .permission-item:hover { border-color: #006b98; background: #f0f9ff; }
+    .permission-item.selected { background: #006b98; color: #fff; border-color: #006b98; }
+    .permission-item.selected small { color: #e2e8f0 !important; }
+    .permission-item input { display: none; }
+    .code-box { background: #0f172a; color: #f8fafc; border-radius: 15px; padding: 25px 20px 20px; font-family: 'Courier New', monospace; position: relative; margin-top: 20px; direction: ltr; text-align: left; border: 1px solid #1e293b; }
+    .btn-copy { position: absolute; top: 10px; right: 10px; background: #334155; color: #fff; border: none; padding: 5px 15px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; z-index: 10; }
+    .btn-copy:hover { background: #475569; }
+    .category-title { font-weight: 800; color: #006b98; margin: 25px 0 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f9ff; text-align: right; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">صلاحيات أندرويد</li>
+        </ul>
+        <h1 style="font-weight: 900; color: #006b98;">مولد صلاحيات AndroidManifest</h1>
+        <p class="text-muted">اختر الصلاحيات التي يحتاجها تطبيقك وسنقوم بتوليد كود الـ XML الجاهز لك</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="gen-card">
+                <div id="permissions-container">
+                    <!-- Categories will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="gen-card sticky-top" style="top: 100px;">
+                <h4 style="font-weight: 800; margin-bottom: 20px;">الكود المولد:</h4>
+                <div class="code-box" id="result-code">
+                    <button class="btn-copy" onclick="copyCode()">نسخ الكود</button>
+                    <pre id="xml-output" style="color: inherit; margin: 0; white-space: pre-wrap; font-size: 14px;"></pre>
+                </div>
+                <div class="mt-4">
+                    <div class="alert alert-info" style="font-size: 13px; border-radius: 15px;">
+                        <i class="fa fa-info-circle"></i> تذكر إضافة الصلاحيات المختارة داخل وسم <code>&lt;manifest&gt;</code> وقبل وسم <code>&lt;application&gt;</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const permissionsData = [
+        {
+            category: "الإنترنت والشبكة",
+            items: [
+                { id: "INTERNET", name: "الوصول للإنترنت", desc: "يسمح للتطبيق بفتح مآخذ الشبكة." },
+                { id: "ACCESS_NETWORK_STATE", name: "حالة الشبكة", desc: "يسمح بالوصول إلى معلومات حول الشبكات." },
+                { id: "ACCESS_WIFI_STATE", name: "حالة الواي فاي", desc: "يسمح بالوصول إلى معلومات حول شبكات Wi-Fi." }
+            ]
+        },
+        {
+            category: "الموقع الجغرافي",
+            items: [
+                { id: "ACCESS_FINE_LOCATION", name: "الموقع الدقيق (GPS)", desc: "يسمح بالوصول إلى الموقع الدقيق." },
+                { id: "ACCESS_COARSE_LOCATION", name: "الموقع التقريبي", desc: "يسمح بالوصول إلى الموقع التقريبي عبر الشبكة." },
+                { id: "ACCESS_BACKGROUND_LOCATION", name: "الموقع في الخلفية", desc: "يسمح بالوصول للموقع حتى والتطبيق مغلق (أندرويد 10+)." }
+            ]
+        },
+        {
+            category: "التخزين والوسائط",
+            items: [
+                { id: "READ_EXTERNAL_STORAGE", name: "قراءة التخزين الخارجي", desc: "يسمح بقراءة الصور والملفات." },
+                { id: "WRITE_EXTERNAL_STORAGE", name: "الكتابة على التخزين", desc: "يسمح بحفظ الصور والملفات." },
+                { id: "READ_MEDIA_IMAGES", name: "قراءة الصور (أندرويد 13+)", desc: "صلاحية مخصصة للصور فقط في النسخ الحديثة." }
+            ]
+        },
+        {
+            category: "الهاتف والحساسات",
+            items: [
+                { id: "CAMERA", name: "الكاميرا", desc: "يسمح بالتقاط الصور وتسجيل الفيديو." },
+                { id: "RECORD_AUDIO", name: "تسجيل الصوت", desc: "يسمح للتطبيق بتسجيل الصوت باستخدام الميكروفون." },
+                { id: "READ_CONTACTS", name: "قراءة جهات الاتصال", desc: "يسمح بالوصول إلى قائمة الأسماء في الهاتف." },
+                { id: "CALL_PHONE", name: "إجراء مكالمات", desc: "يسمح ببدء مكالمة هاتفية دون الحاجة لواجهة الاتصال." }
+            ]
+        }
+    ];
+
+    const selectedPermissions = new Set();
+
+    function init() {
+        const container = document.getElementById('permissions-container');
+        permissionsData.forEach(cat => {
+            const catDiv = document.createElement('div');
+            catDiv.innerHTML = `<h5 class="category-title">${cat.category}</h5>`;
+            cat.items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'permission-item';
+                itemDiv.innerHTML = `
+                    <i class="fa fa-plus-circle"></i>
+                    <div>
+                        <strong style="display: block;">${item.name}</strong>
+                        <small class="text-muted" style="font-size: 11px;">${item.id}</small>
+                    </div>
+                `;
+                itemDiv.onclick = () => togglePermission(item.id, itemDiv);
+                catDiv.appendChild(itemDiv);
+            });
+            container.appendChild(catDiv);
+        });
+        updateOutput();
+    }
+
+    function togglePermission(id, element) {
+        if (selectedPermissions.has(id)) {
+            selectedPermissions.delete(id);
+            element.classList.remove('selected');
+            element.querySelector('i').className = 'fa fa-plus-circle';
+        } else {
+            selectedPermissions.add(id);
+            element.classList.add('selected');
+            element.querySelector('i').className = 'fa fa-check-circle';
+        }
+        updateOutput();
+    }
+
+    function updateOutput() {
+        const output = document.getElementById('xml-output');
+        if (selectedPermissions.size === 0) {
+            output.textContent = "<!-- اختر الصلاحيات ليظهر الكود هنا -->";
+            return;
+        }
+
+        let xml = "";
+        selectedPermissions.forEach(id => {
+            xml += `<uses-permission android:name="android.permission.${id}" />\n`;
+        });
+        output.textContent = xml.trim();
+    }
+
+    function copyCode() {
+        const text = document.getElementById('xml-output').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            window.showToast('تم نسخ كود الصلاحيات بنجاح!', 'success');
+        });
+    }
+
+    init();
+</script>
+
+
+<site-footer></site-footer>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>فاحص ملف AndroidManifest - كونكت تاق</title>
+<meta name="description" content="أداة ذكية لتحليل ملف AndroidManifest.xml وكشف الصلاحيات الحساسة التي قد تؤدي لرفض تطبيقك في متجر جوجل بلاي.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    :root {
+        --primary-color: #006b98;
+        --secondary-color: #00567a;
+        --bg-editor: #f8fafc;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --success: #10b981;
+    }
+
+    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
+
+    .tool-container { padding-top: 120px; padding-bottom: 80px; max-width: 1000px; margin: 0 auto; }
+    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
+
+    textarea.manifest-area {
+        width: 100%; height: 300px; border-radius: 15px; border: 2px solid #f1f5f9;
+        padding: 20px; font-family: 'Courier New', monospace; font-size: 13px;
+        background: #f8fafc; outline: none; transition: 0.3s; resize: vertical;
+    }
+    textarea.manifest-area:focus { border-color: var(--primary-color); background: #fff; }
+
+    .btn-analyze {
+        background: var(--primary-color); color: #fff; border: none; padding: 15px 30px;
+        border-radius: 12px; font-weight: 800; width: 100%; margin-top: 20px; transition: 0.3s;
+    }
+    .btn-analyze:hover { background: var(--secondary-color); transform: translateY(-2px); }
+
+    .report-section { margin-top: 40px; display: none; }
+    .report-item {
+        padding: 20px; border-radius: 15px; margin-bottom: 15px; border-right: 5px solid #eee;
+        background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .report-item.danger { border-right-color: var(--danger); background: #fef2f2; }
+    .report-item.warning { border-right-color: var(--warning); background: #fffbeb; }
+    .report-item.success { border-right-color: var(--success); background: #f0fdf4; }
+
+    .report-title { font-weight: 800; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .report-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+</head>
+<body>
+<site-header></site-header>
+
+<div class="tool-container container">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">فاحص المانيفست</li>
+        </ul>
+        <h1 style="font-weight: 900; color: var(--primary-color);">فاحص Android Manifest</h1>
+        <p class="text-muted">قم بلصق محتوى ملف AndroidManifest.xml لتحليل الصلاحيات والمخاطر الأمنية</p>
+    </div>
+
+    <div class="main-card">
+        <label class="label-custom" style="font-weight: 800; margin-bottom: 10px; display: block;" for="manifest-input">محتوى ملف الـ XML:</label>
+        <textarea id="manifest-input" class="manifest-area" placeholder='مثال: <manifest ...> <uses-permission android:name="android.permission.CAMERA" /> ... </manifest>'></textarea>
+
+        <button class="btn-analyze" onclick="analyzeManifest()">
+            <i class="fa fa-search"></i> ابدأ التحليل الآن
+        </button>
+
+        <div id="report-container" class="report-section">
+            <h4 style="font-weight: 900; margin-bottom: 25px; color: #1e293b;">تقرير التحليل والملاحظات:</h4>
+            <div id="report-list">
+                <!-- Analysis results will be injected here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+
+<script>
+    const sensitivePermissions = [
+        {
+            name: "ACCESS_BACKGROUND_LOCATION",
+            level: "danger",
+            title: "الوصول للموقع في الخلفية",
+            desc: "جوجل تطلب مبرراً قوياً جداً لهذه الصلاحية. إذا لم تكن ميزة أساسية في تطبيقك، سيتم رفضه بالتأكيد."
+        },
+        {
+            name: "QUERY_ALL_PACKAGES",
+            level: "danger",
+            title: "الاستعلام عن كافة التطبيقات",
+            desc: "صلاحية حساسة جداً. تمنع جوجل استخدامها إلا للتطبيقات التي وظيفتها الأساسية البحث في الجهاز."
+        },
+        {
+            name: "REQUEST_INSTALL_PACKAGES",
+            level: "warning",
+            title: "تثبيت حزم خارجية",
+            desc: "قد تسبب قلقاً أمنياً. تأكد من أن تطبيقك لا يحاول تثبيت تطبيقات من مصادر مجهولة بشكل مخفي."
+        },
+        {
+            name: "READ_SMS",
+            level: "danger",
+            title: "قراءة الرسائل النصية (SMS)",
+            desc: "مرفوضة تماماً في جوجل بلاي إلا إذا كان التطبيق هو تطبيق الرسائل الافتراضي أو هناك استثناء خاص."
+        },
+        {
+            name: "MANAGE_EXTERNAL_STORAGE",
+            level: "warning",
+            title: "إدارة التخزين الخارجي الكامل",
+            desc: "في أندرويد 11+، يجب استخدام Scoped Storage. هذه الصلاحية تطلب إذناً خاصاً من جوجل بلاي."
+        },
+        {
+            name: "RECORD_AUDIO",
+            level: "warning",
+            title: "تسجيل الصوت",
+            desc: "تأكد من توضيح سبب استخدام الميكروفون في سياسة الخصوصية وداخل التطبيق للمستخدم."
+        }
+    ];
+
+    function analyzeManifest() {
+        const xmlText = document.getElementById('manifest-input').value;
+        const reportContainer = document.getElementById('report-container');
+        const reportList = document.getElementById('report-list');
+
+        if (!xmlText.trim()) {
+            alert("يرجى لصق محتوى الملف أولاً");
+            return;
+        }
+
+        reportList.innerHTML = "";
+        reportContainer.style.display = "block";
+
+        let findingsCount = 0;
+
+        sensitivePermissions.forEach(p => {
+            if (xmlText.includes(p.name)) {
+                findingsCount++;
+                addReportItem(p.level, p.title, p.desc);
+            }
+        });
+
+        // Check for ad-id permission (Common for AdMob)
+        if (xmlText.includes("com.google.android.gms.permission.AD_ID")) {
+            addReportItem("success", "صلاحية معرف الإعلانات (AD_ID)", "موجودة، تأكد من تحديث قسم 'أمان البيانات' في متجر بلاي للإشارة إلى جمع بيانات الإعلانات.");
+        }
+
+        if (findingsCount === 0) {
+            addReportItem("success", "لم يتم العثور على صلاحيات شديدة الخطورة", "ملف المانيفست يبدو سليماً من حيث الصلاحيات الحساسة المعروفة بكونها سبباً للرفض.");
+        }
+
+        reportContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function addReportItem(level, title, desc) {
+        const icon = level === 'danger' ? 'fa-times-circle' : (level === 'warning' ? 'fa-exclamation-triangle' : 'fa-check-circle');
+        const item = `
+            <div class="report-item ${level}">
+                <div class="report-title">
+                    <i class="fa ${icon}"></i>
+                    ${title}
+                </div>
+                <div class="report-desc">${desc}</div>
+            </div>
+        `;
+        document.getElementById('report-list').innerHTML += item;
+    }
+</script>
+</body>
+</html>

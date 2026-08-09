@@ -28,17 +28,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../../assets/css/styles.min.css">
-  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../../../assets/css/styles.min.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../../assets/css/animate-custom.css">
+  <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
 
 
-<script src="../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
 
 
 
@@ -91,7 +92,7 @@
     .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 14px; }
     .breadcrumb-tools li a { color: #006b98; text-decoration: none; }
     .breadcrumb-tools li:not(:last-child)::after {
-        content: '\f104'; font-family: FontAwesome; margin-right: 10px; font-size: 12px; color: #ccc;
+        content: ">"; margin-right: 10px; font-size: 12px; color: #ccc;
     }
     .breadcrumb-tools li.active { color: #e89a2f; }
 
@@ -279,6 +280,7 @@
 </style>
 </head>
 <body>
+<site-toast></site-toast>
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
@@ -332,7 +334,12 @@
                     </div>
 
                     <div id="historySection" class="history-section" style="display:none;">
-                        <div class="history-title">عمليات البحث الأخيرة:</div>
+                        <div class="history-title d-flex justify-content-between align-items-center">
+                            <span>عمليات البحث الأخيرة:</span>
+                            <button class="btn btn-link btn-sm p-0 text-danger" onclick="clearHistory()" style="text-decoration:none; font-size:11px;">
+                                <i class="fa fa-trash"></i> مسح السجل
+                            </button>
+                        </div>
                         <div class="history-list" id="historyList"></div>
                     </div>
 
@@ -516,7 +523,7 @@
             document.getElementById('btnCopy').onclick = () => {
                 const text = `بيانات الجهاز من كونكت تاق:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nTAC: ${data.tac}`;
                 navigator.clipboard.writeText(text);
-                alert('تم نسخ تفاصيل الجهاز بنجاح!');
+                window.showToast('تم نسخ تفاصيل الجهاز بنجاح!', 'success');
             };
 
             document.getElementById('btnShare').onclick = () => {
@@ -557,8 +564,18 @@
                         performSearch();
                     };
                 });
+            } else {
+                historySection.style.display = 'none';
             }
         }
+
+        window.clearHistory = function() {
+            if(confirm('هل أنت متأكد من رغبتك في مسح سجل البحث؟')) {
+                localStorage.removeItem('check_imei_history');
+                loadHistory();
+                window.showToast('تم مسح السجل بنجاح', 'info');
+            }
+        };
 
         document.querySelectorAll('input[name="searchType"]').forEach(radio => {
             radio.addEventListener('change', function() {

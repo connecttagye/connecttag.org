@@ -25,13 +25,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-  <link rel="stylesheet" href="../../assets/css/styles.min.css">
-  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../../../assets/css/styles.min.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../../assets/css/animate-custom.css">
+  <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
 
 
@@ -57,7 +57,7 @@
       font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
     }
   </style>
-<script src="../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
 
 
 <style>
@@ -191,6 +191,12 @@
 
 <div class="header-bar">
     <div class="container">
+        <ul class="breadcrumb-custom mb-3" style="font-size:11px; display: flex; justify-content: center;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li><a href="index.html">دليل الشركات</a></li>
+            <li class="active">خدمات الشركة</li>
+        </ul>
         <div class="row" style="display: flex; align-items: center;">
             <div class="col-xs-4">
                 <a href="javascript:history.back()" class="btn-back"><i class="fa fa-arrow-right"></i> رجوع</a>
@@ -232,6 +238,9 @@
         </div>
     </div>
 </div>
+
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -350,8 +359,6 @@
         });
     }
 </script>
-<!-- Modular Web Component: Footer -->
-<site-footer></site-footer>
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 </body>

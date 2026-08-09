@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>منسق ومحقق ملفات JSON - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لمطوري التطبيقات والويب لتنسيق وتحقيق ملفات JSON وفحص الأخطاء البرمجية فيها بسهولة.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="../../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../../../assets/css/shared-styles.css">
+
+<style>
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
+    .json-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 30px; }
+
+    .editor-container { position: relative; margin-bottom: 20px; }
+    textarea.form-control {
+        border-radius: 15px; border: 2px solid #edf2f7; padding: 15px; transition: 0.3s; font-size: 14px;
+        font-family: 'Courier New', monospace; background: #fff;
+    }
+    textarea.form-control:focus { border-color: #006b98; box-shadow: none; }
+
+    .action-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
+    .btn-action {
+        padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; transition: 0.3s;
+        display: flex; align-items: center; gap: 8px;
+    }
+    .btn-primary-custom { background: #006b98; color: #fff; }
+    .btn-primary-custom:hover { background: #00567a; transform: translateY(-2px); }
+    .btn-outline-custom { background: #fff; color: #006b98; border: 2px solid #006b98; }
+    .btn-outline-custom:hover { background: #f0f9ff; transform: translateY(-2px); }
+
+    .result-container { position: relative; }
+    .code-output {
+        background: #0f172a; color: #f8fafc; border-radius: 15px; padding: 25px;
+        font-family: 'Courier New', monospace; font-size: 14px; overflow: auto;
+        max-height: 600px; direction: ltr; text-align: left; border: 1px solid #1e293b;
+    }
+    .btn-copy {
+        position: absolute; top: 10px; right: 10px; background: #334155; color: #fff;
+        border: none; padding: 5px 15px; border-radius: 8px; font-size: 12px; cursor: pointer; z-index: 10;
+    }
+
+    .status-alert { border-radius: 15px; padding: 15px; margin-bottom: 20px; display: none; }
+    .status-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    /* Syntax Highlighting-ish colors */
+    .json-key { color: #93c5fd; }
+    .json-string { color: #86efac; }
+    .json-number { color: #fdba74; }
+    .json-boolean { color: #f9a8d4; }
+    .json-null { color: #cbd5e1; }
+</style>
+
+<script src="../../../assets/js/components/components-bundle.js" defer></script>
+<script src="../../../assets/js/components/site-toast.js" defer></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="text-center mb-5">
+        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
+            <li><a href="../../../index.html">الرئيسية</a></li>
+            <li><a href="../../index.html">الأدوات</a></li>
+            <li class="active">منسق JSON</li>
+        </ul>
+        <h1 style="font-weight: 900; color: #006b98;">منسق ومحقق ملفات JSON</h1>
+        <p class="text-muted">قم بتنسيق أكواد JSON وجعلها سهلة القراءة أو التحقق من صحتها برمجياً</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="json-card">
+                <div id="status-box" class="status-alert"></div>
+
+                <div class="editor-container">
+                    <label style="font-weight: 800; color: #1e293b; margin-bottom: 10px;">أدخل كود JSON الخام:</label>
+                    <textarea id="json-input" class="form-control" rows="10" placeholder='مثال: {"name":"Connect Tag", "type":"IT Company"}'></textarea>
+                </div>
+
+                <div class="action-btns">
+                    <button onclick="processJson('format')" class="btn-action btn-primary-custom">
+                        <i class="fa fa-align-left"></i> تنسيق وتحسين (Beautify)
+                    </button>
+                    <button onclick="processJson('minify')" class="btn-action btn-outline-custom">
+                        <i class="fa fa-compress"></i> ضغط الكود (Minify)
+                    </button>
+                    <button onclick="loadSample()" class="btn-action" style="background: #f8fafc; color: #006b98; border: 1px solid #e2e8f0;">
+                        <i class="fa fa-magic"></i> تحميل مثال
+                    </button>
+                    <button onclick="clearAll()" class="btn-action" style="background: #fff5f5; color: #c53030; border: 1px solid #fed7d7;">
+                        <i class="fa fa-trash"></i> مسح الكل
+                    </button>
+                </div>
+
+                <div class="result-container" id="output-wrapper" style="display: none;">
+                    <label style="font-weight: 800; color: #1e293b; margin-bottom: 10px;">النتيجة:</label>
+                    <button class="btn-copy" onclick="copyResult()" id="copy-btn">نسخ النتيجة</button>
+                    <button class="btn-download" onclick="downloadJson()">تحميل .json</button>
+                    <pre id="json-output" class="code-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="json-card">
+                <h4 style="font-weight: 800; color: #006b98; margin-bottom: 15px;">ما هي فائدة هذه الأداة؟</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa fa-check text-success"></i> <strong>تصحيح الأخطاء:</strong> تكتشف الأداة الفواصل المفقودة أو الأقواس غير المغلقة بدقة.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa fa-check text-success"></i> <strong>سهولة القراءة:</strong> تحول الكود المتداخل إلى هيكل واضح يسهل فهمه للمطورين.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa fa-check text-success"></i> <strong>تحسين الأداء:</strong> تساعد ميزة الضغط (Minify) على تقليل حجم الملفات المستخدمة في التطبيقات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const inputArea = document.getElementById('json-input');
+    const outputArea = document.getElementById('json-output');
+    const outputWrapper = document.getElementById('output-wrapper');
+    const statusBox = document.getElementById('status-box');
+
+    function loadSample() {
+        const sample = {
+            "project": "Connect Tag Tools",
+            "version": 5.0,
+            "is_active": true,
+            "features": ["Validation", "Formatting", "Minification"],
+            "author": {
+                "name": "Connect Tag",
+                "website": "https://connecttag.org"
+            },
+            "stats": null
+        };
+        inputArea.value = JSON.stringify(sample);
+        processJson('format');
+    }
+
+    function processJson(type) {
+        const input = inputArea.value.trim();
+        if(!input) {
+            showStatus("يرجى إدخال كود JSON أولاً", "error");
+            return;
+        }
+
+        try {
+            const jsonObj = JSON.parse(input);
+            let result = "";
+
+            if(type === 'format') {
+                const formatted = JSON.stringify(jsonObj, null, 4);
+                result = syntaxHighlight(formatted);
+                showStatus("تم التحقق من صحة الكود وتنسيقه بنجاح!", "success");
+            } else {
+                result = JSON.stringify(jsonObj);
+                showStatus("تم ضغط الكود بنجاح!", "success");
+            }
+
+            outputArea.innerHTML = result;
+            outputWrapper.style.display = 'block';
+
+            outputWrapper.scrollIntoView({ behavior: 'smooth' });
+
+        } catch (e) {
+            showStatus("خطأ في بنية JSON: " + e.message, "error");
+            outputWrapper.style.display = 'none';
+        }
+    }
+
+    function syntaxHighlight(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, function (match) {
+            var cls = 'json-number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'json-key';
+                } else {
+                    cls = 'json-string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'json-boolean';
+            } else if (/null/.test(match)) {
+                cls = 'json-null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    function showStatus(msg, type) {
+        statusBox.textContent = msg;
+        statusBox.className = `status-alert status-${type}`;
+        statusBox.style.display = 'block';
+    }
+
+    function clearAll() {
+        inputArea.value = '';
+        outputArea.innerHTML = '';
+        outputWrapper.style.display = 'none';
+        statusBox.style.display = 'none';
+    }
+
+    function copyResult() {
+        const text = outputArea.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            window.showToast("تم النسخ بنجاح!", "success");
+        });
+    }
+
+    function downloadJson() {
+        const text = outputArea.innerText;
+        const blob = new Blob([text], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'connecttag-formatted.json';
+        a.click();
+        window.showToast("بدء التحميل...", "info");
+    }
+</script>
+
+
+<site-footer></site-footer>
+</body>
+</html>
