@@ -40,38 +40,12 @@
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
   <link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 100%;
-      descent-override: 20%;
-      line-gap-override: 0%;
-      size-adjust: 105.7%; /* Cairo is ~5.7% larger than Arial */
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/shared-styles.css">
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
 
 <style>
-    .page-header-unified { background: #fff; color: #1a0033; border-bottom: 1px solid #eee; padding: 150px 0 50px; }
-    .page-header-unified h1 { color: #1a0033; }
-    .breadcrumb-custom li { color: #777 !important; }
-    .breadcrumb-custom li a { color: #00adef !important; }
-    .breadcrumb-custom li.active { color: #1a0033 !important; }
     .hosting-plan { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid #eee; transition: 0.3s; height: 100%; }
     .hosting-plan:hover { transform: translateY(-10px); border-color: #00adef; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
     .hosting-plan i { color: #00adef; margin-bottom: 20px; }
@@ -79,29 +53,7 @@
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
-<!-- Enhanced Preloader -->
-<div id="preloader">
-    <div class="preloader-bg"></div>
-    <div class="preloader-content">
-        <div class="loader-logo">
-            <i class="fa fa-terminal"></i>
-            <span>ConnectTag</span>
-        </div>
-        <div id="loader-log" class="loader-status">> System Ready...</div>
-        <div class="progress-container">
-            <div id="progress-fill" class="progress-bar"></div>
-        </div>
-    </div>
-</div>
-<script>
-  (function() {
-    var home = document.getElementById('home-content');
-    if (home) {
-      home.style.opacity = '1';
-      home.style.visibility = 'visible';
-    }
-  })();
-</script>
+<site-preloader></site-preloader>
 <div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
@@ -113,10 +65,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>الاستضافة السحابية والنطاقات</h1>
-                <ul class="breadcrumb-custom list-inline">
-                    <li><a href="../">الرئيسية</a></li>
-                    <li class="active"> / الاستضافة والنطاقات</li>
-                </ul>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"../"}, {"title":"الخدمات", "url":"./"}, {"title":"الاستضافة والنطاقات", "url":"./hosting-services.html"}]'></site-breadcrumb>
             </div>
         </div>
     </div>
@@ -128,9 +77,6 @@
             <h2>منصة سحابية قوية لموقعك</h2>
             <p>نقدم في كونكت تاق حلول استضافة متطورة تعتمد على تقنيات السحاب (Cloud) لضمان أعلى مستويات السرعة والاستقرار. نحن ندرك أن موقعك هو واجهة عملك، لذا نوفر لك بيئة تقنية خالية من المتاعب.</p>
             <p>سواء كنت تمتلك مدونة شخصية أو متجراً إلكترونياً ضخماً، فلدينا البنية التحتية المناسبة لنمو أعمالك.</p>
-        </div>
-        <div class="col-md-6" data-aos="zoom-in">
-            <img src="../upload/how-chose-yout-hosting.webp" class="img-responsive" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" alt="استضافة المواقع" loading="lazy">
         </div>
     </div>
 

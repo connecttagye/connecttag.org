@@ -10,7 +10,7 @@ class SiteShareButtons extends HTMLElement {
 
     this.innerHTML = `
       <div class="ct-share-container">
-        <h4 class="ct-share-title">شارك الفائدة:</h4>
+        <h4 class="ct-share-title">شارك :</h4>
         <div class="ct-share-grid">
           <a href="https://api.whatsapp.com/send?text=${title}%20${url}" target="_blank" rel="noopener" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب">
             <i class="fa fa-whatsapp"></i>

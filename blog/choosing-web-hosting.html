@@ -45,28 +45,7 @@
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
   <link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 105%;
-      descent-override: 35%;
-      line-gap-override: 0%;
-      size-adjust: 106%;
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/shared-styles.css">
 
 
 <script src="../assets/js/components/components-bundle.js" defer></script>
@@ -100,63 +79,14 @@
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/choosing-web-hosting"
     }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "الرئيسية",
-    "item": "https://connecttag.org/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "المدونة",
-    "item": "https://connecttag.org/blog/"
-  },{
-    "@type": "ListItem",
-    "position": 3,
-    "name": "اختيار استضافة المواقع",
-    "item": "https://connecttag.org/blog/choosing-web-hosting"
-  }]
-}
+  }
 ]
 </script>
-<style>
-    .post-content { padding: 120px 0 80px; background: #fff; }
-    .post-content h1 { color: #006b98; font-weight: bold; margin-bottom: 30px; }
-    .post-content h2 { font-size: 24px; color: #333; margin-top: 40px; margin-bottom: 20px; }
-    .post-content p { line-height: 2; color: #555; font-size: 17px; margin-bottom: 25px; }
-    .post-content img { border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-    .sidebar-card { background: #f9f9f9; padding: 25px; border-radius: 15px; margin-top: 40px; }
-</style>
+
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
-<!-- Enhanced Preloader -->
-<div id="preloader">
-    <div class="preloader-bg"></div>
-    <div class="preloader-content">
-        <div class="loader-logo">
-            <i class="fa fa-terminal"></i>
-            <span>ConnectTag</span>
-        </div>
-        <div id="loader-log" class="loader-status">> System Ready...</div>
-        <div class="progress-container">
-            <div id="progress-fill" class="progress-bar"></div>
-        </div>
-    </div>
-</div>
-<script>
-  (function() {
-    var home = document.getElementById('home-content');
-    if (home) {
-      home.style.opacity = '1';
-      home.style.visibility = 'visible';
-    }
-  })();
-</script>
+<site-preloader></site-preloader>
 <div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>

@@ -1,0 +1,272 @@
+/* Connect Tag - Shared Styles */
+
+/* 1. Root Variables */
+:root {
+  --ct-primary: #0077b6;
+  --ct-primary-hover: #005b8a;
+  --ct-secondary: #25d366;
+  --ct-dark-bg: #0d001a;
+  --ct-card-bg: #1a0033;
+  --ct-text-light: #ffffff;
+  --ct-text-muted: #a0a0a0;
+  --ct-text-dark: #222222;
+  --ct-border: rgba(255,255,255,0.1);
+  --ct-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Base & LCP Optimization */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+}
+
+#home-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.page-entered #home-content,
+#home-content.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
+
+/* Zero CLS Font Matching */
+@font-face {
+  font-family: 'Cairo-Fallback';
+  src: local('Arial');
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 0%;
+  size-adjust: 106%;
+}
+
+/* 3. Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow: hidden;
+}
+
+.preloader-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 119, 182, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 40%);
+  filter: blur(80px);
+  animation: bgMove 10s ease infinite alternate;
+}
+
+@keyframes bgMove {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.2) translate(2%, 2%); }
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+}
+
+.loader-logo {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.loader-logo i {
+  font-size: 40px;
+  color: #0077b6;
+}
+
+.loader-logo span {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.progress-container {
+  width: 280px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00adef, #25d366);
+  transition: width 0.4s ease;
+}
+
+.preloader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 4. Common Layout Styles */
+.page-header-unified {
+  background: #fff;
+  color: #0077b6;
+  border-bottom: 1px solid #eee;
+  padding: 150px 0 50px;
+  text-align: center;
+}
+
+.page-header-unified h1 {
+  color: #0077b6;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* 5. Breadcrumb Styling */
+.breadcrumb-custom {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: inline-block;
+}
+
+.breadcrumb-custom li {
+  display: inline-block;
+  color: #777 !important;
+}
+
+.breadcrumb-custom li a {
+  color: #0077b6 !important;
+  text-decoration: none;
+}
+
+.breadcrumb-custom li.active {
+  color: #1a0033 !important;
+  font-weight: 700;
+}
+
+/* site-breadcrumb overrides for unified header */
+.page-header-unified site-breadcrumb {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* 6. Utility Classes */
+.display-flex { display: flex !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-center { justify-content: center !important; }
+.text-center { text-align: center !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.mt-20 { margin-top: 20px !important; }
+
+/* 7. Policy Page Styles */
+.ct-policy-container {
+  padding: 80px 0;
+  background: #fff;
+  min-height: 60vh;
+}
+
+.ct-policy-container h1 {
+  color: #0077b6;
+  margin-bottom: 30px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.ct-policy-container h2 {
+  font-size: 24px;
+  color: #1a0033;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.ct-policy-container p,
+.ct-policy-container li {
+  line-height: 1.8;
+  color: #555;
+  font-size: 16px;
+}
+
+.ct-policy-container ul {
+  padding-right: 25px;
+  margin-bottom: 20px;
+}
+
+/* For English sections in Arabic pages */
+[dir="ltr"].ct-policy-container h2 {
+  text-align: left;
+}
+[dir="ltr"].ct-policy-container ul {
+  padding-left: 25px;
+  padding-right: 0;
+}
+
+/* 8. Blog Post Styles */
+.post-content {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.post-content h1 {
+  color: #0077b6;
+  font-weight: 800;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.post-content h2 {
+  font-size: 26px;
+  color: #1a0033;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.post-content p {
+  line-height: 2;
+  color: #444;
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+
+.post-content img {
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.sidebar-card {
+  background: #fdfdfd;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  margin-top: 40px;
+}
+
+.post-content ul, .post-content ol {
+  padding-right: 25px;
+  margin-bottom: 25px;
+}
+
+.post-content li {
+  line-height: 2;
+  color: #444;
+  font-size: 17px;
+  margin-bottom: 10px;
+}

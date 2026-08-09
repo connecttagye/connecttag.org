@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مولد سياسة الخصوصية - كونكت تاق</title>
+<meta name="description" content="أداة مجانية لإنشاء صفحات سياسة الخصوصية للتطبيقات والمواقع الإلكترونية باللغتين العربية والإنجليزية.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="../../assets/css/animate-custom.css">
+<link rel="stylesheet" href="../../assets/css/shared-styles.css">
+
+<script src="../../assets/js/components/components-bundle.js" defer></script>
+
+<style>
+    body { background-color: #f8f9fa; }
+    .page-header-unified {
+        background: #ffffff;
+        padding: 60px 0 40px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+    .generator-container { padding: 60px 0; }
+    .form-card {
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid #eee;
+        margin-bottom: 30px;
+    }
+    .form-card h2 { color: #006b98; font-weight: 800; margin-bottom: 30px; font-size: 24px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; }
+    .form-group label { font-weight: 700; color: #333; margin-bottom: 10px; display: block; }
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        height: auto;
+        font-family: 'Cairo', sans-serif;
+    }
+    .form-control:focus { border-color: #006b98; box-shadow: 0 0 0 3px rgba(0,107,152,0.1); }
+
+    .checkbox-group { margin-top: 20px; }
+    .checkbox-item { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .checkbox-item input { width: 18px; height: 18px; cursor: pointer; }
+
+    .btn-generate {
+        background: #006b98;
+        color: #fff;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-weight: 800;
+        font-size: 18px;
+        width: 100%;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+    .btn-generate:hover { background: #004d6e; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,107,152,0.1); }
+
+    #result-area { display: none; margin-top: 40px; }
+    .result-card {
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        border: 1px solid #006b98;
+    }
+    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .result-header h2 { margin: 0; color: #006b98; font-weight: 800; }
+    .copy-btn {
+        background: #25d366;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .copy-btn:hover { background: #1ebd5b; }
+    .policy-preview {
+        background: #fdfdfd;
+        border: 1px solid #eee;
+        padding: 25px;
+        border-radius: 10px;
+        max-height: 500px;
+        overflow-y: auto;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #444;
+        white-space: pre-wrap;
+    }
+    .gap-20 { gap: 20px; }
+</style>
+</head>
+<body>
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <h1>مولد سياسة الخصوصية</h1>
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"../../"}, {"title":"الأدوات", "url":"../"}, {"title":"مولد سياسة الخصوصية", "url":""}]'></site-breadcrumb>
+    </div>
+</div>
+
+<div class="generator-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-card" data-aos="fade-up">
+                    <h2>نوع المشروع والبيانات</h2>
+                    <div class="row">
+                        <div class="col-md-12 mb-20">
+                            <label>هذه السياسة مخصصة لـ:</label>
+                            <div class="display-flex gap-20">
+                                <label class="checkbox-item" style="margin: 0;">
+                                    <input type="radio" name="projectType" value="app" checked onchange="toggleProjectType()"> تطبيق جوال
+                                </label>
+                                <label class="checkbox-item" style="margin: 0;">
+                                    <input type="radio" name="projectType" value="website" onchange="toggleProjectType()"> موقع إلكتروني
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label id="nameLabel">اسم التطبيق</label>
+                                <input type="text" id="appName" class="form-control" placeholder="مثال: تطبيق سطور">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>اسم الشركة أو المطور</label>
+                                <input type="text" id="companyName" class="form-control" placeholder="مثال: كونكت تاق">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>البريد الإلكتروني للتواصل</label>
+                                <input type="email" id="email" class="form-control" placeholder="example@gmail.com">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" id="urlGroup" style="display: none;">
+                            <div class="form-group">
+                                <label>رابط الموقع (URL)</label>
+                                <input type="url" id="websiteUrl" class="form-control" placeholder="https://example.com">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" id="entityGroup">
+                            <div class="form-group">
+                                <label>نوع الكيان</label>
+                                <select id="entityType" class="form-control">
+                                    <option value="شركة">شركة / مؤسسة</option>
+                                    <option value="فرد">فرد / مطور مستقل</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: 40px;">الخدمات المستخدمة</h2>
+                    <p id="servicesDesc" style="color: #888; margin-bottom: 20px;">اختر الخدمات التي يعتمد عليها تطبيقك لتضمينها في السياسة:</p>
+                    <div class="checkbox-group">
+                        <div id="appServices">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Google Play Services"> خدمات جوجل بلاي
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="AdMob"> AdMob (الإعلانات)
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Google Analytics for Firebase"> Firebase Analytics
+                                    </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Firebase Crashlytics"> Firebase Crashlytics
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Facebook SDK"> Facebook SDK
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="OneSignal"> OneSignal (التنبيهات)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="webServices" style="display: none;">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Google AdSense"> Google AdSense (إعلانات)
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Google Analytics"> Google Analytics (إحصائيات)
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Facebook Pixel"> Facebook Pixel
+                                    </label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Cloudflare"> Cloudflare
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Mailchimp"> Mailchimp (النشرة البريدية)
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" class="service-check" value="Twitter/X Widgets"> Twitter/X Widgets
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-generate" onclick="generatePolicy()">إنشاء السياسة الآن</button>
+                </div>
+
+                <div id="result-area" data-aos="zoom-in">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h2>السياسة الجاهزة</h2>
+                            <button class="copy-btn" onclick="copyPolicy()"><i class="fa fa-copy"></i> نسخ النص</button>
+                        </div>
+                        <div class="policy-preview" id="policyContent"></div>
+                        <p style="margin-top: 20px; font-size: 12px; color: #888; text-align: center;">* هذه السياسة تم توليدها بناءً على المعلومات المقدمة، يرجى مراجعتها قانونياً.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<site-footer></site-footer>
+</div>
+
+<script>
+function toggleProjectType() {
+    const type = document.querySelector('input[name="projectType"]:checked').value;
+    const nameLabel = document.getElementById('nameLabel');
+    const urlGroup = document.getElementById('urlGroup');
+    const entityGroup = document.getElementById('entityGroup');
+    const appNameInput = document.getElementById('appName');
+    const appServices = document.getElementById('appServices');
+    const webServices = document.getElementById('webServices');
+    const servicesDesc = document.getElementById('servicesDesc');
+
+    // Clear checked status when switching to avoid mixed policies
+    document.querySelectorAll('.service-check').forEach(el => el.checked = false);
+
+    if (type === 'app') {
+        nameLabel.innerText = 'اسم التطبيق';
+        appNameInput.placeholder = 'مثال: تطبيق سطور';
+        urlGroup.style.display = 'none';
+        entityGroup.style.display = 'block';
+        appServices.style.display = 'block';
+        webServices.style.display = 'none';
+        servicesDesc.innerText = 'اختر الخدمات التي يعتمد عليها تطبيقك لتضمينها في السياسة:';
+    } else {
+        nameLabel.innerText = 'اسم الموقع';
+        appNameInput.placeholder = 'مثال: مدونة كونكت تاق';
+        urlGroup.style.display = 'block';
+        entityGroup.style.display = 'block'; // Keep it for now, can be adjusted
+        appServices.style.display = 'none';
+        webServices.style.display = 'block';
+        servicesDesc.innerText = 'اختر الخدمات التي يستخدمها موقعك لتضمينها في السياسة:';
+    }
+}
+
+function generatePolicy() {
+    const type = document.querySelector('input[name="projectType"]:checked').value;
+    const appName = document.getElementById('appName').value || (type === 'app' ? '[اسم التطبيق]' : '[اسم الموقع]');
+    const websiteUrl = document.getElementById('websiteUrl').value || '[رابط الموقع]';
+    const companyName = document.getElementById('companyName').value || '[اسم الشركة]';
+    const email = document.getElementById('email').value || '[البريد الإلكتروني]';
+
+    const typeAr = type === 'app' ? 'تطبيق' : 'موقع';
+
+    const selectedServices = [];
+    document.querySelectorAll('.service-check:checked').forEach(el => {
+        selectedServices.push(el.value);
+    });
+
+    let servicesHtml = '';
+    if (selectedServices.length > 0) {
+        servicesHtml = `\nيستخدم ال${typeAr} خدمات طرف ثالث قد تجمع معلومات تُستخدم لتحديد هويتك.\n\nرابط سياسة الخصوصية لمزودي خدمة الطرف الثالث الذين يستخدمهم ال${typeAr}:\n`;
+        selectedServices.forEach(s => {
+            servicesHtml += `- ${s}\n`;
+        });
+    }
+
+    const today = new Date().toLocaleDateString('ar-YE', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const policy = `سياسة الخصوصية لـ ${appName}
+تاريخ التحديث: ${today}
+
+قامت ${companyName} ببناء ال${typeAr} ${appName} ك${typeAr === 'تطبيق' ? 'خدمة مجانية' : 'موقع إلكتروني مجاني'}. يتم توفير هذه الخدمة من قبل ${companyName} دون أي تكلفة، وهي مخصصة للاستخدام كما هي.
+
+تُستخدم هذه الصفحة لإبلاغ الزوار بسياساتنا المتعلقة بجمع المعلومات الشخصية واستخدامها والكشف عنها في حال قرر أي شخص استخدام خدمتنا.
+
+إذا اخترت استخدام خدمتنا، فإنك توافق على جمع واستخدام المعلومات المتعلقة بهذه السياسة. تُستخدم المعلومات الشخصية التي نجمعها لتوفير الخدمة وتحسينها. لن نستخدم معلوماتك أو نشاركها مع أي شخص باستثناء ما هو موضح في سياسة الخصوصية هذه.
+
+1. جمع المعلومات واستخدامها
+من أجل تجربة أفضل، أثناء استخدام خدمتنا، قد نطلب منك تزويدنا بمعلومات معينة لتحديد الهوية الشخصية. سيتم الاحتفاظ بالمعلومات التي نطلبها على جهازك ولن يتم جمعها من قبلنا بأي شكل من الأشكال.
+${servicesHtml}
+2. بيانات السجل (Log Data)
+نود إبلاغك أنه كلما استخدمت خدمتنا، في حالة حدوث خطأ في ال${typeAr}، نقوم بجمع البيانات والمعلومات (من خلال منتجات طرف ثالث) ${type === 'app' ? 'على هاتفك' : 'على متصفحك'} تسمى Log Data. قد تتضمن بيانات السجل هذه معلومات مثل عنوان بروتوكول الإنترنت ("IP") الخاص بجهازك، واسم الجهاز، وإصدار نظام التشغيل، وتكوين ال${typeAr} عند استخدام خدمتنا، ووقت وتاريخ استخدامك للخدمة، وإحصاءات أخرى.
+
+3. ملفات تعريف الارتباط (Cookies)
+ملفات تعريف الارتباط هي ملفات تحتوي على كمية صغيرة من البيانات التي تُستخدم عادةً كمعرفات فريدة مجهولة الهوية. يتم إرسالها إلى متصفحك من مواقع الويب التي تزورها ويتم تخزينها على الذاكرة الداخلية لجهازك.
+
+4. مقدمو الخدمة
+يجوز لنا توظيف شركات وأفراد من طرف ثالث للأسباب التالية:
+- لتسهيل خدمتنا.
+- لتقديم الخدمة نيابة عنا.
+- لأداء الخدمات المتعلقة بالخدمة.
+- لمساعدتنا في تحليل كيفية استخدام خدمتنا.
+
+5. الأمن
+نحن نقدر ثقتك في تزويدنا بمعلوماتك الشخصية، وبالتالي فإننا نسعى جاهدين لاستخدام وسائل مقبولة تجارياً لحمايتها. ولكن تذكر أنه لا توجد وسيلة نقل عبر الإنترنت أو وسيلة تخزين إلكترونية آمنة وموثوقة بنسبة 100%، ولا يمكننا ضمان أمنها المطلق.
+
+6. روابط لمواقع أخرى
+قد تحتوي هذه الخدمة على روابط لمواقع أخرى. إذا نقرت على رابط طرف ثالث، فسيتم توجيهك إلى ذلك الموقع. لاحظ أن هذه المواقع الخارجية لا نقوم بتشغيلها نحن. لذلك، ننصحك بشدة بمراجعة سياسة الخصوصية الخاصة بهذه المواقع.
+
+7. خصوصية الأطفال
+هذه الخدمات لا تخاطب أي شخص يقل عمره عن 13 عاماً. نحن لا نجمع عن علم معلومات تعريف شخصية من الأطفال دون سن 13 عاماً.
+
+8. التغييرات على سياسة الخصوصية هذه
+قد نقوم بتحديث سياسة الخصوصية الخاصة بنا من وقت لآخر. وبالتالي، ننصحك بمراجعة هذه الصفحة بشكل دوري لمعرفة أي تغييرات. سنخطرك بأي تغييرات عن طريق نشر سياسة الخصوصية الجديدة على هذه الصفحة.
+
+9. اتصل بنا
+إذا كان لديك أي أسئلة أو اقتراحات حول سياسة الخصوصية الخاصة بنا، فلا تتردد في الاتصال بنا على ${email}.`;
+
+    document.getElementById('policyContent').textContent = policy;
+    document.getElementById('result-area').style.display = 'block';
+
+    // Scroll to result
+    setTimeout(() => {
+        const resArea = document.getElementById('result-area');
+        window.scrollTo({
+            top: resArea.offsetTop - 100,
+            behavior: 'smooth'
+        });
+    }, 100);
+}
+
+function copyPolicy() {
+    const text = document.getElementById('policyContent').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fa fa-check"></i> تم النسخ!';
+        btn.style.background = '#006b98';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '#25d366';
+        }, 2000);
+    });
+}
+
+// Initial call to set correct state
+window.onload = toggleProjectType;
+</script>
+
+</body>
+</html>

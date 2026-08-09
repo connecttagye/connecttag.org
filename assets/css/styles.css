@@ -79,8 +79,16 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-webkit-overflow-scrolling: touch;
 	line-height: 1.6;
+}
+
+#home-content {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+main#main-content {
+    flex: 1 0 auto;
 }
 
 /* Fix for AOS Stability */
@@ -595,32 +603,91 @@ a:hover, a:focus {
     transform: translateY(-3px);
 }
 
-/* Unified Page Header */
+/* Unified Page Header - Compact White Version */
 .page-header-unified {
-    padding: 160px 0 80px;
-    background: linear-gradient(rgba(13, 0, 26, 0.9), rgba(26, 0, 51, 0.85)), url('../img/connect-tag-main-banner.webp');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
+    padding: 40px 0 20px;
+    background: #ffffff !important;
+    color: #333;
     text-align: center;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
 }
+
 .page-header-unified h1 {
-    color: #fff !important;
+    color: #1a0033 !important;
+    font-weight: 800;
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-shadow: none;
 }
+
+/* Elegant Breadcrumb for White Background */
+.page-header-unified site-breadcrumb {
+    display: inline-block;
+    background: #f8f9fa !important;
+    border: 1px solid #eee !important;
+    padding: 6px 25px !important;
+    border-radius: 50px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+.page-header-unified .ct-breadcrumb-container {
+    padding: 0;
+}
+
+.page-header-unified .ct-breadcrumb-list {
+    justify-content: center;
+    margin: 0;
+}
+
+.page-header-unified .ct-breadcrumb-item {
+    color: #777 !important;
+    font-size: 13px;
+}
+
+.page-header-unified .ct-breadcrumb-item.active {
+    color: #1a0033 !important;
+    font-weight: 700 !important;
+}
+
+.page-header-unified .ct-breadcrumb-item a {
+    color: #0077b6 !important;
+    font-weight: 600;
+}
+
+/* Remove wave for white version as it's cleaner without it,
+   or make it a subtle transition if kept */
+.header-wave {
+    display: none; /* Hidden for cleaner white look */
+}
+
+@media (max-width: 768px) {
+    .page-header-unified { padding: 100px 0 50px; }
+    .page-header-unified h1 { font-size: 26px; }
+}
+
+@media (max-width: 768px) {
+    .page-header-unified { padding: 120px 0 80px; }
+    .page-header-unified h1 { font-size: 28px; }
+}
+
 .breadcrumb-custom {
     background: transparent;
     padding: 0;
     margin: 0;
 }
 .breadcrumb-custom li {
-    color: rgba(255,255,255,0.7) !important;
+    color: #777 !important;
 }
 .breadcrumb-custom li a {
     color: #0077b6 !important;
     font-weight: 600;
 }
 .breadcrumb-custom li.active {
-    color: #fff !important;
+    color: #1a0033 !important;
+    font-weight: 700;
 }
 
 /* Navigation Active Highlighting */

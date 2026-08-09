@@ -8,8 +8,6 @@
 <meta name="description" content="اكتشف كل تفاصيل هاتفك التقنية مع تطبيق خبير معلومات الجهاز. فحص حالة العتاد، البطارية، وسلامة النظام بدقة عالية من تطوير كونكت تاق.">
 <link rel="canonical" href="https://connecttag.org/projects/apps/kabeer/" />
 
-
-
   <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/projects/apps/kabeer/" />
 <meta property="og:type" content="website">
@@ -25,97 +23,50 @@
 <meta name="twitter:description" content="اكتشف كل تفاصيل هاتفك التقنية مع تطبيق خبير معلومات الجهاز." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/apps/kabeer-info-app.webp" />
 
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+  <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
   <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../../../assets/css/styles.min.css">
   <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/app-details.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
-
-
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
 <script src="../../../assets/js/components/apps-bundle.js" defer></script>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "الرئيسية",
-    "item": "https://connecttag.org/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "تطبيقاتنا",
-    "item": "https://connecttag.org/projects/apps/"
-  },{
-    "@type": "ListItem",
-    "position": 3,
-    "name": "خبير معلومات الجهاز",
-    "item": "https://connecttag.org/projects/apps/kabeer/"
-  }]
-}
-</script>
-<style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 105%;
-      descent-override: 35%;
-      line-gap-override: 0%;
-      size-adjust: 106%;
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-</style>
-
-<style>
-    .case-header { padding: 150px 0 80px; background: #fff; border-bottom: 1px solid #eee; }
-    .case-content { padding: 60px 0; }
-    .case-content h2 { color: #006b98; margin-top: 40px; }
-    .result-box { background: #f0f7f9; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px; }
-    .result-box span { display: block; font-size: 36px; font-weight: bold; color: #e89a2f; }
-</style>
 </head>
 <body>
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
-<div class="page-header-unified">
+<div class="hero-section">
+    <site-breadcrumb items='[{"title":"الرئيسية", "url":"../../../"}, {"title":"أعمالنا", "url":"../../"}, {"title":"تطبيقاتنا", "url":"../"}, {"title":"خبير المعلومات", "url":"./"}]'></site-breadcrumb>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="h1">تطبيق خبير</div>
-                <ul class="breadcrumb-custom list-inline">
-                    <li><a href="../../../">الرئيسية</a></li>
-                    <li><a href="../"> / أعمالنا</a></li>
-                    <li><a href="./"> / تطبيقاتنا</a></li>
-                    <li class="active"> / خبير معلومات الجهاز</li>
-                </ul>
+        <div class="row display-flex align-items-center">
+            <div class="col-md-7" data-aos="fade-left">
+                <h1 style="font-weight: 800; font-size: 3.5rem; margin-bottom: 20px; color: #fff;">خبير معلومات الجهاز</h1>
+                <p style="font-size: 20px; opacity: 0.9; margin-bottom: 35px; line-height: 1.8;">أداتك المتخصصة لعرض أدق التفاصيل التقنية والمعلومات المتعلقة بهاتفك الأندرويد والعتاد والبرمجيات.</p>
+                <div class="hero-btns">
+                    <a href="https://play.google.com/store/apps/details?id=com.tool.expert" target="_blank" class="btn-hero">
+                        <i class="fa fa-android"></i> تحميل من جوجل بلاي
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-5 hidden-sm hidden-xs text-center" data-aos="zoom-in">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                         <img src="../../../assets/img/apps/kabeer-info-app.webp" alt="خبير معلومات الجهاز" class="mockup-logo">
+                         <div style="font-weight: 800; color: #333; font-size: 24px; margin-top: 10px;">Device Info</div>
+                         <div style="font-size: 14px; color: #777;">Expert Tools</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<site-app-header title="تطبيق خبير معلومات الجهاز" subtitle="مختبرك التقني الشامل في تطبيق واحد" logo="../../../assets/img/apps/kabeer-info-app.webp"></site-app-header>
 
 <div class="case-content">
     <div class="container">
@@ -140,7 +91,66 @@
                     <site-app-feature-item title="آمن" description="يحترم خصوصية بياناتك"></site-app-feature-item>
                 </site-app-features>
 
-                <site-app-downloads google-play="https://play.google.com/store/apps/details?id=com.tool.expert"></site-app-downloads>
+                <div class="tech-stack-section" style="padding: 60px 0; border-top: 1px solid #eee;">
+                    <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">تقنيات التطوير</h2>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6">
+                            <div class="tech-item">
+                                <i class="fa fa-code fa-3x" style="color: #f7a033;"></i>
+                                <h4 style="margin-top: 15px;">Kotlin</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-6">
+                            <div class="tech-item">
+                                <i class="fa fa-android fa-3x" style="color: #3DDC84;"></i>
+                                <h4 style="margin-top: 15px;">Android SDK</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="tech-item">
+                                <i class="fa fa-fire fa-3x" style="color: #ffca28;"></i>
+                                <h4 style="margin-top: 15px;">Firebase Analytics</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="specifications-section" style="padding: 60px 0; background: #fdfdfd; border-radius: 20px; margin-top: 40px;">
+                    <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">المواصفات الفنية</h2>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <table class="table table-bordered bg-white spec-table" style="border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                                <tbody>
+                                    <tr>
+                                        <td>الإصدار الحالي</td>
+                                        <td>v1.5.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>حجم التطبيق</td>
+                                        <td>5.5 MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>المتطلبات</td>
+                                        <td>Android 5.0+</td>
+                                    </tr>
+                                    <tr>
+                                        <td>تاريخ الإصدار</td>
+                                        <td>يوليو 2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 50px; text-align: center;">
+                    <a href="https://play.google.com/store/apps/details?id=com.tool.expert" target="_blank" rel="noopener" class="btn-hero" style="background: #34a853; color: #fff;">
+                        <i class="fa fa-android"></i> تحميل مباشر من جوجل بلاي
+                    </a>
+                </div>
+
+                <hr style="margin-top: 40px; margin-bottom: 30px;">
+                <site-share-buttons></site-share-buttons>
             </div>
         </div>
     </div>
@@ -148,7 +158,6 @@
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
 
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>

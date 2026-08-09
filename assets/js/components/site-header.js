@@ -37,8 +37,14 @@ class SiteHeader extends HTMLElement {
               <li class="ct-nav-item ${isActive(getLink('projects/')) ? 'active' : ''}">
                 <a href="${getLink('projects/')}" class="ct-nav-link">أعمالنا</a>
               </li>
+              <li class="ct-nav-item ${isActive(getLink('services/')) ? 'active' : ''}">
+                <a href="${getLink('services/')}" class="ct-nav-link">الخدمات</a>
+              </li>
               <li class="ct-nav-item ${isActive(getLink('blog/')) ? 'active' : ''}">
                 <a href="${getLink('blog/')}" class="ct-nav-link">المدونة</a>
+              </li>
+              <li class="ct-nav-item ${isActive(getLink('store/')) ? 'active' : ''}">
+                <a href="${getLink('store/')}" class="ct-nav-link">المتجر</a>
               </li>
               <li class="ct-nav-item ${isActive(getLink('tools/')) ? 'active' : ''}">
                 <a href="${getLink('tools/')}" class="ct-nav-link">الأدوات</a>

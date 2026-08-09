@@ -38,38 +38,10 @@
 
 
 
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 105%;
-      descent-override: 35%;
-      line-gap-override: 0%;
-      size-adjust: 106%;
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
+  <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
 
-<style>
-    .policy-content { padding: 100px 0; background: #fff; }
-    .policy-content h1 { color: #006b98; margin-bottom: 30px; font-weight: bold; }
-    .policy-content h2 { font-size: 22px; color: #333; margin-top: 30px; margin-bottom: 15px; }
-    .policy-content p, .policy-content li { line-height: 1.8; color: #666; font-size: 16px; }
-    .lang-section { margin-bottom: 50px; }
-    .back-home { margin-bottom: 30px; display: inline-block; color: #006b98; }
-</style>
+
 </head>
 <body data-target="#navbar-main">
 <!-- Modular Web Component: Header -->

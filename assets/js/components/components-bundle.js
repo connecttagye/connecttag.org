@@ -40,6 +40,7 @@
   loadScript('assets/js/components/head-includes.js');
 
   // --- STAGE 3: UI COMPONENTS (Web Components - Native JS) ---
+  loadScript('assets/js/components/site-preloader.js');
   loadScript('assets/js/components/site-header.js');
   loadScript('assets/js/components/site-footer.js');
   loadScript('assets/js/components/site-breadcrumb.js');

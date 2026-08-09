@@ -21,5 +21,6 @@
   loadScript('assets/js/components/site-app-header.js');
   loadScript('assets/js/components/site-app-downloads.js');
   loadScript('assets/js/components/site-app-features.js');
+  loadScript('assets/js/components/site-share-buttons.js');
 
 })();

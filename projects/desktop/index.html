@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>برامج سطح المكتب - كونكت تاق للخدمات التقنية</title>
+<meta name="description" content="تصفح معرض أعمالنا في تطوير برامج سطح المكتب لأنظمة ويندوز، بما في ذلك أدوات إدارة الهواتف والأنظمة المالية وحلول البيانات.">
+<link rel="canonical" href="https://connecttag.org/projects/desktop/" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/projects/desktop/" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="برامج سطح المكتب - كونكت تاق">
+<meta property="og:description" content="تطوير برامج سطح مكتب احترافية لأنظمة ويندوز وماك." />
+<meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:url" content="https://connecttag.org/projects/desktop/" />
+<meta name="twitter:title" content="برامج سطح المكتب - كونكت تاق">
+<meta name="twitter:description" content="تطوير برامج سطح مكتب احترافية لأنظمة ويندوز وماك." />
+<meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="../../assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../../assets/css/bootstrap.css"></noscript>
+<link rel="stylesheet" href="../../assets/css/styles.min.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<style>
+    @font-face {
+        font-family: 'FontAwesome';
+        font-display: swap;
+        src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+    }
+</style>
+<link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="../../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../../assets/css/animate-custom.css"></noscript>
+
+<script src="../../assets/js/components/components-bundle.js" defer></script>
+
+  <link rel="stylesheet" href="../../assets/css/shared-styles.css">
+<style>
+    body { background-color: #fdfdfd; }
+
+    /* Desktop Project Card Styles */
+    .desktop-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .desktop-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: #0077b6; }
+
+    .desktop-visual {
+        height: 200px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 80px;
+        color: #0077b6;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .desktop-card:hover .desktop-visual i { transform: scale(1.1); color: #1a0033; transition: 0.4s; }
+
+    .desktop-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .desktop-info h3 { font-weight: 800; color: #1a0033; margin-bottom: 10px; font-size: 22px; }
+    .desktop-info .sub-title { color: #0077b6; font-weight: 600; font-size: 14px; margin-bottom: 15px; display: block; }
+    .desktop-info p { color: #666; font-size: 15px; line-height: 1.6; margin-bottom: 20px; }
+
+    .tech-tags { margin-bottom: 20px; }
+    .tech-tags span { background: #f0f7f9; color: #006b98; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; margin: 3px; display: inline-block; }
+
+    .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 13px; color: #555; }
+    .feature-list li { margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+    .feature-list li::before { content: '\f00c'; font-family: FontAwesome; color: #25d366; font-size: 10px; }
+
+    .stats-badge {
+        background: #1a0033;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        display: inline-block;
+        margin-top: auto;
+        align-self: flex-start;
+    }
+</style>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<!-- Modular Web Component: Header -->
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 data-aos="fade-down">برامج <span style="color: #0077b6;">سطح المكتب</span></h1>
+                <site-breadcrumb data-aos="fade-up" data-aos-delay="200"></site-breadcrumb>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="desktop-list" style="padding: 80px 0;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Project 1: ADB Manager -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                <div class="desktop-card">
+                    <div class="desktop-visual">
+                        <i class="fa fa-android"></i>
+                    </div>
+                    <div class="desktop-info">
+                        <h3>ADB Manager</h3>
+                        <span class="sub-title">برنامج إدارة الهواتف الذكية بواسطة ADB</span>
+                        <p>أداة احترافية تتيح التحكم الكامل بالهواتف عبر الكمبيوتر، من تثبيت التطبيقات إلى إصلاح مشاكل النظام.</p>
+                        <div class="tech-tags">
+                            <span>Jetpack Compose</span>
+                            <span>ADB</span>
+                            <span>Kotlin</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>نسخ احتياطي واستعادة</li>
+                            <li>تثبيت وإزالة التطبيقات</li>
+                            <li>معلومات الهاتف وإصلاح المشاكل</li>
+                            <li>تفعيل الإنترنت (Bypass)</li>
+                        </ul>
+                        <div class="stats-badge"><i class="fa fa-download"></i> 5K+ مستخدم</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Financial System -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="desktop-card">
+                    <div class="desktop-visual">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <div class="desktop-info">
+                        <h3>النظام المالي</h3>
+                        <span class="sub-title">برنامج مالي صغير لإدارة الحسابات</span>
+                        <p>حل مالي مبسط للمؤسسات الصغيرة والمتوسطة لإدارة القيود اليومية والتقارير المالية بدقة.</p>
+                        <div class="tech-tags">
+                            <span>Delphi</span>
+                            <span>SQL Server</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>إدارة الحسابات والعملاء</li>
+                            <li>تقارير مالية تفصيلية</li>
+                            <li>قاعدة بيانات آمنة ومستقرة</li>
+                        </ul>
+                        <div class="stats-badge"><i class="fa fa-building"></i> 20+ شركة مستخدمة</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Data Importer -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="desktop-card">
+                    <div class="desktop-visual">
+                        <i class="fa fa-file-excel-o"></i>
+                    </div>
+                    <div class="desktop-info">
+                        <h3>Data Importer</h3>
+                        <span class="sub-title">برنامج استيراد والبحث في الملفات</span>
+                        <p>برنامج متطور لمعالجة واستيراد البيانات من مختلف الصيغ والبحث السريع داخلها مع إمكانية التصدير.</p>
+                        <div class="tech-tags">
+                            <span>Jetpack Compose</span>
+                            <span>SQLite</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>استيراد Excel, CSV, JSON</li>
+                            <li>دعم Word, PDF, TXT, HTML</li>
+                            <li>محرك بحث سريع وفلاتر</li>
+                            <li>تصدير النتائج المفلترة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
+
+</div>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
+
+</body>
+</html>

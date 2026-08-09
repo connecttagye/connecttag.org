@@ -9,10 +9,11 @@ class SitePolicyHeader extends HTMLElement {
 
     this.innerHTML = `
       <div class="ct-policy-header">
-        <a href="${backLink}" class="ct-policy-back"><i class="fa fa-arrow-left"></i> العودة / Back</a>
-        <div class="ct-policy-titles">
-          <h1>${titleAr}</h1>
-          <h2 class="subtitle-en">${titleEn}</h2>
+        <div class="container text-center">
+          <div class="ct-policy-titles">
+            <h1>${titleAr}</h1>
+            <h2 class="subtitle-en">${titleEn}</h2>
+          </div>
         </div>
       </div>
     `;

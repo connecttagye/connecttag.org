@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>متجر كونكت تاق - أجهزة أمنية وذكية وحلول تقنية</title>
+<meta name="description" content="تصفح متجرنا للأجهزة الأمنية، أنظمة البصمة، كاميرات المراقبة، وأجهزة إنترنت الأشياء الذكية في اليمن.">
+<link rel="canonical" href="https://connecttag.org/store/" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/store/" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="متجر كونكت تاق - حلول تقنية وأجهزة ذكية">
+<meta property="og:description" content="أجهزة بصمة، كاميرات مراقبة، وأنظمة أمان متطورة." />
+<meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:url" content="https://connecttag.org/store/" />
+<meta name="twitter:title" content="متجر كونكت تاق - حلول تقنية وأجهزة ذكية">
+<meta name="twitter:description" content="أجهزة بصمة، كاميرات مراقبة، وأنظمة أمان متطورة." />
+<meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="../assets/css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../assets/css/bootstrap.css"></noscript>
+<link rel="stylesheet" href="../assets/css/styles.min.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<style>
+    @font-face {
+        font-family: 'FontAwesome';
+        font-display: swap;
+        src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
+    }
+</style>
+<link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
+
+<script src="../assets/js/components/components-bundle.js" defer></script>
+
+<style>
+    #home-content { opacity: 1 !important; visibility: visible !important; filter: none !important; }
+    body { font-family: 'Cairo', sans-serif; background-color: #f8f9fa; }
+
+    /* Force White Header Background */
+    .page-header-unified {
+        background: #ffffff !important;
+        padding: 50px 0 30px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+    }
+    .page-header-unified h1 {
+        color: #1a0033 !important;
+        text-shadow: none !important;
+    }
+
+    /* Store Header */
+    .store-intro { padding: 40px 0; background: #fff; border-bottom: 1px solid #eee; margin-bottom: 40px; }
+
+    /* Product Card Styles */
+    .product-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: 1px solid #eee;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); border-color: #0077b6; }
+
+    .product-visual {
+        height: 250px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        color: #0077b6;
+        position: relative;
+        overflow: hidden;
+    }
+    .product-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 10px;
+        transition: 0.5s;
+    }
+    .product-card:hover .product-visual img { transform: scale(1.1); }
+    .product-visual i { transition: 0.5s; }
+    .product-card:hover .product-visual i { transform: scale(1.2); color: #e89a2f; }
+
+    .status-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #25d366;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .product-info h3 { font-size: 20px; font-weight: 800; color: #1a0033; margin-bottom: 12px; }
+    .product-info p { font-size: 14px; color: #777; line-height: 1.6; margin-bottom: 15px; }
+
+    .product-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        font-size: 13px;
+        color: #555;
+    }
+    .product-features li { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .product-features li::before { content: '\f00c'; font-family: FontAwesome; color: #0077b6; font-size: 10px; }
+
+    .btn-order {
+        margin-top: auto;
+        background: #0077b6;
+        color: #fff !important;
+        border-radius: 25px;
+        padding: 10px;
+        text-align: center;
+        font-weight: 700;
+        text-decoration: none !important;
+        transition: 0.3s;
+    }
+    .btn-order:hover { background: #1a0033; transform: scale(1.02); }
+
+    /* Filter Bar */
+    .store-filter { text-align: center; margin-bottom: 50px; }
+    .filter-tag {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 8px 20px;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        display: inline-block;
+        transition: 0.3s;
+    }
+    .filter-tag.active, .filter-tag:hover { background: #0077b6; color: #fff; border-color: #0077b6; }
+</style>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<!-- Modular Web Component: Header -->
+<site-header></site-header>
+
+<div class="page-header-unified">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 data-aos="fade-down">متجر <span style="color: #0077b6;">كونكت تاق</span></h1>
+                <site-breadcrumb data-aos="fade-up" data-aos-delay="200"></site-breadcrumb>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="store-intro">
+    <div class="container text-center">
+        <h2 data-aos="fade-up">حلول تقنية وأجهزة ذكية متكاملة</h2>
+        <p class="large" data-aos="fade-up" data-aos-delay="100">نحن نوفر لك أحدث الأجهزة الأمنية وأنظمة التحكم والملحقات التقنية بأعلى معايير الجودة.</p>
+        <div style="margin-top: 20px;" data-aos="fade-up" data-aos-delay="200">
+            <a href="../services/hardware-solutions.html#product-guide" class="btn btn-default" style="border-radius: 25px; padding: 10px 30px; border: 1px solid #0077b6; color: #0077b6; font-weight: 700;">
+                <i class="fa fa-book"></i> استكشف دليل أنواع المنتجات
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="products-grid" style="padding-bottom: 80px;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Product 1: Atari SUP (from JSON id 4) -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                <div class="product-card">
+                    <div class="product-visual">
+                        <img src="../upload/store/product/sup-atari-box-400.webp" alt="اتاري SUP بوكس" loading="lazy">
+                        <span class="status-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>اتاري SUP بوكس 400 في 1</h3>
+                        <p>اتاري بوكس جيم يحتوي على 400 لعبة من الالعاب القديمة المشهورة (ماريو - سباق السيارات ... الخ).</p>
+                        <ul class="product-features">
+                            <li>شاشة 3 انش LED</li>
+                            <li>400 لعبة مبرمجة</li>
+                            <li>بطارية ليثيوم 2-3 ساعات</li>
+                        </ul>
+                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 12$</div>
+                        <a href="../contact.html" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Samsung SSD T7 (from JSON id 11) -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="product-card">
+                    <div class="product-visual">
+                        <img src="../upload/store/product/samsung-ssd-t7-touch.webp" alt="هارد SSD T7" loading="lazy">
+                        <span class="status-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>هارد خارجي SSD T7 Touch</h3>
+                        <p>هارد خارجي بصمة خفيف وانيق من SAMSUNG للحفاظ على بياناتك بأمان تام.</p>
+                        <ul class="product-features">
+                            <li>السعة: 2TB تيرا</li>
+                            <li>سرعة النقل: 1050MB/s</li>
+                            <li>تشفير بصمة مدمج</li>
+                        </ul>
+                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 200$</div>
+                        <a href="../contact.html" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Smart Door Lock 5x1 (from JSON id 12) -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="product-card">
+                    <div class="product-visual">
+                        <img src="../upload/store/product/smart-door-lock-5x1.webp" alt="مغلقة أبواب ذكية" loading="lazy">
+                        <span class="status-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>مغلقة أبواب ذكية 5×1</h3>
+                        <p>مغلقة إلكترونية ذكية تمكنك من فتح قفل الباب عن بُعد عبر الانترنت.</p>
+                        <ul class="product-features">
+                            <li>بصمة + كود + بطاقة + تطبيق</li>
+                            <li>خاصية إدارة العائلة</li>
+                            <li>ضمانة لمدة سنة</li>
+                        </ul>
+                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 250$</div>
+                        <a href="../contact.html" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Fingerprint Padlock (from JSON id 13) -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                <div class="product-card" style="margin-top: 30px;">
+                    <div class="product-visual">
+                        <img src="../upload/store/product/fingerprint-padlock.webp" alt="قفل بصمة ذكي" loading="lazy">
+                        <span class="status-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>قفل ذكي بصمة الاصابع</h3>
+                        <p>قفل ذكي انيق وعصري مناسب للبيوت والمكاتب والخزائن والشنط.</p>
+                        <ul class="product-features">
+                            <li>فتح ببصمة الأصبع فقط</li>
+                            <li>تصميم متين مقاوم للصدأ</li>
+                            <li>تسجيل عدة بصمات</li>
+                        </ul>
+                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 15$</div>
+                        <a href="../contact.html" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Fingerprint Flash Drive (from JSON id 14) -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="product-card" style="margin-top: 30px;">
+                    <div class="product-visual">
+                        <img src="../upload/store/product/fingerprint-flash-drive-1tb.webp" alt="فلاش بصمة 1 تيرا" loading="lazy">
+                        <span class="status-badge">متوفر</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>فلاش بصمة 1 تيرا</h3>
+                        <p>فلاش بصمة معدني انيق لحماية ملفاتك لأقصى درجة بتشفير AES256.</p>
+                        <ul class="product-features">
+                            <li>السعة: 1 تيرابايت</li>
+                            <li>مدخل Type-C / USB 3.2</li>
+                            <li>يدعم 10 بصمات مختلفة</li>
+                        </ul>
+                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 130$</div>
+                        <a href="../contact.html" class="btn-order">طلب المنتج</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
+
+</div>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
+</body>
+</html>

@@ -47,26 +47,18 @@
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
   <link rel="preload" href="../assets/css/animate-custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="../assets/css/animate-custom.css"></noscript>
+  <link rel="stylesheet" href="../assets/css/shared-styles.css">
   <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
+    /* Page specific overrides */
+    /* Force White Header Background */
+    .page-header-unified {
+        background: #ffffff !important;
+        padding: 50px 0 30px !important;
+        border-bottom: 1px solid #f0f0f0 !important;
     }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 100%;
-      descent-override: 20%;
-      line-gap-override: 0%;
-      size-adjust: 105.7%; /* Cairo is ~5.7% larger than Arial */
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+    .page-header-unified h1 {
+        color: #1a0033 !important;
+        text-shadow: none !important;
     }
   </style>
 
@@ -74,23 +66,6 @@
 <script src="../assets/js/components/components-bundle.js" defer></script>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "الرئيسية",
-    "item": "https://connecttag.org/"
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "أعمالنا",
-    "item": "https://connecttag.org/projects/"
-  }]
-}
-</script>
 <style>
     .project-gateway { padding: 100px 0; background: #fdfdfd; }
     .gateway-card { background: #fff; border-radius: 20px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #f0f0f0; text-align: center; cursor: pointer; display: block; text-decoration: none !important; }
@@ -104,29 +79,7 @@
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
-<!-- Enhanced Preloader -->
-<div id="preloader">
-    <div class="preloader-bg"></div>
-    <div class="preloader-content">
-        <div class="loader-logo">
-            <i class="fa fa-terminal"></i>
-            <span>ConnectTag</span>
-        </div>
-        <div id="loader-log" class="loader-status">> System Ready...</div>
-        <div class="progress-container">
-            <div id="progress-fill" class="progress-bar"></div>
-        </div>
-    </div>
-</div>
-<script>
-  (function() {
-    var home = document.getElementById('home-content');
-    if (home) {
-      home.style.opacity = '1';
-      home.style.visibility = 'visible';
-    }
-  })();
-</script>
+<site-preloader></site-preloader>
 <div id="home-content">
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
@@ -137,11 +90,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>معرض أعمالنا</h1>
-                <ul class="breadcrumb-custom list-inline">
-                    <li><a href="../">الرئيسية</a></li>
-                    <li class="active"> / أعمالنا</li>
-                </ul>
+                <h1 data-aos="fade-down">معرض <span style="color: #0077b6;">أعمالنا</span></h1>
+                <site-breadcrumb data-aos="fade-up" data-aos-delay="200"></site-breadcrumb>
             </div>
         </div>
     </div>
@@ -149,23 +99,62 @@
 
 <div class="project-gateway">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6" data-aos="fade-right">
+        <div class="row" style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <!-- Row 1 -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up">
                 <a href="apps/" class="gateway-card">
                     <div class="gateway-icon"><i class="fa fa-mobile"></i></div>
                     <h2>تطبيقات الهواتف</h2>
                     <p>Mobile Apps</p>
-                    <p>اكتشف مجموعة من تطبيقات الأندرويد والـ iOS المبتكرة التي تلبي احتياجات المستخدمين وتسهل حياتهم اليومية.</p>
+                    <p>اكتشف مجموعة من تطبيقات الأندرويد والـ iOS المبتكرة التي تلبي احتياجات المستخدمين.</p>
                     <span class="btn btn-custom">عرض التطبيقات</span>
                 </a>
             </div>
-            <div class="col-md-6" data-aos="fade-left">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
                 <a href="sites/" class="gateway-card">
                     <div class="gateway-icon"><i class="fa fa-globe"></i></div>
                     <h2>مواقع الويب والمتاجر</h2>
                     <p>Websites & Stores</p>
-                    <p>نصمم ونطور مواقع ويب عصرية ومنصات تجارة إلكترونية متكاملة تساعد الشركات على النمو والتميز رقمياً.</p>
+                    <p>نصمم ونطور مواقع ويب عصرية ومنصات تجارة إلكترونية متكاملة تساعد الشركات على النمو.</p>
                     <span class="btn btn-custom">عرض المواقع</span>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                <a href="design/" class="gateway-card">
+                    <div class="gateway-icon"><i class="fa fa-paint-brush"></i></div>
+                    <h2>التصميم الجرافيكي</h2>
+                    <p>Graphic Design</p>
+                    <p>نقدم حلولاً إبداعية في تصميم الشعارات، الهوية البصرية، وتصاميم السوشيال ميديا.</p>
+                    <span class="btn btn-custom">عرض التصاميم</span>
+                </a>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300" style="margin-top: 30px;">
+                <a href="bots/" class="gateway-card">
+                    <div class="gateway-icon"><i class="fa fa-paper-plane"></i></div>
+                    <h2>بوتات تليجرام</h2>
+                    <p>Telegram Bots</p>
+                    <p>نقوم ببناء بوتات تليجرام ذكية لأتمتة المهام، الحماية، وجلب البيانات بدقة واحترافية.</p>
+                    <span class="btn btn-custom">عرض البوتات</span>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400" style="margin-top: 30px;">
+                <a href="desktop/" class="gateway-card">
+                    <div class="gateway-icon"><i class="fa fa-desktop"></i></div>
+                    <h2>برامج سطح المكتب</h2>
+                    <p>Desktop Software</p>
+                    <p>تطوير برمجيات مخصصة لأنظمة ويندوز، تشمل الأنظمة المالية وأدوات إدارة البيانات.</p>
+                    <span class="btn btn-custom">عرض البرامج</span>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500" style="margin-top: 30px;">
+                <a href="libraries/" class="gateway-card">
+                    <div class="gateway-icon"><i class="fa fa-book"></i></div>
+                    <h2>المكاتب البرمجية</h2>
+                    <p>Open Source Libraries</p>
+                    <p>نساهم في المجتمع البرمجي بمكاتب مفتوحة المصدر بلغة Kotlin لتسهيل معالجة البيانات.</p>
+                    <span class="btn btn-custom">عرض المكاتب</span>
                 </a>
             </div>
         </div>

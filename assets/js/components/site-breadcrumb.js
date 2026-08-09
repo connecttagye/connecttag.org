@@ -25,7 +25,21 @@ class SiteBreadcrumb extends HTMLElement {
       const segmentMap = {
         'blog': 'المدونة',
         'projects': 'أعمالنا',
-        'apps': 'تطبيقاتنا'
+        'apps': 'تطبيقاتنا',
+        'sites': 'أعمال الويب',
+        'design': 'أعمال التصميم',
+        'bots': 'بوتات تليجرام',
+        'desktop': 'برامج سطح المكتب',
+        'libraries': 'المكاتب البرمجية',
+        'store': 'المتجر',
+        'tools': 'الأدوات',
+        'services': 'الخدمات',
+        'hardware-solutions': 'دليل المنتجات',
+        'about': 'من نحن',
+        'our-company': 'تعرف علينا',
+        'about-site': 'حول الموقع',
+        'contact': 'اتصل بنا',
+        'faq': 'الأسئلة الشائعة'
       };
 
       let currentAccUrl = baseUrl;
@@ -81,19 +95,36 @@ class SiteBreadcrumb extends HTMLElement {
   }
 
   injectSchema(items) {
+    // Remove existing dynamic breadcrumb schema if any
+    const existingScript = document.getElementById('ds-breadcrumb-schema');
+    if (existingScript) existingScript.remove();
+
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": items.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": item.title,
-        "item": item.url.startsWith('http') ? item.url : (baseUrl + item.url.replace(/^\.?\//, '')).replace(/\/+$/, '')
-      }))
+      "itemListElement": items.map((item, index) => {
+        // Resolve absolute URL
+        let absoluteUrl = item.url;
+        if (!absoluteUrl.startsWith('http')) {
+          try {
+            absoluteUrl = new URL(item.url, window.location.href).href;
+          } catch (e) {
+            absoluteUrl = (baseUrl + item.url.replace(/^\.\//, '')).replace(/\/+$/, '');
+          }
+        }
+
+        return {
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.title,
+          "item": absoluteUrl
+        };
+      })
     };
 
     const script = document.createElement('script');
+    script.id = 'ds-breadcrumb-schema';
     script.type = 'application/ld+json';
     script.text = JSON.stringify(schemaData);
     document.head.appendChild(script);
