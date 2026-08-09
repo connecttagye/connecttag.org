@@ -198,6 +198,8 @@ site-footer {
   min-height: 450px;
   content-visibility: auto;
   contain-intrinsic-size: 100% 450px;
+  background-color: var(--ct-dark-bg);
+  color: var(--ct-text-light);
 }
 
 .ct-footer-main {
