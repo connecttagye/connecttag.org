@@ -4,23 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="robots" content="noindex, nofollow">
-<title>أكواد الخدمات - كونكت تاق</title>
+<title>أكواد ومواقع الخدمات - كونكت تاق | Connect Tag</title>
 
 
   <!-- OpenGraph meta -->
   <meta property="og:url" content="https://connecttag.org/tools/telecom/services" />
   <meta property="og:type" content="website">
-  <meta property="og:title" content="أكواد الخدمات - كونكت تاق" />
-  <meta property="og:description" content="دليل شامل لأكواد خدمات شركات الاتصالات في اليمن (تفعيل، استعلام، رصيد)." />
+  <meta property="og:title" content="أكواد ومواقع الخدمات - كونكت تاق | Connect Tag" />
+  <meta property="og:description" content="دليل شامل لأكواد وروابط خدمات شركات الاتصالات في اليمن (تفعيل، استعلام، رصيد)." />
   <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
   <!-- twitter OpenGraph meta -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@connecttagye" />
   <meta name="twitter:url" content="https://connecttag.org/tools/telecom/services" />
-  <meta name="twitter:title" content="أكواد الخدمات - كونكت تاق">
-  <meta name="twitter:description" content="دليل شامل لأكواد خدمات شركات الاتصالات في اليمن (تفعيل، استعلام، رصيد)." />
+  <meta name="twitter:title" content="أكواد ومواقع الخدمات - كونكت تاق | Connect Tag">
+  <meta name="twitter:description" content="دليل شامل لأكواد وروابط خدمات شركات الاتصالات في اليمن (تفعيل، استعلام، رصيد)." />
   <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
 
@@ -155,6 +154,27 @@
     .code-text { font-family: 'Courier New', monospace; font-size: 20px; font-weight: 900; color: #1e293b; letter-spacing: 1px; }
     .btn-copy-action { color: #006b98; font-size: 16px; background: #fff; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 
+    /* Website Link Action */
+    .link-action-box {
+        background: #006b98;
+        border-radius: 15px;
+        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none !important;
+        transition: 0.3s;
+        border: 2px solid #006b98;
+    }
+    .link-action-box:hover {
+        background: #00567a;
+        border-color: #00567a;
+        box-shadow: 0 5px 15px rgba(0, 107, 152, 0.3);
+        transform: translateY(-2px);
+    }
+    .link-text { color: #fff; font-weight: 800; font-size: 16px; }
+    .btn-link-action { color: #006b98; background: #fff; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
     /* Skeleton Loading */
     .skeleton { background: #eee; background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%); border-radius: 10px; background-size: 200% 100%; animation: 1.5s shine linear infinite; }
     @keyframes shine { to { background-position-x: -200%; } }
@@ -188,8 +208,8 @@
 <div class="services-main">
     <div class="container">
         <div class="text-center" style="margin-bottom: 40px;">
-            <h1 class="page-header-title" style="font-weight: 900; color: #006b98; margin-bottom: 10px;">أكواد الخدمات الذكية</h1>
-            <p style="color: #64748b; font-size: 16px;">ابحث عن كود التفعيل أو الخدمة التي تحتاجها وانسخها بضغطة واحدة</p>
+            <h1 class="page-header-title" style="font-weight: 900; color: #006b98; margin-bottom: 10px;">أكواد ومواقع الخدمات</h1>
+            <p style="color: #64748b; font-size: 16px;">ابحث عن كود التفعيل أو رابط الخدمة التي تحتاجها بضغطة واحدة</p>
         </div>
 
         <!-- Search Bar -->
@@ -272,26 +292,47 @@
 
             services.forEach(s => {
                 const action = s.actions && s.actions[0] ? s.actions[0].content : '';
+                const isUrl = action.startsWith('http') || action.includes('.ye') || action.includes('.com') || action.includes('.net');
                 const card = document.createElement('div');
                 card.className = 'service-card';
+
+                let actionHtml = '';
+                let label = 'كود تفعيل';
+
+                if (isUrl) {
+                    label = 'رابط الخدمة';
+                    let finalUrl = action.startsWith('http') ? action : 'https://' + action;
+                    actionHtml = `
+                        <a href="${finalUrl}" target="_blank" class="link-action-box">
+                            <span class="link-text">زيارة الموقع</span>
+                            <div class="btn-link-action"><i class="fa fa-external-link"></i></div>
+                        </a>
+                    `;
+                } else {
+                    actionHtml = `
+                        <div class="code-action-box" onclick="copyToClipboard('${action}')">
+                            <span class="code-text" dir="ltr">${action}</span>
+                            <div class="btn-copy-action"><i class="fa fa-copy"></i></div>
+                        </div>
+                    `;
+                }
+
                 card.innerHTML = `
                     <div class="card-top">
-                        <div class="service-icon-box"><i class="fa ${getIcon(s.arTitle)}"></i></div>
+                        <div class="service-icon-box"><i class="fa ${getIcon(s.arTitle, isUrl)}"></i></div>
                         <div class="service-meta">
-                            <span class="service-label">كود تفعيل</span>
+                            <span class="service-label">${label}</span>
                             <h3 class="service-title">${s.arTitle}</h3>
                         </div>
                     </div>
-                    <div class="code-action-box" onclick="copyToClipboard('${action}')">
-                        <span class="code-text" dir="ltr">${action}</span>
-                        <div class="btn-copy-action"><i class="fa fa-copy"></i></div>
-                    </div>
+                    ${actionHtml}
                 `;
                 list.appendChild(card);
             });
         }
 
-        function getIcon(title) {
+        function getIcon(title, isUrl) {
+            if(isUrl) return 'fa-globe';
             if(title.includes('رصيد')) return 'fa-money';
             if(title.includes('إنترنت') || title.includes('نت')) return 'fa-globe';
             if(title.includes('اتصال') || title.includes('دقائق')) return 'fa-phone';
