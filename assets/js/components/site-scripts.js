@@ -40,17 +40,23 @@
     'use strict';
 
     function initSiteLogic() {
-        // --- AOS Initialization ---
+        // --- AOS Initialization (Delayed to prevent forced reflow) ---
         function triggerAOS() {
-            setTimeout(() => {
-                if (typeof AOS !== 'undefined') {
+            if (typeof AOS !== 'undefined') {
+                // Use requestIdleCallback or a longer delay to ensure DOM is stable
+                const initAOS = () => {
                     AOS.init({
                         duration: 800,
                         once: true,
                         startEvent: 'DOMContentLoaded'
                     });
+                };
+                if (window.requestIdleCallback) {
+                    window.requestIdleCallback(initAOS);
+                } else {
+                    setTimeout(initAOS, 500);
                 }
-            }, 100);
+            }
         }
 
         triggerAOS();
@@ -97,18 +103,21 @@
             function startCounters() {
                 counters.forEach(counter => {
                     const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000; // 2 seconds
-                    let current = 0;
+                    const duration = 2000;
+                    let startTime = null;
 
-                    const timer = setInterval(() => {
-                        current += Math.ceil(target / (duration / 50));
-                        if (current >= target) {
-                            counter.innerText = target + "+";
-                            clearInterval(timer);
-                        } else {
-                            counter.innerText = current;
+                    function updateCounter(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min((timestamp - startTime) / duration, 1);
+                        const current = Math.floor(progress * target);
+
+                        counter.textContent = current + (progress === 1 ? "+" : "");
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
                         }
-                    }, 50);
+                    }
+                    requestAnimationFrame(updateCounter);
                 });
             }
         }
