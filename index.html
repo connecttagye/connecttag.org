@@ -124,9 +124,35 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
 
-  <!-- تحميل الخط بشكل غير متزامن لإزالة حظر العرض (Render-blocking) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <!-- تحسين سياسة عرض الخط لقتل CLS تماماً -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional" media="all">
+
+  <style>
+    /* تثبيت مساحات الأيقونات لمنع القفز عند تحميل الخط */
+    .tech-item i, .service-card i, .hardware-card i {
+      display: inline-block;
+      min-width: 1.2em; /* مساحة تقريبية محجوزة */
+      min-height: 1em;
+      text-align: center;
+    }
+
+    .tech-slider {
+      min-height: 60px;
+      overflow: hidden;
+      contain: layout;
+    }
+
+    /* تحسين استقرار الحاويات */
+    .container {
+        contain: layout;
+    }
+
+    /* منع حركة الصور */
+    .img-responsive {
+        aspect-ratio: attr(width) / attr(height);
+        height: auto;
+    }
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   </noscript>
@@ -157,10 +183,18 @@
     }
 
     /* حجز مساحة للصور لمنع CLS */
+    .tech-item i { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; }
+    .service-card .icon-wrapper { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+
+    /* منع قفزة الصورة الرئيسية */
     .img-circle2 {
       aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
       background-color: rgba(255,255,255,0.05);
       object-fit: cover;
+      display: block;
     }
 
     /* حجز مساحة لشريط التقنيات */
