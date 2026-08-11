@@ -51,7 +51,8 @@
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     const registerSW = () => {
-      navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+      // Simplify registration to avoid "Unknown error" in some environments
+      navigator.serviceWorker.register('/sw.js')
         .then(reg => {
           console.log('SW Registered');
           reg.update();
@@ -62,13 +63,7 @@
     if (document.readyState === 'complete') {
       registerSW();
     } else {
-      window.addEventListener('load', () => {
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(registerSW);
-        } else {
-          setTimeout(registerSW, 1000);
-        }
-      });
+      window.addEventListener('load', registerSW);
     }
   }
 
