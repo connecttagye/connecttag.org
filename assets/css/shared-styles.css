@@ -25,8 +25,8 @@ html, body {
 }
 
 #home-content {
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 0; removed to improve LCP detection */
+  /* visibility: hidden; removed to improve LCP detection */
   transition: opacity 0.4s ease;
 }
 
