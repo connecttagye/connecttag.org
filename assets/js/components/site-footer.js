@@ -69,7 +69,6 @@ class SiteFooter extends HTMLElement {
                    alt="QR التواصل"
                    style="border: 5px solid #fff; border-radius: 8px; width: 100px; height: 100px; background: #fff;"
                    loading="lazy">
-              <p style="font-size: 11px; color: var(--ct-text-muted); margin-top: 5px;">امسح الرمز للتواصل معنا</p>
             </div>
           </div>
         </div>
