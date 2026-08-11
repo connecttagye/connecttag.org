@@ -53,7 +53,6 @@ self.addEventListener('fetch', event => {
   if (url.origin.includes('fonts.googleapis.com') ||
       url.origin.includes('fonts.gstatic.com') ||
       url.origin.includes('cdn.jsdelivr.net') ||
-      url.origin.includes('static.cloudflareinsights.com') ||
       url.pathname.includes('/assets/')) {
 
     event.respondWith(

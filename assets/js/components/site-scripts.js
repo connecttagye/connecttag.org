@@ -40,22 +40,24 @@
     'use strict';
 
     function initSiteLogic() {
-        // --- AOS Initialization (Delayed to prevent forced reflow) ---
+        // --- AOS Initialization (Optimized to prevent forced reflow) ---
         function triggerAOS() {
-            if (typeof AOS !== 'undefined') {
-                // Use requestIdleCallback or a longer delay to ensure DOM is stable
-                const initAOS = () => {
+            const initAOS = () => {
+                if (typeof AOS !== 'undefined') {
                     AOS.init({
                         duration: 800,
                         once: true,
-                        startEvent: 'DOMContentLoaded'
+                        startEvent: 'DOMContentLoaded',
+                        disable: 'mobile' // Optional: improves performance on low-end devices
                     });
-                };
-                if (window.requestIdleCallback) {
-                    window.requestIdleCallback(initAOS);
-                } else {
-                    setTimeout(initAOS, 500);
                 }
+            };
+
+            // Wait for both page idle and a small delay after preloader hides
+            if (window.requestIdleCallback) {
+                window.requestIdleCallback(() => setTimeout(initAOS, 200));
+            } else {
+                setTimeout(initAOS, 1000);
             }
         }
 
