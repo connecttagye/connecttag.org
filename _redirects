@@ -1,0 +1,2 @@
+# Clean URLs: Redirect .html to non-extension
+/*.html /:splat 301
