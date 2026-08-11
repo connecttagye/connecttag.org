@@ -23,7 +23,7 @@ class SiteHeader extends HTMLElement {
           </a>
 
           <button class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" id="ct-menu-btn">
-            <i class="fa fa-bars"></i>
+            <i class="fa-solid fa-bars"></i>
           </button>
 
           <nav aria-label="التنقل الرئيسي">
@@ -64,7 +64,7 @@ class SiteHeader extends HTMLElement {
       toggleBtn.addEventListener('click', () => {
         const isOpen = menu.classList.toggle('open');
         toggleBtn.setAttribute('aria-expanded', isOpen);
-        toggleBtn.querySelector('i').className = isOpen ? 'fa fa-times' : 'fa fa-bars';
+        toggleBtn.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
       });
 
       // Close menu on link click
@@ -72,7 +72,7 @@ class SiteHeader extends HTMLElement {
         link.addEventListener('click', () => {
           menu.classList.remove('open');
           toggleBtn.setAttribute('aria-expanded', 'false');
-          toggleBtn.querySelector('i').className = 'fa fa-bars';
+          toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
         });
       });
     }

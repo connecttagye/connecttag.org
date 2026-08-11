@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 <link rel="stylesheet" href="site-checker.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
 <script src="../../../assets/js/components/components-bundle.js" defer></script>
 <script src="../../../assets/js/components/site-toast.js" defer></script>
@@ -50,13 +50,13 @@
         <!-- Tool Selector -->
         <div class="tool-selector" data-aos="fade-up">
             <div class="tool-tile active" id="tool-all" onclick="selectTool('all')">
-                <i class="fa fa-th-large"></i><span>الفحص الشامل</span>
+                <i class="fa-solid fa-th-large"></i><span>الفحص الشامل</span>
             </div>
             <div class="tool-tile" id="tool-seo" onclick="selectTool('seo')">
-                <i class="fa fa-rocket"></i><span>محلل الـ SEO</span>
+                <i class="fa-solid fa-rocket"></i><span>محلل الـ SEO</span>
             </div>
             <div class="tool-tile" id="tool-trust" onclick="selectTool('trust')">
-                <i class="fa fa-user-shield"></i><span>الموثوقية والأمان</span>
+                <i class="fa-solid fa-user-shield"></i><span>الموثوقية والأمان</span>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
                         </div>
                         <div class="text-center mt-4">
                             <button class="btn btn-sm btn-link text-decoration-none fw-bold" onclick="loadDemoData()">
-                                <i class="fa fa-magic"></i> جرب الأداة ببيانات تجريبية
+                                <i class="fa-solid fa-magic"></i> جرب الأداة ببيانات تجريبية
                             </button>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="category-scores" id="category-scores"></div>
 
                     <div id="res-map-container" class="mb-5">
-                        <h2 class="section-title"><i class="fa fa-server"></i> توزيع استهلاك الموارد</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-server"></i> توزيع استهلاك الموارد</h2>
                         <div class="chart-container">
                             <canvas id="resourceChart"></canvas>
                         </div>
@@ -105,10 +105,10 @@
                     <div id="analysis-results"></div>
 
                     <div id="seo-specialized" class="mt-5">
-                        <h2 class="section-title"><i class="fa fa-pencil-square-o"></i> تحليل جودة المحتوى</h2>
+                        <h2 class="section-title"><i class="fa-regular fa-pen-to-square"></i> تحليل جودة المحتوى</h2>
                         <div id="content-quality-stats"></div>
 
-                        <h2 class="section-title"><i class="fa fa-google"></i> محاكي نتائج بحث جوجل</h2>
+                        <h2 class="section-title"><i class="fa-brands fa-google"></i> محاكي نتائج بحث جوجل</h2>
                         <div class="serp-container mb-4">
                             <div class="serp-url" id="google-url">...</div>
                             <div class="serp-title" id="google-title">...</div>
@@ -118,11 +118,11 @@
                             <span class="badge bg-primary rounded-pill">العنوان: <span id="title-char-count">0</span>/60</span>
                             <span class="badge bg-secondary rounded-pill">الوصف: <span id="desc-char-count">0</span>/160</span>
                         </div>
-                        <h2 class="section-title"><i class="fa fa-tags"></i> تحليل الكلمات والعبارات</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-tags"></i> تحليل الكلمات والعبارات</h2>
                         <div id="keyword-results" class="mb-3"></div>
                         <div id="phrase-results" class="mb-4"></div>
 
-                        <h2 class="section-title"><i class="fa fa-link"></i> مستكشف الروابط</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-link"></i> مستكشف الروابط</h2>
                         <div class="table-container shadow-sm">
                             <table class="links-table mb-0">
                                 <thead><tr><th>نص الرابط</th><th>النوع</th><th>الرابط</th></tr></thead>
@@ -158,16 +158,16 @@
                         </div>
                         <div class="d-flex gap-2">
                             <button class="btn-analyze w-100 no-print" style="padding:15px; border-radius:18px;" onclick="window.print()">
-                                <i class="fa fa-file-pdf-o"></i> PDF
+                                <i class="fa-regular fa-file-pdf"></i> PDF
                             </button>
                             <button class="btn-analyze w-100 no-print" style="padding:15px; border-radius:18px; background: var(--brand-secondary);" onclick="window.copySummary()">
-                                <i class="fa fa-clone"></i> نسخ
+                                <i class="fa-regular fa-copy"></i> نسخ
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="history-card no-print">
-                    <h5 class="fw-bold mb-4"><i class="fa fa-clock-o"></i> السجل الأخير</h5>
+                    <h5 class="fw-bold mb-4"><i class="fa-regular fa-clock"></i> السجل الأخير</h5>
                     <div id="history-list"></div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
         <h4 id="modalTitle" class="fw-bold mb-3 text-primary">دليل الإصلاح السريع</h4>
         <p id="modalDesc" class="text-muted mb-3"></p>
         <div class="snippet-box" id="modalSnippet"></div>
-        <button class="btn-analyze w-100 mt-4" onclick="copySnippet()"><i class="fa fa-clone"></i> نسخ الكود البرمجي</button>
+        <button class="btn-analyze w-100 mt-4" onclick="copySnippet()"><i class="fa-regular fa-copy"></i> نسخ الكود البرمجي</button>
     </div>
 </div>
 

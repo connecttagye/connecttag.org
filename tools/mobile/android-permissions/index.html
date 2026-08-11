@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mt-4">
                     <div class="alert alert-info" style="font-size: 13px; border-radius: 15px;">
-                        <i class="fa fa-info-circle"></i> تذكر إضافة الصلاحيات المختارة داخل وسم <code>&lt;manifest&gt;</code> وقبل وسم <code>&lt;application&gt;</code>.
+                        <i class="fa-solid fa-circle-info"></i> تذكر إضافة الصلاحيات المختارة داخل وسم <code>&lt;manifest&gt;</code> وقبل وسم <code>&lt;application&gt;</code>.
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'permission-item';
                 itemDiv.innerHTML = `
-                    <i class="fa fa-plus-circle"></i>
+                    <i class="fa-solid fa-circle-plus"></i>
                     <div>
                         <strong style="display: block;">${item.name}</strong>
                         <small class="text-muted" style="font-size: 11px;">${item.id}</small>
@@ -144,11 +144,11 @@
         if (selectedPermissions.has(id)) {
             selectedPermissions.delete(id);
             element.classList.remove('selected');
-            element.querySelector('i').className = 'fa fa-plus-circle';
+            element.querySelector('i').className = 'fa-solid fa-circle-plus';
         } else {
             selectedPermissions.add(id);
             element.classList.add('selected');
-            element.querySelector('i').className = 'fa fa-check-circle';
+            element.querySelector('i').className = 'fa-solid fa-circle-check';
         }
         updateOutput();
     }

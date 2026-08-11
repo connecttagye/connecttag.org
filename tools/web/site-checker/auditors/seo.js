@@ -141,13 +141,13 @@ export function exploreLinks(doc, baseUrl) {
 
         const badgeClass = isDead ? 'badge-dead' : (isExternal ? 'badge-external' : 'badge-internal');
         const badgeText = isDead ? 'وهمي' : (isExternal ? 'خارجي' : 'داخلي');
-        const icon = isDead ? 'fa-unlink' : (isExternal ? 'fa-external-link' : 'fa-link');
+        const icon = isDead ? 'fa-link-slash' : (isExternal ? 'fa-arrow-up-right-from-square' : 'fa-link');
 
         return `
             <tr>
                 <td>
                     <div class="link-text-wrapper">
-                        <i class="fa ${icon} small text-muted"></i>
+                        <i class="fa-solid ${icon} small text-muted"></i>
                         ${text.slice(0, 30)}${text.length > 30 ? '...' : ''}
                     </div>
                 </td>
@@ -160,7 +160,7 @@ export function exploreLinks(doc, baseUrl) {
                     <div class="d-flex align-items-center gap-2">
                         <span class="link-url-text" title="${h}">${h}</span>
                         <button class="copy-link-btn" onclick="event.stopPropagation(); navigator.clipboard.writeText('${h}'); window.showToast?.('تم نسخ الرابط', 'success')" title="نسخ الرابط">
-                            <i class="fa fa-clone"></i>
+                            <i class="fa-regular fa-copy"></i>
                         </button>
                     </div>
                 </td>

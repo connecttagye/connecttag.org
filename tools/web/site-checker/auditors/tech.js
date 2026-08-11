@@ -99,31 +99,31 @@ export function updateResourceMap(doc, baseUrl) {
     const sources = [{
             name: 'Google',
             c: map.google,
-            i: 'google',
+            i: 'brands fa-google',
             color: '#4285F4'
         },
         {
             name: 'Facebook',
             c: map.facebook,
-            i: 'facebook',
+            i: 'brands fa-facebook',
             color: '#1877F2'
         },
         {
             name: 'خادمك',
             c: map.self,
-            i: 'server',
+            i: 'solid fa-server',
             color: 'var(--brand-primary)'
         },
         {
             name: 'أخرى',
             c: map.other,
-            i: 'globe',
+            i: 'solid fa-globe',
             color: '#64748b'
         }
     ];
     document.getElementById('res-map').innerHTML = sources.map(s => (s.c > 0 || s.name === 'خادمك') ? `
         <div class="res-source">
-            <span class="res-source-name" style="color:${s.color}"><i class="fa fa-${s.i}"></i> ${s.name}</span>
+            <span class="res-source-name" style="color:${s.color}"><i class="fa-${s.i}"></i> ${s.name}</span>
             <span class="res-source-count">${s.c}</span>
         </div>` : '').join('');
     document.getElementById('stat-res').innerText = res.length;
@@ -141,13 +141,13 @@ export function exploreLinks(doc, baseUrl) {
 
         const badgeClass = isDead ? 'badge-dead' : (isExternal ? 'badge-external' : 'badge-internal');
         const badgeText = isDead ? 'وهمي' : (isExternal ? 'خارجي' : 'داخلي');
-        const icon = isDead ? 'fa-unlink' : (isExternal ? 'fa-external-link' : 'fa-link');
+        const icon = isDead ? 'fa-link-slash' : (isExternal ? 'fa-arrow-up-right-from-square' : 'fa-link');
 
         return `
             <tr>
                 <td>
                     <div class="link-text-wrapper">
-                        <i class="fa ${icon} small text-muted"></i>
+                        <i class="fa-solid ${icon} small text-muted"></i>
                         ${text.slice(0, 30)}${text.length > 30 ? '...' : ''}
                     </div>
                 </td>
@@ -160,7 +160,7 @@ export function exploreLinks(doc, baseUrl) {
                     <div class="d-flex align-items-center gap-2">
                         <span class="link-url-text" title="${h}">${h}</span>
                         <button class="copy-link-btn" onclick="event.stopPropagation(); navigator.clipboard.writeText('${h}'); window.showToast?.('تم نسخ الرابط', 'success')" title="نسخ الرابط">
-                            <i class="fa fa-clone"></i>
+                            <i class="fa-regular fa-copy"></i>
                         </button>
                     </div>
                 </td>

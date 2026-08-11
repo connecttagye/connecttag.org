@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
 <style>
@@ -122,8 +122,8 @@
                     <input type="text" id="aes-key" class="secret-input" placeholder="أدخل مفتاح التشفير السري..." style="position: relative; z-index: 10;">
                 </div>
                 <div class="action-row">
-                    <button class="btn-crypto btn-encrypt" onclick="processAES('encrypt')"><i class="fa fa-lock"></i> تشفير النص</button>
-                    <button class="btn-crypto btn-decrypt" onclick="processAES('decrypt')"><i class="fa fa-unlock"></i> فك التشفير</button>
+                    <button class="btn-crypto btn-encrypt" onclick="processAES('encrypt')"><i class="fa-solid fa-lock"></i> تشفير النص</button>
+                    <button class="btn-crypto btn-decrypt" onclick="processAES('decrypt')"><i class="fa-solid fa-lock-open"></i> فك التشفير</button>
                 </div>
                 <div id="aes-result-wrapper" style="display: none;">
                     <label class="label-custom">النتيجة:</label>
@@ -187,7 +187,7 @@
 
     <!-- Security Info -->
     <div class="mt-5 p-4" style="background: #f0fdf4; border-radius: 15px; border: 1px solid #bbf7d0;">
-        <h6 style="font-weight: 800; color: #166534;"><i class="fa fa-shield"></i> ملاحظة أمنية هامة:</h6>
+        <h6 style="font-weight: 800; color: #166534;"><i class="fa-solid fa-shield"></i> ملاحظة أمنية هامة:</h6>
         <p class="small mb-0 text-success">تتم جميع عمليات التشفير والفك داخل متصفحك محلياً باستخدام JavaScript. لا يتم إرسال نصوصك أو كلمات السر الخاصة بك إلى أي خادم (Server)، مما يضمن خصوصيتك التامة.</p>
     </div>
 </div>

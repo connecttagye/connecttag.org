@@ -32,14 +32,7 @@
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/styles.min.css">
   <link rel="stylesheet" href="../assets/css/components.css">
-  <style>
-    @font-face {
-      font-family: 'FontAwesome';
-      font-display: swap;
-      src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2');
-    }
-  </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="../assets/css/animate-custom.css">
 
@@ -101,7 +94,7 @@
     .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.3s; }
     .breadcrumb-tools li a:hover { color: #e89a2f; }
     .breadcrumb-tools li:not(:last-child)::after {
-        content: '\f104'; font-family: FontAwesome; margin-right: 10px; font-size: 12px; color: #ccc;
+        content: '\f104'; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 10px; font-size: 12px; color: #ccc;
     }
     .breadcrumb-tools li.active { color: #e89a2f; }
     .tool-card {
@@ -165,7 +158,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-wifi"></i>
+                    <i class="fa-solid fa-wifi"></i>
                     <h3>دليل مودمات 4G</h3>
                     <p>استعرض كافة أنواع مودمات يمن فورجي المتوفرة، قارن بين مواصفاتها، واعرف الإعدادات الافتراضية لكل موديل.</p>
                     <a href="telecom/modems/index.html" class="tool-btn">دخول الدليل</a>
@@ -173,7 +166,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-barcode"></i>
+                    <i class="fa-solid fa-barcode"></i>
                     <h3>فحص IMEI و TAC</h3>
                     <p>تحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI. اعرف مواصفات هاتفك أو المودم وهل هو أصلي ومعتمد.</p>
                     <a href="telecom/imei-checker/index.html" class="tool-btn">ابدأ الفحص</a>
@@ -181,7 +174,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-mobile"></i>
+                    <i class="fa-solid fa-mobile"></i>
                     <h3>دليل شركات الاتصالات</h3>
                     <p>استعرض خدمات، أكواد، وباقات الإنترنت لشركات الاتصالات اليمنية (يمن موبايل، يو، سبأفون، واي).</p>
                     <a href="telecom/company/index.html" class="tool-btn">دخول الدليل</a>
@@ -194,7 +187,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-money"></i>
+                    <i class="fa-solid fa-money"></i>
                     <h3>أسعار الصرف في اليمن</h3>
                     <p>متابعة يومية لأسعار صرف الريال اليمني مقابل الدولار والسعودي في صنعاء وعدن مع حاسبة ذكية.</p>
                     <a href="finance/yemen-exchange/index.html" class="tool-btn">عرض الأسعار</a>
@@ -207,7 +200,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-code"></i>
+                    <i class="fa-solid fa-code"></i>
                     <h3>منسق ومحقق JSON</h3>
                     <p>أداة أساسية لمطوري التطبيقات لتنسيق ملفات JSON، التحقق من صحتها، وضغطها لتقليل الحجم.</p>
                     <a href="web/json-formatter/index.html" class="tool-btn">ابدأ التنسيق</a>
@@ -215,7 +208,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-terminal"></i>
+                    <i class="fa-solid fa-terminal"></i>
                     <h3>فاحص ومحلل JWT</h3>
                     <p>أداة احترافية لمطوري الويب لفك تشفير وتحليل توكن JWT ورؤية محتويات الـ Header والـ Payload.</p>
                     <a href="web/jwt-debugger/index.html" class="tool-btn">ابدأ الفحص</a>
@@ -223,7 +216,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-search-plus"></i>
+                    <i class="fa-solid fa-search-plus"></i>
                     <h3>فاحص الموقع (Site Checker)</h3>
                     <p>أداة ذكية لفحص وتحليل موقعك والتأكد من مطابقته لمعايير محركات البحث العالمية.</p>
                     <a href="web/site-checker/index.html" class="tool-btn">ابدأ الفحص</a>
@@ -231,7 +224,7 @@
             </div>
             <div class="col-md-4" style="margin-top: 20px;">
                 <div class="tool-card">
-                    <i class="fa fa-bug"></i>
+                    <i class="fa-solid fa-bug"></i>
                     <h3>مختبر التعبيرات النمطية (Regex)</h3>
                     <p>اختبر وحلل التعبيرات النمطية (Regular Expressions) الخاصة بك مع شرح مفصل لكل جزء.</p>
                     <a href="web/regex-tester/index.html" class="tool-btn">ابدأ الاختبار</a>
@@ -244,7 +237,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-shield"></i>
+                    <i class="fa-solid fa-shield"></i>
                     <h3>صلاحيات أندرويد</h3>
                     <p>أداة ذكية لمطوري أندرويد لتوليد أكواد الصلاحيات لملف AndroidManifest.xml بسهولة.</p>
                     <a href="mobile/android-permissions/index.html" class="tool-btn">توليد الأكواد</a>
@@ -252,7 +245,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-file-code-o"></i>
+                    <i class="fa-regular fa-file-code"></i>
                     <h3>فاحص ملف المانيفست</h3>
                     <p>حلل ملف AndroidManifest.xml وكشف الصلاحيات الحساسة التي قد تسبب رفض تطبيقك.</p>
                     <a href="mobile/manifest-analyzer/index.html" class="tool-btn">ابدأ الفحص</a>
@@ -260,7 +253,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-link"></i>
+                    <i class="fa-solid fa-link"></i>
                     <h3>مولد الروابط العميقة</h3>
                     <p>قم بإنشاء واختبار روابط Deep Links بصيغة intent:// و https:// لفتح صفحات تطبيقك مباشرة.</p>
                     <a href="mobile/deep-link-generator/index.html" class="tool-btn">إنشاء الروابط</a>
@@ -268,7 +261,7 @@
             </div>
             <div class="col-md-4" style="margin-top: 20px;">
                 <div class="tool-card">
-                    <i class="fa fa-desktop"></i>
+                    <i class="fa-solid fa-desktop"></i>
                     <h3>مولد لقطات المتاجر</h3>
                     <p>صمم لقطات شاشة احترافية لتطبيقك على متجر بلاي وآب ستور مع إطارات هواتف عصرية.</p>
                     <a href="mobile/screenshot-generator/index.html" class="tool-btn">ابدأ التصميم</a>
@@ -281,7 +274,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-lock"></i>
+                    <i class="fa-solid fa-lock"></i>
                     <h3>التشفير والترميز</h3>
                     <p>حقيبة أدوات شاملة لتشفير النصوص (AES)، تحويل الصيغ (Base64)، وتوليد بصمات الهاش (MD5/SHA).</p>
                     <a href="security/crypto-toolbox/index.html" class="tool-btn">ابدأ التشفير</a>
@@ -289,7 +282,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-key"></i>
+                    <i class="fa-solid fa-key"></i>
                     <h3>مولد كلمات المرور</h3>
                     <p>أنشئ كلمات مرور قوية ومعقدة يصعب اختراقها مع إمكانية التحكم في الطول والرموز.</p>
                     <a href="security/password-generator/index.html" class="tool-btn">توليد كلمة مرور</a>
@@ -297,7 +290,7 @@
             </div>
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-file-text-o"></i>
+                    <i class="fa-regular fa-file-lines"></i>
                     <h3>مولد سياسة الخصوصية</h3>
                     <p>أداة مجانية لإنشاء صفحات سياسة الخصوصية لتطبيقات الأندرويد والمواقع بسهولة.</p>
                     <a href="security/privacy-generator/index.html" class="tool-btn">ابدأ الإنشاء</a>
@@ -310,7 +303,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-sun-o"></i>
+                    <i class="fa-regular fa-sun"></i>
                     <h3>حاسبة استهلاك الطاقة</h3>
                     <p>احسب حاسبة استهلاك الطاقة للكهرباء والطاقة الشمسية.</p>
                     <a href="energy/solar-calculator/index.html" class="tool-btn">ابدأ الحساب</a>
@@ -323,7 +316,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="tool-card">
-                    <i class="fa fa-image"></i>
+                    <i class="fa-solid fa-image"></i>
                     <h3>محول صيغ الصور</h3>
                     <p>تحويل الصور بين التنسيقات المختلفة (PNG, JPG, WebP) مع ضغط الحجم لتحسين الأداء.</p>
                     <a href="design/image-converter/index.html" class="tool-btn">ابدأ التحويل</a>

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
@@ -269,8 +269,8 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h2><span>1</span> المعلومات الأساسية</h2>
                             <div class="btn-group">
-                                <button class="btn btn-sm btn-outline-primary" onclick="exportJSON()"><i class="fa fa-upload"></i> تصدير إعدادات</button>
-                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('importFile').click()"><i class="fa fa-download"></i> استيراد إعدادات</button>
+                                <button class="btn btn-sm btn-outline-primary" onclick="exportJSON()"><i class="fa-solid fa-cloud-arrow-up"></i> تصدير إعدادات</button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('importFile').click()"><i class="fa-solid fa-cloud-arrow-down"></i> استيراد إعدادات</button>
                                 <input type="file" id="importFile" style="display:none" onchange="importJSON(event)">
                             </div>
                         </div>
@@ -319,7 +319,7 @@
                             <div class="col-sm-6">
                                 <label class="service-chip" onclick="toggleSelection(this)">
                                     <input type="checkbox" id="isGDPR">
-                                    <i class="fa fa-balance-scale"></i>
+                                    <i class="fa-solid fa-balance-scale"></i>
                                     <span>تفعيل GDPR
                                         <span class="help-icon" data-tooltip="اللائحة العامة لحماية البيانات للاتحاد الأوروبي. مطلوبة إذا كان لديك مستخدمون من أوروبا.">?</span>
                                     </span>
@@ -328,7 +328,7 @@
                             <div class="col-sm-6">
                                 <label class="service-chip" onclick="toggleSelection(this)">
                                     <input type="checkbox" id="isCCPA">
-                                    <i class="fa fa-shield"></i>
+                                    <i class="fa-solid fa-shield"></i>
                                     <span>تفعيل CCPA
                                         <span class="help-icon" data-tooltip="قانون خصوصية المستهلك في كاليفورنيا. مطلوب إذا كان لديك مستخدمون من كاليفورنيا.">?</span>
                                     </span>
@@ -343,21 +343,21 @@
 
                         <label class="mb-2 d-block small fw-bold">الخدمات التقنية:</label>
                         <div class="services-grid mb-4">
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Google Play"><i class="fa fa-google"></i><span>Google Play</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="App Store"><i class="fa fa-apple"></i><span>App Store</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Huawei AppGallery"><i class="fa fa-modx"></i><span>Huawei AppGallery</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="AdMob"><i class="fa fa-adn"></i><span>AdMob</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Firebase"><i class="fa fa-fire"></i><span>Firebase</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="OneSignal"><i class="fa fa-bell"></i><span>OneSignal</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Google Play"><i class="fa-brands fa-google"></i><span>Google Play</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="App Store"><i class="fa-brands fa-apple"></i><span>App Store</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Huawei AppGallery"><i class="fa-brands fa-modx"></i><span>Huawei AppGallery</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="AdMob"><i class="fa-brands fa-adn"></i><span>AdMob</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Firebase"><i class="fa-solid fa-fire"></i><span>Firebase</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="OneSignal"><i class="fa-solid fa-bell"></i><span>OneSignal</span></label>
                         </div>
 
                         <label class="mb-2 d-block small fw-bold">الدفع والتتبع والأخطاء:</label>
                         <div class="services-grid">
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="PayPal"><i class="fa fa-paypal"></i><span>PayPal</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Apple Pay"><i class="fa fa-apple"></i><span>Apple Pay</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Stripe"><i class="fa fa-cc-stripe"></i><span>Stripe</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Hotjar"><i class="fa fa-eye"></i><span>Hotjar</span></label>
-                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Sentry"><i class="fa fa-bug"></i><span>Sentry</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="PayPal"><i class="fa-brands fa-paypal"></i><span>PayPal</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Apple Pay"><i class="fa-brands fa-apple"></i><span>Apple Pay</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Stripe"><i class="fa-brands fa-stripe-s"></i><span>Stripe</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Hotjar"><i class="fa-solid fa-eye"></i><span>Hotjar</span></label>
+                            <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Sentry"><i class="fa-solid fa-bug"></i><span>Sentry</span></label>
                         </div>
                     </div>
 
@@ -416,14 +416,14 @@
             <div class="col-lg-6">
                 <div class="preview-section" data-aos="fade-up">
                     <div id="doc-actions" class="btn-action-group">
-                        <button class="btn-custom btn-copy" onclick="copyText('plain')"><i class="fa fa-copy"></i> نص</button>
-                        <button class="btn-custom btn-format" onclick="copyText('html')"><i class="fa fa-code"></i> HTML</button>
-                        <button class="btn-custom btn-format" onclick="copyText('md')"><i class="fa fa-file-text-o"></i> Markdown</button>
-                        <button class="btn-custom btn-dl" onclick="downloadDoc()"><i class="fa fa-download"></i> تحميل</button>
-                        <button class="btn-custom btn-prt" onclick="window.print()"><i class="fa fa-print"></i> طباعة</button>
+                        <button class="btn-custom btn-copy" onclick="copyText('plain')"><i class="fa-solid fa-copy"></i> نص</button>
+                        <button class="btn-custom btn-format" onclick="copyText('html')"><i class="fa-solid fa-code"></i> HTML</button>
+                        <button class="btn-custom btn-format" onclick="copyText('md')"><i class="fa-regular fa-file-lines"></i> Markdown</button>
+                        <button class="btn-custom btn-dl" onclick="downloadDoc()"><i class="fa-solid fa-download"></i> تحميل</button>
+                        <button class="btn-custom btn-prt" onclick="window.print()"><i class="fa-solid fa-print"></i> طباعة</button>
                     </div>
                     <div id="cookie-actions" class="btn-action-group" style="display:none">
-                        <button class="btn-custom btn-copy" onclick="copyCookieCode()"><i class="fa fa-copy"></i> نسخ الكود بالكامل</button>
+                        <button class="btn-custom btn-copy" onclick="copyCookieCode()"><i class="fa-solid fa-copy"></i> نسخ الكود بالكامل</button>
                     </div>
 
                     <div id="policyPreview" class="paper-document">

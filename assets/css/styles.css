@@ -831,13 +831,13 @@ a:hover, a:focus {
 }
 .tech-slider i {
     font-size: 45px;
-    color: #ccc;
+    color: #767676; /* Improved contrast */
     margin-bottom: 10px;
     transition: 0.3s;
 }
 .tech-item span {
     font-size: 13px;
-    color: #999;
+    color: #595959; /* Improved contrast */
     font-weight: 600;
 }
 .tech-slider i:hover {

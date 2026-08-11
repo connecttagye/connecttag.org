@@ -28,7 +28,7 @@
         </div>
         <div class="pwa-prompt-text">
           <h3>تثبيت تطبيق كونكت تاق</h3>
-          <p>اضغط على أيقونة <i class="fa fa-share-square-o"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p>
+          <p>اضغط على أيقونة <i class="fa-regular fa-share-from-square"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p>
         </div>
       `;
     } else {

@@ -16,17 +16,17 @@ class SiteShareButtons extends HTMLElement {
         <div class="ct-share-grid">
           ${isShareSupported ? `
             <a href="#" class="ct-share-btn native-share" title="مشاركة عبر الهاتف">
-              <i class="fa fa-share-alt"></i>
+              <i class="fa-solid fa-share-nodes"></i>
             </a>
           ` : ''}
           <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب">
-            <i class="fa fa-whatsapp"></i>
+            <i class="fa-brands fa-whatsapp"></i>
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn facebook" title="مشاركة عبر فيسبوك">
-            <i class="fa fa-facebook"></i>
+            <i class="fa-brands fa-facebook"></i>
           </a>
           <a href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}" target="_blank" rel="noopener" class="ct-share-btn telegram" title="مشاركة عبر تليجرام">
-            <i class="fa fa-paper-plane"></i>
+            <i class="fa-brands fa-telegram"></i>
           </a>
         </div>
       </div>

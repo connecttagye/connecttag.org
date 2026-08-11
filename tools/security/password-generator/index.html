@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
@@ -163,8 +163,8 @@
         <div class="main-card" data-aos="fade-up">
             <div class="output-area">
                 <div class="password-display" id="passwordResult">P@ssw0rd123</div>
-                <button class="btn-icon" onclick="copyPassword()" title="نسخ الكلمة"><i class="fa fa-copy"></i></button>
-                <button class="btn-icon" onclick="generate()" title="تحديث"><i class="fa fa-refresh"></i></button>
+                <button class="btn-icon" onclick="copyPassword()" title="نسخ الكلمة"><i class="fa-solid fa-copy"></i></button>
+                <button class="btn-icon" onclick="generate()" title="تحديث"><i class="fa-solid fa-rotate"></i></button>
             </div>
 
             <div class="mb-4">
@@ -191,10 +191,10 @@
                 <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()"> رموز خاصّة (!@#)</label>
             </div>
 
-            <button class="btn-generate" onclick="generate()"><i class="fa fa-shield"></i> توليد كلمة مرور جديدة</button>
+            <button class="btn-generate" onclick="generate()"><i class="fa-solid fa-shield"></i> توليد كلمة مرور جديدة</button>
 
             <div class="text-center mt-4 small text-muted">
-                <i class="fa fa-lock"></i> يتم التوليد محلياً في متصفحك لضمان أقصى درجات الأمان.
+                <i class="fa-solid fa-lock"></i> يتم التوليد محلياً في متصفحك لضمان أقصى درجات الأمان.
             </div>
         </div>
     </div>
@@ -278,7 +278,7 @@ function copyPassword() {
     navigator.clipboard.writeText(pw).then(() => {
         const btn = document.querySelector('.btn-icon');
         const oldIcon = btn.innerHTML;
-        btn.innerHTML = '<i class="fa fa-check"></i>';
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
         btn.style.background = '#10b981';
         setTimeout(() => {
             btn.innerHTML = oldIcon;

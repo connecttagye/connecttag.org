@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
 <style>
@@ -206,11 +206,11 @@
 
         <!-- Tabs Navigation -->
         <div class="sidebar-tabs">
-            <button class="tab-btn active" onclick="switchTab('assets')"><i class="fa fa-folder-open"></i><span>الصور</span></button>
-            <button class="tab-btn" onclick="switchTab('text')"><i class="fa fa-text-height"></i><span>النصوص</span></button>
-            <button class="tab-btn" onclick="switchTab('device')"><i class="fa fa-mobile"></i><span>الهاتف</span></button>
-            <button class="tab-btn" onclick="switchTab('style')"><i class="fa fa-paint-brush"></i><span>التصميم</span></button>
-            <button class="tab-btn" onclick="switchTab('fx')"><i class="fa fa-magic"></i><span>إضافات</span></button>
+            <button class="tab-btn active" onclick="switchTab('assets')"><i class="fa-solid fa-folder-open"></i><span>الصور</span></button>
+            <button class="tab-btn" onclick="switchTab('text')"><i class="fa-solid fa-text-height"></i><span>النصوص</span></button>
+            <button class="tab-btn" onclick="switchTab('device')"><i class="fa-solid fa-mobile"></i><span>الهاتف</span></button>
+            <button class="tab-btn" onclick="switchTab('style')"><i class="fa-solid fa-paint-brush"></i><span>التصميم</span></button>
+            <button class="tab-btn" onclick="switchTab('fx')"><i class="fa-solid fa-magic"></i><span>إضافات</span></button>
         </div>
 
         <div class="sidebar-content">
@@ -285,15 +285,15 @@
                 <div class="control-item">
                     <label class="control-label">نوع الجهاز المختار</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setDevice('iphone')"><i class="fa fa-apple"></i><small>iPhone Pro</small></div>
-                        <div class="visual-item" onclick="setDevice('pixel')"><i class="fa fa-android"></i><small>Android Flat</small></div>
+                        <div class="visual-item active" onclick="setDevice('iphone')"><i class="fa-brands fa-apple"></i><small>iPhone Pro</small></div>
+                        <div class="visual-item" onclick="setDevice('pixel')"><i class="fa-brands fa-android"></i><small>Android Flat</small></div>
                     </div>
                 </div>
                 <div class="control-item">
                     <label class="control-label">حجم التصميم (Target Size)</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setCanvasSize('phone')"><i class="fa fa-mobile"></i><small>هاتف</small></div>
-                        <div class="visual-item" onclick="setCanvasSize('tablet')"><i class="fa fa-tablet"></i><small>آيباد</small></div>
+                        <div class="visual-item active" onclick="setCanvasSize('phone')"><i class="fa-solid fa-mobile"></i><small>هاتف</small></div>
+                        <div class="visual-item" onclick="setCanvasSize('tablet')"><i class="fa-solid fa-tablet"></i><small>آيباد</small></div>
                     </div>
                 </div>
                 <div class="control-item">
@@ -377,7 +377,7 @@
 
         <div class="sidebar-footer">
             <button class="btn-export-main" onclick="startExport()">
-                <i class="fa fa-cloud-download"></i> تصدير وحفظ الصورة
+                <i class="fa-solid fa-cloud-arrow-down"></i> تصدير وحفظ الصورة
             </button>
         </div>
     </div>
@@ -413,8 +413,8 @@
         </div>
 
         <div class="zoom-controls">
-            <button class="zoom-btn" onclick="adjustZoom(0.1)" title="تكبير المعاينة"><i class="fa fa-plus"></i></button>
-            <button class="zoom-btn" onclick="adjustZoom(-0.1)" title="تصغير المعاينة"><i class="fa fa-minus"></i></button>
+            <button class="zoom-btn" onclick="adjustZoom(0.1)" title="تكبير المعاينة"><i class="fa-solid fa-plus"></i></button>
+            <button class="zoom-btn" onclick="adjustZoom(-0.1)" title="تصغير المعاينة"><i class="fa-solid fa-minus"></i></button>
         </div>
     </div>
 </div>
@@ -641,7 +641,7 @@
     function startExport() {
         if(!imageIn.files[0]) { window.showToast("يرجى اختيار لقطة شاشة للتطبيق أولاً", "warn"); return; }
         const btn = document.querySelector('.btn-export-main');
-        btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> جاري الحفظ...';
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري الحفظ...';
         const prevZoom = currentZoom;
 
         // Performance Optimization: Hide heavy FX during export if needed
@@ -663,7 +663,7 @@
             link.href = canvas.toDataURL("image/png");
             link.click();
 
-            btn.innerHTML = '<i class="fa fa-cloud-download"></i> تصدير وحفظ الصورة';
+            btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-down"></i> تصدير وحفظ الصورة';
             designCanvas.style.transform = `scale(${prevZoom})`;
             blobs.style.display = originalBlobsDisplay;
             window.showToast("تم تصدير الصورة بنجاح!", "success");

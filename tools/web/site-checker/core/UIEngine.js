@@ -73,32 +73,32 @@ export default class UIEngine {
         card.innerHTML = `
             <div class="summary-header">
                 <div class="site-icon-box border">
-                    ${meta.favicon ? `<img src="${meta.favicon}" width="32" height="32" alt="favicon">` : '<i class="fa fa-globe text-primary"></i>'}
+                    ${meta.favicon ? `<img src="${meta.favicon}" width="32" height="32" alt="favicon">` : '<i class="fa-solid fa-globe text-primary"></i>'}
                 </div>
                 <div class="flex-grow-1">
                     <h4 class="mb-1 fw-900 text-dark d-flex align-items-center flex-wrap gap-2">
                         ${meta.title}
                         <span class="badge bg-primary-soft text-primary px-3 py-2" style="font-size: 11px; border-radius: 8px;">
-                            <i class="fa fa-cog"></i> ${meta.cms}
+                            <i class="fa-solid fa-gear"></i> ${meta.cms}
                         </span>
                     </h4>
                     <span class="text-muted small ltr-text">${meta.url}</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                    ${isHeavy ? '<span class="badge bg-danger rounded-pill px-3 py-2" style="font-size:11px"><i class="fa fa-warning"></i> موقع ثقيل</span>' : ''}
+                    ${isHeavy ? '<span class="badge bg-danger rounded-pill px-3 py-2" style="font-size:11px"><i class="fa-solid fa-triangle-exclamation"></i> موقع ثقيل</span>' : ''}
                     <span class="badge-link ${meta.isRoot ? 'badge-internal' : 'badge-external'} px-3 py-2">
-                        <i class="fa ${meta.isRoot ? 'fa-home' : 'fa-sitemap'}"></i> ${meta.typeLabel}
+                        <i class="fa-solid ${meta.isRoot ? 'fa-house' : 'fa-sitemap'}"></i> ${meta.typeLabel}
                     </span>
                 </div>
             </div>
             <div class="summary-body grid-stats">
                 <div class="stat-item">
                     <span class="label">الخادم</span>
-                    <span class="value"><i class="fa fa-server text-primary"></i> ${meta.server}</span>
+                    <span class="value"><i class="fa-solid fa-server text-primary"></i> ${meta.server}</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">حجم الصفحة</span>
-                    <span class="value"><i class="fa fa-hdd-o text-primary"></i> ${meta.pageSize} KB</span>
+                    <span class="value"><i class="fa-regular fa-hdd text-primary"></i> ${meta.pageSize} KB</span>
                 </div>
                 <div class="stat-item">
                     <span class="label">الأرشفة</span>
@@ -111,19 +111,19 @@ export default class UIEngine {
                 <div class="stat-item">
                     <span class="label">ميزانية الموارد</span>
                     <div class="resource-mini-grid">
-                        <div class="res-mini-item"><i class="fa fa-css3 text-primary"></i>${meta.resources.styles}</div>
-                        <div class="res-mini-item"><i class="fa fa-code text-warning"></i>${meta.resources.scripts}</div>
-                        <div class="res-mini-item"><i class="fa fa-image text-success"></i>${meta.resources.images}</div>
+                        <div class="res-mini-item"><i class="fa-brands fa-css3-alt text-primary"></i>${meta.resources.styles}</div>
+                        <div class="res-mini-item"><i class="fa-solid fa-code text-warning"></i>${meta.resources.scripts}</div>
+                        <div class="res-mini-item"><i class="fa-regular fa-image text-success"></i>${meta.resources.images}</div>
                     </div>
                 </div>
                 <div class="stat-item">
                     <span class="label">الروابط</span>
                     <div class="d-flex flex-column gap-1">
                         <span class="value text-dark" style="font-size: 11px;">
-                            <i class="fa fa-link text-primary"></i> <span class="text-primary">${meta.links.internal}</span> / <span class="text-success">${meta.links.external}</span>
+                            <i class="fa-solid fa-link text-primary"></i> <span class="text-primary">${meta.links.internal}</span> / <span class="text-success">${meta.links.external}</span>
                         </span>
                         <span class="small fw-bold text-muted">
-                            <i class="fa fa-share-alt text-info"></i> اجتماعياً: <span class="text-info">${meta.links.social}</span>
+                            <i class="fa-solid fa-share-nodes text-info"></i> اجتماعياً: <span class="text-info">${meta.links.social}</span>
                         </span>
                     </div>
                 </div>
@@ -164,7 +164,7 @@ export default class UIEngine {
         const renderItem = (found, text, icon) => `
             <div class="stat-item border bg-light flex-row justify-content-between px-3 w-100 mb-2">
                 <div class="d-flex align-items-center gap-3">
-                    <i class="fa ${icon} text-primary"></i>
+                    <i class="fa-solid ${icon} text-primary"></i>
                     <span class="fw-bold text-dark">${text}</span>
                 </div>
                 <span class="badge ${found ? 'bg-success' : 'bg-danger'} rounded-pill px-3 py-1">
@@ -174,11 +174,11 @@ export default class UIEngine {
         `;
 
         card.innerHTML = `
-            <h5 class="fw-900 text-dark mb-4 px-2"><i class="fa fa-file-text-o text-primary"></i> الصفحات الأساسية للموقع</h5>
+            <h5 class="fw-900 text-dark mb-4 px-2"><i class="fa-regular fa-file-lines text-primary"></i> الصفحات الأساسية للموقع</h5>
             <div class="d-grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                ${renderItem(pages.privacy, 'سياسة الخصوصية', 'fa-shield')}
-                ${renderItem(pages.about, 'حول الموقع / من نحن', 'fa-info-circle')}
-                ${renderItem(pages.terms, 'سياسة الاستخدام / الشروط', 'fa-legal')}
+                ${renderItem(pages.privacy, 'سياسة الخصوصية', 'fa-shield-halved')}
+                ${renderItem(pages.about, 'حول الموقع / من نحن', 'fa-circle-info')}
+                ${renderItem(pages.terms, 'سياسة الاستخدام / الشروط', 'fa-gavel')}
                 ${renderItem(pages.contact, 'تواصل معنا / اتصل بنا', 'fa-envelope')}
             </div>
         `;
@@ -201,13 +201,13 @@ export default class UIEngine {
         section.id = 'social-preview-section';
         section.className = 'mt-5';
         section.innerHTML = `
-            <h2 class="section-title"><i class="fa fa-share-alt"></i> محاكي المعاينة الاجتماعية</h2>
+            <h2 class="section-title"><i class="fa-solid fa-share-nodes"></i> محاكي المعاينة الاجتماعية</h2>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <h6 class="fw-bold mb-3"><i class="fa fa-facebook-official text-primary"></i> فيسبوك</h6>
+                    <h6 class="fw-bold mb-3"><i class="fa-brands fa-facebook text-primary"></i> فيسبوك</h6>
                     <div class="social-card-fb">
                         <div class="fb-img-box" style="background-image: url('${data.image || ''}')">
-                            ${!data.image ? '<i class="fa fa-image text-muted"></i>' : ''}
+                            ${!data.image ? '<i class="fa-regular fa-image text-muted"></i>' : ''}
                         </div>
                         <div class="fb-content">
                             <div class="fb-domain text-uppercase">${new URL(data.url || 'https://example.com').hostname}</div>
@@ -217,15 +217,15 @@ export default class UIEngine {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h6 class="fw-bold mb-3"><i class="fa fa-twitter text-info"></i> تويتر (X)</h6>
+                    <h6 class="fw-bold mb-3"><i class="fa-brands fa-x-twitter text-info"></i> تويتر (X)</h6>
                     <div class="social-card-tw">
                         <div class="tw-img-box" style="background-image: url('${data.image || ''}')">
-                            ${!data.image ? '<i class="fa fa-image text-muted"></i>' : ''}
+                            ${!data.image ? '<i class="fa-regular fa-image text-muted"></i>' : ''}
                         </div>
                         <div class="tw-content">
                             <div class="tw-title">${data.title}</div>
                             <div class="tw-desc">${data.description?.slice(0, 100)}...</div>
-                            <div class="tw-domain"><i class="fa fa-link"></i> ${new URL(data.url || 'https://example.com').hostname}</div>
+                            <div class="tw-domain"><i class="fa-solid fa-link"></i> ${new URL(data.url || 'https://example.com').hostname}</div>
                         </div>
                     </div>
                 </div>
@@ -250,12 +250,12 @@ export default class UIEngine {
         };
 
         if (groups.critical.length > 0) {
-            container.innerHTML += `<h3 class="section-title text-danger" style="border-bottom-color: var(--brand-danger)"><i class="fa fa-bug"></i> مشاكل يجب إصلاحها فوراً (${groups.critical.length})</h3>`;
+            container.innerHTML += `<h3 class="section-title text-danger" style="border-bottom-color: var(--brand-danger)"><i class="fa-solid fa-bug"></i> مشاكل يجب إصلاحها فوراً (${groups.critical.length})</h3>`;
             groups.critical.forEach(audit => container.appendChild(this.createAuditCard(audit)));
         }
 
         if (groups.warning.length > 0) {
-            container.innerHTML += `<h3 class="section-title text-warning" style="border-bottom-color: var(--brand-warning)"><i class="fa fa-exclamation-circle"></i> تحسينات مقترحة (${groups.warning.length})</h3>`;
+            container.innerHTML += `<h3 class="section-title text-warning" style="border-bottom-color: var(--brand-warning)"><i class="fa-solid fa-circle-exclamation"></i> تحسينات مقترحة (${groups.warning.length})</h3>`;
             groups.warning.forEach(audit => container.appendChild(this.createAuditCard(audit)));
         }
 
@@ -264,8 +264,8 @@ export default class UIEngine {
             passedWrapper.className = 'mt-5';
             passedWrapper.innerHTML = `
                 <div class="d-flex align-items-center justify-content-between section-title" style="cursor:pointer" onclick="this.nextElementSibling.classList.toggle('d-none')">
-                    <span><i class="fa fa-check-circle text-success"></i> اختبارات ناجحة (${groups.passed.length})</span>
-                    <i class="fa fa-chevron-down small"></i>
+                    <span><i class="fa-solid fa-circle-check text-success"></i> اختبارات ناجحة (${groups.passed.length})</span>
+                    <i class="fa-solid fa-chevron-down small"></i>
                 </div>
                 <div class="passed-list d-none"></div>
             `;
@@ -277,7 +277,7 @@ export default class UIEngine {
 
     createAuditCard(audit) {
         const pLabel = { critical: 'عاجل', moderate: 'متوسط', minor: 'تحسين' }[audit.priority || 'minor'];
-        const icons = { critical: 'fa-exclamation-triangle', moderate: 'fa-info-circle', minor: 'fa-lightbulb-o' };
+        const icons = { critical: 'fa-triangle-exclamation', moderate: 'fa-circle-info', minor: 'fa-regular fa-lightbulb' };
         const pIcon = icons[audit.priority || 'minor'];
 
         // Score Attribution
@@ -298,12 +298,12 @@ export default class UIEngine {
             <div class="d-flex align-items-center w-100">
                 <div class="tag-title">
                     ${audit.title}
-                    ${showPriority ? `<span class="priority-badge p-${audit.priority || 'minor'}"><i class="fa ${pIcon}"></i> ${pLabel}</span>` : ''}
+                    ${showPriority ? `<span class="priority-badge p-${audit.priority || 'minor'}"><i class="fa-solid ${pIcon}"></i> ${pLabel}</span>` : ''}
                     ${scoreDeduction}
                 </div>
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <span class="status-badge status-${audit.status}">${audit.status.toUpperCase()}</span>
-                    <i class="fa fa-chevron-down expand-icon"></i>
+                    <i class="fa-solid fa-chevron-down expand-icon"></i>
                 </div>
             </div>
             <div class="result-details">
@@ -315,8 +315,8 @@ export default class UIEngine {
                     </p>
                 </div>
                 <div class="d-flex gap-2 flex-wrap mt-3">
-                    ${audit.title === 'سياسة الخصوصية' && audit.status === 'fail' ? `<a href="../privacy-generator/index.html" class="fix-btn" style="text-decoration:none;"><i class="fa fa-magic"></i> توليد سياسة خصوصية الآن</a>` : ''}
-                    ${(window.fixData && window.fixData[audit.title]) ? `<button class="fix-btn" onclick="event.stopPropagation(); window.showFix('${audit.title}')"><i class="fa fa-wrench"></i> دليل الإصلاح</button>` : ''}
+                    ${audit.title === 'سياسة الخصوصية' && audit.status === 'fail' ? `<a href="../privacy-generator/index.html" class="fix-btn" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> توليد سياسة خصوصية الآن</a>` : ''}
+                    ${(window.fixData && window.fixData[audit.title]) ? `<button class="fix-btn" onclick="event.stopPropagation(); window.showFix('${audit.title}')"><i class="fa-solid fa-wrench"></i> دليل الإصلاح</button>` : ''}
                 </div>
             </div>`;
         return card;

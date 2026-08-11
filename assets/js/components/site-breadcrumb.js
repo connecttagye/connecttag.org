@@ -76,7 +76,7 @@ class SiteBreadcrumb extends HTMLElement {
       const isLast = index === breadcrumbItems.length - 1;
       return `
         <li class="ct-breadcrumb-item ${isLast ? 'active' : ''}">
-          ${index > 0 ? '<span class="ct-breadcrumb-separator"><i class="fa fa-chevron-left"></i></span>' : ''}
+          ${index > 0 ? '<span class="ct-breadcrumb-separator"><i class="fa-solid fa-chevron-left"></i></span>' : ''}
           ${isLast ? `<span>${item.title}</span>` : `<a href="${item.url}">${item.title}</a>`}
         </li>
       `;

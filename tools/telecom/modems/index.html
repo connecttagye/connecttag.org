@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../../../assets/css/styles.min.css">
   <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
@@ -85,7 +85,7 @@
     .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 14px; }
     .breadcrumb-tools li a { color: #006b98; text-decoration: none; }
     .breadcrumb-tools li:not(:last-child)::after {
-        content: '\f104'; font-family: FontAwesome; margin-right: 10px; font-size: 12px; color: #ccc;
+        content: '\f104'; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 10px; font-size: 12px; color: #ccc;
     }
     .breadcrumb-tools li.active { color: #e89a2f; }
 
@@ -232,7 +232,7 @@
 
         <div class="row" id="modems-grid">
             <div class="loading-spinner col-xs-12">
-                <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+                <i class="fa-solid fa-circle-notch fa-spin fa-3x"></i>
                 <p style="margin-top: 15px;">جاري جلب بيانات المودمات...</p>
             </div>
         </div>
@@ -334,7 +334,7 @@
                             <h3>${item.arabicName} ${item.modelOrVersion}</h3>
                             <p class="short-desc">${item.shortDescription || item.summary || 'مودم يدعم تقنية الجيل الرابع.'}</p>
                             <a href="details.html?slug=${item.slug}" class="btn-view-details">
-                                المواصفات الفنية <i class="fa fa-long-arrow-left"></i>
+                                المواصفات الفنية <i class="fa-solid fa-arrow-left-long"></i>
                             </a>
                         </div>
                     </div>
@@ -344,7 +344,7 @@
         }
 
         function showError(message) {
-            grid.innerHTML = `<div class="error-msg col-xs-12"><i class="fa fa-exclamation-triangle fa-3x"></i><p style="margin-top:15px;">${message}</p></div>`;
+            grid.innerHTML = `<div class="error-msg col-xs-12"><i class="fa-solid fa-triangle-exclamation fa-3x"></i><p style="margin-top:15px;">${message}</p></div>`;
         }
     });
 </script>

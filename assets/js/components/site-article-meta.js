@@ -13,17 +13,17 @@ class SiteArticleMeta extends HTMLElement {
     this.innerHTML = `
       <div class="ct-article-meta">
         <div class="ct-meta-item">
-          <i class="fa fa-user"></i>
+          <i class="fa-solid fa-user"></i>
           <span>الكاتب: <a href="${authorLink}">${author}</a></span>
         </div>
         ${date ? `
         <div class="ct-meta-item">
-          <i class="fa fa-calendar"></i>
+          <i class="fa-solid fa-calendar"></i>
           <span>نشر في: ${date}</span>
         </div>` : ''}
         ${updated ? `
         <div class="ct-meta-item">
-          <i class="fa fa-refresh"></i>
+          <i class="fa-solid fa-arrows-rotate"></i>
           <span>آخر تحديث: ${updated}</span>
         </div>` : ''}
       </div>

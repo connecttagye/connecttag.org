@@ -17,7 +17,7 @@ class SiteArticleCard extends HTMLElement {
           ${date ? `<span class="ct-card-date">${date}</span>` : ''}
           <h3 class="ct-card-title"><a href="${link}">${title}</a></h3>
           <p class="ct-card-excerpt">${excerpt}</p>
-          <a href="${link}" class="ct-card-link">اقرأ المزيد <i class="fa fa-angle-left"></i></a>
+          <a href="${link}" class="ct-card-link">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
         </div>
       </div>
     `;

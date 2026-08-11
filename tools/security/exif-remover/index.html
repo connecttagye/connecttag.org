@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
@@ -138,7 +138,7 @@
 
 <div class="theme-toggle no-print">
     <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">
-        <i class="fa fa-moon-o"></i> الوضع المظلم
+        <i class="fa-regular fa-moon"></i> الوضع المظلم
     </button>
 </div>
 
@@ -165,11 +165,11 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="main-card" data-aos="fade-up">
                     <div class="privacy-badge">
-                        <i class="fa fa-shield"></i> معالجة محلية 100%: صورك لا تغادر جهازك أبداً، يتم التنظيف داخل المتصفح.
+                        <i class="fa-solid fa-shield"></i> معالجة محلية 100%: صورك لا تغادر جهازك أبداً، يتم التنظيف داخل المتصفح.
                     </div>
 
                     <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-                        <i class="fa fa-file-image-o"></i>
+                        <i class="fa-regular fa-file-image"></i>
                         <h4 class="fw-bold">اسحب الصور هنا أو اضغط للاختيار</h4>
                         <p class="text-muted">يدعم JPG, PNG, WebP (يمكنك اختيار عدة صور)</p>
                         <input type="file" id="fileInput" multiple accept="image/jpeg, image/png, image/webp" style="display:none">
@@ -180,12 +180,12 @@
                     </div>
 
                     <button id="cleanAllBtn" class="btn-clean" style="display:none" onclick="cleanAll()">
-                        <i class="fa fa-magic"></i> حذف جميع البيانات المخفية وتحميل الصور
+                        <i class="fa-solid fa-magic"></i> حذف جميع البيانات المخفية وتحميل الصور
                     </button>
                 </div>
 
                 <div class="main-card" data-aos="fade-up">
-                    <h5 class="fw-bold mb-3"><i class="fa fa-info-circle text-primary"></i> ما هي بيانات EXIF ولماذا يجب حذفها؟</h5>
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-info-circle text-primary"></i> ما هي بيانات EXIF ولماذا يجب حذفها؟</h5>
                     <p class="small text-muted">
                         عندما تلتقط صورة، يقوم هاتفك بتخزين معلومات تقنية تسمى EXIF. هذه البيانات قد تشمل:
                     </p>
@@ -212,7 +212,7 @@ let filesToProcess = [];
 function toggleTheme() {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
     document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa fa-moon-o"></i> الوضع المظلم' : '<i class="fa fa-sun-o"></i> الوضع الفاتح';
+    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa-regular fa-moon"></i> الوضع المظلم' : '<i class="fa-regular fa-sun"></i> الوضع الفاتح';
 }
 
 const fileInput = document.getElementById('fileInput');
@@ -256,7 +256,7 @@ async function renderList() {
             <div style="flex:1">
                 <div class="d-flex justify-content-between">
                     <span class="fw-bold small">${file.name}</span>
-                    <button class="btn btn-sm text-danger p-0" onclick="removeFile(${i})"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-sm text-danger p-0" onclick="removeFile(${i})"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
                 <div class="meta-tags">
                     <span class="tag">الحجم: ${(file.size/1024).toFixed(1)} KB</span>
@@ -277,7 +277,7 @@ function removeFile(index) {
 async function cleanAll() {
     const btn = document.getElementById('cleanAllBtn');
     const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> جاري تنظيف البصمة الرقمية...';
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري تنظيف البصمة الرقمية...';
     btn.disabled = true;
 
     for (let file of filesToProcess) {
@@ -289,7 +289,7 @@ async function cleanAll() {
         }
     }
 
-    btn.innerHTML = '<i class="fa fa-check"></i> تم التنظيف والتحميل بنجاح!';
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التنظيف والتحميل بنجاح!';
     setTimeout(() => {
         btn.innerHTML = originalText;
         btn.disabled = false;

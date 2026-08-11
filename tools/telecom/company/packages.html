@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../../../assets/css/styles.min.css">
   <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
@@ -105,7 +105,7 @@
         </ul>
         <div class="row">
             <div class="col-xs-6">
-                <a href="javascript:history.back()" class="btn-back"><i class="fa fa-arrow-right"></i> العودة للشركة</a>
+                <a href="javascript:history.back()" class="btn-back"><i class="fa-solid fa-arrow-right"></i> العودة للشركة</a>
             </div>
             <div class="col-xs-6 text-left">
                 <h4 id="comp-name-header" style="margin: 0; font-weight: 800; color: #1e293b;"></h4>
@@ -167,11 +167,11 @@
                 card.innerHTML = `
                     <div class="pkg-title">${p.arTitle}</div>
                     <div class="pkg-price">${p.price.toLocaleString()} <small>ريال</small></div>
-                    <div class="pkg-duration"><i class="fa fa-clock-o"></i> صلاحية ${p.duration}</div>
+                    <div class="pkg-duration"><i class="fa-regular fa-clock"></i> صلاحية ${p.duration}</div>
 
                     <div class="activate-box" onclick="copyToClipboard('${p.codeActivate}')">
                         <span class="activate-label">كود التفعيل</span>
-                        <span class="activate-code">${p.codeActivate} <i class="fa fa-copy" style="font-size: 14px;"></i></span>
+                        <span class="activate-code">${p.codeActivate} <i class="fa-solid fa-copy" style="font-size: 14px;"></i></span>
                     </div>
                 `;
                 list.appendChild(card);

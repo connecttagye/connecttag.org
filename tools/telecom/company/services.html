@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../../../assets/css/styles.min.css">
   <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="../../../assets/css/animate-custom.css">
 
@@ -199,7 +199,7 @@
         </ul>
         <div class="row" style="display: flex; align-items: center;">
             <div class="col-xs-4">
-                <a href="javascript:history.back()" class="btn-back"><i class="fa fa-arrow-right"></i> رجوع</a>
+                <a href="javascript:history.back()" class="btn-back"><i class="fa-solid fa-arrow-right"></i> رجوع</a>
             </div>
             <div class="col-xs-8 text-left">
                 <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
@@ -221,7 +221,7 @@
         <!-- Search Bar -->
         <div class="search-section">
             <div class="search-wrapper">
-                <i class="fa fa-search search-icon"></i>
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 <input type="text" id="serviceSearch" class="search-input" placeholder="ابحث عن خدمة (رصيد، تفعيل، باقة...)...">
             </div>
         </div>
@@ -295,7 +295,7 @@
             list.innerHTML = '';
 
             if(services.length === 0) {
-                list.innerHTML = '<div class="col-xs-12 text-center" style="padding: 50px;"><i class="fa fa-search fa-3x" style="color: #cbd5e1; margin-bottom: 20px;"></i><p style="color: #64748b; font-weight: 700;">لا توجد نتائج تطابق بحثك</p></div>';
+                list.innerHTML = '<div class="col-xs-12 text-center" style="padding: 50px;"><i class="fa-solid fa-magnifying-glass fa-3x" style="color: #cbd5e1; margin-bottom: 20px;"></i><p style="color: #64748b; font-weight: 700;">لا توجد نتائج تطابق بحثك</p></div>';
                 return;
             }
 
@@ -314,14 +314,14 @@
                     actionHtml = `
                         <a href="${finalUrl}" target="_blank" class="link-action-box">
                             <span class="link-text">زيارة الموقع</span>
-                            <div class="btn-link-action"><i class="fa fa-external-link"></i></div>
+                            <div class="btn-link-action"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         </a>
                     `;
                 } else {
                     actionHtml = `
                         <div class="code-action-box" onclick="copyToClipboard('${action}')">
                             <span class="code-text" dir="ltr">${action}</span>
-                            <div class="btn-copy-action"><i class="fa fa-copy"></i></div>
+                            <div class="btn-copy-action"><i class="fa-solid fa-copy"></i></div>
                         </div>
                     `;
                 }
@@ -342,12 +342,12 @@
 
         function getIcon(title, isUrl) {
             if(isUrl) return 'fa-globe';
-            if(title.includes('رصيد')) return 'fa-money';
+            if(title.includes('رصيد')) return 'fa-money-bill-1';
             if(title.includes('إنترنت') || title.includes('نت')) return 'fa-globe';
             if(title.includes('اتصال') || title.includes('دقائق')) return 'fa-phone';
-            if(title.includes('سلف')) return 'fa-hand-holding-usd';
-            if(title.includes('تحويل')) return 'fa-random';
-            return 'fa-flash';
+            if(title.includes('سلف')) return 'fa-hand-holding-dollar';
+            if(title.includes('تحويل')) return 'fa-shuffle';
+            return 'fa-bolt';
         }
     });
 

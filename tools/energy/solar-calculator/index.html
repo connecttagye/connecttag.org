@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../../../assets/css/styles.min.css">
 <link rel="stylesheet" href="../../../assets/css/components.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
 <link rel="stylesheet" href="../../../assets/css/shared-styles.css">
 
@@ -176,7 +176,7 @@
 
 <div class="theme-toggle no-print">
     <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">
-        <i class="fa fa-moon-o"></i> الوضع المظلم
+        <i class="fa-regular fa-moon"></i> الوضع المظلم
     </button>
 </div>
 
@@ -204,10 +204,10 @@
             <div class="col-lg-8">
                 <div class="mode-tabs no-print">
                     <div class="mode-tab active" id="mode-solar" onclick="setMode('solar')">
-                        <i class="fa fa-sun-o"></i> نظام طاقة شمسية
+                        <i class="fa-regular fa-sun"></i> نظام طاقة شمسية
                     </div>
                     <div class="mode-tab" id="mode-grid" onclick="setMode('grid')">
-                        <i class="fa fa-bolt"></i> فاتورة الكهرباء
+                        <i class="fa-solid fa-bolt"></i> فاتورة الكهرباء
                     </div>
                 </div>
             </div>
@@ -217,7 +217,7 @@
             <div class="col-lg-8">
                 <!-- 1. General Settings -->
                 <div class="main-card" data-aos="fade-up">
-                    <h2 class="section-title"><i class="fa fa-cog"></i> إعدادات الحساب</h2>
+                    <h2 class="section-title"><i class="fa-solid fa-gear"></i> إعدادات الحساب</h2>
 
                     <!-- Solar Settings -->
                     <div id="solar-settings">
@@ -259,12 +259,12 @@
 
                 <!-- 2. Appliance Selection -->
                 <div class="main-card" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="section-title"><i class="fa fa-plug"></i> اختر الأجهزة المتوفرة</h2>
+                    <h2 class="section-title"><i class="fa-solid fa-plug"></i> اختر الأجهزة المتوفرة</h2>
                     <div class="appliance-grid" id="applianceGrid">
                         <!-- Rendered by JS -->
                     </div>
 
-                    <h2 class="section-title"><i class="fa fa-list-ul"></i> قائمة الأحمال المختارة</h2>
+                    <h2 class="section-title"><i class="fa-solid fa-list-ul"></i> قائمة الأحمال المختارة</h2>
                     <div class="selected-list" id="selectedList">
                         <!-- Rendered by JS -->
                     </div>
@@ -326,7 +326,7 @@
 
                     <div class="no-print">
                         <button class="btn-action btn-pdf" onclick="window.print()">
-                            <i class="fa fa-file-pdf-o"></i> تحميل تقرير الفحص الكامل
+                            <i class="fa-regular fa-file-pdf"></i> تحميل تقرير الفحص الكامل
                         </button>
                     </div>
                 </div>
@@ -356,7 +356,7 @@ let selectedAppliance = [];
 function toggleTheme() {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
     document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa fa-moon-o"></i> الوضع المظلم' : '<i class="fa fa-sun-o"></i> الوضع الفاتح';
+    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa-regular fa-moon"></i> الوضع المظلم' : '<i class="fa-regular fa-sun"></i> الوضع الفاتح';
     localStorage.setItem('solar_calc_theme', isDark ? 'light' : 'dark');
 }
 
@@ -376,7 +376,7 @@ function setMode(mode) {
 function initGrid() {
     document.getElementById('applianceGrid').innerHTML = appliancesData.map(app => `
         <div class="appliance-item" onclick="addAppliance('${app.id}')">
-            <i class="fa fa-${app.icon}"></i>
+            <i class="fa-solid fa-${app.icon}"></i>
             <span>${app.name}</span>
             <small>${app.watt} واط</small>
         </div>
@@ -404,12 +404,12 @@ function removeItem(index) {
 function renderSelected() {
     const list = document.getElementById('selectedList');
     if (selectedAppliance.length === 0) {
-        list.innerHTML = `<div class="text-center py-5 text-muted"><i class="fa fa-shopping-basket fa-3x mb-3 opacity-20"></i><p class="fw-bold">اختر الأجهزة من القائمة أعلاه للبدء</p></div>`;
+        list.innerHTML = `<div class="text-center py-5 text-muted"><i class="fa-solid fa-shopping-basket fa-3x mb-3 opacity-20"></i><p class="fw-bold">اختر الأجهزة من القائمة أعلاه للبدء</p></div>`;
         return;
     }
     list.innerHTML = selectedAppliance.map((app, i) => `
         <div class="selected-item">
-            <div class="icon"><i class="fa fa-${app.icon}"></i></div>
+            <div class="icon"><i class="fa-solid fa-${app.icon}"></i></div>
             <div class="info">
                 <span class="name">${app.name}</span>
                 <div class="d-flex gap-3 mt-2 flex-wrap">
@@ -422,7 +422,7 @@ function renderSelected() {
                     <div><input type="number" class="hours-input" value="${app.hours}" oninput="updateItem(${i}, 'hours', this.value)"> <small>ساعة</small></div>
                 </div>
             </div>
-            <button class="btn btn-sm btn-link text-danger" onclick="removeItem(${i})"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-sm btn-link text-danger" onclick="removeItem(${i})"><i class="fa-solid fa-trash-can"></i></button>
         </div>
     `).join('');
 }
