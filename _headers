@@ -8,10 +8,12 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Service Worker - No Cache
+# Service Worker - No Cache & No Minify
 /sw.js
   Cache-Control: no-cache, no-store, must-revalidate
   Service-Worker-Allowed: /
+  X-Content-Type-Options: nosniff
+  Content-Type: application/javascript
 
 # HTML files cache for 1 hour
 /*.html
