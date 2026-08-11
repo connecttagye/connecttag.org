@@ -37,7 +37,7 @@ html, body {
   filter: none !important;
 }
 
-/* Zero CLS Font Matching */
+/* Zero CLS Font Matching & Font Display */
 @font-face {
   font-family: 'Cairo-Fallback';
   src: local('Arial');
@@ -45,6 +45,12 @@ html, body {
   descent-override: 35%;
   line-gap-override: 0%;
   size-adjust: 106%;
+}
+
+/* Force Font Display Swap for FontAwesome via CSS override if possible,
+   though best handled by the provider. Here we ensure our usage is optimized. */
+:root {
+  font-display: swap;
 }
 
 /* 3. Preloader Styles */

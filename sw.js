@@ -41,9 +41,34 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch Event - Network First Strategy
+// Fetch Event - Stale-While-Revalidate for static assets, Network First for others
 self.addEventListener('fetch', event => {
   if (!ENABLE_CACHE) return;
+
+  const url = new URL(event.request.url);
+
+  // External fonts and icons (Stale-While-Revalidate)
+  if (url.origin.includes('fonts.googleapis.com') ||
+      url.origin.includes('fonts.gstatic.com') ||
+      url.origin.includes('cdn.jsdelivr.net') ||
+      url.origin.includes('static.cloudflareinsights.com') ||
+      url.pathname.includes('/assets/')) {
+
+    event.respondWith(
+      caches.open(CACHE_NAME).then(cache => {
+        return cache.match(event.request).then(response => {
+          const fetchPromise = fetch(event.request).then(networkResponse => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+          return response || fetchPromise;
+        });
+      })
+    );
+    return;
+  }
+
+  // Internal navigation and others (Network First)
   if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(
