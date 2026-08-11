@@ -4,26 +4,30 @@
  */
 class SitePreloader extends HTMLElement {
   connectedCallback() {
-    // 1. Render Preloader HTML
+    // 1. Render Skeleton Preloader HTML
     this.innerHTML = `
-      <div id="preloader">
-          <div class="preloader-bg"></div>
-          <div class="preloader-content">
-              <div class="loader-logo">
-                  <i class="fa fa-terminal"></i>
-                  <span>ConnectTag</span>
-              </div>
-              <div id="loader-log" class="loader-status">> System Ready...</div>
-              <div class="progress-container">
-                  <div id="progress-fill" class="progress-bar"></div>
-              </div>
+      <div id="preloader-skeleton">
+          <div class="skeleton-header">
+              <div class="skeleton-box skeleton-logo"></div>
+              <div class="skeleton-box skeleton-nav"></div>
           </div>
+          <div class="skeleton-box skeleton-hero"></div>
+          <div class="skeleton-box skeleton-text-center"></div>
+          <div class="skeleton-box skeleton-text-center" style="width: 40%"></div>
+          <div class="skeleton-box skeleton-btn"></div>
       </div>
     `;
 
-    // 2. Immediate Logic to ensure home-content is prepared
-    // This replaces the inline script that was duplicated in every page.
-    this.prepareContent();
+    // Wait for page to load then hide skeleton
+    window.addEventListener('load', () => {
+      const skeleton = document.getElementById('preloader-skeleton');
+      if (skeleton) {
+        skeleton.style.opacity = '0';
+        skeleton.style.visibility = 'hidden';
+        setTimeout(() => skeleton.remove(), 500);
+      }
+      this.prepareContent();
+    });
   }
 
   prepareContent() {
