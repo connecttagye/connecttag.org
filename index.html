@@ -119,10 +119,8 @@
 
 
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
 
   <!-- تحسين سياسة عرض الخط لقتل CLS تماماً -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional">
@@ -153,9 +151,6 @@
         aspect-ratio: attr(width) / attr(height);
         height: auto;
     }
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  </noscript>
 
   <!-- Critical CSS Inlined -->
   <style>
@@ -342,10 +337,6 @@
     .skeleton-text-center { width: 60%; height: 20px; margin: 20px auto; }
     .skeleton-btn { width: 180px; height: 50px; margin: 30px auto; border-radius: 30px; }
   </style>
-
-  <!-- Preload Fonts to avoid layout shifts and shorten critical path -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
   <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
