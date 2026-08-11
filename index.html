@@ -127,7 +127,7 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional" media="all">
 
   <!-- Critical CSS Inlined -->
   <style>
@@ -151,6 +151,20 @@
       padding: 0;
       overflow-x: hidden;
       font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+      scrollbar-gutter: stable; /* يمنع قفزة المحتوى عند ظهور شريط التمرير */
+    }
+
+    /* حجز مساحة للصور لمنع CLS */
+    .img-circle2 {
+      aspect-ratio: 1 / 1;
+      background-color: rgba(255,255,255,0.05);
+      object-fit: cover;
+    }
+
+    /* حجز مساحة لشريط التقنيات */
+    .tech-slider {
+      min-height: 60px;
+      contain: layout paint;
     }
     #home-content {
       transition: opacity 0.4s ease;

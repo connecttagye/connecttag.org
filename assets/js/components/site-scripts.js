@@ -11,17 +11,22 @@
         const preloader = document.getElementById('preloader');
         if (!preloader || preloader.classList.contains('preloader-hidden')) return;
 
-        // Force immediate visual transition
+        // Start fading out
         preloader.classList.add('preloader-hidden');
-        document.body.classList.remove('preloader-visible');
-        document.body.classList.add('loaded');
-        document.body.classList.add('page-entered');
-        document.body.style.overflow = 'auto';
+
+        // Use requestAnimationFrame to ensure the transition is smooth
+        requestAnimationFrame(() => {
+            document.body.classList.remove('preloader-visible');
+            document.body.classList.add('loaded', 'page-entered');
+
+            // Re-trigger layout calculation once to stabilize
+            window.dispatchEvent(new Event('resize'));
+        });
 
         // Clean up memory
         setTimeout(() => {
             preloader.style.display = 'none';
-        }, 500);
+        }, 800);
     }
 
     // Trigger as soon as the DOM is ready (Lighthouse/FCP/LCP win)
