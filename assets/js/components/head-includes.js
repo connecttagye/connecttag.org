@@ -32,17 +32,21 @@
 
   // Favicon
   addLink('icon', baseUrl + 'favicon.webp', 'image/webp');
-  addLink('apple-touch-icon', baseUrl + 'icon-192.png');
 
-  // Manifest for PWA
-  addLink('manifest', baseUrl + 'manifest.json');
+  // Manifest for PWA - Only add if not present in HTML
+  if (!document.querySelector('link[rel="manifest"]')) {
+    addLink('manifest', baseUrl + 'manifest.json');
+  }
 
-  // Theme colors & mobile web app capability
-  addMeta('theme-color', '#0077b6');
-  addMeta('msapplication-navbutton-color', '#0077b6');
-  addMeta('mobile-web-app-capable', 'yes'); // Standard
-  addMeta('apple-mobile-web-app-capable', 'yes'); // Legacy
-  addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
+  // Theme colors & mobile web app capability - Only add if not present in HTML
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    addMeta('theme-color', '#0077b6');
+    addMeta('msapplication-navbutton-color', '#0077b6');
+    addMeta('mobile-web-app-capable', 'yes');
+    addMeta('apple-mobile-web-app-capable', 'yes');
+    addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
+    addLink('apple-touch-icon', baseUrl + 'icon-192.png');
+  }
 
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
