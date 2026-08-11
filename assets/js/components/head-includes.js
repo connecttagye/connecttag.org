@@ -51,11 +51,9 @@
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     const registerSW = () => {
-      // Simplify registration to avoid "Unknown error" in some environments
       navigator.serviceWorker.register('/sw.js')
         .then(reg => {
           console.log('SW Registered');
-          reg.update();
         })
         .catch(err => console.log('SW Registration Failed', err));
     };
