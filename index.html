@@ -119,37 +119,24 @@
 
 
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <!-- تحسين سياسة عرض الخط لقتل CLS تماماً -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=optional" media="all">
+  <!-- استعادة تحميل الخط السريع والمستقر -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
 
   <style>
-    /* تثبيت مساحات الأيقونات لمنع القفز عند تحميل الخط */
-    .tech-item i, .service-card i, .hardware-card i {
-      display: inline-block;
-      min-width: 1.2em; /* مساحة تقريبية محجوزة */
-      min-height: 1em;
-      text-align: center;
-    }
-
+    /* إزالة القيود التي سببت تشوه العناصر المنبثقة */
     .tech-slider {
       min-height: 60px;
       overflow: hidden;
-      contain: layout;
     }
 
-    /* تحسين استقرار الحاويات */
-    .container {
-        contain: layout;
-    }
-
-    /* منع حركة الصور */
+    /* إصلاح الصور دون المساس بالتخطيط */
     .img-responsive {
-        aspect-ratio: attr(width) / attr(height);
         height: auto;
+        max-width: 100%;
     }
 
   <!-- Critical CSS Inlined -->
@@ -440,9 +427,6 @@
     }
     .preloader-visible { overflow: hidden; }
   </style>
-
-  <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
-
 
   <!-- Non-blocking CSS -->
   <link rel="preload" href="assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
