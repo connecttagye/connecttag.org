@@ -51,7 +51,8 @@
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      const swUrl = baseUrl + 'sw.js';
+      // Use relative path for Service Worker to ensure same-origin
+      const swUrl = '/sw.js';
       navigator.serviceWorker.register(swUrl)
         .then(reg => {
           console.log('SW Registered');
