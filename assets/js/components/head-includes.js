@@ -50,16 +50,26 @@
 
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      // Register with updateViaCache: 'none' to ensure latest version is always fetched
+    const registerSW = () => {
       navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
         .then(reg => {
           console.log('SW Registered');
-          // Check for updates immediately
           reg.update();
         })
         .catch(err => console.log('SW Registration Failed', err));
-    });
+    };
+
+    if (document.readyState === 'complete') {
+      registerSW();
+    } else {
+      window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(registerSW);
+        } else {
+          setTimeout(registerSW, 1000);
+        }
+      });
+    }
   }
 
 })();

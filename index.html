@@ -214,21 +214,36 @@
     .btn-gradient:hover i {
       transform: translateX(-5px);
     }
+    /* Critical CSS to prevent FCP/LCP delay */
+    #headerwrap {
+      min-height: 750px;
+      background: #0d001a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preloader-visible { overflow: hidden; }
   </style>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
 
+  <!-- Critical CSS loaded immediately -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/styles.min.css">
+
   <!-- Non-blocking CSS -->
-  <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css"></noscript>
-
-  <link rel="preload" href="assets/css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.min.css"></noscript>
-
   <link rel="preload" href="assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/components.min.css"></noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
+
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+
   <link rel="preload" href="assets/css/animate-custom.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css"></noscript>
 
