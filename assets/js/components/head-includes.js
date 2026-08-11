@@ -32,12 +32,29 @@
 
   // Favicon
   addLink('icon', baseUrl + 'favicon.webp', 'image/webp');
+  addLink('apple-touch-icon', baseUrl + 'icon-192.png');
+
+  // Manifest for PWA
+  addLink('manifest', baseUrl + 'manifest.json');
 
   // Theme colors & mobile web app capability
-  addMeta('theme-color', '#317EFB');
-  addMeta('msapplication-navbutton-color', '#d69503');
+  addMeta('theme-color', '#0077b6');
+  addMeta('msapplication-navbutton-color', '#0077b6');
   addMeta('mobile-web-app-capable', 'yes'); // Standard
   addMeta('apple-mobile-web-app-capable', 'yes'); // Legacy
   addMeta('apple-mobile-web-app-status-bar-style', 'black-translucent');
+
+  // Register Service Worker for PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      const swUrl = baseUrl + 'sw.js';
+      navigator.serviceWorker.register(swUrl)
+        .then(reg => {
+          console.log('SW Registered');
+          reg.update();
+        })
+        .catch(err => console.log('SW Registration Failed', err));
+    });
+  }
 
 })();

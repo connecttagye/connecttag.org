@@ -45,6 +45,7 @@
   loadScript('assets/js/components/site-footer.js');
   loadScript('assets/js/components/site-breadcrumb.js');
   loadScript('assets/js/components/cookie-consent.js');
+  loadScript('assets/js/components/pwa-install-prompt.js');
 
   // --- STAGE 4: THIRD PARTY PLUGINS ---
   loadScript('https://unpkg.com/aos@2.3.1/dist/aos.js');

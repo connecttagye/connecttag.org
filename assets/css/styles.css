@@ -857,11 +857,28 @@ a:hover, a:focus {
     100% { transform: translateX(50%); }
 }
 
-img.img-responsive {
+/* Custom Section Dividers (SVG Waves) */
+.section-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    position: relative;
+    z-index: 10;
+    background: #ffffff !important; /* Force white background */
+    margin: 0;
+    padding: 0;
+}
+.section-divider svg {
+    position: relative;
     display: block;
-    height: auto;
-    max-width: 100%;
-    aspect-ratio: attr(width) / attr(height);
+    width: calc(100% + 1.3px);
+    height: 35px;
+}
+.divider-fill-white { fill: #e0f7ff !important; } /* Light Cyan */
+.divider-fill-light { fill: #f0fbff !important; } /* Lighter Cyan */
+
+.div-pattern2, .div-pattern {
+    display: none; /* Hide old empty dividers */
 }
 
 .animated {
