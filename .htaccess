@@ -50,6 +50,15 @@ RewriteRule ^([^/]+)$ $1.html [L]
 # 3. Disable Directory Browsing
 Options -Indexes
 
+# 5. Prevent Service Worker Caching
+<Files "sw.js">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </IfModule>
+</Files>
+
 # 4. Security Headers
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"

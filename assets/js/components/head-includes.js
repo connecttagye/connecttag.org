@@ -51,11 +51,11 @@
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      // Use relative path for Service Worker to ensure same-origin
-      const swUrl = '/sw.js';
-      navigator.serviceWorker.register(swUrl)
+      // Register with updateViaCache: 'none' to ensure latest version is always fetched
+      navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
         .then(reg => {
           console.log('SW Registered');
+          // Check for updates immediately
           reg.update();
         })
         .catch(err => console.log('SW Registration Failed', err));
