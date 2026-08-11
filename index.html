@@ -127,9 +127,15 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
 
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/styles.min.css">
+  <!-- Critical CSS (Small & Essential) -->
   <link rel="stylesheet" href="assets/css/shared-styles.css">
+
+  <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css"></noscript>
+
+  <link rel="preload" href="assets/css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css"></noscript>
   <style>
     /* Page specific overrides */
     body { background-color: #0d001a; }

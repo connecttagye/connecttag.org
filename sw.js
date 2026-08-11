@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v11';
+const CACHE_NAME = 'connecttag-cache-v12';
 const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
@@ -10,8 +10,10 @@ const ASSETS_TO_CACHE = [
   '/favicon.webp',
   '/icon-192.png',
   '/icon-512.png',
+  '/assets/css/bootstrap.min.css',
   '/assets/css/styles.min.css',
   '/assets/css/shared-styles.css',
+  '/assets/css/components.min.css',
   '/assets/js/components/components-bundle.js',
   '/assets/js/components/pwa-install-prompt.js'
 ];
