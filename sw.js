@@ -4,7 +4,7 @@ const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
   './',
-  './index',
+  './index.html',
   './offline.html',
   './manifest.json',
   './favicon.webp',
@@ -31,13 +31,20 @@ self.addEventListener('install', event => {
 
 // Activate Event
 self.addEventListener('activate', event => {
+  console.log('SW: Activate Event - Cleaning up old caches');
   event.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys
         .filter(key => key !== CACHE_NAME)
-        .map(key => caches.delete(key))
+        .map(key => {
+            console.log('SW: Deleting old cache:', key);
+            return caches.delete(key);
+        })
       );
-    }).then(() => self.clients.claim())
+    }).then(() => {
+        console.log('SW: Now controlling all clients');
+        return self.clients.claim();
+    })
   );
 });
 
