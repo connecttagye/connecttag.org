@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
-
+Disallow: /scripts/
+Disallow: /sync.bat
+Disallow: /version.json
+Disallow: /agents.md
 
 Sitemap: https://connecttag.org/sitemap.xml
