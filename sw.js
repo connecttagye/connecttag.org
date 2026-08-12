@@ -1,10 +1,10 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v20';
+const CACHE_NAME = 'connecttag-cache-v40';
 const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
   './',
-  './index.html',
+  './index',
   './offline.html',
   './manifest.json',
   './favicon.webp',
