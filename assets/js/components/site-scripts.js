@@ -8,15 +8,18 @@
     'use strict';
 
     function hidePreloader() {
-        const preloader = document.getElementById('preloader');
-        if (!preloader || preloader.classList.contains('preloader-hidden')) return;
+        const preloader = document.getElementById('preloader') || document.getElementById('preloader-skeleton');
 
-        // Force immediate visual transition
-        preloader.classList.add('preloader-hidden');
+        // Always ensure body is unlocked even if preloader element is not found
         document.body.classList.remove('preloader-visible');
         document.body.classList.add('loaded');
         document.body.classList.add('page-entered');
         document.body.style.overflow = 'auto';
+
+        if (!preloader || preloader.classList.contains('preloader-hidden')) return;
+
+        // Force immediate visual transition
+        preloader.classList.add('preloader-hidden');
 
         // Clean up memory
         setTimeout(() => {

@@ -53,8 +53,11 @@
   // --- STAGE 5: SITE LOGIC ---
   loadScript('assets/js/components/site-scripts.js');
 
-  // IE Compatibility - Moved to end and only if really needed
-  // loadScript('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
-  // loadScript('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js');
+  // --- STAGE 6: PWA EVENT CAPTURE (Early Listener) ---
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window.CT_DEFERRED_PROMPT = e;
+    console.log('PWA: Event captured in master bundle');
+  });
 
 })();

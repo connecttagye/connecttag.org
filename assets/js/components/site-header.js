@@ -22,10 +22,6 @@ class SiteHeader extends HTMLElement {
             <img src="${getLink('assets/img/connect-tag-official-logo.webp')}" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
-          <button class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" id="ct-menu-btn">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-
           <nav aria-label="التنقل الرئيسي">
             <ul class="ct-nav-menu" id="ct-nav-menu">
               <li class="ct-nav-item ${isActive(getLink('')) ? 'active' : ''}">
@@ -49,9 +45,12 @@ class SiteHeader extends HTMLElement {
               <li class="ct-nav-item ${isActive(getLink('tools/')) ? 'active' : ''}">
                 <a href="${getLink('tools/')}" class="ct-nav-link">الأدوات</a>
               </li>
-
             </ul>
           </nav>
+
+          <button class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" id="ct-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
       </header>
     `;

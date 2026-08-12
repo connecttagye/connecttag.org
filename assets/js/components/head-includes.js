@@ -51,9 +51,11 @@
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     const registerSW = () => {
-      navigator.serviceWorker.register('/sw.js')
+      // Ensure sw.js is resolved from root correctly
+      const swPath = baseUrl.endsWith('/') ? baseUrl + 'sw.js' : baseUrl + '/sw.js';
+      navigator.serviceWorker.register(swPath)
         .then(reg => {
-          console.log('SW Registered');
+          console.log('SW Registered at:', swPath);
         })
         .catch(err => console.log('SW Registration Failed', err));
     };

@@ -26,8 +26,6 @@
 site-header {
   display: block;
   min-height: 70px;
-  content-visibility: auto;
-  contain-intrinsic-size: 100% 70px;
 }
 
 .ct-header-navbar {
@@ -196,8 +194,6 @@ site-breadcrumb {
 site-footer {
   display: block;
   min-height: 450px;
-  content-visibility: auto;
-  contain-intrinsic-size: 100% 450px;
   background-color: var(--ct-dark-bg);
   color: var(--ct-text-light);
   margin-top: auto; /* Push to bottom of flex container */
@@ -449,6 +445,10 @@ cookie-consent {
 @media (max-width: 991px) {
   .ct-mobile-toggle {
     display: block;
+  }
+
+  site-header nav {
+    display: contents;
   }
 
   .ct-nav-menu {

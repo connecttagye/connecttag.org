@@ -5,7 +5,7 @@
 (function() {
   'use strict';
 
-  let deferredPrompt;
+  let deferredPrompt = null;
   const STORAGE_KEY = 'ct_pwa_prompt_dismissed';
   const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
@@ -63,11 +63,13 @@
 
     if (installBtn) {
       installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
+        const promptToUse = deferredPrompt || window.CT_DEFERRED_PROMPT;
+        if (promptToUse) {
+          promptToUse.prompt();
+          const { outcome } = await promptToUse.userChoice;
           console.log(`PWA Install Choice: ${outcome}`);
           deferredPrompt = null;
+          window.CT_DEFERRED_PROMPT = null;
           hidePrompt();
         }
       });
@@ -116,6 +118,14 @@
       }
       setTimeout(showPrompt, 1000);
     }
+    // Logic for Android/Chrome/Windows (Global captured event)
+    if (window.CT_DEFERRED_PROMPT && !isDismissed()) {
+      console.log('PWA: Showing prompt from global capture');
+      if (!document.getElementById('pwa-install-prompt')) {
+        createPrompt('android');
+      }
+      setTimeout(showPrompt, 3000);
+    }
   };
 
   // Run init when ready
@@ -125,17 +135,18 @@
     window.addEventListener('load', init);
   }
 
-  // Listen for the beforeinstallprompt event (Android/Chrome/Windows)
+  // Listen for the beforeinstallprompt event (if missed by bundle)
   window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('PWA: beforeinstallprompt event fired');
+    console.log('PWA: beforeinstallprompt event fired (local listener)');
     e.preventDefault();
     deferredPrompt = e;
+    window.CT_DEFERRED_PROMPT = e;
 
     if (!isDismissed()) {
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('android');
       }
-      setTimeout(showPrompt, 3000);
+      setTimeout(showPrompt, 2000);
     }
   });
 
