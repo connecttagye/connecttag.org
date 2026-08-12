@@ -33,9 +33,16 @@
   // Define global constants
   window.CT_BASE_URL = baseUrl;
   window.CT_ROOT_PATH = baseUrl; // Compatibility alias
+  const ASSET_VERSION = '1.0.1';
 
   function loadScript(src, isAsync = false) {
-    const fullSrc = src.startsWith('http') ? src : baseUrl + src;
+    let fullSrc = src.startsWith('http') ? src : baseUrl + src;
+
+    // Add versioning to internal scripts
+    if (!src.startsWith('http')) {
+      fullSrc += (fullSrc.includes('?') ? '&' : '?') + 'v=' + ASSET_VERSION;
+    }
+
     if (document.querySelector(`script[src="${fullSrc}"]`)) return;
 
     const s = document.createElement('script');
