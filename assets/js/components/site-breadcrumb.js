@@ -106,13 +106,27 @@ class SiteBreadcrumb extends HTMLElement {
       "itemListElement": items.map((item, index) => {
         // Resolve absolute URL
         let absoluteUrl = item.url;
-        if (!absoluteUrl.startsWith('http')) {
-          try {
-            absoluteUrl = new URL(item.url, window.location.href).href;
-          } catch (e) {
-            absoluteUrl = (baseUrl + item.url.replace(/^\.\//, '')).replace(/\/+$/, '');
-          }
+
+        // Handle relative paths starting with ./ or ../ or just a name
+        if (!absoluteUrl.startsWith('http') && !absoluteUrl.startsWith('/')) {
+            try {
+                absoluteUrl = new URL(item.url, window.location.href).href;
+            } catch (e) {
+                // Fallback for older browsers or invalid URLs
+                absoluteUrl = baseUrl.replace(/\/+$/, '') + '/' + item.url.replace(/^\.\//, '');
+            }
+        } else if (absoluteUrl.startsWith('/')) {
+            // Convert /path to https://domain.org/path
+            // But first, check if it's a corrupted /https:// link
+            if (absoluteUrl.startsWith('/http')) {
+                absoluteUrl = absoluteUrl.replace(/^\/+/, '');
+            } else {
+                absoluteUrl = baseUrl.replace(/\/+$/, '') + absoluteUrl;
+            }
         }
+
+        // Clean up double slashes (except for http://)
+        absoluteUrl = absoluteUrl.replace(/([^:])\/\/+/g, '$1/');
 
         return {
           "@type": "ListItem",
