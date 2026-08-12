@@ -61,24 +61,19 @@
 
           // Check for updates frequently
           reg.update();
-
-          // Detect a new Service Worker and force a reload
-          reg.onupdatefound = () => {
-            const installingWorker = reg.installing;
-            installingWorker.onstatechange = () => {
-              if (installingWorker.state === 'installed') {
-                if (navigator.serviceWorker.controller) {
-                  console.log('New content is available; please refresh.');
-                  // Optionally: Show a toast or notification to the user
-                  // For now, we don't force reload to avoid interrupting user,
-                  // but the new worker is ready.
-                }
-              }
-            };
-          };
         })
         .catch(err => console.log('SW Registration Failed', err));
     };
+
+    // Force a one-time reload when a new service worker takes control
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!refreshing) {
+        console.log('SW: New controller found, reloading page to apply updates...');
+        window.location.reload();
+        refreshing = true;
+      }
+    });
 
     if (document.readyState === 'complete') {
       registerSW();
