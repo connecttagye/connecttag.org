@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v51';
+const CACHE_NAME = 'connecttag-cache-v52';
 const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
