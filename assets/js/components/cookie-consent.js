@@ -12,13 +12,15 @@ class CookieConsent extends HTMLElement {
 
     this.innerHTML = `
       <div class="ct-cookie-banner" id="ct-cookie-banner">
-        <div class="ct-cookie-text">
-          <p>
-            نحن نستخدم ملفات تعريف الارتباط (Cookies) لضمان تقديم أفضل تجربة للمستخدم وتحسين خدماتنا وإعلاناتنا وفقاً لـ 
-            <a href="${baseUrl}privacy-policy">سياسة الخصوصية</a>.
-          </p>
+        <div class="ct-cookie-content">
+          <div class="ct-cookie-text">
+            <p>
+              نحن نستخدم ملفات تعريف الارتباط (Cookies) لضمان تقديم أفضل تجربة للمستخدم وتحسين خدماتنا وإعلاناتنا وفقاً لـ
+              <a href="${baseUrl}privacy-policy">سياسة الخصوصية</a>.
+            </p>
+          </div>
+          <button class="ct-cookie-btn" id="ct-accept-cookies">موافق ومتابعة</button>
         </div>
-        <button class="ct-cookie-btn" id="ct-accept-cookies">موافق ومتابعة</button>
       </div>
     `;
 

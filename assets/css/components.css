@@ -410,13 +410,37 @@ cookie-consent {
   border-radius: 16px;
   padding: 18px 24px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+  color: #fff;
+  transition: var(--ct-transition);
+}
+
+.ct-cookie-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  z-index: 99999;
-  color: #fff;
-  transition: var(--ct-transition);
+}
+
+@media (max-width: 768px) {
+  .ct-cookie-banner {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 20px;
+  }
+  .ct-cookie-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  .ct-cookie-btn {
+    width: 100%;
+    order: 2; /* Ensure it stays at the bottom */
+  }
+  .ct-cookie-text {
+    order: 1;
+  }
 }
 
 .ct-cookie-banner.hidden {
