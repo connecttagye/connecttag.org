@@ -161,7 +161,7 @@ text-align: center;
 	padding-bottom: 20px;
 }
 .row {
-	margin-left: 0px;
+	margin-left: -15px;
 	margin-right: -15px;
 }
 .modal-header {
@@ -605,7 +605,7 @@ a:hover, a:focus {
 
 /* Unified Page Header - Compact White Version */
 .page-header-unified {
-    padding: 40px 0 20px;
+    padding: 140px 0 60px;
     background: #ffffff !important;
     color: #333;
     text-align: center;
@@ -871,8 +871,9 @@ a:hover, a:focus {
 .section-divider svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
+    width: 100%;
     height: 35px;
+    margin-bottom: -1px;
 }
 .divider-fill-white { fill: #e0f7ff !important; } /* Light Cyan */
 .divider-fill-light { fill: #f0fbff !important; } /* Lighter Cyan */

@@ -21,11 +21,55 @@
 }
 
 /* --------------------------------------------------------------------------
+   0. Font Optimization & Overrides
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-regular-400.woff2') format('woff2');
+}
+
+/* Cairo Fallback for CLS Optimization */
+@font-face {
+  font-family: 'Cairo-Fallback';
+  src: local('Arial');
+  ascent-override: 105%;
+  descent-override: 35%;
+  line-gap-override: 0%;
+  size-adjust: 106%;
+}
+
+body {
+  font-family: 'Cairo', 'Cairo-Fallback', system-ui, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
    1. Header Component Styles (<site-header>)
    -------------------------------------------------------------------------- */
 site-header {
   display: block;
-  min-height: 70px;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  min-height: 80px;
 }
 
 .ct-header-navbar {
@@ -39,6 +83,7 @@ site-header {
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 10000;
   transition: var(--ct-transition);
 }
 
@@ -194,9 +239,11 @@ site-breadcrumb {
 site-footer {
   display: block;
   min-height: 450px;
+  content-visibility: auto;
+  contain-intrinsic-size: 100% 450px;
   background-color: var(--ct-dark-bg);
   color: var(--ct-text-light);
-  margin-top: auto; /* Push to bottom of flex container */
+  margin-top: auto;
 }
 
 .ct-footer-main {
@@ -480,6 +527,26 @@ cookie-consent {
     flex-direction: column;
     text-align: center;
   }
+
+  .ct-footer-col {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ct-footer-col h4::after {
+    right: 50%;
+    margin-right: -20px;
+  }
+
+  .ct-footer-links a {
+    justify-content: center;
+  }
+
+  .ct-social-icons {
+    justify-content: center;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -561,6 +628,7 @@ cookie-consent {
     letter-spacing: 1px;
     background: linear-gradient(to right, #fff, #0077b6);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -597,24 +665,6 @@ cookie-consent {
     opacity: 0;
     visibility: hidden;
     transform: scale(1.05);
-}
-
-#home-content {
-    opacity: 1; /* Default to visible for Lighthouse LCP */
-    visibility: visible;
-    filter: blur(5px);
-    transition: opacity 0.4s ease, filter 0.4s ease;
-}
-
-.preloader-visible #home-content {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.page-entered #home-content {
-    opacity: 1;
-    visibility: visible;
-    filter: blur(0);
 }
 
 /* --------------------------------------------------------------------------
@@ -789,11 +839,7 @@ cookie-consent {
 @media (max-width: 768px) {
   .ct-policy-container { padding: 100px 0 60px; }
   .ct-policy-titles h1 { font-size: 24px; }
-}
-
-@media (max-width: 768px) {
   .ct-app-header { padding: 100px 0 60px; }
   .ct-app-title { font-size: 28px; }
   .ct-download-btn { width: 100%; justify-content: center; }
 }
-

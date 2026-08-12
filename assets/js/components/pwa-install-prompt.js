@@ -10,15 +10,16 @@
   const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || !!window.navigator.standalone;
 
   // Clear cache/dismiss state if requested via URL
   if (window.location.search.includes('reset_pwa=true')) {
     localStorage.removeItem(STORAGE_KEY);
-    console.log('PWA: Dismiss state cleared');
+    console.log('PWA: Dismiss state cleared via reset_pwa flag');
   }
 
   const createPrompt = (type = 'android') => {
+    console.log(`PWA: Creating ${type} prompt UI`);
     let bodyContent = '';
 
     if (type === 'ios') {
@@ -84,13 +85,17 @@
   const showPrompt = () => {
     const prompt = document.getElementById('pwa-install-prompt');
     if (prompt) {
+      console.log('PWA: Making prompt visible');
       prompt.classList.add('is-visible');
+    } else {
+      console.error('PWA: Prompt element not found when trying to show');
     }
   };
 
   const hidePrompt = () => {
     const prompt = document.getElementById('pwa-install-prompt');
     if (prompt) {
+      console.log('PWA: Hiding prompt');
       prompt.classList.remove('is-visible');
     }
   };
@@ -98,12 +103,20 @@
   const isDismissed = () => {
     const lastDismissed = localStorage.getItem(STORAGE_KEY);
     if (!lastDismissed) return false;
-    return (Date.now() - parseInt(lastDismissed)) < DISMISS_DURATION;
+    const dismissed = (Date.now() - parseInt(lastDismissed)) < DISMISS_DURATION;
+    if (dismissed) console.log('PWA: Prompt is currently in dismissed state (last dismissed: ' + new Date(parseInt(lastDismissed)).toLocaleString() + ')');
+    return dismissed;
   };
 
   const init = () => {
+    console.log('PWA: Initialization started');
+    const deferredPromptToUse = window.CT_DEFERRED_PROMPT;
+    console.log('PWA: Standalone mode:', isStandalone);
+    console.log('PWA: Global prompt available:', !!deferredPromptToUse);
+
     // Logic for iOS
     if (isIOS && !isStandalone && !isDismissed()) {
+      console.log('PWA: Initializing iOS prompt');
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('ios');
       }
@@ -117,14 +130,16 @@
         createPrompt('android');
       }
       setTimeout(showPrompt, 1000);
+      return;
     }
+
     // Logic for Android/Chrome/Windows (Global captured event)
-    if (window.CT_DEFERRED_PROMPT && !isDismissed()) {
+    if (deferredPromptToUse && !isStandalone && !isDismissed()) {
       console.log('PWA: Showing prompt from global capture');
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('android');
       }
-      setTimeout(showPrompt, 3000);
+      setTimeout(showPrompt, 2000);
     }
   };
 
@@ -142,11 +157,11 @@
     deferredPrompt = e;
     window.CT_DEFERRED_PROMPT = e;
 
-    if (!isDismissed()) {
+    if (!isStandalone && !isDismissed()) {
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('android');
       }
-      setTimeout(showPrompt, 2000);
+      setTimeout(showPrompt, 1000);
     }
   });
 

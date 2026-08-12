@@ -1,19 +1,19 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v18';
+const CACHE_NAME = 'connecttag-cache-v20';
 const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/manifest.json',
-  '/favicon.webp',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/assets/css/styles.min.css',
-  '/assets/css/shared-styles.css',
-  '/assets/js/components/components-bundle.js',
-  '/assets/js/components/pwa-install-prompt.js'
+  './',
+  './index.html',
+  './offline.html',
+  './manifest.json',
+  './favicon.webp',
+  './icon-192.png',
+  './icon-512.png',
+  './assets/css/styles.min.css',
+  './assets/css/shared-styles.css',
+  './assets/js/components/components-bundle.js',
+  './assets/js/components/pwa-install-prompt.js'
 ];
 
 // Install Event

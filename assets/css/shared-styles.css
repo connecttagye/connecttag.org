@@ -25,9 +25,10 @@ html, body {
 }
 
 #home-content {
-  /* opacity: 0; removed to improve LCP detection */
-  /* visibility: hidden; removed to improve LCP detection */
-  transition: opacity 0.4s ease;
+  opacity: 1;
+  visibility: visible;
+  filter: blur(5px);
+  transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .page-entered #home-content,
@@ -344,11 +345,12 @@ html, body {
     line-height: 1.5;
 }
 
-/* 10. PWA Install Prompt - Rebuilt for Stability */
+/* 10. PWA Install Prompt - Consolidated & Responsive */
 .pwa-prompt-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 25px;
     left: 0;
+    right: 0;
     width: 100%;
     z-index: 9999999;
     display: none;
@@ -361,92 +363,112 @@ html, body {
 .pwa-prompt-container.is-visible {
     display: flex;
     pointer-events: auto;
-    animation: slideUpPWA 0.5s ease forwards;
+    animation: slideUpPWA 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes slideUpPWA {
-    from { transform: translateY(100px); opacity: 0; }
+    from { transform: translateY(120%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
 .pwa-prompt-content {
     background: #0d001a !important;
     border: 2px solid #0077b6 !important;
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 20px;
+    padding: 15px 20px;
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+    max-width: 450px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.8);
     position: relative;
-    display: block !important;
 }
 
 .pwa-prompt-body {
     display: flex !important;
     align-items: center !important;
     gap: 15px !important;
-    flex-direction: row !important;
+    text-align: right;
 }
 
 .pwa-prompt-icon {
     width: 50px !important;
     height: 50px !important;
     flex-shrink: 0;
+    background: #000;
+    border-radius: 12px;
+    padding: 5px;
+    border: 1px solid rgba(0, 119, 182, 0.3);
+}
+
+.pwa-prompt-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .pwa-prompt-text {
     flex-grow: 1;
-    text-align: right;
 }
 
 .pwa-prompt-text h3 {
     margin: 0 !important;
     font-size: 16px !important;
     color: #fff !important;
-    font-weight: 700 !important;
+    font-weight: 800 !important;
 }
 
 .pwa-prompt-text p {
-    margin: 3px 0 0 !important;
+    margin: 4px 0 0 !important;
     font-size: 12px !important;
     color: #aaa !important;
+    line-height: 1.4 !important;
 }
 
 .pwa-install-button {
-    background: #0077b6 !important;
+    background: linear-gradient(135deg, #0077b6 0%, #00adef 100%) !important;
     color: #fff !important;
     border: none !important;
-    padding: 8px 18px !important;
-    border-radius: 25px !important;
-    font-size: 13px !important;
-    font-weight: bold !important;
+    padding: 10px 22px !important;
+    border-radius: 30px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
     cursor: pointer;
     white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+    transition: 0.3s;
+}
+
+.pwa-install-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
 .pwa-prompt-close {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    color: #000;
-    border-radius: 50%;
-    border: none;
-    font-size: 18px;
-    line-height: 25px;
+    top: -12px;
+    left: -12px;
+    width: 28px;
+    height: 28px;
+    background: #fff !important;
+    color: #000 !important;
+    border-radius: 50% !important;
+    border: none !important;
+    font-size: 20px !important;
+    line-height: 28px !important;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 480px) {
-    .pwa-prompt-body {
-        gap: 10px !important;
-    }
+    .pwa-prompt-container { bottom: 15px; }
+    .pwa-prompt-content { padding: 12px 15px; }
+    .pwa-prompt-body { gap: 10px !important; }
+    .pwa-prompt-icon { width: 40px !important; height: 40px !important; }
     .pwa-prompt-text h3 { font-size: 14px !important; }
     .pwa-prompt-text p { font-size: 11px !important; }
-    .pwa-install-button { padding: 6px 14px !important; font-size: 12px !important; }
+    .pwa-install-button { padding: 8px 16px !important; font-size: 12px !important; }
 }
 
 /* 11. Skeleton Screens & Shimmer Animation */
@@ -523,57 +545,11 @@ html, body {
     margin: 20px auto;
 }
 
+.skeleton-box[style*="width: 40%"] { width: 40% !important; }
+
 .skeleton-btn {
     width: 180px;
     height: 50px;
     margin: 30px auto;
     border-radius: 30px;
-}
-
-.pwa-install-button:hover {
-    background: #fff;
-    color: #00adef;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 480px) {
-    .pwa-prompt-container {
-        bottom: 15px;
-        padding: 0 15px;
-    }
-    .pwa-prompt-content {
-        padding: 15px;
-        border-radius: 20px;
-    }
-    .pwa-prompt-body {
-        flex-direction: row;
-        gap: 10px;
-        align-items: center;
-    }
-    .pwa-prompt-icon {
-        width: 35px;
-        height: 35px;
-        order: 3;
-    }
-    .pwa-prompt-text {
-        order: 2;
-        text-align: right;
-        flex-shrink: 1;
-        overflow: hidden;
-    }
-    .pwa-prompt-text h3 {
-        font-size: 14px;
-        margin-bottom: 0;
-    }
-    .pwa-prompt-text p {
-        font-size: 10px;
-        display: block; /* السماح بالتمدد الطولي */
-        line-height: 1.2;
-    }
-    .pwa-install-button {
-        order: 1;
-        padding: 6px 12px;
-        font-size: 11px;
-        min-width: 60px;
-    }
 }

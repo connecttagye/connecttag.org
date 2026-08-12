@@ -119,14 +119,15 @@
 
 
 
+  <!-- Optimized Google Fonts & Font Optimization -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"></noscript>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <!-- استعادة تحميل الخط السريع والمستقر -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-
   <style>
+
     /* إزالة القيود التي سببت تشوه العناصر المنبثقة */
     .tech-slider {
       min-height: 60px;
@@ -156,13 +157,6 @@
       --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
       --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-      scrollbar-gutter: stable; /* يمنع قفزة المحتوى عند ظهور شريط التمرير */
-    }
 
     /* حجز مساحة للصور لمنع CLS */
     .tech-item i { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; }
@@ -183,15 +177,6 @@
     .tech-slider {
       min-height: 60px;
       contain: layout paint;
-    }
-    #home-content {
-      transition: opacity 0.4s ease;
-    }
-    .page-entered #home-content,
-    #home-content.visible {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
     }
     @font-face {
       font-family: 'Cairo-Fallback';
@@ -426,13 +411,23 @@
       justify-content: center;
     }
     .preloader-visible { overflow: hidden; }
+
+    @media (max-width: 480px) {
+        .btn-gradient {
+            padding: 14px 30px;
+            font-size: 15px;
+        }
+    }
   </style>
 
   <!-- Non-blocking CSS -->
+  <link rel="preload" href="assets/css/shared-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css"></noscript>
+
   <link rel="preload" href="assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/components.min.css"></noscript>
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';document.documentElement.classList.add('fa-loaded')">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
 
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -554,8 +549,11 @@
 <div id="services">
   <div class="container">
     <div class="row">
-      <h2 class="centered">خدماتنا</h2>
-      <hr>
+      <div class="col-lg-12">
+        <h2 class="centered">خدماتنا</h2>
+        <hr>
+      </div>
+    </div>
     <div class="row services-flex-row">
       <!-- البرمجة -->
       <div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
@@ -636,7 +634,7 @@
     <!-- row --> 
   </div>
 </div>
-</div>
+
 <!-- container --> 
 
 <!-- ==== HARDWARE SOLUTIONS SECTION ==== -->
