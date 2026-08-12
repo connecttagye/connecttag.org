@@ -121,13 +121,216 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com" crossorigin>
-  <link rel="dns-prefetch" href="https://unpkg.com">
-  <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <link rel="stylesheet" href="assets/css/shared-styles.css">
+  <!-- استعادة تحميل الخط السريع والمستقر -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+
+  <style>
+    /* إزالة القيود التي سببت تشوه العناصر المنبثقة */
+    .tech-slider {
+      min-height: 60px;
+      overflow: hidden;
+    }
+
+    /* إصلاح الصور دون المساس بالتخطيط */
+    .img-responsive {
+        height: auto;
+        max-width: 100%;
+    }
+
+  <!-- Critical CSS Inlined -->
+  <style>
+    /* Connect Tag - Shared Styles */
+    :root {
+      --ct-primary: #0077b6;
+      --ct-primary-hover: #005b8a;
+      --ct-secondary: #25d366;
+      --ct-dark-bg: #0d001a;
+      --ct-card-bg: #1a0033;
+      --ct-text-light: #ffffff;
+      --ct-text-muted: #a0a0a0;
+      --ct-text-dark: #222222;
+      --ct-border: rgba(255,255,255,0.1);
+      --ct-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+      scrollbar-gutter: stable; /* يمنع قفزة المحتوى عند ظهور شريط التمرير */
+    }
+
+    /* حجز مساحة للصور لمنع CLS */
+    .tech-item i { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; }
+    .service-card .icon-wrapper { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+
+    /* منع قفزة الصورة الرئيسية */
+    .img-circle2 {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      background-color: rgba(255,255,255,0.05);
+      object-fit: cover;
+      display: block;
+    }
+
+    /* حجز مساحة لشريط التقنيات */
+    .tech-slider {
+      min-height: 60px;
+      contain: layout paint;
+    }
+    #home-content {
+      transition: opacity 0.4s ease;
+    }
+    .page-entered #home-content,
+    #home-content.visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+      filter: none !important;
+    }
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      src: local('Arial');
+      ascent-override: 105%;
+      descent-override: 35%;
+      line-gap-override: 0%;
+      size-adjust: 106%;
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-regular-400.woff2') format('woff2');
+    }
+    :root { font-display: swap; }
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #050505;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+      transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+      overflow: hidden;
+    }
+    .preloader-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(0, 119, 182, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 40%);
+      filter: blur(80px);
+      animation: bgMove 10s ease infinite alternate;
+    }
+    @keyframes bgMove {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.2) translate(2%, 2%); }
+    }
+    .preloader-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+    .loader-logo {
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    .loader-logo i {
+      font-size: 40px;
+      color: #0077b6;
+    }
+    .loader-logo span {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .progress-container {
+      width: 280px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00adef, #25d366);
+      transition: width 0.4s ease;
+    }
+    .preloader-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #preloader-skeleton {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #050505;
+      z-index: 999999;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .skeleton-box {
+      display: inline-block;
+      height: 1em;
+      position: relative;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+    }
+    .skeleton-box::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0));
+      animation: shimmer 2s infinite;
+      content: '';
+    }
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
+    .skeleton-header { height: 60px; width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+    .skeleton-logo { width: 120px; height: 30px; }
+    .skeleton-nav { width: 200px; height: 20px; }
+    .skeleton-hero { height: 300px; width: 80%; margin: 0 auto; border-radius: 20px; }
+    .skeleton-text-center { width: 60%; height: 20px; margin: 20px auto; }
+    .skeleton-btn { width: 180px; height: 50px; margin: 30px auto; border-radius: 30px; }
+  </style>
+
+  <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
+  <link rel="preload" href="assets/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css"></noscript>
+
+  <link rel="preload" href="assets/css/styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css"></noscript>
   <style>
     /* Page specific overrides */
     body { background-color: #0d001a; }
@@ -224,21 +427,12 @@
     }
     .preloader-visible { overflow: hidden; }
   </style>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link rel="preload" href="assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
-
-  <!-- Critical CSS loaded immediately -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/styles.min.css">
 
   <!-- Non-blocking CSS -->
   <link rel="preload" href="assets/css/components.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/components.min.css"></noscript>
 
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';document.documentElement.classList.add('fa-loaded')">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
 
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -337,7 +531,7 @@
     <div class="row white">
       <h2 class="centered">من نحن</h2>
       <hr>
-      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive img-circle2 " src="assets/img/about/connect-tag-it-company.webp" align="" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy"> </div>
+      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive img-circle2 " src="assets/img/about/connect-tag-it-company.webp" align="" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="600"> </div>
       <div class="col-md-6" data-aos="fade-left">
         <h3>شركة كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي</h3>
         <p>كونكت تاق هي شركة رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية المتكاملة. نحن نجمع بين الخبرة التقنية والإبداع الفني لنقدم خدمات تصميم وتسويق رقمي تلبي تطلعات عملائنا في اليمن والمنطقة العربية بكفاءة واحترافية عالية.</p>

@@ -22,36 +22,36 @@
   window.CT_BASE_URL = baseUrl;
   window.CT_ROOT_PATH = baseUrl; // Compatibility alias
 
-  function loadScript(src) {
+  function loadScript(src, isAsync = false) {
     const fullSrc = src.startsWith('http') ? src : baseUrl + src;
     if (document.querySelector(`script[src="${fullSrc}"]`)) return;
 
     const s = document.createElement('script');
     s.src = fullSrc;
-    s.async = false; // Maintain execution order for components
+    s.async = isAsync;
     document.head.appendChild(s);
   }
 
   // --- STAGE 1: CORE LIBRARIES ---
-  // jQuery and Modernizr removed (Modernizr replaced by native features or skipped if unused)
-  // loadScript('assets/js/modernizr.custom.js'); // Keeping only if specific features needed
+  // Load heavy third party libraries first and async
+  loadScript('https://unpkg.com/aos@2.3.1/dist/aos.js', true);
 
-  // --- STAGE 2: META & STYLES ---
-  loadScript('assets/js/components/head-includes.js');
+  // --- STAGE 2: UI COMPONENTS (Web Components) ---
+  // Load these in parallel (async=true) as they are independent Web Components
+  const components = [
+    'assets/js/components/head-includes.js',
+    'assets/js/components/site-preloader.js',
+    'assets/js/components/site-header.js',
+    'assets/js/components/site-footer.js',
+    'assets/js/components/site-breadcrumb.js',
+    'assets/js/components/cookie-consent.js',
+    'assets/js/components/pwa-install-prompt.js'
+  ];
 
-  // --- STAGE 3: UI COMPONENTS (Web Components - Native JS) ---
-  loadScript('assets/js/components/site-preloader.js');
-  loadScript('assets/js/components/site-header.js');
-  loadScript('assets/js/components/site-footer.js');
-  loadScript('assets/js/components/site-breadcrumb.js');
-  loadScript('assets/js/components/cookie-consent.js');
-  loadScript('assets/js/components/pwa-install-prompt.js');
+  components.forEach(c => loadScript(c, true));
 
-  // --- STAGE 4: THIRD PARTY PLUGINS ---
-  loadScript('https://unpkg.com/aos@2.3.1/dist/aos.js');
-
-  // --- STAGE 5: SITE LOGIC ---
-  loadScript('assets/js/components/site-scripts.js');
+  // --- STAGE 3: SITE LOGIC (Must wait for DOM, but can be loaded async) ---
+  loadScript('assets/js/components/site-scripts.js', true);
 
   // --- STAGE 6: PWA EVENT CAPTURE (Early Listener) ---
   window.addEventListener('beforeinstallprompt', (e) => {
