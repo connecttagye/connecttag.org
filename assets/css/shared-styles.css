@@ -435,46 +435,47 @@ html, body {
 
   /* Metadata Mobile Overrides */
   .ct-modern-meta {
-    flex-direction: column !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 15px !important;
-    padding: 20px 15px !important;
+    justify-content: space-around !important;
+    gap: 5px !important;
+    padding: 12px 5px !important;
     text-align: center;
     background: #f8faff;
     border: 1px solid #f0f0f0;
-    border-radius: 15px;
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
   .meta-col {
-    width: 100% !important;
+    flex: 1 !important;
     display: flex;
     flex-direction: column !important;
-    gap: 6px !important;
+    gap: 2px !important;
+    width: auto !important;
   }
   .meta-label {
-    font-size: 11px !important;
+    font-size: 9px !important;
     color: #999;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 3px;
   }
   .meta-value {
     display: flex;
     flex-direction: row !important;
     justify-content: center;
-    gap: 6px !important;
+    gap: 4px !important;
     align-items: baseline;
   }
-  .meta-dm { font-size: 16px !important; line-height: 1.2; font-weight: 700; color: #444; }
-  .meta-y { font-size: 13px !important; opacity: 0.6; font-weight: 600; }
+  .meta-dm { font-size: 13.5px !important; line-height: 1.2; font-weight: 700; color: #444; }
+  .meta-y { font-size: 11px !important; opacity: 0.5; font-weight: 600; }
   .meta-sep {
-    width: 80% !important;
-    height: 1px !important;
-    background: #eee !important;
+    width: 1px !important;
+    height: 30px !important;
+    background: #e2e8f0 !important;
     display: block !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
   }
 
   .post-content p {

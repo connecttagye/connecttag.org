@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v52';
+const CACHE_NAME = 'connecttag-cache-v54';
 const OFFLINE_URL = '/offline.html';
 
 const ASSETS_TO_CACHE = [
@@ -10,11 +10,11 @@ const ASSETS_TO_CACHE = [
   './favicon.webp',
   './icon-192.png',
   './icon-512.png',
-  './assets/css/styles.min.css?v=1.0.9',
-  './assets/css/shared-styles.css?v=1.0.9',
-  './assets/js/components/components-bundle.js?v=1.0.9',
-  './assets/js/components/pwa-install-prompt.js?v=1.0.9',
-  './assets/js/components/site-author-box.js?v=1.0.9'
+  './assets/css/styles.min.css?v=1.1.0',
+  './assets/css/shared-styles.css?v=1.1.0',
+  './assets/js/components/components-bundle.js?v=1.1.0',
+  './assets/js/components/pwa-install-prompt.js?v=1.1.0',
+  './assets/js/components/site-author-box.js?v=1.1.0'
 ];
 
 // Install Event
