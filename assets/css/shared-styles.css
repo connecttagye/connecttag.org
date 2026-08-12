@@ -14,13 +14,15 @@
   --ct-shadow: 0 10px 30px rgba(0,0,0,0.25);
   --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
   --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-display: swap;
 }
 
-/* 2. Base & LCP Optimization */
+/* 2. Base & Global Reset */
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100%;
   font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
 }
 
@@ -58,10 +60,6 @@ html, body {
   font-family: 'Font Awesome 6 Brands';
   font-display: swap;
   src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
-}
-
-:root {
-  font-display: swap;
 }
 
 /* 3. Preloader Styles */
@@ -235,7 +233,6 @@ html, body {
   margin-bottom: 20px;
 }
 
-/* For English sections in Arabic pages */
 [dir="ltr"].ct-policy-container h2 {
   text-align: left;
 }
@@ -248,6 +245,7 @@ html, body {
 .post-content {
   padding: 80px 0;
   background: #fff;
+  width: 100%;
 }
 
 .post-content h1 {
@@ -258,16 +256,16 @@ html, body {
 }
 
 .post-content h2 {
-  font-size: 26px;
+  font-size: 22px;
   color: #1a0033;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
 .post-content p {
-  line-height: 2;
+  line-height: 1.8;
   color: #444;
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 25px;
 }
 
@@ -286,8 +284,8 @@ html, body {
 }
 
 .post-content ul, .post-content ol {
-  padding-right: 25px;
-  margin-bottom: 25px;
+  padding-right: 2px;
+  margin-bottom: 10px;
 }
 
 .post-content li {
@@ -295,6 +293,204 @@ html, body {
   color: #444;
   font-size: 17px;
   margin-bottom: 10px;
+}
+
+/* --- Metadata Design (Desktop & Mobile) --- */
+.ct-modern-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+}
+
+/* Mobile: Two-column layout with separator */
+@media (max-width: 768px) {
+  .ct-modern-meta {
+    flex-direction: row !important;
+    justify-content: space-around;
+    background: #f8faff;
+    border: 1px solid #f0f0f0;
+    padding: 15px 5px !important;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+  .meta-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-label {
+    font-size: 10px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .meta-value {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    color: #444;
+  }
+  .meta-dm { font-size: 15px; line-height: 1.2; }
+  .meta-y { font-size: 11px; opacity: 0.5; }
+  .meta-sep {
+    width: 1px;
+    height: 35px;
+    background: #e2e8f0;
+    display: block !important;
+  }
+}
+
+/* Desktop: Clean single row without box */
+@media (min-width: 769px) {
+  .ct-modern-meta {
+    gap: 25px;
+    background: transparent;
+    border: none;
+    padding: 0 !important;
+    color: #888;
+  }
+  .meta-col {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .meta-label {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .meta-label i { font-size: 14px; color: #94a3b8; }
+  .meta-value {
+    display: flex;
+    gap: 5px;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .meta-sep {
+    width: 1px;
+    height: 15px;
+    background: #e2e8f0;
+  }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .container {
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin: 0 !important;
+  }
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .col-md-offset-2, .col-md-8 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .post-content {
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  /* Breadcrumb Mobile */
+  site-breadcrumb {
+    margin-bottom: 12px !important;
+    padding: 0 !important;
+  }
+  .ct-breadcrumb-list {
+    font-size: 10.5px !important;
+    color: #999 !important;
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .ct-breadcrumb-list::-webkit-scrollbar { display: none; }
+  .ct-breadcrumb-item span, .ct-breadcrumb-item a { white-space: nowrap; }
+
+  /* Title Mobile */
+  .post-content h1 {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: #0d001a;
+    text-align: right !important;
+    display: block;
+    width: 100%;
+  }
+
+  /* Metadata Mobile Overrides */
+  .ct-modern-meta {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    gap: 8px !important;
+    padding: 12px 5px !important;
+    text-align: center;
+    background: #f8faff;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+  .meta-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+  .meta-label {
+    font-size: 9px !important;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+  }
+  .meta-value {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 4px !important;
+    align-items: baseline;
+  }
+  .meta-dm { font-size: 13.5px !important; line-height: 1.2; font-weight: 700; color: #444; }
+  .meta-y { font-size: 11px !important; opacity: 0.5; font-weight: 600; }
+  .meta-sep {
+    width: 1px !important;
+    height: 35px !important;
+    background: #e2e8f0 !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  .post-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  .post-content h2 {
+    font-size: 18px;
+    margin-top: 30px;
+    color: #1a0033;
+    border-right: 4px solid #0077b6;
+    padding-right: 10px;
+  }
 }
 
 /* 9. Related Tools Section */
@@ -544,8 +740,6 @@ html, body {
     height: 20px;
     margin: 20px auto;
 }
-
-.skeleton-box[style*="width: 40%"] { width: 40% !important; }
 
 .skeleton-btn {
     width: 180px;

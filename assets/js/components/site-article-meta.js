@@ -5,26 +5,38 @@
 class SiteArticleMeta extends HTMLElement {
   connectedCallback() {
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
-    const author = this.getAttribute('author') || 'فريق كونكت تاق';
-    const authorLink = this.getAttribute('author-link') || baseUrl + 'author/';
     const date = this.getAttribute('date') || '';
     const updated = this.getAttribute('updated') || '';
 
+    const parseDate = (d) => {
+      if (!d) return { dm: '', y: '' };
+      const parts = d.split(' ');
+      if (parts.length >= 3) {
+        return { dm: parts[0] + ' ' + parts[1], y: parts[2] };
+      }
+      return { dm: d, y: '' };
+    };
+
+    const pub = parseDate(date);
+    const upd = parseDate(updated);
+
     this.innerHTML = `
-      <div class="ct-article-meta">
-        <div class="ct-meta-item">
-          <i class="fa-solid fa-user"></i>
-          <span>الكاتب: <a href="${authorLink}">${author}</a></span>
+      <div class="ct-modern-meta">
+        <div class="meta-col">
+          <div class="meta-label"><i class="fa-regular fa-calendar-check"></i> تاريخ النشر</div>
+          <div class="meta-value">
+            <span class="meta-dm">${pub.dm}</span>
+            <span class="meta-y">${pub.y}</span>
+          </div>
         </div>
-        ${date ? `
-        <div class="ct-meta-item">
-          <i class="fa-solid fa-calendar"></i>
-          <span>نشر في: ${date}</span>
-        </div>` : ''}
         ${updated ? `
-        <div class="ct-meta-item">
-          <i class="fa-solid fa-arrows-rotate"></i>
-          <span>آخر تحديث: ${updated}</span>
+        <div class="meta-sep"></div>
+        <div class="meta-col">
+          <div class="meta-label"><i class="fa-solid fa-arrows-rotate"></i> تاريخ التحديث</div>
+          <div class="meta-value">
+            <span class="meta-dm">${upd.dm}</span>
+            <span class="meta-y">${upd.y}</span>
+          </div>
         </div>` : ''}
       </div>
     `;

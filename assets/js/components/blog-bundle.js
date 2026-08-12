@@ -21,6 +21,7 @@
   // Load blog-specific components
   loadScript('assets/js/components/site-article-card.js');
   loadScript('assets/js/components/site-article-meta.js');
+  loadScript('assets/js/components/site-author-box.js');
   loadScript('assets/js/components/site-share-buttons.js');
   loadScript('assets/js/components/site-related-posts.js');
 
