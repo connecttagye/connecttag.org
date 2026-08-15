@@ -52,7 +52,7 @@ class SiteBreadcrumb extends HTMLElement {
       let currentAccUrl = baseUrl;
       pathSegments.forEach((seg, idx) => {
         // Skip root folder names, project names, or index files
-        const skipSegments = ['connecttag.org', 'connecttagsite', './', 'index.php', ''];
+        const skipSegments = ['connecttag.org', 'connecttagsite', 'index', 'index.html', 'index.php', ''];
         if (skipSegments.includes(seg.toLowerCase())) return;
 
         currentAccUrl += seg.replace(/\.html$/i, '') + '/';
