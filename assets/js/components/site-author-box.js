@@ -7,7 +7,7 @@ class SiteAuthorBox extends HTMLElement {
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const name = this.getAttribute('name') || 'فريق كونكت تاق';
     const avatar = this.getAttribute('avatar') || baseUrl + 'assets/img/connect-tag-official-logo.webp';
-    const link = this.getAttribute('link') || baseUrl + 'author/';
+    const link = this.getAttribute('link') || (name === 'فريق كونكت تاق' ? baseUrl + 'author/official' : baseUrl + 'author/');
 
     this.innerHTML = `
       <a href="${link}" class="ct-author-card-simple">

@@ -4,124 +4,121 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>فريق الموقع - كاتب في مدونة كونكت تاق</title>
-<meta name="description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين الذين يسعون لتقديم أفضل الشروحات والحلول البرمجية.">
+<title>كُتّاب مدونة كونكت تاق - نخبة من الخبراء التقنيين</title>
+<meta name="description" content="تعرف على الكتاب والمساهمين في مدونة كونكت تاق، نخبة من المبرمجين والخبراء التقنيين في اليمن والوطن العربي.">
 <link rel="canonical" href="https://connecttag.org/author/" />
-
-
 
   <!-- OpenGraph meta -->
   <meta property="og:url" content="https://connecttag.org/author/" />
   <meta property="og:type" content="website">
-  <meta property="og:title" content="فريق الموقع - كونكت تاق">
-  <meta property="og:description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين." />
+  <meta property="og:title" content="كُتّاب مدونة كونكت تاق - نخبة من الخبراء التقنيين">
+  <meta property="og:description" content="تعرف على فريق الكتاب والمساهمين في مدونة كونكت تاق." />
   <meta property="og:image" content="https://connecttag.org/assets/img/connect-tag-official-logo.webp">
 
   <!-- twitter OpenGraph meta -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@connecttagye" />
   <meta name="twitter:url" content="https://connecttag.org/author/" />
-  <meta name="twitter:title" content="فريق الموقع - كونكت تاق">
-  <meta name="twitter:description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين." />
+  <meta name="twitter:title" content="كُتّاب مدونة كونكت تاق">
+  <meta name="twitter:description" content="تعرف على فريق الكتاب والمساهمين في مدونة كونكت تاق." />
   <meta name="twitter:image" content="https://connecttag.org/assets/img/connect-tag-official-logo.webp" />
-
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="../assets/css/bootstrap.css?v=1.1.0">
-  <link rel="stylesheet" href="../assets/css/styles.min.css?v=1.1.0">
-  <link rel="stylesheet" href="../assets/css/components.css?v=1.1.0">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css?v=1.1.1">
+  <link rel="stylesheet" href="../assets/css/styles.min.css?v=1.1.1">
+  <link rel="stylesheet" href="../assets/css/components.css?v=1.1.1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="../assets/css/animate-custom.css?v=1.1.0">
+  <link rel="stylesheet" href="../assets/css/animate-custom.css?v=1.1.1">
 
-
-
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
-
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 105%;
-      descent-override: 35%;
-      line-gap-override: 0%;
-      size-adjust: 106%;
-    }
-
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
-<script src="../assets/js/components/components-bundle.js?v=1.1.0" defer></script>
-
+<script src="../assets/js/components/components-bundle.js?v=1.1.1" defer></script>
 
 <style>
-    .author-profile { padding: 120px 0 80px; background: #fff; }
-    .author-card { background: #f9f9f9; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .author-card img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #006b98; margin-bottom: 20px; }
-    .author-card h1 { color: #006b98; font-weight: bold; margin-bottom: 10px; }
-    .author-card p { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; margin: 0 auto 30px; }
-    .latest-posts { margin-top: 60px; }
-    .latest-posts h2 { color: #333; font-weight: bold; margin-bottom: 40px; border-right: 5px solid #006b98; padding-right: 15px; }
+    .authors-directory { padding: 120px 0 80px; background: #fff; }
+    .directory-header { text-align: center; margin-bottom: 60px; }
+    .directory-header h1 { color: #006b98; font-weight: 800; font-size: 38px; margin-bottom: 15px; }
+    .directory-header p { font-size: 18px; color: #777; }
+
+    .author-grid-card {
+        background: #f9f9f9;
+        border-radius: 20px;
+        padding: 40px 20px;
+        text-align: center;
+        transition: 0.3s;
+        border: 1px solid #eee;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none !important;
+    }
+    .author-grid-card:hover {
+        background: #fff;
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        border-color: #006b98;
+    }
+    .author-grid-card img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        object-fit: cover;
+    }
+    .author-grid-card h3 { color: #333; font-weight: 800; margin-bottom: 10px; font-size: 20px; }
+    .author-grid-card .author-tag {
+        font-size: 12px;
+        color: #006b98;
+        background: rgba(0, 107, 152, 0.05);
+        padding: 4px 15px;
+        border-radius: 20px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .author-grid-card p { font-size: 14px; color: #666; line-height: 1.6; margin: 0; }
 </style>
 </head>
 <body>
-<!-- Modular Web Component: Header -->
 <site-header></site-header>
 
 <main id="main-content">
-
-<div class="author-profile">
+<div class="authors-directory">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="author-card">
-                    <img src="../assets/img/connect-tag-official-logo.webp" alt="فريق الموقع">
-                    <h1>فريق الموقع (Connect Tag Team)</h1>
-                    <p>نحن فريق من المطورين، المصممين، والمحررين التقنيين في شركة كونكت تاق. نعمل معاً على تقديم محتوى تقني دقيق ومحدث لمساعدة المستخدمين والشركات في اليمن والوطن العربي على فهم واستخدام أحدث الحلول البرمجية والتقنية.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/connecttagye" target="_blank" class="btn btn-primary" style="background: #3b5998; border: none;"><i class="fa-brands fa-facebook"></i> تابعنا</a>
-                        <a href="../contact" class="btn btn-info" style="background: #006b98; border: none;"><i class="fa-solid fa-envelope"></i> تواصل معنا</a>
-                    </div>
-                </div>
+        <div class="directory-header" data-aos="fade-up">
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الكُتّاب", "url":""}]'></site-breadcrumb>
+            <h1>نخبة كُتّاب كونكت تاق</h1>
+            <p>تعرف على العقول المبدعة خلف محتوى مدونتنا التقنية</p>
+        </div>
 
-                <div class="latest-posts">
-                    <h2>آخر المقالات بواسطة فريق الموقع:</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="../blog/how-to-check-yemen-4g-balance"><img src="../upload/yemen-4g.webp" class="img-responsive" style="border-radius: 10px;" alt="رصيد يمن فورجي"></a>
-                                <h3 style="font-size: 20px;"><a href="../blog/how-to-check-yemen-4g-balance" style="color: #333;">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="../blog/yemen-internet-comparison-4g-adsl-fiber"><img src="../upload/yemen-internet-comparison.webp" class="img-responsive" style="border-radius: 10px;" alt="مقارنة إنترنت اليمن"></a>
-                                <h3 style="font-size: 20px;"><a href="../blog/yemen-internet-comparison-4g-adsl-fiber" style="color: #333;">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="row">
+            <!-- Author 1: Connect Tag Team -->
+            <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="100">
+                <a href="official" class="author-grid-card">
+                    <img src="../assets/img/connect-tag-official-logo.webp" alt="فريق الموقع">
+                    <span class="author-tag">الناشر الرسمي</span>
+                    <h3>فريق الموقع</h3>
+                    <p>المصدر المعتمد للشروحات التقنية الرسمية ودليل الخدمات في شركة كونكت تاق.</p>
+                </a>
+            </div>
+
+            <!-- Author 2: Aqeldev -->
+            <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;" data-aos="fade-up" data-aos-delay="200">
+                <a href="aqeldev" class="author-grid-card">
+                    <img src="../upload/author/aqeldev.webp" alt="عقيل محمد">
+                    <span class="author-tag">مطور وكاتب تقني</span>
+                    <h3>عقيل محمد (aqeldev)</h3>
+                    <p>خبير في تطوير الويب والأمن السيبراني، يشارككم أسرار البرمجة وحماية المواقع.</p>
+                </a>
             </div>
         </div>
     </div>
 </div>
-
 </main>
 
-<!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
-
-<!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 </body>
 </html>
