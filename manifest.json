@@ -46,7 +46,7 @@
     {
       "name": "المدونة",
       "short_name": "المدونة",
-      "url": "./blog/",
+      "url": "/blog/",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
   ]

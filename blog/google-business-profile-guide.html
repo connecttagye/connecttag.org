@@ -25,21 +25,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.1">
-<link rel="stylesheet" href="/assets/css/components.css?v=1.1.1">
+<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.1">
+<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.1" defer></script>
-<script src="/assets/js/components/blog-bundle.js?v=1.1.1" defer></script>
+<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
 
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -65,6 +66,38 @@
     "@id": "https://connecttag.org/blog/google-business-profile-guide"
   }
 }
+,
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل خدمة 'نشاطي التجاري على جوجل' مجانية؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، هي أداة مجانية تماماً توفرها جوجل لمساعدة الشركات على الظهور في نتائج البحث والخرائط."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف يمكنني تأكيد ملكية نشاطي التجاري في اليمن؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يتم ذلك عادةً عبر تلقي رمز تحقق من خلال مكالمة هاتفية أو رسالة بريدية (Postcard)، وفي بعض الأحيان عبر البريد الإلكتروني."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "لماذا لا تظهر شركتي في الخريطة رغم إنشاء الملف؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "قد يحتاج الملف إلى 'تحسين' (Optimization) من خلال إضافة صور، ساعات عمل دقيقة، وتشجيع العملاء على إضافة تقييمات، لزيادة فرصة ظهوره في النتائج الأولى."
+      }
+    }
+  ]
+}
+]
 </script>
 
 
@@ -102,12 +135,22 @@
                 <!-- Image placeholder, user should replace it with google-business-guide.webp -->
                 <img src="../upload/google-business-guide.webp" class="img-responsive" alt="جوجل بيزنس وخرائط جوجل" loading="lazy">
 
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#what-is-gbp">ما هو Google Business Profile؟</a></li>
+                        <li><a href="#gbp-benefits">فوائد الظهور على خرائط جوجل للشركات في اليمن</a></li>
+                        <li><a href="#gbp-steps">خطوات إنشاء الحساب وتأكيده</a></li>
+                        <li><a href="#gbp-optimization">نصائح لتحسين ترتيبك في البحث المحلي</a></li>
+                    </ul>
+                </div>
+
                 <p>هل سبق لك أن بحثت عن "مطعم" أو "شركة تقنية" في منطقتك ووجدت قائمة من الخيارات تظهر في أعلى صفحة جوجل مع خريطة توضح مواقعها؟ هذا ما يسمى بـ <strong>Google Business Profile</strong> (نشاطي التجاري على جوجل سابقاً). في هذا المقال، سنشرح لك لماذا يعتبر هذا الملف حيوياً لعملك وكيف يمكنك إعداده بنجاح.</p>
 
-                <h2>ما هو Google Business Profile؟</h2>
+                <h2 id="what-is-gbp">ما هو Google Business Profile؟</h2>
                 <p>هي أداة مجانية وسهلة الاستخدام تتيح للشركات والمؤسسات إدارة ظهورها على الإنترنت عبر جوجل، بما في ذلك محرك البحث وخرائط جوجل. من خلال التحقق من معلومات عملك وتعديلها، يمكنك مساعدة العملاء في العثور على شركتك وإخبارك بقصة عملك.</p>
 
-                <h2>فوائد الظهور على خرائط جوجل للشركات في اليمن</h2>
+                <h2 id="gbp-benefits">فوائد الظهور على خرائط جوجل للشركات في اليمن</h2>
                 <ul>
                     <li><strong>زيادة الوصول المحلي:</strong> يسهل على العملاء الموجودين في منطقتك الجغرافية العثور عليك.</li>
                     <li><strong>بناء الثقة والمصداقية:</strong> الملفات التي تحتوي على صور وتقييمات ومعلومات كاملة تزيد من ثقة العملاء.</li>
@@ -115,7 +158,7 @@
                     <li><strong>تحسين الـ SEO المحلي:</strong> الظهور في "الخريطة" يعطيك أولوية على نتائج البحث العادية في المنطقة الجغرافية.</li>
                 </ul>
 
-                <h2>خطوات إنشاء الحساب وتأكيده</h2>
+                <h2 id="gbp-steps">خطوات إنشاء الحساب وتأكيده</h2>
                 <ol>
                     <li>انتقل إلى <a href="https://business.google.com/" target="_blank">Google Business Profile</a> وقم بتسجيل الدخول بحساب Gmail الخاص بشركتك.</li>
                     <li>أدخل اسم شركتك بدقة كما هو معروف للجمهور.</li>
@@ -125,7 +168,7 @@
                     <li><strong>مرحلة التحقق:</strong> قد تطلب جوجل التحقق عبر رمز يصل في رسالة بريدية أو عبر الهاتف لضمان أنك المالك الحقيقي للنشاط.</li>
                 </ol>
 
-                <h2>نصائح لتحسين ترتيبك في البحث المحلي</h2>
+                <h2 id="gbp-optimization">نصائح لتحسين ترتيبك في البحث المحلي</h2>
                 <p>بعد إنشاء الملف، العمل لا ينتهي هنا. لضمان تصدرك للنتائج:</p>
                 <ul>
                     <li><strong>أكمل كافة البيانات:</strong> لا تترك أي حقل فارغاً، خاصة ساعات العمل والوصف.</li>
@@ -136,9 +179,25 @@
 
                 <p><strong>خلاصة القول:</strong> التواجد على جوجل بيزنس لم يعد اختيارياً للشركات التي تطمح للنمو في عام 2026. إذا كنت تجد صعوبة في إعداد ملفك أو ترغب في استراتيجية متكاملة لظهورك الرقمي، فنحن في <strong>كونكت تاق</strong> مستعدون لمساعدتك في بناء حضور رقمي قوي واحترافي.</p>
 
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل خدمة 'نشاطي التجاري على جوجل' مجانية؟</div>
+                        <div class="faq-answer">نعم، هي أداة مجانية تماماً توفرها جوجل لمساعدة الشركات على الظهور في نتائج البحث والخرائط.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني تأكيد ملكية نشاطي التجاري في اليمن؟</div>
+                        <div class="faq-answer">يتم ذلك عادةً عبر تلقي رمز تحقق من خلال مكالمة هاتفية أو رسالة بريدية (Postcard)، وفي بعض الأحيان عبر البريد الإلكتروني.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا لا تظهر شركتي في الخريطة رغم إنشاء الملف؟</div>
+                        <div class="faq-answer">قد يحتاج الملف إلى 'تحسين' (Optimization) من خلال إضافة صور، ساعات عمل دقيقة، وتشجيع العملاء على إضافة تقييمات، لزيادة فرصة ظهوره في النتائج الأولى.</div>
+                    </div>
+                </div>
+
                 <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts></site-related-posts>
+                <site-related-posts ids="digital-marketing-importance, website-security-simple-steps"></site-related-posts>
             </div>
         </div>
     </div>

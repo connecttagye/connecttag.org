@@ -25,21 +25,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.1">
-<link rel="stylesheet" href="/assets/css/components.css?v=1.1.1">
+<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.1">
+<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.1" defer></script>
-<script src="/assets/js/components/blog-bundle.js?v=1.1.1" defer></script>
+<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
 
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -66,6 +67,38 @@
     "@id": "https://connecttag.org/blog/cloudflare-waf-security-guide"
   }
 }
+,
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل خدمة Cloudflare WAF مجانية؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "توفر كلاود فلير ميزات أمنية أساسية في الخطة المجانية، ولكن القوانين المتقدمة (WAF Managed Rules) تتطلب خطة مدفوعة (Pro فما فوق)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف يساعد وضع 'Under Attack Mode' موقعي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يقوم بفرض تحدي JavaScript على كل زائر للتأكد من أنه إنسان، مما يحمي السيرفر من الانهيار أثناء هجمات DDoS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يؤثر جدار الحماية على سرعة الموقع؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بالعكس، جدار حماية كلاود فلير يحسن الأداء من خلال تصفية الزيارات الضارة و'البوتات' التي تستهلك موارد السيرفر دون فائدة."
+      }
+    }
+  ]
+}
+]
 </script>
 
 
@@ -102,9 +135,18 @@
                 <hr style="margin-top: 0;">
                 <img src="../upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" loading="lazy">
 
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</a></li>
+                        <li><a href="#under-attack">2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</a></li>
+                        <li><a href="#bot-protection">3. حظر الـ Bots المزعجة والبرمجيات الآلية</a></li>
+                    </ul>
+                </div>
+
                 <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك. في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
 
-                <h2>1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
+                <h2 id="firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
                 <p>تسمح لك "قوانين جدار الحماية" في كلاود فلير بالتحكم الكامل في من يمكنه الوصول إلى موقعك وبأي شروط. يمكنك بناء قوانين ذكية بناءً على عدة معايير:</p>
                 <ul>
                     <li><strong>حظر دول معينة:</strong> إذا لاحظت هجمات متكررة من دول لا تستهدفها في نشاطك التجاري، يمكنك حظر وصول أي زائر من تلك الدول بضغطة زر.</li>
@@ -112,7 +154,7 @@
                     <li><strong>حماية روابط الإدارة:</strong> يمكنك إنشاء قانون يسمح فقط لعنوان IP الخاص بك بالدخول إلى لوحة تحكم موقعك (مثل `/wp-admin` أو `/admin`).</li>
                 </ul>
 
-                <h2>2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
+                <h2 id="under-attack">2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
                 <p>هل لاحظت بطءً مفاجئاً في موقعك بسبب هجمة DDoS؟ توفر كلاود فلير "زر الطوارئ" المسمى <strong>Under Attack Mode</strong>. عند تفعيله:</p>
                 <ul>
                     <li>يتم إظهار صفحة انتظار قصيرة (JavaScript Challenge) لكل زائر للتأكد من أنه إنسان وليس "بوت" مخرب.</li>
@@ -120,7 +162,7 @@
                     <li>تستمر الخدمة للزوار الحقيقيين مع حماية السيرفر من الانهيار.</li>
                 </ul>
 
-                <h2>3. حظر الـ Bots المزعجة والبرمجيات الآلية</h2>
+                <h2 id="bot-protection">3. حظر الـ Bots المزعجة والبرمجيات الآلية</h2>
                 <p>ليست كل الزيارات لموقعك من بشر؛ فهناك "بوتات" تقوم بسحب محتوى موقعك (Scraping) أو محاولة تخمين كلمات المرور (Brute Force). توفر كلاود فلير حماية متقدمة ضد البوتات:</p>
                 <ul>
                     <li><strong>Bot Fight Mode:</strong> تقنية ذكية تكتشف سلوك البرمجيات الآلية وتقوم بتحديها أو حظرها تلقائياً.</li>
@@ -133,9 +175,25 @@
 
                 <p><strong>الخلاصة:</strong> جدار حماية كلاود فلير هو استثمار ضروري لأي موقع يهتم بسلامة بياناته واستمرارية خدمته. إذا كنت ترغب في تأمين موقعك بشكل احترافي وربطه بخدمات كلاود فلير، فنحن في <strong>كونكت تاق</strong> نقدم خدمات الإعداد المتقدم والحماية السيبرانية لضمان أعلى مستويات الأمان لمشروعك الرقمي.</p>
 
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل خدمة Cloudflare WAF مجانية؟</div>
+                        <div class="faq-answer">توفر كلاود فلير ميزات أمنية أساسية في الخطة المجانية، ولكن القوانين المتقدمة (WAF Managed Rules) تتطلب خطة مدفوعة (Pro فما فوق).</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يساعد وضع "Under Attack Mode" موقعي؟</div>
+                        <div class="faq-answer">يقوم بفرض تحدي JavaScript على كل زائر للتأكد من أنه إنسان، مما يحمي السيرفر من الانهيار أثناء هجمات DDoS.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يؤثر جدار الحماية على سرعة الموقع؟</div>
+                        <div class="faq-answer">بالعكس، جدار حماية كلاود فلير يحسن الأداء من خلال تصفية الزيارات الضارة و"البوتات" التي تستهلك موارد السيرفر دون فائدة.</div>
+                    </div>
+                </div>
+
                 <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts></site-related-posts>
+                <site-related-posts ids="website-security-simple-steps, cloudflare-pages-hosting-guide"></site-related-posts>
             </div>
         </div>
     </div>

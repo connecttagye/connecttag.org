@@ -33,7 +33,7 @@
   // Define global constants
   window.CT_BASE_URL = baseUrl;
   window.CT_ROOT_PATH = baseUrl; // Compatibility alias
-  const ASSET_VERSION = '1.1.1';
+  const ASSET_VERSION = '1.1.2';
 
   function loadScript(src, isAsync = false) {
     let fullSrc = src.startsWith('http') ? src : baseUrl + src;

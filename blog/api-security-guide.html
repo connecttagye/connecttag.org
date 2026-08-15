@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دليل حماية واجهات برمجة التطبيقات (API Security): تأمين قنوات التواصل الرقمي - كونكت تاق</title>
+<meta name="description" content="تعرف على أفضل الممارسات لتأمين الـ APIs، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات. دليل تقني شامل من كونكت تاق.">
+<link rel="canonical" href="https://connecttag.org/blog/api-security-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/api-security-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="حماية واجهات برمجة التطبيقات (API Security) - كونكت تاق">
+<meta property="og:description" content="تعلم كيفية بناء حصن منيع حول الـ API الخاص بك وحماية بياناتك من الاختراق." />
+<meta property="og:image" content="https://connecttag.org/upload/api-security.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/api-security-guide" />
+<meta name="twitter:title" content="دليل أمن الـ APIs للمطورين - كونكت تاق">
+<meta name="twitter:image" content="https://connecttag.org/upload/api-security.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
+
+<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "دليل حماية واجهات برمجة التطبيقات (API Security)",
+    "description": "تعرف على أفضل الممارسات لتأمين الـ APIs، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات.",
+    "image": "https://connecttag.org/upload/api-security.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T16:00:00+03:00",
+    "dateModified": "2026-08-16T16:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/api-security-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل تشفير Base64 كافٍ لحماية البيانات؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، Base64 هو مجرد ترميز (Encoding) وليس تشفيراً، ويمكن فكه بسهولة. يجب استخدام HTTPS للنقل و Bcrypt/Argon2 للتخزين."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الـ Rate Limiting ولماذا هو مهم؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "هو تحديد عدد الطلبات المسموح بها لكل مستخدم في وقت معين، وهو ضروري لمنع هجمات DDoS وتخمين كلمات المرور."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أحمي الـ API من الوصول الدولي غير المرغوب فيه؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عبر تفعيل التقييد الجغرافي (Geo-Blocking) في الجدار الناري، وحصر الوصول لبلدان معينة تستهدفها خدمتك."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+    .security-card { background: #fcfcfc; border-right: 5px solid #0077b6; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .security-card h3 { margin-top: 0; color: #0077b6; }
+    .highlight-box { border-right: 5px solid #25d366; background: #f0fff4; padding: 20px; border-radius: 10px; margin: 25px 0; }
+
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 8px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+
+    .summary-box { background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+    .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
+    .summary-list { padding-right: 20px; margin: 0; }
+    .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }
+
+    .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+</style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0077b6">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"المدونة", "url":"/blog/"}, {"title":"أمن الـ API", "url":""}]'></site-breadcrumb>
+                <h1>حماية واجهات برمجة التطبيقات (API Security): الدليل التقني الشامل</h1>
+
+                <site-article-meta
+                  date="16 أغسطس 2026"
+                  updated="16 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="../upload/api-security.webp" class="img-responsive" alt="أمن واجهات برمجة التطبيقات API" loading="lazy">
+
+                <p>واجهات برمجة التطبيقات (APIs) هي لغة التخاطب الأساسية بين الأنظمة الحديثة والتطبيقات. وبسبب طبيعتها المنفتحة، أصبحت الهدف الأول والمفضل للمخترقين. لتأمينها بشكل كامل، يجب تطبيق مجموعة صارمة من السياسات التقنية التي تحمي البيانات من لحظة خروجها من جهاز المستخدم وحتى استقرارها في الخادم.</p>
+
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-shield-virus"></i> خلاصة استراتيجية أمن الـ API:</h3>
+                    <ul class="summary-list">
+                        <li>فرض تشفير HTTPS واستخدام خوارزميات التجزئة القوية (Argon2/Bcrypt).</li>
+                        <li>هندسة المصادقة باستخدام JWT وتطبيق استراتيجيات انتهاء الصلاحية.</li>
+                        <li>تضييق مساحة الهجوم عبر تقييد الـ HTTP Methods وفلترة وكلاء المستخدمين.</li>
+                        <li>مكافحة المسح الآلي عبر Rate Limiting والتقييد الجغرافي (Geo-Blocking).</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#encryption-transit">1. التشفير، النقل الآمن، والتعامل مع بيانات الاعتماد</a></li>
+                        <li><a href="#auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT & OAuth)</a></li>
+                        <li><a href="#attack-surface">3. تضييق مساحة الهجوم (Attack Surface Reduction)</a></li>
+                        <li><a href="#traffic-control">4. التخفي، الحد من الطلبات، والتقييد الجغرافي</a></li>
+                        <li><a href="#faq">5. الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="encryption-transit">1. التشفير، النقل الآمن، والتعامل مع بيانات الاعتماد</h2>
+                <p>يبدأ الأمن من "النفق" الذي تعبر من خلاله البيانات:</p>
+                <ul>
+                    <li><strong>حتمية بروتوكول HTTPS:</strong> لا تنازل عن فرض التشفير الكامل (Enforce SSL) لجميع الطلبات لمنع هجمات التنصت (Packet Sniffing).</li>
+                    <li><strong>تجزئة كلمات المرور (Hashing):</strong> Base64 ليس تشفيراً! يجب استخدام <strong>Argon2</strong> أو <strong>Bcrypt</strong> مع "ملح" (Salt) عشوائي لكل مستخدم لحماية قاعدة البيانات من هجمات جداول قوس قزح.</li>
+                </ul>
+
+                <div class="security-card">
+                    <h3>مثال برمجى (Node.js/Bcrypt):</h3>
+                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+const bcrypt = require('bcrypt');
+const saltRounds = 12;
+
+// تجزئة كلمة المرور قبل الحفظ
+const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
+
+// التحقق من كلمة المرور عند تسجيل الدخول
+const isMatch = await bcrypt.compare(loginPassword, hashedPassword);</pre>
+                </div>
+
+                <ul>
+                    <li><strong>التشفير الهجين:</strong> للبيانات فائقة الحساسية، نستخدم RSA لتبادل المفاتيح و AES-256-GCM لتشفير المحتوى نفسه.</li>
+                </ul>
+
+                <h2 id="auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT & OAuth)</h2>
+                <p>تأمين الهوية الرقمية هو العمود الفقري للـ API:</p>
+                <ul>
+                    <li><strong>هيكلية رموز JWT:</strong> يجب رفض أي رمز يستخدم خوارزمية <code>"alg": "none"</code> صراحة، والتأكد من التوقيع باستخدام مفاتيح قوية (RS256).</li>
+                </ul>
+
+                <div class="security-card">
+                    <h3>مثال لبيانات JWT آمنة (Payload):</h3>
+                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+{
+  "sub": "user_123456",
+  "name": "Aqel Mohammed",
+  "iat": 1723824000,
+  "exp": 1723824900, // صلاحية قصيرة (15 دقيقة)
+  "iss": "connecttag.org",
+  "scopes": ["read:profile", "write:orders"]
+}</pre>
+                </div>
+
+                <div class="tip-box" style="border-right-color: #fb8c00; background: #fffde7;">
+                    <i class="fa-solid fa-microscope"></i> <strong>أداة مساعدة:</strong>
+                    هل تريد فحص وتحليل رموز JWT الخاصة بك؟ جرب الآن <a href="/tools/web/jwt-debugger/" style="font-weight: bold; color: #e65100;">أداة JWT Debugger</a> المطورة من قبلنا لفحص البيانات وتأكيد التوقيع.
+                </div>
+
+                <ul>
+                    <li><strong>استراتيجية انتهاء الصلاحية:</strong> استخدام Access Token قصير العمر (15 دقيقة مثلاً) مع Refresh Token مؤمن بـ HttpOnly Cookies لضمان القدرة على إبطال الجلسات المخترقة فوراً.</li>
+                </ul>
+
+                <h2 id="attack-surface">3. تضييق مساحة الهجوم (Attack Surface Reduction)</h2>
+                <div class="highlight-box">
+                    <i class="fa-solid fa-filter"></i> <strong>نصيحة مطور:</strong>
+                    كلما قلت الميزات غير المستخدمة المتاحة للجمهور، قل احتمال العثور على ثغرة.
+                </div>
+                <ul>
+                    <li><strong>تقييد الطرق (HTTP Methods):</strong> عطل أي Method لا تحتاجه (مثل TRACE أو OPTIONS). اسمح فقط بما هو معرف للخدمة.</li>
+                    <li><strong>فلترة وكلاء المستخدمين (User-Agent):</strong> طبقة حماية إضافية لإسقاط الطلبات القادمة من ماسحات (Scanners) أو متصفحات غير مصرح لها بالوصول للـ API.</li>
+                </ul>
+
+                <h2 id="traffic-control">4. التخفي، الحد من الطلبات، والتقييد الجغرافي</h2>
+                <p>الحماية من "الغمر" بالطلبات (Flooding):</p>
+                <ul>
+                    <li><strong>إخفاء الهوية (Obfuscation):</strong> استبدال المسارات الشائعة (مثل /admin) بمسارات غير قابلة للتخمين.</li>
+                    <li><strong>الحد من الطلبات (Rate Limiting):</strong> نظام دفاعي يمنع هجمات الـ Brute Force وحجب الخدمة.</li>
+                </ul>
+
+                <div class="security-card">
+                    <h3>مثال إعداد Nginx للـ Rate Limiting:</h3>
+                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+# تعريف منطقة تحديد الطلبات (10 طلبات في الثانية)
+limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
+
+server {
+    location /api/ {
+        limit_req zone=api_limit burst=20 nodelay;
+        proxy_pass http://api_backend;
+    }
+}</pre>
+                </div>
+
+                <ul>
+                    <li><strong>التقييد الجغرافي:</strong> حجب الطلبات القادمة من خارج نطاق خدمتك الجغرافي يقلص عدد المحاولات الخبيثة بنسبة هائلة.</li>
+                </ul>
+
+                <div class="highlight-box" style="background: #eef2ff; border-right-color: #4f46e5;">
+                    <strong>الجسر الهندسي:</strong> بناء جدار قوي حول الـ API هو الباب الخارجي فقط. لضمان أمان البيانات المطلق، يجب أن تكون قاعدة البيانات خلفه "خزنة فولاذية". تعلم الآن كيفية تصميم <a href="/blog/advanced-database-security-architecture" style="font-weight: bold; color: #4f46e5;">معمارية قواعد البيانات المتطورة</a>.
+                </div>
+
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل Base64 كافٍ لحماية كلمات المرور؟</div>
+                        <div class="faq-answer">لا، Base64 هو مجرد ترميز لتسهيل نقل البيانات وليس وسيلة حماية. يجب استخدام خوارزميات Hashing مثل Bcrypt.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يفضل Refresh Tokens؟</div>
+                        <div class="faq-answer">لأنه يسمح لنا بجعل الـ Access Token قصير العمر جداً، مما يقلل مخاطر سرقته، مع الحفاظ على تجربة مستخدم سلسة.</div>
+                    </div>
+                </div>
+
+                <p><strong>خلاصة القول:</strong> أمن الـ API ليس إعداداً لمرة واحدة، بل هو ثقافة تطوير مستمرة. في <strong>كونكت تاق</strong>، نطبق هذه المعايير في كافة مشاريعنا لضمان راحة بال شركائنا وسلامة بياناتهم.</p>
+
+                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="advanced-database-security-architecture, website-security-simple-steps"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

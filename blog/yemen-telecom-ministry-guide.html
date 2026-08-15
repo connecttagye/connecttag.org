@@ -25,46 +25,102 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.1">
-<link rel="stylesheet" href="/assets/css/components.css?v=1.1.1">
+<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.1"></noscript>
-<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.1">
+<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.1" defer></script>
-<script src="/assets/js/components/blog-bundle.js?v=1.1.1" defer></script>
+<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+
+<style>
+    .method-box { background: #f8f9fa; border-right: 5px solid #0077b6; padding: 20px; border-radius: 10px; margin: 30px 0; }
+
+    /* SEO/UX Elements */
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 8px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+    .toc-list a:hover { color: #005b8a; text-decoration: underline; }
+
+    .summary-box { background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+    .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
+    .summary-list { padding-right: 20px; margin: 0; }
+    .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }
+
+    .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+    .faq-question i { color: #0077b6; margin-top: 4px; }
+    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+</style>
 
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "دليل وزارة الاتصالات وتقنية المعلومات اليمنية: الهيكلية والخدمات الرقمية",
-  "description": "تعرف على هيكلية وزارة الاتصالات اليمنية، المؤسسات التابعة لها وأحدث خدمات الإنترنت والألياف الضوئية المتاحة في اليمن لعام 2026.",
-  "image": "https://connecttag.org/upload/telecom-yemen.webp",
-  "author": {
-    "@type": "Person",
-    "name": "عقيل محمد",
-    "url": "https://connecttag.org/author/aqeldev"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "كونكت تاق",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "وزارة الاتصالات وتكنولوجيا المعلومات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية",
+    "description": "تعرف على هيكلية وزارة الاتصالات اليمنية، المؤسسات التابعة لها وأحدث خدمات الإنترنت والألياف الضوئية المتاحة في اليمن لعام 2026.",
+    "image": "https://connecttag.org/upload/telecom-yemen.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T09:00:00+03:00",
+    "dateModified": "2026-08-16T09:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/yemen-telecom-ministry-guide"
     }
   },
-  "datePublished": "2026-08-16T09:00:00+03:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://connecttag.org/blog/yemen-telecom-ministry-guide"
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما هي الجهة المسؤولة عن الإنترنت الأرضي في اليمن؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "'يمن نت' (YemenNet) هي المزود الرئيسي والوحيد لخدمات الإنترنت السلكي والنطاق العريض ADSL في اليمن."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يمكنني الاستعلام عن رصيد إنترنت يمن فورجي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمكنك الاستعلام عبر الموقع الرسمي ptc.gov.ye/4g أو عبر تطبيق 'رصيد يمن فورجي' المخصص للهواتف."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل تتوفر خدمة الألياف الضوئية في جميع مناطق اليمن؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، التغطية حالياً مركزة في العاصمة صنعاء وبعض المدن الرئيسية، ويجري العمل على توسيعها تدريجياً."
+        }
+      }
+    ]
   }
-}
+]
 </script>
 
 
@@ -101,21 +157,42 @@
                 <hr style="margin-top: 0;">
                 <img src="../upload/telecom-yemen.webp" class="img-responsive" alt="وزارة الاتصالات اليمنية" loading="lazy">
 
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-list-check"></i> ملخص الدليل الشامل:</h3>
+                    <ul class="summary-list">
+                        <li>التعرف على المؤسسات السيادية لقطاع الاتصالات (PTC, يمن نت، تيليمن).</li>
+                        <li>شرح مفصل لتقنيات الإنترنت (Yemen 4G, Fiber, ADSL).</li>
+                        <li>خدمات الهاتف الثابت والخدمات الرقمية المضافة للمشتركين.</li>
+                        <li>روابط الوصول السريع للاستعلام عن الرصيد والفواتير.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#telecom-entities">أولاً: أقسام ومؤسسات قطاع الاتصالات في اليمن</a></li>
+                        <li><a href="#internet-services">ثانياً: تفصيل خدمات الإنترنت المتاحة</a></li>
+                        <li><a href="#landline-services">ثالثاً: خدمات الهاتف الثابت والخدمات المضافة</a></li>
+                        <li><a href="#digital-links">رابعاً: أهم الروابط الرقمية للمشتركين</a></li>
+                        <li><a href="#faq">خامساً: الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
                 <p>تُعد وزارة الاتصالات وتكنولوجيا المعلومات في الجمهورية اليمنية الشريان الحيوي للبنية التحتية والتحول الرقمي والربط بين المحافظات والمؤسسات والمواطنين. تتولى الوزارة إدارياً وتنظيمياً الإشراف على قطاع الاتصالات والبريد، وتطوير البنية التحتية للشبكات السلكية واللاسلكية، وتوسيع نطاق تغطية إنترنت النطاق العريض (Broadband) والخدمات المالية والمصرفية المباشرة.</p>
 
-                <h2>أولاً: أقسام ومؤسسات قطاع الاتصالات في اليمن</h2>
+                <h2 id="telecom-entities">أولاً: أقسام ومؤسسات قطاع الاتصالات في اليمن</h2>
                 <p>يتكون قطاع الاتصالات في اليمن من عدة مؤسسات وهيئات تابعة تشكل المنظومة المتكاملة للاتصالات:</p>
                 <ul>
                     <li><strong>المؤسسة العامة للاتصالات (PTC):</strong> المشغل الوطني الأساسي للبنية التحتية، والمسؤولة عن الهاتف الثابت وشبكات الألياف الضوئية.</li>
-                    <li><strong>يمن نت (YemenNet):</strong> المزود الرئيسي والوحيد لخدمات الإنترنت السلكي والنطاق العريض في اليمن. يمكنك الاطلاع على <a href="yemen-internet-comparison-4g-adsl-fiber">مقارنة بين أنواع الإنترنت</a> لمزيد من التفاصيل.</li>
-                    <li><strong>يمن فور جي (Yemen 4G):</strong> أحدث المبادرات الوطنية لتوفير إنترنت لاسلكي منزلي عالي السرعة عبر تقنية 4G LTE. اقرأ دليلنا حول <a href="how-to-check-yemen-4g-balance">كيفية الاستعلام عن الرصيد</a>.</li>
+                    <li><strong>يمن نت (YemenNet):</strong> المزود الرئيسي والوحيد لخدمات الإنترنت السلكي والنطاق العريض في اليمن. يمكنك الاطلاع على <a href="/blog/yemen-internet-comparison-4g-adsl-fiber">مقارنة بين أنواع الإنترنت</a> لمزيد من التفاصيل.</li>
+                    <li><strong>يمن فور جي (Yemen 4G):</strong> أحدث المبادرات الوطنية لتوفير إنترنت لاسلكي منزلي عالي السرعة عبر تقنية 4G LTE. اقرأ دليلنا حول <a href="/blog/how-to-check-yemen-4g-balance">كيفية الاستعلام عن الرصيد</a>.</li>
                     <li><strong>تيليمن (TeleYemen):</strong> المشغل الحصري للاتصالات الدولية والربط بالكابلات البحرية.</li>
                     <li><strong>يمن موبايل (Yemen Mobile):</strong> أكبر شركة اتصالات نقالة وطنية تقدم خدمات المحمول والبيانات.</li>
                     <li><strong>الهيئة العامة للبريد:</strong> الذراع المالي واللوجستي، وتوفر خدمات الحوالات والدفع الإلكتروني.</li>
                     <li><strong>المعهد العام للاتصالات:</strong> المركز التدريبي المتخصص لتأهيل الكوادر الوطنية في التكنولوجيا.</li>
                 </ul>
 
-                <h2>ثانياً: تفصيل خدمات الإنترنت المتاحة</h2>
+                <h2 id="internet-services">ثانياً: تفصيل خدمات الإنترنت المتاحة</h2>
                 <p>توفر البوابة الرقمية لخدمات الإنترنت في اليمن باقات متنوعة تناسب كافة الاحتياجات:</p>
 
                 <div class="table-responsive">
@@ -159,7 +236,7 @@
                     <li><strong>Yemen WiFi:</strong> نقاط اتصال لاسلكية في الأماكن العامة والحدائق.</li>
                 </ul>
 
-                <h2>ثالثاً: خدمات الهاتف الثابت والخدمات المضافة</h2>
+                <h2 id="landline-services">ثالثاً: خدمات الهاتف الثابت والخدمات المضافة</h2>
                 <p>تظل شبكة الهاتف الثابت أساس الاتصالات الوطنية وتتميز بالثبات والاعتمادية:</p>
                 <ol>
                     <li><strong>الخطوط الأساسية:</strong> تشمل الخطوط السلكية النحاسية واللاسلكية (WLL) للمناطق النائية.</li>
@@ -167,7 +244,7 @@
                     <li><strong>الخدمات المؤسسية:</strong> تشمل الرقم المجاني (800) والأرقام المختصرة (Short Codes) للبنوك والطوارئ.</li>
                 </ol>
 
-                <h2>رابعاً: أهم الروابط الرقمية للمشتركين</h2>
+                <h2 id="digital-links">رابعاً: أهم الروابط الرقمية للمشتركين</h2>
                 <p>لتسهيل الوصول إلى الخدمات الإلكترونية المباشرة، يمكنكم استخدام الروابط الرسمية التالية:</p>
                 <div class="method-box" style="background: #f8f9fa; border-right: 5px solid #0077b6; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
                     <ul style="list-style: none; padding: 0; margin: 0;">
@@ -191,9 +268,25 @@
 
                 <p><strong>خاتمة:</strong> تشهد خدمات الاتصالات وتقنية المعلومات في اليمن تحولاً متسارعاً نحو تقنيات الألياف الضوئية (FTTH) والجيل الرابع (Yemen 4G)، مما يساهم في تعزيز البنية التحتية الرقمية وتسهيل الأعمال التجارية والتعليمية في مختلف أنحاء الجمهورية.</p>
 
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي الجهة المسؤولة عن الإنترنت الأرضي في اليمن?</div>
+                        <div class="faq-answer">"يمن نت" (YemenNet) هي المزود الرئيسي والوحيد لخدمات الإنترنت السلكي والنطاق العريض ADSL في اليمن.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني الاستعلام عن رصيد إنترنت يمن فورجي؟</div>
+                        <div class="faq-answer">يمكنك الاستعلام عبر الموقع الرسمي ptc.gov.ye/4g أو عبر تطبيق "رصيد يمن فورجي" المخصص للهواتف.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل تتوفر خدمة الألياف الضوئية في جميع مناطق اليمن؟</div>
+                        <div class="faq-answer">لا، التغطية حالياً مركزة في العاصمة صنعاء وبعض المدن الرئيسية، ويجري العمل على توسيعها تدريجياً.</div>
+                    </div>
+                </div>
+
                 <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts></site-related-posts>
+                <site-related-posts ids="yemen-internet-comparison-4g-adsl-fiber, how-to-check-yemen-4g-balance"></site-related-posts>
             </div>
         </div>
     </div>
