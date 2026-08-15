@@ -315,7 +315,7 @@ export default class UIEngine {
                     </p>
                 </div>
                 <div class="d-flex gap-2 flex-wrap mt-3">
-                    ${audit.title === 'سياسة الخصوصية' && audit.status === 'fail' ? `<a href="../privacy-generator/index.html" class="fix-btn" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> توليد سياسة خصوصية الآن</a>` : ''}
+                    ${audit.title === 'سياسة الخصوصية' && audit.status === 'fail' ? `<a href="../privacy-generator/" class="fix-btn" style="text-decoration:none;"><i class="fa-solid fa-wand-magic-sparkles"></i> توليد سياسة خصوصية الآن</a>` : ''}
                     ${(window.fixData && window.fixData[audit.title]) ? `<button class="fix-btn" onclick="event.stopPropagation(); window.showFix('${audit.title}')"><i class="fa-solid fa-wrench"></i> دليل الإصلاح</button>` : ''}
                 </div>
             </div>`;

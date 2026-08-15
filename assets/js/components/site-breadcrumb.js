@@ -33,6 +33,13 @@ class SiteBreadcrumb extends HTMLElement {
         'libraries': 'المكاتب البرمجية',
         'store': 'المتجر',
         'tools': 'الأدوات',
+        'telecom': 'أدوات الاتصالات',
+        'web': 'أدوات الويب',
+        'mobile': 'أدوات الأندرويد',
+        'security': 'الأمن والخصوصية',
+        'finance': 'الخدمات المالية',
+        'energy': 'حساب الطاقة',
+        'design': 'التصميم والوسائط',
         'services': 'الخدمات',
         'hardware-solutions': 'دليل المنتجات',
         'about': 'من نحن',
@@ -44,10 +51,11 @@ class SiteBreadcrumb extends HTMLElement {
 
       let currentAccUrl = baseUrl;
       pathSegments.forEach((seg, idx) => {
-        // Skip root folder name or index files
-        if (seg.toLowerCase() === 'connecttag.org' || seg === 'index.html' || seg === 'index.php' || seg === '') return;
+        // Skip root folder names, project names, or index files
+        const skipSegments = ['connecttag.org', 'connecttagsite', './', 'index.php', ''];
+        if (skipSegments.includes(seg.toLowerCase())) return;
 
-        currentAccUrl += seg + '/';
+        currentAccUrl += seg.replace(/\.html$/i, '') + '/';
 
         let title = decodeURIComponent(seg);
 

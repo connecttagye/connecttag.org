@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق</title>
+<meta name="description" content="تعلم كيفية استخدام جدار حماية كلاود فلير (WAF) لتأمين موقعك، حظر الدول المشبوهة، وتفعيل وضع 'تحت الهجوم' لحماية بياناتك من الاختراق والبرمجيات الخبيثة.">
+<link rel="canonical" href="https://connecttag.org/blog/cloudflare-waf-security-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/cloudflare-waf-security-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق">
+<meta property="og:description" content="دليل شامل لاستخدام جدار حماية كلاود فلير لحماية موقعك من الهجمات السيبرانية." />
+<meta property="og:image" content="https://connecttag.org/upload/waf-cloudflare.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/cloudflare-waf-security-guide" />
+<meta name="twitter:title" content="وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق">
+<meta name="twitter:description" content="دليل شامل لاستخدام جدار حماية كلاود فلير لحماية موقعك من الهجمات السيبرانية." />
+<meta name="twitter:image" content="https://connecttag.org/upload/waf-cloudflare.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="../assets/css/bootstrap.css?v=1.1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../assets/css/bootstrap.css?v=1.1.0"></noscript>
+<link rel="stylesheet" href="../assets/css/styles.min.css?v=1.1.0">
+<link rel="stylesheet" href="../assets/css/components.css?v=1.1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="../assets/css/animate-custom.css?v=1.1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="../assets/css/animate-custom.css?v=1.1.0"></noscript>
+<link rel="stylesheet" href="../assets/css/shared-styles.css?v=1.1.0">
+
+<script src="../assets/js/components/components-bundle.js?v=1.1.0" defer></script>
+<script src="../assets/js/components/blog-bundle.js?v=1.1.0" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟",
+  "description": "دليل شامل لاستخدام جدار حماية كلاود فلير (WAF) لحماية موقعك من الهجمات السيبرانية والبرامج الضارة وحظر الدول المشبوهة.",
+  "image": "https://connecttag.org/upload/waf-cloudflare.webp",
+  "author": {
+    "@type": "Person",
+    "name": "عقيل محمد",
+    "url": "https://connecttag.org/author/aqeldev"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "كونكت تاق",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+    }
+  },
+  "datePublished": "2026-08-16T11:00:00+03:00",
+  "dateModified": "2026-08-16T11:00:00+03:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://connecttag.org/blog/cloudflare-waf-security-guide"
+  }
+}
+</script>
+
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"المدونة", "url":"/blog/"}, {"title":"أمن كلاود فلير", "url":""}]'></site-breadcrumb>
+                <h1>وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</h1>
+
+                <site-article-meta
+                  date="16 أغسطس 2026"
+                  updated="16 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="../upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" loading="lazy">
+
+                <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك. في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
+
+                <h2>1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
+                <p>تسمح لك "قوانين جدار الحماية" في كلاود فلير بالتحكم الكامل في من يمكنه الوصول إلى موقعك وبأي شروط. يمكنك بناء قوانين ذكية بناءً على عدة معايير:</p>
+                <ul>
+                    <li><strong>حظر دول معينة:</strong> إذا لاحظت هجمات متكررة من دول لا تستهدفها في نشاطك التجاري، يمكنك حظر وصول أي زائر من تلك الدول بضغطة زر.</li>
+                    <li><strong>حظر عناوين IP مشبوهة:</strong> يمكنك حظر عناوين معينة تحاول القيام بعمليات فحص (Scanning) لثغرات موقعك.</li>
+                    <li><strong>حماية روابط الإدارة:</strong> يمكنك إنشاء قانون يسمح فقط لعنوان IP الخاص بك بالدخول إلى لوحة تحكم موقعك (مثل `/wp-admin` أو `/admin`).</li>
+                </ul>
+
+                <h2>2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
+                <p>هل لاحظت بطءً مفاجئاً في موقعك بسبب هجمة DDoS؟ توفر كلاود فلير "زر الطوارئ" المسمى <strong>Under Attack Mode</strong>. عند تفعيله:</p>
+                <ul>
+                    <li>يتم إظهار صفحة انتظار قصيرة (JavaScript Challenge) لكل زائر للتأكد من أنه إنسان وليس "بوت" مخرب.</li>
+                    <li>يتم حظر كافة المحاولات الآلية لإغراق السيرفر بالطلبات الوهمية.</li>
+                    <li>تستمر الخدمة للزوار الحقيقيين مع حماية السيرفر من الانهيار.</li>
+                </ul>
+
+                <h2>3. حظر الـ Bots المزعجة والبرمجيات الآلية</h2>
+                <p>ليست كل الزيارات لموقعك من بشر؛ فهناك "بوتات" تقوم بسحب محتوى موقعك (Scraping) أو محاولة تخمين كلمات المرور (Brute Force). توفر كلاود فلير حماية متقدمة ضد البوتات:</p>
+                <ul>
+                    <li><strong>Bot Fight Mode:</strong> تقنية ذكية تكتشف سلوك البرمجيات الآلية وتقوم بتحديها أو حظرها تلقائياً.</li>
+                    <li><strong>حماية النماذج:</strong> منع البوتات من ملء نماذج الاتصال بـ "سبام" أو محاولة إرسال بيانات خبيثة.</li>
+                    <li><strong>توفير الموارد:</strong> بحظر هذه البوتات، أنت توفر موارد السيرفر (CPU/RAM) للزوار الحقيقيين فقط.</li>
+                </ul>
+
+                <h2>نصيحة أمنية من كونكت تاق</h2>
+                <p>استخدام كلاود فلير ليس مجرد "تركيب" وانتهى الأمر، بل يتطلب تهيئة صحيحة للقوانين بناءً على طبيعة جمهورك. ننصح دائماً بمراجعة سجلات الأمان (Security Logs) دورياً في لوحة تحكم كلاود فلير لمعرفة أنواع الهجمات التي يتم صدها وتحديث القوانين وفقاً لذلك.</p>
+
+                <p><strong>الخلاصة:</strong> جدار حماية كلاود فلير هو استثمار ضروري لأي موقع يهتم بسلامة بياناته واستمرارية خدمته. إذا كنت ترغب في تأمين موقعك بشكل احترافي وربطه بخدمات كلاود فلير، فنحن في <strong>كونكت تاق</strong> نقدم خدمات الإعداد المتقدم والحماية السيبرانية لضمان أعلى مستويات الأمان لمشروعك الرقمي.</p>
+
+                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
