@@ -41,7 +41,6 @@ targetFiles.forEach(file => {
     // 3. Remove .html from internal links (href="...")
     content = content.replace(/href="((?![a-z]+:\/\/|mailto:|tel:|#)[^"]+)\.html"/g, 'href="$1"');
 
-    // 4. Remove .html from JS strings or JSON attributes (like "url":"...")
     // This is safer as it looks for .html preceded by a path-like string inside quotes
     content = content.replace(/(["'])((?![a-z]+:\/\/|mailto:|tel:|#)[^"']+)\.html\1/g, '$1$2$1');
 
