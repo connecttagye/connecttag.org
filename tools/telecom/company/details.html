@@ -1,257 +1,579 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تفاصيل الشركة - كونكت تاق</title>
+    <title>تفاصيل الشركة - كونكت تاق</title>
+    <meta name="description" id="meta-description" content="معلومات وأكواد وباقات شركة الاتصالات المحددة في اليمن.">
+    <link rel="canonical" id="canonical-url" href="https://connecttag.org/tools/telecom/company/details">
 
+    <!-- OpenGraph Meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/telecom/company/details">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="تفاصيل الشركة - دليل الاتصالات - كونكت تاق">
+    <meta property="og:description" content="معلومات وأكواد وباقات شركة الاتصالات المحددة في اليمن.">
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
-  <!-- OpenGraph meta -->
-  <meta property="og:url" content="https://connecttag.org/tools/telecom/company/details" />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="تفاصيل الشركة - دليل الاتصالات - كونكت تاق" />
-  <meta property="og:description" content="معلومات وأكواد وباقات شركة الاتصالات المحددة في اليمن." />
-  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@connecttagye">
+    <meta name="twitter:url" content="https://connecttag.org/tools/telecom/company/details">
+    <meta name="twitter:title" content="تفاصيل الشركة - دليل الاتصالات - كونكت تاق">
+    <meta name="twitter:description" content="معلومات وأكواد وباقات شركة الاتصالات المحددة في اليمن.">
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
-  <!-- twitter OpenGraph meta -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@connecttagye" />
-  <meta name="twitter:url" content="https://connecttag.org/tools/telecom/details" />
-  <meta name="twitter:title" content="تفاصيل الشركة - دليل الاتصالات - كونكت تاق">
-  <meta name="twitter:description" content="معلومات وأكواد وباقات شركة الاتصالات المحددة في اليمن." />
-  <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json" id="schema-org">
+        {
+            "@context": "https://schema.org/",
+            "@type": "Organization",
+            "name": "شركة اتصالات",
+            "description": "دليل خدمات وباقات شركات الاتصالات اليمنية"
+        }
+    </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5">
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
 
+    <style>
+        @font-face {
+          font-family: 'Cairo-Fallback';
+          src: local('Arial');
+          ascent-override: 100%;
+          descent-override: 20%;
+          line-gap-override: 0%;
+          size-adjust: 105.7%;
+        }
 
+        body {
+          font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+          background-color: #f8fafc;
+          color: #1e293b;
+        }
 
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
+        /* Compact Breadcrumb Bar */
+        .breadcrumb-wrapper {
+            background: #ffffff;
+            padding: 16px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .breadcrumb-tools {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        .breadcrumb-tools li { color: #64748b; font-weight: 600; font-size: 13px; }
+        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a:hover { color: #e89a2f; }
+        .breadcrumb-tools li:not(:last-child)::after {
+            content: '\f104';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+        .breadcrumb-tools li.active { color: #e89a2f; font-weight: 700; }
 
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 100%;
-      descent-override: 20%;
-      line-gap-override: 0%;
-      size-adjust: 105.7%; /* Cairo is ~5.7% larger than Arial */
-    }
+        /* Company Hero Header */
+        .company-header {
+            padding: 50px 0 40px;
+            background: #ffffff;
+            border-bottom: 1px solid #edf2f7;
+            text-align: center;
+        }
+        .company-logo-big {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #edf2f7;
+            display: block;
+        }
+        .company-name-big {
+            font-size: 32px;
+            font-weight: 900;
+            color: #006b98;
+            margin-bottom: 15px;
+        }
 
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+        /* Social Media Links */
+        .social-links-list {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
+        .social-btn:hover {
+            background: #006b98;
+            color: #ffffff;
+            border-color: #006b98;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 107, 152, 0.2);
+        }
+        .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
+        /* Details Container */
+        .details-container { padding: 45px 0 80px; }
 
-<style>
-    body { font-family: 'Cairo', sans-serif; background-color: #fff; }
-    .company-header { padding: 60px 0; background: #ffffff; border-bottom: 1px solid #eee; text-align: center; }
-    .company-logo-big { width: 150px; height: 150px; object-fit: contain; margin-bottom: 20px; background: #fff; padding: 20px; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; }
-    .company-name-big { font-size: 32px; font-weight: 800; color: #006b98; }
+        .info-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            margin-bottom: 30px;
+        }
+        .info-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #006b98;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-card p {
+            font-size: 15px;
+            line-height: 1.85;
+            color: #475569;
+            margin: 0;
+        }
 
-    .details-container { padding: 60px 0; }
-    .info-section { margin-bottom: 40px; }
-    .info-section h3 { font-weight: 800; color: #006b98; margin-bottom: 20px; border-right: 5px solid #e89a2f; padding-right: 15px; }
-    .info-section p { font-size: 18px; line-height: 1.8; color: #475569; }
+        /* Quick Action Cards */
+        .action-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .action-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #edf2f7;
+            text-decoration: none !important;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .action-card:hover {
+            border-color: #006b98;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+        }
+        .action-card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: #f0f9ff;
+            color: #006b98;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: 0.3s;
+        }
+        .action-card:hover .action-card-icon {
+            background: #006b98;
+            color: #ffffff;
+        }
+        .action-card span {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1e293b;
+        }
+        .action-card small {
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 600;
+        }
 
-    .action-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-    .action-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        transition: 0.3s;
-        border: 2px solid #f1f5f9;
-        text-decoration: none !important;
-    }
-    .action-card:hover { border-color: #006b98; transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-    .action-card i { font-size: 40px; color: #006b98; margin-bottom: 20px; }
-    .action-card span { display: block; font-size: 20px; font-weight: 800; color: #1e293b; }
+        /* Contact Sidebar */
+        .contact-info-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+        }
+        .contact-info-card h4 {
+            font-weight: 800;
+            font-size: 17px;
+            color: #1e293b;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            color: #64748b;
+        }
+        .contact-item:last-child { margin-bottom: 0; }
+        .contact-item i {
+            color: #006b98;
+            font-size: 16px;
+            margin-top: 3px;
+            width: 20px;
+        }
+        .contact-item strong { color: #1e293b; display: block; margin-bottom: 2px; }
+        .contact-link { color: #006b98; text-decoration: none; font-weight: 700; word-break: break-all; }
+        .contact-link:hover { color: #e89a2f; }
 
-    .contact-info { background: #f8fafc; padding: 30px; border-radius: 20px; margin-top: 30px; }
-    .contact-item { margin-bottom: 15px; font-size: 16px; color: #64748b; }
-    .contact-item i { width: 25px; color: #006b98; }
+        .phone-tag {
+            display: inline-block;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #006b98;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 2px 4px 2px 0;
+            direction: ltr;
+        }
+        .phone-tag:hover { background: #006b98; color: #fff; border-color: #006b98; }
 
-    .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
-</style>
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+    </style>
 
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- PWA & Mobile Optimization Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0077b6">
 </head>
 <body>
+<site-toast></site-toast>
+<site-header></site-header>
 
 <div id="loading-screen" class="loading-overlay">
     <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #006b98;"></i>
-    <p style="margin-top: 20px; font-weight: 700;">جاري تحميل معلومات الشركة...</p>
+    <p style="margin-top: 20px; font-weight: 700; color: #1e293b;">جاري تحميل معلومات الشركة...</p>
 </div>
 
-<!-- Modular Web Component: Header -->
-<site-header></site-header>
+<!-- Compact Breadcrumb Bar -->
+<div class="breadcrumb-wrapper">
+    <div class="container">
+        <ul class="breadcrumb-tools">
+            <li><a href="https://connecttag.org/">الرئيسية</a></li>
+            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
+            <li><a href="https://connecttag.org/tools/telecom/company/">دليل الشركات</a></li>
+            <li class="active" id="breadcrumb-company-name">تفاصيل الشركة</li>
+        </ul>
+    </div>
+</div>
 
-<div id="company-content" style="display:none;">
+<main id="company-content" style="display:none;">
+    <!-- Hero Header -->
     <div class="company-header">
         <div class="container">
-            <ul class="breadcrumb-custom mb-4" style="font-size:12px; display: flex; justify-content: center;">
-                <li><a href="https://connecttag.org/">الرئيسية</a></li>
-                <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-                <li><a href="https://connecttag.org/tools/telecom/company/">دليل الشركات</a></li>
-                <li class="active" id="breadcrumb-company-name">تفاصيل الشركة</li>
-            </ul>
-            <img src="" id="comp-logo" class="company-logo-big" alt="Logo">
+            <img src="" id="comp-logo" class="company-logo-big" alt="شعار الشركة">
             <h1 id="comp-name" class="company-name-big"></h1>
-            <div id="social-links" style="margin-top: 20px; font-size: 24px;"></div>
+            <div id="social-links" class="social-links-list"></div>
         </div>
     </div>
 
+    <!-- Main Content Details -->
     <div class="details-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="info-section">
+                <div class="col-lg-8 col-md-7">
+                    <!-- About Company -->
+                    <div class="info-card">
+                        <h3><i class="fa-solid fa-circle-info"></i> نبذة عن الشركة</h3>
                         <p id="comp-desc"></p>
                     </div>
 
+                    <!-- Action Cards -->
                     <div class="action-cards">
-                        <a href="" id="link-services" class="action-card">
-                            <i class="fa-solid fa-code"></i>
+                        <a href="#" id="link-services" class="action-card">
+                            <div class="action-card-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
                             <span>أكواد ومواقع الخدمات</span>
+                            <small>أكواد التفعيل، الاستعلام، والخدمات السريعة</small>
                         </a>
-                        <a href="" id="link-packages" class="action-card">
-                            <i class="fa-solid fa-cubes"></i>
-                            <span>الباقات</span>
+                        <a href="#" id="link-packages" class="action-card">
+                            <div class="action-card-icon">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                            <span>باقات وعروض الإنترنت</span>
+                            <small>باقات 4G، الدفع المسبق، والمكالمات</small>
                         </a>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="contact-info">
-                        <h4 style="font-weight: 800; margin-bottom: 20px;">معلومات التواصل</h4>
-                        <div class="contact-item"><i class="fa-solid fa-globe"></i> الموقع الرسمي: <a href="#" id="comp-web" target="_blank">زيارة الموقع</a></div>
-                        <div class="contact-item"><i class="fa-solid fa-phone"></i> خدمة العملاء: <span id="comp-phone"></span></div>
+                <!-- Sidebar Contact Info -->
+                <div class="col-lg-4 col-md-5 mt-4 mt-md-0">
+                    <div class="contact-info-card">
+                        <h4><i class="fa-solid fa-address-book" style="color:#006b98; margin-left: 8px;"></i> قنوات التواصل الرسمية</h4>
+
+                        <div class="contact-item">
+                            <i class="fa-solid fa-globe"></i>
+                            <div>
+                                <strong>الموقع الإلكتروني</strong>
+                                <a href="#" id="comp-web" target="_blank" rel="noopener noreferrer" class="contact-link">-</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fa-solid fa-headset"></i>
+                            <div>
+                                <strong>خدمة العملاء والدعم الفني</strong>
+                                <div id="comp-phones-container" style="margin-top: 4px;">-</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
-<!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
+<cookie-consent></cookie-consent>
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
-        const companyId = urlParams.get('id');
+        const querySlug = urlParams.get('slug');
+        const queryId = urlParams.get('id');
         const apiUrl = 'https://api.connecttag.app/v5/yemenview/initial-data';
         const apiKey = 'ws9syryf5hyd';
+        const CACHE_KEY = 'telecom_companies_cache';
 
-        if (!companyId) {
+        if (!querySlug && !queryId) {
             window.location.href = 'https://connecttag.org/tools/telecom/company/';
             return;
         }
 
+        // Try Instant Cache Match
+        let rendered = false;
+        try {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { data } = JSON.parse(cached);
+                if (Array.isArray(data)) {
+                    const matched = data.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
+                    if (matched) {
+                        renderDetails(matched);
+                        rendered = true;
+                    }
+                }
+            }
+        } catch(e) {
+            console.warn('Cache lookup failed', e);
+        }
+
+        // Always fetch fresh data to sync
         fetch(apiUrl, {
             method: 'GET',
             headers: { 'X-Api-Key': apiKey }
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success && data.result && data.result.companies) {
-                const company = data.result.companies.find(c => c.id === companyId);
+            if (data.success && data.result && Array.isArray(data.result.companies)) {
+                const company = data.result.companies.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
                 if (company) {
                     renderDetails(company);
-                } else {
-                    alert('الشركة غير موجودة');
-                    window.location.href = 'https://connecttag.org/tools/telecom/company/';
+                } else if (!rendered) {
+                    handleNotFound();
                 }
+            } else if (!rendered) {
+                handleNotFound();
             }
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            alert('خطأ في الاتصال');
-            window.location.href = 'https://connecttag.org/tools/telecom/company/';
+            if (!rendered) {
+                handleNotFound();
+            }
         });
 
         function renderDetails(c) {
-            document.title = `${c.arName} - أكواد ومواقع الخدمات - كونكت تاق`;
-            document.getElementById('comp-logo').src = c.logo;
-            document.getElementById('comp-name').textContent = c.arName;
-            document.getElementById('comp-desc').textContent = c.arDescription || 'معلومات الشركة غير متوفرة حالياً.';
+            const displayName = c.arName || c.name || 'تفاصيل الشركة';
+            const displayDesc = c.arDescription || c.description || `استعرض كافة خدمات وأكواد وباقات شركة ${displayName} في اليمن.`;
 
+            // Update Title & Breadcrumb
+            document.title = `${displayName} - الخدمات والأكواد والباقات | كونكت تاق`;
+            document.getElementById('breadcrumb-company-name').textContent = displayName;
+
+            // Populate Main Content
+            const logoEl = document.getElementById('comp-logo');
+            logoEl.src = c.logo;
+            logoEl.alt = `شعار شركة ${displayName}`;
+            logoEl.onerror = function() {
+                this.src = 'https://connecttag.org/assets/img/connect-tag-official-logo.webp';
+            };
+
+            document.getElementById('comp-name').textContent = displayName;
+            document.getElementById('comp-desc').textContent = displayDesc;
+
+            // Website Link
             const compWeb = document.getElementById('comp-web');
-            compWeb.href = c.website;
-            compWeb.textContent = c.website;
+            if (c.website) {
+                compWeb.href = c.website;
+                compWeb.textContent = c.website.replace(/^https?:\/\//, '').replace(/\/$/, '');
+            } else {
+                compWeb.textContent = 'غير متوفر';
+                compWeb.removeAttribute('href');
+            }
 
-            document.getElementById('comp-phone').textContent = c.phoneNumbers ? c.phoneNumbers.join(' - ') : 'غير متوفر';
+            // Phone Numbers (Direct Call Links)
+            const phonesContainer = document.getElementById('comp-phones-container');
+            phonesContainer.innerHTML = '';
+            if (Array.isArray(c.phoneNumbers) && c.phoneNumbers.length > 0) {
+                c.phoneNumbers.forEach(p => {
+                    const phoneLink = document.createElement('a');
+                    phoneLink.href = `tel:${p}`;
+                    phoneLink.className = 'phone-tag';
+                    phoneLink.innerHTML = `<i class="fa-solid fa-phone-volume" style="font-size:11px; margin-left:4px;"></i> ${p}`;
+                    phonesContainer.appendChild(phoneLink);
+                });
+            } else {
+                phonesContainer.textContent = 'غير متوفر';
+            }
 
-            document.getElementById('link-services').href = `services?companyId=${c.id}`;
-            document.getElementById('link-packages').href = `packages?companyId=${c.id}`;
+            // Action Buttons with matching params
+            const targetParam = c.slug ? `slug=${encodeURIComponent(c.slug)}` : `companyId=${encodeURIComponent(c.id)}`;
+            document.getElementById('link-services').href = `services?${targetParam}`;
+            document.getElementById('link-packages').href = `packages?${targetParam}`;
 
-            // Social links
+            // Social Links
             const socialLinksDiv = document.getElementById('social-links');
-            if(c.socialLinks) {
+            socialLinksDiv.innerHTML = '';
+            if (Array.isArray(c.socialLinks)) {
                 c.socialLinks.forEach(s => {
-                    if(s.active) {
-                        let content = '';
-                        if(s.type === 'FACEBOOK') content = '<i class="fa-brands fa-facebook"></i>';
-                        else if(s.type === 'TWITTER' || s.type === 'X') {
-                            content = '<svg style="width: 20px; height: 20px; fill: currentColor; vertical-align: middle;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
-                        } else if(s.type === 'INSTAGRAM') content = '<i class="fa-brands fa-instagram"></i>';
-                        else if(s.type === 'YOUTUBE') content = '<i class="fa-brands fa-youtube"></i>';
-                        else if(s.type === 'TELEGRAM') content = '<i class="fa-brands fa-telegram"></i>';
-                        else if(s.type === 'GITHUB') content = '<i class="fa-brands fa-github"></i>';
-                        else if(s.type === 'GITLAB') content = '<i class="fa-brands fa-gitlab"></i>';
-                        else if(s.type === 'TIKTOK') {
-                            content = '<svg style="width: 20px; height: 20px; fill: currentColor; vertical-align: middle;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.36-.54.38-.89.98-1.03 1.64-.13.47-.1.99.09 1.44.35 1.03 1.5 1.74 2.59 1.61.88-.04 1.65-.58 2.02-1.37.15-.33.24-.69.24-1.05V0z"/></svg>';
-                        } else if(s.type === 'KIK') {
-                            content = '<svg style="width: 20px; height: 20px; fill: currentColor; vertical-align: middle;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.844 17.188c-.524 0-.949-.425-.949-.949 0-.524.425-.949.949-.949.524 0 .949.425.949.949 0 .524-.425.949-.949.949zm.281-2.922c-.622 0-1.125-.503-1.125-1.125 0-.622.503-1.125 1.125-1.125.622 0 1.125.503 1.125 1.125 0 .622-.503 1.125-1.125 1.125zm-2.125 0c-.622 0-1.125-.503-1.125-1.125 0-.622.503-1.125 1.125-1.125.622 0 1.125.503 1.125 1.125 0 .622-.503 1.125-1.125 1.125zm-1.125 2.922c-.524 0-.949-.425-.949-.949 0-.524.425-.949.949-.949.524 0 .949.425.949.949 0 .524-.425.949-.949.949zm-1.844-2.922c-.622 0-1.125-.503-1.125-1.125 0-.622.503-1.125 1.125-1.125.622 0 1.125.503 1.125 1.125 0 .622-.503 1.125-1.125 1.125zm-2.125 0c-.622 0-1.125-.503-1.125-1.125 0-.622.503-1.125 1.125-1.125.622 0 1.125.503 1.125 1.125 0 .622-.503 1.125-1.125 1.125zm-.281 2.922c-.524 0-.949-.425-.949-.949 0-.524.425-.949.949-.949.524 0 .949.425.949.949 0 .524-.425.949-.949.949z"/></svg>';
-                        } else if(s.type === 'SNAPCHAT') content = '<i class="fa-brands fa-snapchat"></i>';
-                        else {
-                            content = '<i class="fa-solid fa-arrow-up-right-from-square"></i>';
-                        }
-
+                    if (s.active && s.value) {
                         const a = document.createElement('a');
                         a.href = s.value;
                         a.target = '_blank';
-                        a.style.margin = '0 10px';
-                        a.style.color = '#006b98';
-                        a.innerHTML = content;
+                        a.rel = 'noopener noreferrer';
+                        a.className = 'social-btn';
+                        a.setAttribute('aria-label', s.type || 'Social Link');
+
+                        let iconHtml = '<i class="fa-solid fa-arrow-up-right-from-square"></i>';
+                        const type = (s.type || '').toUpperCase();
+
+                        if (type === 'FACEBOOK') iconHtml = '<i class="fa-brands fa-facebook-f"></i>';
+                        else if (type === 'TWITTER' || type === 'X') {
+                            iconHtml = '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+                        }
+                        else if (type === 'INSTAGRAM') iconHtml = '<i class="fa-brands fa-instagram"></i>';
+                        else if (type === 'YOUTUBE') iconHtml = '<i class="fa-brands fa-youtube"></i>';
+                        else if (type === 'TELEGRAM') iconHtml = '<i class="fa-brands fa-telegram"></i>';
+                        else if (type === 'WHATSAPP') iconHtml = '<i class="fa-brands fa-whatsapp"></i>';
+                        else if (type === 'TIKTOK') {
+                            iconHtml = '<svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.36-.54.38-.89.98-1.03 1.64-.13.47-.1.99.09 1.44.35 1.03 1.5 1.74 2.59 1.61.88-.04 1.65-.58 2.02-1.37.15-.33.24-.69.24-1.05V0z"/></svg>';
+                        }
+                        else if (type === 'SNAPCHAT') iconHtml = '<i class="fa-brands fa-snapchat"></i>';
+
+                        a.innerHTML = iconHtml;
                         socialLinksDiv.appendChild(a);
                     }
                 });
             }
 
+            // Dynamic SEO & Meta Update
+            updateSEO(displayName, displayDesc, c.logo);
+
+            // Show Content
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('company-content').style.display = 'block';
         }
+
+        function updateSEO(name, desc, logo) {
+            const pageTitle = `${name} - الخدمات والأكواد والباقات | كونكت تاق`;
+            const currentUrl = window.location.href;
+            const logoUrl = logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+
+            document.getElementById('meta-description')?.setAttribute('content', desc);
+            document.getElementById('canonical-url')?.setAttribute('href', currentUrl);
+
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+            document.querySelector('meta[property="og:description"]')?.setAttribute('content', desc);
+            document.querySelector('meta[property="og:url"]')?.setAttribute('content', currentUrl);
+            document.querySelector('meta[property="og:image"]')?.setAttribute('content', logoUrl);
+
+            document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
+            document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', desc);
+            document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', currentUrl);
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', logoUrl);
+
+            // Update JSON-LD
+            const schemaData = {
+                "@context": "https://schema.org/",
+                "@type": "Organization",
+                "name": name,
+                "url": currentUrl,
+                "logo": logoUrl,
+                "description": desc
+            };
+            document.getElementById('schema-org').textContent = JSON.stringify(schemaData);
+        }
+
+        function handleNotFound() {
+            document.getElementById('loading-screen').style.display = 'none';
+            if (window.toast) {
+                window.toast.show('عذراً، الشركة غير موجودة أو تعذر تحميل البيانات.', 'error');
+            }
+            setTimeout(() => {
+                window.location.href = 'https://connecttag.org/tools/telecom/company/';
+            }, 1500);
+        }
     });
 </script>
-<!-- Modular Web Component: Cookie Consent -->
-<cookie-consent></cookie-consent>
 </body>
 </html>
-
-
