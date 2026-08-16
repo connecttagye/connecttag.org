@@ -4,46 +4,48 @@
  */
 class SiteHeader extends HTMLElement {
   connectedCallback() {
-    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
-    const currentHref = window.location.href.replace(/\/$/, '');
+    const baseUrl = (window.CT_BASE_URL || 'https://connecttag.org').replace(/\/+$/, '');
+    const currentHref = window.location.href.toLowerCase();
+    const currentPath = window.location.pathname.toLowerCase();
 
     // Check active link logic
     const isActive = (targetUrl) => {
-      const target = targetUrl.replace(/\/$/, '');
-      return currentHref === target || currentHref.startsWith(target + '/');
+      const target = targetUrl.toLowerCase().replace(/\/$/, '');
+      if (!target) return false;
+      return currentHref === target || currentHref.startsWith(target + '/') || currentPath === target;
     };
 
-    const getLink = (path) => baseUrl + path;
+    const isHome = currentPath === '/' || currentPath === '/index.html' || currentHref === (baseUrl + '/').toLowerCase();
 
     this.innerHTML = `
       <header class="ct-header-navbar">
         <div class="ct-header-container">
-          <a href="${getLink('')}" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${getLink('assets/img/connect-tag-official-logo.webp')}" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+          <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
+            <img src="${baseUrl}/assets/img/connect-tag-official-logo.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
             <ul class="ct-nav-menu" id="ct-nav-menu">
-              <li class="ct-nav-item ${isActive(getLink('')) ? 'active' : ''}">
-                <a href="${getLink('')}" class="ct-nav-link">الرئيسية</a>
+              <li class="ct-nav-item ${isHome ? 'active' : ''}">
+                <a href="${baseUrl}/" class="ct-nav-link">الرئيسية</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('about/our-company')) ? 'active' : ''}">
-                <a href="${getLink('about/our-company')}" class="ct-nav-link">من نحن</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/about/') || isActive(baseUrl + '/about/our-company') ? 'active' : ''}">
+                <a href="${baseUrl}/about/our-company" class="ct-nav-link">من نحن</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('projects/')) ? 'active' : ''}">
-                <a href="${getLink('projects/')}" class="ct-nav-link">أعمالنا</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/projects/') ? 'active' : ''}">
+                <a href="${baseUrl}/projects/" class="ct-nav-link">أعمالنا</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('services/')) ? 'active' : ''}">
-                <a href="${getLink('services/')}" class="ct-nav-link">الخدمات</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/services/') ? 'active' : ''}">
+                <a href="${baseUrl}/services/" class="ct-nav-link">الخدمات</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('blog/')) ? 'active' : ''}">
-                <a href="${getLink('blog/')}" class="ct-nav-link">المدونة</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}">
+                <a href="${baseUrl}/blog/" class="ct-nav-link">المدونة</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('store/')) ? 'active' : ''}">
-                <a href="${getLink('store/')}" class="ct-nav-link">المتجر</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}">
+                <a href="${baseUrl}/store/" class="ct-nav-link">المتجر</a>
               </li>
-              <li class="ct-nav-item ${isActive(getLink('tools/')) ? 'active' : ''}">
-                <a href="${getLink('tools/')}" class="ct-nav-link">الأدوات</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}">
+                <a href="${baseUrl}/tools/" class="ct-nav-link">الأدوات</a>
               </li>
             </ul>
           </nav>

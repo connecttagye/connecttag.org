@@ -8,7 +8,7 @@
 
 
   <!-- OpenGraph meta -->
-  <meta property="og:url" content="https://connecttag.org/tools/telecom/company" />
+  <meta property="og:url" content="https://connecttag.org/tools/telecom/company/" />
   <meta property="og:type" content="website">
   <meta property="og:title" content="دليل شركات الاتصالات اليمنية - كونكت تاق" />
   <meta property="og:description" content="استعرض الخدمات، الأكواد، وباقات الإنترنت لكافة شركات الاتصالات في اليمن." />
@@ -26,12 +26,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.4">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.4">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.4">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.4">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5">
 
 
 
@@ -57,8 +57,8 @@
       font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
     }
   </style>
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.4" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.4" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
 
 <style>
     /* New Unified Tools Header - White Style */
@@ -237,11 +237,11 @@
                 const cardCol = document.createElement('div');
                 cardCol.className = 'col-md-4 col-sm-6';
                 cardCol.innerHTML = `
-                    <div class="company-card" onclick="location.href='details.html?id=${c.id}'">
+                    <div class="company-card" onclick="location.href='details?id=${c.id}'">
                         <img src="${c.logo}" alt="${c.arName}" class="company-logo" onerror="this.src='https://connecttag.org/assets/img/connect-tag-official-logo.webp'">
                         <h3 class="company-name">${c.arName}</h3>
                         <p class="company-desc">${c.arDescription || 'شركة اتصالات يمنية رائدة تقدم خدمات الجوال والإنترنت.'}</p>
-                        <a href="https://connecttag.org/tools/telecom/company/details.html?id=${c.id}" class="btn-details">عرض التفاصيل</a>
+                        <a href="https://connecttag.org/tools/telecom/company/details?id=${c.id}" class="btn-details">عرض التفاصيل</a>
                     </div>
                 `;
                 grid.appendChild(cardCol);

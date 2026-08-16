@@ -20,7 +20,7 @@ class SiteBreadcrumb extends HTMLElement {
     // Default fallback if no custom items supplied
     if (!breadcrumbItems.length) {
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
-      breadcrumbItems.push({ title: 'الرئيسية', url: baseUrl });
+      breadcrumbItems.push({ title: 'الرئيسية', url: baseUrl + '/' });
       
       const segmentMap = {
         'blog': 'المدونة',
@@ -49,18 +49,25 @@ class SiteBreadcrumb extends HTMLElement {
         'faq': 'الأسئلة الشائعة'
       };
 
-      let currentAccUrl = baseUrl;
+      let currentAccUrl = baseUrl + '/';
       pathSegments.forEach((seg, idx) => {
         // Skip root folder names, project names, or index files
         const skipSegments = ['connecttag.org', 'connecttagsite', 'index', 'index.html', 'index.php', ''];
         if (skipSegments.includes(seg.toLowerCase())) return;
 
-        currentAccUrl += seg.replace(/\.html$/i, '') + '/';
+        const isHtml = seg.endsWith('.html');
+        const cleanSeg = seg.replace(/\.(html|php)$/i, '');
+        const isLast = idx === pathSegments.length - 1;
 
-        let title = decodeURIComponent(seg);
+        currentAccUrl += cleanSeg;
 
-        // Remove extensions from titles
-        title = title.replace(/\.(html|php)$/i, '');
+        // Add trailing slash if it's NOT a .html file and NOT the last segment
+        // OR if it's the last segment but the original URL has a trailing slash
+        if (!isHtml && (!isLast || window.location.pathname.endsWith('/'))) {
+          currentAccUrl += '/';
+        }
+
+        let title = decodeURIComponent(cleanSeg);
 
         // Map common segments or clean up
         if (segmentMap[title.toLowerCase()]) {

@@ -4,7 +4,7 @@
  */
 class SiteFooter extends HTMLElement {
   connectedCallback() {
-    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
+    const baseUrl = (window.CT_BASE_URL || 'https://connecttag.org').replace(/\/+$/, '');
     const currentYear = new Date().getFullYear();
     const getLink = (path) => baseUrl + path;
 
@@ -35,23 +35,23 @@ class SiteFooter extends HTMLElement {
           <div class="ct-footer-col">
             <h4>من نحن وهويتنا</h4>
             <ul class="ct-footer-links">
-              <li><a href="${getLink('')}"><i class="fa-solid fa-angle-left"></i> الرئيسية</a></li>
-              <li><a href="${getLink('about/our-company')}"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
-              <li><a href="${getLink('blog/')}"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
-              <li><a href="${getLink('tools/')}"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
-              <li><a href="${getLink('faq')}"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
-              <li><a href="${getLink('contact')}"><i class="fa-solid fa-angle-left"></i> اتصل بنا</a></li>
+              <li><a href="${baseUrl}/"><i class="fa-solid fa-angle-left"></i> الرئيسية</a></li>
+              <li><a href="${baseUrl}/about/our-company"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
+              <li><a href="${baseUrl}/blog/"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
+              <li><a href="${baseUrl}/tools/"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
+              <li><a href="${baseUrl}/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
+              <li><a href="${baseUrl}/contact"><i class="fa-solid fa-angle-left"></i> اتصل بنا</a></li>
             </ul>
           </div>
 
           <div class="ct-footer-col">
             <h4>أعمالنا وخدماتنا</h4>
             <ul class="ct-footer-links">
-              <li><a href="${getLink('projects/')}"><i class="fa-solid fa-angle-left"></i> معرض الأعمال</a></li>
-              <li><a href="${getLink('projects/apps/')}"><i class="fa-solid fa-angle-left"></i> التطبيقات</a></li>
-              <li><a href="${getLink('projects/sites/')}"><i class="fa-solid fa-angle-left"></i> المواقع</a></li>
-              <li><a href="${getLink('services/hardware-solutions')}"><i class="fa-solid fa-angle-left"></i> متجر المنتجات</a></li>
-              <li><a href="${getLink('about/about-site')}"><i class="fa-solid fa-angle-left"></i> حول هذا الموقع</a></li>
+              <li><a href="${baseUrl}/projects/"><i class="fa-solid fa-angle-left"></i> معرض الأعمال</a></li>
+              <li><a href="${baseUrl}/projects/apps/"><i class="fa-solid fa-angle-left"></i> التطبيقات</a></li>
+              <li><a href="${baseUrl}/projects/sites/"><i class="fa-solid fa-angle-left"></i> المواقع</a></li>
+              <li><a href="${baseUrl}/services/hardware-solutions"><i class="fa-solid fa-angle-left"></i> متجر المنتجات</a></li>
+              <li><a href="${baseUrl}/about/about-site"><i class="fa-solid fa-angle-left"></i> حول هذا الموقع</a></li>
             </ul>
           </div>
 
@@ -72,14 +72,14 @@ class SiteFooter extends HTMLElement {
           <div class="ct-footer-bottom-container">
             <p style="margin: 0; font-size: 13px; color: var(--ct-text-muted);">
               جميع الحقوق محفوظة &copy; ${currentYear} | تم التطوير بواسطة
-              <a href="${getLink('')}" class="ct-footer-credit-link">Connect Tag</a>
+              <a href="${baseUrl}/" class="ct-footer-credit-link">Connect Tag</a>
             </p>
             
             <ul class="ct-footer-legal-links">
-              <li><a href="${getLink('privacy-policy')}">سياسة الخصوصية</a></li>
-              <li><a href="${getLink('terms-of-use')}">اتفاقية الاستخدام</a></li>
-              <li><a href="${getLink('order')}">طلب خدمة</a></li>
-              <li><a href="${getLink('contact')}">الدعم الفني</a></li>
+              <li><a href="${baseUrl}/privacy-policy">سياسة الخصوصية</a></li>
+              <li><a href="${baseUrl}/terms-of-use">اتفاقية الاستخدام</a></li>
+              <li><a href="${baseUrl}/order">طلب خدمة</a></li>
+              <li><a href="${baseUrl}/contact">الدعم الفني</a></li>
             </ul>
           </div>
         </div>
