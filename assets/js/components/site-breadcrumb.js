@@ -40,10 +40,11 @@ class SiteBreadcrumb extends HTMLElement {
         'finance': 'الخدمات المالية',
         'energy': 'حساب الطاقة',
         'design': 'التصميم والوسائط',
+        'misc': 'أدوات متنوعة',
         'services': 'الخدمات',
         'hardware-solutions': 'دليل المنتجات',
         'about': 'من نحن',
-        'our-company': 'تعرف علينا',
+        'our-company': 'الشركة',
         'about-site': 'حول الموقع',
         'contact': 'اتصل بنا',
         'faq': 'الأسئلة الشائعة'

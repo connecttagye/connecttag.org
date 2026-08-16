@@ -1,0 +1,115 @@
+/**
+ * Connect Tag - Shared Tools Styles
+ * This file contains common styles for technical tools to ensure consistency and reduce duplication.
+ */
+
+/* 1. Unified Page Header */
+.page-header-unified {
+    background: #ffffff;
+    padding: 100px 0 60px;
+    text-align: center;
+    border-bottom: 1px solid #edf2f7;
+}
+.page-header-unified h1 {
+    font-weight: 900;
+    font-size: 34px;
+    color: #006b98 !important;
+    margin-bottom: 15px;
+}
+.page-header-unified p {
+    font-size: 16px;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.7;
+}
+
+/* 2. Main Tool Wrapper (Centering) */
+.tool-main-wrapper {
+    padding: 60px 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3. Base Tool Card */
+.tool-card-base {
+    background: #fff;
+    border-radius: 24px;
+    padding: 35px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* 4. Form Elements */
+.form-label {
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 10px;
+    display: block;
+}
+.form-control-custom {
+    border-radius: 12px;
+    border: 2px solid #f1f5f9;
+    padding: 12px 18px;
+    font-weight: 600;
+    transition: 0.3s;
+    width: 100%;
+    outline: none;
+    background: #f8fafc;
+    font-family: inherit;
+}
+.form-control-custom:focus {
+    border-color: #006b98;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1);
+}
+
+/* 5. Info Section (Below the tool) */
+.info-section {
+    margin: 60px auto 80px;
+    background: #fff;
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid #edf2f7;
+    max-width: 850px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+.info-section h2 {
+    font-weight: 800;
+    color: #006b98;
+    margin-bottom: 25px;
+    font-size: 24px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.info-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #006b98;
+    border-radius: 2px;
+}
+.info-section p {
+    line-height: 1.8;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+/* 6. Mobile Responsiveness */
+@media (max-width: 768px) {
+    .page-header-unified { padding: 80px 0 40px; }
+    .page-header-unified h1 { font-size: 28px; }
+    .tool-card-base { padding: 25px; }
+    .info-section { padding: 25px; margin-top: 40px; }
+}

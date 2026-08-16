@@ -34,26 +34,12 @@
     <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .page-header-unified {
-            background: #ffffff; padding: 100px 0 60px; text-align: center; border-bottom: 1px solid #edf2f7;
-        }
-        .page-header-unified h1 { font-weight: 900; font-size: 34px; color: #006b98 !important; margin-bottom: 15px; }
-
-        .zakat-card {
-            background: #fff; border-radius: 24px; padding: 35px; border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-top: -40px; position: relative; z-index: 10;
-        }
-        .form-label { font-weight: 700; color: #475569; margin-bottom: 10px; display: block; }
-        .form-control-custom {
-            border-radius: 12px; border: 2px solid #f1f5f9; padding: 12px 18px; font-weight: 600;
-            transition: 0.3s; width: 100%; outline: none; background: #f8fafc;
-        }
-        .form-control-custom:focus { border-color: #006b98; background: #fff; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
 
         .result-box {
             background: #f0fdf4; border-radius: 15px; padding: 25px; border: 1px dashed #16a34a;
@@ -67,17 +53,8 @@
             font-size: 13px; color: #92400e; font-weight: 700; display: flex; align-items: center; gap: 10px;
         }
 
-        .info-section { margin-top: 60px; background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #edf2f7; }
-        .info-section h2 { font-weight: 800; color: #006b98; margin-bottom: 25px; font-size: 22px; }
-        .info-section p { line-height: 1.8; color: #64748b; margin-bottom: 20px; }
-
         .price-update-box {
             background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .page-header-unified { padding: 80px 0 40px; }
-            .zakat-card { padding: 25px; margin-top: -20px; }
         }
     </style>
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
@@ -94,73 +71,73 @@
         </div>
     </div>
 
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base text-right" data-aos="zoom-in" style="display: inline-block; text-align: right;">
+
+                <div class="price-update-box">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <span class="form-label" style="font-size: 14px; margin-bottom: 5px;">سعر جرام الذهب عيار 24 اليوم (بالعملة المحلية):</span>
+                            <p class="text-muted" style="font-size: 12px; margin: 0;">يستخدم لتحديد "النصاب" (قيمة 85 جرام ذهب)</p>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="number" id="gold-price" class="form-control-custom" value="70000" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nisab-info" id="nisab-display">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>النصاب الحالي هو: <strong id="nisab-value">0</strong> (ما يعادل قيمة 85 جرام من الذهب عيار 24)</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">إجمالي المبالغ النقدية والمدخرات:</label>
+                        <input type="number" id="cash-amount" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">وزن الذهب المدخر (بالجرام):</label>
+                        <input type="number" id="gold-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">وزن الفضة المدخرة (بالجرام):</label>
+                        <input type="number" id="silver-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">أموال مستحقة لك عند الآخرين:</label>
+                        <input type="number" id="debts-to-you" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                    </div>
+                </div>
+
+                <div class="result-box" id="result-wrapper">
+                    <span class="result-label" id="status-label">مبلغ الزكاة الواجب إخراجه:</span>
+                    <span class="result-value" id="zakat-display">0.00</span>
+                    <p id="low-nisab-msg" style="display: none; color: #94a3b8; font-weight: 700; margin-top: 10px;">لم يبلغ مالك النصاب الشرعي بعد.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="zakat-card" data-aos="zoom-in">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>معلومات حول زكاة المال والذهب</h2>
+            <p class="mx-auto" style="max-width: 800px;">الزكاة هي الركن الثالث من أركان الإسلام، وهي واجبة على كل مسلم ملك نصاباً وحال عليه الحول (سنة هجرية كاملة). تهدف هذه الأداة لمساعدتك في تقدير المبلغ الواجب إخراجه بناءً على الضوابط الشرعية.</p>
 
-                    <div class="price-update-box">
-                        <div class="row align-items-center">
-                            <div class="col-md-7">
-                                <span class="form-label" style="font-size: 14px; margin-bottom: 5px;">سعر جرام الذهب عيار 24 اليوم (بالعملة المحلية):</span>
-                                <p class="text-muted" style="font-size: 12px; margin: 0;">يستخدم لتحديد "النصاب" (قيمة 85 جرام ذهب)</p>
-                            </div>
-                            <div class="col-md-5">
-                                <input type="number" id="gold-price" class="form-control-custom" value="70000" oninput="calculate()">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="nisab-info" id="nisab-display">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        <span>النصاب الحالي هو: <strong id="nisab-value">0</strong> (ما يعادل قيمة 85 جرام من الذهب عيار 24)</span>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">إجمالي المبالغ النقدية والمدخرات:</label>
-                            <input type="number" id="cash-amount" class="form-control-custom" placeholder="0.00" oninput="calculate()">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">وزن الذهب المدخر (بالجرام):</label>
-                            <input type="number" id="gold-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">وزن الفضة المدخرة (بالجرام):</label>
-                            <input type="number" id="silver-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">أموال مستحقة لك عند الآخرين:</label>
-                            <input type="number" id="debts-to-you" class="form-control-custom" placeholder="0.00" oninput="calculate()">
-                        </div>
-                    </div>
-
-                    <div class="result-box" id="result-wrapper">
-                        <span class="result-label" id="status-label">مبلغ الزكاة الواجب إخراجه:</span>
-                        <span class="result-value" id="zakat-display">0.00</span>
-                        <p id="low-nisab-msg" style="display: none; color: #94a3b8; font-weight: 700; margin-top: 10px;">لم يبلغ مالك النصاب الشرعي بعد.</p>
-                    </div>
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-scale-balanced text-primary"></i> كيف يحسب النصاب؟</h3>
+                    <p style="font-size:14px;">يحدد نصاب الزكاة بقيمة <strong>85 جراماً من الذهب الصافي (عيار 24)</strong>. إذا بلغ مجموع أموالك النقدية ومدخراتك هذه القيمة، وجبت عليك الزكاة بنسبة 2.5%.</p>
                 </div>
-
-                <div class="info-section" data-aos="fade-up">
-                    <h2>معلومات حول زكاة المال والذهب</h2>
-                    <p>الزكاة هي الركن الثالث من أركان الإسلام، وهي واجبة على كل مسلم ملك نصاباً وحال عليه الحول (سنة هجرية كاملة). تهدف هذه الأداة لمساعدتك في تقدير المبلغ الواجب إخراجه بناءً على الضوابط الشرعية.</p>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-scale-balanced text-primary"></i> كيف يحسب النصاب؟</h3>
-                            <p style="font-size:14px;">يحدد نصاب الزكاة بقيمة <strong>85 جراماً من الذهب الصافي (عيار 24)</strong>. إذا بلغ مجموع أموالك النقدية ومدخراتك هذه القيمة، وجبت عليك الزكاة بنسبة 2.5%.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-coins text-primary"></i> زكاة الذهب والفضة</h3>
-                            <p style="font-size:14px;">تجب الزكاة في الذهب إذا بلغ 85 جراماً فأكثر، وفي الفضة إذا بلغت 595 جراماً فأكثر. أما ذهب الزينة (المعد للاستعمال) ففيه خلاف بين الفقهاء، والأحوط إخراج زكاته إذا بلغ النصاب.</p>
-                        </div>
-                    </div>
-
-                    <div class="alert alert-success mt-4" style="border-radius:15px; border:none; background: #f0fdf4; color: #166534;">
-                        <strong>ملاحظة هامة:</strong> هذه الأداة هي وسيلة حسابية تقريبية. في الحالات المعقدة أو المسائل الفقهية الدقيقة، يُنصح دائماً باستشارة أهل العلم والاختصاص.
-                    </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-coins text-primary"></i> زكاة الذهب والفضة</h3>
+                    <p style="font-size:14px;">تجب الزكاة في الذهب إذا بلغ 85 جراماً فأكثر، وفي الفضة إذا بلغت 595 جراماً فأكثر. أما ذهب الزينة (المعد للاستعمال) ففيه خلاف بين الفقهاء، والأحوط إخراج زكاته إذا بلغ النصاب.</p>
                 </div>
+            </div>
+
+            <div class="alert alert-success mt-4 mx-auto" style="border-radius:15px; border:none; background: #f0fdf4; color: #166534; max-width: 800px;">
+                <strong>ملاحظة هامة:</strong> هذه الأداة هي وسيلة حسابية تقريبية. في الحالات المعقدة أو المسائل الفقهية الدقيقة، يُنصح دائماً باستشارة أهل العلم والاختصاص.
             </div>
         </div>
     </div>

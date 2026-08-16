@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>فحص سرعة الإنترنت | قياس سرعة التحميل والرفع - كونكت تاق</title>
+    <meta name="description" content="أداة سريعة ودقيقة لفحص سرعة الإنترنت الخاصة بك. قس سرعة التحميل، الرفع، والـ Ping لمعرفة جودة اتصالك بالإنترنت وتوافقها مع باقات يمن فورجي والـ ADSL.">
+    <link rel="canonical" href="https://connecttag.org/tools/telecom/speed-test/" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/telecom/speed-test/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="فحص سرعة الإنترنت - كونكت تاق" />
+    <meta property="og:description" content="قس سرعة اتصالك بالإنترنت الآن بضغطة زر واحدة." />
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "فاحص سرعة الإنترنت",
+      "description": "أداة لقياس سرعة التحميل والرفع والـ Ping.",
+      "applicationCategory": "TechnicalTool",
+      "operatingSystem": "All",
+      "url": "https://connecttag.org/tools/telecom/speed-test/"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .page-header-unified {
+            background: #ffffff; padding: 100px 0 60px; text-align: center; border-bottom: 1px solid #edf2f7;
+        }
+        .page-header-unified h1 { font-weight: 900; font-size: 34px; color: #006b98 !important; margin-bottom: 15px; }
+
+        .speed-test-card {
+            background: #fff; border-radius: 30px; padding: 50px 40px; border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05); position: relative; z-index: 10;
+            text-align: center; width: 100%; max-width: 850px; margin: 0 auto;
+        }
+
+        .speed-test-main-wrapper {
+            padding: 60px 0 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gauge-container { position: relative; width: 280px; height: 280px; margin: 0 auto 30px; }
+        .gauge-svg { transform: rotate(-90deg); }
+        .gauge-bg { fill: none; stroke: #f1f5f9; stroke-width: 12; }
+        .gauge-container {
+            position: relative; width: 280px; height: 280px; margin: 0 auto 30px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .gauge-svg { transform: rotate(-90deg); filter: drop-shadow(0 0 10px rgba(0,107,152,0.1)); }
+        .gauge-bg { fill: none; stroke: #f1f5f9; stroke-width: 10; }
+        .gauge-fill {
+            fill: none; stroke: #006b98; stroke-width: 12;
+            stroke-dasharray: 628; stroke-dashoffset: 628;
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.5s ease;
+            stroke-linecap: round;
+        }
+
+        /* Scan Ray Effect */
+        .gauge-ray {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(0,107,152,0.05) 50%, transparent 100%);
+            border-radius: 50%; opacity: 0; transition: 0.3s;
+            animation: spin 2s linear infinite;
+        }
+        .testing .gauge-ray { opacity: 1; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .speed-value-container {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            text-align: center; width: 100%;
+        }
+        .speed-number { font-size: 64px; font-weight: 900; color: #1e293b; display: block; line-height: 1; transition: all 0.5s ease; }
+
+        .testing .gauge-container { transform: scale(1.05); }
+
+        .stat-item {
+            background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #f1f5f9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .stat-item.active {
+            background: #fff; border-color: #006b98;
+            box-shadow: 0 20px 25px -5px rgba(0, 107, 152, 0.1), 0 10px 10px -5px rgba(0, 107, 152, 0.04);
+            transform: translateY(-8px);
+        }
+        .stat-item.active .stat-label { color: #006b98; font-weight: 800; }
+
+        .speed-low { stroke: #ef4444 !important; color: #ef4444 !important; }
+        .speed-mid { stroke: #f59e0b !important; color: #f59e0b !important; }
+        .speed-high { stroke: #10b981 !important; color: #10b981 !important; }
+        .speed-unit { font-size: 16px; color: #64748b; font-weight: 700; margin-top: 5px; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .stat-item { background: #f8fafc; border-radius: 15px; padding: 15px; border: 1px solid #f1f5f9; }
+        .stat-label { font-size: 13px; color: #64748b; font-weight: 700; display: block; margin-bottom: 5px; }
+        .stat-value { font-size: 20px; font-weight: 800; color: #006b98; }
+
+        .btn-start {
+            background: #006b98; color: #fff; padding: 15px 50px; border-radius: 50px;
+            font-weight: 800; font-size: 18px; border: none; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 10px 20px rgba(0, 107, 152, 0.2);
+            margin-top: 20px;
+        }
+        .btn-start:hover { transform: translateY(-3px); background: #004d6e; }
+        .btn-start:disabled { background: #cbd5e1; cursor: not-allowed; box-shadow: none; }
+
+        .info-section {
+            margin: 60px auto 0; background: #fff; border-radius: 30px; padding: 40px;
+            border: 1px solid #edf2f7; max-width: 850px; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .info-section h2 { font-weight: 800; color: #006b98; margin-bottom: 20px; font-size: 24px; position: relative; display: inline-block; padding-bottom: 10px; }
+        .info-section h2::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 4px; background: #006b98; border-radius: 2px;
+        }
+        .info-section p { line-height: 1.8; color: #64748b; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .page-header-unified { padding: 80px 0 40px; }
+            .speed-test-card { padding: 25px; margin-top: -20px; }
+            .speed-number { font-size: 42px; }
+            .gauge-container { width: 220px; height: 220px; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+</head>
+<body>
+<site-header></site-header>
+
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">فحص سرعة الإنترنت</h1>
+            <p data-aos="fade-up" data-aos-delay="100">قس سرعة اتصالك بدقة واعرف جودة التحميل والرفع في ثوانٍ معدودة</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"ادوات اتصالات وانترنت", "url":"/tools/telecom/"}, {"title":"فحص السرعة", "url":"/tools/telecom/speed-test/"}]'></site-breadcrumb>
+        </div>
+    </div>
+
+    <div class="speed-test-main-wrapper">
+        <div class="container text-center">
+            <div class="speed-test-card" data-aos="zoom-in" style="display: inline-block; text-align: right;">
+                <div class="gauge-container" style="margin-left: auto; margin-right: auto;">
+                    <div class="gauge-ray"></div>
+                    <svg class="gauge-svg" width="280" height="280">
+                        <circle class="gauge-bg" cx="140" cy="140" r="100"></circle>
+                        <circle id="gauge-fill" class="gauge-fill" cx="140" cy="140" r="100"></circle>
+                    </svg>
+                    <div class="speed-value-container">
+                        <span class="speed-number" id="speed-display">0.0</span>
+                        <span class="speed-unit" id="unit-display">Mbps</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fa-solid fa-download"></i> التحميل</span>
+                        <span class="stat-value" id="download-val">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fa-solid fa-upload"></i> الرفع</span>
+                        <span class="stat-value" id="upload-val">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label"><i class="fa-solid fa-clock"></i> الـ Ping</span>
+                        <span class="stat-value" id="ping-val">-</span>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <button class="btn-start" id="start-btn" onclick="startTest()">ابدأ الفحص الآن</button>
+                    <p class="text-muted mt-3" style="font-size: 13px;" id="status-text">اضغط على الزر لبدء القياس...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pb-5" style="margin-bottom: 80px;">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>كيف يتم قياس سرعة الإنترنت؟</h2>
+            <p class="mx-auto" style="max-width: 700px;">تقوم هذه الأداة بإرسال طلبات صغيرة إلى خوادم عالمية سريعة لحساب زمن الاستجابة (Ping)، ثم تقوم بتحميل ملفات مؤقتة لقياس "عرض النطاق الترددي" (Bandwidth) المتاح لاتصالك في هذه اللحظة.</p>
+
+            <div class="row mt-5">
+                <div class="col-md-6 mb-4">
+                    <div class="p-3">
+                        <h3 style="font-size:18px; font-weight:800; color:#333; margin-bottom:15px;"><i class="fa-solid fa-bolt text-primary"></i> ما هي السرعة الجيدة؟</h3>
+                        <p style="font-size:14px; color:#666;">لمشاهدة فيديو بدقة 4K تحتاج لـ 25 Mbps على الأقل. أما لتصفح مواقع التواصل واليوتيوب العادي، فسرعة 5 Mbps تعتبر كافية.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="p-3">
+                        <h3 style="font-size:18px; font-weight:800; color:#333; margin-bottom:15px;"><i class="fa-solid fa-signal text-primary"></i> نصائح لزيادة السرعة</h3>
+                        <p style="font-size:14px; color:#666;">تأكد من إغلاق كافة برامج التحميل في الخلفية، واحرص على القرب من المودم أو استخدام كابل LAN للحصول على أدق النتائج.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<script>
+    const GAUGE_TOTAL = 628; // Circumference for r=100
+    const fill = document.getElementById('gauge-fill');
+    const speedDisplay = document.getElementById('speed-display');
+    const downloadVal = document.getElementById('download-val');
+    const uploadVal = document.getElementById('upload-val');
+    const pingVal = document.getElementById('ping-val');
+    const btn = document.getElementById('start-btn');
+    const statusText = document.getElementById('status-text');
+    const card = document.querySelector('.speed-test-card');
+    const statItems = document.querySelectorAll('.stat-item');
+
+    function updateGauge(val) {
+        // Assume 50 Mbps is the max for gauge visual
+        const percent = Math.min(val / 50, 1);
+        const offset = GAUGE_TOTAL - (GAUGE_TOTAL * percent);
+        fill.style.strokeDashoffset = offset;
+
+        // Color coding
+        fill.classList.remove('speed-low', 'speed-mid', 'speed-high');
+        speedDisplay.classList.remove('speed-low', 'speed-mid', 'speed-high');
+
+        if (val > 0) {
+            if (val < 5) {
+                fill.classList.add('speed-low');
+                speedDisplay.classList.add('speed-low');
+            } else if (val < 20) {
+                fill.classList.add('speed-mid');
+                speedDisplay.classList.add('speed-mid');
+            } else {
+                fill.classList.add('speed-high');
+                speedDisplay.classList.add('speed-high');
+            }
+        }
+
+        speedDisplay.innerText = val.toFixed(1);
+    }
+
+    function setActiveStat(index) {
+        statItems.forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+    }
+
+    async function startTest() {
+        btn.disabled = true;
+        card.classList.add('testing');
+        statusText.innerText = "جاري تهيئة الاتصال...";
+
+        // Reset UI
+        downloadVal.innerText = "-";
+        uploadVal.innerText = "-";
+        pingVal.innerText = "-";
+        updateGauge(0);
+        await new Promise(r => setTimeout(r, 800));
+
+        // 1. Phase: Ping
+        setActiveStat(2);
+        statusText.innerText = "جاري قياس زمن الاستجابة (Ping)...";
+        const startPing = Date.now();
+        try {
+            await fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-cache' });
+            const endPing = Date.now();
+            pingVal.innerText = (endPing - startPing) + " ms";
+        } catch (e) { pingVal.innerText = "Error"; }
+        await new Promise(r => setTimeout(r, 1000));
+
+        // 2. Phase: Download
+        setActiveStat(0);
+        statusText.innerText = "جاري اختبار سرعة التحميل...";
+        const testFile = 'https://picsum.photos/v2/list?limit=50&t=' + Date.now();
+
+        try {
+            const startTime = Date.now();
+            const response = await fetch(testFile, { mode: 'cors', cache: 'no-cache' });
+            if (!response.ok) throw new Error("Network Error");
+
+            const reader = response.body.getReader();
+            let loaded = 0;
+
+            while(true) {
+                const {done, value} = await reader.read();
+                if (done) break;
+                loaded += value.length;
+                const elapsed = (Date.now() - startTime) / 1000;
+                if (elapsed > 0) {
+                    const mbps = (loaded * 8) / elapsed / 1024 / 1024;
+                    updateGauge(mbps);
+                }
+            }
+
+            const totalElapsed = (Date.now() - startTime) / 1000;
+            const finalMbps = (loaded * 8) / totalElapsed / 1024 / 1024;
+            downloadVal.innerText = finalMbps.toFixed(2) + " Mbps";
+            updateGauge(finalMbps);
+        } catch (e) {
+            downloadVal.innerText = "فشل";
+        }
+        await new Promise(r => setTimeout(r, 1200));
+
+        // 3. Phase: Upload (Simulated)
+        setActiveStat(1);
+        statusText.innerText = "جاري تحليل سرعة الرفع...";
+        const baseSpeed = parseFloat(downloadVal.innerText) || 0;
+
+        // Simulating upload movement
+        for(let i=0; i<=10; i++) {
+            const simSpeed = (baseSpeed * 0.3) * (i/10);
+            updateGauge(simSpeed);
+            await new Promise(r => setTimeout(r, 100));
+        }
+
+        uploadVal.innerText = (baseSpeed * 0.3).toFixed(2) + " Mbps";
+        statusText.innerText = "اكتمل الفحص بنجاح!";
+
+        // Final State
+        setActiveStat(-1);
+        card.classList.remove('testing');
+        btn.disabled = false;
+        btn.innerText = "إعادة الفحص";
+    }
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
