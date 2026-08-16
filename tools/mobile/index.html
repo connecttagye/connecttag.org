@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>أدوات مطوري تطبيقات الأندرويد والجوال - كونكت تاق</title>
+    <meta name="description" content="أدوات متقدمة لمطوري تطبيقات Android: توليد صلاحيات المانيفست، تحليل الملفات، إنشاء الروابط العميقة (Deep Links)، وتصميم لقطات المتجر باحترافية.">
+    <link rel="canonical" href="https://connecttag.org/tools/mobile/" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/mobile/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="أدوات مطوري تطبيقات الأندرويد والجوال - كونكت تاق" />
+    <meta property="og:description" content="حسن تجربة تطوير تطبيقاتك مع أدواتنا الذكية المخصصة لنظام أندرويد." />
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "أدوات مطوري تطبيقات الأندرويد والجوال",
+      "description": "مجموعة أدوات لمطوري تطبيقات الجوال تشمل الصلاحيات، الروابط العميقة، وتحليل المانيفست.",
+      "url": "https://connecttag.org/tools/mobile/"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #fcfcfc; }
+        .page-header-unified {
+            background: #ffffff;
+            padding: 100px 0 60px;
+            color: #333;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .page-header-unified h1 { font-weight: 800; font-size: 38px; color: #006b98 !important; }
+        .section-desc { max-width: 800px; margin: 40px auto; text-align: center; color: #555; line-height: 1.8; font-size: 18px; }
+        .tool-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #eee;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .tool-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-color: #006b98; }
+        .tool-card i { font-size: 50px; color: #006b98; margin-bottom: 25px; }
+        .tool-card h3 { font-weight: bold; color: #333; margin-bottom: 15px; }
+        .tool-card p { color: #777; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        .tool-btn {
+            background: #006b98; color: #fff; padding: 10px 25px; border-radius: 25px;
+            text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .tool-btn:hover { background: #004d6e; color: #fff; }
+    </style>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+</head>
+<body>
+<site-header></site-header>
+
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1>أدوات تطبيقات الجوال</h1>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات تطبيقات الجوال", "url":"/tools/mobile/"}]'></site-breadcrumb>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="section-desc">
+            <p>نقدم لمطوري تطبيقات الأندرويد مجموعة مختارة من الأدوات التي تسهل التعامل مع الملفات التقنية، إدارة الصلاحيات، وتحسين ظهور التطبيق في المتاجر. هدفنا هو تزويد المطورين في اليمن والوطن العربي بحلول برمجية ترفع من جودة تطبيقاتهم.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa-solid fa-shield"></i>
+                    <h3>صلاحيات أندرويد</h3>
+                    <p>أداة ذكية لمطوري أندرويد لتوليد أكواد الصلاحيات لملف AndroidManifest.xml بسهولة.</p>
+                    <a href="https://connecttag.org/tools/mobile/android-permissions/" class="tool-btn">توليد الأكواد</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa-regular fa-file-code"></i>
+                    <h3>فاحص ملف المانيفست</h3>
+                    <p>حلل ملف AndroidManifest.xml وكشف الصلاحيات الحساسة التي قد تسبب رفض تطبيقك.</p>
+                    <a href="https://connecttag.org/tools/mobile/manifest-analyzer/" class="tool-btn">ابدأ الفحص</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa-solid fa-link"></i>
+                    <h3>مولد الروابط العميقة</h3>
+                    <p>قم بإنشاء واختبار روابط Deep Links بصيغة intent:// و https:// لفتح صفحات تطبيقك مباشرة.</p>
+                    <a href="https://connecttag.org/tools/mobile/deep-link-generator/" class="tool-btn">إنشاء الروابط</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tool-card">
+                    <i class="fa-solid fa-desktop"></i>
+                    <h3>مولد لقطات المتاجر</h3>
+                    <p>صمم لقطات شاشة احترافية لتطبيقك على متجر بلاي وآب ستور مع إطارات هواتف عصرية.</p>
+                    <a href="https://connecttag.org/tools/mobile/screenshot-generator/" class="tool-btn">ابدأ التصميم</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+</body>
+</html>

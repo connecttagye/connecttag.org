@@ -35,7 +35,7 @@ class SiteBreadcrumb extends HTMLElement {
         'tools': 'الأدوات',
         'telecom': 'أدوات الاتصالات',
         'web': 'أدوات الويب',
-        'mobile': 'أدوات الأندرويد',
+        'mobile': 'أدوات تطبيقات الجوال',
         'security': 'الأمن والخصوصية',
         'finance': 'الخدمات المالية',
         'energy': 'حساب الطاقة',
