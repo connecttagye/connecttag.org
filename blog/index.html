@@ -53,7 +53,7 @@
 
         /* تحسين الهيدر */
         .page-header-unified {
-            background-image: linear-gradient(rgba(13, 0, 26, 0.75), rgba(0, 119, 182, 0.85)), url('https://connecttag.org/assets/img/blog-cover.webp') !important;
+            background-image: linear-gradient(rgba(13, 0, 26, 0.75), rgba(0, 119, 182, 0.85)), url('https://connecttag.org/assets/img/blog-cover.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
             padding: 160px 0 100px !important;
@@ -123,92 +123,42 @@
 
         .filter-wrapper {
             background: #fff;
-            padding: 12px 15px;
-            border-radius: 100px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 20px 30px;
+            border-radius: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: nowrap;
-            gap: 15px;
-            border: 1px solid #f0f0f0;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .search-box {
             flex-grow: 1;
             position: relative;
-            max-width: 350px;
+            max-width: 400px;
         }
 
         .search-box input {
             width: 100%;
-            padding: 10px 40px 10px 15px;
+            padding: 12px 45px 12px 20px;
             border: 1px solid #eee;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
             outline: none;
-            transition: all 0.3s;
-            background: #fdfdfd;
+            transition: border-color 0.3s;
         }
 
         .search-box input:focus {
             border-color: #0077b6;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
         }
 
         .search-box i {
             position: absolute;
-            right: 15px;
+            right: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-
-        /* التصنيفات كأزرار Pills */
-        .categories-tabs {
-            display: flex;
-            align-items: center;
-            gap: 8px !important;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 5px 0;
-            scrollbar-width: none;
-        }
-
-        .categories-tabs::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-label {
-            font-weight: 700;
-            color: #333;
-            font-size: 0.85rem;
-            margin-left: 5px;
-        }
-
-        .categories-tabs a {
-            color: #666 !important;
-            text-decoration: none !important;
-            font-size: 0.82rem !important;
-            padding: 8px 18px !important;
-            border-radius: 50px !important;
-            transition: all 0.3s !important;
-            background: #f5f7f9 !important;
-            border: 1px solid transparent !important;
-            font-weight: 600 !important;
-        }
-
-        .categories-tabs a:hover {
-            background: #edf2f7 !important;
-            color: #0077b6 !important;
-        }
-
-        .categories-tabs a.active {
-            background: #0077b6 !important;
-            color: #fff !important;
-            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25);
+            color: #aaa;
         }
 
         /* تصميم بطاقة المقال المتطور */
@@ -406,14 +356,14 @@
                                 <label for="blog-search" class="sr-only">ابحث عن مقال</label>
                                 <input type="text" id="blog-search" placeholder="ابحث عن مقال معين...">
                             </div>
-                            <div class="categories-tabs d-none d-md-flex">
-                                <span class="category-label">التصنيفات:</span>
-                                <a href="#" class="active">الكل</a>
-                                <a href="#">الأمن السيبراني</a>
-                                <a href="#">برمجة وتطوير</a>
-                                <a href="#">استضافة وسحابيات</a>
-                                <a href="#">تسويق وأعمال</a>
-                                <a href="#">اتصالات وإنترنت</a>
+                            <div class="categories-tabs d-none d-md-flex" style="gap: 15px;">
+                                <span style="font-weight: 700; color: #0077b6;">التصنيفات:</span>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">الكل</a>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">الأمن السيبراني</a>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">برمجة وتطوير</a>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">استضافة وسحابيات</a>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">تسويق وأعمال</a>
+                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">اتصالات وإنترنت</a>
                             </div>
                         </div>
                     </div>
@@ -825,10 +775,9 @@
         categoryLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-
-                // تحديث الحالة النشطة
-                categoryLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+                categoryLinks.forEach(l => l.style.fontWeight = 'normal');
+                this.style.fontWeight = 'bold';
+                this.style.color = '#0077b6';
 
                 const categoryFilter = this.textContent.trim().toLowerCase();
 
