@@ -112,6 +112,7 @@
 
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
     <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
         @font-face {
@@ -320,6 +321,20 @@
         .info-label { color: #64748b; font-weight: 700; font-size: 13.5px; }
         .info-value { color: #1e293b; font-weight: 800; font-size: 15px; }
 
+        .info-section-title {
+            background: #f8fafc;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #006b98;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid #e89a2f;
+        }
+
         /* History Section */
         .history-section {
             margin-top: 25px;
@@ -477,6 +492,11 @@
                             </div>
                         </div>
 
+                        <!-- Cloudflare Turnstile -->
+                        <div id="turnstile-container" style="margin-top: 15px; display: flex; justify-content: center;">
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAESEvCF8w4t-bM2u" data-callback="onTurnstileSuccess"></div>
+                        </div>
+
                         <div id="historySection" class="history-section" style="display:none;">
                             <div class="history-title">
                                 <span><i class="fa-solid fa-clock-rotate-left"></i> عمليات البحث الأخيرة:</span>
@@ -503,21 +523,90 @@
                     <div id="resultCard" class="result-card">
                         <div class="result-header">
                             <div class="status-icon" id="resIcon"><i class="fa-solid fa-shield-check"></i></div>
-                            <h3>بيانات الهوية التقنية</h3>
+                            <h3>بيانات الهوية التقنية التفصيلية</h3>
                         </div>
 
+                        <!-- Basic Section -->
+                        <div class="info-section-title"><i class="fa-solid fa-info-circle"></i> معلومات الجهاز الأساسية</div>
                         <ul class="info-list">
                             <li class="info-item">
                                 <span class="info-label">الشركة المصنعة</span>
                                 <span class="info-value" id="resBrand">-</span>
                             </li>
                             <li class="info-item">
-                                <span class="info-label">الموديل والمواصفات</span>
-                                <span class="info-value" id="resSpecs">-</span>
+                                <span class="info-label">الموديل (Marketing)</span>
+                                <span class="info-value" id="resMarketingName">-</span>
                             </li>
                             <li class="info-item">
+                                <span class="info-label">اسم الطراز (Model)</span>
+                                <span class="info-value" id="resModelName">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">نوع الجهاز</span>
+                                <span class="info-value" id="resDeviceType">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">نظام التشغيل</span>
+                                <span class="info-value" id="resOsName">-</span>
+                            </li>
+                        </ul>
+
+                        <!-- Technical Specs Section -->
+                        <div class="info-section-title"><i class="fa-solid fa-microchip"></i> المواصفات الفنية والهيكل</div>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">نوع الجسم / الهيكل</span>
+                                <span class="info-value" id="resBodyType">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">عدد شرائح SIM</span>
+                                <span class="info-value" id="resSimSlots">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">دعم شريحة eSIM</span>
+                                <span class="info-value" id="resEsimSlots">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">دعم NFC</span>
+                                <span class="info-value" id="resNfc">-</span>
+                            </li>
+                        </ul>
+
+                        <!-- Connectivity Section -->
+                        <div class="info-section-title"><i class="fa-solid fa-tower-cell"></i> تقنيات الاتصال والشبكات</div>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">ترددات الجيل الرابع 4G</span>
+                                <span class="info-value" id="resBands4g">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">ترددات الجيل الخامس 5G</span>
+                                <span class="info-value" id="resBands5g">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">التقنيات المدعومة</span>
+                                <span class="info-value" id="resTechs">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">WiFi / WLAN</span>
+                                <span class="info-value" id="resWlan">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Bluetooth</span>
+                                <span class="info-value" id="resBluetooth">-</span>
+                            </li>
+                        </ul>
+
+                        <!-- Security/Verification Section -->
+                        <div class="info-section-title"><i class="fa-solid fa-fingerprint"></i> بيانات التحقق والاعتماد</div>
+                        <ul class="info-list">
+                            <li class="info-item">
                                 <span class="info-label">رقم الـ TAC المعتمد</span>
-                                <span class="info-value" id="resTac">-</span>
+                                <span class="info-value" id="resTac" style="font-family: monospace; letter-spacing: 1px; color: #006b98;">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">معرف الجهاز (Code)</span>
+                                <span class="info-value" id="resDeviceCode">-</span>
                             </li>
                             <li class="info-item">
                                 <span class="info-label">حالة الفحص</span>
@@ -628,6 +717,11 @@
             if (e.which === 13 || e.keyCode === 13) performSearch();
         });
 
+        let currentTurnstileToken = '';
+        window.onTurnstileSuccess = function(token) {
+            currentTurnstileToken = token;
+        };
+
         function performSearch() {
             const val = searchInput.value.trim();
             const type = document.querySelector('input[name="searchType"]:checked').value;
@@ -637,26 +731,52 @@
                 return;
             }
 
+            if (!currentTurnstileToken) {
+                showError('يرجى تأكيد أنك لست روبوت (تحقق Turnstile).');
+                return;
+            }
+
             resultCard.style.display = 'none';
             errorMessage.style.display = 'none';
             searchBox.classList.add('scanning');
             skeletonLoader.style.display = 'block';
 
-            const apiUrl = 'https://api.connecttag.app/v5/yemen4g/tac/search';
-            const apiKey = 'ktmo5flizpu';
+            // New API Path: v1/master-data/tac
+            let apiUrl = 'https://api.connecttag.app/v1/master-data/tac/';
 
-            fetch(`${apiUrl}?X-Api-Key=${apiKey}&${type}=${encodeURIComponent(val)}`)
+            if (type === 'q') {
+                apiUrl += `search?q=${encodeURIComponent(val)}&cf_token=${currentTurnstileToken}`;
+            } else {
+                // For imei and tac, we use the direct lookup path
+                apiUrl += `${encodeURIComponent(val)}?cf_token=${currentTurnstileToken}`;
+            }
+
+            fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
                 setTimeout(() => {
                     searchBox.classList.remove('scanning');
                     skeletonLoader.style.display = 'none';
 
-                    if (data.success && data.result && !data.result.error) {
-                        displayResult(data.result);
-                        saveToHistory(val);
+                    // Reset Turnstile for next attempt
+                    if (window.turnstile) {
+                        turnstile.reset();
+                        currentTurnstileToken = '';
+                    }
+
+                    if (data.success && data.result) {
+                        // If it's a search result (array), take the first item
+                        const result = Array.isArray(data.result) ? data.result[0] : data.result;
+
+                        if (result) {
+                            displayResult(result);
+                            saveToHistory(val);
+                        } else {
+                            showError('لم يتم العثور على سجلات مطابقة لهذا الرقم.');
+                        }
                     } else {
-                        const msg = (data.result && data.result.error) ? data.result.error : 'لم يتم العثور على سجلات مطابقة.';
+                        // Handle error object or string
+                        const msg = data.error ? (typeof data.error === 'object' ? data.error.message : data.error) : 'لم يتم العثور على نتائج.';
                         showError(msg);
                     }
                 }, 800);
@@ -665,42 +785,135 @@
                 console.error('Fetch error:', error);
                 searchBox.classList.remove('scanning');
                 skeletonLoader.style.display = 'none';
-                showError('عذراً، حدث خطأ في الاتصال بالخادم.');
+                showError('عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.');
             });
         }
 
         function displayResult(data) {
-            const brand = data.canonical_brand || 'غير معروف';
-            const specs = data.canonical_specs || 'لا توجد مواصفات مسجلة';
+            if (!data) return;
+
+            // Helper to format values
+            const fmt = (val, def = '-') => (val && val !== 'null' && val !== 'N/A' && val !== 'N') ? val : def;
+            const bool = (val) => val === 'Y' ? '<span class="text-success">يدعم ✅</span>' : (val === 'N' ? '<span class="text-muted">لا يدعم</span>' : '-');
+
+            // Mapping Fields (New Schema Support)
+            const brand = data.brandName || data.brand_name || data.manufacturerName || data.manufacturer_name || 'غير معروف';
+            const marketing = data.marketingName || data.marketing_name || '-';
+            const model = data.modelName || data.model_name || '-';
             const tac = data.tac || '-';
 
-            document.getElementById('resBrand').textContent = brand;
-            document.getElementById('resSpecs').textContent = specs;
-            document.getElementById('resTac').textContent = tac;
+            // Fill UI Elements with Safety Checks
+            const setSafe = (id, val, isHTML = false) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (isHTML) el.innerHTML = val;
+                    else el.textContent = val;
+                }
+            };
+
+            setSafe('resBrand', brand);
+            setSafe('resMarketingName', marketing);
+            setSafe('resModelName', model);
+            setSafe('resDeviceType', fmt(data.deviceTypeRaw || data.device_type_raw, 'جهاز ذكي'));
+            setSafe('resOsName', fmt(data.osName || data.os_name, 'غير محدد'));
+
+            setSafe('resBodyType', fmt(data.bodyType || data.body_type));
+            setSafe('resSimSlots', fmt(data.simSlots || data.sim_slots, '1'));
+            setSafe('resEsimSlots', (data.esimSlots > 0 || data.esim_slots > 0 ? '<span class="text-success">يدعم ✅</span>' : '<span class="text-muted">لا يدعم</span>'), true);
+            setSafe('resNfc', bool(data.nfc), true);
+
+            setSafe('resBands4g', fmt(data.bands4g || data.bands_4g, 'ترددات قياسية'));
+            setSafe('resBands5g', fmt(data.bands5g || data.bands_5g, 'غير مدعوم'));
+            setSafe('resTechs', fmt(data.supportedTechnologies || data.supported_technologies));
+            setSafe('resWlan', bool(data.wlan), true);
+            setSafe('resBluetooth', bool(data.bluetooth), true);
+
+            setSafe('resTac', tac);
+            setSafe('resDeviceCode', fmt(data.deviceCode || data.device_code));
 
             // QR Code
-            const qrData = `Brand: ${brand}\nModel: ${specs}\nTAC: ${tac}\nChecked via ConnectTag`;
-            document.getElementById('resQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(qrData)}`;
+            const qrData = `Device Details:\nBrand: ${brand}\nModel: ${marketing}\nTAC: ${tac}\nCheck: connecttag.org`;
+            const resQR = document.getElementById('resQR');
+            if (resQR) resQR.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(qrData)}`;
 
-            // Icon based on type
-            const icon = specs.toLowerCase().includes('mobile') || specs.toLowerCase().includes('phone') ? 'fa-mobile-screen' : 'fa-wifi';
-            document.getElementById('resIcon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
+            // Comprehensive Icon mapping based on Database Types
+            const getDeviceIcon = (type, marketing, brand) => {
+                const fullType = (type + ' ' + marketing + ' ' + brand).toLowerCase();
+
+                // 1. Tablets & e-Books
+                if (fullType.includes('tablet') || fullType.includes('e-book')) return 'fa-tablet-screen-button';
+
+                // 2. Mobile Phones (Smartphones, Feature phones, etc.)
+                if (fullType.includes('smartphone') || fullType.includes('mobile phone') ||
+                    fullType.includes('feature phone') || fullType.includes('handheld') ||
+                    fullType.includes('flip') || fullType.includes('slider') ||
+                    fullType.includes('pda') || fullType.includes('phone')) return 'fa-mobile-screen-button';
+
+                // 3. Connectivity (Modems, Routers, Hotspots, Gateways)
+                if (fullType.includes('modem') || fullType.includes('router') ||
+                    fullType.includes('hotspot') || fullType.includes('dongle') ||
+                    fullType.includes('gateway')) return 'fa-wifi';
+
+                // 4. Wearables (Watches, Earbuds)
+                if (fullType.includes('watch') || fullType.includes('wearable') ||
+                    fullType.includes('earbuds')) return 'fa-stopwatch-20';
+
+                // 5. Computers
+                if (fullType.includes('laptop') || fullType.includes('notebook') ||
+                    fullType.includes('computer')) return 'fa-laptop';
+
+                // 6. Tracking & Vehicles
+                if (fullType.includes('vehicle') || fullType.includes('car') ||
+                    fullType.includes('gps') || fullType.includes('tracker') ||
+                    fullType.includes('navigator')) return 'fa-location-crosshairs';
+
+                // 7. IoT & Industrial (Sensors, Modules, Signage, Hubs)
+                if (fullType.includes('module') || fullType.includes('sensor') ||
+                    fullType.includes('monitor') || fullType.includes('iot') ||
+                    fullType.includes('hub') || fullType.includes('signage')) return 'fa-microchip';
+
+                return 'fa-microchip'; // General technical fallback
+            };
+
+            const typeRaw = data.deviceTypeRaw || data.device_type_raw || '';
+            const icon = getDeviceIcon(typeRaw, marketing, brand);
+            const resIcon = document.getElementById('resIcon');
+            if (resIcon) {
+                let iconColor = '#006b98'; // Default
+                if (icon.includes('mobile')) iconColor = '#006b98';
+                else if (icon === 'fa-wifi') iconColor = '#e89a2f';
+                else if (icon === 'fa-tablet-screen-button') iconColor = '#8b5cf6';
+                else if (icon === 'fa-stopwatch-20') iconColor = '#ec4899';
+                else if (icon === 'fa-laptop') iconColor = '#3b82f6';
+                else if (icon === 'fa-location-crosshairs') iconColor = '#10b981';
+                else if (icon === 'fa-microchip') iconColor = '#64748b';
+
+                resIcon.innerHTML = `<i class="fa-solid ${icon}" style="color: ${iconColor};"></i>`;
+                resIcon.style.backgroundColor = iconColor + '12';
+                resIcon.style.border = `1px solid ${iconColor}30`;
+            }
 
             resultCard.style.display = 'block';
 
-            // Copy
-            document.getElementById('btnCopy').onclick = () => {
-                const text = `بيانات فحص الجهاز من كونكت تاق:\n- الشركة: ${brand}\n- الموديل والمواصفات: ${specs}\n- رقم TAC: ${tac}`;
-                navigator.clipboard.writeText(text).then(() => {
-                    if (window.toast) window.toast.show('تم نسخ تفاصيل الجهاز بنجاح!', 'success');
-                });
-            };
+            // Copy Action
+            const btnCopy = document.getElementById('btnCopy');
+            if (btnCopy) {
+                btnCopy.onclick = () => {
+                    const text = `تفاصيل الجهاز من كونكت تاق:\n- الشركة: ${brand}\n- الموديل: ${marketing}\n- طراز: ${model}\n- رقم TAC: ${tac}`;
+                    navigator.clipboard.writeText(text).then(() => {
+                        if (window.toast) window.toast.show('تم نسخ التفاصيل!', 'success');
+                    });
+                };
+            }
 
-            // Share
-            document.getElementById('btnShare').onclick = () => {
-                const text = `نتيجة فحص هُوية الجهاز:\nالشركة: ${brand}\nالمواصفات: ${specs}\nرابط الأداة: ${window.location.href}`;
-                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
-            };
+            // Share Action
+            const btnShare = document.getElementById('btnShare');
+            if (btnShare) {
+                btnShare.onclick = () => {
+                    const text = `نتيجة فحص الجهاز:\nالشركة: ${brand}\nالموديل: ${marketing}\nرابط الفحص: ${window.location.href}`;
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+                };
+            }
 
             if (window.innerWidth < 768) {
                 window.scrollTo({ top: resultCard.offsetTop - 40, behavior: 'smooth' });
