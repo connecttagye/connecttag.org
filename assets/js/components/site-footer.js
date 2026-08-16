@@ -36,7 +36,8 @@ class SiteFooter extends HTMLElement {
             <h4>من نحن وهويتنا</h4>
             <ul class="ct-footer-links">
               <li><a href="${baseUrl}/"><i class="fa-solid fa-angle-left"></i> الرئيسية</a></li>
-              <li><a href="${baseUrl}/about/our-company"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
+              <li><a href="${baseUrl}/about/"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
+              <li><a href="${baseUrl}/about/our-company"><i class="fa-solid fa-angle-left"></i> الشركة</a></li>
               <li><a href="${baseUrl}/blog/"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
               <li><a href="${baseUrl}/tools/"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
               <li><a href="${baseUrl}/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
