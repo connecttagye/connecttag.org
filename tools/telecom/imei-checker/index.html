@@ -1,507 +1,599 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>فحص IMEI و TAC للأجهزة - كونكت تاق</title>
-<meta name="description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC. اعرف مواصفات جهازك وهويته التقنية.">
-<link rel="canonical" href="https://connecttag.org/tools/telecom/imei-checker" />
+    <title>فحص IMEI و TAC للأجهزة - كونكت تاق</title>
+    <meta name="description" content="أداة ذكية للتحقق من بيانات الأجهزة، الشركة المصنعة، والمواصفات الفنية عبر رقم IMEI أو TAC. افحص هوية هاتفك أو المودم وتأكد من أصالته.">
+    <link rel="canonical" href="https://connecttag.org/tools/telecom/imei-checker/">
 
+    <!-- OpenGraph Meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/telecom/imei-checker/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="فحص IMEI و TAC للأجهزة - كونكت تاق">
+    <meta property="og:description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC.">
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@connecttagye">
+    <meta name="twitter:url" content="https://connecttag.org/tools/telecom/imei-checker/">
+    <meta name="twitter:title" content="فحص IMEI و TAC للأجهزة - كونكت تاق">
+    <meta name="twitter:description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC.">
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
-  <!-- OpenGraph meta -->
-  <meta property="og:url" content="https://connecttag.org/tools/telecom/imei-checker" />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="فحص IMEI و TAC للأجهزة - كونكت تاق" />
-  <meta property="og:description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC." />
-  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <!-- Schema.org Unified JSON-LD -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebApplication",
+                    "name": "أداة فحص IMEI و TAC للأجهزة",
+                    "url": "https://connecttag.org/tools/telecom/imei-checker/",
+                    "applicationCategory": "UtilitiesApplication",
+                    "operatingSystem": "All",
+                    "description": "أداة مجانية للتحقق من بيانات الأجهزة الذكية والمودمات عبر السيريال نمبر و TAC."
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "الرئيسية",
+                            "item": "https://connecttag.org/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "الأدوات",
+                            "item": "https://connecttag.org/tools/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "فحص IMEI",
+                            "item": "https://connecttag.org/tools/telecom/imei-checker/"
+                        }
+                    ]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم \"حول الهاتف\"."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "ما هو رقم الـ TAC وما فائدة فحصه؟",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
 
-  <!-- twitter OpenGraph meta -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@connecttagye" />
-  <meta name="twitter:url" content="https://connecttag.org/tools/check-imei/" />
-  <meta name="twitter:title" content="فحص IMEI و TAC للأجهزة - كونكت تاق">
-  <meta name="twitter:description" content="أداة ذكية للتحقق من بيانات الأجهزة والشركة المصنعة عبر رقم IMEI أو TAC." />
-  <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5">
 
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5">
+    <style>
+        @font-face {
+          font-family: 'Cairo-Fallback';
+          src: local('Arial');
+          ascent-override: 100%;
+          descent-override: 20%;
+          line-gap-override: 0%;
+          size-adjust: 105.7%;
+        }
 
+        body {
+          font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
+          background-color: #f8fafc;
+          color: #1e293b;
+          overflow-x: hidden;
+        }
 
+        /* Header */
+        .checker-header {
+            background: #ffffff;
+            padding: 70px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .checker-header h1 {
+            font-weight: 900;
+            font-size: 32px;
+            color: #006b98 !important;
+            margin-bottom: 12px;
+        }
+        .checker-header p {
+            font-size: 16px;
+            color: #64748b;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+        .breadcrumb-tools {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0;
+            margin: 18px 0 0;
+        }
+        .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 13px; }
+        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a:hover { color: #e89a2f; }
+        .breadcrumb-tools li:not(:last-child)::after {
+            content: '\f104';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+        .breadcrumb-tools li.active { color: #e89a2f; font-weight: 700; }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم \"حول الهاتف\"."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "ما هو رقم الـ TAC وما فائدة فحصه؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع."
-      }
-    }
-  ]
-}
-</script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
+        .checker-container { padding: 40px 0 80px; }
 
+        /* Modern Search Card */
+        .search-box-wrapper {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 107, 152, 0.05);
+            border: 1px solid #edf2f7;
+            position: relative;
+            overflow: hidden;
+        }
 
+        /* Scanner Animation */
+        .scanner-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #006b98, #e89a2f, transparent);
+            box-shadow: 0 0 12px #006b98;
+            z-index: 5;
+            display: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .scanning .scanner-line {
+            display: block;
+            animation: scan 1.8s linear infinite;
+        }
 
-  <style>
-    /* LCP Optimization: Ensure home content is rendered early but hidden by preloader */
-    #home-content {
-      opacity: 1 !important;
-      visibility: visible !important;
-      filter: none !important;
-    }
+        .search-type-selector {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .type-chip {
+            cursor: pointer;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: #f1f5f9;
+            color: #64748b;
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        .search-type-selector input { display: none; }
+        .search-type-selector input:checked + .type-chip {
+            background: #006b98;
+            color: #ffffff;
+            border-color: #006b98;
+            box-shadow: 0 4px 12px rgba(0, 107, 152, 0.25);
+        }
 
-    /* Zero CLS Font Matching: Pre-adjust fallback font metrics */
-    @font-face {
-      font-family: 'Cairo-Fallback';
-      src: local('Arial');
-      ascent-override: 100%;
-      descent-override: 20%;
-      line-gap-override: 0%;
-      size-adjust: 105.7%; /* Cairo is ~5.7% larger than Arial */
-    }
+        .input-main-group .form-control {
+            height: 55px;
+            border-radius: 14px !important;
+            border: 1.5px solid #cbd5e1;
+            padding: 0 20px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            transition: 0.3s;
+            box-shadow: none;
+        }
+        .input-main-group .form-control:focus {
+            border-color: #006b98;
+            box-shadow: 0 0 0 3px rgba(0, 107, 152, 0.1);
+        }
+        .valid-input {
+            border-color: #10b981 !important;
+            background-color: #f0fdf4 !important;
+        }
 
-    body {
-      font-family: 'Cairo', 'Cairo-Fallback', sans-serif;
-    }
-  </style>
+        .btn-search-glow {
+            height: 55px;
+            border-radius: 14px !important;
+            background: #006b98;
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 0 30px;
+            transition: 0.2s;
+        }
+        .btn-search-glow:hover {
+            background: #00567a;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 107, 152, 0.25);
+        }
 
-<style>
-    body { background-color: #f4f7f6; overflow-x: hidden; }
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f3f6 25%, #e6ecf1 50%, #f0f3f6 75%);
+            border-radius: 10px;
+            background-size: 200% 100%;
+            animation: 1.5s shimmer linear infinite;
+        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .skeleton-text { height: 16px; margin-bottom: 12px; width: 100%; }
+        .skeleton-icon { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 20px; }
 
-    /* Advanced Unified Header - White Style */
-    .checker-header {
-        background: #ffffff;
-        padding: 100px 0 60px;
-        color: #333;
-        text-align: center;
-        position: relative;
-        border-bottom: 1px solid #eee;
-    }
-    .checker-header h1 {
-        font-weight: 800; font-size: 42px; margin-bottom: 15px;
-        color: #006b98 !important;
-        position: relative; z-index: 1;
-    }
-    .checker-header p { font-size: 18px; color: #64748b; position: relative; z-index: 1; }
+        /* Result Card */
+        .result-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: none;
+            margin-top: 30px;
+            animation: slideUp 0.4s ease-out;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .breadcrumb-tools {
-        list-style: none; display: flex; justify-content: center; gap: 10px; padding: 0; margin: 20px 0 0;
-        position: relative; z-index: 1;
-    }
-    .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 14px; }
-    .breadcrumb-tools li a { color: #006b98; text-decoration: none; }
-    .breadcrumb-tools li:not(:last-child)::after {
-        content: ">"; margin-right: 10px; font-size: 12px; color: #ccc;
-    }
-    .breadcrumb-tools li.active { color: #e89a2f; }
+        .result-header { text-align: center; margin-bottom: 25px; }
+        .result-header .status-icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            background: #ecfdf5;
+            color: #10b981;
+            border-radius: 50%;
+            font-size: 30px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .result-header h3 { font-size: 20px; font-weight: 800; color: #1e293b; margin: 0; }
 
-    .checker-container { margin-top: -80px; padding-bottom: 80px; }
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .info-item:last-child { border: none; }
+        .info-label { color: #64748b; font-weight: 700; font-size: 13.5px; }
+        .info-value { color: #1e293b; font-weight: 800; font-size: 15px; }
 
-    /* Modern Search Box */
-    .search-box-wrapper {
-        background: #fff;
-        padding: 45px;
-        border-radius: 25px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        border: 1px solid rgba(0, 107, 152, 0.1);
-        position: relative;
-        overflow: hidden;
-    }
+        /* History Section */
+        .history-section {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #edf2f7;
+        }
+        .history-title {
+            font-weight: 700;
+            color: #64748b;
+            margin-bottom: 10px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .history-list { display: flex; gap: 8px; flex-wrap: wrap; }
+        .history-item {
+            padding: 4px 12px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #006b98;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .history-item:hover { background: #006b98; color: #fff; border-color: #006b98; }
 
-    /* Scanning Animation */
-    .scanner-line {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(to right, transparent, #e89a2f, transparent);
-        box-shadow: 0 0 15px #e89a2f;
-        z-index: 5;
-        display: none;
-    }
-    @keyframes scan {
-        0% { top: 0; }
-        100% { top: 100%; }
-    }
-    .scanning .scanner-line {
-        display: block;
-        animation: scan 2s linear infinite;
-    }
+        /* Action Buttons */
+        .action-row { display: flex; gap: 10px; margin-top: 25px; }
+        .btn-action {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            border: 1px solid transparent;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn-copy { background: #f8fafc; border-color: #e2e8f0; color: #006b98; }
+        .btn-copy:hover { background: #006b98; color: #fff; border-color: #006b98; }
+        .btn-share { background: #25d366; color: #fff; }
+        .btn-share:hover { background: #1eb956; color: #fff; }
 
-    .search-type-selector {
-        margin-bottom: 30px;
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+        .qr-container { text-align: center; margin-top: 25px; padding-top: 15px; border-top: 1px dashed #e2e8f0; }
+        .qr-container img { width: 110px; height: 110px; background: #fff; padding: 6px; border: 1px solid #edf2f7; border-radius: 12px; }
 
-    .type-chip {
-        cursor: pointer;
-        padding: 8px 25px;
-        border-radius: 50px;
-        background: #f0f4f8;
-        color: #555;
-        font-weight: 600;
-        transition: 0.3s;
-        border: 2px solid transparent;
-    }
-    .search-type-selector input { display: none; }
-    .search-type-selector input:checked + .type-chip {
-        background: #006b98;
-        color: #fff;
-        box-shadow: 0 4px 15px rgba(0, 107, 152, 0.3);
-    }
+        .error-card {
+            background: #fef2f2;
+            color: #b91c1c;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #fecaca;
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 13.5px;
+        }
 
-    .input-main-group { position: relative; }
-    .input-main-group .form-control {
-        height: 65px;
-        border-radius: 15px !important;
-        border: 2px solid #e1e8ed;
-        padding: 0 25px;
-        font-size: 18px;
-        font-weight: 600;
-        transition: 0.3s;
-        box-shadow: none;
-    }
-    .input-main-group .form-control:focus { border-color: #006b98; }
-    .valid-input { border-color: #2ecc71 !important; background-color: #f0fff4 !important; }
+        /* Help Section */
+        .help-section { margin-top: 35px; }
+        .help-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #edf2f7;
+        }
+        .help-card h4 { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 18px; }
+        .help-card h5 { font-size: 14px; font-weight: 800; color: #006b98; margin-bottom: 8px; }
+        .help-card ul { padding-right: 18px; margin: 0; font-size: 13px; color: #64748b; line-height: 1.8; }
+        .help-card code { background: #f1f5f9; color: #006b98; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
 
-    .btn-search-glow {
-        height: 65px;
-        border-radius: 15px !important;
-        background: #e89a2f;
-        border: none;
-        color: #fff;
-        font-weight: 800;
-        font-size: 18px;
-        padding: 0 40px;
-        transition: 0.3s;
-        box-shadow: 0 10px 20px rgba(232, 154, 47, 0.2);
-    }
-    .btn-search-glow:hover { background: #d18721; transform: scale(1.02); color: #fff; }
+        /* FAQ Section */
+        .faq-section { margin-top: 50px; border-top: 1px solid #edf2f7; padding-top: 40px; }
+        .faq-item { margin-bottom: 22px; }
+        .faq-question { font-weight: 800; color: #1e293b; font-size: 15px; margin-bottom: 8px; display: flex; gap: 8px; }
+        .faq-question i { color: #006b98; margin-top: 3px; }
+        .faq-answer { color: #64748b; font-size: 14px; line-height: 1.75; padding-right: 24px; }
 
-    /* Skeleton Loading */
-    .skeleton {
-        background: #eee;
-        background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-        border-radius: 10px;
-        background-size: 200% 100%;
-        animation: 1.5s shine linear infinite;
-    }
-    @keyframes shine { to { background-position-x: -200%; } }
-    .skeleton-text { height: 20px; margin-bottom: 10px; width: 100%; }
-    .skeleton-icon { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 20px; }
+        @media (max-width: 768px) {
+            .checker-header { padding: 50px 0 30px; }
+            .checker-header h1 { font-size: 24px; }
+            .search-box-wrapper { padding: 20px; }
+            .btn-search-glow { width: 100%; margin-top: 10px; }
+            .info-item { flex-direction: column; text-align: center; gap: 4px; }
+        }
+    </style>
 
-    /* Result Card */
-    .result-card {
-        background: #fff;
-        border-radius: 25px;
-        padding: 40px;
-        border: 1px solid #eef2f3;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-        display: none;
-        margin-top: 30px;
-        animation: slideUp 0.5s ease-out;
-    }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-    .result-header { text-align: center; margin-bottom: 35px; position: relative; }
-    .result-header .status-icon {
-        width: 80px;
-        height: 80px;
-        line-height: 80px;
-        background: #e6f7ed;
-        color: #2ecc71;
-        border-radius: 50%;
-        font-size: 35px;
-        display: inline-block;
-        margin-bottom: 20px;
-    }
-
-    .info-list { list-style: none; padding: 0; }
-    .info-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 18px 0;
-        border-bottom: 1px solid #f0f4f8;
-    }
-    .info-item:last-child { border: none; }
-    .info-label { color: #888; font-weight: 600; }
-    .info-value { color: #333; font-weight: 800; font-size: 17px; }
-
-    /* History Section */
-    .history-section { margin-top: 40px; padding: 20px; background: #fff; border-radius: 20px; border: 1px solid #eee; }
-    .history-title { font-weight: 700; color: #555; margin-bottom: 15px; font-size: 14px; border-bottom: 1px solid #f5f5f5; padding-bottom: 10px; }
-    .history-list { display: flex; gap: 10px; flex-wrap: wrap; }
-    .history-item {
-        padding: 5px 15px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
-        font-size: 13px;
-        color: #006b98;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .history-item:hover { background: #006b98; color: #fff; }
-
-    /* Action Buttons */
-    .action-row { display: flex; gap: 10px; margin-top: 30px; }
-    .btn-action { flex: 1; padding: 12px; border-radius: 12px; font-weight: 700; border: none; transition: 0.3s; }
-    .btn-copy { background: #f1f5f9; color: #006b98; }
-    .btn-share { background: #25d366; color: #fff; }
-    .btn-action:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    .qr-container { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px dashed #eee; }
-    .qr-container img { width: 120px; background: #fff; padding: 5px; border: 1px solid #eee; }
-
-    .error-card {
-        background: #fff5f5;
-        color: #c53030;
-        padding: 20px;
-        border-radius: 15px;
-        border: 1px solid #feb2b2;
-        display: none;
-        text-align: center;
-        margin-top: 25px;
-        font-weight: 600;
-    }
-
-    .faq-section { margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; text-align: right; }
-    .faq-item { margin-bottom: 30px; }
-    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
-    .faq-question i { color: #006b98; margin-top: 4px; }
-    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
-
-    @media (max-width: 768px) {
-        .checker-header { padding: 80px 0 120px; }
-        .checker-header h1 { font-size: 28px; }
-        .search-box-wrapper { padding: 25px; }
-        .btn-search-glow { width: 100%; margin-top: 15px; }
-        .info-item { flex-direction: column; text-align: center; gap: 5px; }
-    }
-</style>
-
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- PWA & Mobile Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0077b6">
 </head>
 <body>
 <site-toast></site-toast>
-<!-- Modular Web Component: Header -->
 <site-header></site-header>
 
 <main id="main-content">
 
-<div class="checker-header">
-    <div class="container">
-        <h1>فحص هُوية الأجهزة الذكية</h1>
-        <p>الأداة التقنية الأدق للتحقق من مواصفات وأصالة الهواتف والمودمات عبر IMEI و TAC</p>
-        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"الأدوات", "url":"https://connecttag.org/tools/"}, {"title":"فحص IMEI", "url":"https://connecttag.org/tools/telecom/imei-checker/"}]'></site-breadcrumb>
+    <div class="checker-header">
+        <div class="container">
+            <h1>فحص هُوية الأجهزة الذكية</h1>
+            <p>الأداة التقنية الأدق للتحقق من مواصفات وأصالة الهواتف والمودمات عبر IMEI و TAC</p>
+            <ul class="breadcrumb-tools">
+                <li><a href="https://connecttag.org/">الرئيسية</a></li>
+                <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
+                <li class="active">فحص IMEI</li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="checker-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+    <div class="checker-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
 
-                <div class="search-box-wrapper" id="searchBox">
-                    <div class="scanner-line"></div>
-                    <div class="search-type-selector">
-                        <label>
-                            <input type="radio" name="searchType" value="imei" checked>
-                            <span class="type-chip">رقم الـ IMEI</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="searchType" value="tac">
-                            <span class="type-chip">رقم الـ TAC</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="searchType" value="q">
-                            <span class="type-chip">بحث بالاسم</span>
-                        </label>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <div class="input-main-group">
-                                <input type="text" id="searchInput" class="form-control text-center" placeholder="أدخل 15 رقماً هنا..." dir="ltr">
-                            </div>
+                    <!-- Search Box -->
+                    <div class="search-box-wrapper" id="searchBox">
+                        <div class="scanner-line"></div>
+                        <div class="search-type-selector">
+                            <label>
+                                <input type="radio" name="searchType" value="imei" checked>
+                                <span class="type-chip">رقم الـ IMEI</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="searchType" value="tac">
+                                <span class="type-chip">رقم الـ TAC</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="searchType" value="q">
+                                <span class="type-chip">بحث بالاسم</span>
+                            </label>
                         </div>
-                        <div class="col-sm-3">
-                            <button class="btn btn-search-glow btn-block" type="button" id="btnSearch">
-                                فحص <i class="fa-solid fa-bolt" style="margin-right: 5px;"></i>
-                            </button>
-                        </div>
-                    </div>
 
-                    <div id="historySection" class="history-section" style="display:none;">
-                        <div class="history-title d-flex justify-content-between align-items-center">
-                            <span>عمليات البحث الأخيرة:</span>
-                            <button class="btn btn-link btn-sm p-0 text-danger" onclick="clearHistory()" style="text-decoration:none; font-size:11px;">
-                                <i class="fa-solid fa-trash-can"></i> مسح السجل
-                            </button>
-                        </div>
-                        <div class="history-list" id="historyList"></div>
-                    </div>
-
-                    <div id="errorMessage" class="error-card"></div>
-                </div>
-
-                <!-- Skeleton Loading -->
-                <div id="skeletonLoader" class="result-card" style="display:none;">
-                    <div class="skeleton-icon skeleton"></div>
-                    <div class="skeleton-text skeleton" style="width: 60%; margin: 0 auto 30px;"></div>
-                    <div class="skeleton-text skeleton"></div>
-                    <div class="skeleton-text skeleton"></div>
-                    <div class="skeleton-text skeleton"></div>
-                </div>
-
-                <!-- Result Card -->
-                <div id="resultCard" class="result-card">
-                    <div class="result-header">
-                        <div class="status-icon" id="resIcon"><i class="fa-solid fa-shield"></i></div>
-                        <h3>بيانات الهوية التقنية</h3>
-                    </div>
-
-                    <ul class="info-list" id="printableArea">
-                        <li class="info-item">
-                            <span class="info-label">الشركة المصنعة</span>
-                            <span class="info-value" id="resBrand"></span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">الموديل والمواصفات</span>
-                            <span class="info-value" id="resSpecs"></span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">رقم الـ TAC المعتمد</span>
-                            <span class="info-value" id="resTac"></span>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-label">حالة الفحص</span>
-                            <span class="info-value" style="color: #2ecc71;">أصلي ومعتمد <i class="fa-solid fa-check-circle"></i></span>
-                        </li>
-                    </ul>
-
-                    <div class="action-row">
-                        <button class="btn-action btn-copy" id="btnCopy"><i class="fa-solid fa-copy"></i> نسخ التفاصيل</button>
-                        <button class="btn-action btn-share" id="btnShare"><i class="fa-brands fa-whatsapp"></i> مشاركة</button>
-                    </div>
-
-                    <div class="qr-container">
-                        <img id="resQR" src="" alt="QR Code">
-                        <p style="font-size: 11px; color: #999; margin-top: 5px;">امسح الكود لحفظ المعلومات</p>
-                    </div>
-                </div>
-
-                <div class="help-section">
-                    <div class="help-card">
-                        <h4><i class="fa-solid fa-question-circle" style="color: #e89a2f;"></i> كيف تجد الأرقام المطلوبة؟</h4>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <h5>للهواتف الذكية:</h5>
-                                <ul>
-                                    <li>اطلب الكود <code>*#06#</code></li>
-                                    <li>انظر خلف البطارية</li>
-                                    <li>تحقق من ملصق الكرتون</li>
-                                </ul>
+                            <div class="col-sm-9">
+                                <div class="input-main-group">
+                                    <input type="text" id="searchInput" class="form-control text-center" placeholder="أدخل 15 رقماً هنا..." dir="ltr" maxlength="15">
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <h5>لأجهزة المودم:</h5>
-                                <ul>
-                                    <li>الملصق الخلفي (IMEI)</li>
-                                    <li>صفحة الإعدادات (Status)</li>
-                                    <li>أول 8 أرقام تمثل الـ TAC</li>
-                                </ul>
+                            <div class="col-sm-3">
+                                <button class="btn btn-search-glow btn-block" type="button" id="btnSearch">
+                                    فحص <i class="fa-solid fa-bolt" style="margin-right: 5px;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="historySection" class="history-section" style="display:none;">
+                            <div class="history-title">
+                                <span><i class="fa-solid fa-clock-rotate-left"></i> عمليات البحث الأخيرة:</span>
+                                <button class="btn btn-link btn-sm p-0 text-danger" onclick="clearHistory()" style="text-decoration:none; font-size:11px;">
+                                    <i class="fa-solid fa-trash-can"></i> مسح السجل
+                                </button>
+                            </div>
+                            <div class="history-list" id="historyList"></div>
+                        </div>
+
+                        <div id="errorMessage" class="error-card"></div>
+                    </div>
+
+                    <!-- Skeleton Loading -->
+                    <div id="skeletonLoader" class="result-card" style="display:none;">
+                        <div class="skeleton-icon skeleton"></div>
+                        <div class="skeleton-text skeleton" style="width: 50%; margin: 0 auto 25px;"></div>
+                        <div class="skeleton-text skeleton"></div>
+                        <div class="skeleton-text skeleton"></div>
+                        <div class="skeleton-text skeleton"></div>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div id="resultCard" class="result-card">
+                        <div class="result-header">
+                            <div class="status-icon" id="resIcon"><i class="fa-solid fa-shield-check"></i></div>
+                            <h3>بيانات الهوية التقنية</h3>
+                        </div>
+
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">الشركة المصنعة</span>
+                                <span class="info-value" id="resBrand">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">الموديل والمواصفات</span>
+                                <span class="info-value" id="resSpecs">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">رقم الـ TAC المعتمد</span>
+                                <span class="info-value" id="resTac">-</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">حالة الفحص</span>
+                                <span class="info-value" style="color: #10b981;">أصلي ومعتمد <i class="fa-solid fa-check-circle"></i></span>
+                            </li>
+                        </ul>
+
+                        <div class="action-row">
+                            <button class="btn-action btn-copy" id="btnCopy"><i class="fa-regular fa-copy"></i> نسخ التفاصيل</button>
+                            <button class="btn-action btn-share" id="btnShare"><i class="fa-brands fa-whatsapp"></i> مشاركة النتيجة</button>
+                        </div>
+
+                        <div class="qr-container">
+                            <img id="resQR" src="" alt="QR Code">
+                            <p style="font-size: 11px; color: #94a3b8; margin-top: 6px;">امسح الكود لحفظ معلومات الجهاز</p>
+                        </div>
+                    </div>
+
+                    <!-- Help Card -->
+                    <div class="help-section">
+                        <div class="help-card">
+                            <h4><i class="fa-solid fa-circle-question" style="color: #e89a2f; margin-left: 6px;"></i> أين تجد الأرقام المطلوبة؟</h4>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>للهواتف الذكية:</h5>
+                                    <ul>
+                                        <li>اطلب الكود <code>*#06#</code> في لوحة الاتصال</li>
+                                        <li>ملصق الكرتون الأصلي للهاتف</li>
+                                        <li>من الإعدادات > حول الهاتف (About Phone)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5>لأجهزة المودم والراوتر:</h5>
+                                    <ul>
+                                        <li>الملصق الخلفي للمودم (IMEI)</li>
+                                        <li>لوحة تحكم المودم (صفحة الحالة Status)</li>
+                                        <li>أول 8 أرقام من الـ IMEI تمثل الـ TAC</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section" id="faq">
+                        <h2 class="text-center" style="font-size: 22px; font-weight: 800; margin-bottom: 30px; color: #006b98;">الأسئلة الشائعة حول فحص IMEI</h2>
+
+                        <div class="faq-item">
+                            <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟</div>
+                            <div class="faq-answer">يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم "حول الهاتف".</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو رقم الـ TAC وما فائدة فحصه؟</div>
+                            <div class="faq-answer">رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟</div>
+                            <div class="faq-answer">نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟</div>
+                            <div class="faq-answer">الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع.</div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="faq-section" id="faq">
-                    <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">الأسئلة الشائعة حول فحص IMEI</h2>
-
-                    <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟</div>
-                        <div class="faq-answer">يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم "حول الهاتف".</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو رقم الـ TAC وما فائدة فحصه؟</div>
-                        <div class="faq-answer">رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟</div>
-                        <div class="faq-answer">نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟</div>
-                        <div class="faq-answer">الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع.</div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
-</div>
 
 </main>
 
-<!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
+<cookie-consent></cookie-consent>
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -516,37 +608,34 @@
 
         loadHistory();
 
-        // Real-time Validation
+        // Input Validation (Allow text when searching by name 'q')
         searchInput.addEventListener('input', function() {
-            let val = this.value.replace(/\D/g, '');
-            this.value = val; // Keep only numbers
-
             const type = document.querySelector('input[name="searchType"]:checked').value;
-            if((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8)) {
+            if (type !== 'q') {
+                this.value = this.value.replace(/\D/g, ''); // Numbers only
+            }
+            const val = this.value.trim();
+            if ((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8) || (type === 'q' && val.length > 2)) {
                 this.classList.add('valid-input');
             } else {
                 this.classList.remove('valid-input');
             }
         });
 
-        btnSearch.addEventListener('click', function() {
-            performSearch();
-        });
-
+        btnSearch.addEventListener('click', performSearch);
         searchInput.addEventListener('keypress', function(e) {
-            if(e.which == 13) performSearch();
+            if (e.which === 13 || e.keyCode === 13) performSearch();
         });
 
         function performSearch() {
             const val = searchInput.value.trim();
             const type = document.querySelector('input[name="searchType"]:checked').value;
 
-            if(!val) {
-                showError('يرجى إدخال رقم الـ IMEI أو الـ TAC أولاً.');
+            if (!val) {
+                showError('يرجى إدخال قيمة البحث أولاً.');
                 return;
             }
 
-            // Visual Start
             resultCard.style.display = 'none';
             errorMessage.style.display = 'none';
             searchBox.classList.add('scanning');
@@ -555,10 +644,10 @@
             const apiUrl = 'https://api.connecttag.app/v5/yemen4g/tac/search';
             const apiKey = 'ktmo5flizpu';
 
-            fetch(`${apiUrl}?X-Api-Key=${apiKey}&${type}=${val}`)
+            fetch(`${apiUrl}?X-Api-Key=${apiKey}&${type}=${encodeURIComponent(val)}`)
             .then(response => response.json())
             .then(data => {
-                setTimeout(() => { // Small delay for the "scanning" feel
+                setTimeout(() => {
                     searchBox.classList.remove('scanning');
                     skeletonLoader.style.display = 'none';
 
@@ -566,49 +655,54 @@
                         displayResult(data.result);
                         saveToHistory(val);
                     } else {
-                        const msg = (data.result && data.result.error) ? data.result.error : 'لم يتم العثور على سجلات لهذا الرقم.';
+                        const msg = (data.result && data.result.error) ? data.result.error : 'لم يتم العثور على سجلات مطابقة.';
                         showError(msg);
                     }
-                }, 1200);
+                }, 800);
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.error('Fetch error:', error);
                 searchBox.classList.remove('scanning');
                 skeletonLoader.style.display = 'none';
-                showError('عذراً، حدث خطأ في الاتصال بالسيرفر.');
+                showError('عذراً، حدث خطأ في الاتصال بالخادم.');
             });
         }
 
         function displayResult(data) {
-            document.getElementById('resBrand').textContent = data.canonical_brand || 'غير معروف';
-            const specs = data.canonical_specs || 'لا يوجد مواصفات مسجلة';
+            const brand = data.canonical_brand || 'غير معروف';
+            const specs = data.canonical_specs || 'لا توجد مواصفات مسجلة';
+            const tac = data.tac || '-';
+
+            document.getElementById('resBrand').textContent = brand;
             document.getElementById('resSpecs').textContent = specs;
-            document.getElementById('resTac').textContent = data.tac || '-';
+            document.getElementById('resTac').textContent = tac;
 
-            // Generate QR Code
-            const qrData = `Brand: ${data.canonical_brand}\nSpecs: ${specs}\nTAC: ${data.tac}`;
-            document.getElementById('resQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
+            // QR Code
+            const qrData = `Brand: ${brand}\nModel: ${specs}\nTAC: ${tac}\nChecked via ConnectTag`;
+            document.getElementById('resQR').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(qrData)}`;
 
-            // Dynamic Icon
-            const icon = specs.toLowerCase().includes('mobile') || specs.toLowerCase().includes('phone') ? 'fa-mobile' : 'fa-wifi';
-            document.getElementById('resIcon').innerHTML = `<i class="fa ${icon}"></i>`;
+            // Icon based on type
+            const icon = specs.toLowerCase().includes('mobile') || specs.toLowerCase().includes('phone') ? 'fa-mobile-screen' : 'fa-wifi';
+            document.getElementById('resIcon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
 
             resultCard.style.display = 'block';
 
-            // Setup Copy & Share
+            // Copy
             document.getElementById('btnCopy').onclick = () => {
-                const text = `بيانات الجهاز من كونكت تاق:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nTAC: ${data.tac}`;
-                navigator.clipboard.writeText(text);
-                window.showToast('تم نسخ تفاصيل الجهاز بنجاح!', 'success');
+                const text = `بيانات فحص الجهاز من كونكت تاق:\n- الشركة: ${brand}\n- الموديل والمواصفات: ${specs}\n- رقم TAC: ${tac}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    if (window.toast) window.toast.show('تم نسخ تفاصيل الجهاز بنجاح!', 'success');
+                });
             };
 
+            // Share
             document.getElementById('btnShare').onclick = () => {
-                const text = `فحص هُوية الجهاز:\nالشركة: ${data.canonical_brand}\nالمواصفات: ${specs}\nرابط الفحص: ${window.location.href}`;
-                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
+                const text = `نتيجة فحص هُوية الجهاز:\nالشركة: ${brand}\nالمواصفات: ${specs}\nرابط الأداة: ${window.location.href}`;
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
             };
 
-            if(window.innerWidth < 768) {
-                window.scrollTo({ top: resultCard.offsetTop - 50, behavior: 'smooth' });
+            if (window.innerWidth < 768) {
+                window.scrollTo({ top: resultCard.offsetTop - 40, behavior: 'smooth' });
             }
         }
 
@@ -620,9 +714,9 @@
 
         function saveToHistory(val) {
             let history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
-            if(!history.includes(val)) {
+            if (!history.includes(val)) {
                 history.unshift(val);
-                if(history.length > 5) history.pop();
+                if (history.length > 6) history.pop();
                 localStorage.setItem('check_imei_history', JSON.stringify(history));
                 loadHistory();
             }
@@ -630,7 +724,7 @@
 
         function loadHistory() {
             const history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
-            if(history.length > 0) {
+            if (history.length > 0) {
                 historySection.style.display = 'block';
                 historyList.innerHTML = history.map(item => `<span class="history-item">${item}</span>`).join('');
 
@@ -646,26 +740,35 @@
         }
 
         window.clearHistory = function() {
-            if(confirm('هل أنت متأكد من رغبتك في مسح سجل البحث؟')) {
-                localStorage.removeItem('check_imei_history');
-                loadHistory();
-                window.showToast('تم مسح السجل بنجاح', 'info');
-            }
+            localStorage.removeItem('check_imei_history');
+            loadHistory();
+            if (window.toast) window.toast.show('تم مسح سجل البحث', 'info');
         };
 
+        // Change input constraints on radio change
         document.querySelectorAll('input[name="searchType"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const type = this.value;
-                if(type === 'imei') searchInput.placeholder = 'أدخل 15 رقماً هنا...';
-                else if(type === 'tac') searchInput.placeholder = 'أدخل 8 أرقام...';
-                else searchInput.placeholder = 'اسم الجهاز أو الموديل...';
+                searchInput.value = '';
                 searchInput.classList.remove('valid-input');
+
+                if (type === 'imei') {
+                    searchInput.placeholder = 'أدخل 15 رقماً هنا...';
+                    searchInput.setAttribute('maxlength', '15');
+                    searchInput.setAttribute('inputmode', 'numeric');
+                } else if (type === 'tac') {
+                    searchInput.placeholder = 'أدخل أول 8 أرقام (TAC)...';
+                    searchInput.setAttribute('maxlength', '8');
+                    searchInput.setAttribute('inputmode', 'numeric');
+                } else {
+                    searchInput.placeholder = 'اكتب اسم الجهاز أو الموديل (مثال: ZTE, L818)...';
+                    searchInput.removeAttribute('maxlength');
+                    searchInput.setAttribute('inputmode', 'text');
+                }
+                searchInput.focus();
             });
         });
     });
 </script>
-<!-- Modular Web Component: Cookie Consent -->
-<cookie-consent></cookie-consent>
 </body>
 </html>
-
