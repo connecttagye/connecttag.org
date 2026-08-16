@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>محول الوحدات الكهربائية | كيلو وات، أمبير، فولت، حصان - كونكت تاق</title>
-    <meta name="description" content="أدوات ذكية للتحويل بين الوحدات الكهربائية المختلفة (وات، أمبير، فولت، حصان) بدقة عالية. مفيدة جداً عند شراء منظومات الطاقة الشمسية والأجهزة الكهربائية.">
+    <meta name="description" content="أداة ذكية للتحويل بين الوحدات الكهربائية المختلفة (وات، أمبير، فولت، حصان) بدقة عالية. مفيدة جداً عند شراء منظومات الطاقة الشمسية والأجهزة الكهربائية.">
     <link rel="canonical" href="https://connecttag.org/tools/energy/unit-converter/" />
 
     <!-- OpenGraph meta -->
@@ -34,26 +34,12 @@
     <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .page-header-unified {
-            background: #ffffff; padding: 100px 0 60px; text-align: center; border-bottom: 1px solid #edf2f7;
-        }
-        .page-header-unified h1 { font-weight: 900; font-size: 34px; color: #006b98 !important; margin-bottom: 15px; }
-
-        .converter-card {
-            background: #fff; border-radius: 24px; padding: 35px; border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-top: -40px; position: relative; z-index: 10;
-        }
-        .form-label { font-weight: 700; color: #475569; margin-bottom: 10px; display: block; }
-        .form-control-custom {
-            border-radius: 12px; border: 2px solid #f1f5f9; padding: 12px 18px; font-weight: 600;
-            transition: 0.3s; width: 100%; outline: none; background: #f8fafc;
-        }
-        .form-control-custom:focus { border-color: #006b98; background: #fff; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
 
         .result-box {
             background: #f0f9ff; border-radius: 15px; padding: 25px; border: 1px dashed #006b98;
@@ -61,10 +47,6 @@
         }
         .result-value { font-size: 32px; font-weight: 900; color: #006b98; display: block; }
         .result-label { font-size: 14px; color: #64748b; font-weight: 700; margin-top: 5px; }
-
-        .info-section { margin-top: 60px; background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #edf2f7; }
-        .info-section h2 { font-weight: 800; color: #006b98; margin-bottom: 25px; font-size: 22px; }
-        .info-section p { line-height: 1.8; color: #64748b; margin-bottom: 20px; }
 
         .conversion-type-btn {
             background: #fff; border: 2px solid #f1f5f9; border-radius: 12px; padding: 15px;
@@ -74,11 +56,6 @@
         .conversion-type-btn:hover { border-color: #006b98; background: #f0f9ff; }
         .conversion-type-btn.active { border-color: #006b98; background: #006b98; color: #fff; }
         .conversion-type-btn i { font-size: 20px; width: 30px; text-align: center; }
-
-        @media (max-width: 768px) {
-            .page-header-unified { padding: 80px 0 40px; }
-            .converter-card { padding: 25px; margin-top: -20px; }
-        }
     </style>
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
 </head>
@@ -94,82 +71,82 @@
         </div>
     </div>
 
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base text-right" data-aos="zoom-in" style="display: inline-block; text-align: right;">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="form-label">نوع التحويل:</label>
+                        <div id="conversion-types">
+                            <button class="conversion-type-btn active" onclick="setMode('w-to-a', this)">
+                                <i class="fa-solid fa-bolt"></i> من وات إلى أمبير
+                            </button>
+                            <button class="conversion-type-btn" onclick="setMode('a-to-w', this)">
+                                <i class="fa-solid fa-plug"></i> من أمبير إلى وات
+                            </button>
+                            <button class="conversion-type-btn" onclick="setMode('kw-to-a', this)">
+                                <i class="fa-solid fa-charging-station"></i> من كيلو وات إلى أمبير
+                            </button>
+                            <button class="conversion-type-btn" onclick="setMode('w-to-hp', this)">
+                                <i class="fa-solid fa-gauge-high"></i> من وات إلى حصان
+                            </button>
+                            <button class="conversion-type-btn" onclick="setMode('va-to-w', this)">
+                                <i class="fa-solid fa-microchip"></i> من VA إلى وات
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="row mt-4 mt-md-0">
+                            <div class="col-sm-12 mb-3 text-right">
+                                <label class="form-label" id="input-label">القيمة بالوات (W):</label>
+                                <input type="number" id="main-input" class="form-control-custom" placeholder="مثلاً: 1000" oninput="calculate()">
+                            </div>
+                            <div class="col-sm-12 mb-3 text-right">
+                                <label class="form-label">الجهد (الفولت):</label>
+                                <select id="voltage-input" class="form-control-custom" onchange="calculate()">
+                                    <option value="220">220 فولت (كهرباء عامة)</option>
+                                    <option value="12">12 فولت (بطارية سيارة)</option>
+                                    <option value="24">24 فولت (منظومة شمسية)</option>
+                                    <option value="48">48 فولت (منظومة كبيرة)</option>
+                                    <option value="110">110 فولت</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 mb-3 text-right" id="pf-wrapper" style="display:none;">
+                                <label class="form-label">معامل القدرة (Power Factor):</label>
+                                <input type="number" id="pf-input" class="form-control-custom" value="0.8" step="0.1" min="0" max="1" oninput="calculate()">
+                                <small class="text-muted">لأنظمة التيار المتردد (AC)، القيمة الافتراضية 0.8</small>
+                            </div>
+                        </div>
+
+                        <div class="result-box">
+                            <span class="result-label" id="result-text-label">النتيجة بالأمبير:</span>
+                            <span class="result-value" id="result-display">0.00</span>
+                            <span class="result-label" id="result-unit-label">أمبير (A)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="converter-card" data-aos="zoom-in">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="form-label">نوع التحويل:</label>
-                            <div id="conversion-types">
-                                <button class="conversion-type-btn active" onclick="setMode('w-to-a', this)">
-                                    <i class="fa-solid fa-bolt"></i> من وات إلى أمبير
-                                </button>
-                                <button class="conversion-type-btn" onclick="setMode('a-to-w', this)">
-                                    <i class="fa-solid fa-plug"></i> من أمبير إلى وات
-                                </button>
-                                <button class="conversion-type-btn" onclick="setMode('kw-to-a', this)">
-                                    <i class="fa-solid fa-charging-station"></i> من كيلو وات إلى أمبير
-                                </button>
-                                <button class="conversion-type-btn" onclick="setMode('w-to-hp', this)">
-                                    <i class="fa-solid fa-gauge-high"></i> من وات إلى حصان
-                                </button>
-                                <button class="conversion-type-btn" onclick="setMode('va-to-w', this)">
-                                    <i class="fa-solid fa-microchip"></i> من VA إلى وات
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="row mt-4 mt-md-0">
-                                <div class="col-sm-6 mb-3">
-                                    <label class="form-label" id="input-label">القيمة بالوات (W):</label>
-                                    <input type="number" id="main-input" class="form-control-custom" placeholder="مثلاً: 1000" oninput="calculate()">
-                                </div>
-                                <div class="col-sm-6 mb-3">
-                                    <label class="form-label">الجهد (الفولت):</label>
-                                    <select id="voltage-input" class="form-control-custom" onchange="calculate()">
-                                        <option value="220">220 فولت (كهرباء عامة)</option>
-                                        <option value="12">12 فولت (بطارية سيارة)</option>
-                                        <option value="24">24 فولت (منظومة شمسية)</option>
-                                        <option value="48">48 فولت (منظومة كبيرة)</option>
-                                        <option value="110">110 فولت</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 mb-3" id="pf-wrapper" style="display:none;">
-                                    <label class="form-label">معامل القدرة (Power Factor):</label>
-                                    <input type="number" id="pf-input" class="form-control-custom" value="0.8" step="0.1" min="0" max="1" oninput="calculate()">
-                                    <small class="text-muted">لأنظمة التيار المتردد (AC)، القيمة الافتراضية 0.8</small>
-                                </div>
-                            </div>
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>لماذا تحتاج لمحول الوحدات الكهربائية؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">في سوق الطاقة الشمسية، غالباً ما نجد أجهزة مقاسة بـ "الأمبير" بينما منظومة الألواح تُقاس بـ "الوات" أو "الكيلو وات". يساعدك هذا المحول في معرفة مدى توافق الأجهزة المنزلية مع قدرة الإنفيرتر والبطاريات لديك.</p>
 
-                            <div class="result-box">
-                                <span class="result-label" id="result-text-label">النتيجة بالأمبير:</span>
-                                <span class="result-value" id="result-display">0.00</span>
-                                <span class="result-label" id="result-unit-label">أمبير (A)</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-circle-info text-primary"></i> تحويل الوات إلى أمبير</h3>
+                    <p style="font-size:14px; color:#666;">المعادلة هي: <strong>الأمبير = الوات ÷ الفولت</strong>. فمثلاً لو لديك جهاز يسحب 1000 وات على نظام 220 فولت، فإنه سيسحب حوالي 4.5 أمبير.</p>
                 </div>
-
-                <div class="info-section" data-aos="fade-up">
-                    <h2>لماذا تحتاج لمحول الوحدات الكهربائية؟</h2>
-                    <p>في سوق الطاقة الشمسية باليمن، غالباً ما نجد أجهزة مقاسة بـ "الأمبير" بينما منظومة الألواح تُقاس بـ "الوات" أو "الكيلو وات". يساعدك هذا المحول في معرفة مدى توافق الأجهزة المنزلية مع قدرة الإنفيرتر والبطاريات لديك.</p>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-circle-info text-primary"></i> تحويل الوات إلى أمبير</h3>
-                            <p style="font-size:14px;">المعادلة هي: <strong>الأمبير = الوات ÷ الفولت</strong>. فمثلاً لو لديك جهاز يسحب 1000 وات على نظام 220 فولت، فإنه سيسحب حوالي 4.5 أمبير.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-circle-info text-primary"></i> ما هو الحصان الكهربائي؟</h3>
-                            <p style="font-size:14px;">يستخدم غالباً لمضخات المياه والمكيفات. <strong>1 حصان يعادل تقريباً 746 وات</strong>. معرفة هذا التحويل ضرورية لاختيار الإنفيرتر المناسب للمضخة.</p>
-                        </div>
-                    </div>
-
-                    <div class="alert alert-info mt-4" style="border-radius:15px; border:none; background: #e0f2fe; color: #0369a1;">
-                        <strong>نصيحة تقنية:</strong> عند حساب قدرة المنظومة الشمسية، يفضل دائماً ترك هامش أمان بنسبة 20% لتجنب التحميل الزائد عند بدء تشغيل الأجهزة.
-                    </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-circle-info text-primary"></i> ما هو الحصان الكهربائي؟</h3>
+                    <p style="font-size:14px; color:#666;">يستخدم غالباً لمضخات المياه والمكيفات. <strong>1 حصان يعادل تقريباً 746 وات</strong>. معرفة هذا التحويل ضرورية لاختيار الإنفيرتر المناسب للمضخة.</p>
                 </div>
+            </div>
+
+            <div class="alert alert-info mt-4 mx-auto" style="border-radius:15px; border:none; background: #e0f2fe; color: #0369a1; max-width: 800px;">
+                <strong>نصيحة تقنية:</strong> عند حساب قدرة المنظومة الشمسية، يفضل دائماً ترك هامش أمان بنسبة 20% لتجنب التحميل الزائد عند بدء تشغيل الأجهزة.
             </div>
         </div>
     </div>

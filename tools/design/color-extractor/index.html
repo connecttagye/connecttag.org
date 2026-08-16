@@ -34,20 +34,12 @@
     <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .page-header-unified {
-            background: #ffffff; padding: 100px 0 60px; text-align: center; border-bottom: 1px solid #edf2f7;
-        }
-        .page-header-unified h1 { font-weight: 900; font-size: 34px; color: #006b98 !important; margin-bottom: 15px; }
-
-        .tool-card {
-            background: #fff; border-radius: 24px; padding: 35px; border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-top: -40px; position: relative; z-index: 10;
-        }
 
         .upload-area {
             border: 2px dashed #cbd5e1; border-radius: 20px; padding: 40px 20px; text-align: center;
@@ -75,15 +67,6 @@
             padding: 4px; border-radius: 8px; font-size: 10px; opacity: 0; transition: 0.3s;
         }
         .color-item:hover .copy-hint { opacity: 1; }
-
-        .info-section { margin-top: 60px; background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #edf2f7; }
-        .info-section h2 { font-weight: 800; color: #006b98; margin-bottom: 25px; font-size: 22px; }
-        .info-section p { line-height: 1.8; color: #64748b; margin-bottom: 20px; }
-
-        @media (max-width: 768px) {
-            .page-header-unified { padding: 80px 0 40px; }
-            .tool-card { padding: 25px; margin-top: -20px; }
-        }
     </style>
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
     <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
@@ -101,43 +84,43 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="tool-card" data-aos="zoom-in">
-                    <input type="file" id="file-input" hidden accept="image/*">
-                    <div class="upload-area" id="drop-zone" onclick="document.getElementById('file-input').click()">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <h3>اسحب الصورة هنا أو اضغط للاختيار</h3>
-                        <p class="text-muted">يدعم PNG, JPG, WebP. المعالجة تتم محلياً في جهازك.</p>
-                    </div>
-
-                    <div class="text-center">
-                        <img id="preview-img" alt="Preview">
-                    </div>
-
-                    <div id="results-area" style="display: none;">
-                        <h4 style="font-weight: 800; color: #1e293b; margin-bottom: 20px;"><i class="fa-solid fa-palette text-primary"></i> لوحة الألوان المستخرجة:</h4>
-                        <div class="palette-grid" id="palette-grid">
-                            <!-- Colors will appear here -->
-                        </div>
-                    </div>
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base text-right" data-aos="zoom-in" style="display: inline-block; text-align: right;">
+                <input type="file" id="file-input" hidden accept="image/*">
+                <div class="upload-area" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <h3>اسحب الصورة هنا أو اضغط للاختيار</h3>
+                    <p class="text-muted">يدعم PNG, JPG, WebP. المعالجة تتم محلياً في جهازك.</p>
                 </div>
 
-                <div class="info-section" data-aos="fade-up">
-                    <h2>لماذا تحتاج لاستخراج الألوان من الصور؟</h2>
-                    <p>يعتبر استلهام الألوان من الصور الطبيعية أو الشعارات العالمية أول خطوة في بناء تصميم احترافي. بدلاً من محاولة تخمين الألوان يدوياً، تقوم هذه الأداة بتحليل بكسلات الصورة واستخلاص الدرجات الأكثر ظهوراً (Dominant Colors) لتعطيك باليت جاهزة للاستخدام.</p>
+                <div class="text-center">
+                    <img id="preview-img" alt="Preview">
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-code text-primary"></i> أكواد جاهزة للمبرمجين</h3>
-                            <p style="font-size:14px;">سواء كنت تعمل على CSS أو Flutter أو Android، ستحصل على كود الـ Hex الدقيق الذي يمكنك نسخه واستخدامه فوراً في برمجتك.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-shield-halved text-primary"></i> خصوصية كاملة</h3>
-                            <p style="font-size:14px;">نحن نستخدم تقنيات الـ Canvas في المتصفح، مما يعني أن صورك لا ترفع إلى خوادمنا؛ المعالجة بالكامل تتم داخل متصفحك الخاص.</p>
-                        </div>
+                <div id="results-area" style="display: none;">
+                    <h4 style="font-weight: 800; color: #1e293b; margin-bottom: 20px;"><i class="fa-solid fa-palette text-primary"></i> لوحة الألوان المستخرجة:</h4>
+                    <div class="palette-grid" id="palette-grid">
+                        <!-- Colors will appear here -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>لماذا تحتاج لاستخراج الألوان من الصور؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">يعتبر استلهام الألوان من الصور الطبيعية أو الشعارات العالمية أول خطوة في بناء تصميم احترافي. بدلاً من محاولة تخمين الألوان يدوياً، تقوم هذه الأداة بتحليل بكسلات الصورة واستخلاص الدرجات الأكثر ظهوراً (Dominant Colors) لتعطيك باليت جاهزة للاستخدام.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-code text-primary"></i> أكواد جاهزة للمبرمجين</h3>
+                    <p style="font-size:14px; color:#666;">سواء كنت تعمل على CSS أو Flutter أو Android، ستحصل على كود الـ Hex الدقيق الذي يمكنك نسخه واستخدامه فوراً في برمجتك.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-shield-halved text-primary"></i> خصوصية كاملة</h3>
+                    <p style="font-size:14px; color:#666;">نحن نستخدم تقنيات الـ Canvas في المتصفح، مما يعني أن صورك لا ترفع إلى خوادمنا؛ المعالجة بالكامل تتم داخل متصفحك الخاص.</p>
                 </div>
             </div>
         </div>

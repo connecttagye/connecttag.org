@@ -13,13 +13,12 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
-    .json-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 30px; }
 
     .editor-container { position: relative; margin-bottom: 20px; }
     textarea.form-control {
@@ -28,7 +27,7 @@
     }
     textarea.form-control:focus { border-color: #006b98; box-shadow: none; }
 
-    .action-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
+    .action-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
     .btn-action {
         padding: 10px 25px; border-radius: 12px; font-weight: 700; border: none; transition: 0.3s;
         display: flex; align-items: center; gap: 8px;
@@ -44,16 +43,18 @@
         font-family: 'Courier New', monospace; font-size: 14px; overflow: auto;
         max-height: 600px; direction: ltr; text-align: left; border: 1px solid #1e293b;
     }
-    .btn-copy {
-        position: absolute; top: 10px; right: 10px; background: #334155; color: #fff;
-        border: none; padding: 5px 15px; border-radius: 8px; font-size: 12px; cursor: pointer; z-index: 10;
+    .btn-copy-box { margin-bottom: 10px; display: flex; gap: 10px; justify-content: flex-end; }
+    .btn-tool {
+        background: #334155; color: #fff; border: none; padding: 5px 15px;
+        border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.2s;
     }
+    .btn-tool:hover { background: #475569; }
 
-    .status-alert { border-radius: 15px; padding: 15px; margin-bottom: 20px; display: none; }
+    .status-alert { border-radius: 15px; padding: 15px; margin-bottom: 20px; display: none; text-align: right; }
     .status-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
     .status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
 
-    /* Syntax Highlighting-ish colors */
+    /* Syntax Highlighting */
     .json-key { color: #93c5fd; }
     .json-string { color: #86efac; }
     .json-number { color: #fdba74; }
@@ -77,25 +78,22 @@
 <site-toast></site-toast>
 <site-header></site-header>
 
-<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
-    <div class="text-center mb-5">
-        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/web/">أدوات الويب</a></li>
-            <li class="active">منسق JSON</li>
-        </ul>
-        <h1 style="font-weight: 900; color: #006b98;">منسق ومحقق ملفات JSON</h1>
-        <p class="text-muted">قم بتنسيق أكواد JSON وجعلها سهلة القراءة أو التحقق من صحتها برمجياً</p>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">منسق ومحقق ملفات JSON</h1>
+            <p data-aos="fade-up" data-aos-delay="100">قم بتنسيق أكواد JSON وجعلها سهلة القراءة أو التحقق من صحتها برمجياً</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات الويب", "url":"/tools/web/"}, {"title":"منسق JSON", "url":"/tools/web/json-formatter/"}]'></site-breadcrumb>
+        </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="json-card">
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base text-right" data-aos="zoom-in" style="display: inline-block; text-align: right;">
                 <div id="status-box" class="status-alert"></div>
 
                 <div class="editor-container">
-                    <label style="font-weight: 800; color: #1e293b; margin-bottom: 10px;">أدخل كود JSON الخام:</label>
+                    <label class="form-label">أدخل كود JSON الخام:</label>
                     <textarea id="json-input" class="form-control" rows="10" placeholder='مثال: {"name":"Connect Tag", "type":"IT Company"}'></textarea>
                 </div>
 
@@ -115,32 +113,41 @@
                 </div>
 
                 <div class="result-container" id="output-wrapper" style="display: none;">
-                    <label style="font-weight: 800; color: #1e293b; margin-bottom: 10px;">النتيجة:</label>
-                    <button class="btn-copy" onclick="copyResult()" id="copy-btn">نسخ النتيجة</button>
-                    <button class="btn-download" onclick="downloadJson()">تحميل .json</button>
+                    <label class="form-label">النتيجة:</label>
+                    <div class="btn-copy-box">
+                        <button class="btn-tool" onclick="copyResult()"><i class="fa-solid fa-copy"></i> نسخ النتيجة</button>
+                        <button class="btn-tool" onclick="downloadJson()"><i class="fa-solid fa-download"></i> تحميل .json</button>
+                    </div>
                     <pre id="json-output" class="code-output"></pre>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-12">
-            <div class="json-card">
-                <h4 style="font-weight: 800; color: #006b98; margin-bottom: 15px;">ما هي فائدة هذه الأداة؟</h4>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa-solid fa-check text-success"></i> <strong>تصحيح الأخطاء:</strong> تكتشف الأداة الفواصل المفقودة أو الأقواس غير المغلقة بدقة.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa-solid fa-check text-success"></i> <strong>سهولة القراءة:</strong> تحول الكود المتداخل إلى هيكل واضح يسهل فهمه للمطورين.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p style="font-size: 14px; line-height: 1.8;"><i class="fa-solid fa-check text-success"></i> <strong>تحسين الأداء:</strong> تساعد ميزة الضغط (Minify) على تقليل حجم الملفات المستخدمة في التطبيقات.</p>
-                    </div>
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>ما هي فائدة هذه الأداة؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">تعتبر لغة JSON المعيار الأكثر انتشاراً لنقل البيانات بين الخوادم والتطبيقات. تساعدك هذه الأداة في تنظيم هذه البيانات وفهم هيكليتها بوضوح.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-check text-success"></i> تصحيح الأخطاء</h3>
+                    <p style="font-size:14px; color:#666;">تكتشف الأداة الفواصل المفقودة أو الأقواس غير المغلقة بدقة وتعطيك تنبيهاً بمكان الخطأ.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-eye text-primary"></i> سهولة القراءة</h3>
+                    <p style="font-size:14px; color:#666;">تحول الكود المتداخل والمضغوط إلى هيكل شجري واضح وملون يسهل فهمه للمطورين.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-bolt text-warning"></i> تحسين الأداء</h3>
+                    <p style="font-size:14px; color:#666;">تساعد ميزة الضغط (Minify) على تقليل حجم الملفات المستخدمة في التطبيقات لزيادة سرعة استجابة الـ API.</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
+
+<site-footer></site-footer>
 
 <script>
     const inputArea = document.getElementById('json-input');
@@ -230,7 +237,7 @@
     function copyResult() {
         const text = outputArea.innerText;
         navigator.clipboard.writeText(text).then(() => {
-            window.showToast("تم النسخ بنجاح!", "success");
+            if(window.showToast) window.showToast("تم النسخ بنجاح!", "success");
         });
     }
 
@@ -242,13 +249,11 @@
         a.href = url;
         a.download = 'connecttag-formatted.json';
         a.click();
-        window.showToast("بدء التحميل...", "info");
+        if(window.showToast) window.showToast("بدء التحميل...", "info");
     }
 </script>
 
-
-<site-footer></site-footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
-
-

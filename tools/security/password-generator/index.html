@@ -13,77 +13,43 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
 
 <style>
-    :root {
-        --primary-color: #006b98;
-        --secondary-color: #25d366;
-        --bg-light: #f4f7f9;
-        --card-bg: #ffffff;
-        --text-main: #2c3e50;
-        --border-color: #e1e8ed;
-    }
-
-    [data-theme="dark"] {
-        --bg-light: #0f172a;
-        --card-bg: #1e293b;
-        --text-main: #f8fafc;
-        --border-color: #334155;
-    }
-
-    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-main); transition: 0.3s; }
-
-    .page-header-unified {
-        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
-        padding: 80px 0 60px;
-        color: white;
-        text-align: center;
-    }
-
-    .gen-container { padding: 40px 0; }
-
-    .main-card {
-        background: var(--card-bg);
-        border-radius: 32px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        padding: 40px;
-        border: 1px solid var(--border-color);
-        max-width: 600px;
-        margin: 0 auto;
-    }
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; transition: 0.3s; }
 
     .output-area {
-        background: var(--bg-light);
+        background: #f8fafc;
         padding: 25px;
         border-radius: 20px;
         display: flex;
         align-items: center;
         gap: 15px;
         margin-bottom: 30px;
-        border: 2px solid var(--border-color);
+        border: 2px solid #edf2f7;
         position: relative;
+        text-align: right;
     }
     .password-display {
         flex: 1;
         font-family: monospace;
         font-size: 24px;
         font-weight: bold;
-        color: var(--primary-color);
+        color: #006b98;
         word-break: break-all;
         letter-spacing: 2px;
+        direction: ltr;
     }
     .btn-icon {
         width: 45px;
         height: 45px;
         border: none;
         border-radius: 12px;
-        background: var(--primary-color);
+        background: #006b98;
         color: white;
         cursor: pointer;
         transition: 0.3s;
@@ -91,22 +57,22 @@
         align-items: center;
         justify-content: center;
     }
-    .btn-icon:hover { transform: scale(1.1); background: var(--secondary-color); }
+    .btn-icon:hover { transform: scale(1.1); background: #004d6e; }
 
     .strength-meter { height: 6px; background: #eee; border-radius: 10px; margin-top: 10px; overflow: hidden; }
     .strength-fill { height: 100%; width: 0%; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 
-    .setting-item { margin-bottom: 25px; }
+    .setting-item { margin-bottom: 25px; text-align: right; }
     .setting-label { display: flex; justify-content: space-between; font-weight: 800; margin-bottom: 10px; }
 
-    .range-slider { width: 100%; accent-color: var(--primary-color); cursor: pointer; }
+    .range-slider { width: 100%; accent-color: #006b98; cursor: pointer; }
 
-    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: right; }
     .check-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        background: var(--bg-light);
+        background: #f8fafc;
         padding: 12px 15px;
         border-radius: 12px;
         cursor: pointer;
@@ -114,7 +80,7 @@
         font-weight: 700;
         font-size: 14px;
     }
-    .check-item:hover { background: var(--border-color); }
+    .check-item:hover { background: #edf2f7; }
     .check-item input { width: 18px; height: 18px; cursor: pointer; }
 
     .btn-generate {
@@ -122,7 +88,7 @@
         padding: 15px;
         border: none;
         border-radius: 16px;
-        background: var(--primary-color);
+        background: #006b98;
         color: white;
         font-weight: 800;
         font-size: 18px;
@@ -135,8 +101,6 @@
         gap: 10px;
     }
     .btn-generate:hover { background: #004d6e; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-    .badge-secure { font-size: 10px; padding: 3px 8px; border-radius: 5px; background: #e8f5e9; color: #2e7d32; }
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -155,60 +119,75 @@
 <div id="home-content">
 <site-header></site-header>
 
-<div class="page-header-unified">
-    <div class="container">
-        <h1 data-aos="zoom-in">مولد كلمات المرور الآمنة</h1>
-        <p>أنشئ كلمات مرور قوية لا يمكن كسرها لحماية حساباتك الرقمية</p>
-        <ul class="breadcrumb-custom mt-3">
-            <li><a href="https://connecttag.org/" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/" style="color:white !important; opacity:0.8;">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/security/" style="color:white !important; opacity:0.8;">الأمن والخصوصية</a></li>
-            <li class="active" style="color:white !important; font-weight:800;">مولد كلمات المرور</li>
-        </ul>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">مولد كلمات المرور الآمنة</h1>
+            <p data-aos="fade-up" data-aos-delay="100">أنشئ كلمات مرور قوية لا يمكن كسرها لحماية حساباتك الرقمية بضغطة زر واحدة</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"الأمن والخصوصية", "url":"/tools/security/"}, {"title":"مولد كلمات المرور", "url":"/tools/security/password-generator/"}]'></site-breadcrumb>
+        </div>
     </div>
-</div>
 
-<div class="gen-container">
-    <div class="container">
-        <div class="main-card" data-aos="fade-up">
-            <div class="output-area">
-                <div class="password-display" id="passwordResult">P@ssw0rd123</div>
-                <button class="btn-icon" onclick="copyPassword()" title="نسخ الكلمة"><i class="fa-solid fa-copy"></i></button>
-                <button class="btn-icon" onclick="generate()" title="تحديث"><i class="fa-solid fa-rotate"></i></button>
-            </div>
-
-            <div class="mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="small fw-bold">قوة كلمة المرور: <span id="strengthText">متوسطة</span></span>
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base" data-aos="zoom-in" style="max-width: 600px;">
+                <div class="output-area">
+                    <div class="password-display" id="passwordResult">P@ssw0rd123</div>
+                    <button class="btn-icon" onclick="copyPassword()" title="نسخ الكلمة"><i class="fa-solid fa-copy"></i></button>
+                    <button class="btn-icon" onclick="generate()" title="تحديث"><i class="fa-solid fa-rotate"></i></button>
                 </div>
-                <div class="strength-meter">
-                    <div class="strength-fill" id="strengthFill"></div>
+
+                <div class="mb-4 text-right">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="small fw-bold">قوة كلمة المرور: <span id="strengthText">متوسطة</span></span>
+                    </div>
+                    <div class="strength-meter">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="setting-item">
-                <div class="setting-label">
-                    <span>طول الكلمة</span>
-                    <span class="text-primary" id="lengthVal">16</span>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>طول الكلمة</span>
+                        <span class="text-primary" id="lengthVal">16</span>
+                    </div>
+                    <input type="range" class="range-slider" id="lengthSlider" min="8" max="50" value="16" oninput="updateUI()">
                 </div>
-                <input type="range" class="range-slider" id="lengthSlider" min="8" max="50" value="16" oninput="updateUI()">
-            </div>
 
-            <div class="check-grid">
-                <label class="check-item"><input type="checkbox" id="checkUpper" checked onchange="generate()"> أحرف كبيرة (A-Z)</label>
-                <label class="check-item"><input type="checkbox" id="checkLower" checked onchange="generate()"> أحرف صغيرة (a-z)</label>
-                <label class="check-item"><input type="checkbox" id="checkNumbers" checked onchange="generate()"> أرقام (0-9)</label>
-                <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()"> رموز خاصّة (!@#)</label>
-            </div>
+                <div class="check-grid">
+                    <label class="check-item"><input type="checkbox" id="checkUpper" checked onchange="generate()"> أحرف كبيرة</label>
+                    <label class="check-item"><input type="checkbox" id="checkLower" checked onchange="generate()"> أحرف صغيرة</label>
+                    <label class="check-item"><input type="checkbox" id="checkNumbers" checked onchange="generate()"> أرقام (0-9)</label>
+                    <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()"> رموز خاصّة</label>
+                </div>
 
-            <button class="btn-generate" onclick="generate()"><i class="fa-solid fa-shield"></i> توليد كلمة مرور جديدة</button>
+                <button class="btn-generate" onclick="generate()"><i class="fa-solid fa-shield"></i> توليد كلمة مرور جديدة</button>
 
-            <div class="text-center mt-4 small text-muted">
-                <i class="fa-solid fa-lock"></i> يتم التوليد محلياً في متصفحك لضمان أقصى درجات الأمان.
+                <div class="text-center mt-4 small text-muted">
+                    <i class="fa-solid fa-lock"></i> يتم التوليد محلياً في متصفحك لضمان أقصى درجات الأمان.
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>لماذا يجب استخدام كلمات مرور قوية؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">تعتبر كلمة المرور هي خط الدفاع الأول عن بياناتك الشخصية وحساباتك البنكية والاجتماعية.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-user-shield text-primary"></i> الحماية من الاختراق</h3>
+                    <p style="font-size:14px; color:#666;">كلمات المرور الطويلة والمعقدة تجعل من المستحيل تقريباً على برامج التخمين (Brute Force) الوصول لحسابك.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-key text-primary"></i> التنوع والأمان</h3>
+                    <p style="font-size:14px; color:#666;">يُنصح باستخدام كلمة مرور مختلفة لكل حساب. توفر لك هذه الأداة كلمات عشوائية تماماً لا يمكن توقعها.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <site-footer></site-footer>
 </div>
@@ -240,7 +219,7 @@ function generate() {
     if (symbols) availableChars += charset.symbols;
 
     if (!availableChars) {
-        document.getElementById('passwordResult').innerText = 'اختر خياراً واحداً!';
+        document.getElementById('passwordResult').innerText = 'اختر خياراً!';
         return;
     }
 
@@ -283,27 +262,17 @@ function calculateStrength(pw) {
 
 function copyPassword() {
     const pw = document.getElementById('passwordResult').innerText;
-    if (pw === 'اختر خياراً واحداً!') return;
+    if (pw === 'اختر خياراً!') return;
 
     navigator.clipboard.writeText(pw).then(() => {
-        const btn = document.querySelector('.btn-icon');
-        const oldIcon = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-        btn.style.background = '#10b981';
-        setTimeout(() => {
-            btn.innerHTML = oldIcon;
-            btn.style.background = '';
-        }, 2000);
+        if(window.showToast) window.showToast('تم نسخ كلمة المرور بنجاح!', 'success');
     });
 }
 
 window.onload = () => {
-    AOS.init({ once: true });
     generate();
 };
 </script>
 
 </body>
 </html>
-
-

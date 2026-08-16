@@ -13,56 +13,23 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
 
 <style>
     :root {
-        --primary-color: #006b98;
-        --secondary-color: #25d366;
-        --bg-light: #f4f7f9;
-        --card-bg: #ffffff;
-        --text-main: #2c3e50;
+        --secondary-green: #25d366;
         --border-color: #e1e8ed;
-        --regex-match: #eef9ff;
-        --regex-highlight: #006b98;
     }
 
-    [data-theme="dark"] {
-        --bg-light: #0f172a;
-        --card-bg: #1e293b;
-        --text-main: #f8fafc;
-        --border-color: #334155;
-        --regex-match: #1e3a8a;
-    }
-
-    body { background-color: var(--bg-light); font-family: 'Cairo', sans-serif; color: var(--text-main); transition: 0.3s; }
-
-    .page-header-unified {
-        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
-        padding: 80px 0 60px;
-        color: white;
-        text-align: center;
-    }
-
-    .tester-container { padding: 40px 0; }
-
-    .main-card {
-        background: var(--card-bg);
-        border-radius: 24px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        padding: 30px;
-        border: 1px solid var(--border-color);
-        margin-bottom: 25px;
-    }
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
 
     .regex-input-group {
         display: flex;
-        background: var(--bg-light);
+        background: #f8fafc;
         padding: 5px;
         border-radius: 15px;
         border: 2px solid var(--border-color);
@@ -70,14 +37,14 @@
         align-items: center;
     }
     .regex-slash { padding: 0 15px; font-size: 20px; color: #888; font-weight: bold; }
-    .regex-input { flex: 1; border: none; background: transparent; padding: 10px; font-family: monospace; font-size: 18px; outline: none; color: var(--text-main); }
-    .regex-flags { width: 80px; border: none; background: transparent; padding: 10px; color: var(--primary-color); font-weight: bold; font-size: 16px; border-left: 1px solid var(--border-color); }
+    .regex-input { flex: 1; border: none; background: transparent; padding: 10px; font-family: monospace; font-size: 18px; outline: none; color: #1e293b; }
+    .regex-flags { width: 80px; border: none; background: transparent; padding: 10px; color: #006b98; font-weight: bold; font-size: 16px; border-left: 1px solid var(--border-color); }
 
     .test-area {
         width: 100%;
         min-height: 200px;
-        background: var(--bg-light);
-        color: var(--text-main);
+        background: #f8fafc;
+        color: #1e293b;
         padding: 20px;
         border-radius: 15px;
         font-family: monospace;
@@ -87,14 +54,16 @@
         outline: none;
         white-space: pre-wrap;
         word-break: break-all;
+        text-align: left;
+        direction: ltr;
     }
-    .test-area:focus { border-color: var(--primary-color); }
+    .test-area:focus { border-color: #006b98; background: #fff; }
 
-    .match-highlight { background-color: var(--secondary-color); color: #fff; border-radius: 3px; padding: 2px 0; }
+    .match-highlight { background-color: var(--secondary-green); color: #fff; border-radius: 3px; padding: 2px 0; }
 
     .predefined-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; }
     .pattern-btn {
-        background: var(--bg-light);
+        background: #fff;
         border: 1px solid var(--border-color);
         padding: 8px 12px;
         border-radius: 10px;
@@ -104,15 +73,15 @@
         transition: 0.3s;
         text-align: center;
     }
-    .pattern-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+    .pattern-btn:hover { border-color: #006b98; color: #006b98; }
 
-    .explanation-card { background: var(--bg-light); padding: 20px; border-radius: 15px; border-right: 4px solid var(--primary-color); margin-top: 20px; }
+    .explanation-card { background: #f8fafc; padding: 20px; border-radius: 15px; border-right: 4px solid #006b98; margin-top: 20px; text-align: right; }
     .explanation-title { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; }
-    .explanation-item { font-size: 13px; margin-bottom: 5px; color: var(--text-main); }
-    .explanation-item code { background: rgba(0,0,0,0.05); padding: 2px 5px; border-radius: 4px; color: var(--danger-color); }
+    .explanation-item { font-size: 13px; margin-bottom: 5px; color: #475569; }
+    .explanation-item code { background: rgba(0,0,0,0.05); padding: 2px 5px; border-radius: 4px; color: #e11d48; }
 
     .status-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; font-size: 13px; font-weight: 700; }
-    .match-count { color: var(--secondary-color); }
+    .match-count { color: #16a34a; }
 
     [contenteditable]:empty:before { content: attr(placeholder); color: #888; cursor: text; }
 
@@ -121,97 +90,99 @@
         .regex-flags { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
     }
 </style>
-
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 
-<site-preloader></site-preloader>
-
-<div id="home-content">
-<site-header></site-header>
-
-<div class="page-header-unified">
-    <div class="container">
-        <h1 data-aos="zoom-in">مختبر التعبيرات النمطية (RegEx)</h1>
-        <p>قم باختبار، تحليل، وتحسين الـ Regular Expressions مع دعم كامل للعربية</p>
-        <ul class="breadcrumb-custom mt-3">
-            <li><a href="https://connecttag.org/" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/" style="color:white !important; opacity:0.8;">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/web/" style="color:white !important; opacity:0.8;">أدوات الويب</a></li>
-            <li class="active" style="color:white !important; font-weight:800;">مختبر Regex</li>
-        </ul>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">مختبر التعبيرات النمطية (RegEx)</h1>
+            <p data-aos="fade-up" data-aos-delay="100">قم باختبار، تحليل، وتحسين الـ Regular Expressions مع دعم كامل للغة العربية</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات الويب", "url":"/tools/web/"}, {"title":"مختبر Regex", "url":"/tools/web/regex-tester/"}]'></site-breadcrumb>
+        </div>
     </div>
-</div>
 
-<div class="tester-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="main-card" data-aos="fade-up">
-                    <h5 class="fw-bold mb-3">التعبير النمطي:</h5>
-                    <div class="regex-input-group">
-                        <span class="regex-slash">/</span>
-                        <input type="text" id="regexInput" class="regex-input" placeholder="([a-z]+)" oninput="runTest()">
-                        <span class="regex-slash">/</span>
-                        <input type="text" id="flagInput" class="regex-flags" value="g" placeholder="flags" oninput="runTest()">
-                    </div>
+    <div class="tool-main-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-11">
+                    <div class="tool-card-base" data-aos="zoom-in" style="max-width: 1100px;">
+                        <div class="row">
+                            <div class="col-lg-8 text-right">
+                                <h5 class="fw-bold mb-3">التعبير النمطي:</h5>
+                                <div class="regex-input-group">
+                                    <span class="regex-slash">/</span>
+                                    <input type="text" id="regexInput" class="regex-input" placeholder="([a-z]+)" oninput="runTest()">
+                                    <span class="regex-slash">/</span>
+                                    <input type="text" id="flagInput" class="regex-flags" value="g" placeholder="flags" oninput="runTest()">
+                                </div>
 
-                    <div class="predefined-grid">
-                        <div class="pattern-btn" onclick="applyPattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g')">البريد الإلكتروني</div>
-                        <div class="pattern-btn" onclick="applyPattern('^00967[1-7]\\d{7}$', 'g')">رقم يمني (ثابت)</div>
-                        <div class="pattern-btn" onclick="applyPattern('^7[0-9]{8}$', 'g')">رقم يمني (جوال)</div>
-                        <div class="pattern-btn" onclick="applyPattern('[\\u0600-\\u06FF]+', 'g')">نص عربي فقط</div>
-                        <div class="pattern-btn" onclick="applyPattern('\\d+', 'g')">أرقام فقط</div>
-                        <div class="pattern-btn" onclick="applyPattern('https?:\\/\\/[^\\s]+', 'g')">روابط (URL)</div>
-                    </div>
+                                <div class="predefined-grid">
+                                    <div class="pattern-btn" onclick="applyPattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g')">البريد الإلكتروني</div>
+                                    <div class="pattern-btn" onclick="applyPattern('^00967[1-7]\\d{7}$', 'g')">رقم يمني (ثابت)</div>
+                                    <div class="pattern-btn" onclick="applyPattern('^7[0-9]{8}$', 'g')">رقم يمني (جوال)</div>
+                                    <div class="pattern-btn" onclick="applyPattern('[\\u0600-\\u06FF]+', 'g')">نص عربي فقط</div>
+                                    <div class="pattern-btn" onclick="applyPattern('\\d+', 'g')">أرقام فقط</div>
+                                    <div class="pattern-btn" onclick="applyPattern('https?:\\/\\/[^\\s]+', 'g')">روابط (URL)</div>
+                                </div>
 
-                    <h5 class="fw-bold mb-3 mt-4">نص الاختبار:</h5>
-                    <div id="testArea" class="test-area" contenteditable="true" placeholder="أدخل النص هنا للاختبار..." oninput="runTest()"></div>
+                                <h5 class="fw-bold mb-3 mt-4">نص الاختبار:</h5>
+                                <div id="testArea" class="test-area" contenteditable="true" placeholder="أدخل النص هنا للاختبار..." oninput="runTest()"></div>
 
-                    <div class="status-bar">
-                        <span id="errorMsg" class="text-danger"></span>
-                        <span class="match-count">تطابقات: <span id="matchCount">0</span></span>
-                    </div>
-                </div>
-            </div>
+                                <div class="status-bar">
+                                    <span id="errorMsg" class="text-danger"></span>
+                                    <span class="match-count">تطابقات: <span id="matchCount">0</span></span>
+                                </div>
+                            </div>
 
-            <div class="col-lg-4">
-                <div class="main-card" data-aos="fade-left">
-                    <span class="explanation-title text-primary"><i class="fa-solid fa-info-circle"></i> شرح التعبير</span>
-                    <div id="explanationArea">
-                        <p class="small text-muted">أدخل تعبيراً نمطياً صالحاً لرؤية الشرح هنا.</p>
-                    </div>
-                </div>
+                            <div class="col-lg-4 text-right">
+                                <div class="explanation-card">
+                                    <span class="explanation-title text-primary"><i class="fa-solid fa-info-circle"></i> شرح التعبير</span>
+                                    <div id="explanationArea">
+                                        <p class="small text-muted">أدخل تعبيراً نمطياً صالحاً لرؤية الشرح هنا.</p>
+                                    </div>
+                                </div>
 
-                <div class="main-card" data-aos="fade-left" data-aos-delay="100">
-                    <span class="explanation-title text-success"><i class="fa-solid fa-book"></i> مرجع سريع</span>
-                    <div class="small">
-                        <div class="explanation-item"><code>.</code> أي حرف ما عدا سطر جديد</div>
-                        <div class="explanation-item"><code>\d</code> أي رقم [0-9]</div>
-                        <div class="explanation-item"><code>\w</code> حرف، رقم، أو شرطة سفلية</div>
-                        <div class="explanation-item"><code>\s</code> مسافة بيضاء</div>
-                        <div class="explanation-item"><code>+</code> تكرار مرة أو أكثر</div>
-                        <div class="explanation-item"><code>*</code> تكرار صفر أو أكثر</div>
-                        <div class="explanation-item"><code>?</code> تكرار صفر أو مرة واحدة</div>
-                        <div class="explanation-item"><code>^</code> بداية النص</div>
-                        <div class="explanation-item"><code>$</code> نهاية النص</div>
+                                <div class="explanation-card" style="border-right-color: #10b981; margin-top: 20px;">
+                                    <span class="explanation-title text-success"><i class="fa-solid fa-book"></i> مرجع سريع</span>
+                                    <div class="small">
+                                        <div class="explanation-item"><code>.</code> أي حرف ما عدا سطر جديد</div>
+                                        <div class="explanation-item"><code>\d</code> أي رقم [0-9]</div>
+                                        <div class="explanation-item"><code>\w</code> حرف، رقم، أو شرطة سفلية</div>
+                                        <div class="explanation-item"><code>\s</code> مسافة بيضاء</div>
+                                        <div class="explanation-item"><code>+</code> تكرار مرة أو أكثر</div>
+                                        <div class="explanation-item"><code>*</code> تكرار صفر أو أكثر</div>
+                                        <div class="explanation-item"><code>^</code> بداية النص | <code>$</code> نهاية النص</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>دليل استخدام التعبيرات النمطية (RegEx)</h2>
+            <p class="mx-auto" style="max-width: 800px;">تعتبر الـ Regular Expressions أداة قوية جداً للمطورين للبحث والتحقق من صحة البيانات داخل النصوص البرمجية.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-check-double text-primary"></i> التحقق من البيانات</h3>
+                    <p style="font-size:14px; color:#666;">يمكنك استخدامها للتأكد من أن إدخال المستخدم يتبع صيغة معينة مثل أرقام الهواتف، عناوين البريد الإلكتروني، أو كلمات المرور المعقدة.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-magnifying-glass text-primary"></i> البحث والاستبدال</h3>
+                    <p style="font-size:14px; color:#666;">تسمح لك بإيجاد أنماط معينة داخل النصوص الضخمة واستبدالها بسرعة فائقة مما يوفر الكثير من وقت البرمجة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <site-footer></site-footer>
-</div>
 
 <script>
 function applyPattern(pattern, flags) {
@@ -241,17 +212,12 @@ function runTest() {
         const text = testArea.innerText;
         errorMsg.innerText = "";
 
-        // Highlight Matches
-        let matches;
-        let highlighted = text;
         let count = 0;
+        let highlighted = text;
 
         if (flags.includes('g')) {
             const allMatches = Array.from(text.matchAll(regex));
             count = allMatches.length;
-
-            // To avoid infinite loops and maintain performance, we use a simple replacement for highlighting
-            // Note: Real highlighter is complex, this is a clean enough version
             highlighted = text.replace(regex, match => `<span class="match-highlight">${match}</span>`);
         } else {
             const match = text.match(regex);
@@ -261,12 +227,7 @@ function runTest() {
             }
         }
 
-        // Only update innerHTML if it actually changed to prevent cursor jumping
-        // This is a simplified approach; for a pro tool we'd use a hidden layer or Range API
-        const currentContent = testArea.innerText;
         matchCount.innerText = count;
-
-        // Generate Explanation (Basic Logic)
         generateExplanation(regexStr);
 
     } catch (e) {
@@ -302,14 +263,10 @@ function generateExplanation(pattern) {
 }
 
 window.onload = () => {
-    AOS.init({ once: true });
-    // Default demo text
-    document.getElementById('testArea').innerText = "تواصل معنا عبر support@connecttag.org أو اتصل على 00967771234567 لتعلم البرمجة باللغة العربية.";
+    if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+    document.getElementById('testArea').innerText = "تواصل معنا عبر support@connecttag.org لتعلم البرمجة باللغة العربية.";
     runTest();
 };
 </script>
-
 </body>
 </html>
-
-

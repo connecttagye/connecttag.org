@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مولد صلاحيات الأندرويد - كونكت تاق</title>
-<meta name="description" content="أداة ذكية لمطوري أندرويد لاختيار وتوليد أكواد الصلاحيات لملف AndroidManifest.xml بسهولة.">
+<meta name="description" content="أداة ذكية لمطوري أندرويد لاختيار وتوليد أكواد الصلاحيات لملف AndroidManifest.xml بسهولة واحترافية.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,114 +13,182 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
-    .gen-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #edf2f7; margin-bottom: 30px; }
+
     .permission-item {
         padding: 12px 15px; border: 1px solid #edf2f7; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;
-        display: flex; align-items: center; gap: 12px;
+        display: flex; align-items: center; gap: 12px; text-align: right; background: #fff;
     }
-    .permission-item:hover { border-color: #006b98; background: #f0f9ff; }
+    .permission-item:hover { border-color: #006b98; background: #f0faff; }
     .permission-item.selected { background: #006b98; color: #fff; border-color: #006b98; }
     .permission-item.selected small { color: #e2e8f0 !important; }
-    .permission-item input { display: none; }
-    .code-box { background: #0f172a; color: #f8fafc; border-radius: 15px; padding: 25px 20px 20px; font-family: 'Courier New', monospace; position: relative; margin-top: 20px; direction: ltr; text-align: left; border: 1px solid #1e293b; }
-    .btn-copy { position: absolute; top: 10px; right: 10px; background: #334155; color: #fff; border: none; padding: 5px 15px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; z-index: 10; }
-    .btn-copy:hover { background: #475569; }
-    .category-title { font-weight: 800; color: #006b98; margin: 25px 0 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f9ff; text-align: right; }
+    .permission-item i { font-size: 18px; }
+
+    .code-box {
+        background: #111827 !important; color: #ffffff !important; border-radius: 15px; padding: 25px 20px 20px;
+        font-family: 'Courier New', monospace; position: relative; margin-top: 10px;
+        direction: ltr; text-align: left; border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .btn-copy {
+        position: absolute; top: 10px; right: 10px; background: #374151; color: #fff;
+        border: none; padding: 5px 15px; border-radius: 8px; font-size: 12px; cursor: pointer;
+        transition: 0.3s; z-index: 10;
+    }
+    .btn-copy:hover { background: #4b5563; }
+
+    pre#xml-output {
+        color: #10b981 !important; /* Greenish color for XML tags like typical IDEs */
+        margin: 0; white-space: pre-wrap; font-size: 15px; font-weight: 600;
+        line-height: 1.6;
+    }
+
+    .category-title { font-weight: 800; color: #006b98; margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 2px solid #f0f9ff; text-align: right; }
+
+    .sticky-box { position: sticky; top: 100px; }
+
+    @media (max-width: 991px) {
+        .sticky-box { position: static; margin-top: 30px; }
+    }
 </style>
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
 <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
-
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <site-toast></site-toast>
 <site-header></site-header>
 
-<div class="container" style="padding-top: 120px; padding-bottom: 80px;">
-    <div class="text-center mb-5">
-        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/mobile/">أدوات تطبيقات الجوال</a></li>
-            <li class="active">صلاحيات أندرويد</li>
-        </ul>
-        <h1 style="font-weight: 900; color: #006b98;">مولد صلاحيات AndroidManifest</h1>
-        <p class="text-muted">اختر الصلاحيات التي يحتاجها تطبيقك وسنقوم بتوليد كود الـ XML الجاهز لك</p>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">مولد صلاحيات AndroidManifest</h1>
+            <p data-aos="fade-up" data-aos-delay="100">اختر الصلاحيات التي يحتاجها تطبيقك وسنقوم بتوليد كود الـ XML الجاهز لك فوراً</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات تطبيقات الجوال", "url":"/tools/mobile/"}, {"title":"صلاحيات أندرويد", "url":"/tools/mobile/android-permissions/"}]'></site-breadcrumb>
+        </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="gen-card">
-                <div id="permissions-container">
-                    <!-- Categories will be injected here -->
+    <div class="tool-main-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="tool-card-base" style="max-width: 100%;">
+                        <div id="permissions-container">
+                            <!-- Categories will be injected here -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="gen-card sticky-top" style="top: 100px;">
-                <h4 style="font-weight: 800; margin-bottom: 20px;">الكود المولد:</h4>
-                <div class="code-box" id="result-code">
-                    <button class="btn-copy" onclick="copyCode()">نسخ الكود</button>
-                    <pre id="xml-output" style="color: inherit; margin: 0; white-space: pre-wrap; font-size: 14px;"></pre>
-                </div>
-                <div class="mt-4">
-                    <div class="alert alert-info" style="font-size: 13px; border-radius: 15px;">
-                        <i class="fa-solid fa-circle-info"></i> تذكر إضافة الصلاحيات المختارة داخل وسم <code>&lt;manifest&gt;</code> وقبل وسم <code>&lt;application&gt;</code>.
+                <div class="col-lg-5">
+                    <div class="sticky-box">
+                        <div class="tool-card-base text-right" style="max-width: 100%;">
+                            <h4 style="font-weight: 800; margin-bottom: 20px;">الكود المولد:</h4>
+                            <div class="code-box" id="result-code">
+                                <button class="btn-copy" onclick="copyCode()"><i class="fa-solid fa-copy"></i> نسخ الكود</button>
+                                <pre id="xml-output"><!-- اختر الصلاحيات ليظهر الكود هنا --></pre>
+                            </div>
+                            <div class="mt-4">
+                                <div class="alert alert-info text-right" style="font-size: 13px; border-radius: 15px; border: none; background: #f0f9ff; color: #006b98;">
+                                    <i class="fa-solid fa-circle-info"></i> تذكر إضافة الصلاحيات المختارة داخل وسم <code>&lt;manifest&gt;</code> وقبل وسم <code>&lt;application&gt;</code>.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>دليل صلاحيات نظام الأندرويد للمطورين</h2>
+            <p class="mx-auto" style="max-width: 800px;">صلاحيات التطبيقات هي آلية أمان تضمن للمستخدم التحكم في البيانات الحساسة والوصول إلى أجزاء النظام المختلفة.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-shield-virus text-primary"></i> الصلاحيات العادية</h3>
+                    <p style="font-size:14px; color:#666;">هي الصلاحيات التي لا تشكل تهديداً كبيراً لخصوصية المستخدم، ويمنحها النظام تلقائياً للتطبيق مثل صلاحية الوصول للإنترنت وحالة الشبكة.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-user-lock text-primary"></i> الصلاحيات الخطرة</h3>
+                    <p style="font-size:14px; color:#666;">تلك التي تتطلب إذناً صريحاً من المستخدم أثناء تشغيل التطبيق (Runtime Permissions)، مثل الوصول للكاميرا، الميكروفون، والموقع الجغرافي.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
 
 <script>
     const permissionsData = [
         {
             category: "الإنترنت والشبكة",
             items: [
-                { id: "INTERNET", name: "الوصول للإنترنت", desc: "يسمح للتطبيق بفتح مآخذ الشبكة." },
-                { id: "ACCESS_NETWORK_STATE", name: "حالة الشبكة", desc: "يسمح بالوصول إلى معلومات حول الشبكات." },
-                { id: "ACCESS_WIFI_STATE", name: "حالة الواي فاي", desc: "يسمح بالوصول إلى معلومات حول شبكات Wi-Fi." }
+                { id: "INTERNET", name: "الوصول للإنترنت", desc: "فتح مآخذ الشبكة." },
+                { id: "ACCESS_NETWORK_STATE", name: "حالة الشبكة", desc: "معرفة الاتصال بالشبكة." },
+                { id: "ACCESS_WIFI_STATE", name: "حالة الواي فاي", desc: "معرفة الاتصال بـ Wi-Fi." },
+                { id: "CHANGE_WIFI_STATE", name: "تغيير حالة الواي فاي", desc: "تشغيل أو إطفاء Wi-Fi." }
             ]
         },
         {
             category: "الموقع الجغرافي",
             items: [
-                { id: "ACCESS_FINE_LOCATION", name: "الموقع الدقيق (GPS)", desc: "يسمح بالوصول إلى الموقع الدقيق." },
-                { id: "ACCESS_COARSE_LOCATION", name: "الموقع التقريبي", desc: "يسمح بالوصول إلى الموقع التقريبي عبر الشبكة." },
-                { id: "ACCESS_BACKGROUND_LOCATION", name: "الموقع في الخلفية", desc: "يسمح بالوصول للموقع حتى والتطبيق مغلق (أندرويد 10+)." }
+                { id: "ACCESS_FINE_LOCATION", name: "الموقع الدقيق (GPS)", desc: "تحديد الموقع بدقة عالية." },
+                { id: "ACCESS_COARSE_LOCATION", name: "الموقع التقريبي", desc: "تحديد الموقع عبر الشبكة." },
+                { id: "ACCESS_BACKGROUND_LOCATION", name: "الموقع في الخلفية", desc: "الوصول للموقع والتطبيق مغلق." }
             ]
         },
         {
             category: "التخزين والوسائط",
             items: [
-                { id: "READ_EXTERNAL_STORAGE", name: "قراءة التخزين الخارجي", desc: "يسمح بقراءة الصور والملفات." },
-                { id: "WRITE_EXTERNAL_STORAGE", name: "الكتابة على التخزين", desc: "يسمح بحفظ الصور والملفات." },
-                { id: "READ_MEDIA_IMAGES", name: "قراءة الصور (أندرويد 13+)", desc: "صلاحية مخصصة للصور فقط في النسخ الحديثة." }
+                { id: "READ_EXTERNAL_STORAGE", name: "قراءة التخزين", desc: "قراءة ملفات الذاكرة." },
+                { id: "WRITE_EXTERNAL_STORAGE", name: "الكتابة على التخزين", desc: "حفظ ملفات في الذاكرة." },
+                { id: "READ_MEDIA_IMAGES", name: "قراءة الصور (أندرويد 13+)", desc: "وصول مخصص للصور." },
+                { id: "READ_MEDIA_VIDEO", name: "قراءة الفيديو (أندرويد 13+)", desc: "وصول مخصص للفيديو." },
+                { id: "READ_MEDIA_AUDIO", name: "قراءة الصوت (أندرويد 13+)", desc: "وصول مخصص للملفات الصوتية." }
             ]
         },
         {
             category: "الهاتف والحساسات",
             items: [
-                { id: "CAMERA", name: "الكاميرا", desc: "يسمح بالتقاط الصور وتسجيل الفيديو." },
-                { id: "RECORD_AUDIO", name: "تسجيل الصوت", desc: "يسمح للتطبيق بتسجيل الصوت باستخدام الميكروفون." },
-                { id: "READ_CONTACTS", name: "قراءة جهات الاتصال", desc: "يسمح بالوصول إلى قائمة الأسماء في الهاتف." },
-                { id: "CALL_PHONE", name: "إجراء مكالمات", desc: "يسمح ببدء مكالمة هاتفية دون الحاجة لواجهة الاتصال." }
+                { id: "CAMERA", name: "الكاميرا", desc: "التقاط صور وتسجيل فيديو." },
+                { id: "RECORD_AUDIO", name: "تسجيل الصوت", desc: "استخدام الميكروفون." },
+                { id: "READ_CONTACTS", name: "قراءة جهات الاتصال", desc: "الوصول لأسماء الهاتف." },
+                { id: "WRITE_CONTACTS", name: "تعديل جهات الاتصال", desc: "إضافة أو حذف أسماء." },
+                { id: "CALL_PHONE", name: "إجراء مكالمات", desc: "بدء اتصال هاتفي مباشر." },
+                { id: "READ_PHONE_STATE", name: "حالة الهاتف", desc: "معرفة رقم الهاتف والشبكة." },
+                { id: "READ_CALL_LOG", name: "سجل المكالمات", desc: "رؤية المكالمات الصادرة والواردة." }
+            ]
+        },
+        {
+            category: "الرسائل والإشعارات",
+            items: [
+                { id: "SEND_SMS", name: "إرسال رسائل SMS", desc: "إرسال رسائل نصية مباشرة." },
+                { id: "READ_SMS", name: "قراءة رسائل SMS", desc: "قراءة الرسائل الواردة." },
+                { id: "RECEIVE_SMS", name: "استقبال رسائل SMS", desc: "استلام تنبيه عند وصول رسالة." },
+                { id: "POST_NOTIFICATIONS", name: "إرسال الإشعارات", desc: "إظهار تنبيهات في شريط النظام." }
+            ]
+        },
+        {
+            category: "النظام والخدمات",
+            items: [
+                { id: "RECEIVE_BOOT_COMPLETED", name: "التشغيل عند بدء الهاتف", desc: "بدء العمل تلقائياً بعد إعادة التشغيل." },
+                { id: "WAKE_LOCK", name: "منع سكون المعالج", desc: "إبقاء الشاشة أو المعالج يعمل." },
+                { id: "VIBRATE", name: "التحكم في الاهتزاز", desc: "استخدام هزاز الهاتف." },
+                { id: "FOREGROUND_SERVICE", name: "خدمة في الواجهة", desc: "تشغيل عمليات مستمرة (أندرويد 9+)." },
+                { id: "REQUEST_INSTALL_PACKAGES", name: "تثبيت حزم تطبيقات", desc: "تثبيت ملفات APK خارجية." }
+            ]
+        },
+        {
+            category: "جوجل والخدمات الخارجية",
+            items: [
+                { id: "com.android.vending.BILLING", name: "الشراء داخل التطبيق", desc: "تفعيل ميزات الدفع Google Play." },
+                { id: "com.google.android.gms.permission.AD_ID", name: "معرف الإعلانات", desc: "استخدام معرف الإعلانات للتتبع." }
             ]
         }
     ];
@@ -132,19 +200,26 @@
         permissionsData.forEach(cat => {
             const catDiv = document.createElement('div');
             catDiv.innerHTML = `<h5 class="category-title">${cat.category}</h5>`;
+            const grid = document.createElement('div');
+            grid.className = 'row';
+
             cat.items.forEach(item => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6';
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'permission-item';
                 itemDiv.innerHTML = `
                     <i class="fa-solid fa-circle-plus"></i>
-                    <div>
+                    <div style="flex:1">
                         <strong style="display: block;">${item.name}</strong>
-                        <small class="text-muted" style="font-size: 11px;">${item.id}</small>
+                        <small class="text-muted" style="font-size: 10px;">${item.id}</small>
                     </div>
                 `;
                 itemDiv.onclick = () => togglePermission(item.id, itemDiv);
-                catDiv.appendChild(itemDiv);
+                col.appendChild(itemDiv);
+                grid.appendChild(col);
             });
+            catDiv.appendChild(grid);
             container.appendChild(catDiv);
         });
         updateOutput();
@@ -167,29 +242,31 @@
         const output = document.getElementById('xml-output');
         if (selectedPermissions.size === 0) {
             output.textContent = "<!-- اختر الصلاحيات ليظهر الكود هنا -->";
+            output.style.color = "#64748b";
             return;
         }
 
+        output.style.color = "#10b981";
         let xml = "";
         selectedPermissions.forEach(id => {
-            xml += `<uses-permission android:name="android.permission.${id}" />\n`;
+            const prefix = id.includes('.') ? '' : 'android.permission.';
+            xml += `<uses-permission android:name="${prefix}${id}" />\n`;
         });
         output.textContent = xml.trim();
     }
 
     function copyCode() {
         const text = document.getElementById('xml-output').textContent;
+        if (selectedPermissions.size === 0) return;
         navigator.clipboard.writeText(text).then(() => {
-            window.showToast('تم نسخ كود الصلاحيات بنجاح!', 'success');
+            if(window.showToast) window.showToast('تم نسخ كود الصلاحيات بنجاح!', 'success');
         });
     }
 
     init();
 </script>
 
-
-<site-footer></site-footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
-
-

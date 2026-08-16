@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>عداد الكلمات والحروف | أداة تحليل وتنظيف النصوص - كونكت تاق</title>
+    <meta name="description" content="أداة مجانية لحساب عدد الكلمات والحروف والأسطر في نصوصك. تشمل ميزات تنظيف النصوص وإزالة التشكيل والمسافات الزائدة. مثالية لكتاب المحتوى والمدونين.">
+    <link rel="canonical" href="https://connecttag.org/tools/misc/word-counter/" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/misc/word-counter/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="عداد الكلمات والحروف - كونكت تاق" />
+    <meta property="og:description" content="حلل نصوصك، احسب عدد الكلمات والحروف، وقم بتنظيف النص بضغطة زر." />
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "عداد الكلمات والحروف",
+      "description": "أداة لتحليل النصوص وحساب عدد الكلمات والحروف وتنظيف النصوص.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "url": "https://connecttag.org/tools/misc/word-counter/"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
+
+        .counter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .counter-item { background: #f0f9ff; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #bae6fd; }
+        .counter-val { font-size: 28px; font-weight: 900; color: #006b98; display: block; }
+        .counter-label { font-size: 13px; color: #64748b; font-weight: 700; }
+
+        .text-area-container { position: relative; margin-bottom: 20px; }
+        .main-textarea {
+            width: 100%; min-height: 300px; border-radius: 15px; border: 2px solid #edf2f7;
+            padding: 20px; font-size: 16px; line-height: 1.6; outline: none; transition: 0.3s;
+            background: #fff; resize: vertical;
+        }
+        .main-textarea:focus { border-color: #006b98; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
+
+        .action-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+        .btn-tool {
+            padding: 10px 20px; border-radius: 10px; border: none; font-weight: 700; cursor: pointer;
+            transition: 0.3s; display: flex; align-items: center; gap: 8px; font-size: 14px;
+        }
+        .btn-primary-tool { background: #006b98; color: #fff; }
+        .btn-primary-tool:hover { background: #00567a; transform: translateY(-2px); }
+        .btn-outline-tool { background: #fff; color: #475569; border: 1px solid #e2e8f0; }
+        .btn-outline-tool:hover { border-color: #006b98; color: #006b98; }
+
+        .limit-hint { font-size: 12px; color: #94a3b8; font-weight: 600; margin-top: 10px; text-align: left; direction: ltr; }
+
+        @media (max-width: 768px) {
+            .counter-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">عداد الكلمات والحروف</h1>
+            <p data-aos="fade-up" data-aos-delay="100">أداة احترافية لتحليل النصوص، حساب الكلمات، وتنظيف المحتوى بضغطة زر</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات متنوعة", "url":"/tools/misc/"}, {"title":"عداد الكلمات", "url":"/tools/misc/word-counter/"}]'></site-breadcrumb>
+        </div>
+    </div>
+
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base text-right" data-aos="zoom-in" style="max-width: 900px;">
+
+                <div class="counter-grid">
+                    <div class="counter-item">
+                        <span class="counter-val" id="cnt-words">0</span>
+                        <span class="counter-label">كلمة</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-val" id="cnt-chars">0</span>
+                        <span class="counter-label">حرف</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-val" id="cnt-chars-no-spaces">0</span>
+                        <span class="counter-label">بدون مسافات</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-val" id="cnt-lines">0</span>
+                        <span class="counter-label">سطر</span>
+                    </div>
+                </div>
+
+                <div class="text-area-container">
+                    <textarea id="text-input" class="main-textarea" placeholder="ابدأ بالكتابة أو الصق النص هنا لتحليله..." oninput="updateCounters()"></textarea>
+                </div>
+
+                <div class="action-btns">
+                    <button class="btn-tool btn-primary-tool" onclick="copyText()"><i class="fa-solid fa-copy"></i> نسخ النص</button>
+                    <button class="btn-tool btn-outline-tool" onclick="cleanSpaces()"><i class="fa-solid fa-broom"></i> إزالة المسافات الزائدة</button>
+                    <button class="btn-tool btn-outline-tool" onclick="removeDiacritics()"><i class="fa-solid fa-eraser"></i> إزالة التشكيل</button>
+                    <button class="btn-tool btn-outline-tool text-danger" onclick="clearAll()"><i class="fa-solid fa-trash-can"></i> مسح الكل</button>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="limit-hint">
+                            <strong>Twitter:</strong> <span id="hint-twitter">0/280</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="limit-hint">
+                            <strong>Meta Description:</strong> <span id="hint-meta">0/160</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>لماذا تستخدم عداد الكلمات والحروف؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">سواء كنت تكتب مقالاً لمدونتك، أو منشوراً لمنصات التواصل الاجتماعي، أو بحثاً جامعياً؛ فإن الالتزام بعدد محدد من الكلمات أو الحروف هو مفتاح النجاح والظهور الصحيح.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-feather-pointed text-primary"></i> كُتّاب المحتوى</h3>
+                    <p style="font-size:14px; color:#666;">تساعدك الأداة في مراقبة طول المقال لضمان توافقه مع معايير الـ SEO وتجربة القراءة المثالية.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-share-nodes text-primary"></i> التواصل الاجتماعي</h3>
+                    <p style="font-size:14px; color:#666;">راقب حدود الحروف لمنصات مثل X (تويتر سابقاً) لتجنب اقتطاع نصوصك عند النشر.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> تنظيف النصوص</h3>
+                    <p style="font-size:14px; color:#666;">ميزة إزالة التشكيل والمسافات الزائدة تجعل نصوصك تبدو أكثر احترافية وجاهزة للاستخدام البرمجي أو النشر المباشر.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<script>
+    const input = document.getElementById('text-input');
+
+    function updateCounters() {
+        const text = input.value;
+
+        // Count Characters
+        const charCount = text.length;
+        const charNoSpacesCount = text.replace(/\s/g, '').length;
+
+        // Count Words
+        const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+        const wordCount = words.length;
+
+        // Count Lines
+        const lineCount = text.length > 0 ? text.split(/\r\n|\r|\n/).length : 0;
+
+        // Update DOM
+        document.getElementById('cnt-chars').innerText = charCount;
+        document.getElementById('cnt-chars-no-spaces').innerText = charNoSpacesCount;
+        document.getElementById('cnt-words').innerText = wordCount;
+        document.getElementById('cnt-lines').innerText = lineCount;
+
+        // Social Hints
+        document.getElementById('hint-twitter').innerText = `${charCount}/280`;
+        document.getElementById('hint-meta').innerText = `${charCount}/160`;
+    }
+
+    function cleanSpaces() {
+        if(!input.value) return;
+        input.value = input.value.replace(/\s+/g, ' ').trim();
+        updateCounters();
+        if(window.showToast) window.showToast('تمت إزالة المسافات الزائدة', 'success');
+    }
+
+    function removeDiacritics() {
+        if(!input.value) return;
+        // Arabic diacritics regex
+        const diacritics = /[\u064B-\u0652]/g;
+        input.value = input.value.replace(diacritics, "");
+        updateCounters();
+        if(window.showToast) window.showToast('تمت إزالة التشكيل بنجاح', 'success');
+    }
+
+    function copyText() {
+        if(!input.value) return;
+        navigator.clipboard.writeText(input.value).then(() => {
+            if(window.showToast) window.showToast('تم نسخ النص إلى الحافظة', 'success');
+        });
+    }
+
+    function clearAll() {
+        input.value = '';
+        updateCounters();
+    }
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>

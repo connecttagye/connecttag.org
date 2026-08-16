@@ -4,67 +4,85 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>فاحص ومحلل JWT - كونكت تاق</title>
-<meta name="description" content="أداة احترافية لمطوري الويب لفك تشفير وتحليل توكن JWT (JSON Web Token) ورؤية محتويات الـ Header والـ Payload بسهولة.">
+<title>منشئ وفاحص JWT - كونكت تاق</title>
+<meta name="description" content="أداة احترافية لمطوري الويب لإنشاء وفك تشفير وتحليل توكن JWT (JSON Web Token). تدعم التوقيع بـ HS256 وتحليل التواريخ والتحقق من الصلاحية.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 <style>
     :root {
-        --primary-color: #006b98;
-        --secondary-color: #00567a;
-        --bg-editor: #f8fafc;
         --jwt-red: #fb7185;
         --jwt-purple: #c084fc;
         --jwt-blue: #38bdf8;
     }
 
-    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
 
-    .tool-container { padding-top: 120px; padding-bottom: 80px; }
-    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
-
-    .jwt-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; }
-
-    .label-custom { font-weight: 800; font-size: 14px; margin-bottom: 12px; display: block; color: #1e293b; }
+    .jwt-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; text-align: right; }
 
     /* Encoded Side */
+    .encoded-container { position: relative; }
     .encoded-area {
         width: 100%; height: 500px; border-radius: 15px; border: 2px solid #f1f5f9;
         padding: 20px; font-family: 'Courier New', monospace; font-size: 15px; line-height: 1.6;
-        word-break: break-all; resize: none; outline: none; transition: 0.3s;
+        word-break: break-all; resize: none; outline: none; transition: 0.3s; background: #fff;
     }
-    .encoded-area:focus { border-color: var(--primary-color); background: #fff; }
+    .encoded-area:focus { border-color: #006b98; box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1); }
 
     /* Decoded Side */
     .decoded-section {
         background: #0f172a; border-radius: 15px; padding: 25px; color: #f8fafc;
         font-family: 'Courier New', monospace; height: 100%; display: flex; flex-direction: column; gap: 20px;
+        text-align: left; direction: ltr;
     }
     .decoded-block { position: relative; }
-    .block-header { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 8px; }
-    .block-content {
-        background: rgba(255,255,255,0.03); border-radius: 10px; padding: 15px;
-        white-space: pre-wrap; font-size: 13px; overflow: auto;
+    .block-header { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 8px; display: flex; justify-content: space-between; }
+
+    .json-editor {
+        background: rgba(255,255,255,0.05); border-radius: 10px; padding: 15px;
+        font-size: 13px; color: inherit; width: 100%; border: 1px solid transparent;
+        resize: vertical; min-height: 100px; outline: none;
     }
+    .json-editor:focus { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
 
     .color-header { color: var(--jwt-red); }
     .color-payload { color: var(--jwt-purple); }
     .color-signature { color: var(--jwt-blue); }
 
-    .status-badge {
-        display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;
-        margin-top: 10px;
+    .secret-input-wrapper { margin-top: 10px; display: flex; gap: 10px; }
+    .secret-input {
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        color: #fff; padding: 8px 12px; border-radius: 8px; flex-grow: 1; font-size: 13px;
     }
-    .status-valid { background: #dcfce7; color: #166534; }
-    .status-invalid { background: #fee2e2; color: #991b1b; }
+
+    .date-analysis {
+        background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #e2e8f0;
+        margin-top: 20px; text-align: right; direction: rtl;
+    }
+    .date-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; border-bottom: 1px dashed #f1f5f9; padding-bottom: 5px; }
+    .date-label { font-weight: 700; color: #64748b; }
+    .date-value { color: #006b98; font-weight: 600; }
+
+    .status-badge {
+        display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700;
+        margin-top: 15px; width: 100%; text-align: center;
+    }
+    .status-valid { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .status-invalid { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    .copy-btn {
+        background: transparent; border: none; color: #64748b; cursor: pointer;
+        padding: 2px 8px; font-size: 12px; transition: 0.3s;
+    }
+    .copy-btn:hover { color: #fff; }
 
     @media (max-width: 992px) {
         .jwt-grid { grid-template-columns: 1fr; }
@@ -74,161 +92,251 @@
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
 <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
-
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <site-toast></site-toast>
 <site-header></site-header>
 
-<div class="tool-container container">
-    <div class="text-center mb-5">
-        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/web/">أدوات الويب</a></li>
-            <li class="active">فاحص JWT</li>
-        </ul>
-        <h1 style="font-weight: 900; color: var(--primary-color);">فاحص ومحلل JWT</h1>
-        <p class="text-muted">قم بفك تشفير توكن JWT الخاص بك وتحليل محتوياته فورياً</p>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">منشئ وفاحص JWT الاحترافي</h1>
+            <p data-aos="fade-up" data-aos-delay="100">الأداة المتكاملة لإنشاء، تعديل، وتحليل توكنات JWT مع التحقق من التوقيع والصلاحية</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات الويب", "url":"/tools/web/"}, {"title":"منشئ JWT", "url":"/tools/web/jwt-debugger/"}]'></site-breadcrumb>
+        </div>
     </div>
 
-    <div class="main-card">
-        <div class="jwt-grid">
-            <!-- Left: Encoded -->
-            <div>
-                <label class="label-custom" for="jwt-input">أدخل التوكن المشفر (Encoded):</label>
-                <textarea id="jwt-input" class="encoded-area" placeholder="أدخل التوكن هنا (Header.Payload.Signature)"></textarea>
-                <div id="status-area"></div>
-            </div>
-
-            <!-- Right: Decoded -->
-            <div>
-                <label class="label-custom">محتويات التوكن (Decoded):</label>
-                <div class="decoded-section">
-                    <!-- Header -->
-                    <div class="decoded-block">
-                        <div class="block-header color-header">HEADER: <small>ALGORITHM & TOKEN TYPE</small></div>
-                        <div id="header-out" class="block-content color-header">{ "alg": "HS256", "typ": "JWT" }</div>
+    <div class="tool-main-wrapper">
+        <div class="container">
+            <div class="jwt-grid" data-aos="zoom-in">
+                <!-- Left: Encoded -->
+                <div class="encoded-container">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label class="form-label mb-0" for="jwt-input">التوكن المشفر (Encoded):</label>
+                        <button class="btn btn-sm btn-outline-primary py-1 px-3" onclick="resetToSample()" style="border-radius: 20px; font-size: 12px;">نموذج افتراضي</button>
                     </div>
+                    <textarea id="jwt-input" class="encoded-area" placeholder="أدخل التوكن هنا أو ابدأ بكتابة البيانات في الجهة المقابلة..."></textarea>
+                    <div id="status-area"></div>
 
-                    <!-- Payload -->
-                    <div class="decoded-block">
-                        <div class="block-header color-payload">PAYLOAD: <small>DATA</small></div>
-                        <div id="payload-out" class="block-content color-payload">{ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }</div>
+                    <div class="date-analysis">
+                        <h4 style="font-size: 16px; font-weight: 800; color: #333; margin-bottom: 15px;">تحليل زمن الصلاحية</h4>
+                        <div id="date-list">
+                            <div class="text-center text-muted py-3">أدخل توكن يحتوي على exp لرؤية التحليل</div>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Signature -->
-                    <div class="decoded-block">
-                        <div class="block-header color-signature">VERIFY SIGNATURE</div>
-                        <div id="signature-out" class="block-content color-signature">Signature Content</div>
+                <!-- Right: Decoded -->
+                <div>
+                    <label class="form-label">تعديل محتويات التوكن (Decoded):</label>
+                    <div class="decoded-section">
+                        <!-- Header -->
+                        <div class="decoded-block">
+                            <div class="block-header color-header">
+                                <span>HEADER: <small>ALGORITHM & TOKEN TYPE</small></span>
+                                <button class="copy-btn" onclick="copyText('header-editor')"><i class="fa-solid fa-copy"></i></button>
+                            </div>
+                            <textarea id="header-editor" class="json-editor color-header" spellcheck="false"></textarea>
+                        </div>
+
+                        <!-- Payload -->
+                        <div class="decoded-block">
+                            <div class="block-header color-payload">
+                                <span>PAYLOAD: <small>DATA</small></span>
+                                <button class="copy-btn" onclick="copyText('payload-editor')"><i class="fa-solid fa-copy"></i></button>
+                            </div>
+                            <textarea id="payload-editor" class="json-editor color-payload" spellcheck="false" style="min-height: 200px;"></textarea>
+                        </div>
+
+                        <!-- Signature -->
+                        <div class="decoded-block">
+                            <div class="block-header color-signature">VERIFY SIGNATURE / SECRET KEY</div>
+                            <div class="secret-input-wrapper">
+                                <input type="text" id="secret-key" class="secret-input" placeholder="أدخل المفتاح السري (Secret Key) للتوقيع بـ HS256">
+                            </div>
+                            <div id="signature-status" class="mt-2" style="font-size: 11px; color: var(--jwt-blue);">التوقيع يتم تلقائياً عند تغيير البيانات</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- JWT Info -->
-    <div class="row mt-5">
-        <div class="col-md-4">
-            <div class="p-3">
-                <h6 style="font-weight: 800;"><i class="fa-solid fa-info-circle text-primary"></i> ما هو JWT؟</h6>
-                <p class="small text-muted">JSON Web Token هو وسيلة آمنة لنقل المعلومات بين طرفين ككائن JSON. يتميز بأنه مدمج وذاتي الاحتواء.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3">
-                <h6 style="font-weight: 800;"><i class="fa-solid fa-lock text-success"></i> أمان البيانات</h6>
-                <p class="small text-muted">يتم فك التشفير محلياً في متصفحك. لا نقوم بحفظ أو إرسال أي توكنات إلى خوادمنا نهائياً.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3">
-                <h6 style="font-weight: 800;"><i class="fa-solid fa-code text-info"></i> الاستخدام البرمجي</h6>
-                <p class="small text-muted">يستخدم JWT غالباً في عمليات تسجيل الدخول (Authentication) وتمرير بيانات المستخدم بين الواجهة الأمامية والخلفية.</p>
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>دليل الاستخدام الاحترافي</h2>
+            <div class="row text-right mt-5">
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-sync text-primary"></i> التزامن المزدوج</h3>
+                    <p style="font-size:14px; color:#666;">يمكنك لصق توكن جاهز لفك تشفيره، أو التعديل مباشرة في كود JSON لتوليد توكن جديد لحظياً.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-key text-success"></i> التوقيع البرمجي</h3>
+                    <p style="font-size:14px; color:#666;">تدعم الأداة خوارزمية HS256. أدخل المفتاح السري الخاص بك وسنقوم بحساب التوقيع وضمان صحة التوكن.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-calendar-check text-info"></i> فحص الصلاحية</h3>
+                    <p style="font-size:14px; color:#666;">تقوم الأداة تلقائياً بتحويل حقول الوقت (exp, iat, nbf) إلى تواريخ مقروءة وتحدد إذا كان التوكن صالحاً حالياً.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</main>
+
+<site-footer></site-footer>
 
 <script>
-    const input = document.getElementById('jwt-input');
-    const headerOut = document.getElementById('header-out');
-    const payloadOut = document.getElementById('payload-out');
-    const signatureOut = document.getElementById('signature-out');
+    const jwtInput = document.getElementById('jwt-input');
+    const headerEditor = document.getElementById('header-editor');
+    const payloadEditor = document.getElementById('payload-editor');
+    const secretKeyInput = document.getElementById('secret-key');
     const statusArea = document.getElementById('status-area');
+    const dateList = document.getElementById('date-list');
 
-    input.addEventListener('input', decodeJWT);
+    let isInternalUpdate = false;
 
-    function decodeBase64Url(str) {
-        try {
-            // Add padding if needed
-            str = str.replace(/-/g, '+').replace(/_/g, '/');
-            while (str.length % 4) str += '=';
-            return decodeURIComponent(atob(str).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-        } catch (e) {
-            return null;
-        }
+    // --- Helpers ---
+    function base64UrlEncode(str) {
+        const base64 = btoa(unescape(encodeURIComponent(str)));
+        return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     }
 
-    function decodeJWT() {
-        const token = input.value.trim();
-        if (!token) {
-            resetFields();
-            return;
-        }
+    function base64UrlDecode(str) {
+        try {
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) str += '=';
+            return decodeURIComponent(escape(atob(str)));
+        } catch (e) { return null; }
+    }
 
-        const parts = token.split('.');
+    async function createSignature(headerBase64, payloadBase64, secret) {
+        if (!secret) return "signature_placeholder";
+        try {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(`${headerBase64}.${payloadBase64}`);
+            const keyData = encoder.encode(secret);
+            const key = await crypto.subtle.importKey(
+                'raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+            );
+            const signature = await crypto.subtle.sign('HMAC', key, data);
+            return btoa(String.fromCharCode(...new Uint8Array(signature)))
+                .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        } catch (e) { return "error_signing"; }
+    }
 
-        if (parts.length !== 3) {
-            statusArea.innerHTML = '<span class="status-badge status-invalid">بنية التوكن غير صحيحة (يجب أن يحتوي على 3 أجزاء)</span>';
-            return;
-        }
+    function formatDate(unix) {
+        if (!unix) return null;
+        const date = new Date(unix * 1000);
+        return date.toLocaleString('ar-YE', { dateStyle: 'medium', timeStyle: 'short' });
+    }
 
-        const header = decodeBase64Url(parts[0]);
-        const payload = decodeBase64Url(parts[1]);
-
-        if (!header || !payload) {
-            statusArea.innerHTML = '<span class="status-badge status-invalid">فشل في فك ترميز البيانات</span>';
-            return;
-        }
+    // --- Core Logic ---
+    async function updateFromDecoded() {
+        if (isInternalUpdate) return;
+        isInternalUpdate = true;
 
         try {
-            headerOut.textContent = JSON.stringify(JSON.parse(header), null, 4);
-            payloadOut.textContent = JSON.stringify(JSON.parse(payload), null, 4);
-            signatureOut.textContent = parts[2];
-            statusArea.innerHTML = '<span class="status-badge status-valid">تم تحليل التوكن بنجاح</span>';
-            window.showToast('تم تحليل التوكن بنجاح', 'success');
+            const header = headerEditor.value;
+            const payload = payloadEditor.value;
+            const secret = secretKeyInput.value;
+
+            // Validate JSON
+            JSON.parse(header);
+            JSON.parse(payload);
+
+            const hBase64 = base64UrlEncode(header);
+            const pBase64 = base64UrlEncode(payload);
+            const signature = await createSignature(hBase64, pBase64, secret);
+
+            jwtInput.value = `${hBase64}.${pBase64}.${signature}`;
+            statusArea.innerHTML = '<span class="status-badge status-valid">تم توليد التوكن بنجاح</span>';
+            analyzeDates(JSON.parse(payload));
         } catch (e) {
-            statusArea.innerHTML = '<span class="status-badge status-invalid">البيانات بداخل التوكن ليست JSON صحيح</span>';
-            window.showToast('بيانات التوكن غير صالحة', 'error');
+            statusArea.innerHTML = '<span class="status-badge status-invalid">خطأ في تنسيق JSON</span>';
         }
+
+        isInternalUpdate = false;
+    }
+
+    function updateFromEncoded() {
+        if (isInternalUpdate) return;
+        isInternalUpdate = true;
+
+        const token = jwtInput.value.trim();
+        if (!token) { resetFields(); isInternalUpdate = false; return; }
+
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            statusArea.innerHTML = '<span class="status-badge status-invalid">بنية التوكن غير صحيحة (3 أجزاء مطلوبة)</span>';
+            isInternalUpdate = false;
+            return;
+        }
+
+        const header = base64UrlDecode(parts[0]);
+        const payload = base64UrlDecode(parts[1]);
+
+        if (header && payload) {
+            try {
+                headerEditor.value = JSON.stringify(JSON.parse(header), null, 4);
+                payloadEditor.value = JSON.stringify(JSON.parse(payload), null, 4);
+                statusArea.innerHTML = '<span class="status-badge status-valid">تم فك تشفير التوكن بنجاح</span>';
+                analyzeDates(JSON.parse(payload));
+            } catch (e) {
+                statusArea.innerHTML = '<span class="status-badge status-invalid">محتوى التوكن ليس JSON صالحاً</span>';
+            }
+        } else {
+            statusArea.innerHTML = '<span class="status-badge status-invalid">فشل فك ترميز Base64</span>';
+        }
+
+        isInternalUpdate = false;
+    }
+
+    function analyzeDates(payload) {
+        let html = '';
+        const now = Math.floor(Date.now() / 1000);
+
+        if (payload.iat) html += `<div class="date-item"><span class="date-label">تاريخ الإصدار (iat):</span><span class="date-value">${formatDate(payload.iat)}</span></div>`;
+        if (payload.nbf) html += `<div class="date-item"><span class="date-label">صالح من (nbf):</span><span class="date-value">${formatDate(payload.nbf)}</span></div>`;
+        if (payload.exp) {
+            const isExpired = payload.exp < now;
+            html += `<div class="date-item"><span class="date-label">تاريخ الانتهاء (exp):</span><span class="date-value ${isExpired ? 'text-danger' : 'text-success'}">${formatDate(payload.exp)}</span></div>`;
+            html += `<div class="date-item"><span class="date-label">الحالة الزمنية:</span><span class="badge ${isExpired ? 'bg-danger' : 'bg-success'}">${isExpired ? 'منتهي الصلاحية' : 'صالح حالياً'}</span></div>`;
+        }
+
+        if (!html) html = '<div class="text-center text-muted py-3">لا توجد حقول زمنية معيارية في هذا التوكن</div>';
+        dateList.innerHTML = html;
     }
 
     function resetFields() {
-        headerOut.textContent = '{ "alg": "HS256", "typ": "JWT" }';
-        payloadOut.textContent = '{ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }';
-        signatureOut.textContent = 'Signature Content';
+        headerEditor.value = JSON.stringify({ "alg": "HS256", "typ": "JWT" }, null, 4);
+        payloadEditor.value = JSON.stringify({ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }, null, 4);
         statusArea.innerHTML = '';
+        dateList.innerHTML = '<div class="text-center text-muted py-3">أدخل توكن يحتوي على exp لرؤية التحليل</div>';
     }
 
-    // Default sample (optional)
-    const sample = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvbm5lY3QgVGFnIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-    input.placeholder = sample;
+    window.resetToSample = () => {
+        jwtInput.value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvbm5lY3QgVGFnIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+        updateFromEncoded();
+    }
+
+    window.copyText = (id) => {
+        const el = document.getElementById(id);
+        navigator.clipboard.writeText(el.value || el.textContent).then(() => {
+            if(window.showToast) window.showToast('تم النسخ بنجاح', 'success');
+        });
+    }
+
+    // --- Listeners ---
+    jwtInput.addEventListener('input', updateFromEncoded);
+    headerEditor.addEventListener('input', updateFromDecoded);
+    payloadEditor.addEventListener('input', updateFromDecoded);
+    secretKeyInput.addEventListener('input', updateFromDecoded);
+
+    // Init
+    resetFields();
 </script>
 
-
-<site-footer></site-footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
-
-

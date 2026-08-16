@@ -13,91 +13,49 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
 
 <style>
     :root {
         --brand-primary: #006b98;
-        --brand-secondary: #10b981;
-        --brand-danger: #ef4444;
-        --bg-app: #f1f5f9;
-        --surface-card: #ffffff;
-        --text-heading: #1e293b;
-        --text-body: #475569;
-        --border-subtle: #e2e8f0;
     }
 
-    [data-theme="dark"] {
-        --bg-app: #0f172a;
-        --surface-card: #1e293b;
-        --text-heading: #f8fafc;
-        --text-body: #94a3b8;
-        --border-subtle: #334155;
-    }
-
-    body { background-color: var(--bg-app); font-family: 'Cairo', sans-serif; color: var(--text-body); transition: 0.3s; }
-
-    .page-header-unified {
-        background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
-        padding: 80px 0 60px;
-        color: white;
-        text-align: center;
-        clip-path: ellipse(150% 100% at 50% 0%);
-    }
-
-    .theme-toggle { position: absolute; left: 30px; top: 30px; z-index: 1000; }
-    .btn-theme {
-        background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 20px;
-        border-radius: 50px; cursor: pointer; font-size: 14px; font-weight: 700;
-    }
-
-    .tool-container { padding: 40px 0; margin-top: -60px; }
-
-    .main-card {
-        background: var(--surface-card);
-        padding: 40px;
-        border-radius: 32px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        border: 1px solid var(--border-subtle);
-        margin-bottom: 30px;
-    }
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; transition: 0.3s; }
 
     .upload-zone {
-        border: 3px dashed var(--border-subtle);
+        border: 3px dashed #e2e8f0;
         border-radius: 24px;
         padding: 60px 30px;
         text-align: center;
         cursor: pointer;
         transition: 0.3s;
-        background: var(--bg-app);
+        background: #f8fafc;
     }
     .upload-zone:hover, .upload-zone.dragover { border-color: var(--brand-primary); background: rgba(0,107,152,0.05); }
     .upload-zone i { font-size: 50px; color: var(--brand-primary); margin-bottom: 20px; }
 
     .image-item {
-        background: var(--surface-card);
+        background: #fff;
         padding: 20px;
         border-radius: 20px;
-        border: 1px solid var(--border-subtle);
+        border: 1px solid #e2e8f0;
         margin-bottom: 15px;
         display: flex;
         align-items: flex-start;
         gap: 20px;
         transition: 0.3s;
+        text-align: right;
     }
     .thumb-wrapper { position: relative; }
-    .thumb { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; border: 2px solid var(--border-subtle); }
+    .thumb { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; border: 2px solid #e2e8f0; }
 
     .meta-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .tag { font-size: 10px; padding: 3px 10px; border-radius: 50px; font-weight: 700; background: #eee; color: #666; }
     .tag.danger { background: #fee2e2; color: #ef4444; }
-    .tag.success { background: #e8f5e9; color: #2e7d32; }
 
     .btn-clean {
         background: var(--brand-primary);
@@ -124,10 +82,8 @@
         font-size: 13px;
         font-weight: 700;
         margin-bottom: 20px;
+        text-align: right;
     }
-
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-    .cleaning-anim { animation: pulse 1s infinite; }
 
     @media (max-width: 768px) {
         .image-item { flex-direction: column; text-align: center; align-items: center; }
@@ -145,85 +101,77 @@
 </head>
 <body>
 
-<div class="theme-toggle no-print">
-    <button class="btn-theme" id="themeBtn" onclick="toggleTheme()">
-        <i class="fa-regular fa-moon"></i> الوضع المظلم
-    </button>
-</div>
-
 <site-preloader></site-preloader>
 
 <div id="home-content">
 <site-header></site-header>
 
-<div class="page-header-unified">
-    <div class="container" data-aos="fade-down">
-        <h1>منظف بصمة الصور والخصوصية</h1>
-        <p>احمِ خصوصيتك بحذف البيانات المخفية (EXIF) والموقع الجغرافي من صورك قبل مشاركتها</p>
-        <ul class="breadcrumb-custom mt-3">
-            <li><a href="https://connecttag.org/" style="color:white !important; opacity:0.8;">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/" style="color:white !important; opacity:0.8;">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/security/" style="color:white !important; opacity:0.8;">الأمن والخصوصية</a></li>
-            <li class="active" style="color:white !important; font-weight:800;">حذف بيانات الصور</li>
-        </ul>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">منظف بصمة الصور والخصوصية</h1>
+            <p data-aos="fade-up" data-aos-delay="100">احمِ خصوصيتك بحذف البيانات المخفية (EXIF) والموقع الجغرافي من صورك قبل مشاركتها</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"الأمن والخصوصية", "url":"/tools/security/"}, {"title":"حذف بيانات الصور", "url":"/tools/security/exif-remover/"}]'></site-breadcrumb>
+        </div>
     </div>
-</div>
 
-<div class="tool-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <div class="main-card" data-aos="fade-up">
-                    <div class="privacy-badge">
-                        <i class="fa-solid fa-shield"></i> معالجة محلية 100%: صورك لا تغادر جهازك أبداً، يتم التنظيف داخل المتصفح.
-                    </div>
-
-                    <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-                        <i class="fa-regular fa-file-image"></i>
-                        <h4 class="fw-bold">اسحب الصور هنا أو اضغط للاختيار</h4>
-                        <p class="text-muted">يدعم JPG, PNG, WebP (يمكنك اختيار عدة صور)</p>
-                        <input type="file" id="fileInput" multiple accept="image/jpeg, image/png, image/webp" style="display:none">
-                    </div>
-
-                    <div id="fileList" class="mt-4">
-                        <!-- List of images will appear here -->
-                    </div>
-
-                    <button id="cleanAllBtn" class="btn-clean" style="display:none" onclick="cleanAll()">
-                        <i class="fa-solid fa-magic"></i> حذف جميع البيانات المخفية وتحميل الصور
-                    </button>
+    <div class="tool-main-wrapper">
+        <div class="container text-center">
+            <div class="tool-card-base" data-aos="zoom-in" style="max-width: 800px;">
+                <div class="privacy-badge">
+                    <i class="fa-solid fa-shield"></i> معالجة محلية 100%: صورك لا تغادر جهازك أبداً، يتم التنظيف داخل المتصفح.
                 </div>
 
-                <div class="main-card" data-aos="fade-up">
-                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-info-circle text-primary"></i> ما هي بيانات EXIF ولماذا يجب حذفها؟</h5>
-                    <p class="small text-muted">
-                        عندما تلتقط صورة، يقوم هاتفك بتخزين معلومات تقنية تسمى EXIF. هذه البيانات قد تشمل:
-                    </p>
-                    <ul class="small text-muted">
-                        <li><strong>الموقع الجغرافي (GPS):</strong> إحداثيات المكان الدقيق الذي التقطت فيه الصورة.</li>
-                        <li><strong>معلومات الجهاز:</strong> نوع الهاتف، الشركة المصنعة، وإصدار النظام.</li>
-                        <li><strong>الإعدادات التقنية:</strong> وقت الالتقاط، سرعة الغالق، وفتحة العدسة.</li>
-                    </ul>
-                    <p class="small fw-bold text-danger mt-3">
-                        مشاركة هذه الصور على الإنترنت قد تكشف عن موقع منزلك أو خصوصياتك دون علمك. هذه الأداة تضمن لك "تصفير" هذه البيانات تماماً.
-                    </p>
+                <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-regular fa-file-image"></i>
+                    <h4 class="fw-bold">اسحب الصور هنا أو اضغط للاختيار</h4>
+                    <p class="text-muted">يدعم JPG, PNG, WebP (يمكنك اختيار عدة صور)</p>
+                    <input type="file" id="fileInput" multiple accept="image/jpeg, image/png, image/webp" style="display:none">
                 </div>
+
+                <div id="fileList" class="mt-4">
+                    <!-- List of images will appear here -->
+                </div>
+
+                <button id="cleanAllBtn" class="btn-clean" style="display:none" onclick="cleanAll()">
+                    <i class="fa-solid fa-magic"></i> حذف جميع البيانات المخفية وتحميل الصور
+                </button>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>ما هي بيانات EXIF ولماذا يجب حذفها؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">عندما تلتقط صورة، يقوم هاتفك بتخزين معلومات تقنية تسمى EXIF قد تكشف عن خصوصياتك دون علمك.</p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-location-dot text-primary"></i> الموقع الجغرافي</h3>
+                    <p style="font-size:14px; color:#666;">يتم تخزين إحداثيات المكان الدقيق (GPS) الذي التقطت فيه الصورة، مما قد يكشف عن موقع منزلك أو عملك.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-mobile-screen text-primary"></i> معلومات الجهاز</h3>
+                    <p style="font-size:14px; color:#666;">يتم حفظ نوع الهاتف، الشركة المصنعة، وإصدار نظام التشغيل، وهي معلومات يمكن استخدامها في الاستهداف الإعلاني.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-camera text-primary"></i> الإعدادات التقنية</h3>
+                    <p style="font-size:14px; color:#666;">تشمل وقت الالتقاط بدقة، سرعة الغالق، وفتحة العدسة، مما قد يعطي انطباعاً عن عاداتك اليومية.</p>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-4 mx-auto" style="border-radius:15px; border:none; background: #fee2e2; color: #991b1b; max-width: 800px;">
+                <strong>ملاحظة أمنية:</strong> مشاركة الصور الأصلية على وسائل التواصل قد تعرضك لمخاطر أمنية. هذه الأداة تضمن لك "تصفير" هذه البيانات تماماً.
+            </div>
+        </div>
+    </div>
+</main>
 
 <site-footer></site-footer>
 </div>
 
 <script>
 let filesToProcess = [];
-
-function toggleTheme() {
-    const isDark = document.body.getAttribute('data-theme') === 'dark';
-    document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('themeBtn').innerHTML = isDark ? '<i class="fa-regular fa-moon"></i> الوضع المظلم' : '<i class="fa-regular fa-sun"></i> الوضع الفاتح';
-}
 
 const fileInput = document.getElementById('fileInput');
 const dropZone = document.getElementById('dropZone');
@@ -256,7 +204,6 @@ async function renderList() {
         const item = document.createElement('div');
         item.className = 'image-item';
 
-        // Check for GPS/Exif presence (Basic binary check for demo purposes)
         const hasExif = file.type === 'image/jpeg' ? 'محتمل ⚠️' : 'منخفض 🛡️';
 
         item.innerHTML = `
@@ -308,10 +255,6 @@ async function cleanAll() {
     }, 3000);
 }
 
-/**
- * Strips metadata by redrawing the image onto a canvas.
- * This is the most reliable way to ensure NO original EXIF remains.
- */
 function stripMetadata(file) {
     return new Promise((resolve) => {
         const img = new Image();
@@ -322,8 +265,6 @@ function stripMetadata(file) {
             canvas.height = img.height;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0);
-
-            // Export to same format but as a fresh blob without original metadata
             canvas.toBlob((blob) => {
                 resolve(blob);
             }, file.type, 0.95);
@@ -338,10 +279,10 @@ function downloadFile(blob, name) {
     a.click();
 }
 
-window.onload = () => AOS.init({ duration: 800, once: true });
+window.onload = () => {
+    if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+};
 </script>
 
 </body>
 </html>
-
-

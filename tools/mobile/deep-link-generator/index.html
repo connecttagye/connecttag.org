@@ -13,33 +13,21 @@
 <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-    :root {
-        --primary-color: #006b98;
-        --secondary-color: #00567a;
-        --bg-editor: #f8fafc;
-    }
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
 
-    body { background-color: var(--bg-editor); font-family: 'Cairo', sans-serif; color: #1e293b; }
-
-    .tool-container { padding-top: 120px; padding-bottom: 80px; max-width: 1000px; margin: 0 auto; }
-    .main-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #edf2f7; }
-
-    .input-section { margin-bottom: 30px; }
-    .label-custom { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; color: #1e293b; }
-
-    .custom-input {
-        border: 2px solid #f1f5f9; border-radius: 12px; padding: 12px 15px; width: 100%;
-        font-weight: 600; transition: 0.3s; outline: none; margin-bottom: 15px;
-    }
-    .custom-input:focus { border-color: var(--primary-color); }
+    .input-section { margin-bottom: 20px; text-align: right; }
 
     .result-box {
         background: #f8fafc; border: 2px solid #f1f5f9; border-radius: 15px; padding: 20px;
-        position: relative; margin-bottom: 20px; animation: slideIn 0.4s ease;
+        position: relative; margin-bottom: 20px; animation: slideIn 0.4s ease; text-align: right;
     }
     @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -56,86 +44,94 @@
     .badge-intent { background: #fee2e2; color: #991b1b; }
     .badge-uri { background: #dcfce7; color: #166534; }
 
-    .info-alert { background: #f0f9ff; border: 1px solid #e0f2fe; border-radius: 15px; padding: 15px; margin-top: 30px; font-size: 13px; line-height: 1.6; }
+    .info-alert { background: #f0f9ff; border: 1px solid #e0f2fe; border-radius: 15px; padding: 15px; margin-top: 30px; font-size: 13px; line-height: 1.6; text-align: right; }
 </style>
-
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
-<!-- QRCode.js Library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <site-header></site-header>
 
-<div class="tool-container container">
-    <div class="text-center mb-5">
-        <ul class="breadcrumb-custom mb-4" style="font-size:12px;">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-            <li><a href="https://connecttag.org/tools/mobile/">أدوات تطبيقات الجوال</a></li>
-            <li class="active">مولد الروابط</li>
-        </ul>
-        <h1 style="font-weight: 900; color: var(--primary-color);">مولد الروابط العميقة (Deep Links)</h1>
-        <p class="text-muted">قم بإنشاء روابط مخصصة لفتح صفحات محددة داخل تطبيقك مباشرة</p>
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">مولد الروابط العميقة (Deep Links)</h1>
+            <p data-aos="fade-up" data-aos-delay="100">قم بإنشاء روابط مخصصة لفتح صفحات محددة داخل تطبيقك مباشرة وتوليد كود QR للاختبار</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات تطبيقات الجوال", "url":"/tools/mobile/"}, {"title":"مولد الروابط", "url":"/tools/mobile/deep-link-generator/"}]'></site-breadcrumb>
+        </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="main-card">
-                <div class="input-section">
-                    <label class="label-custom">البروتوكول (Scheme):</label>
-                    <input type="text" id="scheme" class="custom-input" placeholder="مثال: myapp" oninput="generateLinks()">
+    <div class="tool-main-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-11">
+                    <div class="tool-card-base" data-aos="zoom-in" style="max-width: 1100px;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="input-section">
+                                    <label class="form-label">البروتوكول (Scheme):</label>
+                                    <input type="text" id="scheme" class="form-control-custom" placeholder="مثال: myapp" oninput="generateLinks()">
 
-                    <label class="label-custom">المضيف (Host / Domain):</label>
-                    <input type="text" id="host" class="custom-input" placeholder="مثال: profile" oninput="generateLinks()">
+                                    <label class="form-label mt-3">المضيف (Host / Domain):</label>
+                                    <input type="text" id="host" class="form-control-custom" placeholder="مثال: profile" oninput="generateLinks()">
 
-                    <label class="label-custom">المسار (Path - اختياري):</label>
-                    <input type="text" id="path" class="custom-input" placeholder="مثال: /settings" oninput="generateLinks()">
+                                    <label class="form-label mt-3">المسار (Path - اختياري):</label>
+                                    <input type="text" id="path" class="form-control-custom" placeholder="مثال: /settings" oninput="generateLinks()">
 
-                    <label class="label-custom">اسم الحزمة (Package Name - لروابط Intent):</label>
-                    <input type="text" id="package" class="custom-input" placeholder="مثal: com.example.app" oninput="generateLinks()">
-                </div>
+                                    <label class="form-label mt-3">اسم الحزمة (Package Name):</label>
+                                    <input type="text" id="package" class="form-control-custom" placeholder="مثال: com.example.app" oninput="generateLinks()">
+                                </div>
 
-                <div class="info-alert">
-                    <i class="fa-regular fa-lightbulb"></i> <strong>نصيحة:</strong> تأكد من إعداد <code>&lt;intent-filter&gt;</code> في ملف Manifest الخاص بتطبيقك ليتوافق مع هذه القيم.
+                                <div class="info-alert">
+                                    <i class="fa-regular fa-lightbulb"></i> <strong>نصيحة:</strong> تأكد من إعداد <code>&lt;intent-filter&gt;</code> في ملف Manifest الخاص بتطبيقك ليتوافق مع هذه القيم.
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div id="results-area">
+                                    <label class="form-label">الرابط المباشر (Custom URI):</label>
+                                    <div class="result-box">
+                                        <span class="badge-type badge-uri">URI SCHEME</span>
+                                        <button class="btn-copy" onclick="copyText('uri-result')">نسخ</button>
+                                        <p id="uri-result" style="margin: 0; word-break: break-all; font-family: monospace; font-weight: 700; direction: ltr;">-</p>
+                                    </div>
+
+                                    <label class="form-label">رابط الـ Intent (Android):</label>
+                                    <div class="result-box">
+                                        <span class="badge-type badge-intent">ANDROID INTENT</span>
+                                        <button class="btn-copy" onclick="copyText('intent-result')">نسخ</button>
+                                        <p id="intent-result" style="margin: 0; word-break: break-all; font-family: monospace; font-size: 13px; direction: ltr;">-</p>
+                                    </div>
+
+                                    <div class="qr-container">
+                                        <div id="qrcode"></div>
+                                        <p class="small text-muted mb-0">امسح الكود بالكاميرا لاختبار الرابط على هاتفك</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-6">
-            <div class="main-card">
-                <div id="results-area">
-                    <label class="label-custom">الرابط المباشر (Custom URI):</label>
-                    <div class="result-box">
-                        <span class="badge-type badge-uri">URI SCHEME</span>
-                        <button class="btn-copy" onclick="copyText('uri-result')">نسخ</button>
-                        <p id="uri-result" style="margin: 0; word-break: break-all; font-family: monospace; font-weight: 700;">-</p>
-                    </div>
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>ما هي الروابط العميقة (Deep Links)؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">تسمح الروابط العميقة للمستخدمين بالانتقال مباشرة إلى محتوى معين داخل التطبيق بدلاً من مجرد فتح الصفحة الرئيسية.</p>
 
-                    <label class="label-custom">رابط الـ Intent (Android):</label>
-                    <div class="result-box">
-                        <span class="badge-type badge-intent">ANDROID INTENT</span>
-                        <button class="btn-copy" onclick="copyText('intent-result')">نسخ</button>
-                        <p id="intent-result" style="margin: 0; word-break: break-all; font-family: monospace; font-size: 13px;">-</p>
-                    </div>
-
-                    <div class="qr-container">
-                        <div id="qrcode"></div>
-                        <p class="small text-muted mb-0">امسح الكود بالكاميرا لاختبار الرابط على هاتفك</p>
-                    </div>
+            <div class="row text-right mt-5">
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-rocket text-primary"></i> تحسين تجربة المستخدم</h3>
+                    <p style="font-size:14px; color:#666;">توفر الروابط العميقة وصولاً سريعاً للمنتجات أو العروض الترويجية داخل التطبيق، مما يزيد من معدلات التفاعل والمبيعات.</p>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-share-nodes text-primary"></i> سهولة المشاركة</h3>
+                    <p style="font-size:14px; color:#666;">يمكنك تضمين هذه الروابط في الإشعارات، رسائل البريد الإلكتروني، أو حتى كأكواد QR لمساعدة المستخدمين على الوصول لمحتواك بلمسة واحدة.</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <site-footer></site-footer>
 
@@ -160,17 +156,14 @@
             return;
         }
 
-        // Generate Custom URI
         const fullUri = `${scheme}://${host}${path}`;
         document.getElementById('uri-result').textContent = fullUri;
 
-        // Generate Intent URI
         let intentUri = `intent://${host}${path}#Intent;scheme=${scheme};`;
         if (pkg) intentUri += `package=${pkg};`;
         intentUri += `end`;
         document.getElementById('intent-result').textContent = intentUri;
 
-        // Update QR
         qrcode.clear();
         qrcode.makeCode(fullUri);
     }
@@ -178,13 +171,15 @@
     function copyText(id) {
         const text = document.getElementById(id).textContent;
         if (text === "-") return;
-        navigator.clipboard.writeText(text).then(() => alert('تم النسخ بنجاح!'));
+        navigator.clipboard.writeText(text).then(() => {
+            if(window.showToast) window.showToast('تم نسخ الرابط بنجاح!', 'success');
+        });
     }
 
-    // Initial QR
     qrcode.makeCode("https://connecttag.org");
 </script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
-
-
