@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مستخرج الألوان من الصور | استخراج أكواد Hex و RGB - كونكت تاق</title>
+    <meta name="description" content="أداة مجانية لاستخراج لوحة الألوان (Palette) من أي صورة أو شعار. احصل على أكواد الألوان (Hex, RGB) لبناء هويتك البصرية وتصميماتك باحترافية.">
+    <link rel="canonical" href="https://connecttag.org/tools/design/color-extractor/" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/design/color-extractor/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="مستخرج الألوان من الصور - كونكت تاق" />
+    <meta property="og:description" content="استخرج باليت الألوان من صورك بسهولة واحصل على أكواد الألوان الدقيقة." />
+    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "مستخرج الألوان من الصور",
+      "description": "أداة لاستخراج أكواد الألوان Hex و RGB من الصور المرفوعة.",
+      "applicationCategory": "DesignTool",
+      "operatingSystem": "All",
+      "url": "https://connecttag.org/tools/design/color-extractor/"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .page-header-unified {
+            background: #ffffff; padding: 100px 0 60px; text-align: center; border-bottom: 1px solid #edf2f7;
+        }
+        .page-header-unified h1 { font-weight: 900; font-size: 34px; color: #006b98 !important; margin-bottom: 15px; }
+
+        .tool-card {
+            background: #fff; border-radius: 24px; padding: 35px; border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-top: -40px; position: relative; z-index: 10;
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1; border-radius: 20px; padding: 40px 20px; text-align: center;
+            cursor: pointer; transition: 0.3s; background: #f8fafc; margin-bottom: 30px;
+        }
+        .upload-area:hover, .upload-area.dragover { border-color: #006b98; background: #f0f9ff; }
+        .upload-area i { font-size: 48px; color: #94a3b8; margin-bottom: 15px; }
+        .upload-area h3 { font-size: 18px; font-weight: 800; color: #475569; }
+
+        #preview-img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 30px; }
+        .color-item {
+            background: #fff; border-radius: 15px; border: 1px solid #e2e8f0; overflow: hidden;
+            transition: 0.3s; cursor: pointer; position: relative;
+        }
+        .color-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .color-swatch { height: 100px; width: 100%; }
+        .color-info { padding: 12px; text-align: center; }
+        .color-hex { font-weight: 900; font-size: 14px; color: #1e293b; display: block; }
+        .color-rgb { font-size: 11px; color: #64748b; font-weight: 700; }
+
+        .copy-hint {
+            position: absolute; top: 5px; right: 5px; background: rgba(255,255,255,0.9);
+            padding: 4px; border-radius: 8px; font-size: 10px; opacity: 0; transition: 0.3s;
+        }
+        .color-item:hover .copy-hint { opacity: 1; }
+
+        .info-section { margin-top: 60px; background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #edf2f7; }
+        .info-section h2 { font-weight: 800; color: #006b98; margin-bottom: 25px; font-size: 22px; }
+        .info-section p { line-height: 1.8; color: #64748b; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .page-header-unified { padding: 80px 0 40px; }
+            .tool-card { padding: 25px; margin-top: -20px; }
+        }
+    </style>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-header></site-header>
+
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">مستخرج الألوان من الصور</h1>
+            <p data-aos="fade-up" data-aos-delay="100">ارفع أي صورة واستخلص درجات الألوان الأساسية منها لبناء تصاميمك بهوية بصرية متناسقة</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"التصميم والوسائط", "url":"/tools/design/"}, {"title":"مستخرج الألوان", "url":"/tools/design/color-extractor/"}]'></site-breadcrumb>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="tool-card" data-aos="zoom-in">
+                    <input type="file" id="file-input" hidden accept="image/*">
+                    <div class="upload-area" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <h3>اسحب الصورة هنا أو اضغط للاختيار</h3>
+                        <p class="text-muted">يدعم PNG, JPG, WebP. المعالجة تتم محلياً في جهازك.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <img id="preview-img" alt="Preview">
+                    </div>
+
+                    <div id="results-area" style="display: none;">
+                        <h4 style="font-weight: 800; color: #1e293b; margin-bottom: 20px;"><i class="fa-solid fa-palette text-primary"></i> لوحة الألوان المستخرجة:</h4>
+                        <div class="palette-grid" id="palette-grid">
+                            <!-- Colors will appear here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section" data-aos="fade-up">
+                    <h2>لماذا تحتاج لاستخراج الألوان من الصور؟</h2>
+                    <p>يعتبر استلهام الألوان من الصور الطبيعية أو الشعارات العالمية أول خطوة في بناء تصميم احترافي. بدلاً من محاولة تخمين الألوان يدوياً، تقوم هذه الأداة بتحليل بكسلات الصورة واستخلاص الدرجات الأكثر ظهوراً (Dominant Colors) لتعطيك باليت جاهزة للاستخدام.</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-code text-primary"></i> أكواد جاهزة للمبرمجين</h3>
+                            <p style="font-size:14px;">سواء كنت تعمل على CSS أو Flutter أو Android، ستحصل على كود الـ Hex الدقيق الذي يمكنك نسخه واستخدامه فوراً في برمجتك.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 style="font-size:18px; font-weight:800; color:#333;"><i class="fa-solid fa-shield-halved text-primary"></i> خصوصية كاملة</h3>
+                            <p style="font-size:14px;">نحن نستخدم تقنيات الـ Canvas في المتصفح، مما يعني أن صورك لا ترفع إلى خوادمنا؛ المعالجة بالكامل تتم داخل متصفحك الخاص.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const previewImg = document.getElementById('preview-img');
+    const paletteGrid = document.getElementById('palette-grid');
+    const resultsArea = document.getElementById('results-area');
+
+    // Drag and Drop handlers
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) handleFile(file);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file);
+    });
+
+    function handleFile(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImg.src = e.target.result;
+            previewImg.style.display = 'inline-block';
+            resultsArea.style.display = 'block';
+            extractColors(e.target.result);
+
+            // Scroll to results
+            setTimeout(() => {
+                resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function extractColors(src) {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Resize for faster processing
+            const maxDim = 200;
+            let w = img.width, h = img.height;
+            if (w > h) { if (w > maxDim) { h *= maxDim / w; w = maxDim; } }
+            else { if (h > maxDim) { w *= maxDim / h; h = maxDim; } }
+
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img, 0, 0, w, h);
+
+            const imageData = ctx.getImageData(0, 0, w, h).data;
+            const colorMap = {};
+            const step = 4; // Sample every 4th pixel for speed
+
+            for (let i = 0; i < imageData.length; i += step * 4) {
+                const r = imageData[i];
+                const g = imageData[i+1];
+                const b = imageData[i+2];
+                const a = imageData[i+3];
+
+                if (a < 125) continue; // Skip transparent
+
+                // Quantize to reduce number of unique colors
+                const q = 10;
+                const qr = Math.round(r / q) * q;
+                const qg = Math.round(g / q) * q;
+                const qb = Math.round(b / q) * q;
+                const key = `${qr},${qg},${qb}`;
+
+                colorMap[key] = (colorMap[key] || 0) + 1;
+            }
+
+            // Sort colors by frequency
+            const sortedColors = Object.entries(colorMap)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 20); // Get top 20 candidates
+
+            renderPalette(sortedColors);
+        };
+        img.src = src;
+    }
+
+    function renderPalette(colors) {
+        paletteGrid.innerHTML = '';
+
+        // Filter to keep only distinct colors
+        const finalColors = [];
+        colors.forEach(([rgbStr]) => {
+            const [r, g, b] = rgbStr.split(',').map(Number);
+
+            // Check if too similar to existing
+            const isSimilar = finalColors.some(c => {
+                const diff = Math.abs(c.r - r) + Math.abs(c.g - g) + Math.abs(c.b - b);
+                return diff < 60;
+            });
+
+            if (!isSimilar && finalColors.length < 10) {
+                finalColors.push({ r, g, b, hex: rgbToHex(r, g, b) });
+            }
+        });
+
+        finalColors.forEach(c => {
+            const item = document.createElement('div');
+            item.className = 'color-item';
+            item.innerHTML = `
+                <div class="color-swatch" style="background-color: ${c.hex}"></div>
+                <div class="copy-hint"><i class="fa-solid fa-copy"></i> نسخ</div>
+                <div class="color-info">
+                    <span class="color-hex">${c.hex.toUpperCase()}</span>
+                    <span class="color-rgb">RGB(${c.r}, ${c.g}, ${c.b})</span>
+                </div>
+            `;
+            item.onclick = () => copyToClipboard(c.hex);
+            paletteGrid.appendChild(item);
+        });
+    }
+
+    function rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            if (window.showToast) {
+                window.showToast(`تم نسخ اللون ${text.toUpperCase()} بنجاح!`, 'success');
+            } else {
+                alert(`تم نسخ اللون: ${text}`);
+            }
+        });
+    }
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>

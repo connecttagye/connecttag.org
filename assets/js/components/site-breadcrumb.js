@@ -33,7 +33,7 @@ class SiteBreadcrumb extends HTMLElement {
         'libraries': 'المكاتب البرمجية',
         'store': 'المتجر',
         'tools': 'الأدوات',
-        'telecom': 'أدوات الاتصالات',
+        'telecom': 'ادوات اتصالات وانترنت',
         'web': 'أدوات الويب',
         'mobile': 'أدوات تطبيقات الجوال',
         'security': 'الأمن والخصوصية',
