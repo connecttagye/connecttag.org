@@ -46,6 +46,78 @@
   <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
   <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
 
+<style>
+    /* Professional Hero Section */
+    .page-header-unified.hero-about {
+        background-color: #0d001a !important;
+        background-image: linear-gradient(135deg, rgba(13, 0, 26, 0.4) 0%, rgba(26, 0, 51, 0.3) 100%),
+                        url('https://connecttag.org/assets/img/connect-tag-main-banner.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        min-height: 550px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 140px 0 100px;
+        border: none !important;
+    }
+    .hero-about h1 {
+        color: #fff !important;
+        font-size: 68px !important;
+        font-weight: 900 !important;
+        text-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+        margin-bottom: 25px !important;
+    }
+    .hero-about p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 22px;
+        max-width: 850px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+        font-weight: 400;
+    }
+    .hero-badge {
+        display: inline-block;
+        background: rgba(0, 119, 182, 0.2);
+        border: 1px solid rgba(0, 119, 182, 0.4);
+        color: #00adef;
+        padding: 8px 25px;
+        border-radius: 50px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    /* Breadcrumb White Theme */
+    .hero-about site-breadcrumb {
+        border: none !important;
+        margin-top: 20px !important;
+        background: transparent !important;
+    }
+    .hero-about .ct-breadcrumb-item,
+    .hero-about .ct-breadcrumb-item.active {
+        color: #fff !important;
+        opacity: 0.9 !important;
+    }
+    .hero-about .ct-breadcrumb-item a {
+        color: #fff !important;
+        font-weight: 700 !important;
+    }
+    .hero-about .ct-breadcrumb-separator {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    @media (max-width: 768px) {
+        .hero-about h1 { font-size: 42px !important; }
+        .hero-about p { font-size: 18px; }
+        .page-header-unified.hero-about { min-height: 450px; padding: 120px 0 80px; }
+    }
+</style>
+
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
 
@@ -69,14 +141,24 @@
 <main id="main-content">
 
 <!-- Parallax Header -->
-<div class="page-header-unified" style="background-attachment: fixed;">
-    <div class="container">
+<div class="page-header-unified hero-about">
+    <div class="container" style="position: relative; z-index: 2;">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>من نحن</h1>
-                <site-breadcrumb></site-breadcrumb>
+                <div class="hero-badge" data-aos="fade-down">الريادة والابتكار</div>
+                <h1 data-aos="fade-down" data-aos-delay="100">من نحن</h1>
+                <p data-aos="fade-up" data-aos-delay="200">كونكت تاق: قصة شغف تقني بدأت لتمكين الشركات والمؤسسات من أدوات المستقبل. نحن لا نصمم برمجيات فقط، بل نبني جسوراً من الحلول الذكية التي تضمن نموك واستدامة أعمالك.</p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <site-breadcrumb></site-breadcrumb>
+                </div>
             </div>
         </div>
+    </div>
+    <!-- Bottom Divider Shape -->
+    <div style="position: absolute; bottom: -1px; left: 0; width: 100%; transform: rotate(180deg); z-index: 1;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="display: block; width: 100%; height: 80px;">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.83C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff"></path>
+        </svg>
     </div>
 </div>
 
@@ -147,31 +229,54 @@
     </div>
 </div>
 
-<!-- Tech Stack Slider -->
+<!-- Tech Slider Section -->
 <div class="tech-slider">
-    <div class="container text-center">
-        <p style="margin-bottom: 30px; font-weight: bold; color: #777;">التقنيات التي نتقنها</p>
-    </div>
     <div class="tech-slide-track">
-        <i class="fa-solid fa-rocket" title="Jetpack Compose"></i>
-        <i class="fa-solid fa-code" title="JavaScript - جافا سكربت"></i>
-        <i class="fa-brands fa-android" title="Kotlin - كوتلن"></i>
-        <i class="fa-brands fa-cloudflare" title="Cloudflare - كلاود فلير"></i>
-        <i class="fa-brands fa-firebase" title="Firebase - فايربيز"></i>
-        <i class="fa-solid fa-code" title="PHP"></i>
-        <i class="fa-solid fa-code" title="React"></i>
-        <i class="fa-solid fa-database" title="قواعد البيانات"></i>
-        <i class="fa-brands fa-wordpress" title="ووردبريس"></i>
-        <i class="fa-brands fa-html5" title="HTML5"></i>
-        <i class="fa-brands fa-css3" title="CSS3"></i>
-        <!-- Duplicate for loop -->
-        <i class="fa-solid fa-rocket" title="Jetpack Compose"></i>
-        <i class="fa-solid fa-code" title="JavaScript"></i>
-        <i class="fa-brands fa-android" title="Kotlin"></i>
-        <i class="fa-brands fa-cloudflare" title="Cloudflare"></i>
-        <i class="fa-brands fa-firebase" title="Firebase"></i>
-        <i class="fa-solid fa-code" title="PHP"></i>
-        <i class="fa-solid fa-code" title="React"></i>
+        <div class="tech-item"><i class="fa-solid fa-rocket"></i><span>Jetpack Compose</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code"></i><span>JavaScript</span></div>
+        <div class="tech-item"><i class="fa-brands fa-android"></i><span>Kotlin</span></div>
+        <div class="tech-item"><i class="fa-regular fa-file-code"></i><span>PHP</span></div>
+        <div class="tech-item"><i class="fa-solid fa-terminal"></i><span>Python</span></div>
+        <div class="tech-item"><i class="fa-solid fa-coffee"></i><span>Java</span></div>
+        <div class="tech-item"><i class="fa-solid fa-server"></i><span>Node.js</span></div>
+        <div class="tech-item"><i class="fa-solid fa-plug"></i><span>Rest API</span></div>
+        <div class="tech-item"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
+        <div class="tech-item"><i class="fa-solid fa-cubes"></i><span>Laravel</span></div>
+        <div class="tech-item"><i class="fa-brands fa-firebase"></i><span>Firebase</span></div>
+        <div class="tech-item"><i class="fa-solid fa-database"></i><span>Databases</span></div>
+        <div class="tech-item"><i class="fa-brands fa-cloudflare"></i><span>Cloudflare</span></div>
+        <div class="tech-item"><i class="fa-brands fa-apple"></i><span>iOS Apps</span></div>
+        <div class="tech-item"><i class="fa-solid fa-object-group"></i><span>UI/UX</span></div>
+        <div class="tech-item"><i class="fa-solid fa-chart-line"></i><span>SEO</span></div>
+        <div class="tech-item"><i class="fa-solid fa-lock"></i><span>Security</span></div>
+        <div class="tech-item"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code-fork"></i><span>Git</span></div>
+        <div class="tech-item"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+        <div class="tech-item"><i class="fa-brands fa-css3"></i><span>CSS3</span></div>
+        <div class="tech-item"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
+        <!-- Repeat for continuous loop -->
+        <div class="tech-item"><i class="fa-solid fa-rocket"></i><span>Jetpack Compose</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code"></i><span>JavaScript</span></div>
+        <div class="tech-item"><i class="fa-brands fa-android"></i><span>Kotlin</span></div>
+        <div class="tech-item"><i class="fa-regular fa-file-code"></i><span>PHP</span></div>
+        <div class="tech-item"><i class="fa-solid fa-terminal"></i><span>Python</span></div>
+        <div class="tech-item"><i class="fa-solid fa-coffee"></i><span>Java</span></div>
+        <div class="tech-item"><i class="fa-solid fa-server"></i><span>Node.js</span></div>
+        <div class="tech-item"><i class="fa-solid fa-plug"></i><span>Rest API</span></div>
+        <div class="tech-item"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
+        <div class="tech-item"><i class="fa-solid fa-cubes"></i><span>Laravel</span></div>
+        <div class="tech-item"><i class="fa-brands fa-firebase"></i><span>Firebase</span></div>
+        <div class="tech-item"><i class="fa-solid fa-database"></i><span>Databases</span></div>
+        <div class="tech-item"><i class="fa-brands fa-cloudflare"></i><span>Cloudflare</span></div>
+        <div class="tech-item"><i class="fa-brands fa-apple"></i><span>iOS Apps</span></div>
+        <div class="tech-item"><i class="fa-solid fa-object-group"></i><span>UI/UX</span></div>
+        <div class="tech-item"><i class="fa-solid fa-chart-line"></i><span>SEO</span></div>
+        <div class="tech-item"><i class="fa-solid fa-lock"></i><span>Security</span></div>
+        <div class="tech-item"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code-fork"></i><span>Git</span></div>
+        <div class="tech-item"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+        <div class="tech-item"><i class="fa-brands fa-css3"></i><span>CSS3</span></div>
+        <div class="tech-item"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
     </div>
 </div>
 
