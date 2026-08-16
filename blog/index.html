@@ -47,123 +47,330 @@
 
     <!-- CSS المخصص لتحسين تصميم المدونة -->
     <style>
-        /* تنسيق ترويسة الصفحة مع صورة الغلاف الجديدة */
-        .page-header-unified {
-            /* إضافة صورة الغلاف مع طبقة داكنة لزيادة وضوح النص */
-            background-image: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 119, 182, 0.8)), url('https://connecttag.org/assets/img/blog-cover.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #ffffff;
-            padding: 100px 0 80px;
-            text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            margin-bottom: 60px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        :root {
+            --ct-gradient: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
         }
 
+        /* تحسين الهيدر */
+        .page-header-unified {
+            background-image: linear-gradient(rgba(13, 0, 26, 0.75), rgba(0, 119, 182, 0.85)), url('https://connecttag.org/assets/img/blog-cover.webp') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            padding: 160px 0 100px !important;
+            margin-bottom: 60px;
+            clip-path: ellipse(150% 100% at 50% 0%);
+            color: #ffffff !important;
+            text-align: right !important; /* تأكيد المحاذاة لليمين */
+        }
+
+        /* تنسيق العنوان */
         .page-header-unified h1 {
             font-weight: 800;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.8rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 10px;
+            color: #ffffff !important;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* تنسيق شبكة المقالات لضمان تساوي الارتفاع */
-        .blog-grid-row {
+        /* تنسيق المسار (Breadcrumbs) المتطور */
+        .page-header-unified site-breadcrumb {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin-bottom: 15px !important;
+            text-align: right !important;
+        }
+
+        .page-header-unified .ct-breadcrumb-list {
+            justify-content: flex-start !important;
+            gap: 12px !important;
+        }
+
+        .page-header-unified .ct-breadcrumb-item {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.95rem !important;
+        }
+
+        .page-header-unified .ct-breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            transition: all 0.3s;
+        }
+
+        .page-header-unified .ct-breadcrumb-item a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .page-header-unified .ct-breadcrumb-separator {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        .page-header-unified .ct-breadcrumb-item.active {
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+
+        /* شريط البحث والفلترة (تصميمي فقط حالياً) */
+        .blog-filter-section {
+            margin-top: -50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-wrapper {
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 15px;
+            border: 1px solid #f0f0f0;
         }
 
-        /* تصميم بطاقة المقال الحديثة */
+        .search-box {
+            flex-grow: 1;
+            position: relative;
+            max-width: 350px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #eee;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.3s;
+            background: #fdfdfd;
+        }
+
+        .search-box input:focus {
+            border-color: #0077b6;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* التصنيفات كأزرار Pills */
+        .categories-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px !important;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 0;
+            scrollbar-width: none;
+        }
+
+        .categories-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 0.85rem;
+            margin-left: 5px;
+        }
+
+        .categories-tabs a {
+            color: #666 !important;
+            text-decoration: none !important;
+            font-size: 0.82rem !important;
+            padding: 8px 18px !important;
+            border-radius: 50px !important;
+            transition: all 0.3s !important;
+            background: #f5f7f9 !important;
+            border: 1px solid transparent !important;
+            font-weight: 600 !important;
+        }
+
+        .categories-tabs a:hover {
+            background: #edf2f7 !important;
+            color: #0077b6 !important;
+        }
+
+        .categories-tabs a.active {
+            background: #0077b6 !important;
+            color: #fff !important;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25);
+        }
+
+        /* تصميم بطاقة المقال المتطور */
         .custom-blog-card {
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             overflow: hidden;
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid #f0f0f0;
-            margin-bottom: 40px; /* المسافة بين الصفوف */
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            margin-bottom: 30px;
         }
 
         .custom-blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 119, 182, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.12);
+            border-color: rgba(0, 119, 182, 0.1);
+        }
+
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
         }
 
         .custom-blog-card img {
             width: 100%;
-            height: 240px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
         }
 
         .custom-blog-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(1deg);
         }
 
-        .img-wrapper {
-            overflow: hidden;
+        /* ملصق التصنيف */
+        .category-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #0077b6;
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
         }
 
         .card-body {
-            padding: 30px 25px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+        /* ميتاداتا المقال */
+        .post-meta-v2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 15px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .post-meta-v2 span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-meta-v2 i {
+            color: #0077b6;
+            font-size: 0.85rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
             line-height: 1.5;
+            color: #1a1a1a;
         }
 
         .card-title a {
-            color: #1a1a1a;
+            color: inherit;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
         }
 
-        .card-title a:hover {
-            color: #0077b6; /* لون الثيم الأساسي */
+        .custom-blog-card:hover .card-title a {
+            color: #0077b6;
         }
 
         .card-text {
             color: #666;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
             margin-bottom: 25px;
-            flex-grow: 1; /* لدفع الزر للأسفل */
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* زر اقرأ المزيد المطور */
+        .read-more-wrapper {
+            margin-top: auto;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 20px;
         }
 
         .read-more-btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: #0077b6;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-            align-self: flex-start;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none !important;
+            transition: all 0.3s;
+        }
+
+        .read-more-btn i {
+            transition: transform 0.3s;
         }
 
         .read-more-btn:hover {
-            background-color: #0077b6;
-            color: #ffffff;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+            color: #005b8a;
+        }
+
+        .read-more-btn:hover i {
+            transform: translateX(-5px); /* حركة للسهم في RTL */
+        }
+
+        /* تجاوب الشاشات */
+        @media (max-width: 768px) {
+            .page-header-unified {
+                padding: 120px 0 60px !important;
+            }
+            .page-header-unified h1 {
+                font-size: 2.2rem;
+            }
+            .filter-wrapper {
+                border-radius: 20px;
+                padding: 15px;
+            }
+            .search-box {
+                max-width: 100%;
+            }
         }
     </style>
+
 
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
@@ -179,7 +386,7 @@
         <div class="page-header-unified">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-12 text-start">
                         <h1>المدونة</h1>
                         <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}]'></site-breadcrumb>
                     </div>
@@ -189,244 +396,387 @@
 
         <div id="blog-list" style="padding-bottom: 80px;">
             <div class="container">
+
+                <!-- شريط الفلترة والبحث -->
+                <div class="row blog-filter-section">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="filter-wrapper">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <label for="blog-search" class="sr-only">ابحث عن مقال</label>
+                                <input type="text" id="blog-search" placeholder="ابحث عن مقال معين...">
+                            </div>
+                            <div class="categories-tabs d-none d-md-flex">
+                                <span class="category-label">التصنيفات:</span>
+                                <a href="#" class="active">الكل</a>
+                                <a href="#">الأمن السيبراني</a>
+                                <a href="#">برمجة وتطوير</a>
+                                <a href="#">استضافة وسحابيات</a>
+                                <a href="#">تسويق وأعمال</a>
+                                <a href="#">اتصالات وإنترنت</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row blog-grid-row">
 
                     <!-- Blog Item 13 -->
-                    <div class="col-md-6 col-lg-4"> <!-- جعلتها 3 أعمدة في الشاشات الكبيرة للحصول على مظهر أجمل، يمكنك إعادتها col-lg-6 إذا أردت عمودين فقط -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">
                                     <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" alt="تحسين إعدادات كلاود فلير">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">ضبط إعدادات كلاود فلير بأفضل الممارسات: دليل تحسين الأداء والأمان</a></h2>
                                 <p class="card-text">تعلم كيفية تهيئة كلاود فلير لتحقيق أقصى سرعة، من ضغط Brotli وتهيئة الكاش إلى تأمين الاتصال عبر بروتوكول TLS 1.3...</p>
-                                <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 12 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/jetpack-compose-guide">
                                     <img src="https://connecttag.org/upload/jetpack-compose.webp" alt="تطوير أندرويد Jetpack Compose">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/jetpack-compose-guide">الدليل الشامل لـ Jetpack Compose: مستقبل تطبيقات الأندرويد</a></h2>
                                 <p class="card-text">تعرف على الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في مشروعك...</p>
-                                <a href="https://connecttag.org/blog/jetpack-compose-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/jetpack-compose-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 11 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">
                                     <img src="https://connecttag.org/upload/android-reverse-engineering.webp" alt="أمن تطبيقات الأندرويد">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/android-app-security-reverse-engineering">حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</a></h2>
                                 <p class="card-text">تعلم كيفية رفع تكلفة الهجوم على تطبيقك وحماية ملكيتك الفكرية باستخدام تشويش الكود، تقنيات RASP، واستخدام الـ NDK...</p>
-                                <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 10 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/api-security-guide">
                                     <img src="https://connecttag.org/upload/api-security.webp" alt="أمن واجهات برمجة التطبيقات">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/api-security-guide">حماية واجهات برمجة التطبيقات (API Security): الدليل الشامل</a></h2>
                                 <p class="card-text">تعرف على كيفية تأمين قنوات التواصل الرقمي، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات...</p>
-                                <a href="https://connecttag.org/blog/api-security-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/api-security-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 9 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/advanced-database-security-architecture">
                                     <img src="https://connecttag.org/upload/database-architecture.webp" alt="هندسة قواعد البيانات">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/advanced-database-security-architecture">المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</a></h2>
                                 <p class="card-text">دليل هندسي شامل لتصميم وتأمين قواعد البيانات، يشمل الحماية من SQL Injection، استخدام UUIDs، وهندسة الصلاحيات RBAC...</p>
-                                <a href="https://connecttag.org/blog/advanced-database-security-architecture" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/advanced-database-security-architecture" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 8 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">
                                     <img src="https://connecttag.org/upload/cloudflare-page-hosting.webp" alt="استضافة Cloudflare Pages">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</a></h2>
                                 <p class="card-text">اكتشف كيف تطلق موقعك الإلكتروني مجاناً وبأداء عالمي باستخدام Cloudflare Pages. شرح شامل للمطورين حول تقنيات الاستضافة الحديثة...</p>
-                                <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 7 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">
                                     <img src="https://connecttag.org/upload/waf-cloudflare.webp" alt="جدار حماية كلاود فلير WAF">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-waf-security-guide">وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</a></h2>
                                 <p class="card-text">دليل شامل يشرح كيفية استخدام جدار حماية كلاود فلير (WAF) لتأمين موقعك من الهجمات، وحظر الدول المشبوهة، وتفعيل وضع "تحت الهجوم"...</p>
-                                <a href="https://connecttag.org/blog/cloudflare-waf-security-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/cloudflare-waf-security-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 6 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">
                                     <img src="https://connecttag.org/upload/telecom-yemen.webp" alt="وزارة الاتصالات اليمنية">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أغسطس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">وزارة الاتصالات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</a></h2>
                                 <p class="card-text">دليل شامل يشرح هيكلية وزارة الاتصالات وتكنولوجيا المعلومات في اليمن، والمؤسسات التابعة لها، وأحدث خدمات الإنترنت والألياف الضوئية المتاحة...</p>
-                                <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 4 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/website-security-simple-steps">
                                     <img src="https://connecttag.org/upload/security-steps.webp" alt="أمن المواقع الإلكترونية">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> يوليو 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/website-security-simple-steps">5 خطوات بسيطة لحماية موقعك الإلكتروني من الاختراق</a></h2>
                                 <p class="card-text">تعرف على أهم الخطوات العملية والبسيطة لتأمين موقعك الإلكتروني وحمايته من الهجمات السيبرانية وضمان سلامة بيانات عملائك...</p>
-                                <a href="https://connecttag.org/blog/website-security-simple-steps" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/website-security-simple-steps" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 5 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/google-business-profile-guide">
                                     <img src="https://connecttag.org/upload/google-business-guide.webp" alt="جوجل بيزنس وخرائط جوجل">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> يوليو 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/google-business-profile-guide">دليل شامل: كيف تظهر شركتك في نتائج بحث وخرائط جوجل؟</a></h2>
                                 <p class="card-text">تعلم كيفية إنشاء وتحسين ملف شركتك على جوجل لتظهر في نتائج البحث والخرائط وتجذب المزيد من العملاء المحليين لمشروعك...</p>
-                                <a href="https://connecttag.org/blog/google-business-profile-guide" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/google-business-profile-guide" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 0.1 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
                                     <img src="https://connecttag.org/upload/yemen-internet-comparison.webp" alt="مقارنة إنترنت اليمن 4G ADSL Fiber">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> يونيو 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لعام 2026</a></h2>
                                 <p class="card-text">تعرف على الفروقات الجوهرية بين تقنيات الإنترنت المتاحة في اليمن من حيث السرعة، الاستقرار، والتكلفة لتتمكن من اختيار الخدمة الأنسب لعملك أو منزلك...</p>
-                                <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 0 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
                                     <img src="https://connecttag.org/upload/yemen-4g.webp" alt="استعلام رصيد يمن فورجي">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> يونيو 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h2>
                                 <p class="card-text">دليل شامل يشرح كافة الطرق الرسمية والميسرة للاستعلام عن رصيد إنترنت يمن فورجي، سواء عبر البوابة الإلكترونية، الرسائل النصية، أو الاتصال بالدعم...</p>
-                                <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 1 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/choosing-web-hosting">
                                     <img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" alt="كيف تختار استضافة موقعك" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> مايو 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/choosing-web-hosting">كيف تختار استضافة موقعك الإلكتروني؟</a></h2>
                                 <p class="card-text">يعتبر اختيار شركة الاستضافة المناسبة حجر الزاوية في نجاح أي موقع إلكتروني. في هذا المقال نناقش أهم العوامل التقنية والتجارية التي يجب عليك فحصها قبل اتخاذ القرار...</p>
-                                <a href="https://connecttag.org/blog/choosing-web-hosting" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/choosing-web-hosting" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 2 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/digital-marketing-importance">
                                     <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" alt="أهمية التسويق الرقمي" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> أبريل 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/digital-marketing-importance">أهمية التسويق الرقمي للشركات الناشئة</a></h2>
                                 <p class="card-text">في ظل المنافسة الشديدة اليوم، لم يعد التسويق التقليدي كافياً. تعرف على كيفية استغلال قنوات التسويق الرقمي لزيادة مبيعاتك وبناء علامة تجارية قوية بأقل التكاليف...</p>
-                                <a href="https://connecttag.org/blog/digital-marketing-importance" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/digital-marketing-importance" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Blog Item 3 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="custom-blog-card">
                             <div class="img-wrapper">
+                                <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/why-your-business-needs-app">
                                     <img src="https://connecttag.org/upload/why-you-need-apps.webp" alt="تطبيقات الهواتف الذكية" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="post-meta-v2">
+                                    <span><i class="far fa-calendar-alt"></i> مارس 2026</span>
+                                </div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/why-your-business-needs-app">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h2>
                                 <p class="card-text">التواجد في جيوب عملائك هو أسرع طريق للنجاح. نوضح في هذا المقال كيف يساهم تطبيق الهاتف الذكي في تحويل عملائك العاديين إلى عملاء دائمين وموالين لعلامتك...</p>
-                                <a href="https://connecttag.org/blog/why-your-business-needs-app" class="read-more-btn">اقرأ المقال</a>
+                                <div class="read-more-wrapper">
+                                    <a href="https://connecttag.org/blog/why-your-business-needs-app" class="read-more-btn">
+                                        اقرأ المقال <i class="fas fa-arrow-left"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -443,5 +793,58 @@
 </div>
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
+
+<!-- JavaScript للبحث والفلترة -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('blog-search');
+        const blogCards = document.querySelectorAll('.custom-blog-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                blogCards.forEach(card => {
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    const text = card.querySelector('.card-text').textContent.toLowerCase();
+                    const category = card.querySelector('.category-badge').textContent.toLowerCase();
+
+                    const parentCol = card.closest('.col-md-6');
+
+                    if (title.includes(searchTerm) || text.includes(searchTerm) || category.includes(searchTerm)) {
+                        parentCol.style.display = 'block';
+                    } else {
+                        parentCol.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // فلترة التصنيفات
+        const categoryLinks = document.querySelectorAll('.categories-tabs a');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // تحديث الحالة النشطة
+                categoryLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                const categoryFilter = this.textContent.trim().toLowerCase();
+
+                blogCards.forEach(card => {
+                    const category = card.querySelector('.category-badge').textContent.toLowerCase();
+                    const parentCol = card.closest('.col-md-6');
+
+                    if (categoryFilter === 'الكل' || category.includes(categoryFilter)) {
+                        parentCol.style.display = 'block';
+                    } else {
+                        parentCol.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>
