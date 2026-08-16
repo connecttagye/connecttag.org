@@ -242,37 +242,6 @@
             margin: 0;
         }
 
-        /* Inline Phone Number Input for [INPUT] */
-        .phone-input-wrapper {
-            position: relative;
-            margin-bottom: 10px;
-        }
-        .phone-inline-input {
-            width: 100%;
-            padding: 9px 38px 9px 12px;
-            border-radius: 12px;
-            border: 1.5px solid #cbd5e1;
-            font-size: 13px;
-            font-weight: 700;
-            color: #006b98;
-            outline: none;
-            transition: 0.2s;
-            background: #f8fafc;
-        }
-        .phone-inline-input:focus {
-            background: #fff;
-            border-color: #006b98;
-            box-shadow: 0 0 0 3px rgba(0, 107, 152, 0.12);
-        }
-        .phone-input-wrapper i {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
-            font-size: 14px;
-        }
-
         /* Action Container: USSD Code */
         .code-action-box {
             background: #f8fafc;
@@ -286,40 +255,58 @@
         }
         .code-text {
             font-family: 'Courier New', monospace;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 900;
             color: #006b98;
             direction: ltr;
             text-align: left;
-            flex-grow: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2px;
         }
 
-        /* Custom Phone Tag / Badge for INPUT */
-        .input-tag {
+        /* Direct Interactive Input Tag Inside Code */
+        .inline-input-tag {
             background: #e0f2fe;
             color: #0369a1;
+            border: 1.5px dashed #0284c7;
+            border-radius: 8px;
             padding: 2px 8px;
-            border-radius: 6px;
             font-size: 12px;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
-            border: 1px dashed #0284c7;
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 2px;
-            letter-spacing: normal;
-            transition: 0.2s;
+            width: 95px;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s ease;
+            direction: ltr;
+            height: 28px;
         }
-        .input-tag.active-val {
+        .inline-input-tag::placeholder {
+            color: #0284c7;
+            opacity: 0.85;
+            font-family: 'Cairo', sans-serif;
+            font-size: 11px;
+        }
+        .inline-input-tag:focus {
+            background: #ffffff;
+            border-style: solid;
+            border-color: #006b98;
+            box-shadow: 0 0 0 2px rgba(0, 107, 152, 0.15);
+            color: #006b98;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            width: 110px;
+        }
+        .inline-input-tag.has-val {
             background: #ecfdf5;
             color: #047857;
             border-color: #10b981;
             border-style: solid;
             font-family: 'Courier New', monospace;
             font-size: 14px;
+            font-weight: bold;
         }
 
         .actions-btn-group {
@@ -611,23 +598,22 @@
                     `;
                 } else {
                     const hasInput = /\[?input\]?/i.test(action);
-                    const formattedCode = action.replace(/\[?input\]?/gi, '<span class="input-tag" id="tag-preview-' + idx + '">رقم الهاتف</span>');
+
+                    // Embed the input directly inside the code string
+                    const formattedCode = hasInput
+                        ? action.replace(/\[?input\]?/gi, `
+                            <input type="tel"
+                                   id="inline-input-${idx}"
+                                   class="inline-input-tag"
+                                   placeholder="رقم الهاتف"
+                                   inputmode="numeric"
+                                   oninput="this.classList.toggle('has-val', this.value.trim().length > 0);">
+                          `)
+                        : action;
 
                     actionHtml = `
-                        ${hasInput ? `
-                        <div class="phone-input-wrapper">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                            <input type="tel"
-                                   id="input-phone-${idx}"
-                                   class="phone-inline-input"
-                                   placeholder="أدخل رقم الهاتف هنا..."
-                                   dir="ltr"
-                                   inputmode="numeric"
-                                   oninput="handleLiveCodePreview(${idx}, '${action}')">
-                        </div>` : ''}
-
                         <div class="code-action-box">
-                            <span class="code-text" id="code-box-${idx}">${formattedCode || '-'}</span>
+                            <span class="code-text">${formattedCode || '-'}</span>
                             <div class="actions-btn-group">
                                 <button class="btn-act" onclick="executeServiceAction('copy', ${idx}, '${action}', ${hasInput})" title="نسخ الكود">
                                     <i class="fa-regular fa-copy"></i> نسخ
@@ -667,34 +653,18 @@
             return 'fa-bolt';
         }
 
-        // Live Preview inside code box as user types
-        window.handleLiveCodePreview = function(idx, rawCode) {
-            const inputEl = document.getElementById(`input-phone-${idx}`);
-            const previewTag = document.getElementById(`tag-preview-${idx}`);
-            if (!inputEl || !previewTag) return;
-
-            const val = inputEl.value.trim();
-            if (val) {
-                previewTag.textContent = val;
-                previewTag.classList.add('active-val');
-            } else {
-                previewTag.textContent = 'رقم الهاتف';
-                previewTag.classList.remove('active-val');
-            }
-        };
-
-        // Copy or Dial with entered phone number
+        // Execute Copy or Dial using the inline input value
         window.executeServiceAction = function(actionType, idx, rawCode, hasInput) {
             if (!rawCode || rawCode === '-') return;
 
             let finalCode = rawCode;
 
             if (hasInput) {
-                const inputEl = document.getElementById(`input-phone-${idx}`);
+                const inputEl = document.getElementById(`inline-input-${idx}`);
                 const phoneVal = inputEl ? inputEl.value.trim() : '';
 
                 if (!phoneVal) {
-                    showToast('يرجى إدخال رقم الهاتف أولاً');
+                    showToast('يرجى كتابة رقم الهاتف في الحقل أولاً');
                     if (inputEl) inputEl.focus();
                     return;
                 }
@@ -708,7 +678,6 @@
                     showToast('تعذر النسخ');
                 });
             } else if (actionType === 'dial') {
-                // Properly encode '#' as %23 for phone dialer
                 const dialUri = 'tel:' + encodeURIComponent(finalCode);
                 window.location.href = dialUri;
             }
