@@ -24,10 +24,33 @@
     <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
     <!-- Schema.org JSON-LD (Breadcrumb + Collection/ItemList) -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="schema-data">
         {
             "@context": "https://schema.org",
             "@graph": [
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "الرئيسية",
+                            "item": "https://connecttag.org/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "الأدوات",
+                            "item": "https://connecttag.org/tools/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "دليل المودمات",
+                            "item": "https://connecttag.org/tools/telecom/modems/"
+                        }
+                    ]
+                },
                 {
                     "@type": "CollectionPage",
                     "@id": "https://connecttag.org/tools/telecom/modems/",
@@ -35,7 +58,8 @@
                     "description": "قائمة ومواصفات أجهزة مودم يمن فورجي الرسمية والمعتمدة في اليمن",
                     "url": "https://connecttag.org/tools/telecom/modems/"
                 }
-            ]}
+            ]
+        }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +121,7 @@
             margin: 20px 0 0;
         }
         .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #006b98; text-decoration: none; }
+        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
         .breadcrumb-tools li a:hover { color: #e89a2f; }
         .breadcrumb-tools li:not(:last-child)::after {
             content: '\f104';
@@ -107,7 +131,7 @@
             font-size: 11px;
             color: #cbd5e1;
         }
-        .breadcrumb-tools li.active { color: #e89a2f; }
+        .breadcrumb-tools li.active { color: #e89a2f; font-weight: 700; }
 
         .modem-list-container { padding: 40px 0 80px; }
 
@@ -117,7 +141,7 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border: 1px solid #edf2f7;
         }
         .search-box {
@@ -292,6 +316,7 @@
         @media (max-width: 768px) {
             .modems-header { padding: 60px 0 35px; }
             .modems-header h1 { font-size: 26px; }
+            .controls-wrapper { padding: 15px; }
         }
     </style>
 
@@ -395,12 +420,12 @@
             }
         }
 
-        // Stale-While-Revalidate Strategy
+        // Stale-While-Revalidate Strategy (0ms Instant Load)
         const cachedData = loadFromCache();
         if (cachedData && Array.isArray(cachedData) && cachedData.length > 0) {
             allItems = cachedData;
             applyFilters();
-            // Background revalidate
+            updateSchemaItemList(allItems);
             fetchFreshData(true);
         } else {
             fetchFreshData(false);
@@ -414,6 +439,7 @@
                     allItems = data.result.items;
                     saveToCache(allItems);
                     applyFilters();
+                    updateSchemaItemList(allItems);
                 } else if (!isBackground) {
                     showError('تعذر استرجاع قائمة المودمات حالياً.');
                 }
@@ -474,7 +500,7 @@
 
             if (items.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-12">
+                    <div class="col-12 text-center" style="width: 100%;">
                         <div class="empty-state">
                             <i class="fa-solid fa-box-open fa-4x"></i>
                             <h4>لم يتم العثور على أي أجهزة تطابق بحثك</h4>
@@ -487,9 +513,12 @@
             }
 
             items.forEach(item => {
-                const badge = item.isNew ? '<span class="card-badge badge-new">جديد</span>' :
-                             (item.additional && item.additional.portable ? '<span class="card-badge badge-portable">محمول</span>' : '');
+                const isPortable = (item.category && item.category.includes('محمول')) || (item.additional && item.additional.portable);
+                const badge = item.isNew
+                    ? '<span class="card-badge badge-new">جديد</span>'
+                    : (isPortable ? '<span class="card-badge badge-portable">محمول</span>' : '');
 
+                const targetSlug = encodeURIComponent(item.slug || item.id || '');
                 const cardCol = document.createElement('div');
                 cardCol.className = 'col-md-4 col-sm-6';
                 cardCol.style.marginBottom = '30px';
@@ -506,7 +535,7 @@
                             <span class="category">${item.category || 'مودم 4G'}</span>
                             <h2>${item.arabicName} ${item.modelOrVersion || ''}</h2>
                             <p class="short-desc">${item.shortDescription || item.description || 'المواصفات الكاملة وإعدادات الدخول لمودم يمن فورجي.'}</p>
-                            <a href="https://connecttag.org/tools/telecom/modems/details?slug=${item.slug}" class="btn-view-details">
+                            <a href="https://connecttag.org/tools/telecom/modems/details?slug=${targetSlug}" class="btn-view-details">
                                 المواصفات الفنية <i class="fa-solid fa-arrow-left-long"></i>
                             </a>
                         </div>
@@ -514,6 +543,38 @@
                 `;
                 grid.appendChild(cardCol);
             });
+        }
+
+        function updateSchemaItemList(items) {
+            const schemaEl = document.getElementById('schema-data');
+            if (!schemaEl || !items || items.length === 0) return;
+
+            const itemList = {
+                "@type": "ItemList",
+                "name": "قائمة مودمات يمن فورجي",
+                "numberOfItems": items.length,
+                "itemListElement": items.slice(0, 15).map((item, idx) => ({
+                    "@type": "ListItem",
+                    "position": idx + 1,
+                    "name": `${item.arabicName} ${item.modelOrVersion || ''}`.trim(),
+                    "url": `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(item.slug || '')}`
+                }))
+            };
+
+            try {
+                const schemaObj = JSON.parse(schemaEl.textContent);
+                if (schemaObj && Array.isArray(schemaObj['@graph'])) {
+                    const existingIdx = schemaObj['@graph'].findIndex(node => node['@type'] === 'ItemList');
+                    if (existingIdx !== -1) {
+                        schemaObj['@graph'][existingIdx] = itemList;
+                    } else {
+                        schemaObj['@graph'].push(itemList);
+                    }
+                    schemaEl.textContent = JSON.stringify(schemaObj);
+                }
+            } catch (e) {
+                console.warn('Schema injection warning:', e);
+            }
         }
 
         window.resetFilters = function() {
@@ -526,7 +587,7 @@
         };
 
         function showError(message) {
-            grid.innerHTML = `<div class="col-12 text-center py-5 text-danger font-weight-bold"><i class="fa-solid fa-circle-exclamation fa-2x mb-3"></i><p>${message}</p></div>`;
+            grid.innerHTML = `<div class="col-12 text-center py-5 text-danger font-weight-bold" style="width: 100%;"><i class="fa-solid fa-circle-exclamation fa-2x mb-3"></i><p>${message}</p></div>`;
             countLabel.textContent = '';
         }
     });
