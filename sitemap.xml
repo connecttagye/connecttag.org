@@ -91,6 +91,32 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/author/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/author/aqeldev</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/author/basma</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/author/ali</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/author/official</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/blog/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
