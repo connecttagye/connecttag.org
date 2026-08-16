@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك - كونكت تاق</title>
+<meta name="description" content="تعلم أفضل إعدادات Cloudflare لتحسين أداء النطاق، تسريع الموقع، وتقوية الـ SEO. دليل شامل يشمل إعدادات SSL، Caching، وقواعد التحويل 301.">
+<link rel="canonical" href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/cloudflare-settings-optimization-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="دليل تحسين إعدادات النطاق في Cloudflare 2026 - كونكت تاق">
+<meta property="og:description" content="لا تكتفِ بالإعدادات الافتراضية. تعلم كيف تضبط كلاود فلير للحصول على أقصى سرعة وأفضل ترتيب في جوجل." />
+<meta property="og:image" content="https://connecttag.org/upload/cloudflare-settings-optimization.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/cloudflare-settings-optimization-guide" />
+<meta name="twitter:title" content="دليل ضبط إعدادات Cloudflare للمحترفين - كونكت تاق">
+<meta name="twitter:image" content="https://connecttag.org/upload/cloudflare-settings-optimization.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك",
+    "description": "تعلم أفضل إعدادات Cloudflare لتحسين أداء النطاق، تسريع الموقع، وتقوية الـ SEO. دليل شامل يشمل إعدادات SSL، Caching، وقواعد التحويل 301.",
+    "image": "https://connecttag.org/upload/cloudflare-optimization.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T14:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/cloudflare-settings-optimization-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يجب تجنب وضع SSL Flexible؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأنه قد يسبب حلقات إعادة توجيه (Redirect Loops) كما أنه لا يشفر البيانات بين كلاود فلير وسيرفرك، مما يجعله أقل أماناً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي ميزة Crawler Hints؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "هي ميزة تبلغ محركات البحث مثل جوجل وبينج فور تحديث المحتوى في موقعك، مما يحسن سرعة الفهرسة."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تحسين كلاود فلير", "url":""}]'></site-breadcrumb>
+                <h1>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك</h1>
+
+                <site-article-meta
+                  date="16 أغسطس 2026"
+                  updated="16 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" class="img-responsive" alt="تحسين إعدادات كلاود فلير" loading="lazy">
+
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-list-check"></i> محاور الدليل الرئيسية:</h3>
+                    <ul class="summary-list">
+                        <li>تأمين الاتصال عبر أفضل وضع لتشفير SSL/TLS.</li>
+                        <li>تقنيات تسريع الشبكة (HTTP/3 و Early Hints).</li>
+                        <li>إعدادات التخزين المؤقت (Caching) لتقليل الضغط على السيرفر.</li>
+                        <li>توازن الأمان لمنع حظر محركات البحث (SEO Safety).</li>
+                        <li>قواعد التحويل التلقائي وتوحيد الروابط.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#ssl-settings">1. إعدادات الـ SSL/TLS والتشفير</a></li>
+                        <li><a href="#speed-network">2. إعدادات الشبكة والسرعة (Speed & Network)</a></li>
+                        <li><a href="#caching-settings">3. إعدادات التخزين المؤقت (Caching)</a></li>
+                        <li><a href="#security-waf">4. إعدادات الأمان وجدار الحماية (Security & WAF)</a></li>
+                        <li><a href="#redirect-rules">5. قواعد التحويل والتحسين (Rules)</a></li>
+                        <li><a href="#faq">6. الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <p>لضبط النطاق (Domain) بأفضل أداء وتوافق كامل مع SEO ومحركات البحث وخدمات Workers & Pages على Cloudflare، إليك الإعدادات الأساسية الموصى بتفعيلها وترتيبها حسب الأقسام التقنية لضمان تجربة مستخدم سلسة وأمان فائق.</p>
+
+                <h2 id="ssl-settings">1. إعدادات الـ SSL/TLS والتشفير</h2>
+                <p>تشفير البيانات ليس مجرد خيار أمني، بل هو عامل أساسي في كسب ثقة المتصفحات وتحسين ترتيبك في محركات البحث.</p>
+                <ul>
+                    <li><strong>SSL/TLS encryption mode:</strong> اختر <strong>Full</strong> أو <strong>Full (strict)</strong>. تجنب وضع <em>Flexible</em> تماماً لتفادي مشاكل الأمان وحلقات إعادة التوجيه اللانهائية.</li>
+                    <li><strong>Always Use HTTPS:</strong> قم بتفعيل هذا الخيار لتحويل جميع الزيارات من <code>http://</code> إلى <code>https://</code> تلقائياً.</li>
+                    <li><strong>Minimum TLS Version:</strong> اضبطه على <strong>TLS 1.2</strong> كحد أدنى لضمان الأمان وتوافق المعايير الحديثة.</li>
+                    <li><strong>Automatic HTTPS Rewrites:</strong> فعّله لمنع أخطاء "المحتوى المختلط" (Mixed Content) التي تظهر عند تحميل صور أو ملفات عبر روابط غير مشفرة.</li>
+                </ul>
+
+                <h2 id="speed-network">2. إعدادات الشبكة والسرعة (Speed & Network)</h2>
+                <p>سرعة تحميل الموقع هي أحد أهم عوامل الـ Core Web Vitals التي تركز عليها جوجل في عام 2026.</p>
+                <ul>
+                    <li><strong>HTTP/2 & HTTP/3 (with QUIC):</strong> تأكد من تفعيل كلا الخيارين لتسريع تحميل الصفحات ونقل البيانات للزوار ومحركات البحث عبر بروتوكولات حديثة.</li>
+                    <li><strong>0-RTT Connection Resumption:</strong> تفعيل، لتسريع وقت الاستجابة عند معاودة الاتصال للمستخدمين المتكررين.</li>
+                    <li><strong>Early Hints:</strong> قم بتفعيله لمساعدة المتصفح في تنزيل الموارد الثابتة (مثل ملفات CSS والخطوط) قبل إتمام تجهيز ملف الـ HTML بالكامل.</li>
+                    <li><strong>Brotli Compression:</strong> تفعيل، لضغط ملفات الموقع بدرجة أعلى وأسرع من Gzip التقليدي.</li>
+                </ul>
+
+                <h2 id="caching-settings">3. إعدادات التخزين المؤقت (Caching)</h2>
+                <p>التخزين المؤقت الذكي يقلل من استهلاك موارد سيرفرك الأصلي ويسرع الاستجابة للزوار حول العالم.</p>
+                <ul>
+                    <li><strong>Caching Level:</strong> اضبطه على <strong>Standard</strong>.</li>
+                    <li><strong>Browser Cache TTL:</strong> اضبطه على <strong>Respect Existing Headers</strong> لكي تمنح خادمك أو الـ Cloudflare Worker التحكم الدقيق في عمر الكاش لكل ملف على حدة.</li>
+                    <li><strong>Crawler Hints:</strong> تفعيل، وهي ميزة ممتازة تبلغ محركات البحث بمواعيد تحديث المحتوى بدقة، مما يضمن أرشفة سريعة دون استنزاف ميزانية الزحف.</li>
+                </ul>
+
+                <h2 id="security-waf">4. إعدادات الأمان وجدار الحماية (Security & WAF)</h2>
+                <p>الحماية يجب أن تكون ذكية بحيث تحظر الأعداء وتسمح للأصدقاء (مثل زوارك وعناكب البحث).</p>
+                <ul>
+                    <li><strong>Security Level:</strong> اضبطه على <strong>Medium</strong> أو <strong>Essentially Off</strong> حتى لا يواجه المستخدمون العاديون تحديات "كابتشا" متكررة ومزعجة.</li>
+                    <li><strong>Bot Fight Mode:</strong> إذا قمت بتفعيله، تأكد من استثناء محركات البحث الموثوقة، أو الاعتماد على قواعد WAF مخصصة تحتوي على استثناء (Bypass) لعناكب البحث الموثوقة <code>(cf.client.bot)</code>.</li>
+                    <li><strong>Browser Integrity Check (BIC):</strong> تفعيل، لفحص ترويسات المتصفحات الضارة وحظر البوتات المجهولة.</li>
+                </ul>
+
+                <h2 id="redirect-rules">5. قواعد التحويل والتحسين (Rules)</h2>
+                <p>تنظيم الروابط ومنع تكرار المحتوى هو جوهر الـ SEO التقني.</p>
+                <ul>
+                    <li><strong>Redirect Rules (301 Permanent):</strong> استخدمها لتوحيد صيغة النطاق (مثلاً تحويل نسخة <code>www</code> إلى النطاق الرئيسي <code>non-www</code>) عبر كود 301 الدائم.</li>
+                    <li><strong>Normalization Rules:</strong> تفعيل توحيد مسارات الروابط (URL Normalization) لإزالة الشرطات الزائدة وضمان عدم وجود عدة نسخ لنفس الصفحة في فهرس محركات البحث.</li>
+                </ul>
+
+                <p><strong>خلاصة القول:</strong> استخدام كلاود فلير بإعداداته الافتراضية جيد، لكن ضبطه بهذه الطريقة الاحترافية يضمن لموقعك التفوق في الأداء والأمان. إذا كنت تستخدم <strong>Cloudflare Pages</strong>، فإن أغلب هذه الإعدادات ستعمل بشكل متكامل لتعطيك أسرع تجربة ممكنة لموقعك الساكن أو تطبيق الويب الخاص بك.</p>
+
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل تؤثر إعدادات الأمان العالية على الـ SEO؟</div>
+                        <div class="faq-answer">نعم، إذا تم ضبط Security Level على وضع مرتفع جداً (High / I'm Under Attack)، قد يتم حظر زواحف محركات البحث أو إظهار صفحات انتظار لها، مما يمنع أرشفة الموقع. لذا يفضل وضع Medium.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين Brotli و Gzip؟</div>
+                        <div class="faq-answer">Brotli هي تقنية ضغط طورتها جوجل، وهي تتفوق على Gzip بنسبة تتراوح بين 15% إلى 25% في تقليل حجم الملفات، مما يعني سرعة تحميل أكبر.</div>
+                    </div>
+                </div>
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="cloudflare-waf-security-guide, cloudflare-pages-hosting-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

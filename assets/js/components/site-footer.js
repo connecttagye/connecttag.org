@@ -78,6 +78,7 @@ class SiteFooter extends HTMLElement {
             <ul class="ct-footer-legal-links">
               <li><a href="${getLink('privacy-policy')}">سياسة الخصوصية</a></li>
               <li><a href="${getLink('terms-of-use')}">اتفاقية الاستخدام</a></li>
+              <li><a href="${getLink('order')}">طلب خدمة</a></li>
               <li><a href="${getLink('contact')}">الدعم الفني</a></li>
             </ul>
           </div>

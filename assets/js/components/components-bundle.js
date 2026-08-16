@@ -63,6 +63,7 @@
     'assets/js/components/site-header.js',
     'assets/js/components/site-footer.js',
     'assets/js/components/site-breadcrumb.js',
+    'assets/js/components/site-code-block.js',
     'assets/js/components/cookie-consent.js',
     'assets/js/components/pwa-install-prompt.js'
   ];

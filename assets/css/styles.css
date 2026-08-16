@@ -301,7 +301,7 @@ a:hover, a:focus {
    ========================================================================== */
 
 #headerwrap {
-	background: linear-gradient(rgba(13, 0, 26, 0.8), rgba(26, 0, 51, 0.7)), url(../img/connect-tag-main-banner.webp) no-repeat center center;
+	background: linear-gradient(rgba(13, 0, 26, 0.8), rgba(26, 0, 51, 0.7)), url(https://connecttag.org/assets/img/connect-tag-main-banner.webp) no-repeat center center;
 	margin-top: -50px;
 	padding-top: 180px;
 	text-align: center;
@@ -889,3 +889,4 @@ a:hover, a:focus {
 #headerwrap .animated {
   animation-name: fadeIn !important; /* Force fade only, no slide */
 }
+

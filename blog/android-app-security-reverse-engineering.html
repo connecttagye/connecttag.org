@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>حماية تطبيقات الأندرويد من الهندسة العكسية: دليل شامل للمطورين - كونكت تاق</title>
+<meta name="description" content="تعلم كيفية حماية تطبيقات الأندرويد من التفكيك والهندسة العكسية. دليل شامل يشمل تشويش الكود (R8)، استخدام NDK، وتقنيات RASP للحماية أثناء التشغيل.">
+<link rel="canonical" href="https://connecttag.org/blog/android-app-security-reverse-engineering" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/android-app-security-reverse-engineering" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="حماية تطبيقات الأندرويد من الهندسة العكسية - كونكت تاق">
+<meta property="og:description" content="ارفع تكلفة الهجوم على تطبيقك واحمِ ملكيتك الفكرية باستخدام أحدث تقنيات الأمن السيبراني للأندرويد." />
+<meta property="og:image" content="https://connecttag.org/upload/android-reverse-engineering.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/android-app-security-reverse-engineering" />
+<meta name="twitter:title" content="دليل أمن تطبيقات الأندرويد - كونكت تاق">
+<meta name="twitter:image" content="https://connecttag.org/upload/android-reverse-engineering.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "حماية تطبيقات الأندرويد من الهندسة العكسية",
+    "description": "تعلم كيفية حماية تطبيقات الأندرويد من التفكيك والهندسة العكسية باستخدام تشويش الكود وتقنيات الحماية أثناء التشغيل.",
+    "image": "https://connecttag.org/upload/android-reverse-engineering.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T17:00:00+03:00",
+    "dateModified": "2026-08-16T17:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/android-app-security-reverse-engineering"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل يمكن حماية تطبيق أندرويد بنسبة 100%؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا يوجد تطبيق محمي تماماً، ولكن الهدف هو رفع تكلفة الهجوم وجعله غير مجدٍ اقتصادياً للمهاجم."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الفرق بين ProGuard و R8؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "R8 هو المحرك الافتراضي الجديد من جوجل للتشويش والتقليص، وهو أسرع وأكثر كفاءة من ProGuard التقليدي."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا نستخدم NDK لحماية الكود؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن الكود المكتوب بـ C/C++ يُجمع إلى لغة الآلة، مما يجعل تفكيكه أصعب بكثير مقارنة بكود Java/Kotlin."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+    .security-card { background: #fcfcfc; border-right: 5px solid #0077b6; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .security-card h3 { margin-top: 0; color: #0077b6; }
+    .highlight-box { border-right: 5px solid #25d366; background: #f0fff4; padding: 20px; border-radius: 10px; margin: 25px 0; }
+
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 8px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+
+    .summary-box { background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+    .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
+    .summary-list { padding-right: 20px; margin: 0; }
+    .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }
+
+    .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+</style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0077b6">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"أمن التطبيقات", "url":""}]'></site-breadcrumb>
+                <h1>حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</h1>
+
+                <site-article-meta
+                  date="16 أغسطس 2026"
+                  updated="16 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/android-reverse-engineering.webp" class="img-responsive" alt="حماية تطبيقات الأندرويد من الهندسة العكسية" loading="lazy">
+
+                <p>القاعدة الذهبية في أمن التطبيقات: لا يوجد تطبيق محمي بنسبة 100%. الهدف الحقيقي من مقاومة الهندسة العكسية (Anti-Reverse Engineering) هو رفع تكلفة الهجوم، بحيث يتطلب اختراق التطبيق وقتاً وجهداً وموارد تتجاوز بكثير قيمة الفائدة التي سيجنيها المهاجم، مما يدفعه للتخلي عن المحاولة.</p>
+
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-user-shield"></i> ملخص استراتيجية حماية التطبيقات:</h3>
+                    <ul class="summary-list">
+                        <li>تفعيل تشويش الكود وتشفير السلاسل النصية لتعطيل التحليل الساكن.</li>
+                        <li>نقل المنطق الحساس إلى طبقة C++ (NDK) لزيادة تعقيد التفكيك.</li>
+                        <li>تفعيل تقنيات الحماية أثناء التشغيل (RASP) لاكتشاف الروت والمحاكيات.</li>
+                        <li>فرض أمن الشبكة عبر SSL Pinning وحماية المفاتيح في Android Keystore.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#code-obfuscation">1. التشويش وتعمية الكود (Code Obfuscation)</a></li>
+                        <li><a href="#ndk-layer">2. نقل المنطق الحساس إلى طبقة C/C++ (NDK)</a></li>
+                        <li><a href="#runtime-protection">3. الحماية الذاتية أثناء التشغيل (RASP)</a></li>
+                        <li><a href="#network-security">4. تأمين البيانات والشبكة</a></li>
+                        <li><a href="#encrypted-storage">5. تشفير تخزين البيانات (SQLite, Prefs, DataStore)</a></li>
+                        <li><a href="#api-keys">6. إدارة وتأمين مفاتيح الـ API</a></li>
+                        <li><a href="#ui-security">7. تأمين واجهة المستخدم (UI/UX Security)</a></li>
+                        <li><a href="#faq">8. الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <p>تطبيقات الأندرويد تُكتب عادةً بلغات مثل Java و Kotlin، والتي يتم تجميعها إلى رمز بايتي (DEX Bytecode). هذا الرمز يسهل جداً تفكيكه (Decompilation) باستخدام أدوات مجانية مثل JADX أو Apktool للحصول على كود مصدري يكاد يكون مطابقاً للأصلي. لحماية حقوق الملكية الفكرية، ومفاتيح الواجهات البرمجية (API Keys)، يجب تطبيق استراتيجية "الدفاع في العمق".</p>
+
+                <h2 id="code-obfuscation">1. التشويش وتعمية الكود (Code Obfuscation)</h2>
+                <p>التشويش هو خط الدفاع الأول الذي يهدف إلى جعل الكود غير مقروء ومربكاً للمهاجم البشري ولأدوات التحليل.</p>
+                <ul>
+                    <li><strong>تفعيل R8 / ProGuard:</strong> يجب تفعيل أداة R8 لإعادة تسمية الفئات والدوال إلى أسماء مبهمة (مثل a, b, c).</li>
+                </ul>
+
+                <site-code-block language="ProGuard" title="قواعد R8/ProGuard لتشويش الكود">
+# تشويش الكود وتقليصه
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-verbose
+
+# الحفاظ على واجهات الجافا التي تتصل بـ C++ (JNI)
+-keepclasseswithmembernames class * {
+    native &lt;methods&gt;;
+}
+                </site-code-block>
+
+                <ul>
+                    <li><strong>تشويش السلاسل النصية (String Encryption):</strong> المهاجمون يبحثون عن نصوص واضحة مثل "api_key". تشفير هذه النصوص يعطل محاولات البحث السريع داخل الكود.</li>
+                    <li><strong>تشويش تدفق التحكم:</strong> تغيير مسار تنفيذ الكود بإضافة شروط وهمية لإحباط أدوات التحليل الآلي.</li>
+                </ul>
+
+                <h2 id="ndk-layer">2. نقل المنطق الحساس إلى طبقة C/C++ (NDK)</h2>
+                <p>اللغات التي تُجمع إلى لغة الآلة (Machine Code) مباشرة مثل C و C++ تكون أصعب بكثير في الهندسة العكسية مقارنة بـ Java.</p>
+                <div class="security-card">
+                    <h3>نصيحة تقنية للمحترفين:</h3>
+                    <ul>
+                        <li><strong>استخدام Strip:</strong> تأكد من استخدام أمر <code>strip</code> لحذف رموز التصحيح (Symbols) من المكتبات المجمعة <code>.so</code>، مما يجعل تحليلها عبر IDA Pro أصعب.</li>
+                        <li><strong>Control Flow Flattening:</strong> استخدم تقنيات متقدمة في C++ لتسطيح تدفق التحكم، مما يحول الكود إلى "متاهة" يصعب تتبعها منطقياً.</li>
+                    </ul>
+                </div>
+                <p>قم بنقل المنطق التجاري الحساس أو خوارزميات التشفير لبرمجتها بلغة C/C++ والربط بينهما عبر <strong>JNI</strong>.</p>
+
+
+                <h2 id="runtime-protection">3. الحماية الذاتية أثناء التشغيل (RASP - Runtime Protection)</h2>
+                <p>هنا يبدأ التطبيق في الدفاع عن نفسه ضد البيئات المشبوهة:</p>
+                <ul>
+                    <li><strong>اكتشاف صلاحيات الروت (Root Detection):</strong> منع تشغيل التطبيق على أجهزة مروَّتة قد تسمح بمراقبة الذاكرة.</li>
+                </ul>
+
+                <site-code-block language="Kotlin" title="دالة فحص صلاحيات الروت">
+fun isDeviceRooted(): Boolean {
+    val paths = arrayOf("/system/app/Superuser.apk", "/sbin/su", "/system/bin/su")
+    for (path in paths) {
+        if (File(path).exists()) return true
+    }
+    return false
+}
+                </site-code-block>
+
+                <ul>
+                    <li><strong>اكتشاف المحاكيات (Emulator Detection):</strong> رفض التشغيل على المحاكيات التي تُستخدم غالباً في التحليل الجنائي.</li>
+                    <li><strong>التحقق من سلامة التوقيع (Signature Verification):</strong> التأكد من أن التطبيق لم يتم إعادة تجميعه (Repackaging) بمفتاح توقيع غريب.</li>
+                </ul>
+
+                <h2 id="network-security">4. تأمين البيانات والشبكة</h2>
+                <ul>
+                    <li><strong>تثبيت الشهادات (SSL Pinning):</strong> يرفض التطبيق الاتصال بالخادم إلا إذا تطابقت شهادته 100% مع البصمة المضمنة مسبقاً، مما يحمي من هجمات Burp Suite.</li>
+                </ul>
+
+                <site-code-block language="XML" title="إعداد SSL Pinning في الأندرويد">
+&lt;!-- res/xml/network_security_config.xml --&gt;
+&lt;network-security-config&gt;
+    &lt;domain-config&gt;
+        &lt;domain includeSubdomains="true"&gt;api.connecttag.org&lt;/domain&gt;
+        &lt;pin-set expiration="2026-12-31"&gt;
+            &lt;pin digest="SHA-256"&gt;base64_encoded_pin_here&lt;/pin&gt;
+        &lt;/pin-set&gt;
+    &lt;/domain-config&gt;
+&lt;/network-security-config&gt;
+                </site-code-block>
+
+                <ul>
+                    <li><strong>Android Keystore System:</strong> تخزين مفاتيح التشفير في حاوية مدعومة بالأجهزة (Hardware-backed) بدلاً من وضعها في ملفات النصوص.</li>
+                </ul>
+
+                <h2 id="encrypted-storage">5. تشفير تخزين البيانات (SQLite, SharedPrefs, DataStore)</h2>
+                <p>حتى لو لم يتمكن المهاجم من فك كود التطبيق، فقد يحاول الوصول إلى البيانات المخزنة محلياً على الجهاز إذا كان يملك صلاحيات الروت.</p>
+
+                <div class="security-card">
+                    <h3>أهم المكاتب البرمجية للتشفير المحلي:</h3>
+                    <ul>
+                        <li><strong>SQLCipher:</strong> المكتبة القياسية لتشفير قواعد بيانات SQLite و Room بالكامل باستخدام تشفير AES-256.</li>
+                        <li><strong>Jetpack Security (Crypto):</strong> مكتبة رسمية من جوجل توفر <code>EncryptedSharedPreferences</code> و <code>EncryptedFile</code>.</li>
+                        <li><strong>Google Tink:</strong> مكتبة تشفير شاملة وقوية لإدارة المفاتيح وتشفير البيانات المعقدة والـ DataStore.</li>
+                        <li><strong>Facebook Conceal:</strong> مكتبة سريعة وخفيفة لتشفير الملفات الكبيرة والبيانات على أجهزة الأندرويد.</li>
+                    </ul>
+                </div>
+
+                <ul>
+                    <li><strong>تشفير قواعد البيانات (Room / SQLite):</strong> استخدام مكتبة مثل <strong>SQLCipher</strong> هو المعيار الذهبي.</li>
+                    <li><strong>Shared Preferences المؤمنة:</strong> استخدام <strong>EncryptedSharedPreferences</strong> من مكتبة Jetpack Security.</li>
+                    <li><strong>Jetpack DataStore:</strong> يُنصح بدمجها مع مكتبة <strong>Tink</strong> لتشفير تدفقات البيانات الحساسة قبل تخزينها.</li>
+                </ul>
+
+                <site-code-block language="Kotlin" title="استخدام EncryptedSharedPreferences">
+val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+val sharedPreferences = EncryptedSharedPreferences.create(
+    "secret_shared_prefs",
+    masterKeyAlias,
+    context,
+    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+)
+
+// الكتابة بأمان
+sharedPreferences.edit().putString("auth_token", "very_secret_token").apply()
+                </site-code-block>
+
+
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يغني R8 عن تشفير الكود؟</div>
+                        <div class="faq-answer">R8 يقوم بتشويش الأسماء وجعلها مبهمة، لكنه لا يشفر المنطق البرمجي نفسه. للحماية القصوى، يجب استخدامه مع تقنيات أخرى مثل String Encryption.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو الـ JNI؟</div>
+                        <div class="faq-answer">هي واجهة تسمح لكود Java/Kotlin بالتواصل مع كود مكتوب بـ C/C++، مما يتيح لك تنفيذ عمليات حساسة في طبقة يصعب تفكيكها.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يكفي تشفير قاعدة البيانات فقط؟</div>
+                        <div class="faq-answer">التشفير المحلي يحمي البيانات المخزنة، لكنه لا يغني عن حماية الكود (التشويش) وتأمين الاتصال (SSL Pinning) لبناء منظومة أمنية متكاملة.</div>
+                    </div>
+                </div>
+
+                <h2 id="api-keys">6. إدارة وتأمين مفاتيح الـ API (API Keys Management)</h2>
+                <p>تخزين مفاتيح الـ API (مثل مفاتيح Google Maps أو Firebase) داخل ملف <code>strings.xml</code> هو خطأ فادح يسهل استخراجه بمجرد فك ضغط ملف الـ APK.</p>
+                <ul>
+                    <li><strong>Secrets Gradle Plugin:</strong> استخدم هذا المكون لإدارة المفاتيح عبر ملف <code>local.properties</code>. هذا يضمن بقاء المفاتيح محلياً على جهاز المطور وعدم رفعها إلى مستودع الكود (Git).</li>
+                    <li><strong>On-demand Fetching:</strong> للمفاتيح الحساسة جداً، يُفضل عدم تخزينها في التطبيق إطلاقاً، بل جلبها من السيرفر عند الحاجة عبر اتصال مشفر ومؤمن بالبصمة الرقمية للتطبيق.</li>
+                </ul>
+
+                <site-code-block language="Gradle" title="إعداد Secrets Gradle Plugin">
+// في ملف build.gradle (Module level)
+plugins {
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+// الوصول للمفتاح في الكود
+val apiKey = BuildConfig.MAPS_API_KEY
+                </site-code-block>
+
+                <h2 id="ui-security">7. تأمين واجهة المستخدم (UI/UX Security)</h2>
+                <p>الهندسة العكسية لا تقتصر على الكود؛ فالمهاجم قد يحاول تصوير الشاشات الحساسة أو تسجيل فيديو لعمليات الدخول.</p>
+                <ul>
+                    <li><strong>منع لقطات الشاشة (FLAG_SECURE):</strong> تفعيل هذه الخاصية يمنع نظام الأندرويد من أخذ لقطات شاشة (Screenshots) أو تسجيل فيديو للشاشات الحساسة، كما يخفي محتوى التطبيق في قائمة "التطبيقات الحديثة" (Recent Apps).</li>
+                </ul>
+
+                <site-code-block language="Kotlin" title="تفعيل حماية الشاشة">
+// وضع هذا الكود في دالة onCreate قبل setContentView
+window.setFlags(
+    WindowManager.LayoutParams.FLAG_SECURE,
+    WindowManager.LayoutParams.FLAG_SECURE
+)
+                </site-code-block>
+
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="api-security-guide, website-security-simple-steps"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
+

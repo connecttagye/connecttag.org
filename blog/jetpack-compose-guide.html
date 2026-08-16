@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الدليل الشامل لـ Jetpack Compose: مستقبل تطوير تطبيقات الأندرويد - كونكت تاق</title>
+<meta name="description" content="تعرف على Jetpack Compose، الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في برمجة تطبيقات عصرية.">
+<link rel="canonical" href="https://connecttag.org/blog/jetpack-compose-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/jetpack-compose-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jetpack Compose: الدليل الشامل والمبسط للمطورين - كونكت تاق">
+<meta property="og:description" content="انتقل من XML إلى Jetpack Compose واختصر وقت التطوير بنسبة 50%. دليل شامل للمميزات والتطبيق." />
+<meta property="og:image" content="https://connecttag.org/upload/jetpack-compose.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/jetpack-compose-guide" />
+<meta name="twitter:title" content="مستقبل الأندرويد: Jetpack Compose - كونكت تاق">
+<meta name="twitter:image" content="https://connecttag.org/upload/jetpack-compose.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "الدليل الشامل لـ Jetpack Compose: مستقبل تطوير تطبيقات الأندرويد",
+    "description": "تعرف على Jetpack Compose، الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في برمجة تطبيقات عصرية.",
+    "image": "https://connecttag.org/upload/jetpack-compose.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T18:00:00+03:00",
+    "dateModified": "2026-08-16T18:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/jetpack-compose-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل يجب تعلم XML قبل Jetpack Compose؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ليس بالضرورة، ولكن فهم XML يساعد في التعامل مع المشاريع القديمة. أما للمشاريع الجديدة، يمكنك البدء مباشرة بـ Compose."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يدعم Jetpack Compose لغة Java؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، Jetpack Compose مبني بالكامل بلغة Kotlin ويعتمد على ميزاتها المتقدمة، لذا يجب استخدامه مع Kotlin حصراً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل Compose أسرع من الـ Views التقليدية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، من حيث سرعة التطوير (كود أقل) ومن حيث الأداء في الواجهات المعقدة بفضل نظام إعادة الرسم الذكي (Recomposition)."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+    .security-card { background: #fcfcfc; border-right: 5px solid #0077b6; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .security-card h3 { margin-top: 0; color: #0077b6; }
+    .highlight-box { border-right: 5px solid #25d366; background: #f0fff4; padding: 20px; border-radius: 10px; margin: 25px 0; }
+
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 8px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+
+    .summary-box { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+    .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
+    .summary-list { padding-right: 20px; margin: 0; }
+    .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }
+
+    .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+</style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0077b6">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"Jetpack Compose", "url":""}]'></site-breadcrumb>
+                <h1>الدليل الشامل لـ Jetpack Compose: مستقبل تطوير تطبيقات الأندرويد</h1>
+
+                <site-article-meta
+                  date="16 أغسطس 2026"
+                  updated="16 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="../upload/jetpack-compose.webp" class="img-responsive" alt="تطوير تطبيقات الأندرويد باستخدام Jetpack Compose" loading="lazy">
+
+                <p>شهد عالم الأندرويد تحولاً جذرياً في السنوات الأخيرة مع إطلاق <strong>Jetpack Compose</strong>. هذا المحرك الحديث ليس مجرد تحديث للمكتبات القديمة، بل هو إعادة تصور كاملة لكيفية بناء واجهات المستخدم (UI) باستخدام لغة Kotlin البرمجية، مما يجعل العملية أسرع، أسهل، وأكثر متعة للمطورين.</p>
+
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-rocket"></i> أهم ما ستجده في هذا الدليل:</h3>
+                    <ul class="summary-list">
+                        <li>مفهوم البرمجة التعريفية (Declarative UI) وفوائدها.</li>
+                        <li>المقارنة التقنية الكاملة بين Jetpack Compose و XML التقليدي.</li>
+                        <li>خطوات إعداد بيئة العمل والبدء في أول مشروع.</li>
+                        <li>شرح أهم المكونات: Composables, Modifiers, و State Management.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#what-is-compose">1. ما هو Jetpack Compose؟</a></li>
+                        <li><a href="#features">2. المواصفات والمميزات الأساسية</a></li>
+                        <li><a href="#compose-vs-xml">3. الفرق بين Jetpack Compose و XML</a></li>
+                        <li><a href="#setup">4. طريقة الإعداد والبدء</a></li>
+                        <li><a href="#core-concepts">5. مفاهيم أساسية: Composables و State</a></li>
+                        <li><a href="#faq">6. الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="what-is-compose">1. ما هو Jetpack Compose؟</h2>
+                <p>هو أداة (Toolkit) عصرية أطلقتها جوجل لبناء واجهات مستخدم نظام الأندرويد. يعتمد Compose على أسلوب <strong>البرمجة التعريفية (Declarative)</strong>، حيث يصف المطور "ماذا" يريد أن تظهر عليه الواجهة بناءً على حالة معينة، بدلاً من أسلوب "كيف" تعديل الواجهة يدوياً كما في نظام الـ Views التقليدي.</p>
+
+                <h2 id="features">2. المواصفات والمميزات الأساسية</h2>
+                <ul>
+                    <li><strong>كود أقل (Less Code):</strong> ستكتشف أنك تكتب كوداً أقل بنسبة 50% مقارنة بـ XML، مما يقلل احتمالية حدوث أخطاء.</li>
+                    <li><strong>بديهي (Intuitive):</strong> بما أنك تكتب الواجهة بلغة Kotlin، يمكنك استخدام الشروط (if) والحلقات (for) مباشرة داخل تصميم الواجهة.</li>
+                    <li><strong>تطوير سريع (Accelerate Development):</strong> يدعم Compose ميزة "المعاينة الحية" (Live Preview) التي تظهر التغييرات فور كتابة الكود دون الحاجة لإعادة تشغيل التطبيق.</li>
+                    <li><strong>تفاعلي (Reactive):</strong> بمجرد تغير البيانات (State)، تقوم الواجهة بتحديث نفسها تلقائياً بذكاء عالٍ.</li>
+                </ul>
+
+                <h2 id="compose-vs-xml">3. الفرق بين Jetpack Compose و XML</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th>وجه المقارنة</th>
+                                <th>نظام XML (القديم)</th>
+                                <th>Jetpack Compose (الحديث)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>اللغة</td>
+                                <td>XML + Java/Kotlin</td>
+                                <td>Kotlin حصراً</td>
+                            </tr>
+                            <tr>
+                                <td>نمط البرمجة</td>
+                                <td>أمري (Imperative)</td>
+                                <td>تعريفي (Declarative)</td>
+                            </tr>
+                            <tr>
+                                <td>الملفات</td>
+                                <td>منفصلة (Layout + Logic)</td>
+                                <td>موحدة (كل شيء في Kotlin)</td>
+                            </tr>
+                            <tr>
+                                <td>الأداء</td>
+                                <td>جيد ولكن معقد في القوائم</td>
+                                <td>ممتاز بفضل Recomposition</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="setup">4. طريقة الإعداد والبدء</h2>
+                <p>للبدء، ستحتاج إلى أحدث إصدار من <strong>Android Studio</strong>. عند إنشاء مشروع جديد، اختر قالب "Empty Compose Activity".</p>
+                <site-code-block language="Gradle" title="أهم الاعتمادات المطلوبة">
+dependencies {
+    implementation("androidx.compose.ui:ui:1.5.0")
+    implementation("androidx.compose.material3:material3:1.1.0")
+    implementation("androidx.activity:activity-compose:1.7.0")
+}
+                </site-code-block>
+
+                <h2 id="core-concepts">5. مفاهيم أساسية: Composables و State</h2>
+                <p>في Compose، كل عنصر في الواجهة هو عبارة عن دالة (Function) تسبقها علامة <code>@Composable</code>.</p>
+                <site-code-block language="Kotlin" title="مثال لإنشاء زر تفاعلي">
+@Composable
+fun MyCounter() {
+    var count by remember { mutableStateOf(0) }
+
+    Button(onClick = { count++ }) {
+        Text("لقد ضغطت $count مرات")
+    }
+}
+                </site-code-block>
+
+                <div class="security-card">
+                    <h3>لماذا نحب الـ Modifiers؟</h3>
+                    <p>الـ <strong>Modifiers</strong> هي الطريقة السحرية في Compose لتعديل شكل وأبعاد العناصر (Padding, Background, Click Events) دون الحاجة لخصائص معقدة داخل كل عنصر.</p>
+                </div>
+
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يمكنني دمج Compose مع مشروع قديم؟</div>
+                        <div class="faq-answer">نعم، يدعم Compose خاصية "Interoperability" حيث يمكنك وضع عناصر Compose داخل XML أو العكس، مما يسمح بالانتقال التدريجي.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل هو مناسب للمبتدئين؟</div>
+                        <div class="faq-answer">بالتأكيد، Compose أسهل في التعلم للمبتدئين لأنه يعتمد على لغة واحدة (Kotlin) ويزيل تعقيدات الـ View IDs والـ Adapters.</div>
+                    </div>
+                </div>
+
+                <p><strong>خلاصة القول:</strong> Jetpack Compose ليس مجرد خيار، بل هو المسار الذي يسلكه تطوير الأندرويد مستقبلاً. البدء في تعلمه الآن يعني أنك تبني تطبيقات أكثر كفاءة وقابلية للصيانة. في <strong>كونكت تاق</strong>، نعتمد على Compose لبناء تطبيقات عملائنا لضمان واجهات عصرية وأداء لا يضاهى.</p>
+
+                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="android-app-security-reverse-engineering, why-your-business-needs-app"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

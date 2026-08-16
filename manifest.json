@@ -2,8 +2,8 @@
   "name": "كونكت تاق - Connect Tag | برمجة تطبيقات، استضافة، وتسويق رقمي",
   "short_name": "كونكت تاق",
   "description": "حلول برمجية متكاملة، استضافة سحابية، وتطوير تطبيقات الأندرويد والآيفون في اليمن.",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "https://connecttag.org/",
+  "scope": "https://connecttag.org/",
   "display": "standalone",
   "background_color": "#0d001a",
   "theme_color": "#0077b6",
@@ -12,25 +12,25 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "https://connecttag.org/icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "icon-192.png",
+      "src": "https://connecttag.org/icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "https://connecttag.org/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "https://connecttag.org/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
@@ -40,14 +40,14 @@
     {
       "name": "الخدمات",
       "short_name": "الخدمات",
-      "url": "./services/",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "https://connecttag.org/services/",
+      "icons": [{ "src": "https://connecttag.org/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "المدونة",
       "short_name": "المدونة",
-      "url": "/blog/",
-      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+      "url": "https://connecttag.org/blog/",
+      "icons": [{ "src": "https://connecttag.org/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

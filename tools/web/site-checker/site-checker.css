@@ -651,3 +651,4 @@ body { background-color: var(--bg-app); font-family: 'Cairo', sans-serif; color:
     .section-title { color: #000 !important; border-bottom: 1px solid #000 !important; margin-top: 30px !important; }
     .score-card { border: 2px solid #000 !important; page-break-after: always; }
 }
+

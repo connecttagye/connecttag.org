@@ -24,19 +24,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
-<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
-<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
-<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
 
 <script type="application/ld+json">
 [
@@ -122,9 +122,9 @@
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="/icon-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0077b6">
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
@@ -139,7 +139,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"المدونة", "url":"/blog/"}, {"title":"أمن الـ API", "url":""}]'></site-breadcrumb>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"أمن الـ API", "url":""}]'></site-breadcrumb>
                 <h1>حماية واجهات برمجة التطبيقات (API Security): الدليل التقني الشامل</h1>
 
                 <site-article-meta
@@ -149,7 +149,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="../upload/api-security.webp" class="img-responsive" alt="أمن واجهات برمجة التطبيقات API" loading="lazy">
+                <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" alt="أمن واجهات برمجة التطبيقات API" loading="lazy">
 
                 <p>واجهات برمجة التطبيقات (APIs) هي لغة التخاطب الأساسية بين الأنظمة الحديثة والتطبيقات. وبسبب طبيعتها المنفتحة، أصبحت الهدف الأول والمفضل للمخترقين. لتأمينها بشكل كامل، يجب تطبيق مجموعة صارمة من السياسات التقنية التي تحمي البيانات من لحظة خروجها من جهاز المستخدم وحتى استقرارها في الخادم.</p>
 
@@ -181,9 +181,7 @@
                     <li><strong>تجزئة كلمات المرور (Hashing):</strong> Base64 ليس تشفيراً! يجب استخدام <strong>Argon2</strong> أو <strong>Bcrypt</strong> مع "ملح" (Salt) عشوائي لكل مستخدم لحماية قاعدة البيانات من هجمات جداول قوس قزح.</li>
                 </ul>
 
-                <div class="security-card">
-                    <h3>مثال برمجى (Node.js/Bcrypt):</h3>
-                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+                <site-code-block language="Node.js" title="تجزئة كلمات المرور باستخدام Bcrypt">
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 
@@ -191,8 +189,8 @@ const saltRounds = 12;
 const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
 
 // التحقق من كلمة المرور عند تسجيل الدخول
-const isMatch = await bcrypt.compare(loginPassword, hashedPassword);</pre>
-                </div>
+const isMatch = await bcrypt.compare(loginPassword, hashedPassword);
+                </site-code-block>
 
                 <ul>
                     <li><strong>التشفير الهجين:</strong> للبيانات فائقة الحساسية، نستخدم RSA لتبادل المفاتيح و AES-256-GCM لتشفير المحتوى نفسه.</li>
@@ -204,22 +202,20 @@ const isMatch = await bcrypt.compare(loginPassword, hashedPassword);</pre>
                     <li><strong>هيكلية رموز JWT:</strong> يجب رفض أي رمز يستخدم خوارزمية <code>"alg": "none"</code> صراحة، والتأكد من التوقيع باستخدام مفاتيح قوية (RS256).</li>
                 </ul>
 
-                <div class="security-card">
-                    <h3>مثال لبيانات JWT آمنة (Payload):</h3>
-                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+                <site-code-block language="JSON" title="هيكلية رمز JWT آمن">
 {
   "sub": "user_123456",
-  "name": "Aqel Mohammed",
+  "name": "Ali Mohammed",
   "iat": 1723824000,
   "exp": 1723824900, // صلاحية قصيرة (15 دقيقة)
   "iss": "connecttag.org",
   "scopes": ["read:profile", "write:orders"]
-}</pre>
-                </div>
+}
+                </site-code-block>
 
                 <div class="tip-box" style="border-right-color: #fb8c00; background: #fffde7;">
                     <i class="fa-solid fa-microscope"></i> <strong>أداة مساعدة:</strong>
-                    هل تريد فحص وتحليل رموز JWT الخاصة بك؟ جرب الآن <a href="/tools/web/jwt-debugger/" style="font-weight: bold; color: #e65100;">أداة JWT Debugger</a> المطورة من قبلنا لفحص البيانات وتأكيد التوقيع.
+                    هل تريد فحص وتحليل رموز JWT الخاصة بك؟ جرب الآن <a href="https://connecttag.org/tools/web/jwt-debugger/" style="font-weight: bold; color: #e65100;">أداة JWT Debugger</a> المطورة من قبلنا لفحص البيانات وتأكيد التوقيع.
                 </div>
 
                 <ul>
@@ -243,26 +239,24 @@ const isMatch = await bcrypt.compare(loginPassword, hashedPassword);</pre>
                     <li><strong>الحد من الطلبات (Rate Limiting):</strong> نظام دفاعي يمنع هجمات الـ Brute Force وحجب الخدمة.</li>
                 </ul>
 
-                <div class="security-card">
-                    <h3>مثال إعداد Nginx للـ Rate Limiting:</h3>
-                    <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
+                <site-code-block language="Nginx" title="إعداد Rate Limiting على السيرفر">
 # تعريف منطقة تحديد الطلبات (10 طلبات في الثانية)
-limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
+limit_req_zone \$binary_remote_addr zone=api_limit:10m rate=10r/s;
 
 server {
     location /api/ {
         limit_req zone=api_limit burst=20 nodelay;
         proxy_pass http://api_backend;
     }
-}</pre>
-                </div>
+}
+                </site-code-block>
 
                 <ul>
                     <li><strong>التقييد الجغرافي:</strong> حجب الطلبات القادمة من خارج نطاق خدمتك الجغرافي يقلص عدد المحاولات الخبيثة بنسبة هائلة.</li>
                 </ul>
 
                 <div class="highlight-box" style="background: #eef2ff; border-right-color: #4f46e5;">
-                    <strong>الجسر الهندسي:</strong> بناء جدار قوي حول الـ API هو الباب الخارجي فقط. لضمان أمان البيانات المطلق، يجب أن تكون قاعدة البيانات خلفه "خزنة فولاذية". تعلم الآن كيفية تصميم <a href="/blog/advanced-database-security-architecture" style="font-weight: bold; color: #4f46e5;">معمارية قواعد البيانات المتطورة</a>.
+                    <strong>الجسر الهندسي:</strong> بناء جدار قوي حول الـ API هو الباب الخارجي فقط. لضمان أمان البيانات المطلق، يجب أن تكون قاعدة البيانات خلفه "خزنة فولاذية". تعلم الآن كيفية تصميم <a href="https://connecttag.org/blog/advanced-database-security-architecture" style="font-weight: bold; color: #4f46e5;">معمارية قواعد البيانات المتطورة</a>.
                 </div>
 
                 <div class="faq-section" id="faq">
@@ -279,7 +273,7 @@ server {
 
                 <p><strong>خلاصة القول:</strong> أمن الـ API ليس إعداداً لمرة واحدة، بل هو ثقافة تطوير مستمرة. في <strong>كونكت تاق</strong>، نطبق هذه المعايير في كافة مشاريعنا لضمان راحة بال شركائنا وسلامة بياناتهم.</p>
 
-                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/author/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="advanced-database-security-architecture, website-security-simple-steps"></site-related-posts>
             </div>
@@ -294,3 +288,4 @@ server {
 <cookie-consent></cookie-consent>
 </body>
 </html>
+

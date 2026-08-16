@@ -29,17 +29,58 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2">
-  <link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
-  <link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2">
 
 
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
-<script src="/assets/js/components/site-toast.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم \"حول الهاتف\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هو رقم الـ TAC وما فائدة فحصه؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع."
+      }
+    }
+  ]
+}
+</script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.2" defer></script>
 
 
 
@@ -270,6 +311,12 @@
         font-weight: 600;
     }
 
+    .faq-section { margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; text-align: right; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+    .faq-question i { color: #006b98; margin-top: 4px; }
+    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+
     @media (max-width: 768px) {
         .checker-header { padding: 80px 0 120px; }
         .checker-header h1 { font-size: 28px; }
@@ -280,9 +327,9 @@
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="/icon-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0077b6">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -299,7 +346,7 @@
     <div class="container">
         <h1>فحص هُوية الأجهزة الذكية</h1>
         <p>الأداة التقنية الأدق للتحقق من مواصفات وأصالة الهواتف والمودمات عبر IMEI و TAC</p>
-        <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"فحص IMEI", "url":""}]'></site-breadcrumb>
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"الأدوات", "url":"https://connecttag.org/tools/"}, {"title":"فحص IMEI", "url":""}]'></site-breadcrumb>
     </div>
 </div>
 
@@ -418,6 +465,30 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="faq-section" id="faq">
+                    <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">الأسئلة الشائعة حول فحص IMEI</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟</div>
+                        <div class="faq-answer">يمكنك الحصول عليه بسهولة عبر طلب الكود *#06# في لوحة الاتصال، أو التحقق من ملصق العلبة، أو من خلال إعدادات الجهاز في قسم "حول الهاتف".</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو رقم الـ TAC وما فائدة فحصه؟</div>
+                        <div class="faq-answer">رقم الـ TAC هو أول 8 أرقام من الـ IMEI، وهو يحدد طراز الجهاز والشركة المصنعة بشكل دقيق، مما يساعدك على كشف الأجهزة المقلدة أو المجددة.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل قاعدة البيانات تشمل أجهزة المودم والـ Router؟</div>
+                        <div class="faq-answer">نعم، تدعم الأداة فحص جميع الأجهزة التي تحتوي على شريحة اتصال، بما في ذلك مودمات Yemen 4G، وتوفر بيانات دقيقة حول المصنع والموديل.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل فحص الجهاز عبر موقعكم يضمن أنه أصلي بنسبة 100%؟</div>
+                        <div class="faq-answer">الأداة تقارن الرقم التسلسلي مع قواعد البيانات العالمية المعتمدة، مما يعطيك مؤشراً قوياً على أصالة الجهاز ومواصفاته الفنية المسجلة لدى المصنع.</div>
                     </div>
                 </div>
 
@@ -597,3 +668,4 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
+

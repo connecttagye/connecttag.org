@@ -42,20 +42,20 @@ htmlFiles.forEach(file => {
     // 2. Fix OpenGraph URL (Must be Absolute)
     content = content.replace(/property="og:url" content="[^"]*"/g, `property="og:url" content="${fullCanonical}"`);
 
-    // 3. Convert Internal Assets (src/href) to Root-Relative
+    // 3. Convert Internal Assets (src/href) to Full Absolute URLs
     // Matches patterns like src="../assets/..." or href="assets/..."
-    content = content.replace(/(src|href)="(?:\.\.\/|\.\/)*assets\//g, '$1="/assets/');
+    content = content.replace(/(src|href)="(?:\.\.\/|\.\/)*assets\//g, `$1="${DOMAIN}/assets/`);
 
-    // 4. Convert Internal Page Links to Root-Relative & Clean Extensions
+    // 4. Convert Internal Page Links to Full Absolute URLs & Clean Extensions
     // Matches internal links that don't have http, mailto, etc.
     content = content.replace(/href="(?:\.\.\/|\.\/)+((?![a-z]+:\/\/|mailto:|tel:|#)[^"]+)"/g, (match, path) => {
         const cleanPath = path.replace(/\.html$/i, '').replace(/\/index$/, '/');
-        return `href="/${cleanPath}"`;
+        return `href="${DOMAIN}/${cleanPath}"`;
     });
 
     // 5. Special Case for root files linked from subfolders (e.g. href="../contact")
-    content = content.replace(/href="(?:\.\.\/)+contact"/g, 'href="/contact"');
-    content = content.replace(/href="(?:\.\.\/)+faq"/g, 'href="/faq"');
+    content = content.replace(/href="(?:\.\.\/)+contact"/g, `href="${DOMAIN}/contact"`);
+    content = content.replace(/href="(?:\.\.\/)+faq"/g, `href="${DOMAIN}/faq"`);
 
     if (content !== original) {
         fs.writeFileSync(file, content);

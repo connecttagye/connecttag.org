@@ -64,6 +64,13 @@ class SiteRelatedPosts extends HTMLElement {
         excerpt: "تعلم كيفية استخدام جدار حماية كلاود فلير لحماية بياناتك من الاختراق."
       },
       {
+        id: "cloudflare-settings-optimization-guide",
+        title: "ضبط إعدادات كلاود فلير باحترافية",
+        link: "blog/cloudflare-settings-optimization-guide",
+        image: "upload/cloudflare-settings-optimization.webp",
+        excerpt: "دليل شامل لتهيئة كلاود فلير لتحقيق أقصى سرعة وأمان لموقعك الإلكتروني."
+      },
+      {
         id: "cloudflare-pages-hosting-guide",
         title: "استضافة Cloudflare Pages المجانية",
         link: "blog/cloudflare-pages-hosting-guide",
@@ -97,6 +104,13 @@ class SiteRelatedPosts extends HTMLElement {
         link: "blog/api-security-guide",
         image: "upload/api-security.webp",
         excerpt: "تعرف على كيفية تأمين الـ APIs وحماية قنوات التواصل الرقمي من الاختراق."
+      },
+      {
+        id: "android-app-security-reverse-engineering",
+        title: "حماية الأندرويد من الهندسة العكسية",
+        link: "blog/android-app-security-reverse-engineering",
+        image: "upload/android-reverse-engineering.webp",
+        excerpt: "ارفع تكلفة الهجوم على تطبيقك واحمِ ملكيتك الفكرية باستخدام أحدث التقنيات."
       }
     ];
 

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title id="page-title">طلب خدمة أو منتج - كونكت تاق</title>
+<meta name="description" content="اطلب خدماتنا التقنية أو منتجاتنا الذكية بسهولة. فريق كونكت تاق جاهز لتلبية طلباتكم بأعلى جودة واحترافية.">
+<link rel="canonical" href="https://connecttag.org/order" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:url" content="https://connecttag.org/order" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="طلب خدمة أو منتج - كونكت تاق" />
+  <meta property="og:description" content="ابدأ مشروعك الرقمي أو احصل على أحدث الأجهزة الذكية اليوم مع كونكت تاق." />
+  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+
+  <style>
+      .order-form-container { background: #fff; padding: 40px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #eee; }
+      .form-label { font-weight: 700; color: #333; margin-bottom: 8px; font-size: 14px; }
+      .form-control { border-radius: 12px; padding: 12px 15px; height: auto; border: 2px solid #f0f0f0; transition: 0.3s; }
+      .form-control:focus { border-color: #0077b6; box-shadow: none; }
+      .service-badge { display: inline-block; padding: 5px 15px; background: #e0f2fe; color: #0077b6; border-radius: 50px; font-size: 12px; font-weight: 800; margin-bottom: 15px; }
+      #product-info { background: #f8fafc; padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 1px dashed #cbd5e1; display: none; }
+  </style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0077b6">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="page-header-unified">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 id="main-heading">طلب جديد</h1>
+                <site-breadcrumb id="dynamic-breadcrumb" items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"الطلبات", "url":""}]'></site-breadcrumb>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="order-section" style="padding: 80px 0; background: #fdfdfd;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <div class="order-form-container">
+            <div id="product-info">
+                <span class="service-badge" id="type-label">طلب خدمة</span>
+                <h3 id="item-name" style="margin: 0; font-weight: 800; color: #1a0033;">جاري تحميل تفاصيل الطلب...</h3>
+            </div>
+
+            <form id="orderForm" method="post" class="form" role="form">
+              <div class="row">
+                <!-- Hidden inputs for tracking -->
+                <input type="hidden" id="hidden_item" name="hidden_item">
+                <input type="hidden" id="hidden_type" name="hidden_type">
+
+                <div class="col-md-6 form-group">
+                  <label class="form-label" for="name">الاسم الكامل *</label>
+                  <input class="form-control" id="name" name="name" placeholder="محمد علي..." type="text" required />
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="form-label" for="email">البريد الإلكتروني *</label>
+                  <input class="form-control" id="email" name="email" placeholder="example@mail.com" type="email" required />
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="form-label" for="phone">رقم الهاتف / واتساب *</label>
+                  <input class="form-control" id="phone" name="phone" placeholder="00967..." type="tel" required />
+                </div>
+
+                <div class="col-md-6 form-group" id="selection-group">
+                  <label class="form-label" for="service">اختر الخدمة/المنتج *</label>
+                  <select class="form-control" id="service" name="service">
+                    <option value="" disabled selected>اختر من القائمة...</option>
+                    <optgroup label="الخدمات البرمجية">
+                        <option value="تطوير تطبيقات هاتف">تطوير تطبيقات هاتف</option>
+                        <option value="تطوير مواقع ومتاجر">تطوير مواقع ومتاجر</option>
+                        <option value="استضافة سيرفرات">استضافة سيرفرات</option>
+                    </optgroup>
+                    <optgroup label="المنتجات والأجهزة">
+                        <option value="أنظمة أمنية وكاميرات">أنظمة أمنية وكاميرات</option>
+                        <option value="أجهزة منزل ذكي">أجهزة منزل ذكي</option>
+                        <option value="ملحقات تقنية">ملحقات تقنية</option>
+                    </optgroup>
+                    <option value="أخرى">أخرى / استشارة عامة</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6 form-group" id="quantity-group" style="display: none;">
+                    <label class="form-label" for="quantity">الكمية المطلوبة</label>
+                    <input class="form-control" id="quantity" name="quantity" type="number" value="1" min="1">
+                </div>
+
+                <div class="col-md-6 form-group" id="company-group">
+                    <label class="form-label" for="company">اسم الشركة / الجهة (اختياري)</label>
+                    <input class="form-control" id="company" name="company" placeholder="مثلاً: شركة تاق العقارية" type="text">
+                </div>
+
+                <div class="col-md-6 form-group" id="deadline-group">
+                    <label class="form-label" for="deadline">الموعد المتوقع للتسليم (اختياري)</label>
+                    <input class="form-control" id="deadline" name="deadline" type="text" placeholder="مثلاً: خلال شهر">
+                </div>
+
+                <div class="col-md-12 form-group">
+                  <label class="form-label" for="details" id="details-label">تفاصيل إضافية عن الطلب</label>
+                  <textarea class="form-control" id="details" name="details" placeholder="أي ملاحظات أو متطلبات خاصة ترغب في إضافتها..." rows="5"></textarea>
+                </div>
+
+                <div class="col-md-12" style="margin-top: 20px;">
+                  <button class="btn btn-lg btn-block" style="background: #0077b6; color: #fff; font-weight: 800; border-radius: 12px; padding: 15px;" type="submit" id="submit-btn">
+                    إرسال الطلب الآن <i class="fa-solid fa-paper-plane" style="margin-right: 10px;"></i>
+                  </button>
+                  <p class="text-muted text-center" style="margin-top: 15px; font-size: 12px;">سيتم توجيهك لبريدك لإرسال الطلب، وسيتواصل معك فريقنا خلال 24 ساعة.</p>
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const item = params.get('item');
+    const type = params.get('type') || 'service'; // 'service' or 'product'
+
+    const uiItemName = document.getElementById('item-name');
+    const uiTypeLabel = document.getElementById('type-label');
+    const uiProductInfo = document.getElementById('product-info');
+    const uiSelectionGroup = document.getElementById('selection-group');
+    const uiQuantityGroup = document.getElementById('quantity-group');
+    const uiDetailsLabel = document.getElementById('details-label');
+    const uiSubmitBtn = document.getElementById('submit-btn');
+    const uiMainHeading = document.getElementById('main-heading');
+    const uiDeadlineGroup = document.getElementById('deadline-group');
+
+    if (item) {
+        uiProductInfo.style.display = 'block';
+        uiSelectionGroup.style.display = 'none';
+        document.getElementById('service').required = false;
+
+        const decodedItem = decodeURIComponent(item);
+        uiItemName.innerText = decodedItem;
+        document.getElementById('hidden_item').value = decodedItem;
+        document.getElementById('hidden_type').value = type;
+
+        if (type === 'product') {
+            uiTypeLabel.innerText = 'طلب منتج';
+            uiTypeLabel.style.background = '#fef3c7';
+            uiTypeLabel.style.color = '#92400e';
+            uiQuantityGroup.style.display = 'block';
+            uiDeadlineGroup.style.display = 'none';
+            uiDetailsLabel.innerText = 'ملاحظات إضافية (اللون، المقاس، عنوان التوصيل)';
+            uiMainHeading.innerText = 'طلب منتج';
+            uiSubmitBtn.innerHTML = 'تأكيد طلب الشراء <i class="fa-solid fa-cart-shopping" style="margin-right: 10px;"></i>';
+            document.title = "طلب " + decodedItem + " - كونكت تاق";
+        } else {
+            uiTypeLabel.innerText = 'طلب خدمة';
+            uiDeadlineGroup.style.display = 'block';
+            uiDetailsLabel.innerText = 'تفاصيل المشروع أو المتطلبات الفنية';
+            uiMainHeading.innerText = 'طلب خدمة';
+            document.title = "طلب خدمة " + decodedItem + " - كونكت تاق";
+        }
+    } else {
+        document.getElementById('service').required = true;
+    }
+
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+      orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const company = document.getElementById('company').value;
+        const deadline = document.getElementById('deadline').value;
+        const details = document.getElementById('details').value;
+
+        let finalItem = item ? decodeURIComponent(item) : document.getElementById('service').value;
+        const quantity = document.getElementById('quantity').value;
+        const finalType = type === 'product' ? 'منتج' : 'خدمة';
+
+        const subject = `طلب ${finalType} جديد: ${finalItem} - ${name}`;
+
+        let body = `تفاصيل الطلب من الموقع:\n`;
+        body += `--------------------------\n`;
+        body += `نوع الطلب: ${finalType}\n`;
+        body += `المطلوب: ${finalItem}\n`;
+        if (type === 'product') body += `الكمية: ${quantity}\n`;
+        body += `--------------------------\n`;
+        body += `الاسم: ${name}\n`;
+        body += `البريد الإلكتروني: ${email}\n`;
+        body += `رقم الهاتف: ${phone}\n`;
+        if (company) body += `اسم الشركة: ${company}\n`;
+        if (type === 'service' && deadline) body += `موعد التسليم: ${deadline}\n`;
+        body += `--------------------------\n\n`;
+        body += `التفاصيل والملاحظات:\n${details}`;
+
+        const mailtoLink = "mailto:order@connecttag.org" +
+                         "?subject=" + encodeURIComponent(subject) +
+                         "&body=" + encodeURIComponent(body);
+
+        window.location.href = mailtoLink;
+      });
+    }
+  });
+</script>
+
+<cookie-consent></cookie-consent>
+</body>
+</html>

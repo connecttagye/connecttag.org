@@ -25,19 +25,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2"></noscript>
-<link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
-<link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2"></noscript>
-<link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
-<script src="/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.2" defer></script>
 
 <script type="application/ld+json">
 [
@@ -103,9 +103,9 @@
 
 
   <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="/icon-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0077b6">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -123,7 +123,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"المدونة", "url":"/blog/"}, {"title":"أمن كلاود فلير", "url":""}]'></site-breadcrumb>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"أمن كلاود فلير", "url":""}]'></site-breadcrumb>
                 <h1>وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</h1>
 
                 <site-article-meta
@@ -133,14 +133,28 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="../upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" loading="lazy">
+                <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" loading="lazy">
+
+                <div class="summary-box">
+                    <h3><i class="fa-solid fa-list-check"></i> خلاصة الدليل:</h3>
+                    <ul class="summary-list">
+                        <li>التعرف على كيفية عمل جدار حماية تطبيقات الويب (WAF).</li>
+                        <li>أهم 3 قواعد جدار حماية يجب تفعيلها فوراً لتأمين موقعك.</li>
+                        <li>كيفية حماية "السيرفر الأصلي" ومنع تجاوز كلاود فلير.</li>
+                        <li>استخدام وضع "تحت الهجوم" لصد هجمات DDoS العنيفة.</li>
+                        <li>أتمتة حظر البوتات والبرمجيات الخبيثة.</li>
+                    </ul>
+                </div>
 
                 <div class="toc-container">
                     <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
                     <ul class="toc-list">
                         <li><a href="#firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</a></li>
-                        <li><a href="#under-attack">2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</a></li>
-                        <li><a href="#bot-protection">3. حظر الـ Bots المزعجة والبرمجيات الآلية</a></li>
+                        <li><a href="#top-rules">2. أهم 3 قواعد جدار حماية يجب تفعيلها</a></li>
+                        <li><a href="#under-attack">3. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</a></li>
+                        <li><a href="#bot-protection">4. حظر الـ Bots المزعجة والبرمجيات الآلية</a></li>
+                        <li><a href="#origin-security">5. حماية السيرفر الأصلي (Origin Security)</a></li>
+                        <li><a href="#faq">6. الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
 
@@ -148,11 +162,48 @@
 
                 <h2 id="firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
                 <p>تسمح لك "قوانين جدار الحماية" في كلاود فلير بالتحكم الكامل في من يمكنه الوصول إلى موقعك وبأي شروط. يمكنك بناء قوانين ذكية بناءً على عدة معايير:</p>
+                <div class="tip-box" style="border-right: 5px solid #0077b6; background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 25px 0;">
+                    <i class="fa-solid fa-circle-info"></i> <strong>نصيحة تقنية:</strong>
+                    يمكنك العثور على هذه الإعدادات في لوحة تحكم كلاود فلير تحت قسم <strong>Security -> WAF -> Custom Rules</strong>.
+                </div>
                 <ul>
                     <li><strong>حظر دول معينة:</strong> إذا لاحظت هجمات متكررة من دول لا تستهدفها في نشاطك التجاري، يمكنك حظر وصول أي زائر من تلك الدول بضغطة زر.</li>
                     <li><strong>حظر عناوين IP مشبوهة:</strong> يمكنك حظر عناوين معينة تحاول القيام بعمليات فحص (Scanning) لثغرات موقعك.</li>
                     <li><strong>حماية روابط الإدارة:</strong> يمكنك إنشاء قانون يسمح فقط لعنوان IP الخاص بك بالدخول إلى لوحة تحكم موقعك (مثل `/wp-admin` أو `/admin`).</li>
                 </ul>
+
+                <h2 id="top-rules">2. أهم 3 قواعد جدار حماية يجب على كل موقع تفعيلها (How-to)</h2>
+                <p>إليك كيفية تطبيق الحماية العملية باستخدام "محرر القواعد" (Expression Editor) في كلاود فلير:</p>
+
+                <div class="security-card">
+                    <h3>أ. حماية لوحة تحكم ووردبريس (/wp-admin)</h3>
+                    <p>منع الغرباء من الوصول لصفحة الدخول. يمكنك السماح فقط لعنوان IP الخاص بك أو بلدك.</p>
+                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
+                        (http.request.uri.path contains "/wp-admin" or http.request.uri.path contains "/wp-login.php") and ip.src ne YOUR_IP_HERE
+                    </div>
+                    <p><small>* استبدل <code>YOUR_IP_HERE</code> بعنوان IP الخاص بك واضبط الإجراء على <strong>Block</strong>.</small></p>
+                </div>
+
+                <div class="security-card">
+                    <h3>ب. حظر الوصول للملفات الحساسة (.env / config)</h3>
+                    <p>لمنع المخترقين من تحميل ملفات تحتوي على بيانات قواعد البيانات أو مفاتيح API.</p>
+                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
+                        (http.request.uri.path contains ".env") or (http.request.uri.path contains "config.php") or (http.request.uri.path contains "web.config")
+                    </div>
+                </div>
+
+                <div class="security-card">
+                    <h3>ج. منع الهجمات عبر User-Agent مشبوه</h3>
+                    <p>حظر أدوات الفحص الآلية والمتصفحات الوهمية التي يستخدمها المخترقون.</p>
+                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
+                        (http.user_agent contains "python-requests") or (http.user_agent contains "curl") or (http.user_agent contains "sqlmap")
+                    </div>
+                </div>
+
+                <div class="danger-zone" style="border-right: 5px solid #d9534f; background: #fff5f5; padding: 20px; border-radius: 10px; margin: 25px 0;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>تنبيه تقني هام:</strong>
+                    قبل تفعيل أي قاعدة بصيغة <strong>Block</strong>، ننصح دائماً باستخدام وضع <strong>Log</strong> أو <strong>Managed Challenge</strong> لمدة 24 ساعة للتأكد من أنك لا تحظر زواراً حقيقيين أو خدمات ضرورية لموقعك.
+                </div>
 
                 <h2 id="under-attack">2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
                 <p>هل لاحظت بطءً مفاجئاً في موقعك بسبب هجمة DDoS؟ توفر كلاود فلير "زر الطوارئ" المسمى <strong>Under Attack Mode</strong>. عند تفعيله:</p>
@@ -169,6 +220,17 @@
                     <li><strong>حماية النماذج:</strong> منع البوتات من ملء نماذج الاتصال بـ "سبام" أو محاولة إرسال بيانات خبيثة.</li>
                     <li><strong>توفير الموارد:</strong> بحظر هذه البوتات، أنت توفر موارد السيرفر (CPU/RAM) للزوار الحقيقيين فقط.</li>
                 </ul>
+
+                <h2 id="origin-security">5. حماية السيرفر الأصلي (Origin Security)</h2>
+                <p>من الأخطاء الشائعة الاعتماد على حماية واجهة كلاود فلير فقط بينما يظل "الباب الخلفي" للسيرفر مفتوحاً. إذا تمكن المخترق من معرفة عنوان IP الحقيقي لسيرفرك (Origin IP)، فبإمكانه تجاوز كلاود فلير تماماً.</p>
+                <div class="security-card">
+                    <h3>كيف تحمي "قلب" السيرفر؟</h3>
+                    <ul>
+                        <li><strong>Authenticated Origin Pulls:</strong> ميزة تضمن أن سيرفرك لا يستقبل أي طلبات إلا إذا كانت موقعة بشهادة من كلاود فلير.</li>
+                        <li><strong>إغلاق المنافذ (Firewall):</strong> قم بضبط جدار الحماية الخاص بسيرفرك (مثل UFW أو IPTables) ليسمح فقط بالاتصالات القادمة من <a href="https://www.cloudflare.com/ips/" target="_blank">نطاقات عناوين IP الخاصة بكلاود فلير</a>.</li>
+                        <li><strong>استخدام Cloudflare Tunnel:</strong> الحل الأكثر أماناً، حيث يقوم بإنشاء نفق مشفر بين سيرفرك وكلاود فلير دون الحاجة لفتح أي منافذ عامة (Public Ports).</li>
+                    </ul>
+                </div>
 
                 <h2>نصيحة أمنية من كونكت تاق</h2>
                 <p>استخدام كلاود فلير ليس مجرد "تركيب" وانتهى الأمر، بل يتطلب تهيئة صحيحة للقوانين بناءً على طبيعة جمهورك. ننصح دائماً بمراجعة سجلات الأمان (Security Logs) دورياً في لوحة تحكم كلاود فلير لمعرفة أنواع الهجمات التي يتم صدها وتحديث القوانين وفقاً لذلك.</p>
@@ -191,7 +253,7 @@
                     </div>
                 </div>
 
-                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/author/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="website-security-simple-steps, cloudflare-pages-hosting-guide"></site-related-posts>
             </div>
@@ -206,3 +268,4 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
+

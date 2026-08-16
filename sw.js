@@ -1,20 +1,19 @@
 const ENABLE_CACHE = true;
 const CACHE_NAME = 'connecttag-cache-v56';
-const OFFLINE_URL = '/offline';
+const OFFLINE_URL = 'https://connecttag.org/offline';
 
 const ASSETS_TO_CACHE = [
-  './',
-  './',
-  './offline',
-  './manifest.json',
-  './favicon.webp',
-  './icon-192.png',
-  './icon-512.png',
-  './assets/css/styles.min.css?v=1.1.2',
-  './assets/css/shared-styles.css?v=1.1.2',
-  './assets/js/components/components-bundle.js?v=1.1.2',
-  './assets/js/components/pwa-install-prompt.js?v=1.1.2',
-  './assets/js/components/site-author-box.js?v=1.1.2'
+  'https://connecttag.org/',
+  'https://connecttag.org/offline',
+  'https://connecttag.org/manifest.json',
+  'https://connecttag.org/favicon.webp',
+  'https://connecttag.org/icon-192.png',
+  'https://connecttag.org/icon-512.png',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.2',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.2',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2',
+  'https://connecttag.org/assets/js/components/pwa-install-prompt.js?v=1.1.2',
+  'https://connecttag.org/assets/js/components/site-author-box.js?v=1.1.2'
 ];
 
 // Install Event

@@ -25,23 +25,79 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/assets/css/shared-styles.css?v=1.1.2">
-  <link rel="stylesheet" href="/assets/css/bootstrap.css?v=1.1.2">
-  <link rel="stylesheet" href="/assets/css/styles.min.css?v=1.1.2">
-  <link rel="stylesheet" href="/assets/css/components.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.2">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="/assets/css/animate-custom.css?v=1.1.2">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.2">
 
-<script src="/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
-<script src="/assets/js/components/apps-bundle.js?v=1.1.2" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.2" defer></script>
 
-  <link rel="stylesheet" href="/assets/css/app-details.css?v=1.1.2">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "كيف يساعد تطبيق \"جدار ناري\" في حماية خصوصيتي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يقوم التطبيق بمنع التطبيقات المشبوهة من الاتصال بالإنترنت في الخلفية، مما يمنع تسريب بياناتك الشخصية ويحمي جهازك من محاولات التجسس."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل استخدام التطبيق يقلل من سرعة الإنترنت؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لا، التطبيق يعمل كمرشح (Filter) فقط ولا يضيف أي عبء على سرعة الاتصال، بل قد يشعرك بسرعة أكبر نتيجة منع التطبيقات الأخرى من استهلاك البيانات."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يحتاج التطبيق إلى صلاحيات الروت (Root) ليعمل؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لا يحتاج التطبيق إلى روت؛ حيث يعتمد على تقنية VpnService المدمجة في أندرويد لإنشاء قناة آمنة تمكنك من التحكم في حركة مرور البيانات محلياً."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يساعد التطبيق في توفير باقة الإنترنت وعمر البطارية؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بالتأكيد، من خلال منع التطبيقات غير الضرورية من استخدام البيانات، ستوفر في استهلاك الباقة، كما ستقلل من استهلاك البطارية الناتج عن نشاط التطبيقات في الخلفية."
+      }
+    }
+  ]
+}
+</script>
+<script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.2" defer></script>
+
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.2">
+
+  <style>
+      .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+      .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+      .toc-list { list-style: none; padding: 0; margin: 0; }
+      .toc-list li { margin-bottom: 8px; }
+      .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+      .toc-list a:hover { color: #005b8a; text-decoration: underline; }
+
+      .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
+      .faq-item { margin-bottom: 30px; }
+      .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
+      .faq-question i { color: #0077b6; margin-top: 4px; }
+      .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
+  </style>
 
   <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="/icon-192.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0077b6">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,14 +108,14 @@
 <site-header></site-header>
 
 <div class="hero-section">
-    <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"أعمالنا", "url":"/projects/"}, {"title":"تطبيقاتنا", "url":"/projects/apps/"}, {"title":"جدار ناري", "url":""}]'></site-breadcrumb>
+    <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"أعمالنا", "url":"https://connecttag.org/projects/"}, {"title":"تطبيقاتنا", "url":"https://connecttag.org/projects/apps/"}, {"title":"جدار ناري", "url":""}]'></site-breadcrumb>
     <div class="container">
         <div class="row display-flex align-items-center">
             <div class="col-md-7" data-aos="fade-left">
                 <h1 style="font-weight: 800; font-size: 3.5rem; margin-bottom: 20px; color: #fff;">جدار ناري (Firewall)</h1>
                 <p style="font-size: 20px; opacity: 0.9; margin-bottom: 35px; line-height: 1.8;">التحكم الكامل في وصول تطبيقاتك للإنترنت. احمِ خصوصيتك، وفر بياناتك، وحسن أداء جهازك بضغطة واحدة.</p>
                 <div class="hero-btns">
-                    <a href="https://file.lightsoftye.com/apps/%D8%B3%D9%88%D8%B1-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D8%B1%D9%86%D8%AA-1.0.4.apk" class="btn-hero" style="background: #e89a2f; color: #fff; margin-left: 10px;">
+                    <a href="https://download.connecttag.app/apps/%D8%B3%D9%88%D8%B1-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D8%B1%D9%86%D8%AA-1.0.4.apk" class="btn-hero" style="background: #e89a2f; color: #fff; margin-left: 10px;" rel="nofollow noindex">
                         <i class="fa-solid fa-download"></i> تحميل مباشر APK
                     </a>
                     <a href="https://t.me/MarketAllApps/31" target="_blank" class="btn-hero">
@@ -84,10 +140,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2>وصف التطبيق</h2>
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الصفحة:</div>
+                    <ul class="toc-list">
+                        <li><a href="#description">وصف التطبيق</a></li>
+                        <li><a href="#features">أهم المميزات</a></li>
+                        <li><a href="#tech-stack">تقنيات التطوير</a></li>
+                        <li><a href="#specs">المواصفات الفنية</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="description">وصف التطبيق</h2>
                 <p>تطبيق "جدار ناري" هو حل أمني متكامل لأجهزة الأندرويد، يمنحك السيطرة المطلقة على كيفية اتصال تطبيقاتك بالإنترنت. سواء كنت ترغب في توفير البيانات، تحسين عمر البطارية، أو حماية خصوصيتك من التطبيقات التي تتصل بخوادم غير معروفة، فإن هذا التطبيق يوفر لك الأدوات اللازمة لذلك بكل سهولة.</p>
 
-                <h2>أهم المميزات</h2>
+                <h2 id="features">أهم المميزات</h2>
                 <ul>
                     <li><strong>التحكم في الوصول:</strong> إمكانية إيقاف أو السماح بالوصول إلى الإنترنت عبر الواي فاي أو بيانات الهاتف لكل تطبيق على حدة.</li>
                     <li><strong>تتبع حركة الاتصال:</strong> مراقبة دقيقة لجميع محاولات الاتصال التي تقوم بها التطبيقات ومعرفة العناوين والنطاقات (Domains) المستهدفة.</li>
@@ -102,7 +169,7 @@
                     <site-app-feature-item title="توفير" description="تقليل استهلاك البيانات"></site-app-feature-item>
                 </site-app-features>
 
-                <div class="tech-stack-section" style="padding: 60px 0; border-top: 1px solid #eee;">
+                <div class="tech-stack-section" id="tech-stack" style="padding: 60px 0; border-top: 1px solid #eee;">
                     <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">تقنيات التطوير</h2>
                     <div class="row">
                         <div class="col-md-3 col-xs-6">
@@ -132,7 +199,7 @@
                     </div>
                 </div>
 
-                <div class="specifications-section" style="padding: 60px 0; background: #fdfdfd; border-radius: 20px; margin-top: 40px;">
+                <div class="specifications-section" id="specs" style="padding: 60px 0; background: #fdfdfd; border-radius: 20px; margin-top: 40px;">
                     <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">المواصفات الفنية</h2>
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -161,12 +228,36 @@
                 </div>
 
                 <div style="margin-top: 50px; text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <a href="https://file.lightsoftye.com/apps/%D8%B3%D9%88%D8%B1-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D8%B1%D9%86%D8%AA-1.0.4.apk" class="btn-hero" style="background: #e89a2f; color: #fff;">
+                    <a href="https://download.connecttag.app/apps/%D8%B3%D9%88%D8%B1-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D8%B1%D9%86%D8%AA-1.0.4.apk" class="btn-hero" style="background: #e89a2f; color: #fff;" rel="nofollow noindex">
                         <i class="fa-solid fa-download"></i> تحميل APK (مباشر)
                     </a>
                     <a href="https://t.me/MarketAllApps/31" target="_blank" rel="noopener" class="btn-hero" style="background: #0088cc; color: #fff;">
                         <i class="fa-brands fa-telegram"></i> عبر تيليجرام
                     </a>
+                </div>
+
+                <div class="faq-section" id="faq">
+                    <h2 class="text-center" style="margin-bottom: 40px; color: #006b98;">الأسئلة الشائعة حول تطبيق جدار ناري</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يساعد تطبيق "جدار ناري" في حماية خصوصيتي؟</div>
+                        <div class="faq-answer">يقوم التطبيق بمنع التطبيقات المشبوهة من الاتصال بالإنترنت في الخلفية، مما يمنع تسريب بياناتك الشخصية ويحمي جهازك من محاولات التجسس.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل استخدام التطبيق يقلل من سرعة الإنترنت؟</div>
+                        <div class="faq-answer">لا، التطبيق يعمل كمرشح (Filter) فقط ولا يضيف أي عبء على سرعة الاتصال، بل قد يشعرك بسرعة أكبر نتيجة منع التطبيقات الأخرى من استهلاك البيانات.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يحتاج التطبيق إلى صلاحيات الروت (Root) ليعمل؟</div>
+                        <div class="faq-answer">لا يحتاج التطبيق إلى روت؛ حيث يعتمد على تقنية VpnService المدمجة في أندرويد لإنشاء قناة آمنة تمكنك من التحكم في حركة مرور البيانات محلياً.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يساعد التطبيق في توفير باقة الإنترنت وعمر البطارية؟</div>
+                        <div class="faq-answer">بالتأكيد، من خلال منع التطبيقات غير الضرورية من استخدام البيانات، ستوفر في استهلاك الباقة، كما ستقلل من استهلاك البطارية الناتج عن نشاط التطبيقات في الخلفية.</div>
+                    </div>
                 </div>
 
                 <hr style="margin-top: 40px; margin-bottom: 30px;">
@@ -183,3 +274,4 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
+
