@@ -1,270 +1,447 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المدونة - كونكت تاق للخدمات التقنية</title>
-<meta name="description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي وتطوير التطبيقات في مدونة كونكت تاق.">
-<link rel="canonical" href="https://connecttag.org/blog/" />
-<link rel="manifest" href="https://connecttag.org/manifest.json">
-<meta name="theme-color" content="#0077b6">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدونة - كونكت تاق</title>
+    <meta name="description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي وتطوير التطبيقات في مدونة كونكت تاق.">
+    <link rel="canonical" href="https://connecttag.org/blog/" />
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0077b6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
 
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/blog/" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="المدونة - كونكت تاق">
+    <meta property="og:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
+    <meta property="og:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp">
 
+    <!-- twitter OpenGraph meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@connecttagye" />
+    <meta name="twitter:url" content="https://connecttag.org/blog/" />
+    <meta name="twitter:title" content="المدونة - كونكت تاق">
+    <meta name="twitter:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
+    <meta name="twitter:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp" />
 
-  <!-- OpenGraph meta -->
-<meta property="og:url" content="https://connecttag.org/blog/" />
-<meta property="og:type" content="website">
-<meta property="og:title" content="المدونة - كونكت تاق">
-<meta property="og:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
-<meta property="og:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+    <link rel="preload" href="https://connecttag.org/assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
 
-<!-- twitter OpenGraph meta -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@connecttagye" />
-<meta name="twitter:url" content="https://connecttag.org/blog/" />
-<meta name="twitter:title" content="المدونة - كونكت تاق">
-<meta name="twitter:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
-<meta name="twitter:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp" />
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
 
+    <!-- CSS المخصص لتحسين تصميم المدونة -->
+    <style>
+        /* تنسيق ترويسة الصفحة مع صورة الغلاف الجديدة */
+        .page-header-unified {
+            /* إضافة صورة الغلاف مع طبقة داكنة لزيادة وضوح النص */
+            background-image: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 119, 182, 0.8)), url('https://connecttag.org/assets/img/blog-cover.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="preload" href="https://connecttag.org/assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.5"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.5">
+        .page-header-unified h1 {
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
+        /* تنسيق شبكة المقالات لضمان تساوي الارتفاع */
+        .blog-grid-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+        /* تصميم بطاقة المقال الحديثة */
+        .custom-blog-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 40px; /* المسافة بين الصفوف */
+        }
 
+        .custom-blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 119, 182, 0.15);
+        }
+
+        .custom-blog-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .custom-blog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .img-wrapper {
+            overflow: hidden;
+        }
+
+        .card-body {
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .card-title a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .card-title a:hover {
+            color: #0077b6; /* لون الثيم الأساسي */
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            flex-grow: 1; /* لدفع الزر للأسفل */
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #f8f9fa;
+            color: #0077b6;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            align-self: flex-start;
+        }
+
+        .read-more-btn:hover {
+            background-color: #0077b6;
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+        }
+    </style>
 
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
 <site-preloader></site-preloader>
 <div id="home-content">
-<!-- Modular Web Component: Header -->
-<site-header></site-header>
+    <!-- Modular Web Component: Header -->
+    <site-header></site-header>
 
-<main id="main-content">
+    <main id="main-content">
 
-<div class="page-header-unified">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>المدونة</h1>
-                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}]'></site-breadcrumb>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="blog-list" style="padding: 80px 0;">
-    <div class="container">
-        <div class="row">
-            <!-- Blog Item 13: Cloudflare Settings Optimization (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">
-                        <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="تحسين إعدادات كلاود فلير">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" style="color: #333;">ضبط إعدادات كلاود فلير بأفضل الممارسات: دليل تحسين الأداء والأمان</a></h2>
-                    <p style="color: #777;">تعلم كيفية تهيئة كلاود فلير لتحقيق أقصى سرعة، من ضغط Brotli وتهيئة الكاش إلى تأمين الاتصال عبر بروتوكول TLS 1.3...</p>
-                    <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 12: Jetpack Compose (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/jetpack-compose-guide">
-                        <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="تطوير أندرويد Jetpack Compose">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/jetpack-compose-guide" style="color: #333;">الدليل الشامل لـ Jetpack Compose: مستقبل تطبيقات الأندرويد</a></h2>
-                    <p style="color: #777;">تعرف على الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في مشروعك...</p>
-                    <a href="https://connecttag.org/blog/jetpack-compose-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 11: Android Security (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">
-                        <img src="https://connecttag.org/upload/android-reverse-engineering.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="أمن تطبيقات الأندرويد">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/android-app-security-reverse-engineering" style="color: #333;">حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</a></h2>
-                    <p style="color: #777;">تعلم كيفية رفع تكلفة الهجوم على تطبيقك وحماية ملكيتك الفكرية باستخدام تشويش الكود، تقنيات RASP، واستخدام الـ NDK...</p>
-                    <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 10: API Security (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/api-security-guide">
-                        <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="أمن واجهات برمجة التطبيقات">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/api-security-guide" style="color: #333;">حماية واجهات برمجة التطبيقات (API Security): الدليل الشامل</a></h2>
-                    <p style="color: #777;">تعرف على كيفية تأمين قنوات التواصل الرقمي، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات...</p>
-                    <a href="https://connecttag.org/blog/api-security-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 9: Advanced Database Security (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/advanced-database-security-architecture">
-                        <img src="https://connecttag.org/upload/database-architecture.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="هندسة قواعد البيانات">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/advanced-database-security-architecture" style="color: #333;">المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</a></h2>
-                    <p style="color: #777;">دليل هندسي شامل لتصميم وتأمين قواعد البيانات، يشمل الحماية من SQL Injection، استخدام UUIDs، وهندسة الصلاحيات RBAC...</p>
-                    <a href="https://connecttag.org/blog/advanced-database-security-architecture" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 8: Cloudflare Pages (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">
-                        <img src="https://connecttag.org/upload/cloudflare-page-hosting.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="استضافة Cloudflare Pages">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide" style="color: #333;">استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</a></h2>
-                    <p style="color: #777;">اكتشف كيف تطلق موقعك الإلكتروني مجاناً وبأداء عالمي باستخدام Cloudflare Pages. شرح شامل للمطورين حول تقنيات الاستضافة الحديثة...</p>
-                    <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 7: Cloudflare WAF (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">
-                        <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="جدار حماية كلاود فلير WAF">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/cloudflare-waf-security-guide" style="color: #333;">وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</a></h2>
-                    <p style="color: #777;">دليل شامل يشرح كيفية استخدام جدار حماية كلاود فلير (WAF) لتأمين موقعك من الهجمات، وحظر الدول المشبوهة، وتفعيل وضع "تحت الهجوم"...</p>
-                    <a href="https://connecttag.org/blog/cloudflare-waf-security-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 6: Yemen Telecom Ministry (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">
-                        <img src="https://connecttag.org/upload/telecom-yemen.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="وزارة الاتصالات اليمنية">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/yemen-telecom-ministry-guide" style="color: #333;">وزارة الاتصالات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</a></h2>
-                    <p style="color: #777;">دليل شامل يشرح هيكلية وزارة الاتصالات وتكنولوجيا المعلومات في اليمن، والمؤسسات التابعة لها، وأحدث خدمات الإنترنت والألياف الضوئية المتاحة...</p>
-                    <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 4: Website Security (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/website-security-simple-steps">
-                        <img src="https://connecttag.org/upload/security-steps.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="أمن المواقع الإلكترونية">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/website-security-simple-steps" style="color: #333;">5 خطوات بسيطة لحماية موقعك الإلكتروني من الاختراق</a></h2>
-                    <p style="color: #777;">تعرف على أهم الخطوات العملية والبسيطة لتأمين موقعك الإلكتروني وحمايته من الهجمات السيبرانية وضمان سلامة بيانات عملائك...</p>
-                    <a href="https://connecttag.org/blog/website-security-simple-steps" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 5: Google Business (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/google-business-profile-guide">
-                        <img src="https://connecttag.org/upload/google-business-guide.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="جوجل بيزنس وخرائط جوجل">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/google-business-profile-guide" style="color: #333;">دليل شامل: كيف تظهر شركتك في نتائج بحث وخرائط جوجل؟</a></h2>
-                    <p style="color: #777;">تعلم كيفية إنشاء وتحسين ملف شركتك على جوجل لتظهر في نتائج البحث والخرائط وتجذب المزيد من العملاء المحليين لمشروعك...</p>
-                    <a href="https://connecttag.org/blog/google-business-profile-guide" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 0.1 (New: Internet Comparison) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
-                        <img src="https://connecttag.org/upload/yemen-internet-comparison.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="مقارنة إنترنت اليمن 4G ADSL Fiber">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber" style="color: #333;">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لعام 2026</a></h2>
-                    <p style="color: #777;">تعرف على الفروقات الجوهرية بين تقنيات الإنترنت المتاحة في اليمن من حيث السرعة، الاستقرار، والتكلفة لتتمكن من اختيار الخدمة الأنسب لعملك أو منزلك...</p>
-                    <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 0 (New) -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
-                        <img src="https://connecttag.org/upload/yemen-4g.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="استعلام رصيد يمن فورجي">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance" style="color: #333;">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h2>
-                    <p style="color: #777;">دليل شامل يشرح كافة الطرق الرسمية والميسرة للاستعلام عن رصيد إنترنت يمن فورجي، سواء عبر البوابة الإلكترونية، الرسائل النصية، أو الاتصال بالدعم...</p>
-                    <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 1 -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/choosing-web-hosting">
-                        <img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="كيف تختار استضافة موقعك" loading="lazy">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/choosing-web-hosting" style="color: #333;">كيف تختار استضافة موقعك الإلكتروني؟</a></h2>
-                    <p style="color: #777;">يعتبر اختيار شركة الاستضافة المناسبة حجر الزاوية في نجاح أي موقع إلكتروني. في هذا المقال نناقش أهم العوامل التقنية والتجارية التي يجب عليك فحصها قبل اتخاذ القرار...</p>
-                    <a href="https://connecttag.org/blog/choosing-web-hosting" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 2 -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/digital-marketing-importance">
-                        <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="أهمية التسويق الرقمي" loading="lazy">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/digital-marketing-importance" style="color: #333;">أهمية التسويق الرقمي للشركات الناشئة</a></h2>
-                    <p style="color: #777;">في ظل المنافسة الشديدة اليوم، لم يعد التسويق التقليدي كافياً. تعرف على كيفية استغلال قنوات التسويق الرقمي لزيادة مبيعاتك وبناء علامة تجارية قوية بأقل التكاليف...</p>
-                    <a href="https://connecttag.org/blog/digital-marketing-importance" class="btn btn-default">اقرأ المقال كاملاً</a>
-                </div>
-            </div>
-
-            <!-- Blog Item 3 -->
-            <div class="col-md-6">
-                <div class="blog-post-card" style="margin-bottom: 50px; border-bottom: 1px solid #eee; padding-bottom: 30px;">
-                    <a href="https://connecttag.org/blog/why-your-business-needs-app">
-                        <img src="https://connecttag.org/upload/why-you-need-apps.webp" class="img-responsive" style="border-radius: 15px; margin-bottom: 20px;" alt="تطبيقات الهواتف الذكية" loading="lazy">
-                    </a>
-                    <h2 style="margin-top: 10px;"><a href="https://connecttag.org/blog/why-your-business-needs-app" style="color: #333;">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h2>
-                    <p style="color: #777;">التواجد في جيوب عملائك هو أسرع طريق للنجاح. نوضح في هذا المقال كيف يساهم تطبيق الهاتف الذكي في تحويل عملائك العاديين إلى عملاء دائمين وموالين لعلامتك...</p>
-                    <a href="https://connecttag.org/blog/why-your-business-needs-app" class="btn btn-default">اقرأ المقال كاملاً</a>
+        <!-- ترويسة الصفحة مع صورة الغلاف -->
+        <div class="page-header-unified">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>المدونة</h1>
+                        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}]'></site-breadcrumb>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-</main>
+        <div id="blog-list" style="padding-bottom: 80px;">
+            <div class="container">
+                <div class="row blog-grid-row">
 
-<!-- Modular Web Component: Footer -->
-<site-footer></site-footer>
+                    <!-- Blog Item 13 -->
+                    <div class="col-md-6 col-lg-4"> <!-- جعلتها 3 أعمدة في الشاشات الكبيرة للحصول على مظهر أجمل، يمكنك إعادتها col-lg-6 إذا أردت عمودين فقط -->
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">
+                                    <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" alt="تحسين إعدادات كلاود فلير">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">ضبط إعدادات كلاود فلير بأفضل الممارسات: دليل تحسين الأداء والأمان</a></h2>
+                                <p class="card-text">تعلم كيفية تهيئة كلاود فلير لتحقيق أقصى سرعة، من ضغط Brotli وتهيئة الكاش إلى تأمين الاتصال عبر بروتوكول TLS 1.3...</p>
+                                <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 12 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/jetpack-compose-guide">
+                                    <img src="https://connecttag.org/upload/jetpack-compose.webp" alt="تطوير أندرويد Jetpack Compose">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/jetpack-compose-guide">الدليل الشامل لـ Jetpack Compose: مستقبل تطبيقات الأندرويد</a></h2>
+                                <p class="card-text">تعرف على الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في مشروعك...</p>
+                                <a href="https://connecttag.org/blog/jetpack-compose-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 11 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">
+                                    <img src="https://connecttag.org/upload/android-reverse-engineering.webp" alt="أمن تطبيقات الأندرويد">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/android-app-security-reverse-engineering">حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</a></h2>
+                                <p class="card-text">تعلم كيفية رفع تكلفة الهجوم على تطبيقك وحماية ملكيتك الفكرية باستخدام تشويش الكود، تقنيات RASP، واستخدام الـ NDK...</p>
+                                <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 10 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/api-security-guide">
+                                    <img src="https://connecttag.org/upload/api-security.webp" alt="أمن واجهات برمجة التطبيقات">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/api-security-guide">حماية واجهات برمجة التطبيقات (API Security): الدليل الشامل</a></h2>
+                                <p class="card-text">تعرف على كيفية تأمين قنوات التواصل الرقمي، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات...</p>
+                                <a href="https://connecttag.org/blog/api-security-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 9 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/advanced-database-security-architecture">
+                                    <img src="https://connecttag.org/upload/database-architecture.webp" alt="هندسة قواعد البيانات">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/advanced-database-security-architecture">المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</a></h2>
+                                <p class="card-text">دليل هندسي شامل لتصميم وتأمين قواعد البيانات، يشمل الحماية من SQL Injection، استخدام UUIDs، وهندسة الصلاحيات RBAC...</p>
+                                <a href="https://connecttag.org/blog/advanced-database-security-architecture" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 8 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">
+                                    <img src="https://connecttag.org/upload/cloudflare-page-hosting.webp" alt="استضافة Cloudflare Pages">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</a></h2>
+                                <p class="card-text">اكتشف كيف تطلق موقعك الإلكتروني مجاناً وبأداء عالمي باستخدام Cloudflare Pages. شرح شامل للمطورين حول تقنيات الاستضافة الحديثة...</p>
+                                <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 7 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">
+                                    <img src="https://connecttag.org/upload/waf-cloudflare.webp" alt="جدار حماية كلاود فلير WAF">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-waf-security-guide">وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</a></h2>
+                                <p class="card-text">دليل شامل يشرح كيفية استخدام جدار حماية كلاود فلير (WAF) لتأمين موقعك من الهجمات، وحظر الدول المشبوهة، وتفعيل وضع "تحت الهجوم"...</p>
+                                <a href="https://connecttag.org/blog/cloudflare-waf-security-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">
+                                    <img src="https://connecttag.org/upload/telecom-yemen.webp" alt="وزارة الاتصالات اليمنية">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">وزارة الاتصالات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</a></h2>
+                                <p class="card-text">دليل شامل يشرح هيكلية وزارة الاتصالات وتكنولوجيا المعلومات في اليمن، والمؤسسات التابعة لها، وأحدث خدمات الإنترنت والألياف الضوئية المتاحة...</p>
+                                <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/website-security-simple-steps">
+                                    <img src="https://connecttag.org/upload/security-steps.webp" alt="أمن المواقع الإلكترونية">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/website-security-simple-steps">5 خطوات بسيطة لحماية موقعك الإلكتروني من الاختراق</a></h2>
+                                <p class="card-text">تعرف على أهم الخطوات العملية والبسيطة لتأمين موقعك الإلكتروني وحمايته من الهجمات السيبرانية وضمان سلامة بيانات عملائك...</p>
+                                <a href="https://connecttag.org/blog/website-security-simple-steps" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/google-business-profile-guide">
+                                    <img src="https://connecttag.org/upload/google-business-guide.webp" alt="جوجل بيزنس وخرائط جوجل">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/google-business-profile-guide">دليل شامل: كيف تظهر شركتك في نتائج بحث وخرائط جوجل؟</a></h2>
+                                <p class="card-text">تعلم كيفية إنشاء وتحسين ملف شركتك على جوجل لتظهر في نتائج البحث والخرائط وتجذب المزيد من العملاء المحليين لمشروعك...</p>
+                                <a href="https://connecttag.org/blog/google-business-profile-guide" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 0.1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
+                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp" alt="مقارنة إنترنت اليمن 4G ADSL Fiber">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لعام 2026</a></h2>
+                                <p class="card-text">تعرف على الفروقات الجوهرية بين تقنيات الإنترنت المتاحة في اليمن من حيث السرعة، الاستقرار، والتكلفة لتتمكن من اختيار الخدمة الأنسب لعملك أو منزلك...</p>
+                                <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 0 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
+                                    <img src="https://connecttag.org/upload/yemen-4g.webp" alt="استعلام رصيد يمن فورجي">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h2>
+                                <p class="card-text">دليل شامل يشرح كافة الطرق الرسمية والميسرة للاستعلام عن رصيد إنترنت يمن فورجي، سواء عبر البوابة الإلكترونية، الرسائل النصية، أو الاتصال بالدعم...</p>
+                                <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/choosing-web-hosting">
+                                    <img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" alt="كيف تختار استضافة موقعك" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/choosing-web-hosting">كيف تختار استضافة موقعك الإلكتروني؟</a></h2>
+                                <p class="card-text">يعتبر اختيار شركة الاستضافة المناسبة حجر الزاوية في نجاح أي موقع إلكتروني. في هذا المقال نناقش أهم العوامل التقنية والتجارية التي يجب عليك فحصها قبل اتخاذ القرار...</p>
+                                <a href="https://connecttag.org/blog/choosing-web-hosting" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/digital-marketing-importance">
+                                    <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" alt="أهمية التسويق الرقمي" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/digital-marketing-importance">أهمية التسويق الرقمي للشركات الناشئة</a></h2>
+                                <p class="card-text">في ظل المنافسة الشديدة اليوم، لم يعد التسويق التقليدي كافياً. تعرف على كيفية استغلال قنوات التسويق الرقمي لزيادة مبيعاتك وبناء علامة تجارية قوية بأقل التكاليف...</p>
+                                <a href="https://connecttag.org/blog/digital-marketing-importance" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="custom-blog-card">
+                            <div class="img-wrapper">
+                                <a href="https://connecttag.org/blog/why-your-business-needs-app">
+                                    <img src="https://connecttag.org/upload/why-you-need-apps.webp" alt="تطبيقات الهواتف الذكية" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title"><a href="https://connecttag.org/blog/why-your-business-needs-app">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h2>
+                                <p class="card-text">التواجد في جيوب عملائك هو أسرع طريق للنجاح. نوضح في هذا المقال كيف يساهم تطبيق الهاتف الذكي في تحويل عملائك العاديين إلى عملاء دائمين وموالين لعلامتك...</p>
+                                <a href="https://connecttag.org/blog/why-your-business-needs-app" class="read-more-btn">اقرأ المقال</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modular Web Component: Footer -->
+    <site-footer></site-footer>
 
 </div>
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 </body>
 </html>
-
