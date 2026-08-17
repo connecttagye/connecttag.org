@@ -47,7 +47,8 @@ class SiteBreadcrumb extends HTMLElement {
         'our-company': 'الشركة',
         'about-site': 'حول الموقع',
         'contact': 'اتصل بنا',
-        'faq': 'الأسئلة الشائعة'
+        'faq': 'الأسئلة الشائعة',
+        'payment-methods': 'طرق الدفع'
       };
 
       let currentAccUrl = baseUrl + '/';
