@@ -111,6 +111,20 @@ class SiteRelatedPosts extends HTMLElement {
         link: "blog/android-app-security-reverse-engineering",
         image: "upload/android-reverse-engineering.webp",
         excerpt: "ارفع تكلفة الهجوم على تطبيقك واحمِ ملكيتك الفكرية باستخدام أحدث التقنيات."
+      },
+      {
+        id: "jetpack-compose-guide",
+        title: "Jetpack Compose: مستقبل الأندرويد",
+        link: "blog/jetpack-compose-guide",
+        image: "upload/jetpack-compose.webp",
+        excerpt: "تعرف على Jetpack Compose، الأداة الثورية لبناء واجهات الأندرويد واكتشف الفرق بينه وبين XML."
+      },
+      {
+        id: "iis-isapi-deployment-guide",
+        title: "نشر وتصحيح ISAPI DLL على IIS",
+        link: "blog/iis-isapi-deployment-guide",
+        image: "upload/iis-isapi-guide.webp",
+        excerpt: "دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS لضمان الأداء والاستقرار."
       }
     ];
 
