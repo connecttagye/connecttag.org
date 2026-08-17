@@ -61,7 +61,7 @@ class SiteFooter extends HTMLElement {
             <p><i class="fa-solid fa-location-dot" style="color: var(--ct-primary);"></i> اليمن، صنعاء</p>
             <p><i class="fa-solid fa-envelope" style="color: var(--ct-primary);"></i> info@connecttag.org</p>
             <div class="ct-qr-contact" style="margin-top: 15px;">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://connecttag.org/contact"
+              <img src="${baseUrl}/assets/img/qr-contact.webp"
                    alt="QR التواصل"
                    style="border: 5px solid #fff; border-radius: 8px; width: 100px; height: 100px; background: #fff;"
                    loading="lazy">

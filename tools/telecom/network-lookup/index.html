@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
     <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <style>
         body {
@@ -269,6 +271,21 @@
             .op-actions { flex-direction: row; margin-top: 10px; }
             .card-accent-line { height: 6px; width: 100%; bottom: auto; }
         }
+
+        /* Choices.js Customization */
+        .choices__inner {
+            border-radius: 16px !important;
+            border: 2px solid #f1f5f9 !important;
+            background-color: #f8fafc !important;
+            min-height: 56px !important;
+            display: flex;
+            align-items: center;
+        }
+        .choices__list--single { padding-right: 20px !important; }
+        .choices__item--selectable { font-weight: 700 !important; font-size: 16px !important; }
+        .choices__list--dropdown { border-radius: 16px !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important; }
+        .choices__item--choice { display: flex; align-items: center; gap: 10px; }
+        .choice-flag { width: 20px; border-radius: 2px; }
     </style>
 </head>
 <body>
@@ -403,6 +420,7 @@
         const btnMccSearch = document.getElementById('btnMccSearch');
         const btnCountrySearch = document.getElementById('btnCountrySearch');
 
+        let choicesInstance = null;
         let cfToken = '';
         window.onTurnstileSuccess = function(token) { cfToken = token; };
 
@@ -419,23 +437,49 @@
             };
         });
 
-        // 2. Load Countries
+        // 2. Load Countries with Choices.js for Search & Flags
         async function loadCountries() {
             try {
                 const res = await fetch('https://api.connecttag.app/v1/master-data/countries');
                 const data = await res.json();
 
-                countrySelect.innerHTML = '<option value="">اختر الدولة...</option>';
                 if (data.success && data.result) {
                     const sorted = data.result.sort((a, b) => (a.officialNameAr || '').localeCompare(b.officialNameAr || ''));
-                    sorted.forEach(c => {
-                        const opt = document.createElement('option');
-                        opt.value = c.id;
-                        opt.textContent = `${c.officialNameAr || c.officialNameEn} (+${c.dial})`;
-                        countrySelect.appendChild(opt);
+
+                    const countryChoices = sorted.map(c => ({
+                        value: String(c.id),
+                        label: `${c.officialNameAr || c.officialNameEn} (+${c.dial})`,
+                        customProperties: {
+                            iso2: (c.iso3166Alpha2 || '').toLowerCase()
+                        }
+                    }));
+
+                    choicesInstance = new Choices(countrySelect, {
+                        choices: countryChoices,
+                        searchEnabled: true,
+                        itemSelectText: '',
+                        noResultsText: 'لا توجد نتائج',
+                        noChoicesText: 'لا توجد خيارات متاحة',
+                        placeholder: true,
+                        placeholderValue: 'ابحث عن دولة...',
+                        callbackOnCreateTemplates: function(template) {
+                            return {
+                                choice: (classNames, data) => {
+                                    const flag = data.customProperties && data.customProperties.iso2
+                                        ? `<img src="https://flagcdn.com/w40/${data.customProperties.iso2}.png" class="choice-flag">`
+                                        : '';
+                                    return template(`
+                                        <div class="${classNames.item} ${classNames.itemChoice} ${data.disabled ? classNames.itemDisabled : classNames.itemSelectable}" data-select-text="${this.config.itemSelectText}" data-choice ${data.disabled ? 'aria-disabled="true"' : 'role="option"'} data-id="${data.id}" data-value="${data.value}">
+                                            ${flag} <span>${data.label}</span>
+                                        </div>
+                                    `);
+                                }
+                            };
+                        }
                     });
                 }
             } catch(e) {
+                console.error("Failed to load countries:", e);
                 countrySelect.innerHTML = '<option value="">خطأ في تحميل القائمة</option>';
             }
         }
@@ -458,7 +502,7 @@
                 if (!mcc) { if (window.showToast) window.showToast('أدخل رمز MCC', 'info'); return; }
                 url += `&mcc=${mcc}${mnc ? '&mnc='+mnc : ''}`;
             } else {
-                const cid = countrySelect.value;
+                const cid = choicesInstance ? choicesInstance.getValue(true) : countrySelect.value;
                 if (!cid) { if (window.showToast) window.showToast('اختر دولة', 'info'); return; }
                 url += `&countryId=${cid}`;
             }

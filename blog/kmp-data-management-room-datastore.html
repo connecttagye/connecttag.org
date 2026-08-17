@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دليل Room KMP و DataStore: تخزين وتشفير البيانات في Kotlin Multiplatform</title>
+<meta name="description" content="تعلم كيفية إتقان تخزين البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية. دليل شامل للتنفيذ العملي مع تأمين البيانات وتشفيرها لـ Android و iOS.">
+<link rel="canonical" href="https://connecttag.org/blog/kmp-data-management-room-datastore" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/kmp-data-management-room-datastore" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="تخزين وتشفير البيانات في KMP: شرح Room و DataStore العملي">
+<meta property="og:description" content="دليل المطورين المحترفين للتعامل مع قواعد البيانات والإعدادات في Kotlin Multiplatform مع أعلى معايير الأمان والتشفير." />
+<meta property="og:image" content="https://connecttag.org/upload/kmp-data-encryption.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/kmp-data-management-room-datastore" />
+<meta name="twitter:title" content="دليل Room KMP و DataStore: تأمين البيانات في تطبيقات KMP">
+<meta name="twitter:image" content="https://connecttag.org/upload/kmp-data-encryption.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.6"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.6">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.6">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.6">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.6" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.6" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "دليل Room KMP و DataStore: تخزين وتشفير البيانات في Kotlin Multiplatform",
+    "description": "تعلم كيفية إتقان تخزين البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية مع تأمين البيانات وتشفيرها لـ Android و iOS.",
+    "image": "https://connecttag.org/upload/kmp-data-encryption.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-17T21:00:00+03:00",
+    "dateModified": "2026-08-17T21:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/kmp-data-management-room-datastore"
+    }
+  }
+]
+</script>
+
+<style>
+    .security-alert { background: #fff5f5; border-right: 5px solid #f56565; padding: 20px; border-radius: 8px; margin: 30px 0; }
+    .security-alert h3 { color: #c53030; margin-top: 0; font-size: 18px; }
+    .step-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 25px 0; }
+    .step-number { background: #0077b6; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; margin-left: 10px; }
+
+    .tech-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
+    .code-label { font-size: 12px; color: #64748b; margin-bottom: 5px; display: block; font-weight: 700; }
+</style>
+
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تطوير KMP", "url":"https://connecttag.org/blog/kmp-data-management-room-datastore"}]'></site-breadcrumb>
+
+                <div class="tech-badge"> Kotlin Multiplatform (KMP)</div>
+                <h1>إتقان إدارة البيانات في KMP: استخدام Room و DataStore وتشفيرهما</h1>
+
+                <site-article-meta
+                  date="17 أغسطس 2026"
+                  updated="17 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="../upload/kmp-data-encryption.webp" class="img-responsive" alt="تخزين وتأمين البيانات في Kotlin Multiplatform" loading="lazy" style="border-radius: 15px;">
+
+                <p class="lead mt-4">في عالم التطبيقات الاحترافية، لا يكفي أن يعمل الكود على منصات متعددة، بل يجب أن تكون **البيانات مستقرة، سريعة، ومحمية**. مع وصول دعم جوجل الرسمي لمكتبات Room و DataStore إلى Kotlin Multiplatform (KMP)، أصبح لدينا الآن الأدوات المعيارية لبناء قاعدة بيانات مشتركة تتسم بالكفاءة والأمان.</p>
+
+                <h2 id="room-kmp">1. الثورة الجديدة: Room KMP</h2>
+                <p>لم يعد Room مقتصرًا على الأندرويد؛ الآن يمكنك تعريف الجداول (Entities) وعمليات الوصول (DAOs) مرة واحدة في مجلد <code>commonMain</code> واستخدامها في iOS و Android وحتى Desktop.</p>
+
+                <div class="step-box">
+                    <span class="step-number">1</span>
+                    <strong>تعريف الكيان (Entity):</strong> نكتب الكود مرة واحدة للجميع.
+                    <site-code-block language="Kotlin" title="CommonMain / UserEntity.kt">
+@Entity
+data class UserEntity(
+    @PrimaryKey val id: Int,
+    val name: String,
+    val email: String
+)
+                    </site-code-block>
+                </div>
+
+                <h2 id="datastore">2. الإعدادات البسيطة مع Jetpack DataStore</h2>
+                <p>للمعلومات البسيطة مثل "هل المستخدم مسجل دخول؟" أو "الوضع الداكن"، نستخدم DataStore. هي بديل حديث وآمن لـ SharedPreferences وتدعم الـ Coroutines بشكل كامل.</p>
+                <site-code-block language="Kotlin" title="CommonMain / SettingsStore.kt">
+val Context.dataStore: DataStore&lt;Preferences&gt; by preferencesDataStore(name = "settings")
+// في KMP نستخدم محرك مشترك لإنشاء الملف في كل منصة
+                </site-code-block>
+
+                <div class="security-alert">
+                    <h3><i class="fa-solid fa-user-secret"></i> الجانب الأمني: التشفير هو الأولوية</h3>
+                    <p>تخزين البيانات دون تشفير هو مخاطرة كبرى. إليك كيف نؤمن البيانات في KMP:</p>
+                </div>
+
+                <h2 id="encryption">3. تشفير قواعد البيانات والإعدادات</h2>
+
+                <h4>أ. تشفير قاعدة بيانات Room</h4>
+                <p>نستخدم مكتبة <strong>SQLCipher</strong>. عند بناء الـ Database في كل منصة، نقوم بتمرير مفتاح تشفير (Passphrase):</p>
+                <site-code-block language="Kotlin" title="تشفير Room Database">
+val factory = SupportFactory(SQLiteDatabase.getBytes("مفتاح-سري-قوي".toCharArray()))
+builder.openHelperFactory(factory)
+                </site-code-block>
+
+                <h4>ب. تأمين DataStore (Encryption at Rest)</h4>
+                <p>في الأندرويد نستخدم <strong>AES-GCM</strong> مع <code>Android Keystore</code>، وفي iOS نستخدم الـ <strong>Keychain</strong>. الهدف هو تشفير القيمة قبل حفظها في ملف الـ Preferences بحيث لا يمكن قراءتها حتى لو تم الوصول للملف.</p>
+
+                <h2 id="best-practices">4. أفضل الممارسات لإدارة البيانات</h2>
+                <ul>
+                    <li><strong>الترحيل التدريجي (Migration):</strong> دائماً استخدم نسخة لقاعدة البيانات وقم بإدارة عمليات الترحيل بعناية لتجنب فقدان بيانات المستخدمين.</li>
+                    <li><strong>العمليات الخلفية:</strong> تأكد أن جميع عمليات Room و DataStore تتم في <code>Dispatchers.IO</code> لتجنب تجميد واجهة المستخدم.</li>
+                    <li><strong>حقن التبعيات:</strong> استخدم <strong>Koin</strong> أو <strong>Dagger Hilt</strong> لتوفير نسخة واحدة (Singleton) من قاعدة البيانات لكامل التطبيق.</li>
+                </ul>
+
+                <div class="decision-box" style="background: #eef2f6; border-right: 5px solid #0077b6; padding: 25px; border-radius: 8px; margin: 40px 0;">
+                    <h3>خلاصة القول</h3>
+                    <p>استخدام **Room KMP** و **DataStore** ليس مجرد اتباع للموضة التقنية، بل هو استثمار في استقرار وأمان تطبيقك. البدء بهما الآن يعني تقليل الأكواد المكررة وضمان حماية بيانات عملائك عبر جميع المنصات.</p>
+                </div>
+
+                <p><strong>هل تواجه تحديات في إعداد Room لمشروعك الـ KMP؟</strong> في <strong>كونكت تاق</strong>، نساعد الشركات على بناء معباريات بيانات متينة وآمنة. تواصل معنا لاستشارة تقنية متخصصة.</p>
+
+                <site-author-box name="عقيل محمد" avatar="../upload/author/aqeldev.webp" link="../author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="kmp-vs-flutter-comparison, jetpack-compose-guide, android-app-security-reverse-engineering"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
