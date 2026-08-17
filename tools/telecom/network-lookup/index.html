@@ -6,6 +6,7 @@
 
     <title>مستكشف مشغلي الشبكات العالمي (MCC/MNC) - كونكت تاق</title>
     <meta name="description" content="أداة احترافية للبحث عن بيانات مشغلي شبكات الهاتف المحمول حول العالم باستخدام أكواد MCC و MNC. اكتشف تفاصيل الشبكات، الدول، والبادئات.">
+    <link rel="canonical" href="https://connecttag.org/tools/telecom/network-lookup/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
     <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
@@ -25,42 +27,60 @@
             font-family: 'Cairo', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
+            background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
         }
 
         .tool-header {
-            background: #ffffff;
-            padding: 60px 0 30px;
+            background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
+            padding: 80px 0 60px;
             text-align: center;
-            border-bottom: 1px solid #edf2f7;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
         }
-        .tool-header h1 { font-weight: 900; color: #006b98; font-size: 28px; }
+        .tool-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="%23006b98" fill-opacity="0.03" fill-rule="evenodd"><circle cx="3" cy="3" r="3"/><circle cx="13" cy="13" r="3"/></g></svg>');
+        }
+        .tool-header h1 { font-weight: 900; color: #006b98; font-size: 36px; margin-bottom: 15px; }
+        .tool-header p { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
         .search-card {
             background: #fff;
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 15px 35px rgba(0, 107, 152, 0.08);
-            margin-top: -40px;
-            border: 1px solid #edf2f7;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 107, 152, 0.1);
+            margin-top: -50px;
+            border: 1px solid #fff;
             position: relative;
             z-index: 10;
         }
 
-        .input-label {
-            font-weight: 800;
-            color: #64748b;
-            font-size: 13px;
-            margin-bottom: 8px;
-            display: block;
+        .input-group-modern {
+            position: relative;
+            margin-bottom: 0;
         }
-
+        .input-group-modern i {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 18px;
+            z-index: 5;
+        }
         .form-control-modern {
-            height: 52px;
-            border-radius: 14px;
-            border: 1.5px solid #e2e8f0;
+            height: 56px;
+            border-radius: 16px !important;
+            border: 2px solid #f1f5f9;
+            padding-right: 48px;
             font-weight: 700;
             transition: 0.3s;
-            background-color: #fcfdfe;
+            background-color: #f8fafc;
+            font-size: 16px;
         }
         .form-control-modern:focus {
             border-color: #006b98;
@@ -68,161 +88,186 @@
             box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.1);
         }
 
-        .btn-lookup {
-            height: 52px;
-            border-radius: 14px;
-            background: #006b98;
-            color: #fff;
-            font-weight: 800;
-            border: none;
-            transition: 0.3s;
-        }
-        .btn-lookup:hover {
-            background: #00567a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 107, 152, 0.2);
-        }
-
-        /* Result Styles */
-        .operator-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 0;
-            margin-bottom: 25px;
-            border: 1px solid #edf2f7;
-            transition: 0.3s;
-            overflow: hidden;
-            display: flex;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-        .operator-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
-
-        .operator-accent {
-            width: 10px;
-            flex-shrink: 0;
-        }
-
-        .operator-body {
-            padding: 25px;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .operator-logo-box {
-            width: 75px;
-            height: 75px;
-            background: #f1f5f9;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: #006b98;
-            flex-shrink: 0;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .operator-main { flex-grow: 1; }
-        .operator-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .operator-name { font-weight: 900; font-size: 20px; color: #1e293b; }
-
-        .country-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #f8fafc;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #64748b;
-            border: 1px solid #e2e8f0;
-        }
-
-        .tech-tags { display: flex; gap: 10px; margin-top: 10px; }
-        .badge-tech {
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 800;
-            font-family: monospace;
-            text-transform: uppercase;
-        }
-
-        .prefix-container {
-            margin-top: 15px;
-            background: #fcfdfe;
-            padding: 10px 15px;
-            border-radius: 12px;
-            border: 1px dashed #cbd5e1;
-        }
-        .prefix-label { font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .prefix-list { display: flex; gap: 6px; flex-wrap: wrap; }
-        .prefix-item {
-            background: #fff;
-            color: #334155;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: 700;
-            border: 1px solid #e2e8f0;
-        }
-
-        .btn-api-action {
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .country-flag {
-            width: 22px;
-            height: 15px;
-            object-fit: cover;
-            border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
         .search-mode-pill {
             display: inline-flex;
             background: #f1f5f9;
-            padding: 6px;
-            border-radius: 14px;
-            margin-bottom: 25px;
+            padding: 8px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            border: 1px solid #e2e8f0;
         }
         .search-mode-pill .btn-check:checked + .btn {
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            color: #006b98;
+            background: #006b98;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 107, 152, 0.3);
         }
         .search-mode-pill .btn {
             border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 14px;
-            padding: 8px 20px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 10px 25px;
             color: #64748b;
+            transition: 0.3s;
+        }
+
+        .btn-lookup {
+            height: 56px;
+            border-radius: 16px;
+            background: #006b98;
+            color: #fff;
+            font-weight: 900;
+            border: none;
+            transition: 0.4s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-lookup:hover {
+            background: #00567a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 107, 152, 0.25);
+            color: #fff;
+        }
+
+        /* Result Cards Redesign */
+        .operator-card {
+            background: #fff;
+            border-radius: 24px;
+            margin-bottom: 25px;
+            border: 1px solid #eef2f6;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .operator-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+        }
+
+        .card-accent-line {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 6px;
+        }
+
+        .operator-content {
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+        }
+
+        .op-icon-wrapper {
+            width: 85px;
+            height: 85px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .op-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            border-radius: inherit;
+            background: currentColor;
+            opacity: 0.1;
+        }
+
+        .op-info { flex-grow: 1; }
+        .op-header { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; flex-wrap: wrap; }
+        .op-name { font-weight: 900; font-size: 22px; color: #0f172a; margin: 0; }
+
+        .badge-country {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #475569;
+        }
+        .country-flag { width: 20px; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+        .op-stats { display: flex; gap: 12px; margin-bottom: 15px; flex-wrap: wrap; }
+        .stat-tag {
+            background: #fff;
+            border: 1.5px solid #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .stat-tag span { color: #64748b; font-weight: 600; margin-left: 4px; }
+        .stat-tag b { color: #006b98; }
+
+        .prefixes-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 15px 20px;
+            border: 1px dashed #cbd5e1;
+        }
+        .prefixes-title { font-size: 12px; font-weight: 900; color: #94a3b8; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .prefixes-list { display: flex; gap: 8px; flex-wrap: wrap; }
+        .prefix-pill {
+            background: #fff;
+            color: #1e293b;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .op-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn-action-round {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #64748b;
+            transition: 0.3s;
+        }
+        .btn-action-round:hover {
+            background: #006b98;
+            color: #fff;
+            border-color: #006b98;
+            transform: scale(1.1);
         }
 
         .empty-state {
             text-align: center;
-            padding: 80px 0;
-            color: #94a3b8;
+            padding: 100px 40px;
+            background: #fff;
+            border-radius: 30px;
+            border: 2px dashed #e2e8f0;
         }
-        .empty-state i { font-size: 60px; margin-bottom: 20px; color: #e2e8f0; }
+        .empty-state i { font-size: 80px; color: #cbd5e1; margin-bottom: 25px; }
+        .empty-state h4 { font-weight: 800; color: #475569; }
 
-        @media (max-width: 768px) {
-            .operator-card { flex-direction: column; }
-            .operator-accent { width: 100%; height: 6px; }
-            .operator-body { flex-direction: column; text-align: center; }
-            .operator-title-row { justify-content: center; }
-            .prefix-list { justify-content: center; }
+        @media (max-width: 991px) {
+            .operator-content { flex-direction: column; align-items: center; text-align: center; }
+            .op-header { justify-content: center; }
+            .op-stats { justify-content: center; }
+            .prefixes-list { justify-content: center; }
+            .op-actions { flex-direction: row; margin-top: 10px; }
+            .card-accent-line { height: 6px; width: 100%; bottom: auto; }
         }
     </style>
 </head>
@@ -233,8 +278,9 @@
 <main>
     <div class="tool-header">
         <div class="container">
-            <h1>مستكشف مشغلي الشبكات العالمي</h1>
-            <p class="text-muted">بيانات دقيقة لمشغلي الاتصالات، أكواد MCC/MNC، والبادئات الهاتفية حول العالم</p>
+            <h1 data-aos="fade-down">مستكشف مشغلي الشبكات العالمي</h1>
+            <p class="text-muted" data-aos="fade-up" data-aos-delay="100">تحقق من بيانات مشغلي الاتصالات حول العالم، اكتشف أكواد MCC/MNC، وقم بتحليل البادئات الهاتفية بدقة متناهية.</p>
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"اتصالات", "url":"/tools/telecom/"}, {"title":"مستكشف الشبكات", "url":"/tools/telecom/network-lookup/"}]'></site-breadcrumb>
         </div>
     </div>
 
@@ -242,48 +288,63 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
 
-                <div class="search-card">
+                <div class="search-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="text-center">
                         <div class="search-mode-pill" role="group">
                             <input type="radio" class="btn-check" name="searchMode" id="modeMcc" value="mcc" checked>
-                            <label class="btn" for="modeMcc"><i class="fa-solid fa-microchip me-2"></i> بحث بالأكواد</label>
+                            <label class="btn" for="modeMcc"><i class="fa-solid fa-microchip me-2"></i> البحث بالأكواد التقنية</label>
 
                             <input type="radio" class="btn-check" name="searchMode" id="modeCountry" value="country">
-                            <label class="btn" for="modeCountry"><i class="fa-solid fa-globe me-2"></i> دليل الدول</label>
+                            <label class="btn" for="modeCountry"><i class="fa-solid fa-earth-africa me-2"></i> دليل مشغلي الدول</label>
                         </div>
                     </div>
 
                     <div id="mccSearchBox">
-                        <div class="row g-3">
+                        <div class="row g-4">
                             <div class="col-md-4">
-                                <label class="input-label">رمز الدولة للجوال (MCC)</label>
-                                <input type="number" id="mccInput" class="form-control form-control-modern" placeholder="مثلاً: 421">
+                                <label class="input-label" for="mccInput">رمز الدولة (MCC)</label>
+                                <div class="input-group-modern">
+                                    <i class="fa-solid fa-hashtag"></i>
+                                    <input type="number" id="mccInput" class="form-control form-control-modern" placeholder="مثلاً: 421">
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <label class="input-label">رمز الشبكة (MNC)</label>
-                                <input type="number" id="mncInput" class="form-control form-control-modern" placeholder="مثلاً: 01">
+                                <label class="input-label" for="mncInput">رمز الشبكة (MNC)</label>
+                                <div class="input-group-modern">
+                                    <i class="fa-solid fa-network-wired"></i>
+                                    <input type="number" id="mncInput" class="form-control form-control-modern" placeholder="مثلاً: 01">
+                                </div>
                             </div>
                             <div class="col-md-4 d-flex align-items-end">
-                                <button class="btn btn-lookup w-100" id="btnMccSearch">فحص الشبكة <i class="fa-solid fa-magnifying-glass ms-2"></i></button>
+                                <button class="btn btn-lookup w-100" id="btnMccSearch">
+                                    <span>فحص بيانات الشبكة</span>
+                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <div id="countrySearchBox" style="display: none;">
-                        <div class="row g-3">
+                        <div class="row g-4">
                             <div class="col-md-8">
-                                <label class="input-label">اختر الدولة أو ابحث عنها</label>
-                                <select id="countrySelect" class="form-select form-control-modern">
-                                    <option value="">جاري تحميل الدول...</option>
-                                </select>
+                                <label class="input-label" for="countrySelect">اختر الدولة من القائمة</label>
+                                <div class="input-group-modern">
+                                    <i class="fa-solid fa-flag"></i>
+                                    <select id="countrySelect" class="form-select form-control-modern">
+                                        <option value="">جاري تحميل الدول...</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-4 d-flex align-items-end">
-                                <button class="btn btn-lookup w-100" id="btnCountrySearch">عرض المشغلين <i class="fa-solid fa-list-ul ms-2"></i></button>
+                                <button class="btn btn-lookup w-100" id="btnCountrySearch">
+                                    <span>عرض قائمة المشغلين</span>
+                                    <i class="fa-solid fa-list-check"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div id="turnstile-container" style="margin-top: 25px; display: flex; justify-content: center;">
+                    <div id="turnstile-container" style="margin-top: 30px; display: flex; justify-content: center;">
                         <div class="cf-turnstile" data-sitekey="0x4AAAAAAESEvCF8w4t-bM2u" data-callback="onTurnstileSuccess"></div>
                     </div>
                 </div>
@@ -292,13 +353,40 @@
                 <div id="resultsWrapper" class="mt-5">
                     <div id="resultsContent">
                         <div class="empty-state">
-                            <i class="fa-solid fa-tower-broadcast"></i>
-                            <h4>بيانات الشبكات العالمية</h4>
-                            <p>استخدم الأكواد التقنية أو اختر دولة لعرض الشركات والبادئات المدعومة</p>
+                            <i class="fa-solid fa-tower-broadcast animate__animated animate__pulse animate__infinite"></i>
+                            <h4>جاهز للاستكشاف</h4>
+                            <p>أدخل بيانات MCC/MNC أو اختر دولة من القائمة لعرض تفاصيل المشغلين والبادئات المخصصة.</p>
                         </div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="container py-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="p-4 bg-white rounded-4 border">
+                    <i class="fa-solid fa-circle-info text-primary mb-3 fs-2"></i>
+                    <h5 class="fw-bold">ما هو الـ MCC؟</h5>
+                    <p class="small text-muted">رمز مكون من 3 أرقام يحدد الدولة عالمياً (مثلاً: 421 لليمن، 420 للسعودية).</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-4 bg-white rounded-4 border">
+                    <i class="fa-solid fa-network-wired text-success mb-3 fs-2"></i>
+                    <h5 class="fw-bold">ما هو الـ MNC؟</h5>
+                    <p class="small text-muted">رمز يحدد شركة الاتصالات داخل الدولة (مثلاً: 01 ليمن موبايل).</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-4 bg-white rounded-4 border">
+                    <i class="fa-solid fa-shield-halved text-info mb-3 fs-2"></i>
+                    <h5 class="fw-bold">دقة البيانات</h5>
+                    <p class="small text-muted">يتم تحديث قاعدة البيانات دورياً لضمان شمولية المشغلين والبادئات الهاتفية.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -331,128 +419,113 @@
             };
         });
 
-        // 2. Load Countries (Exempt from Turnstile now)
+        // 2. Load Countries
         async function loadCountries() {
             try {
                 const res = await fetch('https://api.connecttag.app/v1/master-data/countries');
-                if (!res.ok) throw new Error('Unauthorized or Server Error');
                 const data = await res.json();
 
                 countrySelect.innerHTML = '<option value="">اختر الدولة...</option>';
                 if (data.success && data.result) {
-                    // Sort countries by name
                     const sorted = data.result.sort((a, b) => (a.officialNameAr || '').localeCompare(b.officialNameAr || ''));
                     sorted.forEach(c => {
                         const opt = document.createElement('option');
                         opt.value = c.id;
-                        opt.dataset.iso2 = c.iso3166Alpha2;
                         opt.textContent = `${c.officialNameAr || c.officialNameEn} (+${c.dial})`;
                         countrySelect.appendChild(opt);
                     });
-
-                    // Auto-Discovery: Try to detect user country via CF header (simulated here)
-                    detectAndSetCountry(data.result);
                 }
             } catch(e) {
-                console.error('Error loading countries', e);
                 countrySelect.innerHTML = '<option value="">خطأ في تحميل القائمة</option>';
             }
         }
-
-        function detectAndSetCountry(countries) {
-            // We'll check if we can get the country from the API response or headers
-            // Cloudflare workers often add 'cf-ipcountry'
-            // For now, if we have a way to know, we set it.
-        }
-
         loadCountries();
 
-        // 3. Perform Search
+        // 3. Search Execution
         btnMccSearch.onclick = () => performSearch('mcc');
         btnCountrySearch.onclick = () => performSearch('country');
 
         async function performSearch(type) {
             if (!cfToken) {
-                if (window.toast) window.toast.show('يرجى إكمال التحقق الأمني (Turnstile) أولاً', 'warning');
+                if (window.showToast) window.showToast('يرجى إكمال التحقق الأمني أولاً', 'warning');
                 return;
             }
 
             let url = 'https://api.connecttag.app/v1/master-data/operators?cf_token=' + cfToken;
-
             if (type === 'mcc') {
                 const mcc = document.getElementById('mccInput').value.trim();
                 const mnc = document.getElementById('mncInput').value.trim();
-                if (!mcc) { if (window.toast) window.toast.show('يرجى إدخال رمز MCC', 'info'); return; }
+                if (!mcc) { if (window.showToast) window.showToast('أدخل رمز MCC', 'info'); return; }
                 url += `&mcc=${mcc}${mnc ? '&mnc='+mnc : ''}`;
             } else {
                 const cid = countrySelect.value;
-                if (!cid) { if (window.toast) window.toast.show('يرجى اختيار دولة', 'info'); return; }
+                if (!cid) { if (window.showToast) window.showToast('اختر دولة', 'info'); return; }
                 url += `&countryId=${cid}`;
             }
 
-            resultsContent.innerHTML = '<div class="text-center p-5"><div class="spinner-border text-primary"></div><p class="mt-3 fw-bold">جاري تحليل بيانات الشبكة...</p></div>';
+            resultsContent.innerHTML = '<div class="text-center p-5"><div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div><p class="mt-4 fw-bold text-muted">جاري سحب البيانات من السحابة...</p></div>';
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-
                 if (window.turnstile) turnstile.reset();
                 cfToken = '';
 
                 if (data.success && data.result && data.result.length > 0) {
                     renderResults(data.result);
                 } else {
-                    resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass-chart"></i><h4>لا توجد بيانات</h4><p>لم نتمكن من العثور على مشغلين مطابقين لطلباتك في قاعدة بياناتنا حالياً</p></div>';
+                    resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass-chart"></i><h4>لا توجد نتائج</h4><p>لم نجد مشغلين مطابقين لبحثك. تأكد من صحة الأكواد المدخلة.</p></div>';
                 }
             } catch(err) {
-                resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h4>خطأ في النظام</h4><p>حدث خطأ غير متوقع أثناء التواصل مع قاعدة البيانات</p></div>';
+                resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h4>خطأ في الاتصال</h4><p>فشل الوصول للخادم. يرجى المحاولة لاحقاً.</p></div>';
             }
         }
 
         function renderResults(operators) {
-            resultsContent.innerHTML = `<div class="d-flex justify-content-between align-items-center mb-4"><h5 class="fw-bold m-0">نتائج البحث (${operators.length}):</h5></div>`;
+            resultsContent.innerHTML = `<div class="d-flex align-items-center gap-3 mb-4"><span class="badge bg-primary rounded-pill px-3">${operators.length}</span> <h5 class="fw-bold m-0">مشغلين تم العثور عليهم:</h5></div>`;
 
-            operators.forEach(op => {
+            operators.forEach((op, index) => {
                 const prefixes = op.prefixes ? op.prefixes.split(',').map(p => p.trim()) : [];
                 const mainColor = op.color || '#006b98';
+                const delay = index * 100;
 
                 const card = `
-                    <div class="operator-card animate__animated animate__fadeInUp">
-                        <div class="operator-accent" style="background-color: ${mainColor}"></div>
-                        <div class="operator-body">
-                            <div class="operator-logo-box" style="color: ${mainColor}; background-color: ${mainColor}10">
+                    <div class="operator-card" data-aos="fade-up" data-aos-delay="${delay}">
+                        <div class="card-accent-line" style="background: ${mainColor}"></div>
+                        <div class="operator-content">
+                            <div class="op-icon-wrapper" style="color: ${mainColor}">
                                 <i class="fa-solid fa-tower-cell"></i>
                             </div>
-                            <div class="operator-main">
-                                <div class="operator-title-row">
-                                    <span class="operator-name">${op.name || op.nameEn}</span>
-                                    <span class="country-tag">
+                            <div class="op-info">
+                                <div class="op-header">
+                                    <h3 class="op-name">${op.name || op.nameEn}</h3>
+                                    <span class="badge-country">
                                         ${op.countryCode ? `<img src="https://flagcdn.com/w40/${op.countryCode.toLowerCase()}.png" class="country-flag">` : ''}
-                                        ${op.countryNameAr || op.countryNameEn || 'غير محدد'}
+                                        ${op.countryNameAr || op.countryNameEn || 'عالمي'}
                                     </span>
                                 </div>
-                                <div class="operator-meta">
-                                    <span class="meta-badge">MCC: <b>${op.mcc}</b></span>
-                                    <span class="meta-badge">MNC: <b>${op.mnc}</b></span>
-                                    ${op.code ? `<span class="meta-badge">Code: <b>${op.code}</b></span>` : ''}
-                                    <span class="meta-badge">النوع: <b>${op.isOperator ? 'مزود خدمة' : 'افتراضي'}</b></span>
+                                <div class="op-stats">
+                                    <div class="stat-tag"><span>MCC:</span> <b>${op.mcc}</b></div>
+                                    <div class="stat-tag"><span>MNC:</span> <b>${op.mnc}</b></div>
+                                    ${op.code ? `<div class="stat-tag"><span>رمز:</span> <b>${op.code}</b></div>` : ''}
+                                    <div class="stat-tag"><span>النوع:</span> <b>${op.isOperator ? 'مزود خدمة' : 'افتراضي'}</b></div>
                                 </div>
 
                                 ${prefixes.length > 0 ? `
-                                    <div class="prefix-container">
-                                        <span class="prefix-label">البادئات الهاتفية المدعومة:</span>
-                                        <div class="prefix-list">
-                                            ${prefixes.map(p => `<span class="prefix-item">${p}</span>`).join('')}
+                                    <div class="prefixes-box">
+                                        <span class="prefixes-title">البادئات المعتمدة:</span>
+                                        <div class="prefixes-list">
+                                            ${prefixes.map(p => `<span class="prefix-pill">${p}</span>`).join('')}
                                         </div>
                                     </div>
                                 ` : ''}
                             </div>
-                            <div class="operator-actions d-flex flex-column gap-2">
-                                <button class="btn-api-action btn btn-light" onclick="copyJson(${JSON.stringify(op).replace(/"/g, '&quot;')})" title="نسخ بيانات JSON">
-                                    <i class="fa-solid fa-code"></i> JSON
+                            <div class="op-actions">
+                                <button class="btn-action-round" onclick="copyJson(${JSON.stringify(op).replace(/"/g, '&quot;')})" title="نسخ JSON">
+                                    <i class="fa-solid fa-code"></i>
                                 </button>
-                                <button class="btn-api-action btn btn-light" onclick="copyRegex('${prefixes.join('|')}')" title="نسخ Regex للبادئات">
-                                    <i class="fa-solid fa-terminal"></i> Regex
+                                <button class="btn-action-round" onclick="copyRegex('${prefixes.join('|')}')" title="نسخ Regex">
+                                    <i class="fa-solid fa-terminal"></i>
                                 </button>
                             </div>
                         </div>
@@ -460,22 +533,26 @@
                 `;
                 resultsContent.insertAdjacentHTML('beforeend', card);
             });
+            if (window.AOS) AOS.refresh();
         }
 
         window.copyJson = (obj) => {
             navigator.clipboard.writeText(JSON.stringify(obj, null, 2)).then(() => {
-                if (window.toast) window.toast.show('تم نسخ بيانات JSON بنجاح!', 'success');
+                if (window.showToast) window.showToast('تم نسخ البيانات بصيغة JSON', 'success');
             });
         };
 
         window.copyRegex = (pattern) => {
             const regex = `^(${pattern})\\d+`;
             navigator.clipboard.writeText(regex).then(() => {
-                if (window.toast) window.toast.show('تم نسخ نمط Regex بنجاح!', 'success');
+                if (window.showToast) window.showToast('تم نسخ نمط Regex للبادئات', 'success');
             });
         };
     });
 </script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 800, once: true });</script>
 
 </body>
 </html>
