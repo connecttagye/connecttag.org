@@ -154,6 +154,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/blog/iis-isapi-deployment-guide</loc>
+    <lastmod>2026-08-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/blog/cloudflare-pages-hosting-guide</loc>
     <lastmod>2026-08-16</lastmod>
     <priority>0.8</priority>

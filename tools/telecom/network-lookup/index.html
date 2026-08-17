@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مستكشف مشغلي الشبكات العالمي (MCC/MNC) - كونكت تاق</title>
+    <meta name="description" content="أداة احترافية للبحث عن بيانات مشغلي شبكات الهاتف المحمول حول العالم باستخدام أكواد MCC و MNC. اكتشف تفاصيل الشبكات، الدول، والبادئات.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.5">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.5" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .tool-header {
+            background: #ffffff;
+            padding: 60px 0 30px;
+            text-align: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .tool-header h1 { font-weight: 900; color: #006b98; font-size: 28px; }
+
+        .search-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-top: -30px;
+            border: 1px solid #edf2f7;
+        }
+
+        .nav-pills-custom .nav-link {
+            border-radius: 12px;
+            font-weight: 700;
+            color: #64748b;
+            padding: 10px 25px;
+            transition: 0.3s;
+        }
+        .nav-pills-custom .nav-link.active {
+            background: #006b98;
+            color: #fff;
+        }
+
+        .input-group-modern .form-control {
+            height: 50px;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            font-weight: 700;
+            text-align: center;
+        }
+        .input-group-modern .form-control:focus {
+            border-color: #006b98;
+            box-shadow: 0 0 0 3px rgba(0, 107, 152, 0.1);
+        }
+
+        .btn-lookup {
+            height: 50px;
+            border-radius: 12px;
+            background: #006b98;
+            color: #fff;
+            font-weight: 800;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-lookup:hover { background: #00567a; transform: translateY(-2px); }
+
+        /* Result Styles */
+        .operator-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #edf2f7;
+            transition: 0.3s;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .operator-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+
+        .operator-logo {
+            width: 80px;
+            height: 80px;
+            background: #f1f5f9;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #006b98;
+            flex-shrink: 0;
+        }
+
+        .operator-info { flex-grow: 1; }
+        .operator-name { font-weight: 800; font-size: 18px; color: #1e293b; margin-bottom: 5px; }
+        .operator-meta { display: flex; gap: 15px; flex-wrap: wrap; }
+        .meta-badge {
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+        }
+
+        .prefix-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .prefix-item {
+            background: #ecfdf5;
+            color: #10b981;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            font-family: monospace;
+        }
+
+        .country-flag {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-left: 8px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 0;
+            color: #94a3b8;
+        }
+        .empty-state i { font-size: 50px; margin-bottom: 15px; opacity: 0.5; }
+
+        @media (max-width: 768px) {
+            .operator-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<main>
+    <div class="tool-header">
+        <div class="container">
+            <h1>مستكشف مشغلي الشبكات العالمي</h1>
+            <p class="text-muted">ابحث عن تفاصيل شبكات المحمول والاتصالات حول العالم</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+
+                <div class="search-card">
+                    <ul class="nav nav-pills nav-pills-custom justify-content-center mb-4" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-mcc-tab" data-bs-toggle="pill" data-bs-target="#pills-mcc" type="button" role="tab">بحث بالأكواد (MCC/MNC)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-country-tab" data-bs-toggle="pill" data-bs-target="#pills-country" type="button" role="tab">دليل الدول</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- MCC/MNC Search -->
+                        <div class="tab-pane fade show active" id="pills-mcc" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <input type="number" id="mccInput" class="form-control text-center" placeholder="MCC (مثلاً: 421)" style="height:50px; border-radius:12px; font-weight:700;">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" id="mncInput" class="form-control text-center" placeholder="MNC (مثلاً: 01)" style="height:50px; border-radius:12px; font-weight:700;">
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-lookup" id="btnMccSearch">فحص الشبكة <i class="fa-solid fa-magnifying-glass ms-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Country Browser -->
+                        <div class="tab-pane fade" id="pills-country" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <select id="countrySelect" class="form-select" style="height:50px; border-radius:12px; font-weight:700;">
+                                        <option value="">اختر الدولة...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-lookup" id="btnCountrySearch">عرض المشغلين <i class="fa-solid fa-list-ul ms-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Turnstile -->
+                    <div id="turnstile-container" style="margin-top: 20px; display: flex; justify-content: center;">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAESEvCF8w4t-bM2u" data-callback="onTurnstileSuccess"></div>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div id="resultsWrapper" class="mt-5">
+                    <div id="resultsContent">
+                        <div class="empty-state">
+                            <i class="fa-solid fa-tower-broadcast"></i>
+                            <h4>ابدأ البحث الآن</h4>
+                            <p>أدخل أكواد MCC/MNC أو اختر دولة لعرض بيانات الشبكات</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const mccInput = document.getElementById('mccInput');
+        const mncInput = document.getElementById('mncInput');
+        const countrySelect = document.getElementById('countrySelect');
+        const resultsContent = document.getElementById('resultsContent');
+        const btnMccSearch = document.getElementById('btnMccSearch');
+        const btnCountrySearch = document.getElementById('btnCountrySearch');
+
+        let cfToken = '';
+        window.onTurnstileSuccess = function(token) { cfToken = token; };
+
+        // 1. Load Countries for Dropdown
+        try {
+            const res = await fetch('https://api.connecttag.app/v1/master-data/countries');
+            const data = await res.json();
+            if (data.success && data.result) {
+                data.result.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.textContent = `${c.officialNameAr || c.officialNameEn} (+${c.dial})`;
+                    countrySelect.appendChild(opt);
+                });
+            }
+        } catch(e) { console.error('Error loading countries', e); }
+
+        // 2. Search Handlers
+        btnMccSearch.onclick = () => performSearch('mcc');
+        btnCountrySearch.onclick = () => performSearch('country');
+
+        async function performSearch(type) {
+            if (!cfToken) {
+                if (window.toast) window.toast.show('يرجى إكمال التحقق الأمني أولاً', 'warning');
+                return;
+            }
+
+            let url = 'https://api.connecttag.app/v1/master-data/operators?cf_token=' + cfToken;
+
+            if (type === 'mcc') {
+                const mcc = mccInput.value.trim();
+                const mnc = mncInput.value.trim();
+                if (!mcc) return;
+                url += `&mcc=${mcc}${mnc ? '&mnc='+mnc : ''}`;
+            } else {
+                const cid = countrySelect.value;
+                if (!cid) return;
+                url += `&countryId=${cid}`;
+            }
+
+            resultsContent.innerHTML = '<div class="text-center p-5"><div class="spinner-border text-primary"></div><p class="mt-2">جاري جلب البيانات...</p></div>';
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (window.turnstile) turnstile.reset();
+                cfToken = '';
+
+                if (data.success && data.result && data.result.length > 0) {
+                    renderResults(data.result);
+                } else {
+                    resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-circle-exclamation"></i><h4>لا توجد نتائج</h4><p>لم نجد بيانات مطابقة لمدخلاتك</p></div>';
+                }
+            } catch(err) {
+                resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h4>خطأ في الاتصال</h4><p>حدث خطأ أثناء محاولة الاتصال بالخادم</p></div>';
+            }
+        }
+
+        function renderResults(operators) {
+            resultsContent.innerHTML = `<h5 class="mb-4 fw-bold">تم العثور على (${operators.length}) مشغل:</h5>`;
+
+            operators.forEach(op => {
+                const prefixes = op.prefixes ? op.prefixes.split(',').map(p => p.trim()) : [];
+
+                const card = `
+                    <div class="operator-card animate__animated animate__fadeInUp">
+                        <div class="operator-logo">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div class="operator-info">
+                            <div class="operator-name">
+                                ${op.countryCode ? `<img src="https://flagcdn.com/w40/${op.countryCode.toLowerCase()}.png" class="country-flag" title="${op.countryNameAr}">` : ''}
+                                ${op.name || op.nameEn}
+                            </div>
+                            <div class="operator-meta">
+                                <span class="meta-badge">MCC: <b>${op.mcc}</b></span>
+                                <span class="meta-badge">MNC: <b>${op.mnc}</b></span>
+                                <span class="meta-badge">الدولة: <b>${op.countryNameAr || op.countryNameEn}</b></span>
+                                ${op.code ? `<span class="meta-badge">الكود: <b>${op.code}</b></span>` : ''}
+                            </div>
+                            ${prefixes.length > 0 ? `
+                                <div class="prefix-list">
+                                    ${prefixes.map(p => `<span class="prefix-item">${p}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="operator-actions">
+                             <button class="btn btn-sm btn-outline-secondary rounded-pill px-3" onclick="copyJson(${JSON.stringify(op).replace(/"/g, '&quot;')})">
+                                <i class="fa-solid fa-code"></i> JSON
+                             </button>
+                        </div>
+                    </div>
+                `;
+                resultsContent.insertAdjacentHTML('beforeend', card);
+            });
+        }
+
+        window.copyJson = (obj) => {
+            navigator.clipboard.writeText(JSON.stringify(obj, null, 2)).then(() => {
+                if (window.toast) window.toast.show('تم نسخ بيانات JSON!', 'success');
+            });
+        };
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS - كونكت تاق</title>
+<meta name="description" content="دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً باستخدام w3wp.exe.">
+<link rel="canonical" href="https://connecttag.org/blog/iis-isapi-deployment-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/iis-isapi-deployment-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="نشر وتصحيح أخطاء وحدات ISAPI DLL على IIS - كونكت تاق">
+<meta property="og:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
+<meta property="og:image" content="https://connecttag.org/upload/iis-isapi-guide.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://connecttag.org/blog/iis-isapi-deployment-guide" />
+<meta name="twitter:title" content="دليل نشر وتصحيح ISAPI DLL على خادم IIS - كونكت تاق">
+<meta name="twitter:image" content="https://connecttag.org/upload/iis-isapi-guide.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.6"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.6">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.6">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.6"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.6">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.6" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.6" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS",
+    "description": "دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً.",
+    "image": "https://connecttag.org/upload/iis-isapi-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/author/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-17T18:40:00+03:00",
+    "dateModified": "2026-08-17T18:40:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/iis-isapi-deployment-guide"
+    }
+  }
+]
+</script>
+
+<style>
+    .tech-card { background: #fcfcfc; border-right: 5px solid #0077b6; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .tech-card h3 { margin-top: 0; color: #0077b6; font-size: 18px; }
+    .step-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-bottom: 20px; position: relative; }
+    .step-number { position: absolute; top: -10px; right: 20px; background: #0077b6; color: #fff; padding: 2px 12px; border-radius: 20px; font-weight: 800; font-size: 12px; }
+
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
+    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 8px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+
+    .warning-box { border-right: 5px solid #ef4444; background: #fff5f5; padding: 20px; border-radius: 10px; margin: 25px 0; }
+    .info-box { border-right: 5px solid #3b82f6; background: #eff6ff; padding: 20px; border-radius: 10px; margin: 25px 0; }
+
+    code { background: #f1f5f9; color: #e11d48; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+</style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0077b6">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"نشر ISAPI على IIS", "url":"https://connecttag.org/blog/iis-isapi-deployment-guide"}]'></site-breadcrumb>
+                <h1>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS</h1>
+
+                <site-article-meta
+                  date="17 أغسطس 2026"
+                  updated="17 أغسطس 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" loading="lazy">
+
+                <p class="lead">إذا كنت تعمل على تطوير تطبيقات الويب أو واجهات برمجة التطبيقات (APIs) المعتمدة على مكتبات الربط الديناميكي (ISAPI DLL)، فإن استضافتها على خادم Microsoft IIS يتطلب إعدادات دقيقة لضمان الأداء العالي والاستقرار.</p>
+
+                <p>في هذا المقال، سنستعرض دليلاً عملياً وخطوة بخطوة لنشر تطبيقك بنجاح، بالإضافة إلى كيفية إعداد بيئة تصحيح الأخطاء (Debugging) وأهم النصائح لتجاوز المشاكل الشائعة. (تم اختبار هذه الخطوات وتطبيقها بنجاح على الإصدارين 7.5 و 8.5 من خادم IIS).</p>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#setup-iis">1. إعداد خادم IIS وتثبيت المكونات</a></li>
+                        <li><a href="#app-pool">2. تهيئة حوض التطبيقات (Application Pool)</a></li>
+                        <li><a href="#app-config">3. إعداد التطبيق وصلاحيات التنفيذ</a></li>
+                        <li><a href="#auth-perms">4. المصادقة وصلاحيات الملفات</a></li>
+                        <li><a href="#debugging">5. دليل المطورين لتصحيح الأخطاء</a></li>
+                        <li><a href="#troubleshooting">6. حل المشاكل الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="setup-iis">1. إعداد خادم IIS وتثبيت المكونات اللازمة</h2>
+                <p>قبل البدء في استضافة التطبيق، يجب التأكد من أن خادم IIS مهيأ لدعم وحدات ISAPI من خلال إضافة الأدوار التالية:</p>
+                <div class="step-box">
+                    <ul>
+                        <li>افتح مدير الخادم (Server Manager).</li>
+                        <li>انتقل إلى <strong>Server Roles</strong> ثم اختر <strong>Add Server Role</strong>.</li>
+                        <li>ضمن إعدادات خادم الويب (Web Server - IIS)، تأكد من تحديد:
+                            <ul>
+                                <li><code>ISAPI Extensions</code></li>
+                                <li><code>ISAPI Filters</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 id="app-pool">2. تهيئة بيئة الاستضافة وحوض التطبيقات (Application Pool)</h2>
+                <p>بمجرد تثبيت المكونات، يجب إعداد حوض تطبيقات معزول لضمان استقرار الخدمة:</p>
+                <ul>
+                    <li><strong>تجهيز الملفات:</strong> قم بإنشاء مجلد مخصص على الخادم (مثلاً: <code>C:\Inetpub\My_ISAPI</code>) وانسخ ملف الـ DLL إليه.</li>
+                    <li><strong>إنشاء حوض التطبيقات:</strong> من IIS Manager، اختر Application Pools وانقر على Add.
+                        <div class="info-box">
+                            <i class="fa-solid fa-info-circle"></i> <strong>نصيحة:</strong> قم بضبط إصدار .Net Framework على <strong>No Managed Code</strong> إلا إذا كان تطبيقك هجيناً.
+                        </div>
+                    </li>
+                    <li><strong>توافق المعمارية:</strong> إذا كان ملف الـ DLL لديك بـ 32 بت والخادم 64 بت، يجب تفعيل خيار <strong>Enable 32-Bit Applications</strong> من الإعدادات المتقدمة (Advanced Settings) لحوض التطبيقات.</li>
+                </ul>
+
+                <h2 id="app-config">3. إعداد التطبيق وصلاحيات التنفيذ</h2>
+                <p>الآن، يجب ربط الملفات بالموقع الإلكتروني وتفعيل إذن التشغيل:</p>
+                <div class="tech-card">
+                    <h3>خطوات الربط والتفعيل:</h3>
+                    <ol>
+                        <li><strong>إضافة التطبيق:</strong> انقر بزر الماوس الأيمن على موقع الويب واختر Add Application، ثم حدد المسار وحوض التطبيقات.</li>
+                        <li><strong>تفعيل التنفيذ:</strong> افتح Handler Mappings للتطبيق، ومن Edit Feature Permissions تأكد من تفعيل <strong>Execute</strong>.</li>
+                        <li><strong>قيود ISAPI:</strong> انتقل لعقدة الخادم الرئيسية، افتح <strong>ISAPI and CGI Restrictions</strong>، وأضف ملف الـ DLL الخاص بك مع تفعيل "Allow extension path to execute".</li>
+                    </ol>
+                </div>
+
+                <h2 id="auth-perms">4. إعدادات المصادقة وصلاحيات الكتابة</h2>
+                <p>لضمان عمل الخادم بسلاسة، خاصة عند توليد ملفات السجلات (Logs):</p>
+                <ul>
+                    <li><strong>المصادقة:</strong> في إعدادات Anonymous Authentication، يفضل تحديد <strong>Application pool identity</strong>.</li>
+                    <li><strong>صلاحيات المجلد:</strong> تأكد من منح حساب <code>IUSR</code> أو حساب حوض التطبيقات صلاحية <strong>Write</strong> على مجلد ملفات الـ DLL ليتمكن التطبيق من كتابة السجلات.</li>
+                </ul>
+
+                <h2 id="debugging">5. دليل المطورين لتصحيح الأخطاء (Debugging) داخل IIS</h2>
+                <p>ملفات ISAPI لا تعمل بمفردها، بل يتم استضافتها داخل عملية النظام <code>w3wp.exe</code>. لتصحيح الأخطاء:</p>
+                <div class="step-box">
+                    <span class="step-number">متقدم</span>
+                    <ol>
+                        <li>شغل بيئة التطوير (IDE) بصلاحيات المسؤول.</li>
+                        <li>اجعل التطبيق المضيف (Host Application) يشير إلى مسار <code>w3wp.exe</code>:
+                            <ul>
+                                <li>لمشاريع 32-bit: <code>C:\Windows\SysWOW64\inetsrv\w3wp.exe</code></li>
+                                <li>لمشاريع 64-bit: <code>C:\Windows\System32\inetsrv\w3wp.exe</code></li>
+                            </ul>
+                        </li>
+                        <li>يمكنك بدلاً من ذلك استخدام ميزة <strong>Attach to Process</strong> والبحث عن العملية w3wp.exe النشطة.</li>
+                    </ol>
+                </div>
+
+                <h2 id="troubleshooting">6. نصائح وحيل للتعامل مع المشاكل الشائعة</h2>
+                <div class="warning-box">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>قائمة الفحص الذهبية عند حدوث خطأ 500:</strong>
+                    <ul>
+                        <li>تأكد من توافق المعمارية (32 vs 64 bit).</li>
+                        <li>تحقق من كافة التبعيات (Dependencies) والمكتبات الخارجية (مثل OpenSSL).</li>
+                        <li><strong>فخ مسار التطبيق:</strong> تذكر أن دوال مسار التطبيق الافتراضية قد تعيد مسار <code>w3wp.exe</code> وليس مجلد الـ DLL الخاص بك. استخدم الدوال المخصصة لجلب (Current Module Path).</li>
+                    </ul>
+                </div>
+
+                <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS.</p>
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/author/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="api-security-guide, advanced-database-security-architecture"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
