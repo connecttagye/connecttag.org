@@ -12,26 +12,62 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "https://connecttag.org/icon-192.png",
-      "type": "image/png",
+      "src": "https://connecttag.org/icon-72.webp",
+      "type": "image/webp",
+      "sizes": "72x72",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-96.webp",
+      "type": "image/webp",
+      "sizes": "96x96",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-128.webp",
+      "type": "image/webp",
+      "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-144.webp",
+      "type": "image/webp",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-152.webp",
+      "type": "image/webp",
+      "sizes": "152x152",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-192.webp",
+      "type": "image/webp",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "https://connecttag.org/icon-192.png",
-      "type": "image/png",
+      "src": "https://connecttag.org/icon-192.webp",
+      "type": "image/webp",
       "sizes": "192x192",
       "purpose": "maskable"
     },
     {
-      "src": "https://connecttag.org/icon-512.png",
-      "type": "image/png",
+      "src": "https://connecttag.org/icon-384.webp",
+      "type": "image/webp",
+      "sizes": "384x384",
+      "purpose": "any"
+    },
+    {
+      "src": "https://connecttag.org/icon-512.webp",
+      "type": "image/webp",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "https://connecttag.org/icon-512.png",
-      "type": "image/png",
+      "src": "https://connecttag.org/icon-512.webp",
+      "type": "image/webp",
       "sizes": "512x512",
       "purpose": "maskable"
     }
@@ -41,13 +77,13 @@
       "name": "الخدمات",
       "short_name": "الخدمات",
       "url": "https://connecttag.org/services/",
-      "icons": [{ "src": "https://connecttag.org/icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "https://connecttag.org/icon-192.webp", "sizes": "192x192" }]
     },
     {
       "name": "المدونة",
       "short_name": "المدونة",
       "url": "https://connecttag.org/blog/",
-      "icons": [{ "src": "https://connecttag.org/icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "https://connecttag.org/icon-192.webp", "sizes": "192x192" }]
     }
   ]
 }
