@@ -1,0 +1,43 @@
+# Connect Tag - Technical Tools & IT Solutions Hub
+
+> Information about technical tools, developers utilities, and IT services provided by Connect Tag.
+
+## Core Technical Tools
+
+### Telecom & Internet
+- [IMEI & TAC Checker](https://connecttag.org/tools/telecom/imei-checker/): Advanced tool to verify device identity, manufacturer, and technical specifications.
+- [Internet Speed Test](https://connecttag.org/tools/telecom/speed-test/): Real-time measurement of download, upload, and ping for local and global connections.
+- [Yemen 4G Modems Guide](https://connecttag.org/tools/telecom/modems/): Detailed specifications and settings for Yemen 4G approved devices.
+- [Telecom Companies Directory](https://connecttag.org/tools/telecom/company/): Quick access to services, codes, and internet packages for Yemeni providers.
+
+### Developer Utilities
+- [JSON Formatter & Validator](https://connecttag.org/tools/web/json-formatter/): Beautify, minify, and validate JSON structures for app development.
+- [JWT Debugger](https://connecttag.org/tools/web/jwt-debugger/): Decode, verify, and generate JSON Web Tokens (HS256).
+- [Android Permissions Generator](https://connecttag.org/tools/mobile/android-permissions/): Visual selector to generate AndroidManifest.xml permission codes.
+- [RegEx Tester](https://connecttag.org/tools/web/regex-tester/): Test and analyze Regular Expressions with full Arabic language support.
+- [Deep Link Generator](https://connecttag.org/tools/mobile/deep-link-generator/): Create and test mobile app deep links (intent:// and https://).
+
+### Security & Privacy
+- [Crypto Toolbox](https://connecttag.org/tools/security/crypto-toolbox/): Secure AES encryption, Base64 encoding, and SHA/MD5 hashing.
+- [EXIF Metadata Remover](https://connecttag.org/tools/security/exif-remover/): Clean private data (GPS, Device Info) from images before sharing.
+- [Privacy Policy Generator](https://connecttag.org/tools/security/privacy-generator/): Generate professional legal documents for apps and websites.
+
+### Finance & Specialized Calculators
+- [Zakat Calculator](https://connecttag.org/tools/finance/zakat-calculator/): Calculate Zakat for cash, gold, and silver based on live nisab values.
+- [Electrical Unit Converter](https://connecttag.org/tools/energy/unit-converter/): Convert between Watts, Amps, Volts, and Horsepower for solar systems.
+- [Solar Energy Calculator](https://connecttag.org/tools/energy/solar-calculator/): Design and size home solar power systems based on appliances load.
+
+### Content & Design
+- [Word & Character Counter](https://connecttag.org/tools/misc/word-counter/): Analyze text length and clean Arabic content (remove diacritics/spaces).
+- [Color Palette Extractor](https://connecttag.org/tools/design/color-extractor/): Extract Hex/RGB codes from any uploaded image or logo.
+
+## Main Services
+- **Web & Mobile Development**: Professional solutions using Flutter, Jetpack Compose, and modern web frameworks.
+- **Telecom Solutions**: Infrastructure and technical support for internet subscribers.
+- **Cybersecurity Services**: Digital privacy auditing and data protection strategies.
+- **Digital Marketing**: Strategic growth and online presence optimization.
+
+## Contacts & Social
+- Twitter: [@connecttagye](https://x.com/connecttagye)
+- Website: [connecttag.org](https://connecttag.org)
+- Email: [support@connecttag.org](mailto:support@connecttag.org)
