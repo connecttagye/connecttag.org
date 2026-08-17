@@ -9,11 +9,11 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.png',
   'https://connecttag.org/icon-512.png',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.5',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.5',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.5',
-  'https://connecttag.org/assets/js/components/pwa-install-prompt.js?v=1.1.5',
-  'https://connecttag.org/assets/js/components/site-author-box.js?v=1.1.5'
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.6',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.6',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.6',
+  'https://connecttag.org/assets/js/components/pwa-install-prompt.js?v=1.1.6',
+  'https://connecttag.org/assets/js/components/site-author-box.js?v=1.1.6'
 ];
 
 // Install Event
