@@ -43,12 +43,15 @@ class SiteBreadcrumb extends HTMLElement {
         'misc': 'أدوات متنوعة',
         'services': 'الخدمات',
         'hardware-solutions': 'دليل المنتجات',
+        'api-solutions': 'حلول الـ API والبيانات',
         'about': 'من نحن',
         'our-company': 'الشركة',
         'about-site': 'حول الموقع',
         'contact': 'اتصل بنا',
         'faq': 'الأسئلة الشائعة',
-        'payment-methods': 'طرق الدفع'
+        'payment-methods': 'طرق الدفع',
+        'advertise': 'أعلن معنا',
+        'advertise.html': 'أعلن معنا'
       };
 
       let currentAccUrl = baseUrl + '/';

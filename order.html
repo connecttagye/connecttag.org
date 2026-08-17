@@ -96,9 +96,37 @@
                   <select class="form-control" id="service" name="service">
                     <option value="" disabled selected>اختر من القائمة...</option>
                     <optgroup label="الخدمات البرمجية">
-                        <option value="تطوير تطبيقات هاتف">تطوير تطبيقات هاتف</option>
-                        <option value="تطوير مواقع ومتاجر">تطوير مواقع ومتاجر</option>
-                        <option value="استضافة سيرفرات">استضافة سيرفرات</option>
+                        <option value="تطوير تطبيقات هاتف (Android/iOS)">تطوير تطبيقات هاتف (Android/iOS)</option>
+                        <option value="تطوير مواقع ومتاجر إلكترونية">تطوير مواقع ومتاجر إلكترونية</option>
+                        <option value="تطوير برامج سطح مكتب">تطوير برامج سطح مكتب</option>
+                        <option value="تطوير بوتات تليجرام ذكية">تطوير بوتات تليجرام ذكية</option>
+                        <option value="بناء وتطوير Rest API">بناء وتطوير Rest API</option>
+                        <option value="تطوير أنظمة سحابية مخصصة">تطوير أنظمة سحابية مخصصة</option>
+                    </optgroup>
+                    <optgroup label="خدمات البيانات والـ API الخاصة بنا">
+                        <option value="الاشتراك في API كواشف الأرقام">الاشتراك في API كواشف الأرقام</option>
+                        <option value="البحث المتقدم عن TAC / IMEI">البحث المتقدم عن TAC / IMEI</option>
+                        <option value="البحث عن تطبيق أو حزمة أندرويد">البحث عن تطبيق أو حزمة أندرويد</option>
+                        <option value="البحث عن معلومات عنوان IP">البحث عن معلومات عنوان IP</option>
+                    </optgroup>
+                    <optgroup label="الاستضافة والنطاقات">
+                        <option value="استضافة سحابية">استضافة سحابية</option>
+                        <option value="سيرفرات خاصة VPS">سيرفرات خاصة VPS</option>
+                        <option value="حجز ونقل الدومينات">حجز ونقل الدومينات</option>
+                        <option value="شهادات أمان SSL">شهادات أمان SSL</option>
+                        <option value="بريد إلكتروني رسمي">بريد إلكتروني رسمي</option>
+                    </optgroup>
+                    <optgroup label="التصميم والهوية البصرية">
+                        <option value="تصميم شعار (Logo)">تصميم شعار (Logo)</option>
+                        <option value="هوية بصرية كاملة">هوية بصرية كاملة</option>
+                        <option value="تصاميم سوشيال ميديا">تصاميم سوشيال ميديا</option>
+                        <option value="تصميم واجهات UI/UX">تصميم واجهات UI/UX</option>
+                        <option value="تصميم مطبوعات وبروفايل">تصميم مطبوعات وبروفايل</option>
+                    </optgroup>
+                    <optgroup label="التسويق والإعلانات">
+                        <option value="إعلان في شبكة تطبيقات كونكت تاق">إعلان في شبكة تطبيقات كونكت تاق</option>
+                        <option value="إعلان في قنوات وبوتات تليجرام">إعلان في قنوات وبوتات تليجرام</option>
+                        <option value="حملة تسويقية متكاملة">حملة تسويقية متكاملة</option>
                     </optgroup>
                     <optgroup label="المنتجات والأجهزة">
                         <option value="أنظمة أمنية وكاميرات">أنظمة أمنية وكاميرات</option>
@@ -227,7 +255,12 @@
         body += `--------------------------\n\n`;
         body += `التفاصيل والملاحظات:\n${details}`;
 
-        const mailtoLink = "mailto:order@connecttag.org" +
+        let mailToAddress = "order@connecttag.org";
+        if (finalItem.includes("إعلان") || finalItem.includes("تسويق")) {
+            mailToAddress = "ads@connecttag.org";
+        }
+
+        const mailtoLink = "mailto:" + mailToAddress +
                          "?subject=" + encodeURIComponent(subject) +
                          "&body=" + encodeURIComponent(body);
 

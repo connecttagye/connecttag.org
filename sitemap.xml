@@ -481,9 +481,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/services/api-solutions</loc>
+    <lastmod>2026-08-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/payment-methods</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/advertise</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

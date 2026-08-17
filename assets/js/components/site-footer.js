@@ -51,7 +51,9 @@ class SiteFooter extends HTMLElement {
               <li><a href="${baseUrl}/projects/"><i class="fa-solid fa-angle-left"></i> معرض الأعمال</a></li>
               <li><a href="${baseUrl}/projects/apps/"><i class="fa-solid fa-angle-left"></i> التطبيقات</a></li>
               <li><a href="${baseUrl}/projects/sites/"><i class="fa-solid fa-angle-left"></i> المواقع</a></li>
+              <li><a href="${baseUrl}/services/api-solutions"><i class="fa-solid fa-angle-left"></i> خدمات الـ API</a></li>
               <li><a href="${baseUrl}/services/hardware-solutions"><i class="fa-solid fa-angle-left"></i> متجر المنتجات</a></li>
+              <li><a href="${baseUrl}/advertise"><i class="fa-solid fa-angle-left"></i> أعلن معنا</a></li>
               <li><a href="${baseUrl}/payment-methods"><i class="fa-solid fa-angle-left"></i> طرق الدفع</a></li>
               <li><a href="${baseUrl}/about/about-site"><i class="fa-solid fa-angle-left"></i> حول هذا الموقع</a></li>
             </ul>
