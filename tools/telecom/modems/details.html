@@ -29,7 +29,12 @@
             "@context": "https://schema.org/",
             "@type": "Product",
             "name": "تفاصيل المودم",
-            "description": "دليل مواصفات وإعدادات أجهزة المودم"
+            "description": "دليل مواصفات وإعدادات أجهزة المودم",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "1"
+            }
         }
     </script>
 
@@ -354,169 +359,7 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const slug = urlParams.get('slug');
-        const apiUrl = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
-
-        if (!slug) {
-            window.location.href = 'https://connecttag.org/tools/telecom/modems/';
-            return;
-        }
-
-        fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.result && data.result.items) {
-                const items = data.result.items;
-                const modem = items.find(item => item.slug === slug);
-
-                if (modem) {
-                    renderDetails(modem);
-                    updateSEOAndMeta(modem);
-                    renderRelated(items.filter(item => item.slug !== slug));
-                    document.getElementById('loading-screen').style.display = 'none';
-                } else {
-                    showToast('عذراً، المودم غير موجود');
-                    setTimeout(() => { window.location.href = 'https://connecttag.org/tools/telecom/modems/'; }, 1500);
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            showToast('حدث خطأ أثناء تحميل البيانات');
-        });
-
-        function renderDetails(m) {
-            // Short Model name in breadcrumb only
-            document.getElementById('breadcrumb-active').textContent = m.modelOrVersion || m.arabicName;
-
-            const imgEl = document.getElementById('modem-image');
-            imgEl.src = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-            imgEl.alt = `${m.arabicName} ${m.modelOrVersion || ''}`;
-            imgEl.onerror = function() {
-                this.src = 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-            };
-
-            // Single Canonical H1 Title
-            document.getElementById('modem-title').textContent = `${m.arabicName} ${m.modelOrVersion || ''}`;
-            document.getElementById('modem-brand').textContent = m.brand || 'عام';
-            document.getElementById('modem-description').textContent = m.description || '';
-
-            // Specs
-            document.getElementById('spec-model').textContent = m.modelOrVersion || '-';
-            document.getElementById('spec-type').textContent = m.category || '-';
-            document.getElementById('spec-year').textContent = m.modelYear || '-';
-            document.getElementById('spec-condition').textContent = m.condition || '-';
-
-            // Modem Settings (Config Box)
-            if (m.additional && m.additional.modemSettings) {
-                const s = m.additional.modemSettings;
-                document.getElementById('config-panel').style.display = 'block';
-
-                const link = s.loginLink || 'http://192.168.0.1';
-                const confLink = document.getElementById('conf-link');
-                confLink.textContent = link;
-                confLink.href = link;
-                document.getElementById('conf-user').textContent = s.defaultUserName || 'admin';
-
-                // Handle OUT password logic
-                const rawPass = (s.defaultPass || 'admin').trim();
-                const passEl = document.getElementById('conf-pass');
-                const copyPassBtn = document.getElementById('btn-copy-pass');
-
-                if (rawPass.toLowerCase() === 'out') {
-                    passEl.textContent = 'مسجلة على الملصق خلف المودم';
-                    passEl.style.direction = 'rtl';
-                    passEl.style.fontFamily = 'inherit';
-                    passEl.style.fontSize = '13px';
-                    passEl.style.color = '#e89a2f';
-                    if (copyPassBtn) copyPassBtn.style.display = 'none';
-                } else {
-                    passEl.textContent = rawPass;
-                    passEl.style.direction = 'ltr';
-                    passEl.style.fontFamily = "'Courier New', monospace";
-                    passEl.style.fontSize = '15px';
-                    passEl.style.color = '#006b98';
-                    if (copyPassBtn) copyPassBtn.style.display = 'inline-flex';
-                }
-            }
-        }
-
-        function updateSEOAndMeta(m) {
-            const pageTitle = `${m.arabicName} ${m.modelOrVersion || ''} - المواصفات والإعدادات - كونكت تاق`;
-            const pageDesc = m.description || `المواصفات التقنية وإعدادات الدخول لمودم ${m.arabicName} ${m.modelOrVersion || ''}`;
-            const currentUrl = window.location.href;
-            const imgUrl = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-
-            document.title = pageTitle;
-            document.getElementById('meta-description').setAttribute('content', pageDesc);
-            document.getElementById('canonical-url').setAttribute('href', currentUrl);
-
-            // OpenGraph
-            document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
-            document.querySelector('meta[property="og:description"]')?.setAttribute('content', pageDesc);
-            document.querySelector('meta[property="og:url"]')?.setAttribute('content', currentUrl);
-            document.querySelector('meta[property="og:image"]')?.setAttribute('content', imgUrl);
-
-            // Twitter
-            document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
-            document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', pageDesc);
-            document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', currentUrl);
-            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imgUrl);
-
-            // Schema JSON-LD
-            const schemaData = {
-                "@context": "https://schema.org/",
-                "@type": "Product",
-                "name": `${m.arabicName} ${m.modelOrVersion || ''}`,
-                "image": imgUrl,
-                "description": pageDesc,
-                "brand": {
-                    "@type": "Brand",
-                    "name": m.brand || "عام"
-                },
-                "model": m.modelOrVersion || ""
-            };
-            document.getElementById('schema-product').textContent = JSON.stringify(schemaData);
-        }
-
-        function renderRelated(items) {
-            const container = document.getElementById('related-items-container');
-            const sample = items.slice(0, 4);
-            container.innerHTML = sample.map(item => `
-                <div class="col-6 col-md-3">
-                    <a href="https://connecttag.org/tools/telecom/modems/details?slug=${item.slug}" class="related-card">
-                        <img src="${item.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp'}"
-                             alt="${item.arabicName}"
-                             class="img-fluid"
-                             onerror="this.src='https://connecttag.org/assets/img/about/connect-tag-it-company.webp';">
-                        <h5>${item.arabicName}</h5>
-                        <small class="text-muted">${item.modelOrVersion || ''}</small>
-                    </a>
-                </div>
-            `).join('');
-        }
-    });
-
-    function copyText(id) {
-        const text = document.getElementById(id).innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            showToast('تم نسخ: ' + text);
-        }).catch(() => {
-            showToast('تعذر النسخ');
-        });
-    }
-
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.className = 'toast-msg show';
-        setTimeout(() => {
-            toast.className = toast.className.replace('show', '');
-        }, 2500);
-    }
-</script>
+<script src="modems-shared.min.js?v=1.1.7" defer></script>
+<script src="modems-details.min.js?v=1.1.7" defer></script>
 </body>
 </html>
