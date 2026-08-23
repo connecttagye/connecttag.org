@@ -1,15 +1,28 @@
 {
+  "id": "/",
   "name": "كونكت تاق - Connect Tag",
   "short_name": "كونكت تاق",
   "description": "للخدمات والمستلزمات التقنية والتسويق الرقمي.",
+  "categories": [
+    "business",
+    "technology",
+    "shopping"
+  ],
   "start_url": "https://connecttag.org/",
   "scope": "https://connecttag.org/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
   "background_color": "#0d001a",
   "theme_color": "#0077b6",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
   "icons": [
     {
       "src": "https://connecttag.org/icon-72.webp",
@@ -77,13 +90,34 @@
       "name": "الخدمات",
       "short_name": "الخدمات",
       "url": "https://connecttag.org/services/",
-      "icons": [{ "src": "https://connecttag.org/icon-192.webp", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "https://connecttag.org/icon-192.webp",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "المدونة",
       "short_name": "المدونة",
       "url": "https://connecttag.org/blog/",
-      "icons": [{ "src": "https://connecttag.org/icon-192.webp", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "https://connecttag.org/icon-192.webp",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "الأدوات",
+      "short_name": "الأدوات",
+      "url": "https://connecttag.org/tools/",
+      "icons": [
+        {
+          "src": "https://connecttag.org/icon-192.webp",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
