@@ -26,125 +26,220 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.7"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.7">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.7">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.8" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.8"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.8">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.7" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.7"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.8" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.8"></noscript>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.7" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.8" defer></script>
 
 <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #f8f9fa; }
-
-    /* Force White Header Background */
-    .page-header-unified {
-        background: #ffffff !important;
-        padding: 140px 0 50px !important;
-        border-bottom: 1px solid #f0f0f0 !important;
-    }
-    .page-header-unified h1 {
-        color: #1a0033 !important;
-        text-shadow: none !important;
+    :root {
+        --store-primary: #0077b6;
+        --store-secondary: #00b4d8;
+        --store-accent: #e89a2f;
+        --store-dark: #1a0033;
+        --store-light-bg: #f8fafc;
+        --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
     }
 
-    /* Store Header */
-    .store-intro { padding: 40px 0; background: #fff; border-bottom: 1px solid #eee; margin-bottom: 40px; }
+    body { font-family: 'Cairo', sans-serif; background-color: var(--store-light-bg); color: #333; }
 
-    /* Product Card Styles */
+    /* Modern Hero Section */
+    .store-hero {
+        padding: 160px 0 80px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .store-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(0, 119, 182, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+    .hero-content h1 { font-size: 48px; font-weight: 800; color: var(--store-dark); margin-bottom: 20px; }
+    .hero-content h1 span { color: var(--store-primary); }
+    .hero-content p { font-size: 18px; color: #64748b; max-width: 700px; margin: 0 auto 40px; line-height: 1.8; }
+
+    /* Category Quick Links */
+    .store-categories { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
+    .cat-pill {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: 700;
+        color: #64748b;
+        transition: 0.3s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none !important;
+    }
+    .cat-pill:hover, .cat-pill.active {
+        background: var(--store-primary);
+        color: #fff;
+        border-color: var(--store-primary);
+        box-shadow: 0 10px 20px rgba(0, 119, 182, 0.2);
+        transform: translateY(-3px);
+    }
+
+    /* Search Bar Aesthetic */
+    .search-container { max-width: 600px; margin: 0 auto 60px; position: relative; }
+    .search-input {
+        width: 100%;
+        padding: 18px 30px 18px 60px;
+        border-radius: 50px;
+        border: 2px solid #fff;
+        background: #fff;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    .search-input:focus { border-color: var(--store-primary); outline: none; box-shadow: 0 15px 35px rgba(0, 119, 182, 0.1); }
+    .search-icon { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: var(--store-primary); font-size: 20px; }
+
+    /* Product Grid Modern */
+    .section-title { font-size: 28px; font-weight: 800; color: var(--store-dark); margin-bottom: 40px; position: relative; display: inline-block; }
+    .section-title::after { content: ''; position: absolute; bottom: -10px; right: 0; width: 50px; height: 4px; background: var(--store-primary); border-radius: 2px; }
+
     .product-card {
         background: #fff;
-        border-radius: 20px;
+        border-radius: 24px;
         overflow: hidden;
         margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        border: 1px solid #eee;
+        box-shadow: var(--card-shadow);
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(0,0,0,0.02);
         height: 100%;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
-    .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); border-color: #0077b6; }
+    .product-card:hover { transform: translateY(-12px); box-shadow: var(--card-shadow-hover); }
 
-    .product-visual {
-        height: 250px;
-        background: #f8f9fa;
+    .product-img-wrapper {
+        height: 240px;
+        background: #fcfcfc;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 60px;
-        color: #0077b6;
+        position: relative;
+        overflow: hidden;
+        padding: 20px;
+    }
+    .product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; }
+    .product-card:hover .product-img-wrapper img { transform: scale(1.1); }
+
+    .badge-status {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(37, 211, 102, 0.1);
+        color: #25d366;
+        padding: 5px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 800;
+        z-index: 2;
+    }
+
+    .product-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .product-cat { font-size: 12px; font-weight: 700; color: var(--store-primary); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .product-title { font-size: 20px; font-weight: 800; color: var(--store-dark); margin-bottom: 12px; line-height: 1.4; }
+    .product-desc { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+
+    .price-tag { font-size: 22px; font-weight: 800; color: var(--store-dark); margin-bottom: 20px; display: flex; align-items: baseline; gap: 5px; }
+    .price-tag span { font-size: 14px; color: #94a3b8; font-weight: 600; }
+
+    .btn-buy {
+        background: var(--store-primary);
+        color: #fff !important;
+        border-radius: 16px;
+        padding: 14px;
+        text-align: center;
+        font-weight: 800;
+        text-decoration: none !important;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: auto;
+        box-shadow: 0 8px 20px rgba(0, 119, 182, 0.15);
+    }
+    .btn-buy:hover { background: var(--store-dark); transform: scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
+
+    /* Trust Section */
+    .trust-section { padding: 80px 0; background: #fff; border-top: 1px solid #f1f5f9; }
+    .trust-card { text-align: center; padding: 20px; }
+    .trust-icon {
+        width: 70px;
+        height: 70px;
+        background: #f0f7ff;
+        color: var(--store-primary);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin: 0 auto 20px;
+        transition: 0.3s;
+    }
+    .trust-card:hover .trust-icon { background: var(--store-primary); color: #fff; transform: rotateY(180deg); }
+    .trust-card h4 { font-weight: 800; font-size: 18px; margin-bottom: 10px; }
+    .trust-card p { font-size: 14px; color: #64748b; }
+
+    /* CTA Section */
+    .store-cta {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--store-dark) 0%, #2a0052 100%);
+        color: #fff;
+        text-align: center;
+        border-radius: 40px;
+        margin: 60px 20px;
         position: relative;
         overflow: hidden;
     }
-    .product-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 10px;
-        transition: 0.5s;
-    }
-    .product-card:hover .product-visual img { transform: scale(1.1); }
-    .product-visual i { transition: 0.5s; }
-    .product-card:hover .product-visual i { transform: scale(1.2); color: #e89a2f; }
-
-    .status-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
+    .store-cta h2 { font-size: 36px; font-weight: 800; margin-bottom: 20px; }
+    .store-cta p { font-size: 18px; opacity: 0.8; margin-bottom: 40px; }
+    .btn-contact-ws {
         background: #25d366;
-        color: #fff;
-        padding: 4px 12px;
-        border-radius: 15px;
-        font-size: 11px;
-        font-weight: 700;
-    }
-
-    .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-    .product-info h3 { font-size: 20px; font-weight: 800; color: #1a0033; margin-bottom: 12px; }
-    .product-info p { font-size: 14px; color: #777; line-height: 1.6; margin-bottom: 15px; }
-
-    .product-features {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 20px 0;
-        font-size: 13px;
-        color: #555;
-    }
-    .product-features li { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-    .product-features li::before { content: '\f00c'; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #0077b6; font-size: 10px; }
-
-    .btn-order {
-        margin-top: auto;
-        background: #0077b6;
         color: #fff !important;
-        border-radius: 25px;
-        padding: 10px;
-        text-align: center;
-        font-weight: 700;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
         text-decoration: none !important;
         transition: 0.3s;
     }
-    .btn-order:hover { background: #1a0033; transform: scale(1.02); }
+    .btn-contact-ws:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); }
 
-    /* Filter Bar */
-    .store-filter { text-align: center; margin-bottom: 50px; }
-    .filter-tag {
-        background: #fff;
-        border: 1px solid #ddd;
-        padding: 8px 20px;
-        border-radius: 20px;
-        margin: 5px;
-        cursor: pointer;
-        font-weight: 600;
-        display: inline-block;
-        transition: 0.3s;
+    @media (max-width: 768px) {
+        .hero-content h1 { font-size: 32px; }
+        .store-hero { padding: 120px 0 60px; }
+        .store-cta { margin: 40px 15px; border-radius: 25px; padding: 60px 20px; }
+        .store-cta h2 { font-size: 28px; }
     }
-    .filter-tag.active, .filter-tag:hover { background: #0077b6; color: #fff; border-color: #0077b6; }
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -161,152 +256,201 @@
 <site-preloader></site-preloader>
 
 <div id="home-content">
-<!-- Modular Web Component: Header -->
 <site-header></site-header>
 
-<div class="page-header-unified">
+<!-- Hero Section -->
+<section class="store-hero" style="padding-top: 80px;">
+    <div class="container-fluid" style="padding: 0;">
+        <!-- صورة الغلاف بدون حدود أو ظلال وبدون هوامش -->
+        <div class="hero-banner-wrapper" data-aos="fade-in">
+            <img src="../assets/img/store-cover.webp" alt="كونكت تاق - المتجر التقني" style="width: 100%; max-height: 500px; object-fit: cover; display: block;">
+        </div>
+    </div>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1 data-aos="fade-down">متجر <span style="color: #0077b6;">كونكت تاق</span></h1>
-                <site-breadcrumb data-aos="fade-up" data-aos-delay="200"></site-breadcrumb>
+        <div class="hero-content" style="margin-top: 40px;">
+            <site-breadcrumb data-aos="fade-down"></site-breadcrumb>
+            <h1 data-aos="fade-up">متجر <span>كونكت تاق</span> التقني</h1>
+            <p data-aos="fade-up" data-aos-delay="100">وجهتك الأولى للحصول على أحدث الأنظمة الأمنية، أجهزة البصمة، تقنيات المنزل الذكي، والحلول التقنية المتكاملة في اليمن.</p>
+
+            <div class="search-container" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <label for="store-search" class="sr-only" style="display:none;">بحث في المتجر</label>
+                <input type="text" class="search-input" id="store-search" placeholder="عن ماذا تبحث اليوم؟ (مثلاً: كاميرات، قفل ذكي...)">
+            </div>
+
+            <div class="store-categories" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="cat-pill active" data-filter="all"><i class="fa-solid fa-border-all"></i> الكل</a>
+                <a href="#" class="cat-pill" data-filter="أنظمة الحماية"><i class="fa-solid fa-fingerprint"></i> أجهزة بصمة</a>
+                <a href="#" class="cat-pill" data-filter="تخزين البيانات"><i class="fa-solid fa-hard-drive"></i> تخزين</a>
+                <a href="#" class="cat-pill" data-filter="أجهزة ذكية"><i class="fa-solid fa-house-signal"></i> منزل ذكي</a>
+                <a href="#" class="cat-pill" data-filter="ترفيه"><i class="fa-solid fa-gamepad"></i> ترفيه</a>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="store-intro">
-    <div class="container text-center">
-        <h2 data-aos="fade-up">حلول تقنية وأجهزة ذكية متكاملة</h2>
-        <p class="large" data-aos="fade-up" data-aos-delay="100">نحن نوفر لك أحدث الأجهزة الأمنية وأنظمة التحكم والملحقات التقنية بأعلى معايير الجودة.</p>
-        <div style="margin-top: 20px;" data-aos="fade-up" data-aos-delay="200">
-            <a href="https://connecttag.org/services/hardware-solutions#product-guide" class="btn btn-default" style="border-radius: 25px; padding: 10px 30px; border: 1px solid #0077b6; color: #0077b6; font-weight: 700;">
-                <i class="fa-solid fa-book"></i> استكشف دليل أنواع المنتجات
-            </a>
-        </div>
-    </div>
-</div>
-
-<div id="products-grid" style="padding-bottom: 80px;">
+<!-- Products Grid -->
+<section style="padding: 80px 0;">
     <div class="container">
-        <div class="row">
-
-            <!-- Product 1: Atari SUP (from JSON id 4) -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                <div class="product-card">
-                    <div class="product-visual">
-                        <img src="https://connecttag.org/upload/store/product/sup-atari-box-400.webp" alt="اتاري SUP بوكس" loading="lazy">
-                        <span class="status-badge">متوفر</span>
-                    </div>
-                    <div class="product-info">
-                        <h3>اتاري SUP بوكس 400 في 1</h3>
-                        <p>اتاري بوكس جيم يحتوي على 400 لعبة من الالعاب القديمة المشهورة (ماريو - سباق السيارات ... الخ).</p>
-                        <ul class="product-features">
-                            <li>شاشة 3 انش LED</li>
-                            <li>400 لعبة مبرمجة</li>
-                            <li>بطارية ليثيوم 2-3 ساعات</li>
-                        </ul>
-                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 12$</div>
-                        <a href="https://connecttag.org/order?type=product&item=%D8%A7%D8%AA%D8%A7%D8%B1%D9%8A%20SUP%20%D8%A8%D9%88%D9%83%D8%B3%20400%20%D9%81%D9%8A%201" class="btn-order">طلب المنتج</a>
-                    </div>
-                </div>
+        <div class="row align-items-center mb-20">
+            <div class="col-md-6 text-right">
+                <h2 class="section-title" data-aos="fade-left">المنتجات المميزة</h2>
             </div>
-
-            <!-- Product 2: Samsung SSD T7 (from JSON id 11) -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-card">
-                    <div class="product-visual">
-                        <img src="https://connecttag.org/upload/store/product/samsung-ssd-t7-touch.webp" alt="هارد SSD T7" loading="lazy">
-                        <span class="status-badge">متوفر</span>
-                    </div>
-                    <div class="product-info">
-                        <h3>هارد خارجي SSD T7 Touch</h3>
-                        <p>هارد خارجي بصمة خفيف وانيق من SAMSUNG للحفاظ على بياناتك بأمان تام.</p>
-                        <ul class="product-features">
-                            <li>السعة: 2TB تيرا</li>
-                            <li>سرعة النقل: 1050MB/s</li>
-                            <li>تشفير بصمة مدمج</li>
-                        </ul>
-                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 200$</div>
-                        <a href="https://connecttag.org/order?type=product&item=%D9%87%D8%A7%D8%B1%D8%AF%20%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%20SSD%20T7%20Touch" class="btn-order">طلب المنتج</a>
-                    </div>
-                </div>
+            <div class="col-md-6 text-left" data-aos="fade-right">
+                <span class="text-muted" style="font-weight: 600;" id="product-count">عرض 5 منتجات</span>
             </div>
+        </div>
 
-            <!-- Product 3: Smart Door Lock 5x1 (from JSON id 12) -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="row" id="products-container">
+
+            <!-- Product 1 -->
+            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <div class="product-visual">
+                    <span class="badge-status">متوفر</span>
+                    <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-door-lock-5x1.webp" alt="مغلقة أبواب ذكية" loading="lazy">
-                        <span class="status-badge">متوفر</span>
                     </div>
-                    <div class="product-info">
-                        <h3>مغلقة أبواب ذكية 5×1</h3>
-                        <p>مغلقة إلكترونية ذكية تمكنك من فتح قفل الباب عن بُعد عبر الانترنت.</p>
-                        <ul class="product-features">
-                            <li>بصمة + كود + بطاقة + تطبيق</li>
-                            <li>خاصية إدارة العائلة</li>
-                            <li>ضمانة لمدة سنة</li>
-                        </ul>
-                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 250$</div>
-                        <a href="https://connecttag.org/order?type=product&item=%D9%85%D8%BA%D9%84%D9%82%D8%A9%20%D8%A3%D8%A8%D9%88%D8%A7%D8%A8%20%D8%B0%D9%83%D9%8A%D8%A9%205%D7%971" class="btn-order">طلب المنتج</a>
+                    <div class="product-body">
+                        <span class="product-cat">أنظمة الحماية</span>
+                        <h3 class="product-title">مغلقة أبواب ذكية 5×1</h3>
+                        <p class="product-desc">تحكم كامل في منزلك عبر البصمة، الكود، البطاقة، أو التطبيق من أي مكان في العالم.</p>
+                        <div class="price-tag">250 <span>دولار</span></div>
+                        <a href="https://connecttag.org/order?type=product&item=%D9%85%D8%BA%D9%84%D9%82%D8%A9%20%D8%A3%D8%A8%D9%88%D8%A7%D8%A8%20%D8%B0%D9%83%D9%8A%D8%A9%205%D7%971" class="btn-buy">
+                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 4: Fingerprint Padlock (from JSON id 13) -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                <div class="product-card" style="margin-top: 30px;">
-                    <div class="product-visual">
-                        <img src="https://connecttag.org/upload/store/product/fingerprint-padlock.webp" alt="قفل بصمة ذكي" loading="lazy">
-                        <span class="status-badge">متوفر</span>
+            <!-- Product 2 -->
+            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="تخزين البيانات">
+                <div class="product-card">
+                    <span class="badge-status">متوفر</span>
+                    <div class="product-img-wrapper">
+                        <img src="https://connecttag.org/upload/store/product/samsung-ssd-t7-touch.webp" alt="هارد SSD T7" loading="lazy">
                     </div>
-                    <div class="product-info">
-                        <h3>قفل ذكي بصمة الاصابع</h3>
-                        <p>قفل ذكي انيق وعصري مناسب للبيوت والمكاتب والخزائن والشنط.</p>
-                        <ul class="product-features">
-                            <li>فتح ببصمة الأصبع فقط</li>
-                            <li>تصميم متين مقاوم للصدأ</li>
-                            <li>تسجيل عدة بصمات</li>
-                        </ul>
-                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 15$</div>
-                        <a href="https://connecttag.org/order?type=product&item=%D9%82%D9%81%D9%84%20%D8%B0%D9%83%D9%8A%20%D8%A8%D8%B5%D9%85%D8%A9%20%D8%A7%D9%84%D8%A7%D8%B5%D8%A7%D8%B9" class="btn-order">طلب المنتج</a>
+                    <div class="product-body">
+                        <span class="product-cat">تخزين البيانات</span>
+                        <h3 class="product-title">هارد خارجي SSD T7 Touch</h3>
+                        <p class="product-desc">سرعة نقل فائقة تصل لـ 1050MB/s مع تشفير بالبصمة لحماية بياناتك الحساسة.</p>
+                        <div class="price-tag">200 <span>دولار</span></div>
+                        <a href="https://connecttag.org/order?type=product&item=%D9%87%D8%A7%D8%B1%D8%AF%20%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%20SSD%20T7%20Touch" class="btn-buy">
+                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 5: Fingerprint Flash Drive (from JSON id 14) -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-card" style="margin-top: 30px;">
-                    <div class="product-visual">
+            <!-- Product 3 -->
+            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="تخزين البيانات">
+                <div class="product-card">
+                    <span class="badge-status">متوفر</span>
+                    <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/fingerprint-flash-drive-1tb.webp" alt="فلاش بصمة 1 تيرا" loading="lazy">
-                        <span class="status-badge">متوفر</span>
                     </div>
-                    <div class="product-info">
-                        <h3>فلاش بصمة 1 تيرا</h3>
-                        <p>فلاش بصمة معدني انيق لحماية ملفاتك لأقصى درجة بتشفير AES256.</p>
-                        <ul class="product-features">
-                            <li>السعة: 1 تيرابايت</li>
-                            <li>مدخل Type-C / USB 3.2</li>
-                            <li>يدعم 10 بصمات مختلفة</li>
-                        </ul>
-                        <div style="margin-top: 10px; font-weight: 800; color: #e89a2f; font-size: 18px;">السعر: 130$</div>
-                        <a href="https://connecttag.org/order?type=product&item=%D9%81%D9%84%D8%A7%D8%B4%20%D8%A8%D8%B5%D9%85%D8%A9%201%20%D8%AA%D9%8A%D8%B1%D8%A7" class="btn-order">طلب المنتج</a>
+                    <div class="product-body">
+                        <span class="product-cat">تخزين البيانات</span>
+                        <h3 class="product-title">فلاش بصمة معدني 1 تيرا</h3>
+                        <p class="product-desc">مساحة تخزين هائلة في جيبك مع أمان بيومتري لا يمكن اختراقه وتصميم معدني فخم.</p>
+                        <div class="price-tag">130 <span>دولار</span></div>
+                        <a href="https://connecttag.org/order?type=product&item=%D9%81%D9%84%D8%A7%D8%B4%20%D8%A8%D8%B5%D9%85%D8%A9%201%20%D8%AA%D9%8A%D8%B1%D8%A7" class="btn-buy">
+                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أجهزة ذكية">
+                <div class="product-card">
+                    <span class="badge-status">متوفر</span>
+                    <div class="product-img-wrapper">
+                        <img src="https://connecttag.org/upload/store/product/fingerprint-padlock.webp" alt="قفل ذكي بصمة" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <span class="product-cat">أجهزة ذكية</span>
+                        <h3 class="product-title">قفل ذكي بصمة الأصبع</h3>
+                        <p class="product-desc">وداعاً للمفاتيح الضائعة، قفل متعدد الاستخدامات للشنط، المكاتب، أو الخزائن الشخصية.</p>
+                        <div class="price-tag">15 <span>دولار</span></div>
+                        <a href="https://connecttag.org/order?type=product&item=%D9%82%D9%81%D9%84%20%D8%B0%D9%83%D9%8A%20%D8%A8%D8%B5%D9%85%D8%A9%20%D8%A7%D9%84%D8%A7%D8%B5%D8%A7%D8%B9" class="btn-buy">
+                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="ترفيه">
+                <div class="product-card">
+                    <span class="badge-status">متوفر</span>
+                    <div class="product-img-wrapper">
+                        <img src="https://connecttag.org/upload/store/product/sup-atari-box-400.webp" alt="اتاري SUP" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <span class="product-cat">ترفيه</span>
+                        <h3 class="product-title">اتاري SUP بوكس 400 في 1</h3>
+                        <p class="product-desc">استعد ذكريات الطفولة مع 400 لعبة كلاسيكية مدمجة في جهاز محمول واحد ببطارية تدوم طويلاً.</p>
+                        <div class="price-tag">12 <span>دولار</span></div>
+                        <a href="https://connecttag.org/order?type=product&item=%D8%A7%D8%AA%D8%A7%D8%B1%D9%8A%20SUP%20%D8%A8%D9%88%D9%83%D8%B3%20400%20%D9%81%D9%8A%201" class="btn-buy">
+                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
+                        </a>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-</div>
+</section>
 
 
-<!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
 </div>
-<!-- Modular Web Component: Cookie Consent -->
+
 <cookie-consent></cookie-consent>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('store-search');
+        const filterButtons = document.querySelectorAll('.cat-pill');
+        const productItems = document.querySelectorAll('.product-item');
+        const countDisplay = document.getElementById('product-count');
+
+        function updateUI() {
+            const term = searchInput.value.toLowerCase();
+            const activeFilter = document.querySelector('.cat-pill.active').getAttribute('data-filter');
+            let visibleCount = 0;
+
+            productItems.forEach(item => {
+                const title = item.querySelector('.product-title').innerText.toLowerCase();
+                const desc = item.querySelector('.product-desc').innerText.toLowerCase();
+                const category = item.getAttribute('data-category');
+
+                const matchesSearch = title.includes(term) || desc.includes(term);
+                const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+                if (matchesSearch && matchesFilter) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            countDisplay.innerText = `عرض ${visibleCount} منتجات`;
+        }
+
+        searchInput.addEventListener('input', updateUI);
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                filterButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateUI();
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
-
