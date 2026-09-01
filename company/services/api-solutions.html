@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>خدمات الـ API والبيانات المتقدمة - كونكت تاق</title>
+<meta name="description" content="اربط تطبيقاتك وأنظمتك بقواعد بيانات كونكت تاق الضخمة عبر خدمات الـ API الموثوقة (كاشف الأرقام، فحص IMEI، بيانات الأندرويد، وعناوين IP).">
+<meta name="keywords" content="API, كاشف أرقام API, فحص IMEI برمجياً, بيانات الأندرويد, تقنية, مطورين, كونكت تاق, اليمن">
+<link rel="canonical" href="https://connecttag.org/company/services/api-solutions" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:url" content="https://connecttag.org/company/services/api-solutions" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="خدمات الـ API والبيانات المتقدمة - كونكت تاق" />
+  <meta property="og:description" content="حلول تقنية للمطورين والشركات للوصول لقواعد بياناتنا برمجياً بكل سهولة." />
+  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.10">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.10">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.10">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.10">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <style>
+    body { background-color: #ffffff; color: #333; font-family: var(--ct-font-family); }
+
+    .page-header-unified {
+      padding: 150px 0 60px;
+      background: #ffffff;
+      text-align: center;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .api-hero-content { max-width: 800px; margin: 0 auto; }
+    .api-hero-content h1 { font-weight: 800; color: #1a0033; margin-bottom: 20px; }
+    .api-hero-content p { color: #666; font-size: 19px; line-height: 1.6; }
+
+    .api-grid-section { padding: 80px 0; }
+
+    .api-card {
+      background: #ffffff;
+      border: 1px solid #eee;
+      border-radius: 25px;
+      padding: 40px 30px;
+      margin-bottom: 30px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 100%;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    }
+
+    .api-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--ct-primary);
+      box-shadow: 0 15px 40px rgba(0, 119, 182, 0.1);
+    }
+
+    .api-icon {
+      width: 80px;
+      height: 80px;
+      background: #f0f7f9;
+      color: var(--ct-primary);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 35px;
+      margin: 0 auto 25px;
+      transition: 0.3s;
+    }
+
+    .api-card:hover .api-icon { background: var(--ct-primary); color: #fff; transform: rotate(10deg); }
+
+    .api-card h3 { font-size: 22px; font-weight: 800; color: #1a0033; margin-bottom: 15px; }
+    .api-card p { color: #666; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+
+    .api-features-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #eef7fb;
+      color: #0077b6;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 3px;
+    }
+
+    .tech-specs-section { background: #f8faff; padding: 80px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+    .spec-item { margin-bottom: 30px; }
+    .spec-item i { font-size: 24px; color: var(--ct-secondary); margin-left: 15px; }
+    .spec-item h4 { font-weight: 800; color: #1a0033; display: inline-block; margin-bottom: 10px; }
+
+    .code-preview-box {
+      background: #1e1e1e;
+      border-radius: 20px;
+      padding: 30px;
+      color: #d4d4d4;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 14px;
+      direction: ltr;
+      text-align: left;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    }
+    .code-keyword { color: #569cd6; }
+    .code-string { color: #ce9178; }
+    .code-comment { color: #6a9955; }
+
+    .cta-api-box {
+      background: linear-gradient(135deg, #1a0033 0%, #0d001a 100%);
+      border-radius: 35px;
+      padding: 60px;
+      color: #fff;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .cta-api-box h2 { font-weight: 800; margin-bottom: 20px; }
+    .btn-api {
+      background: var(--ct-primary);
+      color: #fff !important;
+      padding: 16px 45px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 18px;
+      transition: 0.3s;
+      display: inline-block;
+      margin-top: 25px;
+      border: none;
+      box-shadow: 0 10px 25px rgba(0, 119, 182, 0.3);
+    }
+    .btn-api:hover { transform: translateY(-5px); filter: brightness(1.1); }
+  </style>
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.10" data-cfasync="false" defer></script>
+</head>
+<body data-spy="scroll" data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+  <section class="page-header-unified">
+    <div class="container">
+      <div class="api-hero-content">
+        <h1 data-aos="fade-down">حلول الـ API والبيانات الضخمة</h1>
+        <site-breadcrumb></site-breadcrumb>
+        <p data-aos="fade-up">نمكّن المطورين والشركات من بناء تطبيقات ذكية عبر ربطها بقواعد بياناتنا المحدثة والشاملة من خلال واجهات برمجية (API) سريعة، آمنة، وسهلة الدمج.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="api-grid-section">
+    <div class="container">
+      <div class="row">
+
+        <!-- API 1: Caller ID -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up">
+          <div class="api-card">
+            <div class="api-icon"><i class="fa-solid fa-address-book"></i></div>
+            <h3>كاشف الأرقام</h3>
+            <p>وصول مباشر لأكبر قاعدة بيانات أرقام في اليمن والمنطقة العربية، للتعرف على هوية المتصل في تطبيقاتكم.</p>
+            <div>
+              <span class="api-features-badge">أسماء محدثة</span>
+              <span class="api-features-badge">بحث ذكي</span>
+              <span class="api-features-badge">دقة عالية</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- API 2: TAC / IMEI -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="api-card">
+            <div class="api-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>فحص الأجهزة</h3>
+            <p>استعلم عن تفاصيل أي هاتف محمول عبر كود الـ TAC أو IMEI لمعرفة الموديل، الشركة المصنعة، والمواصفات.</p>
+            <div>
+              <span class="api-features-badge">Global Data</span>
+              <span class="api-features-badge">Mobile Identity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- API 3: Android Package -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="api-card">
+            <div class="api-icon"><i class="fa-brands fa-android"></i></div>
+            <h3>بيانات الأندرويد</h3>
+            <p>جلب معلومات التطبيقات، الحزم (Packages)، وتوافق الإصدارات من متجرنا الخاص وقواعد بياناتنا البرمجية.</p>
+            <div>
+              <span class="api-features-badge">App Metadata</span>
+              <span class="api-features-badge">APK Details</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- API 4: IP Geolocation -->
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="api-card">
+            <div class="api-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+            <h3>الاستعلام عن IP</h3>
+            <p>تحديد الموقع الجغرافي، مزود خدمة الإنترنت (ISP)، ونوع الاتصال لأي عنوان IP حول العالم.</p>
+            <div>
+              <span class="api-features-badge">Geolocation</span>
+              <span class="api-features-badge">ISP Lookup</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="tech-specs-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 style="font-weight: 800; color: #1a0033; margin-bottom: 30px;">لماذا الـ API الخاص بنا؟</h2>
+
+          <div class="spec-item">
+            <i class="fa-solid fa-bolt"></i>
+            <div>
+              <h4>استجابة فائقة السرعة</h4>
+              <p>بنية تحتية موزعة تضمن وصول البيانات في أجزاء من الثانية.</p>
+            </div>
+          </div>
+
+          <div class="spec-item">
+            <i class="fa-solid fa-code"></i>
+            <div>
+              <h4>دعم JSON و XML</h4>
+              <p>تنسيقات بيانات معيارية يسهل التعامل معها في جميع لغات البرمجة.</p>
+            </div>
+          </div>
+
+          <div class="spec-item">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+              <h4>أمان واستقرار</h4>
+              <p>اتصال مشفر عبر HTTPS وضمان استمرارية الخدمة بنسبة 99.9%.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="code-preview-box">
+            <span class="code-comment">// مثال على استجابة الـ API (JSON)</span><br>
+            {<br>
+            &nbsp;&nbsp;<span class="code-keyword">"status"</span>: <span class="code-string">"success"</span>,<br>
+            &nbsp;&nbsp;<span class="code-keyword">"data"</span>: {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">"name"</span>: <span class="code-string">"كونكت تاق للتقنية"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">"phone"</span>: <span class="code-string">"96777xxxxxxx"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">"provider"</span>: <span class="code-string">"Yemen Mobile"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">"type"</span>: <span class="code-string">"Company"</span><br>
+            &nbsp;&nbsp;}<br>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</main>
+
+<site-footer></site-footer>
+
+</div>
+<cookie-consent></cookie-consent>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

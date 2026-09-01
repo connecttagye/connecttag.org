@@ -16,6 +16,12 @@ class SiteHeader extends HTMLElement {
     };
 
     const isHome = currentPath === '/' || currentPath === '/index.html' || currentHref === (baseUrl + '/').toLowerCase();
+    const isCompanyPage = [
+      '/company/',
+      '/company/index.html',
+      '/company/our-company',
+      '/company/our-company.html'
+    ].includes(currentPath);
 
     this.innerHTML = `
       <header class="ct-header-navbar">
@@ -29,14 +35,14 @@ class SiteHeader extends HTMLElement {
               <li class="ct-nav-item ${isHome ? 'active' : ''}">
                 <a href="${baseUrl}/" class="ct-nav-link">الرئيسية</a>
               </li>
-              <li class="ct-nav-item ${isActive(baseUrl + '/about/') || isActive(baseUrl + '/about/our-company') ? 'active' : ''}">
-                <a href="${baseUrl}/about/our-company" class="ct-nav-link">من نحن</a>
+              <li class="ct-nav-item ${isCompanyPage ? 'active' : ''}">
+                <a href="${baseUrl}/company/our-company" class="ct-nav-link">من نحن</a>
               </li>
-              <li class="ct-nav-item ${isActive(baseUrl + '/projects/') ? 'active' : ''}">
-                <a href="${baseUrl}/projects/" class="ct-nav-link">أعمالنا</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}">
+                <a href="${baseUrl}/company/projects/" class="ct-nav-link">أعمالنا</a>
               </li>
-              <li class="ct-nav-item ${isActive(baseUrl + '/services/') ? 'active' : ''}">
-                <a href="${baseUrl}/services/" class="ct-nav-link">الخدمات</a>
+              <li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}">
+                <a href="${baseUrl}/company/services/" class="ct-nav-link">الخدمات</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}">
                 <a href="${baseUrl}/blog/" class="ct-nav-link">المدونة</a>

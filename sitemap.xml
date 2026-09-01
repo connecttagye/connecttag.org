@@ -7,96 +7,96 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/about/</loc>
+    <loc>https://connecttag.org/company/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/about/our-company</loc>
+    <loc>https://connecttag.org/company/our-company</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/about/about-site</loc>
+    <loc>https://connecttag.org/about</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/</loc>
+    <loc>https://connecttag.org/company/services/</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/web-app-development</loc>
+    <loc>https://connecttag.org/company/services/web-app-development</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/hardware-solutions</loc>
+    <loc>https://connecttag.org/company/services/hardware-solutions</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/creative-design</loc>
+    <loc>https://connecttag.org/company/services/creative-design</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/digital-marketing</loc>
+    <loc>https://connecttag.org/company/services/digital-marketing</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/hosting-services</loc>
+    <loc>https://connecttag.org/company/services/hosting-services</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/</loc>
+    <loc>https://connecttag.org/company/projects/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/</loc>
+    <loc>https://connecttag.org/company/projects/apps/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/firewall/</loc>
+    <loc>https://connecttag.org/company/projects/apps/firewall/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/kabeer/</loc>
+    <loc>https://connecttag.org/company/projects/apps/kabeer/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/satoor/</loc>
+    <loc>https://connecttag.org/company/projects/apps/satoor/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/yemen-4g/</loc>
+    <loc>https://connecttag.org/company/projects/apps/yemen-4g/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/projects/apps/yemen-view/</loc>
+    <loc>https://connecttag.org/company/projects/apps/yemen-view/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -229,13 +229,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/faq</loc>
+    <loc>https://connecttag.org/support/faq</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/order</loc>
+    <loc>https://connecttag.org/support/order</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -481,18 +481,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/services/api-solutions</loc>
+    <loc>https://connecttag.org/company/services/api-solutions</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/payment-methods</loc>
+    <loc>https://connecttag.org/company/commerce/payment-methods</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://connecttag.org/advertise</loc>
+    <loc>https://connecttag.org/company/advertising/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

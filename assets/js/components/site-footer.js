@@ -36,11 +36,11 @@ class SiteFooter extends HTMLElement {
             <h4>من نحن وهويتنا</h4>
             <ul class="ct-footer-links">
               <li><a href="${baseUrl}/"><i class="fa-solid fa-angle-left"></i> الرئيسية</a></li>
-              <li><a href="${baseUrl}/about/"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
-              <li><a href="${baseUrl}/about/our-company"><i class="fa-solid fa-angle-left"></i> الشركة</a></li>
+              <li><a href="${baseUrl}/company/"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
+              <li><a href="${baseUrl}/company/our-company"><i class="fa-solid fa-angle-left"></i> الشركة</a></li>
               <li><a href="${baseUrl}/blog/"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
               <li><a href="${baseUrl}/tools/"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
-              <li><a href="${baseUrl}/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
+              <li><a href="${baseUrl}/support/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
               <li><a href="${baseUrl}/contact"><i class="fa-solid fa-angle-left"></i> اتصل بنا</a></li>
             </ul>
           </div>
@@ -48,14 +48,14 @@ class SiteFooter extends HTMLElement {
           <div class="ct-footer-col">
             <h4>أعمالنا وخدماتنا</h4>
             <ul class="ct-footer-links">
-              <li><a href="${baseUrl}/projects/"><i class="fa-solid fa-angle-left"></i> معرض الأعمال</a></li>
-              <li><a href="${baseUrl}/projects/apps/"><i class="fa-solid fa-angle-left"></i> التطبيقات</a></li>
-              <li><a href="${baseUrl}/projects/sites/"><i class="fa-solid fa-angle-left"></i> المواقع</a></li>
-              <li><a href="${baseUrl}/services/api-solutions"><i class="fa-solid fa-angle-left"></i> خدمات الـ API</a></li>
-              <li><a href="${baseUrl}/services/hardware-solutions"><i class="fa-solid fa-angle-left"></i> متجر المنتجات</a></li>
-              <li><a href="${baseUrl}/advertise"><i class="fa-solid fa-angle-left"></i> أعلن معنا</a></li>
-              <li><a href="${baseUrl}/payment-methods"><i class="fa-solid fa-angle-left"></i> طرق الدفع</a></li>
-              <li><a href="${baseUrl}/about/about-site"><i class="fa-solid fa-angle-left"></i> حول هذا الموقع</a></li>
+              <li><a href="${baseUrl}/company/projects/"><i class="fa-solid fa-angle-left"></i> معرض الأعمال</a></li>
+              <li><a href="${baseUrl}/company/projects/apps/"><i class="fa-solid fa-angle-left"></i> التطبيقات</a></li>
+              <li><a href="${baseUrl}/company/projects/sites/"><i class="fa-solid fa-angle-left"></i> المواقع</a></li>
+              <li><a href="${baseUrl}/company/services/api-solutions"><i class="fa-solid fa-angle-left"></i> خدمات الـ API</a></li>
+              <li><a href="${baseUrl}/company/services/hardware-solutions"><i class="fa-solid fa-angle-left"></i> متجر المنتجات</a></li>
+              <li><a href="${baseUrl}/company/advertising/"><i class="fa-solid fa-angle-left"></i> أعلن معنا</a></li>
+              <li><a href="${baseUrl}/company/commerce/payment-methods"><i class="fa-solid fa-angle-left"></i> طرق الدفع</a></li>
+              <li><a href="${baseUrl}/about"><i class="fa-solid fa-angle-left"></i> حول هذا الموقع</a></li>
             </ul>
           </div>
 
@@ -82,7 +82,7 @@ class SiteFooter extends HTMLElement {
             <ul class="ct-footer-legal-links">
               <li><a href="${baseUrl}/privacy-policy">سياسة الخصوصية</a></li>
               <li><a href="${baseUrl}/terms-of-use">اتفاقية الاستخدام</a></li>
-              <li><a href="${baseUrl}/order">طلب خدمة</a></li>
+              <li><a href="${baseUrl}/support/order">طلب خدمة</a></li>
               <li><a href="${baseUrl}/contact">الدعم الفني</a></li>
             </ul>
           </div>
