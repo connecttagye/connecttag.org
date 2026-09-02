@@ -451,6 +451,29 @@
       display: flex;
       align-items: center;
     }
+    #headerwrap .container .row {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .hero-content-box {
+      margin-left: auto !important;
+      margin-right: 0 !important;
+      float: right !important;
+      text-align: right;
+    }
+    @media (max-width: 991px) {
+      #headerwrap .container .row {
+        justify-content: center;
+      }
+      .hero-content-box {
+        margin: 0 auto !important;
+        float: none !important;
+        text-align: center;
+      }
+    }
     .preloader-visible { overflow: hidden; }
 
     @media (max-width: 480px) {
@@ -462,11 +485,11 @@
   </style>
 
   <!-- Non-blocking CSS -->
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.14"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.15"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.14"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.15"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
@@ -474,11 +497,11 @@
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.14"></noscript>
+  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.15"></noscript>
 
 
-<script src="assets/js/components/components-bundle.js?v=1.1.14" data-cfasync="false" defer></script>
+<script src="assets/js/components/components-bundle.js?v=1.1.15" data-cfasync="false" defer></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-main" data-offset="100" class="preloader-visible">
@@ -495,7 +518,7 @@
 <div id="headerwrap">
   <div class="container">
     <div class="row">
-      <div class="col-md-7 col-lg-6 hero-content-box animated fadeInRight">
+      <div class="col-md-7 col-lg-6 col-md-offset-5 col-lg-offset-6 hero-content-box animated fadeInRight">
         <div class="hero-badge-pill">
           <i class="fa-solid fa-rocket"></i> <span>شريكك الرقمي نحو المستقبل</span>
         </div>

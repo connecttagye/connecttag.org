@@ -317,9 +317,19 @@ a:hover, a:focus {
     width: 100%;
     min-height: 450px;
 }
+#headerwrap .container .row {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
 .hero-content-box {
-	text-align: right;
-	padding: 20px 0;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    float: right !important;
+    text-align: right;
+    padding: 20px 0;
 }
 .hero-badge-pill {
 	display: inline-flex;
