@@ -335,11 +335,11 @@
   <link rel="preload" href="assets/img/connect-tag-globe-offset.webp" as="image" fetchpriority="high">
 
   <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
-  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.14"></noscript>
+  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.12"></noscript>
 
-  <link rel="preload" href="assets/css/styles.min.css?v=1.1.14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.14"></noscript>
+  <link rel="preload" href="assets/css/styles.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.12"></noscript>
   <style>
     /* Page specific overrides */
     body { background-color: #0a1128; }
@@ -347,10 +347,10 @@
 
     /* Hardware Section Enhancements */
     .hardware-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(0, 180, 216, 0.15);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 180, 216, 0.18);
       border-radius: 20px;
-      padding: 30px 20px;
+      padding: 35px 24px;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       height: 100%;
       margin-bottom: 30px;
@@ -358,30 +358,57 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .hardware-card:hover {
       transform: translateY(-8px);
       border-color: #00b4d8;
-      box-shadow: 0 15px 35px rgba(0, 82, 204, 0.2);
-      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 15px 35px rgba(0, 82, 204, 0.25), 0 0 20px rgba(0, 180, 216, 0.15);
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .hardware-card h3 {
+      color: #ffffff !important;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 15px 0 10px;
+      transition: color 0.3s ease;
+    }
+    .hardware-card:hover h3 {
+      color: #00b4d8 !important;
+    }
+    .hardware-card p {
+      color: #cbd5e1 !important;
+      font-size: 15px;
+      line-height: 1.7;
     }
     .hardware-icon-box {
-      width: 65px;
-      height: 65px;
-      border-radius: 16px;
-      background: rgba(0, 180, 216, 0.1);
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: rgba(0, 180, 216, 0.12);
+      border: 1px solid rgba(0, 180, 216, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 30px;
       color: #00b4d8;
-      margin-bottom: 20px;
-      transition: 0.3s;
+      margin-bottom: 15px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .hardware-icon-box i {
+      margin: 0 !important;
+      font-size: 30px;
+      color: #00b4d8;
+      transition: color 0.3s ease;
     }
     .hardware-card:hover .hardware-icon-box {
-      background: #00b4d8;
-      color: #fff;
+      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
+      box-shadow: 0 8px 25px rgba(0, 180, 216, 0.4);
       transform: scale(1.1) rotate(5deg);
+    }
+    .hardware-card:hover .hardware-icon-box i {
+      color: #ffffff !important;
     }
     .hardware-badge {
       display: inline-block;
@@ -491,11 +518,11 @@
   </style>
 
   <!-- Non-blocking CSS -->
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.16"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.12"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.16"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.12"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
@@ -503,11 +530,11 @@
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.16"></noscript>
+  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.12"></noscript>
 
 
-<script src="assets/js/components/components-bundle.js?v=1.1.16" data-cfasync="false" defer></script>
+<script src="assets/js/components/components-bundle.js?v=1.1.12" data-cfasync="false" defer></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-main" data-offset="100" class="preloader-visible">
@@ -724,34 +751,42 @@
         <div class="row services-flex-row">
             <!-- Hardware Item 1 -->
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
-                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
-                    <i class="fa-solid fa-laptop"></i>
-                    <h3>أجهزة وحواسيب</h3>
-                    <p style="flex-grow: 1;">توريد أحدث أجهزة الكمبيوتر، اللابتوبات، والسيرفرات المتطورة لقطاع الأعمال والأفراد.</p>
+                <div class="hardware-card">
+                    <div class="hardware-icon-box">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+                    <h3 style="color: #ffffff !important;">أجهزة وحواسيب</h3>
+                    <p style="flex-grow: 1; color: #cbd5e1 !important;">توريد أحدث أجهزة الكمبيوتر، اللابتوبات، والسيرفرات المتطورة لقطاع الأعمال والأفراد.</p>
                 </div>
             </div>
             <!-- Hardware Item 2 -->
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
-                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
-                    <i class="fa-solid fa-video"></i>
-                    <h3>أنظمة المراقبة</h3>
-                    <p style="flex-grow: 1;">حلول مراقبة ذكية تشمل كاميرات عالية الدقة (IP) وأنظمة تسجيل متقدمة للمنشآت.</p>
+                <div class="hardware-card">
+                    <div class="hardware-icon-box">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 style="color: #ffffff !important;">أنظمة المراقبة</h3>
+                    <p style="flex-grow: 1; color: #cbd5e1 !important;">حلول مراقبة ذكية تشمل كاميرات عالية الدقة (IP) وأنظمة تسجيل متقدمة للمنشآت.</p>
                 </div>
             </div>
             <!-- Hardware Item 3 -->
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
-                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
-                    <i class="fa-solid fa-shield"></i>
-                    <h3>الأمن والسلامة</h3>
-                    <p style="flex-grow: 1;">أنظمة حماية متكاملة، أجهزة إنذار، وحلول الوصول الذكي لضمان أمان ممتلكاتك.</p>
+                <div class="hardware-card">
+                    <div class="hardware-icon-box">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+                    <h3 style="color: #ffffff !important;">الأمن والسلامة</h3>
+                    <p style="flex-grow: 1; color: #cbd5e1 !important;">أنظمة حماية متكاملة، أجهزة إنذار، وحلول الوصول الذكي لضمان أمان ممتلكاتك.</p>
                 </div>
             </div>
             <!-- Hardware Item 4 -->
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
-                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
-                    <i class="fa-solid fa-microchip"></i>
-                    <h3>المعدات الفنية</h3>
-                    <p style="flex-grow: 1;">توفير كافة الملحقات والقطع الفنية الدقيقة والمعدات اللازمة للبنية التحتية التقنية.</p>
+                <div class="hardware-card">
+                    <div class="hardware-icon-box">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 style="color: #ffffff !important;">المعدات الفنية</h3>
+                    <p style="flex-grow: 1; color: #cbd5e1 !important;">توفير كافة الملحقات والقطع الفنية الدقيقة والمعدات اللازمة للبنية التحتية التقنية.</p>
                 </div>
             </div>
         </div>

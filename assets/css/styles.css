@@ -508,6 +508,12 @@ a:hover, a:focus {
     color: #fff;
 }
 
+.hero-section h1, .hero-section h2, .hero-section h3, .hero-section h4, .hero-section h5, .hero-section h6,
+.glass-card h1, .glass-card h2, .glass-card h3, .glass-card h4, .glass-card h5, .glass-card h6,
+.hardware-card h3 {
+    color: #ffffff !important;
+}
+
 .hero-section p {
     color: #e0e0e0;
     font-size: 20px;
