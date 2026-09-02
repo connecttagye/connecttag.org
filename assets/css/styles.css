@@ -302,7 +302,7 @@ a:hover, a:focus {
    ========================================================================== */
 
 #headerwrap {
-	background: linear-gradient(rgba(10, 17, 40, 0.6), rgba(19, 30, 58, 0.65)), url(https://connecttag.org/assets/img/connect-tag-globe-banner.webp) no-repeat center center;
+	background: linear-gradient(rgba(10, 17, 40, 0.6), rgba(19, 30, 58, 0.65)), url('../img/connect-tag-globe-banner.webp') no-repeat center center;
 	margin-top: -50px;
 	padding-top: 180px;
 	text-align: center;
@@ -382,7 +382,7 @@ a:hover, a:focus {
 	text-align: center;
 }
 
-.services-flex-row {
+.services-flex-row, .blog-flex-row, .blog-grid-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -390,7 +390,7 @@ a:hover, a:focus {
     margin-left: -15px;
 }
 
-.services-flex-row > [class*='col-'] {
+.services-flex-row > [class*='col-'], .blog-flex-row > [class*='col-'], .blog-grid-row > [class*='col-'] {
     display: flex;
     flex-direction: column;
 }
@@ -532,17 +532,21 @@ a:hover, a:focus {
 .blog-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eee;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .blog-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 82, 204, 0.1) !important;
 }
-.blog-card h4 {
-    color: #1e293b !important;
+.blog-card h3, .blog-card h4 {
+    color: #0052cc !important;
     font-weight: 700;
 }
-.blog-card:hover h4 {
-    color: #0052cc !important;
+.blog-card:hover h3, .blog-card:hover h4 {
+    color: #003db3 !important;
 }
 
 /* Statistics Section */

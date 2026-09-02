@@ -27,7 +27,7 @@ class SiteHeader extends HTMLElement {
       <header class="ct-header-navbar">
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">

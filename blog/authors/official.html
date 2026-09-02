@@ -41,6 +41,8 @@
     .author-card p { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; margin: 0 auto 30px; }
     .latest-posts { margin-top: 60px; }
     .latest-posts h2 { color: #333; font-weight: bold; margin-bottom: 40px; border-right: 5px solid #006b98; padding-right: 15px; }
+    .services-flex-row { display: flex; flex-wrap: wrap; justify-content: center; margin-right: -15px; margin-left: -15px; }
+    .services-flex-row > [class*='col-'] { display: flex; flex-direction: column; }
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -71,25 +73,25 @@
                     </div>
                 </div>
 
-                <div class="latest-posts">
+                <div class="latest-posts" style="margin-top: 40px;">
                     <h2>آخر المقالات بواسطة فريق الموقع:</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="https://connecttag.org/blog/choosing-web-hosting"><img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" class="img-responsive" style="border-radius: 10px;" alt="اختيار الاستضافة"></a>
-                                <h3 style="font-size: 20px;"><a href="https://connecttag.org/blog/choosing-web-hosting" style="color: #333;">كيف تختار استضافة موقعك الإلكتروني؟</a></h3>
+                    <div class="row services-flex-row">
+                        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                            <div class="blog-post-card" style="display: flex; flex-direction: column; height: 100%;">
+                                <a href="https://connecttag.org/blog/choosing-web-hosting"><img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" class="img-responsive" style="border-radius: 10px; width: 100%; height: 200px; object-fit: cover;" alt="اختيار الاستضافة"></a>
+                                <h3 style="font-size: 18px; margin-top: 15px;"><a href="https://connecttag.org/blog/choosing-web-hosting" style="color: #333;">كيف تختار استضافة موقعك الإلكتروني؟</a></h3>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="https://connecttag.org/blog/digital-marketing-importance"><img src="https://connecttag.org/upload/marketing-in-yout-company.webp" class="img-responsive" style="border-radius: 10px;" alt="التسويق الرقمي"></a>
-                                <h3 style="font-size: 20px;"><a href="https://connecttag.org/blog/digital-marketing-importance" style="color: #333;">أهمية التسويق الرقمي للشركات الناشئة</a></h3>
+                        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                            <div class="blog-post-card" style="display: flex; flex-direction: column; height: 100%;">
+                                <a href="https://connecttag.org/blog/digital-marketing-importance"><img src="https://connecttag.org/upload/marketing-in-yout-company.webp" class="img-responsive" style="border-radius: 10px; width: 100%; height: 200px; object-fit: cover;" alt="التسويق الرقمي"></a>
+                                <h3 style="font-size: 18px; margin-top: 15px;"><a href="https://connecttag.org/blog/digital-marketing-importance" style="color: #333;">أهمية التسويق الرقمي للشركات الناشئة</a></h3>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="blog-post-card" style="margin-bottom: 30px;">
-                                <a href="https://connecttag.org/blog/why-your-business-needs-app"><img src="https://connecttag.org/upload/why-you-need-apps.webp" class="img-responsive" style="border-radius: 10px;" alt="تطبيقات الموبايل"></a>
-                                <h3 style="font-size: 20px;"><a href="https://connecttag.org/blog/why-your-business-needs-app" style="color: #333;">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h3>
+                        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                            <div class="blog-post-card" style="display: flex; flex-direction: column; height: 100%;">
+                                <a href="https://connecttag.org/blog/why-your-business-needs-app"><img src="https://connecttag.org/upload/why-you-need-apps.webp" class="img-responsive" style="border-radius: 10px; width: 100%; height: 200px; object-fit: cover;" alt="تطبيقات الموبايل"></a>
+                                <h3 style="font-size: 18px; margin-top: 15px;"><a href="https://connecttag.org/blog/why-your-business-needs-app" style="color: #333;">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h3>
                             </div>
                         </div>
                     </div>
@@ -104,4 +106,3 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
-

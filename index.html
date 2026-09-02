@@ -145,6 +145,19 @@
         max-width: 100%;
     }
 
+    /* Flex Grid Layout Fix */
+    .services-flex-row, .blog-flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+    .services-flex-row > [class*='col-'], .blog-flex-row > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+    }
+
 
 
     /* Connect Tag - Shared Styles */
@@ -319,14 +332,14 @@
   </style>
 
   <!-- Preload Critical Hero Image -->
-  <link rel="preload" href="https://connecttag.org/assets/img/connect-tag-globe-banner.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/img/connect-tag-globe-banner.webp" as="image" fetchpriority="high">
 
   <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.12"></noscript>
+  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.12"></noscript>
 
-  <link rel="preload" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12"></noscript>
+  <link rel="preload" href="assets/css/styles.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.12"></noscript>
   <style>
     /* Page specific overrides */
     body { background-color: #0a1128; }
@@ -416,7 +429,8 @@
     /* Critical CSS to prevent FCP/LCP delay */
     #headerwrap {
       min-height: 750px;
-      background: #0a1128;
+      background: linear-gradient(rgba(10, 17, 40, 0.6), rgba(19, 30, 58, 0.65)), url('assets/img/connect-tag-globe-banner.webp') no-repeat center center;
+      background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -432,11 +446,11 @@
   </style>
 
   <!-- Non-blocking CSS -->
-  <link rel="preload" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.12"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.12"></noscript>
 
-  <link rel="preload" href="https://connecttag.org/assets/css/components.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.12"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.12"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
@@ -444,11 +458,11 @@
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.12"></noscript>
+  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.12" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.12"></noscript>
 
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.12" data-cfasync="false" defer></script>
+<script src="assets/js/components/components-bundle.js?v=1.1.12" data-cfasync="false" defer></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-main" data-offset="100" class="preloader-visible">
@@ -658,37 +672,37 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row services-flex-row">
             <!-- Hardware Item 1 -->
-            <div class="col-md-3 col-sm-6">
-                <div class="hardware-card">
+            <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
+                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
                     <i class="fa-solid fa-laptop"></i>
                     <h3>أجهزة وحواسيب</h3>
-                    <p>توريد أحدث أجهزة الكمبيوتر، اللابتوبات، والسيرفرات المتطورة لقطاع الأعمال والأفراد.</p>
+                    <p style="flex-grow: 1;">توريد أحدث أجهزة الكمبيوتر، اللابتوبات، والسيرفرات المتطورة لقطاع الأعمال والأفراد.</p>
                 </div>
             </div>
             <!-- Hardware Item 2 -->
-            <div class="col-md-3 col-sm-6">
-                <div class="hardware-card">
+            <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
+                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
                     <i class="fa-solid fa-video"></i>
                     <h3>أنظمة المراقبة</h3>
-                    <p>حلول مراقبة ذكية تشمل كاميرات عالية الدقة (IP) وأنظمة تسجيل متقدمة للمنشآت.</p>
+                    <p style="flex-grow: 1;">حلول مراقبة ذكية تشمل كاميرات عالية الدقة (IP) وأنظمة تسجيل متقدمة للمنشآت.</p>
                 </div>
             </div>
             <!-- Hardware Item 3 -->
-            <div class="col-md-3 col-sm-6">
-                <div class="hardware-card">
+            <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
+                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
                     <i class="fa-solid fa-shield"></i>
                     <h3>الأمن والسلامة</h3>
-                    <p>أنظمة حماية متكاملة، أجهزة إنذار، وحلول الوصول الذكي لضمان أمان ممتلكاتك.</p>
+                    <p style="flex-grow: 1;">أنظمة حماية متكاملة، أجهزة إنذار، وحلول الوصول الذكي لضمان أمان ممتلكاتك.</p>
                 </div>
             </div>
             <!-- Hardware Item 4 -->
-            <div class="col-md-3 col-sm-6">
-                <div class="hardware-card">
+            <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
+                <div class="hardware-card" style="display: flex; flex-direction: column; height: 100%; margin-bottom: 0;">
                     <i class="fa-solid fa-microchip"></i>
                     <h3>المعدات الفنية</h3>
-                    <p>توفير كافة الملحقات والقطع الفنية الدقيقة والمعدات اللازمة للبنية التحتية التقنية.</p>
+                    <p style="flex-grow: 1;">توفير كافة الملحقات والقطع الفنية الدقيقة والمعدات اللازمة للبنية التحتية التقنية.</p>
                 </div>
             </div>
         </div>
@@ -718,79 +732,83 @@
 <div id="latest-blog" style="padding: 80px 0; background: #f9f9f9;">
   <div class="container">
     <div class="row">
-      <h2 class="centered">آخر المقالات</h2>
-      <hr>
       <div class="col-lg-12 centered">
+        <h2 class="centered">آخر المقالات</h2>
+        <hr>
         <p style="margin-bottom: 40px; font-size: 18px; color: #777;">اطلاع على كل جديد في عالم الاتصالات والتقنية</p>
       </div>
+    </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy">
+    <div class="row services-flex-row">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">دليل Room KMP و DataStore: تأمين البيانات</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">تعلم كيفية إتقان تخزين وتشفير البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية...</p>
-            <a href="https://connecttag.org/blog/kmp-data-management-room-datastore" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل Room KMP و DataStore: تأمين البيانات</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إتقان تخزين وتشفير البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية...</p>
+            <a href="https://connecttag.org/blog/kmp-data-management-room-datastore" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">KMP vs Flutter: أيهما تختار؟</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء KMP الأصيل وسرعة تطوير Flutter المذهلة...</p>
-            <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">KMP vs Flutter: أيهما تختار؟</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء KMP الأصيل وسرعة تطوير Flutter المذهلة...</p>
+            <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/iis-hardening-guide.webp" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/iis-hardening-guide.webp" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">دليل تأمين خادم IIS ضد الهجمات السيبرانية</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر...</p>
-            <a href="https://connecttag.org/blog/iis-hardening-guide" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل تأمين خادم IIS ضد الهجمات السيبرانية</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر...</p>
+            <a href="https://connecttag.org/blog/iis-hardening-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">الدليل الشامل لـ Jetpack Compose</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">تعرف على الأداة الثورية لبناء واجهات تطبيقات الأندرويد العصرية...</p>
-            <a href="https://connecttag.org/blog/jetpack-compose-guide" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الدليل الشامل لـ Jetpack Compose</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعرف على الأداة الثورية لبناء واجهات تطبيقات الأندرويد العصرية...</p>
+            <a href="https://connecttag.org/blog/jetpack-compose-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/android-reverse-engineering.webp" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/android-reverse-engineering.webp" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">حماية تطبيقات الأندرويد من الهندسة العكسية</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">تعلم كيفية تأمين تطبيقك وحماية الكود المصدري من التلاعب والاختراق...</p>
-            <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">حماية تطبيقات الأندرويد من الهندسة العكسية</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية تأمين تطبيقك وحماية الكود المصدري من التلاعب والاختراق...</p>
+            <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom:30px; transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" alt="أمن واجهات البرمجة API" width="400" height="250" loading="lazy">
+      <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" alt="أمن واجهات البرمجة API" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
-            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0;">تأمين واجهات برمجة التطبيقات (API Security)</h3>
-            <p style="font-size:14px; color:#666; flex-grow: 1;">دليل شامل حول أفضل الممارسات لتأمين قنوات التواصل بين الأنظمة...</p>
-            <a href="https://connecttag.org/blog/api-security-guide" style="font-weight:bold; margin-top: 10px; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">تأمين واجهات برمجة التطبيقات (API Security)</h3>
+            <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">دليل شامل حول أفضل الممارسات لتأمين قنوات التواصل بين الأنظمة...</p>
+            <a href="https://connecttag.org/blog/api-security-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-lg-12 centered" style="margin-top:20px;">
+    <div class="row text-center" style="margin-top:20px;">
+      <div class="col-lg-12">
         <a href="https://connecttag.org/blog/" class="btn btn-lg" style="background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: #fff; border-radius: 30px; padding: 12px 50px; box-shadow: 0 4px 15px rgba(0, 82, 204, 0.35); border: none;">عرض كل المقالات</a>
       </div>
     </div>
