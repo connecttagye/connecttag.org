@@ -6,19 +6,20 @@
 
 <title>محول الصور المتقدم - كونكت تاق</title>
 <meta name="description" content="أداة احترافية لتحويل الصور إلى WebP و SVG و PNG و JPEG مع التحكم في الجودة، تغيير الحجم، وإضافة العلامات المائية.">
+<link rel="canonical" href="https://connecttag.org/tools/design/image-converter/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.10">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.10">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.10">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.12">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.10">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.12">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.10" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.10" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.12" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.12" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
@@ -343,7 +344,7 @@ async function processAll() {
         const file = filtered[i];
         const item = document.createElement('div');
         item.className = 'image-item';
-        item.innerHTML = `<img class="thumb" src="${URL.createObjectURL(file)}"><div class="info"><span class="name">${file.name}</span><div class="sizes"><span>${(file.size/1024).toFixed(1)} KB</span> <span id="new-size-${i}">...</span></div></div><div class="actions"><button class="btn-action btn-dl" id="dl-${i}" disabled><i class="fa-solid fa-download"></i></button><button class="btn-action btn-rm" onclick="removeFile('${file.name}')"><i class="fa-solid fa-xmark"></i></button></div>`;
+        item.innerHTML = `<img class="thumb" src="${URL.createObjectURL(file)}" alt="${file.name}" loading="lazy"><div class="info"><span class="name">${file.name}</span><div class="sizes"><span>${(file.size/1024).toFixed(1)} KB</span> <span id="new-size-${i}">...</span></div></div><div class="actions"><button class="btn-action btn-dl" id="dl-${i}" aria-label="تحميل الصورة المحولة" disabled><i class="fa-solid fa-download"></i></button><button class="btn-action btn-rm" aria-label="حذف الصورة من القائمة" onclick="removeFile('${file.name}')"><i class="fa-solid fa-xmark"></i></button></div>`;
         list.appendChild(item);
 
         try {

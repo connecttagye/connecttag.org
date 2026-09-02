@@ -4,10 +4,10 @@
  */
 class SiteAuthorBox extends HTMLElement {
   connectedCallback() {
-    const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
+    const baseUrl = (window.CT_BASE_URL || 'https://connecttag.org').replace(/\/+$/, '');
     const name = this.getAttribute('name') || 'فريق كونكت تاق';
-    const avatar = this.getAttribute('avatar') || baseUrl + 'assets/img/connect-tag-official-logo.webp';
-    const link = this.getAttribute('link') || (name === 'فريق كونكت تاق' ? baseUrl + 'author/official' : baseUrl + 'author/');
+    const avatar = this.getAttribute('avatar') || `${baseUrl}/assets/img/connect-tag-official-logo.webp`;
+    const link = this.getAttribute('link') || (name === 'فريق كونكت تاق' ? `${baseUrl}/blog/authors/official` : `${baseUrl}/blog/authors/`);
 
     this.innerHTML = `
       <a href="${link}" class="ct-author-card-simple">

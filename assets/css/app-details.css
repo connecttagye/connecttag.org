@@ -3,6 +3,10 @@
    Specifically for /projects/apps/*/index.html
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 .hero-section {
     background: linear-gradient(135deg, #006b98 0%, #004d6e 100%);
     color: #fff;
@@ -291,6 +295,84 @@
     color: #006b98;
 }
 
+/* Download Options Section */
+.download-section {
+    margin-top: 60px;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #f8faff 0%, #edf4f9 100%);
+    border-radius: 25px;
+    border: 1px solid #dce8f0;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.download-section h3 {
+    color: #006b98;
+    font-weight: 800;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.download-section p.download-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.download-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-download {
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.btn-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.btn-download.btn-playstore {
+    background: #34a853;
+    color: #fff;
+}
+.btn-download.btn-playstore:hover {
+    background: #2d9247;
+    color: #fff;
+}
+
+.btn-download.btn-telegram {
+    background: #229ed9;
+    color: #fff;
+}
+.btn-download.btn-telegram:hover {
+    background: #1e87ba;
+    color: #fff;
+}
+
+.btn-download.btn-direct {
+    background: #006b98;
+    color: #fff;
+}
+.btn-download.btn-direct:hover {
+    background: #005073;
+    color: #fff;
+}
+
 @media (max-width: 991px) {
     .hero-section { text-align: center; padding: 120px 0 80px; }
     .hero-section .ct-breadcrumb-list { justify-content: center; }
@@ -300,5 +382,8 @@
     .hero-btns { display: flex; flex-direction: column; gap: 15px; align-items: center; }
     .btn-hero { width: 100%; max-width: 300px; justify-content: center; }
     .specifications-section { padding: 30px 15px; }
+    .download-section { padding: 35px 20px; }
+    .download-buttons-group { flex-direction: column; align-items: center; }
+    .btn-download { width: 100%; max-width: 300px; justify-content: center; }
 }
 

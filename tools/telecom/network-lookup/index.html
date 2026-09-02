@@ -11,18 +11,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.10">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.10">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.10">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.12">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.12">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css?v=1.1.10" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css?v=1.1.12" />
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.10" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.10" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.12" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.12" defer></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js?v=1.1.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js?v=1.1.12"></script>
 
     <style>
         body {
@@ -466,7 +466,7 @@
                             return {
                                 choice: (classNames, data) => {
                                     const flag = data.customProperties && data.customProperties.iso2
-                                        ? `<img src="https://flagcdn.com/w40/${data.customProperties.iso2}.png" class="choice-flag">`
+                                        ? `<img src="https://flagcdn.com/w40/${data.customProperties.iso2}.png" class="choice-flag" alt="${data.label}" loading="lazy">`
                                         : '';
                                     return template(`
                                         <div class="${classNames.item} ${classNames.itemChoice} ${data.disabled ? classNames.itemDisabled : classNames.itemSelectable}" data-select-text="${this.config.itemSelectText}" data-choice ${data.disabled ? 'aria-disabled="true"' : 'role="option"'} data-id="${data.id}" data-value="${data.value}">
@@ -544,7 +544,7 @@
                                 <div class="op-header">
                                     <h3 class="op-name">${op.name || op.nameEn}</h3>
                                     <span class="badge-country">
-                                        ${op.countryCode ? `<img src="https://flagcdn.com/w40/${op.countryCode.toLowerCase()}.png" class="country-flag">` : ''}
+                                        ${op.countryCode ? `<img src="https://flagcdn.com/w40/${op.countryCode.toLowerCase()}.png" class="country-flag" alt="${op.countryNameAr || op.countryNameEn || 'علم الدولة'}" loading="lazy">` : ''}
                                         ${op.countryNameAr || op.countryNameEn || 'عالمي'}
                                     </span>
                                 </div>

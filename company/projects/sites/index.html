@@ -8,8 +8,6 @@
 <meta name="description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية في اليمن، بما في ذلك متجر روكسون اليمن والعديد من الحلول الرقمية.">
 <link rel="canonical" href="https://connecttag.org/company/projects/sites/" />
 
-
-
   <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/sites/" />
 <meta property="og:type" content="website">
@@ -25,26 +23,18 @@
 <meta name="twitter:description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.12">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.12">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.10" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.10"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.10">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.10">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.10" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.10"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.10">
-    
-
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.10" defer></script>
-
-
-
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.12" defer></script>
 
 <style>
     .web-project-card { background: #fff; border-radius: 20px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
@@ -80,8 +70,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>مشاريعنا في الويب</h1>
-                <site-breadcrumb></site-breadcrumb>
+                <h1 data-aos="fade-down">مشاريعنا في الويب</h1>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"أعمالنا", "url":"https://connecttag.org/company/projects/"}, {"title":"أعمال الويب", "url":"https://connecttag.org/company/projects/sites/"}]' data-aos="fade-up" data-aos-delay="200"></site-breadcrumb>
             </div>
         </div>
     </div>
@@ -94,7 +84,6 @@
             <div class="col-md-6" data-aos="fade-up">
                 <div class="web-project-card">
                     <div class="project-img-wrapper">
-                        <!-- يمكنك لاحقاً إضافة لقطة شاشة للمتجر -->
                         <img src="https://connecttag.org/assets/img/site/roxon-website.webp" alt="متجر روكسون اليمن" loading="lazy">
                     </div>
                     <div class="project-info">
@@ -115,7 +104,6 @@
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="web-project-card">
                     <div class="project-img-wrapper">
-                        <!-- يمكنك إضافة لقطة شاشة للموقع هنا لاحقاً -->
                         <img src="https://connecttag.org/assets/img/site/apk-store-website.webp" alt="متجر تطبيقات APK" style="object-fit: contain; padding: 40px; background: #f8f9fa;" loading="lazy">
                     </div>
                     <div class="project-info">
@@ -131,12 +119,9 @@
                     </div>
                 </div>
             </div>
-
-            <!-- يمكن إضافة المزيد من المشاريع هنا بنفس التنسيق -->
         </div>
     </div>
 </div>
-
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
@@ -146,4 +131,3 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
-

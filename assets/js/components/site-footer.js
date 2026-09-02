@@ -40,7 +40,8 @@ class SiteFooter extends HTMLElement {
               <li><a href="${baseUrl}/company/our-company"><i class="fa-solid fa-angle-left"></i> الشركة</a></li>
               <li><a href="${baseUrl}/blog/"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
               <li><a href="${baseUrl}/tools/"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
-              <li><a href="${baseUrl}/support/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
+              <li><a href="${baseUrl}/company/support/"><i class="fa-solid fa-angle-left"></i> الدعم والطلبات</a></li>
+              <li><a href="${baseUrl}/company/support/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
               <li><a href="${baseUrl}/contact"><i class="fa-solid fa-angle-left"></i> اتصل بنا</a></li>
             </ul>
           </div>
@@ -82,7 +83,7 @@ class SiteFooter extends HTMLElement {
             <ul class="ct-footer-legal-links">
               <li><a href="${baseUrl}/privacy-policy">سياسة الخصوصية</a></li>
               <li><a href="${baseUrl}/terms-of-use">اتفاقية الاستخدام</a></li>
-              <li><a href="${baseUrl}/support/order">طلب خدمة</a></li>
+              <li><a href="${baseUrl}/company/support/order">طلب خدمة</a></li>
               <li><a href="${baseUrl}/contact">الدعم الفني</a></li>
             </ul>
           </div>

@@ -6,19 +6,20 @@
 
 <title>مولد الوثائق القانونية الاحترافي - كونكت تاق</title>
 <meta name="description" content="أداة احترافية لإنشاء سياسة الخصوصية والشروط والأحكام وشرائط ملفات تعريف الارتباط للتطبيقات والمواقع.">
+<link rel="canonical" href="https://connecttag.org/tools/security/privacy-generator/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.10">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.10">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.10">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.10">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.12">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.12">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.10" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.10" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.12" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.12" defer></script>
 
 <style>
     :root {
@@ -150,15 +151,15 @@
                                 <div class="col-sm-12 mb-3">
                                     <label class="form-label">المنصة:</label>
                                     <div class="d-flex gap-3">
-                                        <label class="fw-bold"><input type="radio" name="pType" value="app" checked onchange="liveUpdate()"> تطبيق</label>
-                                        <label class="fw-bold"><input type="radio" name="pType" value="web" onchange="liveUpdate()"> موقع</label>
+                                        <label class="fw-bold" for="ptype-app"><input type="radio" id="ptype-app" name="pType" value="app" aria-label="نوع المشروع تطبيق" checked onchange="liveUpdate()"> تطبيق</label>
+                                        <label class="fw-bold" for="ptype-web"><input type="radio" id="ptype-web" name="pType" value="web" aria-label="نوع المشروع موقع إلكتروني" onchange="liveUpdate()"> موقع</label>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 mb-3"><label class="form-label">اسم المشروع *</label><input type="text" id="appName" class="form-control-custom" placeholder="اسم التطبيق/الموقع" oninput="liveUpdate()"></div>
-                                <div class="col-sm-6 mb-3"><label class="form-label">المطور / الشركة</label><input type="text" id="company" class="form-control-custom" placeholder="اسم الجهة المالكة" oninput="liveUpdate()"></div>
-                                <div class="col-sm-6 mb-3"><label class="form-label">البريد الإلكتروني *</label><input type="email" id="email" class="form-control-custom" placeholder="contact@example.com" oninput="liveUpdate()"></div>
+                                <div class="col-sm-6 mb-3"><label class="form-label" for="appName">اسم المشروع *</label><input type="text" id="appName" class="form-control-custom" placeholder="اسم التطبيق/الموقع" oninput="liveUpdate()"></div>
+                                <div class="col-sm-6 mb-3"><label class="form-label" for="company">المطور / الشركة</label><input type="text" id="company" class="form-control-custom" placeholder="اسم الجهة المالكة" oninput="liveUpdate()"></div>
+                                <div class="col-sm-6 mb-3"><label class="form-label" for="email">البريد الإلكتروني *</label><input type="email" id="email" class="form-control-custom" placeholder="contact@example.com" oninput="liveUpdate()"></div>
                                 <div class="col-sm-6 mb-3">
-                                    <label class="form-label">جهة الاختصاص</label>
+                                    <label class="form-label" for="jurisdiction">جهة الاختصاص</label>
                                     <select id="jurisdiction" class="form-control-custom" onchange="liveUpdate()">
                                         <option value="المملكة العربية السعودية">السعودية</option>
                                         <option value="الإمارات العربية المتحدة">الإمارات</option>
@@ -175,12 +176,12 @@
                         <div class="form-card" data-aos="fade-left" data-aos-delay="100">
                             <h2><span>2</span> الخدمات المرتبطة</h2>
                             <div class="services-grid">
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Google Play"><i class="fa-brands fa-google"></i><span>Google Play</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="App Store"><i class="fa-brands fa-apple"></i><span>App Store</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="AdMob"><i class="fa-brands fa-adn"></i><span>AdMob</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Firebase"><i class="fa-solid fa-fire"></i><span>Firebase</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="OneSignal"><i class="fa-solid fa-bell"></i><span>OneSignal</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" value="Sentry"><i class="fa-solid fa-bug"></i><span>Sentry</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-gplay" aria-label="Google Play" value="Google Play"><i class="fa-brands fa-google"></i><span>Google Play</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-appstore" aria-label="App Store" value="App Store"><i class="fa-brands fa-apple"></i><span>App Store</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-admob" aria-label="AdMob" value="AdMob"><i class="fa-brands fa-adn"></i><span>AdMob</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-firebase" aria-label="Firebase" value="Firebase"><i class="fa-solid fa-fire"></i><span>Firebase</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-onesignal" aria-label="OneSignal" value="OneSignal"><i class="fa-solid fa-bell"></i><span>OneSignal</span></label>
+                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-sentry" aria-label="Sentry" value="Sentry"><i class="fa-solid fa-bug"></i><span>Sentry</span></label>
                             </div>
                         </div>
                     </div>

@@ -36,7 +36,7 @@ class SiteHeader extends HTMLElement {
                 <a href="${baseUrl}/" class="ct-nav-link">الرئيسية</a>
               </li>
               <li class="ct-nav-item ${isCompanyPage ? 'active' : ''}">
-                <a href="${baseUrl}/company/our-company" class="ct-nav-link">من نحن</a>
+                <a href="${baseUrl}/company/" class="ct-nav-link">من نحن</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}">
                 <a href="${baseUrl}/company/projects/" class="ct-nav-link">أعمالنا</a>
