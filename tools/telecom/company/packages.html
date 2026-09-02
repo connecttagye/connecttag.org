@@ -78,7 +78,7 @@
             flex-wrap: wrap;
         }
         .breadcrumb-tools li { color: #64748b; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
         .breadcrumb-tools li a:hover { color: #e89a2f; }
         .breadcrumb-tools li:not(:last-child)::after {
             content: '\f104';
@@ -111,7 +111,7 @@
         .packages-header h1 {
             font-weight: 900;
             font-size: 30px;
-            color: #006b98;
+            color: #0052cc;
             margin: 0 0 10px;
         }
         .packages-header p {
@@ -152,7 +152,7 @@
             transition: 0.3s;
         }
         .search-box input:focus {
-            border-color: #006b98;
+            border-color: #0052cc;
             box-shadow: 0 0 0 3px rgba(0, 107, 152, 0.1);
         }
         .search-box i {
@@ -164,7 +164,7 @@
         }
         .btn-back-link {
             background: #f8fafc;
-            color: #006b98;
+            color: #0052cc;
             border: 1px solid #e2e8f0;
             padding: 9px 18px;
             border-radius: 10px;
@@ -179,7 +179,7 @@
         .btn-back-link:hover {
             background: #006b98;
             color: #fff;
-            border-color: #006b98;
+            border-color: #0052cc;
             text-decoration: none;
         }
 
@@ -204,7 +204,7 @@
         .pkg-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.07);
-            border-color: #006b98;
+            border-color: #0052cc;
         }
         .pkg-card::before {
             content: '';
@@ -233,7 +233,7 @@
         .pkg-price {
             font-size: 30px;
             font-weight: 900;
-            color: #006b98;
+            color: #0052cc;
             line-height: 1;
         }
         .pkg-currency {
@@ -277,7 +277,7 @@
             font-family: 'Courier New', monospace;
             font-size: 16px;
             font-weight: 800;
-            color: #006b98;
+            color: #0052cc;
             direction: ltr;
             text-align: left;
         }
@@ -303,7 +303,7 @@
         .btn-act:hover {
             background: #006b98;
             color: #fff;
-            border-color: #006b98;
+            border-color: #0052cc;
         }
 
         /* Skeleton Loading */
@@ -361,7 +361,7 @@
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
     <link rel="manifest" href="https://connecttag.org/manifest.json">
-    <meta name="theme-color" content="#0077b6">
+    <meta name="theme-color" content="#0052cc">
 </head>
 <body>
 <site-toast></site-toast>
@@ -370,18 +370,7 @@
 <div id="toast" class="toast-msg"></div>
 
 <!-- Compact Breadcrumb Bar -->
-<div class="breadcrumb-wrapper">
-    <div class="container">
-        <ul class="breadcrumb-tools">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-    <li><a href="https://connecttag.org/tools/telecom/">ادوات اتصالات وانترنت</a></li>
-            <li><a href="https://connecttag.org/tools/telecom/company/">دليل الشركات</a></li>
-            <li><a href="#" id="breadcrumb-company-link">تفاصيل الشركة</a></li>
-            <li class="active">باقات وعروض الإنترنت</li>
-        </ul>
-    </div>
-</div>
+<site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"دليل شركات الاتصالات","url":"https://connecttag.org/tools/telecom/company/"},{"title":"تفاصيل الشركة","url":"#","id":"breadcrumb-company-link"},{"title":"باقات وعروض الإنترنت","url":"https://connecttag.org/tools/telecom/company/packages"}]'></site-breadcrumb>
 
 <main>
     <!-- Header -->

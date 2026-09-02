@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1 id="main-heading">طلب جديد</h1>
-                <site-breadcrumb id="dynamic-breadcrumb" items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"الدعم والطلبات","url":"https://connecttag.org/company/support/"},{"title":"الطلبات","url":""}]'></site-breadcrumb>
+                <site-breadcrumb id="dynamic-breadcrumb" items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"الدعم والطلبات","url":"https://connecttag.org/company/support/"},{"title":"الطلبات","url":"https://connecttag.org/company/support/order"}]'></site-breadcrumb>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
         <div class="order-form-container">
             <div id="product-info">
                 <span class="service-badge" id="type-label">طلب خدمة</span>
-                <h3 id="item-name" style="margin: 0; font-weight: 800; color: #1a0033;">جاري تحميل تفاصيل الطلب...</h3>
+                <h3 id="item-name" style="margin: 0; font-weight: 800; color: #1e293b;">جاري تحميل تفاصيل الطلب...</h3>
             </div>
 
             <form id="orderForm" method="post" class="form" role="form">
@@ -91,7 +91,12 @@
                   <input class="form-control" id="phone" name="phone" placeholder="00967..." type="tel" required />
                 </div>
 
-                <div class="col-md-6 form-group" id="selection-group">
+                <div class="col-md-6 form-group" id="company-group">
+                    <label class="form-label" for="company">اسم الشركة / الجهة (اختياري)</label>
+                    <input class="form-control" id="company" name="company" placeholder="مثلاً: شركة تاق العقارية" type="text">
+                </div>
+
+                <div class="col-md-12 form-group" id="selection-group">
                   <label class="form-label" for="service">اختر الخدمة/المنتج *</label>
                   <select class="form-control" id="service" name="service">
                     <option value="" disabled selected>اختر من القائمة...</option>
@@ -142,16 +147,6 @@
                     <input class="form-control" id="quantity" name="quantity" type="number" value="1" min="1">
                 </div>
 
-                <div class="col-md-6 form-group" id="company-group">
-                    <label class="form-label" for="company">اسم الشركة / الجهة (اختياري)</label>
-                    <input class="form-control" id="company" name="company" placeholder="مثلاً: شركة تاق العقارية" type="text">
-                </div>
-
-                <div class="col-md-6 form-group" id="deadline-group">
-                    <label class="form-label" for="deadline">الموعد المتوقع للتسليم (اختياري)</label>
-                    <input class="form-control" id="deadline" name="deadline" type="text" placeholder="مثلاً: خلال شهر">
-                </div>
-
                 <div class="col-md-12 form-group">
                   <label class="form-label" for="details" id="details-label">تفاصيل إضافية عن الطلب</label>
                   <textarea class="form-control" id="details" name="details" placeholder="أي ملاحظات أو متطلبات خاصة ترغب في إضافتها..." rows="5"></textarea>
@@ -190,7 +185,6 @@
     const uiDetailsLabel = document.getElementById('details-label');
     const uiSubmitBtn = document.getElementById('submit-btn');
     const uiMainHeading = document.getElementById('main-heading');
-    const uiDeadlineGroup = document.getElementById('deadline-group');
 
     if (item) {
         uiProductInfo.style.display = 'block';
@@ -207,14 +201,12 @@
             uiTypeLabel.style.background = '#fef3c7';
             uiTypeLabel.style.color = '#92400e';
             uiQuantityGroup.style.display = 'block';
-            uiDeadlineGroup.style.display = 'none';
             uiDetailsLabel.innerText = 'ملاحظات إضافية (اللون، المقاس، عنوان التوصيل)';
             uiMainHeading.innerText = 'طلب منتج';
             uiSubmitBtn.innerHTML = 'تأكيد طلب الشراء <i class="fa-solid fa-cart-shopping" style="margin-right: 10px;"></i>';
             document.title = "طلب " + decodedItem + " - كونكت تاق";
         } else {
             uiTypeLabel.innerText = 'طلب خدمة';
-            uiDeadlineGroup.style.display = 'block';
             uiDetailsLabel.innerText = 'تفاصيل المشروع أو المتطلبات الفنية';
             uiMainHeading.innerText = 'طلب خدمة';
             document.title = "طلب خدمة " + decodedItem + " - كونكت تاق";
@@ -232,7 +224,6 @@
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
         const company = document.getElementById('company').value;
-        const deadline = document.getElementById('deadline').value;
         const details = document.getElementById('details').value;
 
         let finalItem = item ? decodeURIComponent(item) : document.getElementById('service').value;
@@ -251,7 +242,6 @@
         body += `البريد الإلكتروني: ${email}\n`;
         body += `رقم الهاتف: ${phone}\n`;
         if (company) body += `اسم الشركة: ${company}\n`;
-        if (type === 'service' && deadline) body += `موعد التسليم: ${deadline}\n`;
         body += `--------------------------\n\n`;
         body += `التفاصيل والملاحظات:\n${details}`;
 

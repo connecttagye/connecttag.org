@@ -43,7 +43,7 @@
 
         .age-result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 25px; }
         .result-item { background: #f0f9ff; border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #bae6fd; }
-        .result-val { font-size: 28px; font-weight: 900; color: #006b98; display: block; }
+        .result-val { font-size: 28px; font-weight: 900; color: #0052cc; display: block; }
         .result-unit { font-size: 14px; color: #64748b; font-weight: 700; }
 
         .next-birthday-box {
@@ -56,7 +56,7 @@
             flex: 1; padding: 12px; border-radius: 12px; border: 2px solid #f1f5f9;
             background: #f8fafc; cursor: pointer; font-weight: 800; transition: 0.3s;
         }
-        .tab-btn.active { border-color: #006b98; background: #fff; color: #006b98; }
+        .tab-btn.active { border-color: #0052cc; background: #fff; color: #0052cc; }
 
         @media (max-width: 768px) {
             .age-result-grid { grid-template-columns: 1fr; }
@@ -73,7 +73,7 @@
         <div class="container">
             <h1 data-aos="fade-down">حاسبة العمر وتحويل التاريخ</h1>
             <p data-aos="fade-up" data-aos-delay="100">أداة ذكية لحساب العمر بدقة والتحويل بين التقويمين الهجري والميلادي</p>
-            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات متنوعة", "url":"/tools/misc/"}, {"title":"حاسبة العمر", "url":"/tools/misc/age-calculator/"}]'></site-breadcrumb>
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"أدوات متنوعة","url":"https://connecttag.org/tools/misc/"},{"title":"حاسبة العمر","url":"https://connecttag.org/tools/misc/age-calculator/"}]'></site-breadcrumb>
         </div>
     </div>
 
@@ -116,7 +116,7 @@
                             <input type="date" id="g-to-h-input" class="form-control-custom" oninput="convertToHijri()">
                             <div class="result-box mt-3" style="background:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:12px; text-align:center;">
                                 <span style="font-weight:700; color:#64748b; display:block; margin-bottom:5px;">التاريخ بالهجري:</span>
-                                <span id="h-result" style="font-weight:900; color:#006b98; font-size:20px;">-</span>
+                                <span id="h-result" style="font-weight:900; color: #0052cc; font-size:20px;">-</span>
                             </div>
                         </div>
                     </div>

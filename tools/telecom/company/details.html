@@ -78,7 +78,7 @@
             flex-wrap: wrap;
         }
         .breadcrumb-tools li { color: #64748b; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
         .breadcrumb-tools li a:hover { color: #e89a2f; }
         .breadcrumb-tools li:not(:last-child)::after {
             content: '\f104';
@@ -112,7 +112,7 @@
         .company-name-big {
             font-size: 32px;
             font-weight: 900;
-            color: #006b98;
+            color: #0052cc;
             margin-bottom: 15px;
         }
 
@@ -141,7 +141,7 @@
         .social-btn:hover {
             background: #006b98;
             color: #ffffff;
-            border-color: #006b98;
+            border-color: #0052cc;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 107, 152, 0.2);
         }
@@ -161,7 +161,7 @@
         .info-card h3 {
             font-size: 18px;
             font-weight: 800;
-            color: #006b98;
+            color: #0052cc;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -195,7 +195,7 @@
             gap: 15px;
         }
         .action-card:hover {
-            border-color: #006b98;
+            border-color: #0052cc;
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.07);
         }
@@ -204,7 +204,7 @@
             height: 70px;
             border-radius: 20px;
             background: #f0f9ff;
-            color: #006b98;
+            color: #0052cc;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -252,20 +252,20 @@
         }
         .contact-item:last-child { margin-bottom: 0; }
         .contact-item i {
-            color: #006b98;
+            color: #0052cc;
             font-size: 16px;
             margin-top: 3px;
             width: 20px;
         }
         .contact-item strong { color: #1e293b; display: block; margin-bottom: 2px; }
-        .contact-link { color: #006b98; text-decoration: none; font-weight: 700; word-break: break-all; }
+        .contact-link { color: #0052cc; text-decoration: none; font-weight: 700; word-break: break-all; }
         .contact-link:hover { color: #e89a2f; }
 
         .phone-tag {
             display: inline-block;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            color: #006b98;
+            color: #0052cc;
             padding: 4px 10px;
             border-radius: 8px;
             font-size: 13px;
@@ -274,7 +274,7 @@
             margin: 2px 4px 2px 0;
             direction: ltr;
         }
-        .phone-tag:hover { background: #006b98; color: #fff; border-color: #006b98; }
+        .phone-tag:hover { background: #006b98; color: #fff; border-color: #0052cc; }
 
         .loading-overlay {
             position: fixed;
@@ -292,29 +292,19 @@
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
     <link rel="manifest" href="https://connecttag.org/manifest.json">
-    <meta name="theme-color" content="#0077b6">
+    <meta name="theme-color" content="#0052cc">
 </head>
 <body>
 <site-toast></site-toast>
 <site-header></site-header>
 
 <div id="loading-screen" class="loading-overlay">
-    <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #006b98;"></i>
+    <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #0052cc;"></i>
     <p style="margin-top: 20px; font-weight: 700; color: #1e293b;">جاري تحميل معلومات الشركة...</p>
 </div>
 
 <!-- Compact Breadcrumb Bar -->
-<div class="breadcrumb-wrapper">
-    <div class="container">
-        <ul class="breadcrumb-tools">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-    <li><a href="https://connecttag.org/tools/telecom/">ادوات اتصالات وانترنت</a></li>
-            <li><a href="https://connecttag.org/tools/telecom/company/">دليل الشركات</a></li>
-            <li class="active" id="breadcrumb-company-name">تفاصيل الشركة</li>
-        </ul>
-    </div>
-</div>
+<site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"دليل شركات الاتصالات","url":"https://connecttag.org/tools/telecom/company/"},{"title":"تفاصيل الشركة","url":"https://connecttag.org/tools/telecom/company/details","id":"breadcrumb-company-name"}]'></site-breadcrumb>
 
 <main id="company-content" style="display:none;">
     <!-- Hero Header -->
@@ -359,7 +349,7 @@
                 <!-- Sidebar Contact Info -->
                 <div class="col-lg-4 col-md-5 mt-4 mt-md-0">
                     <div class="contact-info-card">
-                        <h4><i class="fa-solid fa-address-book" style="color:#006b98; margin-left: 8px;"></i> قنوات التواصل الرسمية</h4>
+                        <h4><i class="fa-solid fa-address-book" style="color: #0052cc; margin-left: 8px;"></i> قنوات التواصل الرسمية</h4>
 
                         <div class="contact-item">
                             <i class="fa-solid fa-globe"></i>

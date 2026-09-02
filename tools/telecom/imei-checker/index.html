@@ -141,7 +141,7 @@
         .checker-header h1 {
             font-weight: 900;
             font-size: 32px;
-            color: #006b98 !important;
+            color: #0052cc !important;
             margin-bottom: 12px;
         }
         .checker-header p {
@@ -161,7 +161,7 @@
             margin: 18px 0 0;
         }
         .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
         .breadcrumb-tools li a:hover { color: #e89a2f; }
         .breadcrumb-tools li:not(:last-child)::after {
             content: '\f104';
@@ -229,7 +229,7 @@
         .search-type-selector input:checked + .type-chip {
             background: #006b98;
             color: #ffffff;
-            border-color: #006b98;
+            border-color: #0052cc;
             box-shadow: 0 4px 12px rgba(0, 107, 152, 0.25);
         }
 
@@ -245,7 +245,7 @@
             box-shadow: none;
         }
         .input-main-group .form-control:focus {
-            border-color: #006b98;
+            border-color: #0052cc;
             box-shadow: 0 0 0 3px rgba(0, 107, 152, 0.1);
         }
         .valid-input {
@@ -327,7 +327,7 @@
             border-radius: 8px;
             font-size: 14px;
             font-weight: 800;
-            color: #006b98;
+            color: #0052cc;
             margin: 20px 0 10px;
             display: flex;
             align-items: center;
@@ -360,11 +360,11 @@
             border-radius: 8px;
             font-size: 12px;
             font-weight: 700;
-            color: #006b98;
+            color: #0052cc;
             cursor: pointer;
             transition: 0.2s;
         }
-        .history-item:hover { background: #006b98; color: #fff; border-color: #006b98; }
+        .history-item:hover { background: #006b98; color: #fff; border-color: #0052cc; }
 
         /* Action Buttons */
         .action-row { display: flex; gap: 10px; margin-top: 25px; }
@@ -381,8 +381,8 @@
             justify-content: center;
             gap: 6px;
         }
-        .btn-copy { background: #f8fafc; border-color: #e2e8f0; color: #006b98; }
-        .btn-copy:hover { background: #006b98; color: #fff; border-color: #006b98; }
+        .btn-copy { background: #f8fafc; border-color: #e2e8f0; color: #0052cc; }
+        .btn-copy:hover { background: #006b98; color: #fff; border-color: #0052cc; }
         .btn-share { background: #25d366; color: #fff; }
         .btn-share:hover { background: #1eb956; color: #fff; }
 
@@ -411,15 +411,15 @@
             border: 1px solid #edf2f7;
         }
         .help-card h4 { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 18px; }
-        .help-card h5 { font-size: 14px; font-weight: 800; color: #006b98; margin-bottom: 8px; }
+        .help-card h5 { font-size: 14px; font-weight: 800; color: #0052cc; margin-bottom: 8px; }
         .help-card ul { padding-right: 18px; margin: 0; font-size: 13px; color: #64748b; line-height: 1.8; }
-        .help-card code { background: #f1f5f9; color: #006b98; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
+        .help-card code { background: #f1f5f9; color: #0052cc; font-weight: bold; padding: 2px 6px; border-radius: 4px; }
 
         /* FAQ Section */
         .faq-section { margin-top: 50px; border-top: 1px solid #edf2f7; padding-top: 40px; }
         .faq-item { margin-bottom: 22px; }
         .faq-question { font-weight: 800; color: #1e293b; font-size: 15px; margin-bottom: 8px; display: flex; gap: 8px; }
-        .faq-question i { color: #006b98; margin-top: 3px; }
+        .faq-question i { color: #0052cc; margin-top: 3px; }
         .faq-answer { color: #64748b; font-size: 14px; line-height: 1.75; padding-right: 24px; }
 
         @media (max-width: 768px) {
@@ -435,7 +435,7 @@
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
     <link rel="manifest" href="https://connecttag.org/manifest.json">
-    <meta name="theme-color" content="#0077b6">
+    <meta name="theme-color" content="#0052cc">
 </head>
 <body>
 <site-toast></site-toast>
@@ -447,12 +447,7 @@
         <div class="container">
             <h1>فحص هُوية الأجهزة الذكية</h1>
             <p>الأداة التقنية الأدق للتحقق من مواصفات وأصالة الهواتف والمودمات عبر IMEI و TAC</p>
-            <ul class="breadcrumb-tools">
-                <li><a href="https://connecttag.org/">الرئيسية</a></li>
-                <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-                <li><a href="https://connecttag.org/tools/telecom/">ادوات اتصالات وانترنت</a></li>
-                <li class="active">فحص IMEI</li>
-            </ul>
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"فحص IMEI","url":"https://connecttag.org/tools/telecom/imei-checker/"}]'></site-breadcrumb>
         </div>
     </div>
 
@@ -602,7 +597,7 @@
                         <ul class="info-list">
                             <li class="info-item">
                                 <span class="info-label">رقم الـ TAC المعتمد</span>
-                                <span class="info-value" id="resTac" style="font-family: monospace; letter-spacing: 1px; color: #006b98;">-</span>
+                                <span class="info-value" id="resTac" style="font-family: monospace; letter-spacing: 1px; color: #0052cc;">-</span>
                             </li>
                             <li class="info-item">
                                 <span class="info-label">معرف الجهاز (Code)</span>
@@ -652,7 +647,7 @@
 
                     <!-- FAQ Section -->
                     <div class="faq-section" id="faq">
-                        <h2 class="text-center" style="font-size: 22px; font-weight: 800; margin-bottom: 30px; color: #006b98;">الأسئلة الشائعة حول فحص IMEI</h2>
+                        <h2 class="text-center" style="font-size: 22px; font-weight: 800; margin-bottom: 30px; color: #0052cc;">الأسئلة الشائعة حول فحص IMEI</h2>
 
                         <div class="faq-item">
                             <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يمكنني العثور على رقم الـ IMEI الخاص بهاتفي؟</div>

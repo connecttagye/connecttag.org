@@ -2,16 +2,19 @@
 
 /* 1. Root Variables */
 :root {
-  --ct-primary: #0077b6;
-  --ct-primary-hover: #005b8a;
-  --ct-secondary: #25d366;
-  --ct-dark-bg: #0d001a;
-  --ct-card-bg: #1a0033;
+  --ct-primary: #0052cc;
+  --ct-primary-hover: #003db3;
+  --ct-secondary: #00b4d8;
+  --ct-accent: #00b4d8;
+  --ct-accent-glow: rgba(0, 180, 216, 0.25);
+  --ct-gradient-brand: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
+  --ct-dark-bg: #0a1128;
+  --ct-card-bg: #131e3a;
   --ct-text-light: #ffffff;
-  --ct-text-muted: #a0a0a0;
-  --ct-text-dark: #222222;
-  --ct-border: rgba(255,255,255,0.1);
-  --ct-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  --ct-text-muted: #94a3b8;
+  --ct-text-dark: #1e293b;
+  --ct-border: rgba(0, 180, 216, 0.15);
+  --ct-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
   --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-display: swap;
@@ -82,7 +85,7 @@ html, body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 20%, rgba(0, 119, 182, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 40%);
+  background: radial-gradient(circle at 20% 20%, rgba(0, 82, 204, 0.2) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(0, 180, 216, 0.15) 0%, transparent 40%);
   filter: blur(80px);
   animation: bgMove 10s ease infinite alternate;
 }
@@ -109,7 +112,7 @@ html, body {
 
 .loader-logo i {
   font-size: 40px;
-  color: #0077b6;
+  color: #00b4d8;
 }
 
 .loader-logo span {
@@ -130,7 +133,7 @@ html, body {
 .progress-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #00adef, #25d366);
+  background: linear-gradient(90deg, #0052cc, #00b4d8);
   transition: width 0.4s ease;
 }
 
@@ -142,14 +145,14 @@ html, body {
 /* 4. Common Layout Styles */
 .page-header-unified {
   background: #fff;
-  color: #0077b6;
+  color: #0052cc;
   border-bottom: 1px solid #eee;
   padding: 150px 0 50px;
   text-align: center;
 }
 
 .page-header-unified h1 {
-  color: #0077b6;
+  color: #0052cc;
   font-weight: 800;
   margin-bottom: 10px;
 }
@@ -177,12 +180,12 @@ html, body {
 }
 
 .breadcrumb-custom li a {
-  color: #0077b6 !important;
+  color: #0052cc !important;
   text-decoration: none;
 }
 
 .breadcrumb-custom li.active {
-  color: #1a0033 !important;
+  color: #1e293b !important;
   font-weight: 700;
 }
 
@@ -208,7 +211,7 @@ html, body {
 }
 
 .ct-policy-container h1 {
-  color: #0077b6;
+  color: #0052cc;
   margin-bottom: 30px;
   font-weight: 800;
   text-align: center;
@@ -216,7 +219,7 @@ html, body {
 
 .ct-policy-container h2 {
   font-size: 24px;
-  color: #1a0033;
+  color: #1e293b;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -249,7 +252,7 @@ html, body {
 }
 
 .post-content h1 {
-  color: #0077b6;
+  color: #0052cc;
   font-weight: 800;
   margin-bottom: 30px;
   line-height: 1.4;
@@ -257,7 +260,7 @@ html, body {
 
 .post-content h2 {
   font-size: 22px;
-  color: #1a0033;
+  color: #1e293b;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -427,7 +430,7 @@ html, body {
     line-height: 1.4;
     margin-bottom: 15px;
     font-weight: 800;
-    color: #0d001a;
+    color: #1e293b;
     text-align: right !important;
     display: block;
     width: 100%;
@@ -488,8 +491,8 @@ html, body {
   .post-content h2 {
     font-size: 18px;
     margin-top: 30px;
-    color: #1a0033;
-    border-right: 4px solid #0077b6;
+    color: #1e293b;
+    border-right: 4px solid #0052cc;
     padding-right: 10px;
   }
 }
@@ -503,7 +506,7 @@ html, body {
 }
 .related-tools-section h2 {
     font-weight: 800;
-    color: #006b98;
+    color: #0052cc;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -521,12 +524,12 @@ html, body {
 }
 .mini-tool-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-color: #006b98;
+    box-shadow: 0 10px 20px rgba(0, 82, 204, 0.08);
+    border-color: #00b4d8;
 }
 .mini-tool-card i {
     font-size: 30px;
-    color: #006b98;
+    color: #0052cc;
     margin-bottom: 15px;
 }
 .mini-tool-card h4 {
@@ -569,8 +572,8 @@ html, body {
 }
 
 .pwa-prompt-content {
-    background: #0d001a !important;
-    border: 2px solid #0077b6 !important;
+    background: #0a1128 !important;
+    border: 2px solid #0052cc !important;
     border-radius: 20px;
     padding: 15px 20px;
     width: 100%;
@@ -593,7 +596,7 @@ html, body {
     background: #000;
     border-radius: 12px;
     padding: 5px;
-    border: 1px solid rgba(0, 119, 182, 0.3);
+    border: 1px solid rgba(0, 180, 216, 0.3);
 }
 
 .pwa-prompt-icon img {
@@ -621,7 +624,7 @@ html, body {
 }
 
 .pwa-install-button {
-    background: linear-gradient(135deg, #0077b6 0%, #00adef 100%) !important;
+    background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%) !important;
     color: #fff !important;
     border: none !important;
     padding: 10px 22px !important;
@@ -630,7 +633,7 @@ html, body {
     font-weight: 800 !important;
     cursor: pointer;
     white-space: nowrap;
-    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 82, 204, 0.3);
     transition: 0.3s;
 }
 
@@ -754,16 +757,16 @@ html, body {
 .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
 .toc-list { list-style: none; padding: 0; margin: 0; }
 .toc-list li { margin-bottom: 8px; }
-.toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
-.toc-list a:hover { color: #005b8a; text-decoration: underline; }
+.toc-list a { color: #0052cc; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+.toc-list a:hover { color: #003db3; text-decoration: underline; }
 
 .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
 .faq-item { margin-bottom: 30px; }
 .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
-.faq-question i { color: #0077b6; margin-top: 4px; }
+.faq-question i { color: #0052cc; margin-top: 4px; }
 .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
 
-.summary-box { background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
+.summary-box { background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
 .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
 .summary-list { padding-right: 20px; margin: 0; }
 .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }

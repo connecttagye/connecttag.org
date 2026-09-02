@@ -3,7 +3,21 @@
  * Visual Breadcrumbs + Dynamic Schema.org BreadcrumbList JSON-LD for Google Rich Snippets.
  */
 class SiteBreadcrumb extends HTMLElement {
+  static get observedAttributes() {
+    return ['items'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'items' && oldValue !== newValue && this.isConnected) {
+      this.render();
+    }
+  }
+
   connectedCallback() {
+    this.render();
+  }
+
+  render() {
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const itemsAttr = this.getAttribute('items');
     
@@ -20,7 +34,7 @@ class SiteBreadcrumb extends HTMLElement {
     // Default fallback if no custom items supplied
     if (!breadcrumbItems.length) {
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
-      breadcrumbItems.push({ title: 'الرئيسية', url: baseUrl + '/' });
+      breadcrumbItems.push({ title: 'الرئيسية', url: baseUrl.replace(/\/+$/, '') + '/' });
       
       const segmentMap = {
         'blog': 'المدونة',
@@ -33,23 +47,24 @@ class SiteBreadcrumb extends HTMLElement {
         'libraries': 'المكاتب البرمجية',
         'store': 'المتجر',
         'tools': 'الأدوات',
-        'telecom': 'ادوات اتصالات وانترنت',
+        'telecom': 'الاتصالات والإنترنت',
         'web': 'أدوات الويب',
-        'mobile': 'أدوات تطبيقات الجوال',
+        'mobile': 'تطبيقات الجوال',
         'security': 'الأمن والخصوصية',
         'finance': 'الخدمات المالية',
         'energy': 'حساب الطاقة',
-        'design': 'التصميم والوسائط',
         'misc': 'أدوات متنوعة',
         'services': 'الخدمات',
         'company': 'الشركة',
         'commerce': 'الطلبات والدفع',
         'advertising': 'أعلن معنا',
-        'support': 'الدعم',
+        'our-network': 'شبكتنا الإعلانية',
+        'third-party-networks': 'شبكات الإعلانات الخارجية',
+        'support': 'الدعم والطلبات',
         'hardware-solutions': 'دليل المنتجات',
         'api-solutions': 'حلول الـ API والبيانات',
         'about': 'من نحن',
-        'our-company': 'الشركة',
+        'our-company': 'عن الشركة',
         'about-site': 'حول الموقع',
         'contact': 'اتصل بنا',
         'faq': 'الأسئلة الشائعة',
@@ -58,7 +73,7 @@ class SiteBreadcrumb extends HTMLElement {
         'advertise.html': 'أعلن معنا'
       };
 
-      let currentAccUrl = baseUrl + '/';
+      let currentAccUrl = baseUrl.replace(/\/+$/, '') + '/';
       pathSegments.forEach((seg, idx) => {
         // Skip root folder names, project names, or index files
         const skipSegments = ['connecttag.org', 'connecttagsite', 'index', 'index.html', 'index.php', ''];
@@ -98,9 +113,10 @@ class SiteBreadcrumb extends HTMLElement {
     // Render HTML UI
     const listHtml = breadcrumbItems.map((item, index) => {
       const isLast = index === breadcrumbItems.length - 1;
+      const idAttr = item.id ? ` id="${item.id}"` : '';
       return `
         <li class="ct-breadcrumb-item ${isLast ? 'active' : ''}">
-          ${isLast ? `<span>${item.title}</span>` : `<a href="${item.url}">${item.title}</a>`}
+          ${isLast ? `<span${idAttr}>${item.title}</span>` : `<a href="${item.url || '#'}"${idAttr}>${item.title}</a>`}
           ${!isLast ? '<span class="ct-breadcrumb-separator"><i class="fa-solid fa-chevron-left"></i></span>' : ''}
         </li>
       `;
@@ -124,32 +140,34 @@ class SiteBreadcrumb extends HTMLElement {
     if (existingScript) existingScript.remove();
 
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    const pageUrl = canonicalEl ? canonicalEl.href : window.location.href;
+
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": items.map((item, index) => {
+        const isLast = index === items.length - 1;
         // Resolve absolute URL
         let absoluteUrl = item.url;
 
-        // Handle relative paths starting with ./ or ../ or just a name
-        if (!absoluteUrl.startsWith('http') && !absoluteUrl.startsWith('/')) {
-            try {
-                absoluteUrl = new URL(item.url, window.location.href).href;
-            } catch (e) {
-                // Fallback for older browsers or invalid URLs
-                absoluteUrl = baseUrl.replace(/\/+$/, '') + '/' + item.url.replace(/^\.\//, '');
-            }
+        if (!absoluteUrl || absoluteUrl === '#' || absoluteUrl.trim() === '') {
+          absoluteUrl = isLast ? pageUrl : (baseUrl.replace(/\/+$/, '') + '/');
+        } else if (!absoluteUrl.startsWith('http://') && !absoluteUrl.startsWith('https://') && !absoluteUrl.startsWith('/')) {
+          try {
+            absoluteUrl = new URL(item.url, window.location.href).href;
+          } catch (e) {
+            absoluteUrl = baseUrl.replace(/\/+$/, '') + '/' + item.url.replace(/^\.\//, '');
+          }
         } else if (absoluteUrl.startsWith('/')) {
-            // Convert /path to https://domain.org/path
-            // But first, check if it's a corrupted /https:// link
-            if (absoluteUrl.startsWith('/http')) {
-                absoluteUrl = absoluteUrl.replace(/^\/+/, '');
-            } else {
-                absoluteUrl = baseUrl.replace(/\/+$/, '') + absoluteUrl;
-            }
+          if (absoluteUrl.startsWith('/http')) {
+            absoluteUrl = absoluteUrl.replace(/^\/+/, '');
+          } else {
+            absoluteUrl = baseUrl.replace(/\/+$/, '') + absoluteUrl;
+          }
         }
 
-        // Clean up double slashes (except for http://)
+        // Clean up double slashes (except for http(s)://)
         absoluteUrl = absoluteUrl.replace(/([^:])\/\/+/g, '$1/');
 
         return {

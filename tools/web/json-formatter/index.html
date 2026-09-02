@@ -26,7 +26,7 @@
         border-radius: 15px; border: 2px solid #edf2f7; padding: 15px; transition: 0.3s; font-size: 14px;
         font-family: 'Courier New', monospace; background: #fff;
     }
-    textarea.form-control:focus { border-color: #006b98; box-shadow: none; }
+    textarea.form-control:focus { border-color: #0052cc; box-shadow: none; }
 
     .action-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
     .btn-action {
@@ -35,7 +35,7 @@
     }
     .btn-primary-custom { background: #006b98; color: #fff; }
     .btn-primary-custom:hover { background: #00567a; transform: translateY(-2px); }
-    .btn-outline-custom { background: #fff; color: #006b98; border: 2px solid #006b98; }
+    .btn-outline-custom { background: #fff; color: #0052cc; border: 2px solid #006b98; }
     .btn-outline-custom:hover { background: #f0f9ff; transform: translateY(-2px); }
 
     .result-container { position: relative; }
@@ -70,7 +70,7 @@
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0077b6">
+  <meta name="theme-color" content="#0052cc">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -84,7 +84,7 @@
         <div class="container">
             <h1 data-aos="fade-down">منسق ومحقق ملفات JSON</h1>
             <p data-aos="fade-up" data-aos-delay="100">قم بتنسيق أكواد JSON وجعلها سهلة القراءة أو التحقق من صحتها برمجياً</p>
-            <site-breadcrumb items='[{"title":"الرئيسية", "url":"/"}, {"title":"الأدوات", "url":"/tools/"}, {"title":"أدوات الويب", "url":"/tools/web/"}, {"title":"منسق JSON", "url":"/tools/web/json-formatter/"}]'></site-breadcrumb>
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"أدوات الويب","url":"https://connecttag.org/tools/web/"},{"title":"منسق JSON","url":"https://connecttag.org/tools/web/json-formatter/"}]'></site-breadcrumb>
         </div>
     </div>
 
@@ -105,7 +105,7 @@
                     <button onclick="processJson('minify')" class="btn-action btn-outline-custom">
                         <i class="fa-solid fa-compress"></i> ضغط الكود (Minify)
                     </button>
-                    <button onclick="loadSample()" class="btn-action" style="background: #f8fafc; color: #006b98; border: 1px solid #e2e8f0;">
+                    <button onclick="loadSample()" class="btn-action" style="background: #f8fafc; color: #0052cc; border: 1px solid #e2e8f0;">
                         <i class="fa-solid fa-magic"></i> تحميل مثال
                     </button>
                     <button onclick="clearAll()" class="btn-action" style="background: #fff5f5; color: #c53030; border: 1px solid #fed7d7;">

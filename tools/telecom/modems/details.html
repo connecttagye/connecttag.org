@@ -83,7 +83,7 @@
             flex-wrap: wrap;
         }
         .breadcrumb-tools li { color: #64748b; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #006b98; text-decoration: none; transition: 0.2s; }
+        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
         .breadcrumb-tools li a:hover { color: #e89a2f; }
         .breadcrumb-tools li:not(:last-child)::after {
             content: '\f104';
@@ -116,7 +116,7 @@
         .modem-info-panel { padding-right: 15px; }
         .modem-info-panel h1 {
             font-weight: 900;
-            color: #006b98;
+            color: #0052cc;
             font-size: 28px;
             margin: 0 0 12px;
             line-height: 1.4;
@@ -143,8 +143,8 @@
             border: 1px solid #edf2f7;
             transition: 0.3s;
         }
-        .spec-card:hover { border-color: #006b98; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .spec-card i { color: #006b98; font-size: 18px; margin-bottom: 8px; display: block; }
+        .spec-card:hover { border-color: #0052cc; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+        .spec-card i { color: #0052cc; font-size: 18px; margin-bottom: 8px; display: block; }
         .spec-card .label { display: block; color: #94a3b8; font-size: 11px; font-weight: 700; margin-bottom: 4px; }
         .spec-card .value { display: block; color: #1e293b; font-size: 14px; font-weight: 800; }
 
@@ -180,7 +180,7 @@
         .config-item:last-child { margin-bottom: 0; }
         .config-label { font-weight: 700; color: #64748b; font-size: 12px; }
         .config-value-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .config-value { font-family: 'Courier New', monospace; font-weight: bold; color: #006b98; font-size: 15px; direction: ltr; }
+        .config-value { font-family: 'Courier New', monospace; font-weight: bold; color: #0052cc; font-size: 15px; direction: ltr; }
 
         .btn-copy-sm {
             background: #fff;
@@ -195,8 +195,8 @@
             align-items: center;
             gap: 5px;
         }
-        .btn-copy-sm:hover { background: #006b98; color: #fff; border-color: #006b98; }
-        .config-link { color: #006b98; text-decoration: underline; font-weight: 800; }
+        .btn-copy-sm:hover { background: #006b98; color: #fff; border-color: #0052cc; }
+        .config-link { color: #0052cc; text-decoration: underline; font-weight: 800; }
 
         /* Related Modems Section */
         .related-section { margin-top: 50px; padding-top: 35px; border-top: 1px solid #e2e8f0; }
@@ -213,7 +213,7 @@
             color: #1e293b;
             margin-bottom: 20px;
         }
-        .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); color: #006b98; text-decoration: none; }
+        .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); color: #0052cc; text-decoration: none; }
         .related-card img { max-height: 110px; margin-bottom: 12px; object-fit: contain; }
         .related-card h5 { font-size: 14px; font-weight: 700; margin: 0 0 4px; }
 
@@ -250,12 +250,12 @@
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
     <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
     <link rel="manifest" href="https://connecttag.org/manifest.json">
-    <meta name="theme-color" content="#0077b6">
+    <meta name="theme-color" content="#0052cc">
 </head>
 <body>
 
 <div id="loading-screen" class="loading-overlay">
-    <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #006b98;"></i>
+    <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #0052cc;"></i>
     <p style="margin-top: 20px; font-weight: 700;">جاري تحميل تفاصيل المودم...</p>
 </div>
 
@@ -265,17 +265,7 @@
 <site-header></site-header>
 
 <!-- Compact Breadcrumb Bar -->
-<div class="breadcrumb-wrapper">
-    <div class="container">
-        <ul class="breadcrumb-tools">
-            <li><a href="https://connecttag.org/">الرئيسية</a></li>
-            <li><a href="https://connecttag.org/tools/">الأدوات</a></li>
-    <li><a href="https://connecttag.org/tools/telecom/">ادوات اتصالات وانترنت</a></li>
-            <li><a href="https://connecttag.org/tools/telecom/modems/">دليل المودمات</a></li>
-            <li class="active" id="breadcrumb-active">المواصفات</li>
-        </ul>
-    </div>
-</div>
+<site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"دليل مودمات 4G","url":"https://connecttag.org/tools/telecom/modems/"},{"title":"المواصفات","url":"https://connecttag.org/tools/telecom/modems/details","id":"breadcrumb-active"}]'></site-breadcrumb>
 
 <main class="modem-details-container">
     <div class="container">

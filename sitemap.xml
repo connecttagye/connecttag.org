@@ -505,7 +505,19 @@
   </url>
   <url>
     <loc>https://connecttag.org/company/advertising/</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/company/advertising/our-network</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/company/advertising/third-party-networks</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

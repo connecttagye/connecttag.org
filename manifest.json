@@ -15,8 +15,8 @@
     "window-controls-overlay",
     "minimal-ui"
   ],
-  "background_color": "#0d001a",
-  "theme_color": "#0077b6",
+  "background_color": "#0a1128",
+  "theme_color": "#0052cc",
   "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
