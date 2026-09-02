@@ -14,17 +14,20 @@
 /projects/apps/developer-tool /company/projects/apps/developer-tool/ 301
 /projects/apps/developer-tool/ /company/projects/apps/developer-tool/ 301
 /projects/apps/developer-tool/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
+/projects/apps/developer-tool/privacy-policy.html /company/projects/apps/developer-tool/privacy-policy 301
 
 /projects/apps/developer /company/projects/apps/developer-tool/ 301
 /projects/apps/developer/ /company/projects/apps/developer-tool/ 301
 /company/projects/apps/developer /company/projects/apps/developer-tool/ 301
 /company/projects/apps/developer/ /company/projects/apps/developer-tool/ 301
 /projects/apps/developer/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
+/projects/apps/developer/privacy-policy.html /company/projects/apps/developer-tool/privacy-policy 301
 /company/projects/apps/developer/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
 
 /projects/apps/soor-net /company/projects/apps/soor-net/ 301
 /projects/apps/soor-net/ /company/projects/apps/soor-net/ 301
 /projects/apps/soor-net/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+/projects/apps/soor-net/privacy-policy.html /company/projects/apps/soor-net/privacy-policy 301
 
 /projects/apps/soornet /company/projects/apps/soor-net/ 301
 /projects/apps/soornet/ /company/projects/apps/soor-net/ 301
@@ -38,28 +41,35 @@
 /company/projects/apps/firewall /company/projects/apps/soor-net/ 301
 /company/projects/apps/firewall/ /company/projects/apps/soor-net/ 301
 /projects/apps/firewall/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+/projects/apps/firewall/privacy-policy.html /company/projects/apps/soor-net/privacy-policy 301
 /company/projects/apps/firewall/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
 
 /projects/apps/tayf-spectrum /company/projects/apps/tayf-spectrum/ 301
 /projects/apps/tayf-spectrum/ /company/projects/apps/tayf-spectrum/ 301
 /projects/apps/tayf-spectrum/privacy-policy /company/projects/apps/tayf-spectrum/privacy-policy 301
+/projects/apps/tayf-spectrum/privacy-policy.html /company/projects/apps/tayf-spectrum/privacy-policy 301
 
 /projects/apps/kabeer /company/projects/apps/kabeer/ 301
 /projects/apps/kabeer/ /company/projects/apps/kabeer/ 301
 /projects/apps/kabeer/privacy-policy /company/projects/apps/kabeer/privacy-policy 301
+/projects/apps/kabeer/privacy-policy.html /company/projects/apps/kabeer/privacy-policy 301
 
 /projects/apps/satoor /company/projects/apps/satoor/ 301
 /projects/apps/satoor/ /company/projects/apps/satoor/ 301
 /projects/apps/satoor/privacy-policy /company/projects/apps/satoor/privacy-policy 301
+/projects/apps/satoor/privacy-policy.html /company/projects/apps/satoor/privacy-policy 301
 
 /projects/apps/yemen-4g /company/projects/apps/yemen-4g/ 301
 /projects/apps/yemen-4g/ /company/projects/apps/yemen-4g/ 301
 /projects/apps/yemen-4g/privacy-policy /company/projects/apps/yemen-4g/privacy-policy 301
+/projects/apps/yemen-4g/privacy-policy.html /company/projects/apps/yemen-4g/privacy-policy 301
 
 /projects/apps/yemen-view /company/projects/apps/yemen-view/ 301
 /projects/apps/yemen-view/ /company/projects/apps/yemen-view/ 301
 /projects/apps/yemen-view/privacy-policy /company/projects/apps/yemen-view/privacy-policy 301
+/projects/apps/yemen-view/privacy-policy.html /company/projects/apps/yemen-view/privacy-policy 301
 /projects/apps/yemen-view/terms-of-use /company/projects/apps/yemen-view/terms-of-use 301
+/projects/apps/yemen-view/terms-of-use.html /company/projects/apps/yemen-view/terms-of-use 301
 
 # Other Project Sections
 /projects/bots /company/projects/bots/ 301

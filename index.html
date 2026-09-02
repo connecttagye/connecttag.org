@@ -445,11 +445,15 @@
     /* Critical CSS to prevent FCP/LCP delay */
     #headerwrap {
       min-height: 750px;
-      background: linear-gradient(135deg, rgba(10, 17, 40, 0.45) 0%, rgba(10, 17, 40, 0.7) 100%), url('assets/img/connect-tag-globe-offset.webp') no-repeat center center;
+      background: linear-gradient(135deg, rgba(10, 17, 40, 0.4) 0%, rgba(10, 17, 40, 0.65) 100%), url('assets/img/connect-tag-globe-offset.webp') no-repeat center center;
       background-size: cover;
       background-position: center left;
       display: flex;
       align-items: center;
+    }
+    #headerwrap .container {
+      padding-left: 25px;
+      padding-right: 25px;
     }
     #headerwrap .container .row {
       display: flex;
@@ -463,6 +467,7 @@
       margin-right: 0 !important;
       float: right !important;
       text-align: right;
+      padding: 30px 40px 30px 0;
     }
     @media (max-width: 991px) {
       #headerwrap .container .row {
@@ -472,6 +477,7 @@
         margin: 0 auto !important;
         float: none !important;
         text-align: center;
+        padding: 35px 25px !important;
       }
     }
     .preloader-visible { overflow: hidden; }
@@ -485,11 +491,11 @@
   </style>
 
   <!-- Non-blocking CSS -->
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.15"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.16"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.15"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.16"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
@@ -497,11 +503,11 @@
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.15" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.15"></noscript>
+  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.16" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.16"></noscript>
 
 
-<script src="assets/js/components/components-bundle.js?v=1.1.15" data-cfasync="false" defer></script>
+<script src="assets/js/components/components-bundle.js?v=1.1.16" data-cfasync="false" defer></script>
 
 </head>
 <body data-spy="scroll" data-target="#navbar-main" data-offset="100" class="preloader-visible">
@@ -519,18 +525,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-lg-6 col-md-offset-5 col-lg-offset-6 hero-content-box animated fadeInRight">
-        <div class="hero-badge-pill">
-          <i class="fa-solid fa-rocket"></i> <span>شريكك الرقمي نحو المستقبل</span>
-        </div>
         <h1 class="hero-main-h1">
           Connect Tag - <span id="typed-text" style="color: #00b4d8; display: inline-block; vertical-align: bottom;">كونكت تاق</span>
         </h1>
         <p class="hero-lead-p animated fadeInUp">
-          نبتكر الحلول البرمجية والتقنية المتطورة لتمكين ونمو أعمالك في العالم الرقمي بأعلى معايير الأداء والأمان.
+          منصتك الشاملة للحلول البرمجية، الأدوات الذكية، وتطبيقات الويب والموبايل والخدمات التقنية المتكاملة.
         </p>
         <div class="hero-cta-group animated fadeInUp">
           <a href="#services" class="btn hero-btn-primary">ابدأ رحلتك معنا <i class="fa-solid fa-arrow-left"></i></a>
-          <a href="company/projects/index.html" class="btn hero-btn-secondary">استعرض أعمالنا</a>
         </div>
       </div>
     </div>
