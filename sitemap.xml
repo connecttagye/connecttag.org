@@ -108,6 +108,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/company/projects/apps/developer-tool/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/blog/authors/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>

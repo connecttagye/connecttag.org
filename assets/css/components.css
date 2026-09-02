@@ -404,20 +404,23 @@ cookie-consent {
 
 .ct-cookie-banner {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  max-width: 600px;
-  margin: 0 auto;
+  bottom: 25px;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 580px;
   background: rgba(10, 17, 40, 0.96);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 180, 216, 0.3);
-  border-radius: 16px;
-  padding: 18px 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 180, 216, 0.35);
+  border-radius: 20px;
+  padding: 22px 28px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 180, 216, 0.15);
   z-index: 99999;
   color: #fff;
-  transition: var(--ct-transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
 }
 
 .ct-cookie-content {
@@ -426,66 +429,78 @@ cookie-consent {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 15px;
+  gap: 16px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .ct-cookie-banner {
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    padding: 20px;
+    bottom: 15px;
+    width: calc(100% - 24px);
+    padding: 18px 20px;
   }
   .ct-cookie-content {
     flex-direction: column;
     text-align: center;
-    gap: 15px;
+    gap: 14px;
   }
   .ct-cookie-btn {
     width: 100%;
-    order: 2; /* Ensure it stays at the bottom */
-  }
-  .ct-cookie-text {
-    order: 1;
+    max-width: 280px;
   }
 }
 
 .ct-cookie-banner.hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translateY(30px);
+  transform: translateX(-50%) translateY(30px);
+}
+
+.ct-cookie-text {
+  text-align: center;
+  width: 100%;
 }
 
 .ct-cookie-text p {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
 }
 
 .ct-cookie-text a {
-  color: var(--ct-primary);
+  color: #00b4d8;
   text-decoration: underline;
   font-weight: 600;
+  transition: var(--ct-transition);
+}
+
+.ct-cookie-text a:hover {
+  color: #fff;
 }
 
 .ct-cookie-btn {
-  background: var(--ct-primary);
+  background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
   color: #fff;
   border: none;
-  padding: 10px 24px;
-  border-radius: 25px;
+  padding: 10px 36px;
+  border-radius: 30px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   white-space: nowrap;
   transition: var(--ct-transition);
-  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+  display: inline-block;
+  margin: 0 auto;
 }
 
 .ct-cookie-btn:hover {
-  background: var(--ct-primary-hover);
+  background: linear-gradient(135deg, #0066ff 0%, #00d2ff 100%);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
 }
 
 /* Back to Top Floating Button */
