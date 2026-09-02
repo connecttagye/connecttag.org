@@ -472,39 +472,57 @@
     /* Critical CSS to prevent FCP/LCP delay */
     #headerwrap {
       min-height: 750px;
-      background: linear-gradient(135deg, rgba(10, 17, 40, 0.4) 0%, rgba(10, 17, 40, 0.65) 100%), url('assets/img/connect-tag-globe-offset.webp') no-repeat center center;
+      background: linear-gradient(135deg, rgba(10, 17, 40, 0.65) 0%, rgba(10, 17, 40, 0.85) 100%), url('assets/img/connect-tag-globe-banner.webp') no-repeat center center;
       background-size: cover;
-      background-position: center left;
+      background-position: center center;
       display: flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
     }
     #headerwrap .container {
-      padding-left: 25px;
-      padding-right: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%;
     }
     #headerwrap .container .row {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       width: 100%;
-      margin-left: 0;
-      margin-right: 0;
+      margin: 0 auto;
     }
     .hero-content-box {
-      margin-left: auto !important;
-      margin-right: 0 !important;
-      float: right !important;
-      text-align: right;
-      padding: 30px 40px 30px 0;
+      margin: 0 auto !important;
+      float: none !important;
+      text-align: center;
+      max-width: 850px;
+      padding: 30px 20px;
+    }
+    .hero-main-h1 {
+      text-align: center;
+      margin: 0 auto 20px auto;
+    }
+    .hero-lead-p {
+      text-align: center;
+      margin: 0 auto 35px auto;
+      max-width: 720px;
+    }
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     @media (max-width: 991px) {
-      #headerwrap .container .row {
-        justify-content: center;
+      #headerwrap {
+        padding-top: 130px;
+        padding-bottom: 70px;
+        min-height: 600px;
       }
-      .hero-content-box {
-        margin: 0 auto !important;
-        float: none !important;
-        text-align: center;
-        padding: 35px 25px !important;
+      .hero-main-h1 {
+        font-size: 32px;
+      }
+      .hero-lead-p {
+        font-size: 18px;
       }
     }
     .preloader-visible { overflow: hidden; }
