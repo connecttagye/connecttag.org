@@ -4,34 +4,64 @@
 /company/about-site /about 301
 /services/* /company/services/:splat 301
 
-# Keep legacy application privacy-policy pages available at /projects/apps/.../privacy-policy.
+# Projects & Apps Redirects
 /projects /company/projects/ 301
 /projects/ /company/projects/ 301
 /projects/apps /company/projects/apps/ 301
 /projects/apps/ /company/projects/apps/ 301
-/projects/apps/developer /company/projects/apps/developer-tool/ 301
-/projects/apps/developer/ /company/projects/apps/developer-tool/ 301
+
+# App Redirects & Privacy Policies
 /projects/apps/developer-tool /company/projects/apps/developer-tool/ 301
 /projects/apps/developer-tool/ /company/projects/apps/developer-tool/ 301
+/projects/apps/developer-tool/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
+
+/projects/apps/developer /company/projects/apps/developer-tool/ 301
+/projects/apps/developer/ /company/projects/apps/developer-tool/ 301
 /company/projects/apps/developer /company/projects/apps/developer-tool/ 301
 /company/projects/apps/developer/ /company/projects/apps/developer-tool/ 301
-/company/projects/apps/developer/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
 /projects/apps/developer/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
+/company/projects/apps/developer/privacy-policy /company/projects/apps/developer-tool/privacy-policy 301
+
+/projects/apps/soor-net /company/projects/apps/soor-net/ 301
+/projects/apps/soor-net/ /company/projects/apps/soor-net/ 301
+/projects/apps/soor-net/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+
+/projects/apps/soornet /company/projects/apps/soor-net/ 301
+/projects/apps/soornet/ /company/projects/apps/soor-net/ 301
+/company/projects/apps/soornet /company/projects/apps/soor-net/ 301
+/company/projects/apps/soornet/ /company/projects/apps/soor-net/ 301
+/projects/apps/soornet/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+/company/projects/apps/soornet/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+
 /projects/apps/firewall /company/projects/apps/soor-net/ 301
 /projects/apps/firewall/ /company/projects/apps/soor-net/ 301
 /company/projects/apps/firewall /company/projects/apps/soor-net/ 301
 /company/projects/apps/firewall/ /company/projects/apps/soor-net/ 301
-/company/projects/apps/firewall/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
 /projects/apps/firewall/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+/company/projects/apps/firewall/privacy-policy /company/projects/apps/soor-net/privacy-policy 301
+
+/projects/apps/tayf-spectrum /company/projects/apps/tayf-spectrum/ 301
+/projects/apps/tayf-spectrum/ /company/projects/apps/tayf-spectrum/ 301
+/projects/apps/tayf-spectrum/privacy-policy /company/projects/apps/tayf-spectrum/privacy-policy 301
+
 /projects/apps/kabeer /company/projects/apps/kabeer/ 301
 /projects/apps/kabeer/ /company/projects/apps/kabeer/ 301
+/projects/apps/kabeer/privacy-policy /company/projects/apps/kabeer/privacy-policy 301
+
 /projects/apps/satoor /company/projects/apps/satoor/ 301
 /projects/apps/satoor/ /company/projects/apps/satoor/ 301
+/projects/apps/satoor/privacy-policy /company/projects/apps/satoor/privacy-policy 301
+
 /projects/apps/yemen-4g /company/projects/apps/yemen-4g/ 301
 /projects/apps/yemen-4g/ /company/projects/apps/yemen-4g/ 301
+/projects/apps/yemen-4g/privacy-policy /company/projects/apps/yemen-4g/privacy-policy 301
+
 /projects/apps/yemen-view /company/projects/apps/yemen-view/ 301
 /projects/apps/yemen-view/ /company/projects/apps/yemen-view/ 301
+/projects/apps/yemen-view/privacy-policy /company/projects/apps/yemen-view/privacy-policy 301
 /projects/apps/yemen-view/terms-of-use /company/projects/apps/yemen-view/terms-of-use 301
+
+# Other Project Sections
 /projects/bots /company/projects/bots/ 301
 /projects/bots/ /company/projects/bots/ 301
 /projects/design /company/projects/design/ 301
@@ -43,6 +73,7 @@
 /projects/sites /company/projects/sites/ 301
 /projects/sites/ /company/projects/sites/ 301
 
+# Company & Support Redirects
 /order /company/support/order 301
 /company/commerce/order /company/support/order 301
 /payment-methods /company/commerce/payment-methods 301
@@ -54,6 +85,7 @@
 /support/order /company/support/order 301
 /support/* /company/support/:splat 301
 
+# Blog & Authors
 /author /blog/authors/ 301
 /author/ /blog/authors/ 301
 /author/* /blog/authors/:splat 301
