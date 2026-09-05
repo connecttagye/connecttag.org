@@ -4,244 +4,237 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تطبيق طيف - مراقبة وتحليل الشبكات | كونكت تاق</title>
-<meta name="description" content="تطبيق طيف (Tayf Spectrum) أداة متخصصة للمسح الميداني ومراقبة وتحليل الشبكات الخلوية وشبكات Wi-Fi وBluetooth بدقة وخصوصية عالية من تطوير كونكت تاق.">
+<title>تطبيق طيف — مسح وتحليل الشبكات الخلوية والواي فاي | كونكت تاق</title>
+<meta name="description" content="تطبيق طيف (Tayf Spectrum) للمسح الميداني ومراقبة وتحليل الشبكات الخلوية وWi-Fi وBluetooth وتنظيم جلسات القياس محلياً.">
 <link rel="canonical" href="https://connecttag.org/company/projects/apps/tayf-spectrum/" />
 
-  <!-- OpenGraph meta -->
+<!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/apps/tayf-spectrum/" />
 <meta property="og:type" content="website">
-<meta property="og:title" content="تطبيق طيف - مراقبة وتحليل الشبكات | كونكت تاق">
-<meta property="og:description" content="أداة متقدمة للمسح الميداني ومراقبة أداء الشبكات الخلوية واللاسلكية وتنظيم جلسات القياس." />
+<meta property="og:title" content="تطبيق طيف — مسح وتحليل الشبكات الخلوية والواي فاي | كونكت تاق">
+<meta property="og:description" content="أداة هندسية متخصصة للمسح الميداني ومراقبة قوة الإشارة للشبكات الخلوية وWi-Fi وBluetooth محلياً." />
 <meta property="og:image" content="assets/img/tayf-feature-graphic-1024x500.png">
 
-<!-- twitter OpenGraph meta -->
+<!-- Twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/company/projects/apps/tayf-spectrum/" />
-<meta name="twitter:title" content="تطبيق طيف - مراقبة وتحليل الشبكات | كونكت تاق">
-<meta name="twitter:description" content="أداة متقدمة للمسح الميداني ومراقبة أداء الشبكات الخلوية واللاسلكية وتنظيم جلسات القياس." />
+<meta name="twitter:title" content="تطبيق طيف — مسح وتحليل الشبكات الخلوية والواي فاي | كونكت تاق">
+<meta name="twitter:description" content="أداة هندسية متخصصة للمسح الميداني ومراقبة قوة الإشارة للشبكات الخلوية وWi-Fi وBluetooth محلياً." />
 <meta name="twitter:image" content="assets/img/tayf-feature-graphic-1024x500.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
+<!-- Fonts & Stylesheets -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.15" defer></script>
 <script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.15" defer></script>
 
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0052cc">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "طيف — Tayf Spectrum",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Android",
-    "softwareVersion": "1.0.0",
-    "inLanguage": "ar",
-    "description": "تطبيق للمسح الميداني ومراقبة وتحليل الشبكات الخلوية وWi-Fi وBluetooth وتنظيم جلسات القياس.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Connect Tag"
-    },
-    "privacyPolicy": "https://connecttag.org/company/projects/apps/tayf-spectrum/privacy-policy"
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "طيف (Tayf Spectrum)",
+  "operatingSystem": "Android 7.0+",
+  "applicationCategory": "UtilitiesApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "تطبيق طيف للمسح الميداني ومراقبة وتحليل الشبكات الخلوية وWi-Fi وBluetooth وتنظيم جلسات القياس محلياً.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Connect Tag",
+    "url": "https://connecttag.org"
   }
-  </script>
+}
+</script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<body>
+<body class="as-store-page">
+
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
-<div class="hero-section">
-    <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"طيف","url":"https://connecttag.org/company/projects/apps/tayf-spectrum/"}]'></site-breadcrumb>
-    <div class="container">
-        <div class="row display-flex align-items-center">
-            <div class="col-md-7" data-aos="fade-left">
-                <div class="hero-quick-meta">
-                    <span class="hero-meta-pill"><i class="fa-brands fa-android"></i> Android 7.0+</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-tower-cell"></i> مسح وتحليل الترددات</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-wifi"></i> Wi-Fi & Cellular</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-shield-halved"></i> معالجة محلية 100%</span>
-                </div>
-                <div class="hero-app-header">
-                    <div class="hero-app-icon-wrap">
-                        <img src="assets/img/tayf-store-icon-512x512.png" alt="أيقونة طيف" class="hero-app-icon" loading="eager">
-                    </div>
-                    <div class="hero-app-title-area">
-                        <h1>طيف — مراقبة وتحليل الشبكات</h1>
-                    </div>
-                </div>
-                <div class="hero-btns">
-                    <a href="#app-features" class="btn-hero">
-                        <i class="fa-solid fa-layer-group"></i> استكشف المميزات
+<div class="as-page-wrapper">
+    <div class="as-container">
+        
+        <!-- App Store Breadcrumbs -->
+        <div class="as-breadcrumb-wrap">
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"طيف","url":"https://connecttag.org/company/projects/apps/tayf-spectrum/"}]'></site-breadcrumb>
+        </div>
+
+        <!-- App Store Header Section -->
+        <div class="as-header" data-aos="fade-down">
+            <div class="as-icon-wrap">
+                <img src="assets/img/tayf-store-icon-512x512.png" alt="أيقونة تطبيق طيف" class="as-icon-img" loading="eager">
+            </div>
+            <div class="as-header-content">
+                <h1 class="as-title">تطبيق طيف</h1>
+                <div class="as-subtitle">Tayf Spectrum: RF, Wi-Fi & Cellular Analyzer</div>
+                <a href="https://connecttag.org/company/" class="as-developer-link">
+                    كونكت تاق
+                </a>
+                <div class="as-actions-row">
+                    <a href="#download-options" class="as-btn-get">
+                        تحميل
                     </a>
-                    <span class="badge-coming-soon">
-                        <i class="fa-solid fa-clock"></i> قريباً على المتاجر
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-5 text-center" data-aos="zoom-in">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                         <img src="assets/img/tayf-store-icon-512x512.png" alt="طيف" class="mockup-logo">
-                         <div style="font-weight: 800; color: #333; font-size: 24px; margin-top: 10px;">Tayf Spectrum</div>
-                         <div style="font-size: 14px; color: #777;">Network Analysis</div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="case-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h2>وصف التطبيق</h2>
-                <p>تطبيق "طيف" (Tayf Spectrum) هو أداة هندسية متخصصة تم تصميمها للمهندسين والمختصين في مجال الاتصالات والشبكات لإجراء عمليات المسح الميداني ومراقبة جودة الإشارة للشبكات الخلوية (Cellular)، شبكات Wi-Fi، وأجهزة Bluetooth القريبة. يتيح لك التطبيق بدء جلسات قياس منظمة، متابعة الترددات والخلايا، وتسجيل البيانات محلياً على الجهاز بكفاءة عالية وبدون الحاجة لإنشاء حساب أو الاتصال بخوادم خارجية.</p>
-
-                <h2 id="app-features">المميزات الرئيسية</h2>
-                <div class="features-grid">
-                    <div class="feature-item-card" data-aos="fade-up">
-                        <div class="feature-icon-box"><i class="fa-solid fa-tower-cell"></i></div>
-                        <div class="feature-info">
-                            <h4>مسح ومراقبة الشبكات الخلوية</h4>
-                            <p>رصد مؤشرات قوة الإشارة (RSRP/RSRQ/RSSI)، معرفات الأبراج، وترددات الخلايا النشطة والمجاورة.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-icon-box"><i class="fa-solid fa-wifi"></i></div>
-                        <div class="feature-info">
-                            <h4>تحليل شبكات Wi-Fi</h4>
-                            <p>مسح نقاط الوصول اللاسلكية القريبة، قياس قوة الإشارة، وتحليل القنوات وترددات 2.4/5 GHz.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-icon-box"><i class="fa-brands fa-bluetooth-b"></i></div>
-                        <div class="feature-info">
-                            <h4>رصد أجهزة Bluetooth</h4>
-                            <p>اكتشاف الأجهزة القريبة عبر Bluetooth ومتابعة قوة الإشارة (RSSI) وتصنيف الأجهزة المرصودة.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-icon-box"><i class="fa-solid fa-list-check"></i></div>
-                        <div class="feature-info">
-                            <h4>تنظيم جلسات القياس</h4>
-                            <p>بدء وإيقاف جلسات مسح ميداني واضحة مع إمكانية مراجعة القياسات المحفوظة محلياً في أي وقت.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="feature-icon-box"><i class="fa-solid fa-location-crosshairs"></i></div>
-                        <div class="feature-info">
-                            <h4>ربط الموقع الميداني</h4>
-                            <p>ربط قراءات الإشارة والترددات بالموقع الجغرافي عند منح الصلاحية لتوثيق قياسات التغطية بدقة.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="feature-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                        <div class="feature-info">
-                            <h4>معالجة محلية وحماية الخصوصية</h4>
-                            <p>كافة البيانات تُحفظ محلياً على الجهاز بدون مزامنة سحابية أو إعلانات أو مشاركة مع أطراف ثالثة.</p>
-                        </div>
-                    </div>
+        <!-- App Store Metrics Ribbon (Lazy Row) -->
+        <div class="as-lazy-row-wrapper" data-aos="fade-up">
+            <div class="as-metrics-ribbon as-lazy-row">
+                <!-- 1. السعر -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">السعر</span>
+                    <span class="as-metric-value">مجاني</span>
+                    <span class="as-metric-sub">بدون رسوم</span>
                 </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
 
-                <!-- Feature Graphic Banner -->
-                <div class="feature-graphic-banner" data-aos="zoom-in">
-                    <img src="assets/img/tayf-feature-graphic-1024x500.png" alt="بانر تطبيق طيف Tayf Spectrum" loading="lazy">
+                <!-- 2. الفئة -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة</span>
+                    <span class="as-metric-value"><i class="fa-solid fa-layer-group" style="color: #0071e3; font-size: 19px;"></i> #1</span>
+                    <span class="as-metric-sub">في الأدوات</span>
                 </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
 
-                <div class="specifications-section" data-aos="fade-up">
-                    <h2 class="text-center" style="margin-top: 0; margin-bottom: 40px; color: #0052cc;">المواصفات الفنية</h2>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <table class="table table-bordered bg-white spec-table" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <tbody>
-                                    <tr>
-                                        <td>حجم التطبيق</td>
-                                        <td>7.8 MB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>المتطلبات</td>
-                                        <td>Android 7.0+ (Nougat أو أحدث)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الفئة</td>
-                                        <td>أدوات / هندسة وشبكات الاتصالات</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الوثائق والسياسات</td>
-                                        <td>
-                                            <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/privacy-policy" class="spec-legal-link">
-                                                <i class="fa-solid fa-user-shield"></i> سياسة الخصوصية
-                                            </a>
-                                            <span style="margin: 0 8px; color: #ccc;">•</span>
-                                            <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/terms-of-use" class="spec-legal-link">
-                                                <i class="fa-solid fa-file-contract"></i> شروط الاستخدام
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <!-- 3. الفئة العمرية -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة العمرية</span>
+                    <span class="as-metric-value">+4</span>
+                    <span class="as-metric-sub">مناسب للجميع</span>
                 </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
 
-                <!-- Related Apps Section -->
-                <div class="related-apps-section" data-aos="fade-up">
-                    <h3>تطبيقات أخرى قد تهمك من كونكت تاق</h3>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="related-app-card">
-                                <img src="../yemen-view/assets/img/yemen-view-app.webp" alt="يمن فيو" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>يمن فيو</h4>
-                                    <p>دليل خدمات وباقات الاتصالات</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/yemen-4g/" class="related-app-card">
-                                <img src="../yemen-4g/assets/img/yemen-4g-app.webp" alt="يمن فورجي" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>يمن فورجي</h4>
-                                    <p>استعلام الرصيد والمودم</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/soor-net/" class="related-app-card">
-                                <img src="../soor-net/assets/img/soor-net-app.webp" alt="سور الإنترنت" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>سور الإنترنت</h4>
-                                    <p>جدار حماية محلي بدون روت</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                <!-- 4. التوافق -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">التوافق</span>
+                    <span class="as-metric-value"><i class="fa-brands fa-android" style="color: #0071e3; font-size: 18px;"></i> Android</span>
+                    <span class="as-metric-sub">7.0 أو أحدث</span>
                 </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
 
-                <hr style="margin-top: 40px; margin-bottom: 30px;">
-                <site-share-buttons></site-share-buttons>
+                <!-- 5. اللغات -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">اللغات</span>
+                    <span class="as-metric-value">AR</span>
+                    <span class="as-metric-sub">العربية (+1 لغة)</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 6. الحجم -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الحجم</span>
+                    <span class="as-metric-value">11.2</span>
+                    <span class="as-metric-sub">MB</span>
+                </div>
             </div>
         </div>
+
+        <!-- Screenshots Showcase Section -->
+        <div id="screenshots-gallery" class="as-section" data-aos="fade-up">
+            <div style="max-width: 860px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); border: 1px solid rgba(0, 0, 0, 0.08);">
+                <img src="assets/img/tayf-feature-graphic-1024x500.png" alt="واجهة ومميزات تطبيق طيف" style="width: 100%; height: auto; display: block;" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Description & Feature Highlights Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">الوصف</h2>
+            <div class="as-description-text">
+                <p>تطبيق <strong>"طيف" (Tayf Spectrum)</strong> هو أداة هندسية متخصصة تم تصميمها للمهندسين والمختصين في مجال الاتصالات والشبكات لإجراء عمليات المسح الميداني ومراقبة جودة الإشارة للشبكات الخلوية (Cellular)، شبكات Wi-Fi، وأجهزة Bluetooth القريبة. يتيح لك التطبيق بدء جلسات قياس منظمة، متابعة الترددات والخلايا، وتسجيل البيانات محلياً على الجهاز بكفاءة عالية وبدون الحاجة لإنشاء حساب أو الاتصال بخوادم خارجية.</p>
+            </div>
+
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #1d1d1f; margin: 35px 0 16px;">المميزات والخصائص الرئيسية</h3>
+            <ul class="as-features-list">
+                <li><strong>مسح ومراقبة الشبكات الخلوية:</strong> رصد مؤشرات قوة وجودة الإشارة (RSRP/RSRQ/RSSI)، معرفات الأبراج، وترددات الخلايا النشطة والمجاورة.</li>
+                <li><strong>تحليل متقدم لشبكات Wi-Fi:</strong> مسح نقاط الوصول اللاسلكية القريبة، قياس قوة الإشارة، وتحليل القنوات وترددات 2.4GHz و 5GHz لتفادي التداخل.</li>
+                <li><strong>رصد واكتشاف أجهزة Bluetooth:</strong> اكتشاف الأجهزة اللاسلكية القريبة وتتبع قوة الإشارة (RSSI) وتصنيف الأجهزة المرصودة بدقة.</li>
+                <li><strong>جلسات قياس ومسح ميداني منظمة:</strong> إمكانية بدء جلسات مسح ميداني وحفظ السجلات وتقارير المسح لمراجعتها وتحليلها لاحقاً.</li>
+                <li><strong>معالجة وحفظ محلي 100%:</strong> كافة القراءات وسجلات الجلسات تُعالج وتُحفظ محلياً على الجهاز دون مشاركتها مع أي خوادم خارجية.</li>
+                <li><strong>واجهة أدوات هندسية متقدمة:</strong> مؤشرات وأدوات قياس واضحة ومصممة خصيصاً لتلبية احتياجات مهندسي الشبكات والاتصالات الميدانية.</li>
+            </ul>
+        </div>
+
+        <!-- Information & Technical Specs (iOS Grouped List) -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">المعلومات والمواصفات</h2>
+            <div class="as-info-group">
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الخصوصية</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/tayf-spectrum/privacy-policy">عرض السياسة</a></span>
+                </div>
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الاستخدام</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/tayf-spectrum/terms-of-use">عرض الشروط</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Options Section -->
+        <div id="download-options" class="as-section text-center" data-aos="fade-up" style="text-align: center;">
+            <h2 class="as-section-title" style="margin-bottom: 24px;">خيارات التحميل والتثبيت</h2>
+            <div class="as-actions-row" style="justify-content: center;">
+                <span class="as-btn-get" style="padding: 12px 36px; font-size: 16px; background: #e5e5ea; color: #8e8e93 !important; box-shadow: none; cursor: default;">
+                    <i class="fa-solid fa-clock"></i> قريباً على متجر Google Play
+                </span>
+            </div>
+        </div>
+
+        <!-- Related Apps Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title">المزيد من هذا المطور</h2>
+            <div class="as-related-grid">
+                <a href="https://connecttag.org/company/projects/apps/yemen-4g/" class="as-related-card">
+                    <img src="../yemen-4g/assets/img/yemen-4g-app.webp" alt="يمن فورجي" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">يمن فورجي</div>
+                        <div class="as-related-cat">إدارة الرصيد والمودم</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/kabeer/" class="as-related-card">
+                    <img src="../kabeer/assets/img/kabeer-info-app.webp" alt="خبير" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">خبير (Expert)</div>
+                        <div class="as-related-cat">فحص وتشخيص عتاد الهاتف</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/soor-net/" class="as-related-card">
+                    <img src="../soor-net/assets/img/soor-net-app.webp" alt="سور الإنترنت" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">سور الإنترنت</div>
+                        <div class="as-related-cat">جدار حماية محلي بدون روت</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div style="margin: 40px 0 20px;">
+            <site-share-buttons></site-share-buttons>
+        </div>
+
     </div>
 </div>
 
@@ -250,5 +243,19 @@
 
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+        }
+    });
+</script>
+
 </body>
 </html>

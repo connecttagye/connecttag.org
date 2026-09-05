@@ -4,320 +4,265 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تطبيق سور الإنترنت (Soor Net) — جدار حماية محلي بدون روت | كونكت تاق</title>
-<meta name="description" content="تطبيق سور الإنترنت (Soor Net) جدار حماية محلي متطور لنظام أندرويد بدون روت. تحكم كامل في اتصال التطبيقات عبر Wi-Fi وبيانات الجوال، مراقبة حركة الشبكة، وتوفير باقة البيانات بأمان وخصوصية مطلقة.">
+<title>تطبيق سور الإنترنت — جدار حماية محلي ومراقبة اتصال التطبيقات | كونكت تاق</title>
+<meta name="description" content="تطبيق سور الإنترنت (Soor Net) جدار حماية ناري يساعدك على التحكم في اتصال التطبيقات بالإنترنت بدون روت وحماية الخصوصية وتوفير البيانات.">
 <link rel="canonical" href="https://connecttag.org/company/projects/apps/soor-net/" />
 
-  <!-- OpenGraph meta -->
+<!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/apps/soor-net/" />
 <meta property="og:type" content="website">
-<meta property="og:title" content="تطبيق سور الإنترنت (Soor Net) — جدار حماية محلي بدون روت | كونكت تاق">
-<meta property="og:description" content="تحكم محلي كامل في اتصال التطبيقات بالإنترنت بدون روت، وفّر باقة البيانات، وراقب سجلات الشبكة بأمان وخصوصية تامة." />
-<meta property="og:image" content="assets/feature-graphic.png">
+<meta property="og:title" content="تطبيق سور الإنترنت — جدار حماية محلي ومراقبة اتصال التطبيقات | كونكت تاق">
+<meta property="og:description" content="تحكم كامل في وصول التطبيقات إلى شبكة الإنترنت بدون روت مع مراقبة حية لحركة البيانات وحماية الخصوصية." />
+<meta property="og:image" content="assets/img/feature-graphic-1024x500.webp">
 
-<!-- twitter OpenGraph meta -->
+<!-- Twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/company/projects/apps/soor-net/" />
-<meta name="twitter:title" content="تطبيق سور الإنترنت (Soor Net) — جدار حماية محلي بدون روت | كونكت تاق">
-<meta name="twitter:description" content="تحكم محلي كامل في اتصال التطبيقات بالإنترنت بدون روت، وفّر باقة البيانات، وراقب سجلات الشبكة بأمان وخصوصية تامة." />
-<meta name="twitter:image" content="assets/feature-graphic.png" />
+<meta name="twitter:title" content="تطبيق سور الإنترنت — جدار حماية محلي ومراقبة اتصال التطبيقات | كونكت تاق">
+<meta name="twitter:description" content="تحكم كامل في وصول التطبيقات إلى شبكة الإنترنت بدون روت مع مراقبة حية لحركة البيانات وحماية الخصوصية." />
+<meta name="twitter:image" content="assets/img/feature-graphic-1024x500.webp" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
+<!-- Fonts & Stylesheets -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.15" defer></script>
 <script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.15" defer></script>
 
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0052cc">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "تطبيق سور الإنترنت (Soor Net)",
+  "operatingSystem": "Android 7.0+",
+  "applicationCategory": "SecurityApplication",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.0",
+    "ratingCount": "1"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "تطبيق سور الإنترنت هو جدار حماية محلي يساعدك على التحكم في اتصال التطبيقات بالإنترنت بدون روت وحماية الخصوصية وتوفير البيانات.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Connect Tag",
+    "url": "https://connecttag.org"
+  }
+}
+</script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<body>
+<body class="as-store-page">
+
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
-<div class="hero-section">
-    <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"سور الإنترنت","url":"https://connecttag.org/company/projects/apps/soor-net/"}]'></site-breadcrumb>
-    <div class="container">
-        <div class="row display-flex align-items-center">
-            <div class="col-md-7" data-aos="fade-left">
-                <div class="hero-quick-meta">
-                    <span class="hero-meta-pill"><i class="fa-brands fa-android"></i> Android 8.0+</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-shield-halved"></i> بدون روت 100%</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-lock"></i> محلي ومعزول تماماً</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-filter"></i> فلترة الحزم DPI</span>
-                </div>
-                <div class="hero-app-header">
-                    <div class="hero-app-icon-wrap">
-                        <img src="assets/img/soor-net-app.webp" alt="أيقونة سور الإنترنت" class="hero-app-icon" loading="eager">
-                    </div>
-                    <div class="hero-app-title-area">
-                        <h1>تطبيق سور الإنترنت <span style="font-size: 22px; font-weight: 500; opacity: 0.85; display: block; margin-top: 8px;">(Soor Net — Local No-Root Firewall & Traffic Monitor)</span></h1>
-                    </div>
-                </div>
-                <div class="hero-btns">
-                    <a href="#download-options" class="btn-hero">
-                        <i class="fa-solid fa-download"></i> تحميل
+<div class="as-page-wrapper">
+    <div class="as-container">
+        
+        <!-- App Store Breadcrumbs -->
+        <div class="as-breadcrumb-wrap">
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"سور الإنترنت","url":"https://connecttag.org/company/projects/apps/soor-net/"}]'></site-breadcrumb>
+        </div>
+
+        <!-- App Store Header Section -->
+        <div class="as-header" data-aos="fade-down">
+            <div class="as-icon-wrap">
+                <img src="assets/img/soor-net-app.webp" alt="أيقونة تطبيق سور الإنترنت" class="as-icon-img" loading="eager">
+            </div>
+            <div class="as-header-content">
+                <h1 class="as-title">تطبيق سور الإنترنت</h1>
+                <div class="as-subtitle">Soor Net: Local Firewall & Data Control</div>
+                <a href="https://connecttag.org/company/" class="as-developer-link">
+                    كونكت تاق
+                </a>
+                <div class="as-actions-row">
+                    <a href="#download-options" class="as-btn-get">
+                        تحميل
                     </a>
                 </div>
             </div>
-            <div class="col-md-5 text-center" data-aos="zoom-in">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                         <img src="assets/screenshots/01.webp" alt="واجهة تطبيق سور الإنترنت الرئيسية" class="phone-screenshot-img" loading="eager">
-                    </div>
+        </div>
+
+        <!-- App Store Metrics Ribbon (Lazy Row) -->
+        <div class="as-lazy-row-wrapper" data-aos="fade-up">
+            <div class="as-metrics-ribbon as-lazy-row">
+                <!-- 1. السعر -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">السعر</span>
+                    <span class="as-metric-value">مجاني</span>
+                    <span class="as-metric-sub">بدون رسوم</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 2. الفئة -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة</span>
+                    <span class="as-metric-value"><i class="fa-solid fa-layer-group" style="color: #0071e3; font-size: 19px;"></i> #1</span>
+                    <span class="as-metric-sub">في الأدوات</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 3. الفئة العمرية -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة العمرية</span>
+                    <span class="as-metric-value">+4</span>
+                    <span class="as-metric-sub">مناسب للجميع</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 4. التوافق -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">التوافق</span>
+                    <span class="as-metric-value"><i class="fa-brands fa-android" style="color: #0071e3; font-size: 18px;"></i> Android</span>
+                    <span class="as-metric-sub">7.0 أو أحدث</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 5. اللغات -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">اللغات</span>
+                    <span class="as-metric-value">AR</span>
+                    <span class="as-metric-sub">العربية (+1 لغة)</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 6. الحجم -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الحجم</span>
+                    <span class="as-metric-value">6.8</span>
+                    <span class="as-metric-sub">MB</span>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="case-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h2>وصف التطبيق</h2>
-                <p>تطبيق <strong>"سور الإنترنت" (Soor Net)</strong> هو جدار حماية محلي متطور لنظام أندرويد، تم تصميمه وتطويره بواسطة <strong>كونكت تاق (Connect Tag)</strong> ليمنح المستخدمين التحكم الشامل في حركة الشبكة داخل أجهزتهم بدون الحاجة لصلاحيات الروت (No Root).</p>
-                <p>يعمل التطبيق كواجهة حماية محلية مغلقة (Local Loopback Interface) عبر خدمة <code>Android VpnService</code> لمعالجة وتصفية الحزم محلياً 100% بواسطة محرك أصلي فائق الكفاءة (Native C/C++ DPI Engine) دون توجيه أي بيانات لخوادم وسيطة خارجية. يتيح التطبيق حظر أو سماح الاتصال لكل تطبيق على حدة عبر شبكات Wi-Fi وبيانات الهاتف، مع توفير سجلات حية لحركة المرور، وأدوات فحص متقدمة للشبكة، وحماية كاملة للخصوصية متوافقة تماماً مع معايير Google Play وأجهزة أندرويد الحديثة.</p>
-
-                <h2>المميزات والخصائص الرئيسية</h2>
-                <div class="features-grid">
-                    <div class="feature-item-card" data-aos="fade-up">
-                        <div class="feature-icon-box"><i class="fa-solid fa-sliders"></i></div>
-                        <div class="feature-info">
-                            <h4>تحكم مستقل باتصال كل تطبيق</h4>
-                            <p>إمكانية السماح أو الحظر المستقل للإنترنت لكل تطبيق على حدة عبر شبكات Wi-Fi، بيانات الجوال، أو أثناء التجوال (Roaming).</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-icon-box"><i class="fa-solid fa-mobile-screen"></i></div>
-                        <div class="feature-info">
-                            <h4>السماح فقط عند تشغيل الشاشة</h4>
-                            <p>منع التطبيقات المحددة من استهلاك باقة الإنترنت والبطارية في الخلفية عند إغلاق أو قفل شاشة الهاتف.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                        <div class="feature-info">
-                            <h4>معالجة محلية 100% بدون روت</h4>
-                            <p>يعمل كجدار حماية محلي مغلق دون خوادم وسيطة، وبدون فك تشفير اتصالات HTTPS/TLS أو تثبيت شهادات جذرية.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-icon-box"><i class="fa-solid fa-layer-group"></i></div>
-                        <div class="feature-info">
-                            <h4>5 أوضاع تشغيلية متقدمة</h4>
-                            <p>خيارات تشغيل متعددة: الوضع الافتراضي، وضع التقاط الحزم، تصفية الحزم، إغلاق الطوارئ، والتحليل بدون اتصال.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="feature-icon-box"><i class="fa-solid fa-ban"></i></div>
-                        <div class="feature-info">
-                            <h4>وضع الإغلاق الشامل للطوارئ</h4>
-                            <p>مفتاح قطع فوري (Lockdown Kill-Switch) يقطع كافة الاتصالات الصادرة من الهاتف مع إمكانية استثناء تطبيقات أساسية.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="feature-icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                        <div class="feature-info">
-                            <h4>سجل ومراقبة حية لحركة المرور</h4>
-                            <p>تسجيل فني منظم لكل محاولة اتصال (IP، المنفذ، النطاق، TCP/UDP، والقرار) مع إمكانية تصدير السجلات بصيغ CSV و TXT.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="feature-icon-box"><i class="fa-solid fa-clock"></i></div>
-                        <div class="feature-info">
-                            <h4>محرك القواعد المخصصة والجدولة</h4>
-                            <p>إنشاء قواعد متقدمة لعناوين IP ونطاقات ومنافذ محددة، مع جدولة زمنية تلقائية بالساعات وحدود لاستهلاك البيانات (Data Limits).</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="700">
-                        <div class="feature-icon-box"><i class="fa-solid fa-network-wired"></i></div>
-                        <div class="feature-info">
-                            <h4>استخبارات النطاقات وفحص الشبكة</h4>
-                            <p>قاعدة GeoIP محلية لمعرفة دول الخوادم و ASN، مع أدوات فحص مدمجة تشمل Ping، و Port Scanner، و DNS Check، و Whois.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="800">
-                        <div class="feature-icon-box"><i class="fa-solid fa-microchip"></i></div>
-                        <div class="feature-info">
-                            <h4>نواة أصلية عالية السرعة (C/C++)</h4>
-                            <p>محرك فحص عميق للحزم (Native DPI Engine) مبني عبر NDK لضمان سرعة معالجة قصوى واستهلاك بطارية شبه معدوم.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="900">
-                        <div class="feature-icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                        <div class="feature-info">
-                            <h4>لوحة إحصائيات ورسوم بيانية</h4>
-                            <p>رسوم بيانية توضح معدلات الرفع والتنزيل، أكثر التطبيقات استهلاكاً، وأكثر النطاقات التي تم حظرها بنجاح.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="1000">
-                        <div class="feature-icon-box"><i class="fa-solid fa-palette"></i></div>
-                        <div class="feature-info">
-                            <h4>واجهة Material 3 و 6 باقات ألوان</h4>
-                            <p>واجهة عصرية مبنية بتقنية Jetpack Compose، مع دعم أصيل للغة العربية (RTL)، والمظهر الداكن والفاتح ومطابقة ألوان النظام.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="1100">
-                        <div class="feature-icon-box"><i class="fa-solid fa-toggle-on"></i></div>
-                        <div class="feature-info">
-                            <h4>ويدجت واختصارات الإعدادات السريعة</h4>
-                            <p>أزرار تحكم سريعة في لوحة الإشعارات (Quick Settings Tiles)، وويدجت للشاشة مع ميزة النسخ الاحتياطي للقواعد واستعادتها.</p>
-                        </div>
-                    </div>
+        <!-- Screenshots Showcase Section -->
+        <div id="screenshots-gallery" class="as-section" data-aos="fade-up">
+            <div class="as-screenshots-slider">
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/01.webp" alt="لقطة 1 - لوحة التحكم" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Screenshots Showcase Section -->
-                <div id="screenshots-gallery" class="screenshots-section" data-aos="fade-up">
-                    <h2 class="text-center" style="display: block; margin-bottom: 10px;">لقطات من داخل التطبيق</h2>
-                    <p class="text-center" style="color: #64748b; font-size: 16px; margin-bottom: 25px;">استكشف الواجهة الرئيسية، درع الحماية، قواعد الشبكة، سجلات المرور الحية، وأدوات فحص الحزم</p>
-                    <div class="screenshots-slider-wrapper">
-                        <div class="screenshots-slider">
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/01.webp" alt="الشاشة الرئيسية ودرع الحماية - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">الشاشة الرئيسية ودرع الحماية</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/02.webp" alt="تخصيص قواعد الشبكة - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">تخصيص قواعد الشبكة</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/03.webp" alt="التحكم بأذونات التطبيقات - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">التحكم بأذونات التطبيقات</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/04.webp" alt="سجل حركة المرور المباشر - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">سجل حركة المرور الحية</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/05.webp" alt="سجل الحظر ومنع الاتصالات - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">سجل الحظر اللحظي</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/06.webp" alt="استخبارات وتحليل النطاقات - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">تحليل نطاقات التطبيقات</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/07.webp" alt="مراقبة اتصالات المراسلة - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">مراقبة خوادم المراسلة</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/08.webp" alt="فحص الحزم والبروتوكول - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">فاحص الحزم التفصيلي</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/09.webp" alt="تحليل المنافذ والاتصال - سور الإنترنت" loading="lazy">
-                                <div class="screenshot-caption">تحليل المنافذ والمصادر</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/02.webp" alt="لقطة 2 - قواعد الاتصال" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <div class="specifications-section" data-aos="fade-up">
-                    <h2 class="text-center" style="margin-top: 0; margin-bottom: 40px; color: #0052cc;">المواصفات الفنية</h2>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <table class="table table-bordered bg-white spec-table" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <tbody>
-                                    <tr>
-                                        <td>حجم التطبيق</td>
-                                        <td>~ 8.5 MB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>المتطلبات</td>
-                                        <td>Android 8.0+ (Oreo فما فوق)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>التصنيف</td>
-                                        <td>أدوات / حماية وأمان الشبكات</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الشركة المطورة</td>
-                                        <td>كونكت تاق (Connect Tag)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الوثائق والسياسات</td>
-                                        <td>
-                                            <a href="https://connecttag.org/company/projects/apps/soor-net/privacy-policy" class="spec-legal-link">
-                                                <i class="fa-solid fa-user-shield"></i> سياسة الخصوصية
-                                            </a>
-                                            <span style="margin: 0 8px; color: #ccc;">•</span>
-                                            <a href="https://connecttag.org/company/projects/apps/soor-net/terms-of-use" class="spec-legal-link">
-                                                <i class="fa-solid fa-file-contract"></i> شروط الاستخدام
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/03.webp" alt="لقطة 3 - أذونات التطبيقات" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Download Options Section -->
-                <div id="download-options" class="download-section" data-aos="fade-up">
-                    <h3>تحميل تطبيق سور الإنترنت (Soor Net)</h3>
-                    <p class="download-subtitle">متاح للتحميل والتثبيت المباشر لأجهزة أندرويد</p>
-                    <div class="download-buttons-group">
-                        <a href="https://t.me/connecttagye" target="_blank" rel="noopener" class="btn-download btn-telegram">
-                            <i class="fa-brands fa-telegram"></i> قناة تيليجرام
-                        </a>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/04.webp" alt="لقطة 4 - حركة البيانات الحية" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Related Apps Section -->
-                <div class="related-apps-section" data-aos="fade-up">
-                    <h3>تطبيقات أخرى قد تهمك من كونكت تاق</h3>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/kabeer/" class="related-app-card">
-                                <img src="../kabeer/assets/img/kabeer-info-app.webp" alt="خبير" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>خبير (Expert)</h4>
-                                    <p>فحص وتشخيص عتاد الهاتف</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/developer-tool/" class="related-app-card">
-                                <img src="../developer-tool/assets/img/developer-app-logo.webp" alt="مطور" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>مطور (Developer)</h4>
-                                    <p>الحقيبة الشاملة لأدوات البرمجة</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/" class="related-app-card">
-                                <img src="../tayf-spectrum/assets/img/tayf-store-icon-512x512.png" alt="طيف" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>طيف (Tayf)</h4>
-                                    <p>مراقبة وتحليل الشبكات والترددات</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/05.webp" alt="لقطة 5 - الاتصالات المحظورة" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <hr style="margin-top: 40px; margin-bottom: 30px;">
-                <site-share-buttons></site-share-buttons>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/06.webp" alt="لقطة 6 - فحص النطاقات" class="as-screenshot-img" loading="lazy">
+                </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/07.webp" alt="لقطة 7 - مراقبة تطبيقات المراسلة" class="as-screenshot-img" loading="lazy">
+                </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/08.webp" alt="لقطة 8 - فاحص الحزم" class="as-screenshot-img" loading="lazy">
+                </div>
             </div>
         </div>
+
+        <!-- Description & Feature Highlights Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">الوصف</h2>
+            <div class="as-description-text">
+                <p>تطبيق <strong>"سور الإنترنت" (Soor Net)</strong> هو جدار حماية ناري يساعدك على التحكم في اتصال التطبيقات المرئية بالإنترنت بدون روت. اختر القواعد التي تناسبك، ثم راجعها من واجهة بسيطة صممت لتوضيح حالة الحماية والتطبيقات والقواعد. يستخدم التطبيق خدمة VPN المحلية في أندرويد لتطبيق قواعد الاتصال داخل جهازك محلياً دون إرسال أي حركة بيانات لخوادم خارجية؛ إنه أداة تحكم محلية متكاملة لترشيد استهلاك الإنترنت وحماية خصوصيتك.</p>
+            </div>
+
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #1d1d1f; margin: 35px 0 16px;">المميزات والخصائص الرئيسية</h3>
+            <ul class="as-features-list">
+                <li><strong>جدار ناري محلي بدون روت:</strong> حظر وتصفية اتصال أي تطبيق بالإنترنت محلياً بنسبة 100% بالاعتماد على معمارية أندرويد الرسمية دون المساس بأمان النظام.</li>
+                <li><strong>قواعد مستقلة للوايفاي وبيانات الهاتف:</strong> إمكانية السماح للتطبيق بالعمل عبر الواي فاي فقط وحظره عبر بيانات الشريحة (Mobile Data) لترشيد الرصيد.</li>
+                <li><strong>سجل مراقبة فوري لحركة الاتصال:</strong> عرض مباشر لكافة المحاولات والاتصالات الصادرة والواردة مع توضيح أسماء النطاقات (Domains) المستهدفة.</li>
+                <li><strong>حظر الإعلانات والتتبع في الخلفية:</strong> إيقاف الاتصالات الخفية التي تجريها التطبيقات في الخلفية دون علمك لتوفير الطاقة والبيانات.</li>
+                <li><strong>أمان وخصوصية تامة بدون خوادم وسيطة:</strong> لا تمر أي بيانات عبر سيرفرات خارجية أو VPN بعيد، كل الفلاتر تُنفذ محلياً داخل جهازك فقط.</li>
+                <li><strong>استثناءات وقوائم مخصصة:</strong> إمكانية استثناء التطبيقات الهامة مثل واتساب أو خدمات النظام لضمان استمرار وصول الإشعارات الأساسية بسلاسة.</li>
+            </ul>
+        </div>
+
+        <!-- Information & Technical Specs (iOS Grouped List) -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">المعلومات والمواصفات</h2>
+            <div class="as-info-group">
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الخصوصية</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/soor-net/privacy-policy">عرض السياسة</a></span>
+                </div>
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الاستخدام</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/soor-net/terms-of-use">عرض الشروط</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Options Section -->
+        <div id="download-options" class="as-section text-center" data-aos="fade-up" style="text-align: center;">
+            <h2 class="as-section-title" style="margin-bottom: 24px;">خيارات التحميل والتثبيت</h2>
+            <div class="as-actions-row" style="justify-content: center;">
+                <a href="https://t.me/connecttagye" target="_blank" rel="noopener" class="as-btn-get" style="padding: 12px 36px; font-size: 16px;">
+                    <i class="fa-brands fa-telegram"></i> التحميل عبر قناة تيليجرام
+                </a>
+            </div>
+        </div>
+
+        <!-- Related Apps Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title">المزيد من هذا المطور</h2>
+            <div class="as-related-grid">
+                <a href="https://connecttag.org/company/projects/apps/yemen-4g/" class="as-related-card">
+                    <img src="../yemen-4g/assets/img/yemen-4g-app.webp" alt="يمن فورجي" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">يمن فورجي</div>
+                        <div class="as-related-cat">إدارة الرصيد والمودم</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="as-related-card">
+                    <img src="../yemen-view/assets/img/yemen-view-app.webp" alt="يمن فيو" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">يمن فيو</div>
+                        <div class="as-related-cat">دليل الاتصالات والخدمات</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/kabeer/" class="as-related-card">
+                    <img src="../kabeer/assets/img/kabeer-info-app.webp" alt="خبير" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">خبير (Expert)</div>
+                        <div class="as-related-cat">فحص وتشخيص عتاد الهاتف</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div style="margin: 40px 0 20px;">
+            <site-share-buttons></site-share-buttons>
+        </div>
+
     </div>
 </div>
 
@@ -326,5 +271,19 @@
 
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+        }
+    });
+</script>
+
 </body>
 </html>

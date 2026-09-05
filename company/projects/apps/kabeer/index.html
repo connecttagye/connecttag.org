@@ -4,320 +4,265 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تطبيق خبير — فحص وتشخيص العتاد ومواصفات النظام | كونكت تاق</title>
-<meta name="description" content="تطبيق خبير (Expert) لفحص وتشخيص عتاد هاتف الأندرويد بدقة واحترافية. مراقبة لحظية للمعالج والبطارية، اختبارات الشاشة والحساسات، وتدقيق الأمان السيبراني بمعالجة محلية 100% وبدون أذونات حساسة.">
+<title>تطبيق خبير — فحص وتشخيص عتاد الهاتف ومراقبة النظام | كونكت تاق</title>
+<meta name="description" content="تطبيق خبير هو رفيقك المتكامل للحصول على رؤى دقيقة حول جهازك وأدوات برمجية متخصصة لمراقبة الأداء وفحص العتاد والبطارية بواجهة عصرية.">
 <link rel="canonical" href="https://connecttag.org/company/projects/apps/kabeer/" />
 
-  <!-- OpenGraph meta -->
+<!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/apps/kabeer/" />
 <meta property="og:type" content="website">
-<meta property="og:title" content="تطبيق خبير — فحص وتشخيص العتاد ومواصفات النظام | كونكت تاق">
-<meta property="og:description" content="أداتك الاحترافية الشاملة لفحص وتشخيص عتاد الهاتف، مراقبة أداء المعالج والبطارية اللحظي، اختبار الشاشة والحساسات، وتدقيق الأمان السيبراني بمعالجة محلية 100%." />
+<meta property="og:title" content="تطبيق خبير — فحص وتشخيص عتاد الهاتف ومراقبة النظام | كونكت تاق">
+<meta property="og:description" content="تطبيق خبير هو رفيقك المتكامل للحصول على رؤى دقيقة حول جهازك وأدوات برمجية متخصصة لمراقبة الأداء وفحص العتاد والبطارية." />
 <meta property="og:image" content="assets/img/feature-graphic-1024x500.webp">
 
-<!-- twitter OpenGraph meta -->
+<!-- Twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/company/projects/apps/kabeer/" />
-<meta name="twitter:title" content="تطبيق خبير — فحص وتشخيص العتاد ومواصفات النظام | كونكت تاق">
-<meta name="twitter:description" content="أداتك الاحترافية الشاملة لفحص وتشخيص عتاد الهاتف، مراقبة أداء المعالج والبطارية اللحظي، اختبار الشاشة والحساسات، وتدقيق الأمان السيبراني بمعالجة محلية 100%." />
+<meta name="twitter:title" content="تطبيق خبير — فحص وتشخيص عتاد الهاتف ومراقبة النظام | كونكت تاق">
+<meta name="twitter:description" content="تطبيق خبير هو رفيقك المتكامل للحصول على رؤى دقيقة حول جهازك وأدوات برمجية متخصصة لمراقبة الأداء وفحص العتاد والبطارية." />
 <meta name="twitter:image" content="assets/img/feature-graphic-1024x500.webp" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
+<!-- Fonts & Stylesheets -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.15">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.15">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.15">
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.15" defer></script>
 <script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.15" defer></script>
 
-  <!-- PWA & Mobile Optimization Tags -->
-  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
-  <link rel="manifest" href="https://connecttag.org/manifest.json">
-  <meta name="theme-color" content="#0052cc">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "تطبيق خبير (Expert)",
+  "operatingSystem": "Android 8.0+",
+  "applicationCategory": "UtilitiesApplication",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.0",
+    "ratingCount": "1"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "تطبيق خبير هو رفيقك المتكامل للحصول على رؤى دقيقة حول جهازك وأدوات برمجية متخصصة لمراقبة الأداء وفحص العتاد والبطارية.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Connect Tag",
+    "url": "https://connecttag.org"
+  }
+}
+</script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<body>
+<body class="as-store-page">
+
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
-<div class="hero-section">
-    <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"خبير","url":"https://connecttag.org/company/projects/apps/kabeer/"}]'></site-breadcrumb>
-    <div class="container">
-        <div class="row display-flex align-items-center">
-            <div class="col-md-7" data-aos="fade-left">
-                <div class="hero-quick-meta">
-                    <span class="hero-meta-pill"><i class="fa-brands fa-android"></i> Android 8.0+</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-microchip"></i> تشخيص العتاد</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-battery-three-quarters"></i> فحص البطارية</span>
-                    <span class="hero-meta-pill"><i class="fa-solid fa-shield-halved"></i> بدون روت وبأمان تام</span>
-                </div>
-                <div class="hero-app-header">
-                    <div class="hero-app-icon-wrap">
-                        <img src="assets/img/kabeer-info-app.webp" alt="أيقونة خبير" class="hero-app-icon" loading="eager">
-                    </div>
-                    <div class="hero-app-title-area">
-                        <h1>تطبيق خبير <span style="font-size: 22px; font-weight: 500; opacity: 0.85; display: block; margin-top: 8px;">(Expert: Hardware Diagnostics & System Info)</span></h1>
-                    </div>
-                </div>
-                <div class="hero-btns">
-                    <a href="#download-options" class="btn-hero">
-                        <i class="fa-solid fa-download"></i> تحميل
+<div class="as-page-wrapper">
+    <div class="as-container">
+        
+        <!-- App Store Breadcrumbs -->
+        <div class="as-breadcrumb-wrap">
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"خبير","url":"https://connecttag.org/company/projects/apps/kabeer/"}]'></site-breadcrumb>
+        </div>
+
+        <!-- App Store Header Section -->
+        <div class="as-header" data-aos="fade-down">
+            <div class="as-icon-wrap">
+                <img src="assets/img/kabeer-info-app.webp" alt="أيقونة تطبيق خبير" class="as-icon-img" loading="eager">
+            </div>
+            <div class="as-header-content">
+                <h1 class="as-title">تطبيق خبير</h1>
+                <div class="as-subtitle">Kabeer: Hardware & System Monitor</div>
+                <a href="https://connecttag.org/company/" class="as-developer-link">
+                    كونكت تاق
+                </a>
+                <div class="as-actions-row">
+                    <a href="#download-options" class="as-btn-get">
+                        تحميل
                     </a>
                 </div>
             </div>
-            <div class="col-md-5 text-center" data-aos="zoom-in">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                         <img src="assets/screenshots/01.webp" alt="واجهة تطبيق خبير" class="phone-screenshot-img" loading="eager">
-                    </div>
+        </div>
+
+        <!-- App Store Metrics Ribbon (Lazy Row) -->
+        <div class="as-lazy-row-wrapper" data-aos="fade-up">
+            <div class="as-metrics-ribbon as-lazy-row">
+                <!-- 1. السعر -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">السعر</span>
+                    <span class="as-metric-value">مجاني</span>
+                    <span class="as-metric-sub">بدون رسوم</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 2. الفئة -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة</span>
+                    <span class="as-metric-value"><i class="fa-solid fa-layer-group" style="color: #0071e3; font-size: 19px;"></i> #1</span>
+                    <span class="as-metric-sub">في الأدوات</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 3. الفئة العمرية -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة العمرية</span>
+                    <span class="as-metric-value">+4</span>
+                    <span class="as-metric-sub">مناسب للجميع</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 4. التوافق -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">التوافق</span>
+                    <span class="as-metric-value"><i class="fa-brands fa-android" style="color: #0071e3; font-size: 18px;"></i> Android</span>
+                    <span class="as-metric-sub">8.0 أو أحدث</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 5. اللغات -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">اللغات</span>
+                    <span class="as-metric-value">AR</span>
+                    <span class="as-metric-sub">العربية (+1 لغة)</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 6. الحجم -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الحجم</span>
+                    <span class="as-metric-value">9.4</span>
+                    <span class="as-metric-sub">MB</span>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="case-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h2>وصف التطبيق</h2>
-                <p>تطبيق <strong>"خبير" (Expert)</strong> هو بيئة فحص وتشخيص تقنية متكاملة وموسوعة شاملة لمواصفات عتاد وأداء هواتف الأندرويد، تم تطويره بواسطة <strong>كونكت تاق (Connect Tag)</strong> وفق أحدث المعايير البرمجية المعاصرة لشركة Google (Kotlin 2.0+ و Jetpack Compose و Material 3).</p>
-                <p>صُمم التطبيق وفق <strong>مبدأ انعدام جمع البيانات (Zero Data Collection Paradigm)</strong> مع التزام صارم بالخصوصية والأمان، حيث تتم كافة العمليات الحسابية والتشخيصية والمسوح الأمنية محلياً بنسبة 100% داخل عتاد جهازك، بدون أي أذونات خطيرة، وبدون إعلانات أو أدوات تتبع خارجية.</p>
-
-                <h2>المميزات الرئيسية</h2>
-                <div class="features-grid">
-                    <div class="feature-item-card" data-aos="fade-up">
-                        <div class="feature-icon-box"><i class="fa-solid fa-gauge-high"></i></div>
-                        <div class="feature-info">
-                            <h4>لوحة التحكم اللحظية (Bento Dashboard)</h4>
-                            <p>ملخص فوري للجهاز، مقياس استهلاك الرام الحي، مؤشر البطارية السائل مع الواط اللحظي، ومراقب سرعة الشبكة التفاعلي.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="feature-icon-box"><i class="fa-solid fa-microchip"></i></div>
-                        <div class="feature-info">
-                            <h4>المعالج والبنية (SOC & CPU Cluster)</h4>
-                            <p>تفصيل توزيع الأنوية (Prime, Performance, Efficiency)، الترددات الحية بالـ MHz، الذاكرة المؤقتة L1/L2/L3، ومؤشر الحمل اللحظي.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="feature-icon-box"><i class="fa-solid fa-memory"></i></div>
-                        <div class="feature-info">
-                            <h4>الذاكرة ووحدات التخزين (RAM & Storage)</h4>
-                            <p>استهلاك الرام الفعلي، ذاكرة التبديل ZRAM/Swap، تقسيمات التخزين (System/User/Cache)، تشفير FBE/FDE، وصيانة TRIM.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="feature-icon-box"><i class="fa-solid fa-bolt"></i></div>
-                        <div class="feature-info">
-                            <h4>مؤشرات البطارية والشحن اللحظي</h4>
-                            <p>حرارة البطارية المئوية بدقة، الجهد بالفولت، استهلاك وشحن الواط اللحظي (W)، تصنيف سرعة الشحن وسجل دورات الشحن.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="feature-icon-box"><i class="fa-solid fa-display"></i></div>
-                        <div class="feature-info">
-                            <h4>الشاشة والمعالج الرسومي (Display & GPU)</h4>
-                            <p>الحجم بالبوصة، الكثافة DPI، معدل التحديث Hz، دعم HDR10 و Dolby Vision، ومواصفات الرسوميات OpenGL ES و Vulkan.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="500">
-                        <div class="feature-icon-box"><i class="fa-solid fa-camera"></i></div>
-                        <div class="feature-info">
-                            <h4>الكاميرات والبصريات (Camera & Optics)</h4>
-                            <p>حصر شامل لجميع العدسات، البعد البؤري وفتحة العدسة، التثبيت البصري OIS/EIS، دعم التصوير الخام RAW، ومستوى Camera2 API.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="600">
-                        <div class="feature-icon-box"><i class="fa-solid fa-wifi"></i></div>
-                        <div class="feature-info">
-                            <h4>الاتصال والشبكات اللاسلكية</h4>
-                            <p>دعم Wi-Fi 6/6E/7، بلوتوث LE Audio و Auracast، شرائح eSIM ومنافذ SIM، تفاصيل IP و DNS وقوة الإشارة بالديسيبل dBm.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="700">
-                        <div class="feature-icon-box"><i class="fa-solid fa-compass"></i></div>
-                        <div class="feature-info">
-                            <h4>الحساسات والعارض ثلاثي الأبعاد</h4>
-                            <p>جرد لكافة الحساسات مع قراءات بيانية حية وعارض 3D تفاعلي للجيروسكوب، كشف منفذ USB OTG، ومستشعرات البصمة والوجه.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="800">
-                        <div class="feature-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
-                        <div class="feature-info">
-                            <h4>الوسائط وحماية المحتوى (DRM & Media)</h4>
-                            <p>مستوى أمان Widevine DRM (L1/L3)، فك تشفير الفيديو والصوت بالعتاد (HEVC, AV1, VP9)، ودعم الصوت المكاني Spatial Audio.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="900">
-                        <div class="feature-icon-box"><i class="fa-solid fa-stethoscope"></i></div>
-                        <div class="feature-info">
-                            <h4>أجنحة الفحص والتشخيص الفني</h4>
-                            <p>10 اختبارات تشمل البكسلات الميتة، اللمس المتعدد، فحص تطبيع شاشات OLED/AMOLED ومنعش البيكسلات، السماعات، والمايكروفون.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="1000">
-                        <div class="feature-icon-box"><i class="fa-solid fa-file-pdf"></i></div>
-                        <div class="feature-info">
-                            <h4>شهادة الفحص الفني (PDF Certificate)</h4>
-                            <p>تصدير تقرير PDF رسمي موثق بنتائج الفحص، حساب تلقائي لمؤشر صحة الجهاز (Health Score)، وأرشفة السجلات محلياً.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item-card" data-aos="fade-up" data-aos-delay="1100">
-                        <div class="feature-icon-box"><i class="fa-solid fa-user-lock"></i></div>
-                        <div class="feature-info">
-                            <h4>تدقيق الأمان والخصوصية المطلقة</h4>
-                            <p>فحص الروت و SELinux و StrongBox TEE، معالجة محلية 100% داخل الجهاز، خلو تام من الإعلانات وصفر أذونات حساسة.</p>
-                        </div>
-                    </div>
+        <!-- Screenshots Showcase Section -->
+        <div id="screenshots-gallery" class="as-section" data-aos="fade-up">
+            <div class="as-screenshots-slider">
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/01.webp" alt="لقطة 1 - لوحة التحكم" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Screenshots Showcase Section -->
-                <div id="screenshots-gallery" class="screenshots-section" data-aos="fade-up">
-                    <h2 class="text-center" style="display: block; margin-bottom: 10px;">لقطات من داخل التطبيق</h2>
-                    <p class="text-center" style="color: #64748b; font-size: 16px; margin-bottom: 25px;">استكشف لوحة فحص العتاد، أجنحة الاختبار الفني، قياسات الشحن والبطارية، وتدقيق الأمان</p>
-                    <div class="screenshots-slider-wrapper">
-                        <div class="screenshots-slider">
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/01.webp" alt="الشاشة الرئيسية ولوحة الفحص - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">الشاشة الرئيسية ولوحة الفحص</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/02.webp" alt="أجنحة الفحص الفني وتقرير PDF - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">أجنحة الفحص وتقرير PDF</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/03.webp" alt="تدقيق الأمان وفحص الروت - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">تدقيق الأمان وفحص الروت</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/04.webp" alt="مراقبة البطارية ومعدل الاستهلاك بالواط - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">مراقبة البطارية والقدرة بالواط</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/05.webp" alt="فحص استهلاك الرام وذاكرة ZRAM - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">توزيع الرام وذاكرة ZRAM</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/06.webp" alt="أقسام التخزين وتشفير FBE - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">أقسام التخزين وتشفير FBE</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/07.webp" alt="مواصفات الشاشة واللمس المتعدد - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">مواصفات الشاشة واللمس</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/08.webp" alt="فحص الحساسات الـ 54 والمناطق الحرارية - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">الحساسات والمناطق الحرارية</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/09.webp" alt="معلومات الجهاز وإصدار النظام - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">معلومات الجهاز والنظام</div>
-                            </div>
-                            <div class="screenshot-card">
-                                <img src="assets/screenshots/10.webp" alt="تفاصيل نواة لينكس وواجهة النظام - تطبيق خبير" loading="lazy">
-                                <div class="screenshot-caption">نواة لينكس وواجهة النظام</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/02.webp" alt="لقطة 2 - اختبارات التشخيص" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <div class="specifications-section" data-aos="fade-up">
-                    <h2 class="text-center" style="margin-top: 0; margin-bottom: 40px; color: #0052cc;">المواصفات الفنية</h2>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <table class="table table-bordered bg-white spec-table" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <tbody>
-                                    <tr>
-                                        <td>حجم التطبيق</td>
-                                        <td>~ 6 MB</td>
-                                    </tr>
-                                    <tr>
-                                        <td>المتطلبات</td>
-                                        <td>Android 8.0+ (Oreo فما فوق)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الشركة المطورة</td>
-                                        <td>كونكت تاق (Connect Tag)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>الوثائق والسياسات</td>
-                                        <td>
-                                            <a href="https://connecttag.org/company/projects/apps/kabeer/privacy-policy" class="spec-legal-link">
-                                                <i class="fa-solid fa-user-shield"></i> سياسة الخصوصية
-                                            </a>
-                                            <span style="margin: 0 8px; color: #ccc;">•</span>
-                                            <a href="https://connecttag.org/company/projects/apps/kabeer/terms-of-use" class="spec-legal-link">
-                                                <i class="fa-solid fa-file-contract"></i> شروط الاستخدام
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/03.webp" alt="لقطة 3 - تدقيق الأمان" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Download Options Section -->
-                <div id="download-options" class="download-section" data-aos="fade-up">
-                    <h3>تحميل تطبيق خبير (Expert)</h3>
-                    <p class="download-subtitle">متاح للتحميل والتثبيت المباشر عبر متجر Google Play</p>
-                    <div class="download-buttons-group">
-                        <a href="https://play.google.com/store/apps/details?id=com.tool.expert" target="_blank" rel="noopener" class="btn-download btn-playstore">
-                            <i class="fa-brands fa-google-play"></i> متجر Google Play
-                        </a>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/04.webp" alt="لقطة 4 - صحة البطارية" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <!-- Related Apps Section -->
-                <div class="related-apps-section" data-aos="fade-up">
-                    <h3>تطبيقات أخرى قد تهمك من كونكت تاق</h3>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/soor-net/" class="related-app-card">
-                                <img src="../soor-net/assets/img/soor-net-app.webp" alt="سور الإنترنت" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>سور الإنترنت</h4>
-                                    <p>جدار حماية محلي بدون روت</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/developer-tool/" class="related-app-card">
-                                <img src="../developer-tool/assets/img/developer-app-logo.webp" alt="مطور" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>مطور (Developer)</h4>
-                                    <p>الحقيبة الشاملة لأدوات البرمجة</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="related-app-card">
-                                <img src="../yemen-view/assets/img/yemen-view-app.webp" alt="يمن فيو" class="related-app-icon">
-                                <div class="related-app-info">
-                                    <h4>يمن فيو</h4>
-                                    <p>دليل خدمات وباقات الاتصالات</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/05.webp" alt="لقطة 5 - استهلاك الرام" class="as-screenshot-img" loading="lazy">
                 </div>
-
-                <hr style="margin-top: 40px; margin-bottom: 30px;">
-                <site-share-buttons></site-share-buttons>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/06.webp" alt="لقطة 6 - سعة التخزين" class="as-screenshot-img" loading="lazy">
+                </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/07.webp" alt="لقطة 7 - اختبار اللمس والشاشة" class="as-screenshot-img" loading="lazy">
+                </div>
+                <div class="as-screenshot-card">
+                    <img src="assets/screenshots/08.webp" alt="لقطة 8 - حساسات الهاتف" class="as-screenshot-img" loading="lazy">
+                </div>
             </div>
         </div>
+
+        <!-- Description & Feature Highlights Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">الوصف</h2>
+            <div class="as-description-text">
+                <p>تطبيق <strong>"خبير" (Expert)</strong> هو رفيقك المتكامل للحصول على رؤى دقيقة حول جهازك وأدوات برمجية متخصصة. سواء كنت مستخدماً عادياً يرغب في مراقبة أداء هاتفه، أو مطوراً وفنياً يحتاج لأدوات تقنية سريعة، يوفر لك "خبير" كل ذلك بواجهة جلاسمورفيك (Glassmorphic) عصرية وجذابة مع خلفية تفاعلية ومراقبة حية لكافة موارد الجهاز.</p>
+            </div>
+
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #1d1d1f; margin: 35px 0 16px;">المميزات والخصائص الرئيسية</h3>
+            <ul class="as-features-list">
+                <li><strong>لوحة تحكم ومراقب النظام:</strong> معلومات فورية حول نسبة البطارية، حالة ومصدر الشحن، استهلاك الذاكرة العشوائية (RAM) اللحظي، ومراقبة سرعة التحميل والرفع المباشرة للإنترنت.</li>
+                <li><strong>مواصفات شاملة للجهاز والعتاد:</strong> تفاصيل المعالج (CPU)، ومحرك الرسوميات (GPU) مع دعم Vulkan و OpenGL، الماركة والموديل وإصدار أندرويد وتحديثات الأمان.</li>
+                <li><strong>فحص الشاشة والكاميرا والحساسات:</strong> كشف دقة الشاشة، كثافة البكسلات (DPI)، معدل التحديث، دعم HDR، تفاصيل عدسات الكاميرا، وقائمة حية بكافة الحساسات المدمجة.</li>
+                <li><strong>تحليل متقدم لصحة البطارية:</strong> تتبع درجة حرارة البطارية بالدرجة المئوية، الجهد الكهربائي، وسجل استهلاك الطاقة وتقنية الشحن المعتمدة.</li>
+                <li><strong>أدوات تشخيصية للمطورين والصيانة:</strong> اختبارات عتادية دقيقة للشاشة واللمس المتعدد (Multi-touch) ومكبرات الصوت والاهتزاز والميكروفون.</li>
+                <li><strong>تصميم Glassmorphic عصري وسلس:</strong> واجهة مستخدم فائقة الأناقة والجاذبية مع خلفيات انسيابية متحركة وتجربة تصفح سريعة وخفيفة على النظام.</li>
+            </ul>
+        </div>
+
+        <!-- Information & Technical Specs (iOS Grouped List) -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title" style="margin-bottom: 18px;">المعلومات والمواصفات</h2>
+            <div class="as-info-group">
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الخصوصية</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/kabeer/privacy-policy">عرض السياسة</a></span>
+                </div>
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الاستخدام</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/kabeer/terms-of-use">عرض الشروط</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Options Section -->
+        <div id="download-options" class="as-section text-center" data-aos="fade-up" style="text-align: center;">
+            <h2 class="as-section-title" style="margin-bottom: 24px;">خيارات التحميل والتثبيت</h2>
+            <div class="as-actions-row" style="justify-content: center;">
+                <a href="https://play.google.com/store/apps/details?id=com.tool.expert" target="_blank" rel="noopener" class="as-btn-get" style="padding: 12px 36px; font-size: 16px;">
+                    <i class="fa-brands fa-google-play"></i> التحميل عبر متجر Google Play
+                </a>
+            </div>
+        </div>
+
+        <!-- Related Apps Section -->
+        <div class="as-section" data-aos="fade-up">
+            <h2 class="as-section-title">المزيد من هذا المطور</h2>
+            <div class="as-related-grid">
+                <a href="https://connecttag.org/company/projects/apps/yemen-4g/" class="as-related-card">
+                    <img src="../yemen-4g/assets/img/yemen-4g-app.webp" alt="يمن فورجي" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">يمن فورجي</div>
+                        <div class="as-related-cat">إدارة الرصيد والمودم</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="as-related-card">
+                    <img src="../yemen-view/assets/img/yemen-view-app.webp" alt="يمن فيو" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">يمن فيو</div>
+                        <div class="as-related-cat">دليل الاتصالات والخدمات</div>
+                    </div>
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/soor-net/" class="as-related-card">
+                    <img src="../soor-net/assets/img/soor-net-app.webp" alt="سور الإنترنت" class="as-related-img">
+                    <div class="as-related-info">
+                        <div class="as-related-title">سور الإنترنت</div>
+                        <div class="as-related-cat">جدار حماية محلي بدون روت</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div style="margin: 40px 0 20px;">
+            <site-share-buttons></site-share-buttons>
+        </div>
+
     </div>
 </div>
 
@@ -326,6 +271,19 @@
 
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
-
