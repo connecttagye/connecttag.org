@@ -10,6 +10,7 @@
 
 
 
+
   <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/apps/" />
 <meta property="og:type" content="website">
@@ -46,27 +47,46 @@
 
 
 <style>
+    .page-header-unified {
+        padding: 125px 0 25px !important;
+    }
+    #apps-list {
+        padding: 25px 0 80px !important;
+        background: #fdfdfd;
+    }
+    .apps-flex-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .apps-flex-row > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
     .app-card {
         background: #fff;
         border-radius: 20px;
-        padding: 40px 30px;
-        margin-bottom: 30px;
+        padding: 35px 25px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         border: 1px solid #f0f0f0;
         text-align: center;
+        width: 100%;
         height: 100%;
+        flex: 1 1 auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         position: relative;
         overflow: hidden;
         text-decoration: none !important;
     }
     .app-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 45px rgba(0,82,204,0.12);
         border-color: #0052cc;
     }
     .app-tag {
@@ -81,7 +101,7 @@
         transition: 0.3s;
     }
     .app-card:hover .app-tag {
-        background: #006b98;
+        background: #0052cc;
         color: #fff;
     }
     .app-icon-container {
@@ -98,7 +118,7 @@
         transition: 0.3s;
     }
     .app-card:hover .app-icon-container {
-        transform: rotate(5deg);
+        transform: rotate(4deg) scale(1.05);
         box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
     .app-icon {
@@ -107,7 +127,15 @@
         object-fit: contain;
         border-radius: 16px;
     }
-    .app-card h3 { font-weight: 700; color: #333; margin-bottom: 10px; font-size: 20px; transition: 0.3s; }
+    .app-card h3 { 
+        font-weight: 700; 
+        color: #333; 
+        margin-top: auto;
+        margin-bottom: 0; 
+        font-size: 19px; 
+        line-height: 1.5;
+        transition: 0.3s; 
+    }
     .app-card:hover h3 { color: #0052cc; }
 </style>
 
@@ -127,22 +155,21 @@
 <!-- Modular Web Component: Header -->
 <site-header></site-header>
 
+<main id="main-content">
 <div class="page-header-unified">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>تطبيقاتنا</h1>
+                <h1 data-aos="fade-down">تطبيقاتنا</h1>
                 <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"}]'></site-breadcrumb>
-            </div>
-        </div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="apps-list" style="padding: 80px 0; background: #fdfdfd;">
+<div id="apps-list">
     <div class="container">
-        <div class="row">
+        <div class="row apps-flex-row">
             <!-- App 1: Yemen View -->
             <div class="col-md-4 col-sm-6" data-aos="fade-up">
                 <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="app-card">
@@ -177,7 +204,7 @@
             </div>
 
             <!-- App 4: Yemen 4G -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300" style="margin-top: 30px;">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
                 <a href="https://connecttag.org/company/projects/apps/yemen-4g/" class="app-card">
                     <span class="app-tag">#رصيد #مودمات #باقات</span>
                     <div class="app-icon-container">
@@ -188,7 +215,7 @@
             </div>
 
             <!-- App 5: SoorNet -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400" style="margin-top: 30px;">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
                 <a href="https://connecttag.org/company/projects/apps/soor-net/" class="app-card">
                     <span class="app-tag">#أمان #جدار_ناري #حماية #خصوصية</span>
                     <div class="app-icon-container">
@@ -199,7 +226,7 @@
             </div>
 
             <!-- App 6: Developer -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500" style="margin-top: 30px;">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
                 <a href="https://connecttag.org/company/projects/apps/developer-tool/" class="app-card">
                     <span class="app-tag">#برمجة #أدوات #تطوير #كود</span>
                     <div class="app-icon-container">
@@ -210,7 +237,7 @@
             </div>
 
             <!-- App 7: Tayf Spectrum -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="600" style="margin-top: 30px;">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
                 <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/" class="app-card">
                     <span class="app-tag">#اتصالات #شبكات #أدوات</span>
                     <div class="app-icon-container" style="background: #f8f9fa;">
@@ -221,7 +248,7 @@
             </div>
 
             <!-- App 8: BlogNote -->
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="700" style="margin-top: 30px;">
+            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
                 <a href="https://connecttag.org/company/projects/apps/blog-note/" class="app-card">
                     <span class="app-tag">#إنتاجية #ملاحظات #مشفر</span>
                     <div class="app-icon-container" style="background: #f8f9fa;">
@@ -233,6 +260,7 @@
         </div>
     </div>
 </div>
+</main>
 
 
 <!-- Modular Web Component: Footer -->

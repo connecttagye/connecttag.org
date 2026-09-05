@@ -62,29 +62,22 @@
             <p>نحن <strong>لا نجمع، ولا نخزن، ولا ننقل، ولا نبيع، ولا نشارك</strong> أي نوع من بياناتك الشخصية، أو نصوص ملاحظاتك، أو تسجيلاتك الصوتية، أو قوائم مهامك، أو صورك إلى أي خوادم خارجية أو أطراف ثالثة. كافة بياناتك مخزنة محلياً على جهازك فقط.</p>
 
             <h2>2. التشفير والحماية المحلية المتقدمة</h2>
-            <p>يستخدم التطبيق معايير حماية وأمان متقدمة:</p>
+            <p>يستخدم التطبيق معايير حماية وأمان متقدمة لضمان سرية ملاحظاتك:</p>
             <ul>
-                <li><strong>تشفير قاعدة البيانات:</strong> يتم تشفير قاعدة بيانات Room محلياً باستخدام محرك <strong>SQLCipher</strong> بمعيار <strong>AES-256</strong>.</li>
-                <li><strong>إدارة المفاتيح:</strong> تُدار مفاتيح التشفير عبر نظام المفاتيح الآمن لأندرويد (<strong>Android Keystore</strong>).</li>
-                <li><strong>القفل البيومتري:</strong> إمكانية قفل التطبيق ببصمة الإصبع أو الوجه أو قفل الشاشة عبر واجهات <code>androidx.biometric</code> الرسمية.</li>
-                <li><strong>حظر لقطات الشاشة (FLAG_SECURE):</strong> منع التقاط الشاشة ومنع ظهور محتوى الملاحظات في قائمة التطبيقات الحديثة.</li>
+                <li><strong>تشفير البيانات محلياً:</strong> يتم تشفير قاعدة البيانات والملفات محلياً على جهازك بأعلى معايير التشفير القياسية (<strong>AES-256</strong>).</li>
+                <li><strong>القفل البيومتري:</strong> إمكانية قفل التطبيق ببصمة الإصبع أو الوجه أو رمز قفل الشاشة لحماية خصوصيتك.</li>
+                <li><strong>حظر لقطات الشاشة:</strong> خيار حظر التقاط الشاشة ومنع ظهور محتوى الملاحظات في قائمة التطبيقات الحديثة.</li>
             </ul>
 
             <h2>3. الصلاحيات ونطاق الاستخدام</h2>
             <p>يلتزم التطبيق بمبدأ <strong>الحد الأدنى من الصلاحيات</strong> لمتجر Google Play:</p>
             <ul>
-                <li><code>INTERNET</code>: لجلب بيانات المعاينة الذكية (العنوان والصورة المصغرة) لروابط الويب التي يضيفها المستخدم يدوياً. لا يُستخدم لنقل أي بيانات خاصة.</li>
-                <li><code>ACCESS_NETWORK_STATE</code>: للتحقق من توفر الاتصال قبل جدولة تنزيل معاينات الروابط لتوفير البطارية.</li>
-                <li><code>POST_NOTIFICATIONS</code>: لإرسال إشعارات التذكيرات المجدولة التي يحددها المستخدم (Android 13+).</li>
-                <li><code>SCHEDULE_EXACT_ALARM</code>: لجدولة منبهات التذكيرات بدقة عبر AlarmManager.</li>
-                <li><code>RECEIVE_BOOT_COMPLETED</code>: لاستعادة التذكيرات النشطة تلقائياً بعد إعادة تشغيل الهاتف.</li>
-                <li><code>USE_BIOMETRIC</code>: لتمكين القفل البيومتري بالبصمة.</li>
-                <li><code>VIBRATE</code>: لتقديم اهتزازات لمسية تفاعلية أثناء الاستخدام.</li>
-                <li><code>WAKE_LOCK</code>: للحفاظ على المعالجة المؤقتة لمهام WorkManager الخلفية.</li>
+                <li><code>INTERNET</code>: لجلب بيانات المعاينة الذكية (العنوان والصورة المصغرة) لروابط الويب التي يضيفها المستخدم يدوياً في ملاحظاته، ولا يُستخدم لنقل أي بيانات خاصة.</li>
+                <li><code>POST_NOTIFICATIONS</code>: لإرسال إشعارات التذكيرات المجدولة التي يحددها المستخدم للمهام والملاحظات (Android 13+).</li>
             </ul>
 
-            <h2>4. التخزين ونظام Scoped Storage</h2>
-            <p>لا يطلب التطبيق أي صلاحيات تخزين واسعة مثل <code>MANAGE_EXTERNAL_STORAGE</code> أو <code>READ_EXTERNAL_STORAGE</code>. تُحفظ كافة الملفات والمرفقات في النطاق الآمن والمعزول الخاص بالتطبيق (<code>context.filesDir</code>).</p>
+            <h2>4. التخزين المحلي الآمن</h2>
+            <p>لا يطلب التطبيق أي صلاحيات وصول لملفاتك الشخصية أو وسائط جهازك. تُحفظ كافة الملاحظات والمرفقات حصرياً في مساحة التخزين الخاصة والمعزولة بالتطبيق داخل هاتفك.</p>
 
             <h2>5. النسخ الاحتياطي المشفر بكلمة مرور</h2>
             <p>يتيح التطبيق تصدير نسخة احتياطية مشفرة بكلمة مرور مخصصة تختارها أنت، وتبقى النسخة محفوظة على جهازك ولا يمكن لأي طرف فك تشفيرها دون كلمة المرور الصحيحة.</p>
@@ -104,29 +97,22 @@
             <p>We <strong>do not collect, transmit, sell, log, or share</strong> any personal data, notes, audio recordings, checklists, or photos with any remote servers or third parties. Everything remains strictly stored on your local device.</p>
 
             <h2>2. On-Device Security & Encryption</h2>
-            <p>BlogNote implements robust security layers:</p>
+            <p>BlogNote implements robust security layers to protect your notes:</p>
             <ul>
-                <li><strong>Database Encryption:</strong> Powered by <strong>SQLCipher</strong> with <strong>AES-256</strong> database encryption.</li>
-                <li><strong>Key Management:</strong> Hardware-backed encryption key protection via <strong>Android Keystore</strong>.</li>
-                <li><strong>Biometric Lock:</strong> App locking via Fingerprint, Face ID, or PIN via <code>androidx.biometric</code>.</li>
-                <li><strong>Anti-Screenshot Mode (FLAG_SECURE):</strong> Optional protection against unauthorized screen captures and app-switcher snooping.</li>
+                <li><strong>Local Encryption:</strong> Database and attachments are encrypted locally on your device using industry-standard <strong>AES-256</strong> encryption.</li>
+                <li><strong>Biometric Lock:</strong> App locking via Fingerprint, Face ID, or PIN.</li>
+                <li><strong>Anti-Screenshot Protection:</strong> Optional protection against unauthorized screen captures and app-switcher snooping.</li>
             </ul>
 
             <h2>3. App Permissions & Functional Justification</h2>
             <p>BlogNote adheres strictly to the <strong>Principle of Least Privilege</strong>:</p>
             <ul>
-                <li><code>INTERNET</code>: Fetches OpenGraph preview metadata for manually pasted web links. Never used for user tracking.</li>
-                <li><code>ACCESS_NETWORK_STATE</code>: Checks connectivity before scheduling link preview tasks to conserve battery.</li>
-                <li><code>POST_NOTIFICATIONS</code>: Delivers scheduled reminders and alerts (Android 13+).</li>
-                <li><code>SCHEDULE_EXACT_ALARM</code>: Schedules precision reminder alarms using AlarmManager.</li>
-                <li><code>RECEIVE_BOOT_COMPLETED</code>: Re-schedules active alarms after device reboots.</li>
-                <li><code>USE_BIOMETRIC</code>: Enables biometric unlock.</li>
-                <li><code>VIBRATE</code>: Provides tactile feedback.</li>
-                <li><code>WAKE_LOCK</code>: Ensures reliable background execution of WorkManager tasks.</li>
+                <li><code>INTERNET</code>: Fetches OpenGraph preview metadata for web links manually pasted into your notes. Never used for user tracking or data transmission.</li>
+                <li><code>POST_NOTIFICATIONS</code>: Delivers scheduled reminders and alerts set by the user (Android 13+).</li>
             </ul>
 
-            <h2>4. Scoped Storage Compliance</h2>
-            <p>BlogNote does not request broad storage permissions (<code>MANAGE_EXTERNAL_STORAGE</code> / <code>READ_EXTERNAL_STORAGE</code>). All attachments are stored in the app's isolated private sandbox (<code>context.filesDir</code>).</p>
+            <h2>4. Secure Sandboxed Storage</h2>
+            <p>BlogNote does not request permissions to access your personal files or media library. All attachments are stored in the app's isolated private sandbox.</p>
 
             <h2>5. Password-Encrypted Backups</h2>
             <p>BlogNote allows exporting password-encrypted backup files. Decryption without the correct password is mathematically impossible.</p>
@@ -142,8 +128,5 @@
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
-<!-- Modular Web Component: Cookie Consent -->
-<cookie-consent></cookie-consent>
 </body>
 </html>
