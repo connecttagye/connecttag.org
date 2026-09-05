@@ -613,7 +613,7 @@ html {
     display: flex;
     align-items: center;
     gap: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
 }
 
 .hero-app-icon-wrap {
@@ -641,6 +641,12 @@ html {
     margin: 0;
 }
 
+.hero-btns {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 @media (max-width: 991px) {
     .hero-app-header {
         flex-direction: column;
@@ -648,5 +654,779 @@ html {
         text-align: center;
     }
 }
+
+/* ==========================================================================
+   Apple App Store Pure White Theme (Official Modern Web Experience)
+   ========================================================================== */
+
+:root {
+    --as-bg: #ffffff;
+    --as-surface: #f5f5f7;
+    --as-surface-subtle: #fbfbfd;
+    --as-text-primary: #1d1d1f;
+    --as-text-secondary: #86868b;
+    --as-text-tertiary: #a1a1a6;
+    --as-blue: #0071e3;
+    --as-blue-hover: #0077ed;
+    --as-border: #e5e5ea;
+    --as-border-light: #f0f0f2;
+    --as-squircle-radius: 22.5%;
+}
+
+body.as-store-page {
+    background-color: #ffffff !important;
+    color: var(--as-text-primary);
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.as-page-wrapper {
+    background: #ffffff !important;
+    padding-top: 110px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+
+.as-container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* App Store Breadcrumbs on White Background */
+.as-breadcrumb-wrap {
+    margin-bottom: 28px;
+}
+
+.as-breadcrumb-wrap site-breadcrumb {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: block;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-container {
+    padding: 0;
+    margin: 0;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-list {
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-item,
+.as-breadcrumb-wrap .ct-breadcrumb-item.active {
+    color: var(--as-text-secondary) !important;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-item a {
+    color: var(--as-text-primary) !important;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-item a:hover {
+    color: var(--as-blue) !important;
+}
+
+.as-breadcrumb-wrap .ct-breadcrumb-separator {
+    color: #c7c7cc !important;
+    margin: 0 8px;
+}
+
+/* App Store Header Section */
+.as-header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 35px;
+}
+
+.as-icon-wrap {
+    width: 132px;
+    height: 132px;
+    border-radius: var(--as-squircle-radius);
+    background: #ffffff;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.as-icon-wrap:hover {
+    transform: scale(1.03);
+    box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.as-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.as-header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.as-title {
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: var(--as-text-primary);
+    margin: 0 0 6px;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.as-subtitle {
+    font-size: 1.15rem;
+    color: var(--as-text-secondary);
+    font-weight: 500;
+    margin: 0 0 12px;
+    line-height: 1.4;
+}
+
+.as-developer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--as-blue);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none !important;
+    margin-bottom: 18px;
+    transition: color 0.2s ease;
+}
+
+.as-developer-link:hover {
+    color: var(--as-blue-hover);
+    text-decoration: underline !important;
+}
+
+.as-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.as-btn-get {
+    background: var(--as-blue);
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(0, 113, 227, 0.25);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.as-btn-get:hover {
+    background: var(--as-blue-hover);
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(0, 113, 227, 0.35);
+}
+
+.as-btn-secondary {
+    background: var(--as-surface);
+    color: var(--as-blue) !important;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.as-btn-secondary:hover {
+    background: #e8e8ed;
+    color: var(--as-blue-hover) !important;
+}
+
+.as-btn-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--as-surface);
+    color: var(--as-blue);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.as-btn-circle:hover {
+    background: #e8e8ed;
+    color: var(--as-blue-hover);
+    transform: scale(1.05);
+}
+
+.as-caption-meta {
+    font-size: 11.5px;
+    color: var(--as-text-secondary);
+    margin-top: 6px;
+}
+
+/* App Store Metrics Ribbon */
+.as-metrics-ribbon {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    border-top: 1px solid var(--as-border-light);
+    border-bottom: 1px solid var(--as-border-light);
+    padding: 18px 0;
+    margin-bottom: 45px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.as-metrics-ribbon::-webkit-scrollbar {
+    display: none;
+}
+
+.as-metric-item {
+    flex: 1;
+    min-width: 110px;
+    text-align: center;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.as-metric-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--as-text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+.as-metric-value {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--as-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    line-height: 1.2;
+}
+
+.as-metric-value i {
+    font-size: 15px;
+    color: #ff9500;
+}
+
+.as-metric-sub {
+    font-size: 12px;
+    color: var(--as-text-secondary);
+    margin-top: 4px;
+}
+
+.as-metric-divider {
+    width: 1px;
+    background: var(--as-border-light);
+    align-self: stretch;
+    margin: 4px 0;
+    flex-shrink: 0;
+}
+
+/* Section Common Styling */
+.as-section {
+    margin-bottom: 50px;
+}
+
+.as-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.as-section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--as-text-primary);
+    margin: 0;
+}
+
+.as-pill-tag {
+    display: inline-block;
+    background: var(--as-surface);
+    color: var(--as-text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
+
+/* Screenshots Preview Slider */
+.as-screenshots-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 22px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #d1d1d6 transparent;
+}
+
+.as-screenshots-slider::-webkit-scrollbar {
+    height: 6px;
+}
+
+.as-screenshots-slider::-webkit-scrollbar-thumb {
+    background: #d1d1d6;
+    border-radius: 10px;
+}
+
+.as-screenshot-card {
+    flex: 0 0 255px;
+    max-width: 255px;
+    scroll-snap-align: start;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+.as-screenshot-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.as-screenshot-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* What's New Card */
+.as-whats-new-box {
+    background: var(--as-surface);
+    border-radius: 20px;
+    padding: 26px 30px;
+    margin-bottom: 45px;
+}
+
+.as-whats-new-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.as-whats-new-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--as-text-primary);
+    margin: 0;
+}
+
+.as-version-link {
+    color: var(--as-blue);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none !important;
+}
+
+.as-version-link:hover {
+    text-decoration: underline !important;
+}
+
+.as-version-meta {
+    font-size: 13px;
+    color: var(--as-text-secondary);
+    margin-bottom: 16px;
+}
+
+.as-version-notes {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #3a3a3c;
+    margin: 0;
+}
+
+.as-version-notes p {
+    margin-bottom: 6px;
+}
+.as-version-notes p:last-child {
+    margin-bottom: 0;
+}
+
+/* Description & Features */
+.as-description-text {
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: #333336;
+    margin-bottom: 30px;
+}
+
+.as-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.as-feature-card {
+    background: var(--as-surface-subtle);
+    border: 1px solid var(--as-border);
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.25s ease;
+}
+
+.as-feature-card:hover {
+    background: #ffffff;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+    border-color: var(--as-blue);
+    transform: translateY(-3px);
+}
+
+.as-feature-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: rgba(0, 113, 227, 0.08);
+    color: var(--as-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+}
+
+.as-feature-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--as-text-primary);
+    margin: 0 0 6px;
+}
+
+.as-feature-desc {
+    font-size: 13.5px;
+    color: #636366;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* App Privacy (Apple Nutrition Label Style) */
+.as-privacy-card {
+    background: var(--as-surface-subtle);
+    border: 1px solid var(--as-border);
+    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+.as-privacy-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.as-privacy-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: rgba(0, 113, 227, 0.1);
+    color: var(--as-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.as-privacy-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--as-text-primary);
+    margin: 0;
+}
+
+.as-privacy-badge {
+    display: inline-block;
+    background: #e1f0ff;
+    color: var(--as-blue);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.as-privacy-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #3a3a3c;
+    margin-bottom: 22px;
+}
+
+.as-privacy-labels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.as-privacy-label-item {
+    background: #ffffff;
+    border: 1px solid var(--as-border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--as-text-primary);
+}
+
+.as-privacy-label-item i {
+    color: #34c759;
+    font-size: 17px;
+}
+
+.as-privacy-footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13.5px;
+    border-top: 1px solid var(--as-border-light);
+    padding-top: 18px;
+}
+
+.as-privacy-footer a {
+    color: var(--as-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.as-privacy-footer a:hover {
+    text-decoration: underline;
+}
+
+/* iOS Grouped Information List */
+.as-info-group {
+    background: var(--as-surface-subtle);
+    border: 1px solid var(--as-border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.as-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 24px;
+    border-bottom: 1px solid var(--as-border-light);
+    font-size: 14.5px;
+}
+
+.as-info-row:last-child {
+    border-bottom: none;
+}
+
+.as-info-label {
+    color: var(--as-text-secondary);
+    font-weight: 600;
+}
+
+.as-info-val {
+    color: var(--as-text-primary);
+    font-weight: 700;
+    text-align: left;
+}
+
+.as-info-val a {
+    color: var(--as-blue);
+    text-decoration: none;
+}
+
+.as-info-val a:hover {
+    text-decoration: underline;
+}
+
+/* Related Apps Section */
+.as-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.as-related-card {
+    background: var(--as-surface-subtle);
+    border: 1px solid var(--as-border);
+    border-radius: 20px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none !important;
+    color: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.as-related-card:hover {
+    background: #ffffff;
+    border-color: var(--as-blue);
+    box-shadow: 0 10px 28px rgba(0, 113, 227, 0.1);
+    transform: translateY(-4px);
+}
+
+.as-related-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: var(--as-squircle-radius);
+    object-fit: contain;
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    padding: 4px;
+}
+
+.as-related-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.as-related-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--as-text-primary);
+    margin: 0 0 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.as-related-category {
+    font-size: 13px;
+    color: var(--as-text-secondary);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.as-related-btn {
+    background: var(--as-surface);
+    color: var(--as-blue);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 13.5px;
+    font-weight: 800;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.as-related-card:hover .as-related-btn {
+    background: var(--as-blue);
+    color: #ffffff;
+}
+
+/* Share & Bottom Divider */
+.as-share-section {
+    padding-top: 30px;
+    border-top: 1px solid var(--as-border-light);
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 991px) {
+    .as-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .as-icon-wrap {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto;
+    }
+    .as-actions-row {
+        justify-content: center;
+    }
+    .as-developer-link {
+        justify-content: center;
+    }
+    .as-screenshot-card {
+        flex: 0 0 220px;
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .as-page-wrapper {
+        padding-top: 95px;
+    }
+    .as-title {
+        font-size: 1.85rem;
+    }
+    .as-subtitle {
+        font-size: 1rem;
+    }
+    .as-icon-wrap {
+        width: 96px;
+        height: 96px;
+    }
+    .as-metric-item {
+        min-width: 90px;
+        padding: 0 8px;
+    }
+    .as-metric-value {
+        font-size: 18px;
+    }
+    .as-info-row {
+        padding: 13px 18px;
+        font-size: 13.5px;
+    }
+    .as-privacy-card {
+        padding: 22px 18px;
+    }
+    .as-whats-new-box {
+        padding: 20px 20px;
+    }
+}
+
 
 
