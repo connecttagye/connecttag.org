@@ -1168,6 +1168,38 @@ body.as-store-page {
     margin: 0;
 }
 
+/* Clean Text & Bullet Points Features List */
+.as-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 35px;
+}
+
+.as-features-list li {
+    position: relative;
+    padding-right: 24px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #3a3a3c;
+}
+
+.as-features-list li::before {
+    content: "•";
+    position: absolute;
+    right: 4px;
+    top: -1px;
+    color: var(--as-blue);
+    font-size: 22px;
+    line-height: 1.6;
+    font-weight: 900;
+}
+
+.as-features-list li strong {
+    color: var(--as-text-primary);
+    font-weight: 700;
+}
+
 /* App Privacy (Apple Nutrition Label Style) */
 .as-privacy-card {
     background: var(--as-surface-subtle);
