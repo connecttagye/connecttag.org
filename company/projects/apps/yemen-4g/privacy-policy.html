@@ -57,7 +57,7 @@
         <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"يمن فورجي","url":"https://connecttag.org/company/projects/apps/yemen-4g/"},{"title":"سياسة الخصوصية","url":"https://connecttag.org/company/projects/apps/yemen-4g/privacy-policy"}]'></site-breadcrumb>
         
         <site-policy-section dir="rtl">
-            <p><strong>تطبيق:</strong> يمن فورجي (Yemen4g) · معرف الحزمة: <code>com.telecom.yemen4g</code> · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
+            <p><strong>تطبيق:</strong> يمن فورجي (Yemen4g) · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
 
             <h2>1. مقدمة ونظرة عامة</h2>
             <p>قامت شركة <strong>كونكت تاق للخدمات التقنية (Connect Tag)</strong> بتطوير تطبيق <strong>يمن فورجي (Yemen4g)</strong> كأداة مساعدة وخدمية مجانية لمشتركي خدمة الإنترنت اللاسلكي 4G في اليمن، لمساعدتهم على الاستعلام الفوري عن رصيدهم، فحص سرعة الاتصال، وإدارة إعدادات أجهزة المودم والراوتر المنزلية والمحمولة بسهولة وأمان.</p>
@@ -80,41 +80,7 @@
             <h3>ب. البيانات التقنية التلقائية (Log Data & Diagnostics):</h3>
             <p>في حال حدوث خطأ أو توقف مفاجئ في التطبيق، قد يتم تسجيل بيانات تقنية مجهولة المصدر للمساعدة في حل المشكلة، وتشمل: نوع الجهاز، إصدار نظام أندرويد، رمز الخطأ، والوقت. هذه البيانات لا تحتوي على أي معلومات شخصية يمكن أن تحدد هويتك.</p>
 
-            <h2>3. الأذونات المطلوبة وسبب طلبها</h2>
-            <div class="table-responsive" style="margin: 15px 0;">
-                <table class="table table-bordered bg-white">
-                    <thead>
-                        <tr style="background-color: #f0f7ff;">
-                            <th>الإذن (Permission)</th>
-                            <th>الهدف والغرض من الاستخدام</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>INTERNET</code></td>
-                            <td>الاتصال ببوابة استعلام الرصيد الرسمية، وتحديث دليل الباقات والمراكز عبر السيرفر.</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_NETWORK_STATE</code></td>
-                            <td>التحقق من توفر الإنترنت والتمييز بين شبكة الوايفاي وبيانات الهاتف لتفعيل وضع توفير البيانات تلقائياً.</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_WIFI_STATE</code></td>
-                            <td>التعرف على عنوان بوابة المودم (Gateway IP مثل 192.168.0.1) للوصول المباشر لإعدادات الراوتر.</td>
-                        </tr>
-                        <tr>
-                            <td><code>POST_NOTIFICATIONS</code></td>
-                            <td>إرسال تنبيهات محلية لتذكيرك بموعد تجديد الباقة أو إشعارات تحديثات الخدمة الهامة.</td>
-                        </tr>
-                        <tr>
-                            <td><code>com.google.android.gms.permission.AD_ID</code></td>
-                            <td>دعم شبكة إعلانات Google AdMob المتوافقة مع معايير جوجل لإبقاء التطبيق مجانياً للمستخدمين.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>4. خدمات الطرف الثالث (Third-Party Services)</h2>
+            <h2>3. خدمات الطرف الثالث (Third-Party Services)</h2>
             <p>يستخدم التطبيق بعض خدمات الطرف الثالث الموثوقة التي قد تجمع معلومات مجهولة المصدر وفق سياسات الخصوصية الخاصة بكل منها:</p>
             <ul>
                 <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services</a></li>
@@ -123,20 +89,20 @@
                 <li><a href="https://cloud.google.com/maps-platform/terms" target="_blank" rel="noopener">Google Maps SDK (لعرض مواقع مراكز الخدمة)</a></li>
             </ul>
 
-            <h2>5. أمان وحماية البيانات</h2>
+            <h2>4. أمان وحماية البيانات</h2>
             <p>نحن نولي أمان بياناتك الأولوية القصوى ونطبق أفضل الممارسات البرمجية:</p>
             <ul>
                 <li>تشفير البيانات الحساسة على ذاكرة الهاتف باستخدام <strong>Google Tink Cryptography</strong>.</li>
                 <li>كافة الاتصالات بالخوادم تتم عبر بروتوكولات آمنة ومشفرة (HTTPS / TLS 1.3).</li>
             </ul>
 
-            <h2>6. خصوصية الأطفال</h2>
+            <h2>5. خصوصية الأطفال</h2>
             <p>تطبيق يمن فورجي موجه لجمهور المشتركين العام ولا يستهدف أو يجمع أي بيانات من الأطفال دون سن 13 عاماً. في حال اكتشاف وصول بيانات طفل بالخطأ، سيتم حذفها فوراً.</p>
 
-            <h2>7. التعديلات على سياسة الخصوصية</h2>
+            <h2>6. التعديلات على سياسة الخصوصية</h2>
             <p>قد نقوم بتحديث سياسة الخصوصية هذه عند إضافة مزايا جديدة للتطبيق أو امتثالاً للتحديثات القانونية. سيتم إخطار المستخدمين بأي تغييرات جوهرية عبر تحديث تاريخ النشر في هذه الصفحة أو عبر إشعار داخل التطبيق.</p>
 
-            <h2>8. التواصل والدعم الفني</h2>
+            <h2>7. التواصل والدعم الفني</h2>
             <p>إذا كانت لديك أي استفسارات أو ملاحظات حول سياسة الخصوصية أو ترغب في الاستفسار عن بياناتك، يمكنك التواصل معنا مباشرة:</p>
             <ul>
                 <li><strong>البريد الإلكتروني المخصص للتطبيق:</strong> <a href="mailto:app-yemen4g@connecttag.org">app-yemen4g@connecttag.org</a></li>
@@ -146,7 +112,7 @@
         </site-policy-section>
 
         <site-policy-section dir="ltr">
-            <p><strong>Application:</strong> Yemen4g (يمن فورجي) · Package ID: <code>com.telecom.yemen4g</code> · Effective Date: <strong>September 2026</strong></p>
+            <p><strong>Application:</strong> Yemen4g (يمن فورجي) · Effective Date: <strong>September 2026</strong></p>
 
             <h2>1. Introduction & Overview</h2>
             <p><strong>Connect Tag</strong> built the <strong>Yemen4g</strong> application as a free utility service for 4G wireless broadband users in Yemen. It helps users easily check their subscription balance, run internet speed tests, and manage their home or portable Wi-Fi modems efficiently and securely.</p>
@@ -169,41 +135,7 @@
             <h3>B. Diagnostic & Technical Data:</h3>
             <p>In case of an unexpected crash or error, anonymized technical telemetry (device model, Android OS version, error codes) may be collected to help us resolve the bug. This data contains no personally identifiable information.</p>
 
-            <h2>3. App Permissions & Justification</h2>
-            <div class="table-responsive" style="margin: 15px 0;">
-                <table class="table table-bordered bg-white">
-                    <thead>
-                        <tr style="background-color: #f0f7ff;">
-                            <th>Permission</th>
-                            <th>Purpose & Functional Need</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>INTERNET</code></td>
-                            <td>Access the official balance inquiry gateway and fetch verified package updates.</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_NETWORK_STATE</code></td>
-                            <td>Check internet availability and distinguish between Wi-Fi and mobile data to trigger Data Saver mode.</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_WIFI_STATE</code></td>
-                            <td>Detect the modem's local gateway IP address (e.g., 192.168.0.1) for direct router configuration.</td>
-                        </tr>
-                        <tr>
-                            <td><code>POST_NOTIFICATIONS</code></td>
-                            <td>Deliver local alerts and reminders before your data subscription expires.</td>
-                        </tr>
-                        <tr>
-                            <td><code>com.google.android.gms.permission.AD_ID</code></td>
-                            <td>Serve Google AdMob compliant banner advertisements to maintain the app as free software.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>4. Third-Party Service Providers</h2>
+            <h2>3. Third-Party Service Providers</h2>
             <p>The app integrates trusted third-party SDKs that may process anonymous device information in compliance with their respective privacy policies:</p>
             <ul>
                 <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services</a></li>
@@ -212,25 +144,25 @@
                 <li><a href="https://cloud.google.com/maps-platform/terms" target="_blank" rel="noopener">Google Maps Platform (Service center navigation)</a></li>
             </ul>
 
-            <h2>5. Data Security & Storage</h2>
-            <p>We implement stringent technical security safeguards to protect user information:</p>
+            <h2>4. Data Security & Storage</h2>
+            <p>We apply the highest technical standards to protect your data:</p>
             <ul>
-                <li>Local cryptographic storage powered by <strong>Google Tink Cryptography</strong>.</li>
-                <li>All network communications utilize HTTPS / TLS 1.3 encryption.</li>
+                <li>Sensitive on-device data is encrypted using <strong>Google Tink Cryptography</strong>.</li>
+                <li>All remote data transmission is securely encrypted over modern transport layers (HTTPS / TLS 1.3).</li>
             </ul>
 
-            <h2>6. Children's Privacy</h2>
-            <p>Yemen4g is intended for general telecom subscribers and does not knowingly collect any data from children under 13 years of age.</p>
+            <h2>5. Children's Privacy</h2>
+            <p>Yemen4g is intended for general subscribers and does not target or knowingly collect data from children under 13 years of age. If we learn that a child's information was inadvertently gathered, it will be deleted immediately.</p>
 
-            <h2>7. Updates to This Policy</h2>
-            <p>We may update our Privacy Policy periodically to reflect new features or regulatory updates. Any changes will be posted on this page with an updated effective date.</p>
+            <h2>6. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy to reflect app updates or legal obligations. Significant revisions will be announced by updating the effective date on this page or via in-app alerts.</p>
 
-            <h2>8. Contact & Support</h2>
-            <p>If you have any questions or feedback regarding this Privacy Policy, please feel free to reach out:</p>
+            <h2>7. Contact Information</h2>
+            <p>If you have any questions or feedback regarding this policy, feel free to contact us:</p>
             <ul>
-                <li><strong>Dedicated App Email:</strong> <a href="mailto:app-yemen4g@connecttag.org">app-yemen4g@connecttag.org</a></li>
-                <li><strong>Developer Support:</strong> <a href="mailto:support-apps@connecttag.org">support-apps@connecttag.org</a></li>
-                <li><strong>Official Website:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
+                <li><strong>Dedicated App Support:</strong> <a href="mailto:app-yemen4g@connecttag.org">app-yemen4g@connecttag.org</a></li>
+                <li><strong>General Support:</strong> <a href="mailto:support-apps@connecttag.org">support-apps@connecttag.org</a></li>
+                <li><strong>Website:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
             </ul>
         </site-policy-section>
     </div>

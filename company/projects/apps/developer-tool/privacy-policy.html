@@ -57,7 +57,7 @@
         <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"مطور","url":"https://connecttag.org/company/projects/apps/developer-tool/"},{"title":"سياسة الخصوصية","url":"https://connecttag.org/company/projects/apps/developer-tool/privacy-policy"}]'></site-breadcrumb>
         
         <site-policy-section dir="rtl">
-            <p><strong>تطبيق:</strong> مطور (Developer) · معرف الحزمة: <code>com.connecttag.developer</code> · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
+            <p><strong>تطبيق:</strong> مطور (Developer) · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
 
             <h2>1. مقدمة والتزام بالخصوصية</h2>
             <p>نحن في <strong>ConnectTag</strong> نولي أهمية قصوى لخصوصيتك وسرية بياناتك البرمجية. تم تصميم تطبيق <strong>"مطور" (Developer)</strong> ليكون أداة هندسية آمنة ومحلية بالكامل (Offline-First) لمساعدة المطورين ومهندسي البرمجيات في مهامهم اليومية دون المساس ببياناتهم أو مشاركتها مع أي جهة خارجية.</p>
@@ -82,29 +82,17 @@
                 <li><strong>لا يحتوي</strong> على أي معرفات تتبع إعلانية أو مكتبات تحليل نشاط المستخدم.</li>
             </ul>
 
-            <h2>4. توضيح الأذونات المستخدمة والشفافية</h2>
-            <p>يلتزم التطبيق بمبدأ الحد الأدنى الصارم من الأذونات (Principle of Least Privilege):</p>
-            <ul>
-                <li><code>android.permission.INTERNET</code>: هذا هو الإذن الوحيد المستخدم في التطبيق، ويُستخدم <strong>فقط وحصرياً بناءً على طلب المستخدم المباشر</strong> في الأدوات التالية:
-                    <ul>
-                        <li><strong>مختبر طلبات الـ REST API:</strong> لإرسال الطلب الذي تحدده أنت بنفسك بنقرة زر إلى نقطة النهاية (Endpoint).</li>
-                        <li><strong>مدير بوتات وويب هوك تيليجرام:</strong> للتحقق من التوكن أو فحص حالة الويب هوك عبر سيرفرات تيليجرام الرسمية.</li>
-                        <li><strong>فحص استجابة الدومين (Domain Ping):</strong> للتحقق من عمل موقعك الإلكتروني عبر بروتوكول HTTPS.</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h2>5. حفظ البيانات وسجلات المشاريع وحذفها</h2>
+            <h2>4. حفظ البيانات وسجلات المشاريع وحذفها</h2>
             <p>يوفر التطبيق خيار حفظ المشاريع (مثل إعدادات سياسات الخصوصية المولدة، وبوتات تيليجرام المحفوظة). يتم حفظ هذه البيانات حصرياً داخل قاعدة بيانات محلية معزولة (Room SQLite) ضمن مساحة التخزين الخاصة بالتطبيق داخل جهازك:</p>
             <ul>
                 <li><strong>الحذف الفوري:</strong> يمكنك حذف أي مشروع أو بوت محفوظ مباشرة من داخل واجهة التطبيق.</li>
                 <li><strong>مسح البيانات الشامل:</strong> يؤدي مسح بيانات التطبيق من إعدادات أندرويد (Clear Data) أو إلغاء تثبيت التطبيق إلى حذف كافة السجلات المحلية نهائياً وفورياً دون بقاء أي أثر لها.</li>
             </ul>
 
-            <h2>6. خصوصية الأطفال (COPPA Compliance)</h2>
+            <h2>5. خصوصية الأطفال (COPPA Compliance)</h2>
             <p>تطبيق "مطور" موجه لمهندسي البرمجيات والتقنيين والبالغين، وهو لا يجمع أي معلومات عن الأطفال دون سن 13 عاماً متوافقاً تماماً مع قانون حماية خصوصية الأطفال على الإنترنت (COPPA).</p>
 
-            <h2>7. التواصل والاستفسارات</h2>
+            <h2>6. التواصل والاستفسارات</h2>
             <p>إذا كانت لديك أي أسئلة أو استفسارات بخصوص سياسة الخصوصية هذه، يسعدنا تواصلك معنا عبر:</p>
             <ul>
                 <li><strong>البريد الإلكتروني:</strong> developer@connecttag.org</li>
@@ -113,7 +101,7 @@
         </site-policy-section>
 
         <site-policy-section dir="ltr">
-            <p><strong>App:</strong> Developer · Package Name: <code>com.connecttag.developer</code> · Effective Date: <strong>September 2026</strong></p>
+            <p><strong>App:</strong> Developer · Effective Date: <strong>September 2026</strong></p>
 
             <h2>1. Introduction &amp; Privacy Commitment</h2>
             <p>At <strong>ConnectTag</strong>, we take the confidentiality of your development data seriously. The <strong>Developer</strong> mobile application is engineered as an offline-first, client-side workstation designed to help software engineers and Android developers perform technical tasks without risking data exposure.</p>
@@ -138,29 +126,17 @@
                 <li><strong>Does not query</strong> Advertising IDs or embed third-party behavioral analytics SDKs.</li>
             </ul>
 
-            <h2>4. Permissions &amp; Transparency</h2>
-            <p>Developer strictly follows the Principle of Least Privilege:</p>
-            <ul>
-                <li><code>android.permission.INTERNET</code>: This is the single network permission declared by the application. It is executed <strong>solely on direct user action</strong> within these specific tools:
-                    <ul>
-                        <li><strong>REST API Client:</strong> Dispatches HTTP requests explicitly authored and triggered by you to your target endpoints.</li>
-                        <li><strong>Telegram Webhook &amp; Bot Manager:</strong> Validates bot tokens and fetches update diagnostics directly via official Telegram APIs.</li>
-                        <li><strong>Domain Reachability Ping:</strong> Verifies server availability and SSL certificates upon manual request.</li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h2>5. Local Storage &amp; Data Deletion</h2>
+            <h2>4. Local Storage &amp; Data Deletion</h2>
             <p>Utilities offering persistent history (such as saved Privacy Policy templates or Bot configs) write exclusively to a private, sandboxed SQLite database (via Room DB) located inside your device's internal storage:</p>
             <ul>
                 <li><strong>Individual Deletion:</strong> You can delete any saved project or bot record directly from the app interface.</li>
                 <li><strong>Complete Data Erasure:</strong> Clearing app data via Android Settings (Clear Data) or uninstalling the app permanently purges all local records from device memory.</li>
             </ul>
 
-            <h2>6. Children's Privacy (COPPA)</h2>
+            <h2>5. Children's Privacy (COPPA)</h2>
             <p>Developer is aimed at software developers and professionals. We do not knowingly collect or solicit personal information from children under the age of 13, adhering fully to COPPA requirements.</p>
 
-            <h2>7. Contact Us</h2>
+            <h2>6. Contact Us</h2>
             <p>If you have any questions or feedback regarding this Privacy Policy, please contact our security team:</p>
             <ul>
                 <li><strong>Email:</strong> developer@connecttag.org</li>

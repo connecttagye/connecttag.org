@@ -57,11 +57,11 @@
         <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"أعمالنا","url":"https://connecttag.org/company/projects/"},{"title":"تطبيقاتنا","url":"https://connecttag.org/company/projects/apps/"},{"title":"خبير","url":"https://connecttag.org/company/projects/apps/kabeer/"},{"title":"سياسة الخصوصية","url":"https://connecttag.org/company/projects/apps/kabeer/privacy-policy"}]'></site-breadcrumb>
         
         <site-policy-section dir="rtl">
-            <p><strong>تطبيق:</strong> خبير (Expert) · معرف الحزمة: <code>com.tool.expert</code> · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
+            <p><strong>تطبيق:</strong> خبير (Expert) · تاريخ السريان: <strong>سبتمبر 2026</strong></p>
 
             <h2>1. مقدمة والتزامنا الصارم بالخصوصية</h2>
             <p>أهلاً بك في تطبيق <strong>"خبير" (Expert)</strong>، المطوّر بواسطة <strong>شركة كونكت تاق (Connect Tag)</strong>. نضع حماية خصوصيتك وأمان بياناتك في قمة أولوياتنا الهندسية.</p>
-            <p>تم تصميم وتطوير تطبيق "خبير" ليكون أداة فحص تقنية ومعلوماتية مستقلة تعمل وفق <strong>مبدأ انعدام جمع البيانات (Zero Data Collection Paradigm)</strong>. إننا نؤمن بأن أدوات فحص العتاد ومراقبة الأداء يجب أن تحترم خصوصية المستخدم بنسبة 100% دون الحاجة لطلب صلاحيات غير مبررة أو الوصول لأي من ملفاتك الشخصية.</p>
+            <p>تم تصميم وتطوير تطبيق "خبير" ليكون أداة فحص تقنية ومعلوماتية مستقلة تعمل وفق <strong>مبدأ انعدام جمع البيانات (Zero Data Collection Paradigm)</strong>. إننا نؤمن بأن أدوات فحص العتاد ومراقبة الأداء يجب أن تحترم خصوصية المستخدم بنسبة 100% دون الوصول لأي من ملفاتك الشخصية.</p>
 
             <h2>2. سياسة عدم جمع أو بيع البيانات الشخصية</h2>
             <p><strong>تأكيد قاطع وصريح:</strong> تطبيق "خبير" لا يجمع، ولا يخزن، ولا يعالج، ولا يشارك، ولا يبيع أي بيانات شخصية، أو معرفات إعلانية، أو سجلات تصفح، أو ملفات، أو جهات اتصال تابعة للمستخدم تحت أي ظرف من الظروف.</p>
@@ -71,52 +71,18 @@
                 <li><strong>خلو تام من مكتبات الإعلانات أو التعقب:</strong> التطبيق خالٍ تماماً من حزم إعلانات Google AdMob أو شبكات الإعلانات الأخرى التي قد تتبع نشاطك.</li>
             </ul>
 
-            <h2>3. تفاصيل الأذونات المستخدمة والغرض الفني منها</h2>
-            <p>يستخدم التطبيق فقط عدداً محدوداً من الصلاحيات الفنية الضرورية لتحقيق الأغراض التالية دون جمع أي بيانات شخصية:</p>
-            
-            <div class="table-responsive" style="margin: 15px 0;">
-                <table class="table table-bordered bg-white">
-                    <thead>
-                        <tr style="background-color: #f0f7ff;">
-                            <th>الصلاحية البرمجية</th>
-                            <th>التصنيف الفني</th>
-                            <th>الغرض الاستخدامي الفعلي</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>ACCESS_NETWORK_STATE</code></td>
-                            <td>صلاحية عادية (Normal)</td>
-                            <td>التحقق من حالة الاتصال بالشبكة (متصل / غير متصل) ونوع الاتصال (Wi-Fi، بيانات خلوية، إيثرنت، VPN).</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_WIFI_STATE</code></td>
-                            <td>صلاحية عادية (Normal)</td>
-                            <td>قراءة تردد شبكة الواي فاي وقوة الإشارة الحالية (Signal Strength dBm) لعرضها في قسم الشبكة.</td>
-                        </tr>
-                        <tr>
-                            <td><code>INTERNET</code></td>
-                            <td>صلاحية عادية (Normal)</td>
-                            <td>التحقق من صحة الوصول لشبكة الإنترنت وإجراء اختبار سرعة التحميل اللحظي بطلب المستخدم.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p><strong>صلاحيات غير موجودة نهائياً:</strong> التطبيق <u>لا يطلب ولا يحتوي</u> على صلاحيات الموقع الجغرافي (Location)، أو قراءة الصور والملفات (Storage)، أو الكاميرا، أو جهات الاتصال (Contacts)، أو الرسائل والمكالمات.</p>
-
-            <h2>4. المعالجة الداخلية والتخزين المحلي (100% On-Device)</h2>
+            <h2>3. المعالجة الداخلية والتخزين المحلي (100% On-Device)</h2>
             <p>كافة العمليات الحسابية، وقراءة مواصفات أنوية المعالج (CPU)، ومستويات شحن البطارية والواط اللحظي، ومسح الأمان السيبراني الداخلي، واختبارات الشاشة واللمس، تجري <strong>محلياً بنسبة 100%</strong> داخل ذاكرة ومعالج جهازك دون نقل أي معلومة لخوادم خارجية.</p>
             <p>عندما يقوم المستخدم بإجراء فحص فني وتصدير شهادة PDF، يتم حفظ سجل الفحص الفني فقط داخل قاعدة بيانات محلية آمنة (Room Database) مشفرة ومحمية في مساحة التخزين الخاصة بالتطبيق (App Sandboxed Storage). ولا يملك أي طرف خارجي أو خادم إمكانية الوصول إلى هذه السجلات، ويتم مسحها بالكامل تلقائياً بمجرد إزالة تثبيت التطبيق.</p>
 
-            <h2>5. الامتثال للتشريعات الدولية (GDPR / CCPA / COPPA)</h2>
+            <h2>4. الامتثال للتشريعات الدولية (GDPR / CCPA / COPPA)</h2>
             <ul>
                 <li><strong>اللائحة الأوروبية لحماية البيانات (GDPR):</strong> نظراً لعدم جمعنا أو تخزيننا لأي بيانات شخصية، لا توجد سجلات شخصية لمعالجتها أو طلب حذفها.</li>
                 <li><strong>قانون خصوصية المستهلك في كاليفورنيا (CCPA):</strong> نحن لا نبيع ولا نؤجر ولا نشارك أي معلومات شخصية للمستهلكين إطلاقاً.</li>
                 <li><strong>قانون حماية خصوصية الأطفال (COPPA):</strong> التطبيق آمن تماماً لكافة الأعمار ولا يجمع أي بيانات من الأطفال.</li>
             </ul>
 
-            <h2>6. معلومات التواصل والدعم الفني</h2>
+            <h2>5. معلومات التواصل والدعم الفني</h2>
             <ul>
                 <li><strong>الجهة المالكة والمطورة:</strong> كونكت تاق (Connect Tag)</li>
                 <li><strong>البريد الإلكتروني المخصص للتطبيق:</strong> <a href="mailto:app-expert@connecttag.org">app-expert@connecttag.org</a></li>
@@ -125,11 +91,11 @@
         </site-policy-section>
 
         <site-policy-section dir="ltr">
-            <p><strong>Application:</strong> Expert · Package ID: <code>com.tool.expert</code> · Effective Date: <strong>September 2026</strong></p>
+            <p><strong>Application:</strong> Expert · Effective Date: <strong>September 2026</strong></p>
 
             <h2>1. Introduction & Privacy Commitment</h2>
             <p>Welcome to <strong>Expert</strong>, developed by <strong>Connect Tag</strong>. Safeguarding your privacy and securing your device data is our highest engineering priority.</p>
-            <p>Expert is engineered as a standalone technical diagnostics and system information toolkit that strictly adheres to the <strong>Zero Data Collection Paradigm</strong>. We believe hardware auditing and system health tools must honor user privacy without requiring intrusive permissions or accessing private personal files.</p>
+            <p>Expert is engineered as a standalone technical diagnostics and system information toolkit that strictly adheres to the <strong>Zero Data Collection Paradigm</strong>. We believe hardware auditing and system health tools must honor user privacy without accessing private personal files.</p>
 
             <h2>2. Zero Personal Data Collection Policy</h2>
             <p><strong>Explicit Guarantee:</strong> Expert does NOT collect, store, process, transmit, share, or sell any personal data, user identifiers, advertising IDs, browsing histories, files, or contacts under any circumstances.</p>
@@ -139,52 +105,18 @@
                 <li><strong>No Advertising SDKs:</strong> The app is completely free of third-party advertising frameworks (such as AdMob) that track user behavior.</li>
             </ul>
 
-            <h2>3. Permissions Used & Technical Justification</h2>
-            <p>Expert utilizes only a minimal set of permissions solely for technical diagnosis and hardware health checks:</p>
-            
-            <div class="table-responsive" style="margin: 15px 0;">
-                <table class="table table-bordered bg-white">
-                    <thead>
-                        <tr style="background-color: #f0f7ff;">
-                            <th>Permission Name</th>
-                            <th>Classification</th>
-                            <th>Actual Technical Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>ACCESS_NETWORK_STATE</code></td>
-                            <td>Normal Permission</td>
-                            <td>Inspects network connectivity status (online/offline) and interface type (Wi-Fi, Cellular, Ethernet, VPN).</td>
-                        </tr>
-                        <tr>
-                            <td><code>ACCESS_WIFI_STATE</code></td>
-                            <td>Normal Permission</td>
-                            <td>Reads Wi-Fi radio frequency and signal strength (dBm) to display within the Wireless specifications tab.</td>
-                        </tr>
-                        <tr>
-                            <td><code>INTERNET</code></td>
-                            <td>Normal Permission</td>
-                            <td>Verifies active internet reachability and measures live download speeds during user-initiated network tests.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p><strong>Zero Dangerous Permissions:</strong> The application does NOT request or contain permissions for Location (GPS), External Storage, Camera, Contacts, SMS, or Phone State.</p>
-
-            <h2>4. 100% On-Device Processing & Local Storage</h2>
+            <h2>3. 100% On-Device Processing & Local Storage</h2>
             <p>All CPU frequency readings, battery power & wattage calculations, cybersecurity evaluations, and hardware tests are executed <strong>100% on-device</strong> within your device's local memory and processor.</p>
             <p>When you perform a hardware diagnostic test and export a certificate, records are saved exclusively to a secure local Room SQLite database in the app's sandboxed storage. No remote servers ever receive this data, and all records are permanently deleted if the app is uninstalled.</p>
 
-            <h2>5. Global Regulatory Compliance (GDPR, CCPA, COPPA)</h2>
+            <h2>4. Global Regulatory Compliance (GDPR, CCPA, COPPA)</h2>
             <ul>
                 <li><strong>GDPR (European Union):</strong> Because no personal data is collected or transmitted, no personal data processing occurs that requires data access or deletion requests.</li>
                 <li><strong>CCPA (California Consumer Privacy Act):</strong> We do not sell, rent, or monetize consumer personal information.</li>
                 <li><strong>COPPA (Children's Privacy):</strong> Fully safe for all age groups; zero child information is collected.</li>
             </ul>
 
-            <h2>6. Contact Information & Developer Entity</h2>
+            <h2>5. Contact Information & Developer Entity</h2>
             <ul>
                 <li><strong>Developer Entity:</strong> Connect Tag</li>
                 <li><strong>Dedicated App Email:</strong> <a href="mailto:app-expert@connecttag.org">app-expert@connecttag.org</a></li>
