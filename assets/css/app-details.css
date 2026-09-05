@@ -1,7 +1,4 @@
-/*
-   Connect Tag - App Details Page Unified Styles
-   Specifically for /projects/apps/*/index.html
-*/
+
 
 html {
     scroll-behavior: smooth;
@@ -886,71 +883,99 @@ body.as-store-page {
     margin-top: 6px;
 }
 
-/* App Store Metrics Ribbon */
-.as-metrics-ribbon {
+/* App Store Metrics Ribbon (Native Lazy Row Component) */
+.as-lazy-row-wrapper {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.as-metrics-ribbon,
+.as-lazy-row {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    border-top: 1px solid var(--as-border-light);
-    border-bottom: 1px solid var(--as-border-light);
-    padding: 18px 0;
+    background: #ffffff;
+    border: 1px solid var(--as-border);
+    border-radius: 20px;
+    padding: 16px 6px;
     margin-bottom: 45px;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-.as-metrics-ribbon::-webkit-scrollbar {
+.as-metrics-ribbon::-webkit-scrollbar,
+.as-lazy-row::-webkit-scrollbar {
     display: none;
 }
 
-.as-metric-item {
-    flex: 1;
-    min-width: 110px;
+.as-metric-item,
+.as-lazy-card {
+    flex: 1 0 135px;
+    min-width: 135px;
+    scroll-snap-align: center;
     text-align: center;
-    padding: 0 12px;
+    padding: 8px 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 14px;
 }
 
-.as-metric-label {
+.as-metric-item:hover,
+.as-lazy-card:hover {
+    transform: translateY(-2px);
+}
+
+.as-metric-label,
+.as-lazy-label {
     font-size: 11px;
     font-weight: 700;
     color: var(--as-text-secondary);
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     letter-spacing: 0.3px;
 }
 
-.as-metric-value {
+.as-metric-value,
+.as-lazy-val {
     font-size: 21px;
     font-weight: 800;
     color: var(--as-text-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
     line-height: 1.2;
 }
 
-.as-metric-value i {
-    font-size: 15px;
+.as-metric-value i,
+.as-lazy-val i {
+    font-size: 16px;
     color: #ff9500;
 }
 
-.as-metric-sub {
-    font-size: 12px;
-    color: var(--as-text-secondary);
-    margin-top: 4px;
+.as-metric-sub,
+.as-lazy-sub {
+    font-size: 12.5px;
+    color: #636366;
+    margin-top: 5px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
-.as-metric-divider {
+/* Ultra-smooth vertical hairline dividers (Apple-style gradient fade) */
+.as-metric-divider,
+.as-lazy-divider {
     width: 1px;
-    background: var(--as-border-light);
+    background: linear-gradient(180deg, rgba(229, 229, 234, 0) 0%, rgba(229, 229, 234, 0.95) 25%, rgba(229, 229, 234, 0.95) 75%, rgba(229, 229, 234, 0) 100%);
     align-self: stretch;
-    margin: 4px 0;
+    margin: 6px 0;
     flex-shrink: 0;
 }
 

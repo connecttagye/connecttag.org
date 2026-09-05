@@ -49,8 +49,8 @@
   "applicationCategory": "UtilitiesApplication",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "1540"
+    "ratingValue": "4.0",
+    "ratingCount": "1"
   },
   "offers": {
     "@type": "Offer",
@@ -99,74 +99,62 @@
                     <i class="fa-solid fa-circle-check"></i> كونكت تاق (Connect Tag) • مطور معتمد
                 </a>
                 <div class="as-actions-row">
-                    <a href="https://play.google.com/store/apps/details?id=com.telecom.yemen4g" target="_blank" rel="noopener" class="as-btn-get">
-                        <i class="fa-brands fa-google-play"></i> تثبيت التطبيق
-                    </a>
-                    <a href="#download-options" class="as-btn-secondary">
-                        <i class="fa-solid fa-arrow-down"></i> خيارات التحميل
-                    </a>
-                    <a href="#screenshots-gallery" class="as-btn-secondary">
-                        <i class="fa-solid fa-images"></i> لقطات الشاشة
-                    </a>
-                    <a href="#share-section" class="as-btn-circle" title="مشاركة التطبيق" onclick="if(navigator.share){navigator.share({title:document.title,url:window.location.href});return false;}">
-                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <a href="#download-options" class="as-btn-get">
+                        تحميل
                     </a>
                 </div>
-                <div class="as-caption-meta">مجاني بالكامل • متاح لجميع أجهزة أندرويد • بدون إعلانات</div>
             </div>
         </div>
 
-        <!-- App Store Metrics Ribbon -->
-        <div class="as-metrics-ribbon" data-aos="fade-up">
-            <div class="as-metric-item">
-                <span class="as-metric-label">التقييم</span>
-                <span class="as-metric-value">4.8 <i class="fa-solid fa-star"></i></span>
-                <span class="as-metric-sub">1.5K تقييم</span>
-            </div>
-            <div class="as-metric-divider"></div>
-            <div class="as-metric-item">
-                <span class="as-metric-label">الترتيب</span>
-                <span class="as-metric-value">#1</span>
-                <span class="as-metric-sub">في الاتصالات والمودم</span>
-            </div>
-            <div class="as-metric-divider"></div>
-            <div class="as-metric-item">
-                <span class="as-metric-label">العمر</span>
-                <span class="as-metric-value">+4</span>
-                <span class="as-metric-sub">الأعوام</span>
-            </div>
-            <div class="as-metric-divider"></div>
-            <div class="as-metric-item">
-                <span class="as-metric-label">المطور</span>
-                <span class="as-metric-value"><i class="fa-solid fa-shield-halved" style="color: #0071e3; font-size: 20px;"></i></span>
-                <span class="as-metric-sub">Connect Tag</span>
-            </div>
-            <div class="as-metric-divider"></div>
-            <div class="as-metric-item">
-                <span class="as-metric-label">اللغة</span>
-                <span class="as-metric-value">AR</span>
-                <span class="as-metric-sub">العربية +1</span>
-            </div>
-            <div class="as-metric-divider"></div>
-            <div class="as-metric-item">
-                <span class="as-metric-label">الحجم</span>
-                <span class="as-metric-value">~8</span>
-                <span class="as-metric-sub">ميجابايت</span>
-            </div>
-        </div>
+        <!-- App Store Metrics Ribbon (Lazy Row) -->
+        <div class="as-lazy-row-wrapper" data-aos="fade-up">
+            <div class="as-metrics-ribbon as-lazy-row">
+                <!-- 1. التقييمات -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">التقييمات</span>
+                    <span class="as-metric-value">4 <i class="fa-solid fa-star"></i></span>
+                    <span class="as-metric-sub">1 مراجعة</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
 
-        <!-- What's New Card -->
-        <div class="as-whats-new-box" data-aos="fade-up">
-            <div class="as-whats-new-header">
-                <h2 class="as-whats-new-title">ما الجديد</h2>
-                <a href="#download-options" class="as-version-link">سجل التحديثات</a>
-            </div>
-            <div class="as-version-meta">الإصدار 2.4.0 • تم التحديث حديثاً</div>
-            <div class="as-version-notes">
-                <p>• دعم متكامل لأحدث مودمات Yemen4g وإمكانية ضبط التردد وتغيير كلمة السر وحظر المتطفلين بضغطة زر.</p>
-                <p>• تسريع محرك الاستعلام الفوري عن الرصيد وتجاوز رموز التحقق بدقة فائقة.</p>
-                <p>• إضافة أداة فحص سرعة الإنترنت المدمجة (Ping / Download / Upload) المتوافقة مع معايير شبكات 4G.</p>
-                <p>• تحسينات شاملة في الأداء والواجهات وتوافق كامل مع أحدث إصدارات أندرويد 14.</p>
+                <!-- 2. الفئة -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة</span>
+                    <span class="as-metric-value"><i class="fa-solid fa-layer-group" style="color: #0071e3; font-size: 19px;"></i> #1</span>
+                    <span class="as-metric-sub">في الأدوات / الاتصالات</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 3. الفئة العمرية -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الفئة العمرية</span>
+                    <span class="as-metric-value">+4</span>
+                    <span class="as-metric-sub">مناسب للجميع</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 4. المطور -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">المطور</span>
+                    <span class="as-metric-value"><i class="fa-solid fa-circle-check" style="color: #0071e3; font-size: 21px;"></i></span>
+                    <span class="as-metric-sub">Connect Tag</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 5. اللغات -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">اللغات</span>
+                    <span class="as-metric-value">AR</span>
+                    <span class="as-metric-sub">العربية (+1 لغة)</span>
+                </div>
+                <div class="as-metric-divider as-lazy-divider"></div>
+
+                <!-- 6. الحجم -->
+                <div class="as-metric-item as-lazy-card">
+                    <span class="as-metric-label">الحجم</span>
+                    <span class="as-metric-value">8.2</span>
+                    <span class="as-metric-sub">MB</span>
+                </div>
             </div>
         </div>
 
@@ -301,87 +289,33 @@
             </div>
         </div>
 
-        <!-- App Privacy Section (Apple Nutrition Labels) -->
-        <div class="as-privacy-card" data-aos="fade-up">
-            <div class="as-privacy-header">
-                <div class="as-privacy-icon"><i class="fa-solid fa-user-shield"></i></div>
-                <div>
-                    <h2 class="as-privacy-title">خصوصية التطبيق</h2>
-                    <span class="as-privacy-badge">معايير أمان معتمدة</span>
-                </div>
-            </div>
-            <p class="as-privacy-body">
-                أوضح المطور <strong>Connect Tag</strong> أن ممارسات خصوصية التطبيق قد تتضمن معالجة البيانات كما هو موضح أدناه. صُمم تطبيق يمن فورجي وفق معمارية <strong>الخصوصية أولاً (Privacy by Design)</strong> مع انعدام تام لجمع البيانات أو مشاركتها مع أي جهة خارجية.
-            </p>
-            <div class="as-privacy-labels">
-                <div class="as-privacy-label-item">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>لا يتم جمع أي بيانات (Data Not Collected)</span>
-                </div>
-                <div class="as-privacy-label-item">
-                    <i class="fa-solid fa-microchip"></i>
-                    <span>معالجة داخلية 100% على جهازك</span>
-                </div>
-                <div class="as-privacy-label-item">
-                    <i class="fa-solid fa-lock"></i>
-                    <span>تشفير محلي فائق (Google Tink)</span>
-                </div>
-                <div class="as-privacy-label-item">
-                    <i class="fa-solid fa-ban"></i>
-                    <span>خالٍ تماماً من الإعلانات وأدوات التتبع</span>
-                </div>
-            </div>
-            <div class="as-privacy-footer">
-                <span>لمزيد من المعلومات، راجع:</span>
-                <a href="https://connecttag.org/company/projects/apps/yemen-4g/privacy-policy"><i class="fa-solid fa-shield-halved"></i> سياسة الخصوصية</a>
-                <span style="color: #ccc;">•</span>
-                <a href="https://connecttag.org/company/projects/apps/yemen-4g/terms-of-use"><i class="fa-solid fa-file-contract"></i> شروط الاستخدام</a>
-            </div>
-        </div>
-
         <!-- Information & Technical Specs (iOS Grouped List) -->
         <div class="as-section" data-aos="fade-up">
             <h2 class="as-section-title" style="margin-bottom: 18px;">المعلومات والمواصفات</h2>
             <div class="as-info-group">
                 <div class="as-info-row">
-                    <span class="as-info-label">المزود</span>
-                    <span class="as-info-val">Connect Tag IT Company</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">الحجم</span>
-                    <span class="as-info-val">~ 8.2 ميجابايت</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">الفئة</span>
-                    <span class="as-info-val">أدوات / اتصالات وإدارة شبكات</span>
-                </div>
-                <div class="as-info-row">
                     <span class="as-info-label">التوافق</span>
                     <span class="as-info-val">يتطلب نظام Android 7.1 (Nougat) أو أحدث</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">اللغات</span>
-                    <span class="as-info-val">العربية، الإنجليزية</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">التصنيف العمري</span>
-                    <span class="as-info-val">+4 أعوام (مناسب للجميع)</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">حقوق النشر</span>
-                    <span class="as-info-val">© 2026 Connect Tag. جميع الحقوق محفوظة.</span>
                 </div>
                 <div class="as-info-row">
                     <span class="as-info-label">السعر</span>
                     <span class="as-info-val">مجاني بالكامل</span>
                 </div>
                 <div class="as-info-row">
+                    <span class="as-info-label">حقوق النشر</span>
+                    <span class="as-info-val">© 2026 Connect Tag. جميع الحقوق محفوظة.</span>
+                </div>
+                <div class="as-info-row">
                     <span class="as-info-label">موقع المطور</span>
-                    <span class="as-info-val"><a href="https://connecttag.org" target="_blank">connecttag.org</a></span>
+                    <span class="as-info-val"><a href="https://connecttag.org" target="_blank" rel="noopener">connecttag.org</a></span>
                 </div>
                 <div class="as-info-row">
                     <span class="as-info-label">سياسة الخصوصية</span>
                     <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/yemen-4g/privacy-policy">عرض السياسة</a></span>
+                </div>
+                <div class="as-info-row">
+                    <span class="as-info-label">سياسة الاستخدام</span>
+                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/yemen-4g/terms-of-use">عرض الشروط</a></span>
                 </div>
             </div>
         </div>
