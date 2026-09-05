@@ -91,12 +91,11 @@
             </ul>
 
             <h2>5. الصلاحيات وسياسات متجر Google Play</h2>
-            <p>تم تصميم التطبيق بالالتزام الصارم بمبدأ "أقل الصلاحيات الممكنة" (Least Privilege):</p>
+            <p>تم تصميم التطبيق بالالتزام الصارم بمبدأ "الحد الأدنى من الصلاحيات" (Least Privilege):</p>
             <ul>
                 <li><strong>إذن الإنترنت (INTERNET):</strong> لتطبيق قواعد الفلترة وتشغيل نفق الفحص المحلي والأدوات التشخيصية.</li>
-                <li><strong>إذن الإشعارات (POST_NOTIFICATIONS):</strong> لعرض إشعار حالة خدمة الحماية المستمرة ومعدلات السرعة اللحظية على أندرويد 13 فما فوق.</li>
-                <li><strong>رؤية التطبيقات:</strong> تم حصر رؤية التطبيقات بحزمة <code>&lt;queries&gt;</code> للتطبيقات المرئية وقابلة للتشغيل فقط، دون طلب صلاحية <code>QUERY_ALL_PACKAGES</code> الواسعة.</li>
-                <li><strong>صلاحيات مستبعدة تماماً:</strong> لا يطلب التطبيق صلاحية الموقع الجغرافي (GPS)، ولا حالة الهاتف، ولا جهات الاتصال، ولا الكاميرا أو الميكروفون، ولا خدمة إمكانية الوصول (Accessibility).</li>
+                <li><strong>إذن الإشعارات (POST_NOTIFICATIONS):</strong> لعرض إشعار حالة خدمة الحماية المستمرة في واجهة النظام (أندرويد 13 فما فوق).</li>
+                <li><strong>عرض قائمة التطبيقات:</strong> يُعرض فقط قائمة بالتطبيقات المثبتة لديك لتتمكن من اختيار التطبيقات المراد حجب الإنترنت عنها أو السماح لها.</li>
             </ul>
 
             <h2>6. الإعلانات والتحليلات وحماية الأطفال</h2>
@@ -110,7 +109,7 @@
             <p>قد نقوم بتحديث هذه السياسة من حين لآخر لمواكبة التحديثات البرمجية أو التغييرات التنظيمية. سنقوم بنشر أي تحديثات في هذه الصفحة مع تحديث تاريخ النفاذ.</p>
             <p>إذا كان لديك أي سؤال أو استفسار حول سياسة الخصوصية أو ممارسات الأمان، يمكنك التواصل معنا مباشرة:</p>
             <ul>
-                <li><strong>البريد الإلكتروني:</strong> <a href="mailto:connecttagye@gmail.com">connecttagye@gmail.com</a></li>
+                <li><strong>البريد الإلكتروني:</strong> <a href="mailto:support-apps@connecttag.org">support-apps@connecttag.org</a></li>
                 <li><strong>الموقع الرسمي:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
                 <li><strong>الشركة المطورة:</strong> شركة كونكت تاق (Connect Tag)</li>
             </ul>
@@ -153,10 +152,9 @@
             <h2>5. Android Permissions & Google Play Compliance</h2>
             <p>The application enforces the Principle of Least Privilege:</p>
             <ul>
-                <li><strong>INTERNET:</strong> Required to operate the network interface, enforce local firewall rules, and run optional user-initiated diagnostics.</li>
-                <li><strong>POST_NOTIFICATIONS:</strong> Retained for Android 13+ solely to maintain the mandatory ongoing foreground service indicator and live throughput stats.</li>
-                <li><strong>Targeted Package Visibility:</strong> Visibility is strictly limited via <code>&lt;queries&gt;</code> to user-facing launcher applications, eliminating the need for broad <code>QUERY_ALL_PACKAGES</code> permissions.</li>
-                <li><strong>Excluded Permissions:</strong> We do not request GPS Location, Phone State, Contacts, Camera, Microphone, or Accessibility Services.</li>
+                <li><strong>INTERNET:</strong> Required to operate the local firewall filter and run user-initiated network diagnostics.</li>
+                <li><strong>POST_NOTIFICATIONS:</strong> Used on Android 13+ to maintain the mandatory foreground protection status notification.</li>
+                <li><strong>Installed Apps Visibility:</strong> Discovers installed user-facing apps strictly to allow you to configure firewall blocking or allow rules.</li>
             </ul>
 
             <h2>6. Advertising, Analytics & Children's Privacy</h2>
@@ -170,7 +168,7 @@
             <p>We may update this Privacy Policy from time to time to reflect technological improvements or regulatory updates. Any changes will be posted here with a revised effective date.</p>
             <p>If you have questions or feedback regarding this policy or our security practices, please contact us:</p>
             <ul>
-                <li><strong>Email:</strong> <a href="mailto:connecttagye@gmail.com">connecttagye@gmail.com</a></li>
+                <li><strong>Email:</strong> <a href="mailto:support-apps@connecttag.org">support-apps@connecttag.org</a></li>
                 <li><strong>Website:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
                 <li><strong>Developer:</strong> Connect Tag</li>
             </ul>
@@ -180,8 +178,5 @@
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
-<!-- Modular Web Component: Cookie Consent -->
-<cookie-consent></cookie-consent>
 </body>
 </html>

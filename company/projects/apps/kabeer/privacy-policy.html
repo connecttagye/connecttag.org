@@ -72,7 +72,7 @@
             </ul>
 
             <h2>3. تفاصيل الأذونات المستخدمة والغرض الفني منها</h2>
-            <p>يستخدم التطبيق فقط عدداً محدوداً من <strong>الصلاحيات العادية (Normal Permissions)</strong> التي لا تتطلب إذناً من المستخدم وقت التشغيل ولا تشكل أي خطورة على الخصوصية، وذلك لتحقيق الأغراض الفنية البحتة التالية:</p>
+            <p>يستخدم التطبيق فقط عدداً محدوداً من الصلاحيات الفنية الضرورية لتحقيق الأغراض التالية دون جمع أي بيانات شخصية:</p>
             
             <div class="table-responsive" style="margin: 15px 0;">
                 <table class="table table-bordered bg-white">
@@ -97,12 +97,7 @@
                         <tr>
                             <td><code>INTERNET</code></td>
                             <td>صلاحية عادية (Normal)</td>
-                            <td>التحقق من صحة الوصول لشبكة الإنترنت وإجراء اختبار سرعة التحميل اللحظي.</td>
-                        </tr>
-                        <tr>
-                            <td><code>VIBRATE</code></td>
-                            <td>صلاحية عادية (Normal)</td>
-                            <td>توليد اهتزاز خفيف للمس الواجهات التفاعلية (Haptics) واختبار محرك الاهتزاز الفعلي للهاتف.</td>
+                            <td>التحقق من صحة الوصول لشبكة الإنترنت وإجراء اختبار سرعة التحميل اللحظي بطلب المستخدم.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -126,7 +121,6 @@
                 <li><strong>الجهة المالكة والمطورة:</strong> كونكت تاق (Connect Tag)</li>
                 <li><strong>البريد الإلكتروني المخصص للتطبيق:</strong> <a href="mailto:app-expert@connecttag.org">app-expert@connecttag.org</a></li>
                 <li><strong>الموقع الرسمي:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
-                <li><strong>العنوان والنشاط:</strong> للخدمات والمستلزمات التقنية والتسويق الرقمي</li>
             </ul>
         </site-policy-section>
 
@@ -146,7 +140,7 @@
             </ul>
 
             <h2>3. Permissions Used & Technical Justification</h2>
-            <p>Expert utilizes only a minimal set of <strong>Normal Permissions</strong> that do not require runtime user grants and present zero privacy risk, solely for the following technical features:</p>
+            <p>Expert utilizes only a minimal set of permissions solely for technical diagnosis and hardware health checks:</p>
             
             <div class="table-responsive" style="margin: 15px 0;">
                 <table class="table table-bordered bg-white">
@@ -171,12 +165,7 @@
                         <tr>
                             <td><code>INTERNET</code></td>
                             <td>Normal Permission</td>
-                            <td>Verifies active internet reachability and measures live download speeds during network tests.</td>
-                        </tr>
-                        <tr>
-                            <td><code>VIBRATE</code></td>
-                            <td>Normal Permission</td>
-                            <td>Generates haptic touch feedback and verifies physical vibration motor functionality in hardware tests.</td>
+                            <td>Verifies active internet reachability and measures live download speeds during user-initiated network tests.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -200,7 +189,6 @@
                 <li><strong>Developer Entity:</strong> Connect Tag</li>
                 <li><strong>Dedicated App Email:</strong> <a href="mailto:app-expert@connecttag.org">app-expert@connecttag.org</a></li>
                 <li><strong>Official Website:</strong> <a href="https://connecttag.org" target="_blank" rel="noopener">https://connecttag.org</a></li>
-                <li><strong>Scope of Activity:</strong> Technical services, equipment, and digital marketing</li>
             </ul>
         </site-policy-section>
     </div>
@@ -208,8 +196,5 @@
 
 <!-- Modular Web Component: Footer -->
 <site-footer></site-footer>
-
-<!-- Modular Web Component: Cookie Consent -->
-<cookie-consent></cookie-consent>
 </body>
 </html>
