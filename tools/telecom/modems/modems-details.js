@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSEOAndMeta(m) {
         const pageTitle = `${m.arabicName} ${m.modelOrVersion || ''} - المواصفات والإعدادات - كونكت تاق`;
-        const pageDesc = m.description || `المواصفات التقنية وإعدادات الدخول لمودم ${m.arabicName} ${m.modelOrVersion || ''}`;
+        const pageDesc = m.description || `المواصفات التقنية وإعدادات الدخول لمودم يمن فورجي ${m.arabicName} ${m.modelOrVersion || ''}`;
         const currentUrl = window.location.href;
         const imgUrl = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
 
