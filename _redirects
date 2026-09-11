@@ -4,7 +4,7 @@
 /company/about-site /about 301
 /services/* /company/services/:splat 301
 
-# Projects & Apps Redirects
+# Projects  & Apps Redirects
 /projects /company/projects/ 301
 /projects/ /company/projects/ 301
 /projects/apps /company/projects/apps/ 301
