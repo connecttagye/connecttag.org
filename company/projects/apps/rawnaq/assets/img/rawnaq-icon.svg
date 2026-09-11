@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#021B29"/>
+      <stop offset="45%" stop-color="#002B3D"/>
+      <stop offset="100%" stop-color="#001017"/>
+    </linearGradient>
+
+    <!-- Metallic Gold Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3C4"/>
+      <stop offset="30%" stop-color="#F5D77F"/>
+      <stop offset="70%" stop-color="#D4A017"/>
+      <stop offset="100%" stop-color="#8C6200"/>
+    </linearGradient>
+
+    <!-- Radiant Lime Gradient -->
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAFF75"/>
+      <stop offset="50%" stop-color="#C6FF00"/>
+      <stop offset="100%" stop-color="#00E676"/>
+    </linearGradient>
+
+    <!-- Border Accent Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D77F" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#C6FF00" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D4A017" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Inner Shadow / Glow Filters -->
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="limeGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Base Container -->
+  <rect x="16" y="16" width="480" height="480" rx="112" ry="112" fill="url(#bgGrad)"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" ry="112" fill="none" stroke="url(#borderGrad)" stroke-width="4"/>
+  <rect x="28" y="28" width="456" height="456" rx="100" ry="100" fill="none" stroke="#F5D77F" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- Subtle Islamic Geometric Background Motif -->
+  <g opacity="0.06" transform="translate(256, 256)">
+    <circle r="180" fill="none" stroke="#FFF" stroke-width="1.5"/>
+    <circle r="130" fill="none" stroke="#FFF" stroke-width="1.5"/>
+    <rect x="-110" y="-110" width="220" height="220" fill="none" stroke="#FFF" stroke-width="1.5"/>
+    <rect x="-110" y="-110" width="220" height="220" transform="rotate(45)" fill="none" stroke="#FFF" stroke-width="1.5"/>
+  </g>
+
+  <!-- Glowing Ribbon Swooshes (Arabic Calligraphic Flourish) -->
+  <path d="M 120 300 C 130 190, 220 150, 256 195 C 292 150, 382 190, 392 300 C 370 330, 330 320, 305 285 C 275 240, 237 240, 207 285 C 182 320, 142 330, 120 300 Z" 
+        fill="none" stroke="url(#limeGrad)" stroke-width="6" opacity="0.85" filter="url(#limeGlow)"/>
+
+  <path d="M 145 285 C 155 205, 220 175, 256 210 C 292 175, 357 205, 367 285" 
+        fill="none" stroke="url(#limeGrad)" stroke-width="2.5" opacity="0.95"/>
+
+  <!-- Royal Calligraphy Pen Nib (Center Artwork) -->
+  <g id="calligraphyNib" transform="translate(256, 225)" filter="url(#goldGlow)">
+    <!-- Nib Body -->
+    <path d="M 0 -130 L 48 -10 C 52 35, 42 75, 36 95 L -36 95 C -42 75, -52 35, -48 -10 Z" 
+          fill="url(#goldGrad)" stroke="#FFF3C4" stroke-width="1.5"/>
+
+    <!-- Nib Shoulder & Grip Collar -->
+    <path d="M -40 95 L 40 95 L 35 118 L -35 118 Z" fill="url(#goldGrad)" stroke="#8C6200" stroke-width="1"/>
+    <path d="M -45 118 L 45 118 L 42 128 L -42 128 Z" fill="url(#goldGrad)" stroke="#8C6200" stroke-width="1"/>
+
+    <!-- Central Ink Split / Slit Line -->
+    <line x1="0" y1="-128" x2="0" y2="10" stroke="#001F2D" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Heart / Teardrop Breather Hole -->
+    <path d="M 0 10 C -9 2, -14 14, 0 32 C 14 14, 9 2, 0 10 Z" fill="#001F2D"/>
+    <circle cx="0" cy="18" r="4" fill="url(#limeGrad)"/>
+
+    <!-- Nib Engraved Ornaments -->
+    <path d="M -26 25 C -15 45, -8 68, -12 85" fill="none" stroke="#8C6200" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 26 25 C 15 45, 8 68, 12 85" fill="none" stroke="#8C6200" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sparkle Accents -->
+  <g fill="url(#goldGrad)">
+    <!-- Top Sparkle -->
+    <path d="M 256 70 Q 256 84, 270 84 Q 256 84, 256 98 Q 256 84, 242 84 Q 256 84, 256 70 Z"/>
+    <!-- Left Small Sparkle -->
+    <path d="M 125 150 Q 125 160, 135 160 Q 125 160, 125 170 Q 125 160, 115 160 Q 125 160, 125 150 Z"/>
+    <!-- Right Small Sparkle -->
+    <path d="M 387 150 Q 387 160, 397 160 Q 387 160, 387 170 Q 387 160, 377 160 Q 387 160, 387 150 Z"/>
+  </g>
+
+  <!-- Typography: رَونق (Rawnaq) -->
+  <g transform="translate(256, 400)">
+    <!-- Arabic Brand Name -->
+    <text x="0" y="0" text-anchor="middle" font-family="'Cairo', 'Amiri', sans-serif" font-weight="900" font-size="44" fill="url(#goldGrad)" letter-spacing="2">رَونق</text>
+    <!-- English Subtitle -->
+    <text x="0" y="32" text-anchor="middle" font-family="'Cairo', sans-serif" font-weight="700" font-size="16" fill="url(#limeGrad)" letter-spacing="8">RAWNAQ</text>
+  </g>
+</svg>

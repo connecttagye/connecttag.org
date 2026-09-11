@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="56" fill="#062F2D"/>
+  <g>
+    <!-- Pin Silhouette -->
+    <path fill="#F8FAFC" fill-rule="evenodd" d="M128,52 C94.3,52 67,79.3 67,113 C67,143 91,166 124.5,202 C126.4,204 129.6,204 131.5,202 C165,166 189,143 189,113 C189,79.3 161.7,52 128,52 Z M170,113 A42,42 0,1 0,86 113 A42,42 0,1 0,170 113 Z"/>
+    <!-- Compass Needle -->
+    <path fill="#F8FAFC" d="M98,120 L137,102 Q140,100.5 139,104 L124,144 Q122.5,148 121,144 L116,126 L98,123 Q94,122 98,120 Z"/>
+    <!-- Discovery Amber Point -->
+    <path fill="#F4BD62" d="M154.5,93 A8.5,8.5 0,1 0,137.5 93 A8.5,8.5 0,1 0,154.5 93 Z"/>
+  </g>
+</svg>
