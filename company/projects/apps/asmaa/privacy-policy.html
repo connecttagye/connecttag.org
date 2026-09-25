@@ -72,7 +72,7 @@
             <p>يعالج التطبيق البيانات اللازمة لأداء وظائفه الأساسية في كشف هوية المتصلين والبحث في الدليل ومكافحة الاحتيال، وتشمل:</p>
             <ul>
                 <li><strong>بيانات الاستعلام والبحث:</strong> أرقام الهواتف أو الأسماء التي تدخلها للبحث عنها في دليل الخدمة السحابي.</li>
-                <li><strong>بيانات فحص المكالمات الواردة:</strong> أرقام الهواتف الواردة إلى جهازك لمعالجة مطابقتها محلياً أو سحابياً مع القائمة السوداء وكشف هوية المتصل وحظر المكالمات الاحتيالية عبر خدمة نظام أندرويد الرسمية (CallScreeningService).</li>
+                <li><strong>بيانات فحص المكالمات الواردة:</strong> أرقام الهواتف الواردة إلى جهازك لمعالجة مطابقتها محلياً أو سحابياً مع القائمة السوداء وكشف هوية المتصل وحظر المكالمات الاحتيالية عبر خدمة فحص وتصفية المكالمات الرسمية بنظام أندرويد.</li>
                 <li><strong>مزامنة دليل المجتمع (ميزة اختيارية تماماً):</strong> في حال وافقت صراحة على تفعيل ميزة مزامنة دليل المجتمع للمساهمة في تحديث الدليل، تتم مزامنة الأسماء وأرقام الهواتف فقط عبر قنوات مشفرة. نحن <strong>لا نصل نهائياً</strong> إلى رسائلك النصية (SMS)، صورك، فيديوهاتك، كاميرا الجهاز، أو حساباتك المصرفية.</li>
                 <li><strong>بيانات تشخيصية وتقنية:</strong> معلومات نوع الجهاز، إصدار نظام أندرويد، وعنوان IP لأغراض أمان الاتصال وحماية الخدمة من هجمات الحرمان من الخدمة (DDoS).</li>
             </ul>
@@ -86,7 +86,7 @@
             </ul>
 
             <h2>3. خدمة كشف وحظر المكالمات (Call Screening Service)</h2>
-            <p>يستخدم تطبيق أسماء واجهة برمجة التطبيقات النظامية الرسمية من Google (Android Telecom CallScreeningService) المتاحة في أندرويد 10 فما فوق. تتيح هذه الخدمة للتطبيق فحص الأرقام الواردة وإسقاط المكالمات الاحتيالية بصمت لمنع إزعاج المستخدم دون المساس بسجل المكالمات أو الاستماع إلى المكالمات الصوتية.</p>
+            <p>يستخدم تطبيق أسماء خدمة فحص وتصفية المكالمات الرسمية في نظام أندرويد (Android Telecom Call Screening) المتاحة في أندرويد 10 فما فوق. تتيح هذه الخدمة للتطبيق فحص الأرقام الواردة وإسقاط المكالمات الاحتيالية بصمت لمنع إزعاج المستخدم دون المساس بسجل المكالمات أو الاستماع إلى المكالمات الصوتية.</p>
 
             <h2>4. حق النسيان وحذف البيانات (Right to be Forgotten)</h2>
             <p>نؤمن بحقك الكامل في السيطرة على هويتك الرقمية، ونوفر الأدوات التالية:</p>
@@ -120,7 +120,7 @@
             <p>Asmaa processes data strictly necessary to provide its core caller identification, directory search, and spam protection features:</p>
             <ul>
                 <li><strong>Search Queries:</strong> Phone numbers or contact names you search within the directory service.</li>
-                <li><strong>Incoming Call Screening Data:</strong> Incoming call phone numbers processed via Android's official CallScreeningService to match against local and cloud threat databases and provide instant caller identity or block scam calls.</li>
+                <li><strong>Incoming Call Screening Data:</strong> Incoming call phone numbers processed via Android's official Call Screening framework to match against local and cloud threat databases and provide instant caller identity or block scam calls.</li>
                 <li><strong>Community Directory Synchronization (Optional):</strong> If you voluntarily consent to participate in the community directory to improve shared caller identification, contact names and numbers are synchronized through encrypted channels. We <strong>never access</strong> private photos, videos, SMS messages, camera, or financial accounts.</li>
                 <li><strong>Technical &amp; Diagnostic Telemetry:</strong> Device model, Android OS version, and network IP addresses collected solely to safeguard service infrastructure against abuse and DDoS attacks.</li>
             </ul>
@@ -133,8 +133,8 @@
                 <li><strong>No Data Selling:</strong> We <strong>never sell, rent, or trade</strong> user data or address book contacts to commercial third parties, data brokers, or advertising networks.</li>
             </ul>
 
-            <h2>3. Android Telecom Call Screening Service</h2>
-            <p>Asmaa integrates with Android's official Telecom CallScreeningService (Android 10+). This enables the app to silently decline incoming fraudulent calls and display heads-up caller identification without recording phone audio or accessing call contents.</p>
+            <h2>3. Android Telecom Call Screening Framework</h2>
+            <p>Asmaa integrates with Android's official Telecom Call Screening framework (Android 10+). This enables the app to silently decline incoming fraudulent calls and display heads-up caller identification without recording phone audio or accessing call contents.</p>
 
             <h2>4. Right to be Forgotten &amp; Data Deletion</h2>
             <p>We believe in your fundamental right to control your digital identity:</p>
