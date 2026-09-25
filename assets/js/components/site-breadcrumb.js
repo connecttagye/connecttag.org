@@ -39,7 +39,7 @@ class SiteBreadcrumb extends HTMLElement {
       const segmentMap = {
         'blog': 'المدونة',
         'projects': 'أعمالنا',
-        'apps': 'تطبيقاتنا',
+        'apps': 'التطبيقات',
         'sites': 'أعمال الويب',
         'design': 'أعمال التصميم',
         'bots': 'بوتات تليجرام',
