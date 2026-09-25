@@ -114,6 +114,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/company/projects/apps/naqsh/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/company/projects/apps/sima/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/company/projects/apps/wejhah/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
