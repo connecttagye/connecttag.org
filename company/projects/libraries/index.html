@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>المكاتب البرمجية المفتوحة المصدر - كونكت تاق</title>
-<meta name="description" content="تصفح مكاتب كونكت تاق البرمجية المفتوحة المصدر بلغة Kotlin، بما في ذلك مكتبات بيانات الدول وتنسيق أرقام الهواتف.">
+<meta name="description" content="تصفح مكاتب كونكت تاق البرمجية المفتوحة المصدر بلغة Kotlin Multiplatform، بما في ذلك محرك الخرائط، معالجة أرقام الهواتف، بيانات الدول، وأدوات النصوص.">
 <link rel="canonical" href="https://connecttag.org/company/projects/libraries/" />
 
 <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/libraries/" />
 <meta property="og:type" content="website">
 <meta property="og:title" content="المكاتب البرمجية - كونكت تاق">
-<meta property="og:description" content="مكاتب Kotlin برمجية مفتوحة المصدر لمعلومات الدول وأرقام الهواتف." />
+<meta property="og:description" content="مكاتب Kotlin Multiplatform برمجية مفتوحة المصدر للخرائط، معالجة أرقام الهواتف، بيانات الدول، وتسوية النصوص." />
 <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
 <!-- twitter OpenGraph meta -->
@@ -20,7 +20,7 @@
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/company/projects/libraries/" />
 <meta name="twitter:title" content="المكاتب البرمجية - كونكت تاق">
-<meta name="twitter:description" content="مكاتب Kotlin برمجية مفتوحة المصدر لمعلومات الدول وأرقام الهواتف." />
+<meta name="twitter:description" content="مكاتب Kotlin Multiplatform برمجية مفتوحة المصدر للخرائط، معالجة أرقام الهواتف، بيانات الدول، وتسوية النصوص." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,37 +122,80 @@
     <div class="container">
         <div class="row">
 
-            <!-- Library 1: country-data -->
+            <!-- Library 1: map-lib-kmp -->
             <div class="col-md-6" data-aos="fade-up">
                 <div class="lib-card">
                     <div class="lib-icon">
-                        <i class="fa-regular fa-map"></i>
+                        <i class="fa-solid fa-map-location-dot"></i>
                     </div>
-                    <h3>country-data</h3>
-                    <p>مكتبة شاملة مبنية بـ Kotlin و Jetpack Compose توفر كافة البيانات المتعلقة بالدول، الأعلام، المفاتيح الدولية، والعملات مع دعم كامل لواجهات Compose.</p>
+                    <h3>map-lib-kmp</h3>
+                    <p>محرك خرائط تفاعلي (Interactive Slippy Map Engine) مبني باستخدام Compose Multiplatform.</p>
                     <div class="lib-tech">
                         <span>Kotlin</span>
-                        <span>Jetpack Compose</span>
-                        <span>Multiplatform</span>
+                        <span>Compose Multiplatform</span>
+                        <span>Android</span>
+                        <span>Desktop</span>
+                        <span>iOS</span>
+                        <span>WasmJs</span>
                     </div>
-                    <a href="https://github.com/connecttag" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                    <a href="https://github.com/connecttag/map-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
                 </div>
             </div>
 
-            <!-- Library 2: phonenumber -->
+            <!-- Library 2: phone-lib-kmp -->
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="lib-card">
                     <div class="lib-icon">
                         <i class="fa-solid fa-phone"></i>
                     </div>
-                    <h3>phonenumber</h3>
-                    <p>مكتبة Kotlin متطورة لمعالجة أرقام الهواتف، جلب معلومات شركات الاتصالات، تنسيق الأرقام، والتحقق من صحتها. مثالية لتطبيقات كواشف الأرقام وأنظمة الاتصال.</p>
+                    <h3>phone-lib-kmp</h3>
+                    <p>مكتبة لمعالجة أرقام الهواتف (التحليل Parsing، التنسيق Formatting، التحقق من الصحة Validation، والتعرف على شركة الاتصالات Carrier Recognition) مع واجهات Compose UI.</p>
                     <div class="lib-tech">
                         <span>Kotlin</span>
-                        <span>Telecom Data</span>
-                        <span>Number Formatting</span>
+                        <span>KMP</span>
+                        <span>Compose UI</span>
+                        <span>Phone Parsing</span>
+                        <span>Carrier Recognition</span>
                     </div>
-                    <a href="https://github.com/connecttag" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                    <a href="https://github.com/connecttag/phone-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                </div>
+            </div>
+
+            <!-- Library 3: country-lib-kmp -->
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="lib-card">
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3>country-lib-kmp</h3>
+                    <p>مكتبة دليل وبيانات الدول والبيانات الوصفية الخاصة بها (Country catalog and metadata utilities).</p>
+                    <div class="lib-tech">
+                        <span>Kotlin</span>
+                        <span>KMP</span>
+                        <span>Country Catalog</span>
+                        <span>Metadata</span>
+                    </div>
+                    <a href="https://github.com/connecttag/country-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                </div>
+            </div>
+
+            <!-- Library 4: text-lib-kmp -->
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="lib-card">
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3>text-lib-kmp</h3>
+                    <p>أدوات لتسوية النصوص وتنسيقها (Text normalization)، الترجمة والمحاذاة المحلية (Localization)، ورسائل واجهات المستخدم (UI message utilities).</p>
+                    <div class="lib-tech">
+                        <span>Kotlin</span>
+                        <span>Android</span>
+                        <span>JVM</span>
+                        <span>iOS</span>
+                        <span>WasmJs</span>
+                        <span>Localization</span>
+                    </div>
+                    <a href="https://github.com/connecttag/text-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
                 </div>
             </div>
 
