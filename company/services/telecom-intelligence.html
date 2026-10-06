@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي - كونكت تاق</title>
+<meta name="description" content="خدمات ذكاء بيانات الاتصالات من كونكت تاق: توثيق مشغلي الشبكات ومفاتيح الدول (MCC/MNC)، مسح خلايا وأبراج الاتصالات، قياس جودة الإشارة RSRP/SINR، ومسح شبكات الواي فاي والخرائط الحرارية.">
+<meta name="keywords" content="بيانات الاتصالات, مشغلي الشبكات, MCC MNC, مفاتيح الدول, مسح خلايا الاتصالات, أبراج الاتصالات, مسح الواي فاي, RSRP, SINR, Cell ID, الخرائط الحرارية, واجهات برمجية, كونكت تاق, اليمن">
+<link rel="canonical" href="https://connecttag.org/company/services/telecom-intelligence" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/company/services/telecom-intelligence" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي - كونكت تاق">
+<meta property="og:description" content="توثيق بيانات المشغلين ومفاتيح الدول، مسح خلايا وأبراج الاتصالات، وتحليل شبكات الواي فاي والخرائط الحرارية." />
+<meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+
+<!-- Twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:url" content="https://connecttag.org/company/services/telecom-intelligence" />
+<meta name="twitter:title" content="بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي - كونكت تاق">
+<meta name="twitter:description" content="حلول ذكاء بيانات الاتصالات ومسح الطيف اللاسلكي من كونكت تاق." />
+<meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.17" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.17"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.17">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.17">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.17" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.17"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.17">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.17" defer></script>
+
+<!-- Structured Data: Service & FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي",
+  "provider": {
+    "@type": "Organization",
+    "name": "كونكت تاق",
+    "url": "https://connecttag.org"
+  },
+  "serviceType": "Telecom Intelligence & Wireless RF Surveying",
+  "description": "توثيق بيانات مشغلي الاتصالات ومفاتيح الدول، مسح خلايا الأبراج وتحديد معرّفاتها، تحليل جودة إشارة الراديو RSRP/SINR، ومسح شبكات الواي فاي وإعداد الخرائط الحرارية.",
+  "areaServed": "YE",
+  "url": "https://connecttag.org/company/services/telecom-intelligence"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ما المقصود ببيانات مشغلي الاتصالات وأكواد MCC و MNC؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "كود MCC يرمز إلى كود الدولة للاتصالات المتنقلة، بينما كود MNC يرمز إلى كود شبكة المحمول المشغلة. معاً يشكلان المعرف الدولي الفريد لكل شبكة اتصالات حول العالم، ونحن نوفر قواعد بيانات منظمة ومحدثة لجميع المشغلين وتردداتهم."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف تفيد خدمة مسح خلايا وأبراج الاتصالات في تحديد المواقع وحل مشاكل التغطية؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "يقوم المسح الميداني بقراءة معرفات الأبراج الحية (Cell ID) وقياس مستويات التردد وجودة الإشارة (RSRP/SINR). يتيح ذلك تحديد المواقع الجغرافية بدقة دون الحاجة إلى GPS، وكشف أسباب بطء الإنترنت وتحديد المواقع المثلى لتركيب الهوائيات ومقويات الإشارة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما هي الخرائط الحرارية (Heatmaps) لشبكات الواي فاي ولماذا تحتاجها المنشآت؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "الخرائط الحرارية هي مسح ميداني يوضح انتشار الإشارة وتلاشيها داخل المباني بالألوان، مما يكشف المناطق الميتة (Dead Zones) ومناطق تداخل القنوات، ويساعد في توزيع أجهزة البث (Access Points) بأفضل شكل هندسي."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل توفرون هذه البيانات عبر واجهات برمجية (APIs) وتنسيقات قابلة للدمج؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، نوفر واجهات برمجية سريعة ومجموعات بيانات (JSON/CSV/SQL) تتيح للتطبيقات والشركات التحقق من أرقام الهواتف ومفاتيح الدول، وتحديد مشغلي الشبكات، وتحديد المواقع عبر معرّفات الخلايا والواي فاي."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+    body { background-color: #fcfdfe; color: #334155; }
+
+    /* Hero Section */
+    .page-header-unified {
+        background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 50%, #eff6ff 100%) !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        padding: 130px 0 50px;
+    }
+    .page-header-unified h1 {
+        color: #0f172a !important;
+        font-weight: 800;
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    .hero-lead-text {
+        color: #475569;
+        font-size: 18px;
+        line-height: 1.8;
+        max-width: 820px;
+        margin: 0 auto 20px;
+    }
+
+    /* Trust Stats Strip */
+    .trust-strip {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 25px 20px;
+        margin: -35px auto 60px;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+    }
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 15px;
+    }
+    .trust-icon {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 14px;
+        background: rgba(14, 165, 233, 0.1);
+        color: #0284c7;
+        text-align: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+    .trust-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 2px;
+    }
+    .trust-desc {
+        font-size: 13px;
+        color: #64748b;
+        margin: 0;
+    }
+
+    /* Pillar Cards */
+    .pillar-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 24px;
+        padding: 35px 30px;
+        margin-bottom: 30px;
+        transition: all 0.35s ease;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .pillar-card:hover {
+        transform: translateY(-8px);
+        border-color: #0284c7;
+        box-shadow: 0 20px 40px rgba(2, 132, 199, 0.1);
+    }
+    .pillar-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .pillar-icon-box {
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
+        text-align: center;
+        border-radius: 18px;
+        font-size: 28px;
+        flex-shrink: 0;
+        background: #0284c7;
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(2, 132, 199, 0.25);
+    }
+    .pillar-title {
+        font-size: 21px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 5px;
+    }
+    .pillar-badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 30px;
+        background: rgba(2, 132, 199, 0.1);
+        color: #0284c7;
+    }
+    .pillar-summary {
+        color: #475569;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 25px;
+        flex-grow: 1;
+    }
+    .feature-list li {
+        position: relative;
+        padding-right: 26px;
+        margin-bottom: 12px;
+        font-size: 14.5px;
+        color: #334155;
+        line-height: 1.6;
+    }
+    .feature-list li i {
+        position: absolute;
+        right: 0;
+        top: 4px;
+        color: #0284c7;
+        font-size: 15px;
+    }
+
+    /* Metric Badges Ribbon */
+    .metrics-ribbon {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 20px 0 50px;
+    }
+    .metric-badge-item {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 15px;
+        transition: 0.3s;
+    }
+    .metric-badge-item:hover {
+        background: #ffffff;
+        border-color: #0284c7;
+        transform: translateY(-3px);
+    }
+    .metric-code {
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: 800;
+        color: #0284c7;
+        direction: ltr;
+        display: block;
+        margin-bottom: 4px;
+    }
+    .metric-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 2px;
+    }
+    .metric-desc {
+        font-size: 11.5px;
+        color: #64748b;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    /* Tool Integration Callout */
+    .tool-link-box {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 18px;
+        padding: 22px 25px;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .tool-link-box h4 {
+        margin: 0 0 5px;
+        color: #166534;
+        font-size: 16px;
+        font-weight: 800;
+    }
+    .tool-link-box p {
+        margin: 0;
+        color: #15803d;
+        font-size: 13.5px;
+    }
+
+    /* Call To Action Box */
+    .cta-telecom-box {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        color: #ffffff;
+        border-radius: 26px;
+        padding: 50px 40px;
+        text-align: center;
+        box-shadow: 0 20px 45px rgba(2, 132, 199, 0.25);
+        margin: 60px 0 30px;
+    }
+    .cta-telecom-box h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+    .cta-telecom-box p {
+        font-size: 17px;
+        color: #e0f2fe;
+        max-width: 720px;
+        margin: 0 auto 30px;
+        line-height: 1.8;
+    }
+    .btn-telecom-primary {
+        background: #ffffff;
+        color: #0284c7 !important;
+        font-weight: 800;
+        font-size: 16px;
+        padding: 14px 35px;
+        border-radius: 30px;
+        display: inline-block;
+        transition: 0.3s;
+        text-decoration: none !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        margin: 5px 10px;
+    }
+    .btn-telecom-primary:hover {
+        background: #f0f9ff;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+    .btn-telecom-secondary {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff !important;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 13px 30px;
+        border-radius: 30px;
+        display: inline-block;
+        transition: 0.3s;
+        text-decoration: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        margin: 5px 10px;
+    }
+    .btn-telecom-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+    }
+
+    /* FAQ Styling */
+    .faq-box {
+        background: #ffffff;
+        border-radius: 18px;
+        border: 1px solid #e2e8f0;
+        padding: 25px 30px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+    .faq-box:hover {
+        border-color: #cbd5e1;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    }
+    .faq-box h3 {
+        font-size: 17px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .faq-box h3 i {
+        color: #0284c7;
+        font-size: 20px;
+    }
+    .faq-box p {
+        color: #475569;
+        font-size: 15px;
+        line-height: 1.8;
+        margin: 0;
+        padding-right: 32px;
+    }
+</style>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#0052cc">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<!-- Modular Web Component: Header -->
+<site-header></site-header>
+
+<main id="main-content">
+
+<!-- Hero Header Section -->
+<div class="page-header-unified">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <span class="pillar-badge" style="font-size: 14px; padding: 6px 16px; margin-bottom: 15px;" data-aos="fade-down">ذكاء بيانات الاتصالات ومسح الإشارات</span>
+                <h1 data-aos="fade-down" data-aos-delay="100">بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي</h1>
+                <p class="hero-lead-text" data-aos="fade-up" data-aos-delay="200">
+                    نوفر في <strong>كونكت تاق</strong> حلولاً هندسية ومعلوماتية متطورة تشمل توثيق بيانات مشغلي الاتصالات حول العالم، مسح وتخطيط خلايا وأبراج الجوال (Cellular Sites)، قياس نقاوة وجودة الإشارة الميدانية، ومسح طيف شبكات الواي فاي وإعداد الخرائط الحرارية للمنشآت.
+                </p>
+                <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"الخدمات","url":"https://connecttag.org/company/services/"},{"title":"بيانات ومسح الاتصالات والواي فاي","url":"https://connecttag.org/company/services/telecom-intelligence"}]' data-aos="fade-up" data-aos-delay="300"></site-breadcrumb>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Trust Stats Strip -->
+    <div class="trust-strip" data-aos="fade-up">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <div>
+                        <div class="trust-title">قواعد بيانات MCC / MNC</div>
+                        <p class="trust-desc">توثيق المشغلين ومفاتيح الدول</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="trust-item">
+                    <div class="trust-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-tower-cell"></i></div>
+                    <div>
+                        <div class="trust-title">مسح خلايا الأبراج</div>
+                        <p class="trust-desc">معرفات Cell-ID و PCI و TAC</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="trust-item">
+                    <div class="trust-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"><i class="fa-solid fa-chart-line"></i></div>
+                    <div>
+                        <div class="trust-title">تحليل الإشارة RSRP / SINR</div>
+                        <p class="trust-desc">فحص جودة ونقاوة الترددات</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="trust-item">
+                    <div class="trust-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-wifi"></i></div>
+                    <div>
+                        <div class="trust-title">خرائط الواي فاي الحرارية</div>
+                        <p class="trust-desc">مسح الطيف ومكافحة التداخل</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Service Pillars Grid -->
+    <div class="row" style="margin-top: 40px;">
+        
+        <!-- Pillar 1: Operator & Numbering Intelligence -->
+        <div class="col-lg-6 col-md-12" data-aos="fade-up">
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon-box"><i class="fa-solid fa-sim-card"></i></div>
+                    <div>
+                        <span class="pillar-badge">Telecom Directory & Intelligence</span>
+                        <h2 class="pillar-title">توثيق مشغلي الشبكات ومفاتيح الدول والترقيم</h2>
+                    </div>
+                </div>
+                <p class="pillar-summary">
+                    أدلة وقواعد بيانات شاملة توثق بيانات شبكات الهاتف المحمول العالمية والمحلية، خطط الترقيم الدولية، ومفاتيح الاتصال لكافة الدول والمدن.
+                </p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>دليل مشغلي الشبكات العالمي (MCC/MNC):</strong> توثيق رموز الدول والشبكات، ترددات البث المدعومة (Bands: B1, B3, B8, B20, B28, B38, B41) ونطاقات الـ IMSI.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>خطط الترقيم الدولية (ITU-T E.164):</strong> توثيق مفاتيح الاتصال الدولية، أكواد المناطق الجغرافية والمدن، وبادئات خطوط الهاتف المحمول والثابت.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>كاشف هوية وتصنيف الأرقام:</strong> تحديد الشبكة المشغلة بدقة وتصنيف نوع الخط (موبايل، هاتف أرضي، مجاني Toll-free، أو أرقام افتراضية VoIP).</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>أدلة الأكواد التفاعلية وإعدادات APN:</strong> توثيق شامل لأكواد الـ USSD للخدمات، وإعدادات نقاط الوصول للمودمات والهواتف الذكية.</li>
+                </ul>
+                <div class="tool-link-box">
+                    <div>
+                        <h4><i class="fa-solid fa-wrench" style="margin-left: 6px;"></i> جرب أداة الموقع المباشرة:</h4>
+                        <p>استكشف بيانات مشغلي العالم مجاناً عبر مستكشف MCC/MNC</p>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/network-lookup/" class="btn btn-sm btn-success" style="border-radius: 20px; font-weight: 700; padding: 6px 18px;">فتح الأداة</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillar 2: Cell Tower Mapping & Wardriving -->
+        <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon-box" style="background: #10b981;"><i class="fa-solid fa-tower-broadcast"></i></div>
+                    <div>
+                        <span class="pillar-badge">Cell Tower Mapping</span>
+                        <h2 class="pillar-title">مسح خلايا الأبراج وتحديد المعرّفات الجغرافية</h2>
+                    </div>
+                </div>
+                <p class="pillar-summary">
+                    رصد وتسجيل معرفات أبراج وخلايا الاتصالات النشطة، وبناء خرائط التغطية الميدانية لتحديد المواقع وحل مشاكل انقطاع الاتصال.
+                </p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>قراءة معرفات الخلايا الحية:</strong> رصد معرّفات (Cell ID / eNodeB / gNodeB / CID / LAC / TAC / PCI) لشبكات 2G / 3G / 4G LTE / 5G.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>رسم خرائط التغطية (Drive Testing):</strong> إجراء اختبارات المسح الميداني المتنقل لإنشاء خرائط تكشف مساحات تغطية المشغلين والنقاط الميتة (Dead Zones).</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>تحديد الموقع الجغرافي بالأبراج (Cell Geolocation):</strong> تقدير المواقع عبر مثلث الإشارات الراديوية كبديل أو داعم لـ GPS داخل الأقبية والمباني.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>مطابقة الأبراج والترددات:</strong> مطابقة بيانات الأبراج الممسوحة ميدانياً مع قواعد البيانات الجغرافية المفتوحة لتحسين الأداء.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pillar 3: RF Signal Quality & Spectrum -->
+        <div class="col-lg-6 col-md-12" data-aos="fade-up">
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon-box" style="background: #8b5cf6;"><i class="fa-solid fa-wave-square"></i></div>
+                    <div>
+                        <span class="pillar-badge">RF Spectrum Analysis</span>
+                        <h2 class="pillar-title">قياس جودة الإشارة وتحليل طيف الترددات RSRP/SINR</h2>
+                    </div>
+                </div>
+                <p class="pillar-summary">
+                    قياس المعايير الهندسية الدقيقة لنظافة التردد وقوة الإشارة، وتشخيص أسباب التقطيع أو بطء سرعات البيانات في شبكات الجوال والمودمات.
+                </p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>مؤشر القدرة المستقبلة (RSRP):</strong> قياس قوة الإشارة المرجعية الواصلة من البرج إلى الجهاز بوحدة dBm بدقة هندسية.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>جودة الإشارة وتلاشي الضوضاء (RSRQ & SINR):</strong> قياس نقاوة التردد ونسبة الإشارة إلى التشويش والتداخل، وهي العامل الحاسم لسرعة الإنترنت.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>تحليل حزم الترددات (Carrier Aggregation):</strong> فحص دمج الترددات في أجهزة المودم والراوترات لتعظيم سرعات الرفع والتحميل.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>توجيه الهوائيات والأنتينات الخارجية:</strong> تحديد الزوايا والاتجاهات الدقيقة لتوجيه أنتينات MIMO نحو البرج الأقل ازدحاماً والأعلى جودة.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pillar 4: Wi-Fi Surveying & Heatmaps -->
+        <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon-box" style="background: #f59e0b;"><i class="fa-solid fa-wifi"></i></div>
+                    <div>
+                        <span class="pillar-badge">Wi-Fi Survey & Heatmaps</span>
+                        <h2 class="pillar-title">مسح شبكات الواي فاي والخرائط الحرارية للمباني</h2>
+                    </div>
+                </div>
+                <p class="pillar-summary">
+                    مسح شامل لبيئات الواي فاي السكنية والمؤسسية، وتحليل تداخل القنوات والترددات لضمان تغطية متجانسة وسرعات مستقرة في كامل المنشأة.
+                </p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>المسح الميداني لنقاط الوصول (Site Survey):</strong> حصر جميع شبكات الواي فاي المحيطة واستخراج (SSID, BSSID, Channel, dBm, Vendor).</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>تحليل تداخل القنوات (Channel Congestion):</strong> فحص الطيف اللاسلكي لحزم 2.4 GHz و 5 GHz و 6 GHz لاختيار القنوات الأقل ازدحاماً.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>إنشاء الخرائط الحرارية (Indoor Heatmaps):</strong> تقديم مخططات ملونة توضح توزيع الإشارة ومواضع النقاط الميتة (Dead Zones) داخل المنشأة.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>تدقيق الأمان اللاسلكي وكشف نقاط البث المشبوهة:</strong> كشف الشبكات المفتوحة، وفحص بروتوكولات الأمان (WPA2/WPA3)، واكتشاف نقاط الاختراق (Rogue APs).</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Metrics Explanation Ribbon -->
+    <div class="metrics-ribbon" data-aos="fade-up">
+        <div class="row text-center" style="margin-bottom: 25px;">
+            <div class="col-12">
+                <h3 style="font-weight: 800; font-size: 22px; color: #0f172a;">مؤشرات ومعايير قياس الإشارة التي نعتمد عليها</h3>
+                <p style="color: #64748b; font-size: 15px; margin: 0;">نحلل هذه المؤشرات بدقة لتحويل القراءات الخام إلى حلول عملية لتحسين الاتصال</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">MCC / MNC</span>
+                    <div class="metric-name">كود الدولة والشبكة</div>
+                    <p class="metric-desc">المعرف الدولي لشركات الاتصالات</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">Cell ID / TAC</span>
+                    <div class="metric-name">معرف البرج والمنطقة</div>
+                    <p class="metric-desc">العنوان الراديوي للخلية الجغرافية</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">RSRP (dBm)</span>
+                    <div class="metric-name">قدرة الإشارة المرجعية</div>
+                    <p class="metric-desc">مقياس قوة البث الواصل للجهاز</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">SINR (dB)</span>
+                    <div class="metric-name">نسبة الإشارة إلى التشويش</div>
+                    <p class="metric-desc">المحدد الأساسي لسرعة ونقاوة الإنترنت</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">BSSID / RSSI</span>
+                    <div class="metric-name">معرف وقوة الواي فاي</div>
+                    <p class="metric-desc">بيانات نقاط البث وتغطية القنوات</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <div class="metric-badge-item">
+                    <span class="metric-code">E.164 Plan</span>
+                    <div class="metric-name">الترقيم ومفاتيح الدول</div>
+                    <p class="metric-desc">معايير الاتحاد الدولي للاتصالات ITU</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APIs & Datasets Integration Row -->
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-12" data-aos="fade-up">
+            <div class="pillar-card" style="background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); border-color: #86efac;">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="pillar-badge" style="background: #dcfce7; color: #15803d;">APIs & Data Delivery</span>
+                        <h2 class="pillar-title" style="margin-top: 10px;">واجهات برمجية وقواعد بيانات للمطورين والمؤسسات</h2>
+                        <p class="pillar-summary" style="margin-bottom: 0;">
+                            نوفر كافة بيانات الاتصالات، ومفاتيح الدول، ومعلومات مشغلي الشبكات عبر واجهات برمجية سريعة (RESTful APIs) وتنسيقات جاهزة للتحميل (JSON / CSV / SQL) للدمج المباشر في أنظمتكم وتطبيقاتكم المحاسبية وتطبيقات التوصيل والمتاجر.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center" style="margin-top: 20px;">
+                        <a href="https://connecttag.org/company/services/api-solutions" class="btn btn-success" style="border-radius: 25px; font-weight: 700; padding: 12px 28px; background: #16a34a; border: none;">
+                            <i class="fa-solid fa-code" style="margin-left: 8px;"></i> استكشف حلول الـ API
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call To Action Box -->
+    <div class="cta-telecom-box" data-aos="zoom-in">
+        <i class="fa-solid fa-satellite-dish" style="font-size: 55px; margin-bottom: 20px; color: #bae6fd;"></i>
+        <h2>هل تحتاج لمسح ميداني، بيانات شبكات، أو تحسين التغطية؟</h2>
+        <p>تواصل مع الفريق الهندسي في كونكت تاق لإجراء مسح ميداني لشبكات الواي فاي وأبراج الاتصالات، أو طلب قواعد بيانات واجهات البرمجة الخاصة بمشغلي الاتصالات.</p>
+        <div>
+            <a href="https://connecttag.org/company/support/order" class="btn-telecom-primary"><i class="fa-solid fa-tower-cell" style="margin-left: 8px;"></i> اطلب خدمة مسح أو بيانات</a>
+            <a href="https://connecttag.org/contact" class="btn-telecom-secondary"><i class="fa-solid fa-headset" style="margin-left: 8px;"></i> استشارة هندسية</a>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <div class="row">
+            <div class="col-12 text-center" style="margin-bottom: 35px;">
+                <h2 style="font-weight: 800; font-size: 26px; color: #0f172a;">الأسئلة الشائعة حول بيانات ومسح الاتصالات</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="faq-box">
+                    <h3><i class="fa-solid fa-circle-question"></i> ما المقصود ببيانات مشغلي الاتصالات وأكواد MCC و MNC؟</h3>
+                    <p>كود MCC يرمز إلى كود الدولة للاتصالات المتنقلة، بينما كود MNC يرمز إلى كود شبكة المحمول المشغلة. معاً يشكلان المعرف الدولي الفريد لكل شبكة اتصالات حول العالم، ونحن نوفر قواعد بيانات منظمة ومحدثة لجميع المشغلين وتردداتهم.</p>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-box">
+                    <h3><i class="fa-solid fa-circle-question"></i> كيف تفيد خدمة مسح خلايا وأبراج الاتصالات في حل مشاكل التغطية؟</h3>
+                    <p>يقوم المسح الميداني بقراءة معرفات الأبراج الحية (Cell ID) وقياس مستويات التردد وجودة الإشارة (RSRP/SINR). يتيح ذلك تحديد المواقع الجغرافية بدقة دون الحاجة إلى GPS، وكشف أسباب بطء الإنترنت وتحديد المواقع المثلى لتركيب الهوائيات ومقويات الإشارة.</p>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="faq-box">
+                    <h3><i class="fa-solid fa-circle-question"></i> ما هي الخرائط الحرارية (Heatmaps) لشبكات الواي فاي؟</h3>
+                    <p>الخرائط الحرارية هي مسح ميداني يوضح انتشار الإشارة وتلاشيها داخل المباني بالألوان، مما يكشف المناطق الميتة (Dead Zones) ومناطق تداخل القنوات، ويساعد في توزيع أجهزة البث (Access Points) بأفضل شكل هندسي.</p>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-box">
+                    <h3><i class="fa-solid fa-circle-question"></i> هل توفرون هذه البيانات عبر واجهات برمجية (APIs)؟</h3>
+                    <p>نعم، نوفر واجهات برمجية سريعة ومجموعات بيانات (JSON/CSV/SQL) تتيح للتطبيقات والشركات التحقق من أرقام الهواتف ومفاتيح الدول، وتحديد مشغلي الشبكات، وتحديد المواقع عبر معرّفات الخلايا والواي فاي.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<!-- Modular Web Component: Footer -->
+<site-footer></site-footer>
+
+</div>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
+</body>
+</html>
