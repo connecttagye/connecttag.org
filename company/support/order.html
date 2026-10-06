@@ -5,15 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>طلب خدمة أو منتج | شركة كونكت تاق</title>
-<meta name="description" content="اطلب خدماتنا التقنية أو منتجاتنا الذكية بسهولة. فريق كونكت تاق جاهز لتلبية طلباتكم بأعلى جودة واحترافية.">
+<meta name="description" content="قدم طلبك الآن للحصول على أحدث الخدمات البرمجية، حلول الأمن السيبراني، استخبارات الاتصالات، الاستضافة السحابية، والمنتجات الذكية من شركة كونكت تاق.">
 <link rel="canonical" href="https://connecttag.org/company/support/order" />
 
   <!-- OpenGraph meta -->
   <meta property="og:url" content="https://connecttag.org/company/support/order" />
   <meta property="og:type" content="website">
   <meta property="og:title" content="طلب خدمة أو منتج - كونكت تاق" />
-  <meta property="og:description" content="ابدأ مشروعك الرقمي أو احصل على أحدث الأجهزة الذكية اليوم مع كونكت تاق." />
+  <meta property="og:description" content="ابدأ مشروعك الرقمي أو اطلب حلول الأمن السيبراني والاتصالات والمنتجات الذكية مع كونكت تاق." />
   <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@connecttagye">
+  <meta name="twitter:title" content="طلب خدمة أو منتج - كونكت تاق">
+  <meta name="twitter:description" content="ابدأ مشروعك الرقمي أو اطلب حلول الأمن السيبراني والاتصالات والمنتجات الذكية مع كونكت تاق.">
+  <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +32,354 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.17">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.17" defer></script>
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.17" defer></script>
 
   <style>
-      .order-form-container { background: #fff; padding: 40px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #eee; }
-      .form-label { font-weight: 700; color: #333; margin-bottom: 8px; font-size: 14px; }
-      .form-control { border-radius: 12px; padding: 12px 15px; height: auto; border: 2px solid #f0f0f0; transition: 0.3s; }
-      .form-control:focus { border-color: #0077b6; box-shadow: none; }
-      .service-badge { display: inline-block; padding: 5px 15px; background: #e0f2fe; color: #0077b6; border-radius: 50px; font-size: 12px; font-weight: 800; margin-bottom: 15px; }
-      #product-info { background: #f8fafc; padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 1px dashed #cbd5e1; display: none; }
+      .order-section {
+          padding: 60px 0 90px;
+          background: #f8fafc;
+      }
+      .order-form-container {
+          background: #ffffff;
+          padding: 40px;
+          border-radius: 24px;
+          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+          border: 1px solid #e2e8f0;
+      }
+      @media (max-width: 767px) {
+          .order-form-container {
+              padding: 24px 20px;
+              border-radius: 18px;
+          }
+      }
+      .form-section-header {
+          margin-bottom: 28px;
+          padding-bottom: 18px;
+          border-bottom: 1px solid #f1f5f9;
+      }
+      .form-section-header h2 {
+          font-size: 22px;
+          font-weight: 800;
+          color: #0f172a;
+          margin: 0 0 8px;
+      }
+      .form-section-header p {
+          color: #64748b;
+          font-size: 14px;
+          margin: 0;
+          line-height: 1.6;
+      }
+      .form-label {
+          font-weight: 700;
+          color: #1e293b;
+          margin-bottom: 8px;
+          font-size: 14px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+      }
+      .form-control {
+          border-radius: 12px;
+          padding: 13px 16px;
+          height: auto;
+          border: 2px solid #e2e8f0;
+          transition: all 0.25s ease;
+          font-size: 14.5px;
+          background: #fdfdfd;
+          color: #1e293b;
+      }
+      .form-control:focus {
+          border-color: #0077b6;
+          background: #ffffff;
+          box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+          outline: none;
+      }
+      .input-icon-wrapper {
+          position: relative;
+      }
+      .input-icon-wrapper i {
+          position: absolute;
+          left: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #94a3b8;
+          font-size: 15px;
+          pointer-events: none;
+      }
+      .input-icon-wrapper .form-control {
+          padding-left: 40px;
+      }
+      .service-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 16px;
+          background: #e0f2fe;
+          color: #0077b6;
+          border-radius: 50px;
+          font-size: 12.5px;
+          font-weight: 800;
+          margin-bottom: 12px;
+      }
+      #product-info {
+          background: #f0f9ff;
+          padding: 22px;
+          border-radius: 16px;
+          margin-bottom: 25px;
+          border: 1px dashed #7dd3fc;
+          display: none;
+          animation: fadeIn 0.3s ease;
+      }
+      #product-info h3 {
+          margin: 0 0 6px;
+          font-weight: 800;
+          color: #0c4a6e;
+          font-size: 19px;
+      }
+      #product-info p {
+          margin: 0;
+          font-size: 13.5px;
+          color: #0369a1;
+      }
+      .btn-submit-main {
+          background: #0077b6;
+          color: #fff;
+          font-weight: 800;
+          border-radius: 12px;
+          padding: 15px 24px;
+          border: none;
+          font-size: 15.5px;
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          box-shadow: 0 4px 14px rgba(0, 119, 182, 0.25);
+      }
+      .btn-submit-main:hover {
+          background: #025a8b;
+          color: #fff;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 119, 182, 0.35);
+      }
+      .btn-submit-whatsapp {
+          background: #25d366;
+          color: #ffffff;
+          font-weight: 800;
+          border-radius: 12px;
+          padding: 14px 22px;
+          border: none;
+          font-size: 15px;
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          margin-top: 12px;
+          box-shadow: 0 4px 14px rgba(37, 211, 102, 0.22);
+      }
+      .btn-submit-whatsapp:hover {
+          background: #1eb956;
+          color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.32);
+      }
+      .btn-copy-order {
+          background: #f1f5f9;
+          color: #334155;
+          font-weight: 700;
+          border-radius: 10px;
+          padding: 9px 18px;
+          border: 1px solid #cbd5e1;
+          font-size: 13px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          margin-top: 10px;
+      }
+      .btn-copy-order:hover {
+          background: #e2e8f0;
+          color: #0f172a;
+      }
+      
+      /* Sidebar Elements */
+      .order-sidebar-card {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 30px 26px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 8px 25px rgba(15, 23, 42, 0.04);
+          margin-bottom: 24px;
+      }
+      .sidebar-card-title {
+          font-size: 18px;
+          font-weight: 800;
+          color: #0f172a;
+          margin-top: 0;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border-bottom: 1px solid #f1f5f9;
+          padding-bottom: 14px;
+      }
+      .sidebar-card-title i {
+          color: #0077b6;
+      }
+      .trust-feature-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          margin-bottom: 18px;
+      }
+      .trust-feature-item:last-child {
+          margin-bottom: 0;
+      }
+      .trust-icon-box {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+          border-radius: 10px;
+          background: #e0f2fe;
+          color: #0077b6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 17px;
+      }
+      .trust-feature-text h4 {
+          margin: 0 0 4px;
+          font-size: 15px;
+          font-weight: 800;
+          color: #1e293b;
+      }
+      .trust-feature-text p {
+          margin: 0;
+          font-size: 13px;
+          color: #64748b;
+          line-height: 1.6;
+      }
+
+      /* Workflow Timeline */
+      .workflow-steps-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          position: relative;
+      }
+      .workflow-steps-list::before {
+          content: '';
+          position: absolute;
+          right: 17px;
+          top: 15px;
+          bottom: 20px;
+          width: 2px;
+          background: #e2e8f0;
+      }
+      .workflow-step-item {
+          position: relative;
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          margin-bottom: 20px;
+      }
+      .workflow-step-item:last-child {
+          margin-bottom: 0;
+      }
+      .step-number {
+          width: 34px;
+          height: 34px;
+          min-width: 34px;
+          border-radius: 50%;
+          background: #ffffff;
+          border: 2px solid #0077b6;
+          color: #0077b6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+          font-weight: 800;
+          z-index: 1;
+      }
+      .step-content h4 {
+          margin: 0 0 3px;
+          font-size: 14.5px;
+          font-weight: 800;
+          color: #1e293b;
+      }
+      .step-content p {
+          margin: 0;
+          font-size: 12.5px;
+          color: #64748b;
+          line-height: 1.5;
+      }
+
+      /* Quick Support Box */
+      .direct-contact-box {
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+          color: #ffffff;
+          border-radius: 20px;
+          padding: 26px;
+          margin-bottom: 24px;
+      }
+      .direct-contact-box h3 {
+          margin: 0 0 8px;
+          font-size: 17px;
+          font-weight: 800;
+          color: #ffffff;
+      }
+      .direct-contact-box p {
+          font-size: 13px;
+          color: #cbd5e1;
+          line-height: 1.6;
+          margin-bottom: 18px;
+      }
+      .direct-channel-link {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(255, 255, 255, 0.08);
+          color: #ffffff !important;
+          padding: 10px 14px;
+          border-radius: 10px;
+          margin-bottom: 10px;
+          text-decoration: none !important;
+          font-size: 13.5px;
+          font-weight: 700;
+          transition: background 0.2s ease;
+      }
+      .direct-channel-link:hover {
+          background: rgba(255, 255, 255, 0.16);
+      }
+      .direct-channel-link i {
+          font-size: 16px;
+      }
+
+      /* Custom Alert / Feedback Toast */
+      .order-alert {
+          display: none;
+          background: #ecfdf5;
+          border: 1px solid #a7f3d0;
+          color: #065f46;
+          padding: 16px 20px;
+          border-radius: 14px;
+          margin-top: 20px;
+          font-size: 14px;
+          line-height: 1.6;
+      }
+      .order-alert.show {
+          display: block;
+          animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-6px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
   </style>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -54,114 +400,276 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1 id="main-heading">طلب جديد</h1>
-                <site-breadcrumb id="dynamic-breadcrumb" items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"الدعم والطلبات","url":"https://connecttag.org/company/support/"},{"title":"الطلبات","url":"https://connecttag.org/company/support/order"}]'></site-breadcrumb>
+                <h1 id="main-heading">طلب خدمة أو منتج</h1>
+                <site-breadcrumb id="dynamic-breadcrumb" items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الشركة","url":"https://connecttag.org/company/"},{"title":"الدعم والطلبات","url":"https://connecttag.org/company/support/"},{"title":"تقديم طلب جديد","url":"https://connecttag.org/company/support/order"}]'></site-breadcrumb>
             </div>
         </div>
     </div>
 </div>
 
-<div id="order-section" style="padding: 80px 0; background: #fdfdfd;">
+<div class="order-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
 
+      <!-- Main Order Form (Right Column) -->
+      <div class="col-md-7 col-lg-8">
         <div class="order-form-container">
+
+            <div class="form-section-header">
+                <span class="service-badge" id="type-label"><i class="fa-solid fa-sparkles"></i> طلب جديد</span>
+                <h2>تعبئة تفاصيل الطلب</h2>
+                <p>يرجى تزويدنا بالمعلومات الأساسية حول الخدمة أو المنتج وسيقوم مهندسونا بمراجعة طلبك والتواصل معك فوراً.</p>
+            </div>
+
+            <!-- Dynamic Product / Service Info Box -->
             <div id="product-info">
-                <span class="service-badge" id="type-label">طلب خدمة</span>
-                <h3 id="item-name" style="margin: 0; font-weight: 800; color: #1e293b;">جاري تحميل تفاصيل الطلب...</h3>
+                <h3 id="item-name">جاري تحميل تفاصيل الطلب...</h3>
+                <p id="item-desc">تم تحديد هذا البند مسبقاً بناءً على اختيارك من بوابات خدماتنا أو متجرنا.</p>
             </div>
 
             <form id="orderForm" method="post" class="form" role="form">
               <div class="row">
                 <!-- Hidden inputs for tracking -->
                 <input type="hidden" id="hidden_item" name="hidden_item">
-                <input type="hidden" id="hidden_type" name="hidden_type">
+                <input type="hidden" id="hidden_type" name="hidden_type" value="service">
 
                 <div class="col-md-6 form-group">
-                  <label class="form-label" for="name">الاسم الكامل *</label>
-                  <input class="form-control" id="name" name="name" placeholder="محمد علي..." type="text" required />
+                  <label class="form-label" for="name"><i class="fa-solid fa-user" style="color: #0077b6;"></i> الاسم الكامل *</label>
+                  <div class="input-icon-wrapper">
+                    <input class="form-control" id="name" name="name" placeholder="مثال: أحمد محمد..." type="text" required />
+                    <i class="fa-solid fa-signature"></i>
+                  </div>
                 </div>
+
                 <div class="col-md-6 form-group">
-                  <label class="form-label" for="email">البريد الإلكتروني *</label>
-                  <input class="form-control" id="email" name="email" placeholder="example@mail.com" type="email" required />
+                  <label class="form-label" for="email"><i class="fa-solid fa-envelope" style="color: #0077b6;"></i> البريد الإلكتروني *</label>
+                  <div class="input-icon-wrapper">
+                    <input class="form-control" id="email" name="email" placeholder="name@company.com" type="email" required />
+                    <i class="fa-regular fa-envelope"></i>
+                  </div>
                 </div>
+
                 <div class="col-md-6 form-group">
-                  <label class="form-label" for="phone">رقم الهاتف / واتساب *</label>
-                  <input class="form-control" id="phone" name="phone" placeholder="00967..." type="tel" required />
+                  <label class="form-label" for="phone"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> رقم الهاتف / واتساب *</label>
+                  <div class="input-icon-wrapper">
+                    <input class="form-control" id="phone" name="phone" placeholder="00967... أو 77xxxxxxx" type="tel" required />
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
                 </div>
 
                 <div class="col-md-6 form-group" id="company-group">
-                    <label class="form-label" for="company">اسم الشركة / الجهة (اختياري)</label>
-                    <input class="form-control" id="company" name="company" placeholder="مثلاً: شركة تاق العقارية" type="text">
+                    <label class="form-label" for="company"><i class="fa-solid fa-building" style="color: #0077b6;"></i> اسم الشركة / المؤسسة (اختياري)</label>
+                    <div class="input-icon-wrapper">
+                      <input class="form-control" id="company" name="company" placeholder="مثلاً: شركة النور التجارية" type="text">
+                      <i class="fa-solid fa-briefcase"></i>
+                    </div>
                 </div>
 
+                <!-- Comprehensive 9-Suites Dropdown Selector -->
                 <div class="col-md-12 form-group" id="selection-group">
-                  <label class="form-label" for="service">اختر الخدمة/المنتج *</label>
-                  <select class="form-control" id="service" name="service">
-                    <option value="" disabled selected>اختر من القائمة...</option>
-                    <optgroup label="الخدمات البرمجية">
-                        <option value="تطوير تطبيقات هاتف (Android/iOS)">تطوير تطبيقات هاتف (Android/iOS)</option>
-                        <option value="تطوير مواقع ومتاجر إلكترونية">تطوير مواقع ومتاجر إلكترونية</option>
-                        <option value="تطوير برامج سطح مكتب">تطوير برامج سطح مكتب</option>
-                        <option value="تطوير بوتات تليجرام ذكية">تطوير بوتات تليجرام ذكية</option>
-                        <option value="بناء وتطوير Rest API">بناء وتطوير Rest API</option>
-                        <option value="تطوير أنظمة سحابية مخصصة">تطوير أنظمة سحابية مخصصة</option>
+                  <label class="form-label" for="service"><i class="fa-solid fa-layer-group" style="color: #0077b6;"></i> اختر الخدمة أو المنتج المطلوب *</label>
+                  <select class="form-control" id="service" name="service" required>
+                    <option value="" disabled selected>اختر الخدمة أو المنتج من القائمة...</option>
+                    
+                    <optgroup label="1. تطوير البرمجيات والتطبيقات">
+                        <option value="تطوير تطبيقات هواتف ذكية (Android / iOS)">تطوير تطبيقات هواتف ذكية (Android / iOS)</option>
+                        <option value="تطوير مواقع ومتاجر إلكترونية احترافية">تطوير مواقع ومتاجر إلكترونية احترافية</option>
+                        <option value="تطوير أنظمة ويب وسحابية مخصصة (SaaS / ERP)">تطوير أنظمة ويب وسحابية مخصصة (SaaS / ERP)</option>
+                        <option value="تطوير برامج سطح مكتب وأنظمة محاسبية">تطوير برامج سطح مكتب وأنظمة محاسبية</option>
+                        <option value="تطوير بوتات تليجرام وأتمتة العمليات">تطوير بوتات تليجرام وأتمتة العمليات</option>
                     </optgroup>
-                    <optgroup label="خدمات البيانات والـ API الخاصة بنا">
-                        <option value="الاشتراك في API كواشف الأرقام">الاشتراك في API كواشف الأرقام</option>
-                        <option value="البحث المتقدم عن TAC / IMEI">البحث المتقدم عن TAC / IMEI</option>
-                        <option value="البحث عن تطبيق أو حزمة أندرويد">البحث عن تطبيق أو حزمة أندرويد</option>
-                        <option value="البحث عن معلومات عنوان IP">البحث عن معلومات عنوان IP</option>
+
+                    <optgroup label="2. حلول الأمن السيبراني وحماية البيانات">
+                        <option value="اختبار الاختراق والتقييم الأمني الشامل للأنظمة">اختبار الاختراق والتقييم الأمني الشامل للأنظمة</option>
+                        <option value="تدقيق الكود البرمجي واكتشاف الثغرات الأمنية">تدقيق الكود البرمجي واكتشاف الثغرات الأمنية</option>
+                        <option value="حماية الشبكات والجدران النارية والتحصين السحابي">حماية الشبكات والجدران النارية والتحصين السحابي</option>
+                        <option value="الاستجابة للحوادث السيبرانية والتحقيق الجنائي الرقمي">الاستجابة للحوادث السيبرانية والتحقيق الجنائي الرقمي</option>
                     </optgroup>
-                    <optgroup label="الاستضافة والنطاقات">
-                        <option value="استضافة سحابية">استضافة سحابية</option>
-                        <option value="سيرفرات خاصة VPS">سيرفرات خاصة VPS</option>
-                        <option value="حجز ونقل الدومينات">حجز ونقل الدومينات</option>
-                        <option value="شهادات أمان SSL">شهادات أمان SSL</option>
-                        <option value="بريد إلكتروني رسمي">بريد إلكتروني رسمي</option>
+
+                    <optgroup label="3. ذكاء واستخبارات الاتصالات">
+                        <option value="مسح وتحليل شبكات المحمول والترددات اللاسلكية">مسح وتحليل شبكات المحمول والترددات اللاسلكية</option>
+                        <option value="فحص وتدقيق خلايا وأبراج الاتصالات والتغطية">فحص وتدقيق خلايا وأبراج الاتصالات والتغطية</option>
+                        <option value="استخبارات الأجهزة وقواعد بيانات TAC / IMEI">استخبارات الأجهزة وقواعد بيانات TAC / IMEI</option>
+                        <option value="حلول واستشارات شبكات الاتصالات المتطورة">حلول واستشارات شبكات الاتصالات المتطورة</option>
                     </optgroup>
-                    <optgroup label="التصميم والهوية البصرية">
-                        <option value="تصميم شعار (Logo)">تصميم شعار (Logo)</option>
-                        <option value="هوية بصرية كاملة">هوية بصرية كاملة</option>
-                        <option value="تصاميم سوشيال ميديا">تصاميم سوشيال ميديا</option>
-                        <option value="تصميم واجهات UI/UX">تصميم واجهات UI/UX</option>
-                        <option value="تصميم مطبوعات وبروفايل">تصميم مطبوعات وبروفايل</option>
+
+                    <optgroup label="4. واجهات البرمجة والبيانات المتقدمة (APIs)">
+                        <option value="خدمة الربط البرمجي لكواشف الأرقام وهوية المتصل">خدمة الربط البرمجي لكواشف الأرقام وهوية المتصل</option>
+                        <option value="خدمة استعلام عناوين IP وبيانات الموقع والاستضافة">خدمة استعلام عناوين IP وبيانات الموقع والاستضافة</option>
+                        <option value="خدمة فحص الحزم وتطبيقات الأجهزة الذكية">خدمة فحص الحزم وتطبيقات الأجهزة الذكية</option>
+                        <option value="تكاملات برمجية مخصصة وحلول معالجة البيانات">تكاملات برمجية مخصصة وحلول معالجة البيانات</option>
                     </optgroup>
-                    <optgroup label="التسويق والإعلانات">
-                        <option value="إعلان في شبكة تطبيقات كونكت تاق">إعلان في شبكة تطبيقات كونكت تاق</option>
-                        <option value="إعلان في قنوات وبوتات تليجرام">إعلان في قنوات وبوتات تليجرام</option>
-                        <option value="حملة تسويقية متكاملة">حملة تسويقية متكاملة</option>
+
+                    <optgroup label="5. الاستضافة السحابية والسيرفرات المدارة">
+                        <option value="سيرفرات خاصة VPS فائقة السرعة">سيرفرات خاصة VPS فائقة السرعة</option>
+                        <option value="استضافة سحابية مدارة للمواقع والأنظمة">استضافة سحابية مدارة للمواقع والأنظمة</option>
+                        <option value="حجز ونقل وإدارة النطاقات (Domains)">حجز ونقل وإدارة النطاقات (Domains)</option>
+                        <option value="شهادات أمان SSL والبريد الإلكتروني الرسمي">شهادات أمان SSL والبريد الإلكتروني الرسمي</option>
                     </optgroup>
-                    <optgroup label="المنتجات والأجهزة">
-                        <option value="أنظمة أمنية وكاميرات">أنظمة أمنية وكاميرات</option>
-                        <option value="أجهزة منزل ذكي">أجهزة منزل ذكي</option>
-                        <option value="ملحقات تقنية">ملحقات تقنية</option>
+
+                    <optgroup label="6. التصميم الإبداعي والهوية البصرية">
+                        <option value="تصميم هوية بصرية كاملة وشعار مؤسسي">تصميم هوية بصرية كاملة وشعار مؤسسي</option>
+                        <option value="تصميم واجهات وتجربة المستخدم (UI/UX) للتطبيقات والمواقع">تصميم واجهات وتجربة المستخدم (UI/UX) للتطبيقات والمواقع</option>
+                        <option value="تصاميم الدعاية الرقمية والمطبوعات وبروفايل الشركات">تصاميم الدعاية الرقمية والمطبوعات وبروفايل الشركات</option>
                     </optgroup>
-                    <option value="أخرى">أخرى / استشارة عامة</option>
+
+                    <optgroup label="7. التسويق الرقمي وإعلانات الشبكة المباشرة">
+                        <option value="إعلانات داخل شبكة تطبيقات كونكت تاق المباشرة">إعلانات داخل شبكة تطبيقات كونكت تاق المباشرة</option>
+                        <option value="حملات ترويجية عبر قنوات وبوتات تليجرام">حملات ترويجية عبر قنوات وبوتات تليجرام</option>
+                        <option value="إدارة حملات إعلانية ممولة وتحسين محركات البحث SEO">إدارة حملات إعلانية ممولة وتحسين محركات البحث SEO</option>
+                    </optgroup>
+
+                    <optgroup label="8. الأنظمة الذكية وأجهزة الدرونز المتقدمة">
+                        <option value="حلول وأنظمة التحكم والمراقبة بالدرونز">حلول وأنظمة التحكم والمراقبة بالدرونز</option>
+                        <option value="أجهزة ومتحكمات المنزل الذكي والأتمتة">أجهزة ومتحكمات المنزل الذكي والأتمتة</option>
+                        <option value="أنظمة الكاميرات الذكية والأقفال الإلكترونية">أنظمة الكاميرات الذكية والأقفال الإلكترونية</option>
+                        <option value="أجهزة وملحقات تقنية من المتجر">أجهزة وملحقات تقنية من المتجر</option>
+                    </optgroup>
+
+                    <option value="استشارة تقنية أو حلول مخصصة أخرى">استشارة تقنية أو حلول مخصصة أخرى</option>
                   </select>
                 </div>
 
+                <!-- Product Quantity Input (shown only for products) -->
                 <div class="col-md-6 form-group" id="quantity-group" style="display: none;">
-                    <label class="form-label" for="quantity">الكمية المطلوبة</label>
+                    <label class="form-label" for="quantity"><i class="fa-solid fa-boxes-stacked" style="color: #0077b6;"></i> الكمية المطلوبة</label>
                     <input class="form-control" id="quantity" name="quantity" type="number" value="1" min="1">
                 </div>
 
                 <div class="col-md-12 form-group">
-                  <label class="form-label" for="details" id="details-label">تفاصيل إضافية عن الطلب</label>
-                  <textarea class="form-control" id="details" name="details" placeholder="أي ملاحظات أو متطلبات خاصة ترغب في إضافتها..." rows="5"></textarea>
+                  <label class="form-label" for="details" id="details-label"><i class="fa-solid fa-align-right" style="color: #0077b6;"></i> تفاصيل ومتطلبات الطلب</label>
+                  <textarea class="form-control" id="details" name="details" placeholder="وضح هنا باختصار أهداف مشروعك، المتطلبات الخاصة، أو أي استفسار ترغب في طرحه على فريقنا..." rows="5"></textarea>
                 </div>
 
-                <div class="col-md-12" style="margin-top: 20px;">
-                  <button class="btn btn-lg btn-block" style="background: #0077b6; color: #fff; font-weight: 800; border-radius: 12px; padding: 15px;" type="submit" id="submit-btn">
-                    إرسال الطلب الآن <i class="fa-solid fa-paper-plane" style="margin-right: 10px;"></i>
+                <!-- Submission Actions -->
+                <div class="col-md-12" style="margin-top: 15px;">
+                  <button class="btn btn-submit-main" type="submit" id="submit-btn">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال الطلب عبر البريد الرسمي
                   </button>
-                  <p class="text-muted text-center" style="margin-top: 15px; font-size: 12px;">سيتم توجيهك لبريدك لإرسال الطلب، وسيتواصل معك فريقنا خلال 24 ساعة.</p>
+                  
+                  <button type="button" class="btn btn-submit-whatsapp" id="whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> إرسال ومتابعة الطلب فوراً عبر واتساب
+                  </button>
+
+                  <div class="text-center" style="margin-top: 10px;">
+                    <button type="button" class="btn-copy-order" id="copy-btn">
+                      <i class="fa-regular fa-copy"></i> نسخ ملخص الطلب إلى الحافظة
+                    </button>
+                  </div>
+
+                  <div id="orderAlert" class="order-alert" role="status">
+                    <i class="fa-solid fa-circle-check" style="margin-left: 6px;"></i>
+                    <span id="alertMessage">تم تجهيز طلبك بنجاح! جاري تحويلك للمتابعة...</span>
+                  </div>
+
+                  <p class="text-muted text-center" style="margin-top: 18px; font-size: 12.5px; line-height: 1.7;">
+                    <i class="fa-solid fa-lock" style="color: #10b981; margin-left: 4px;"></i>
+                    نلتزم بالحفاظ الكامل على سرية وخصوصية بياناتكم. سيتواصل معكم مستشارنا التقني خلال أقل من 24 ساعة عمل.
+                  </p>
                 </div>
               </div>
             </form>
         </div>
       </div>
+
+      <!-- Trust & Workflow Sidebar (Left Column) -->
+      <div class="col-md-5 col-lg-4">
+        
+        <!-- Trust Commitments Card -->
+        <div class="order-sidebar-card">
+          <h3 class="sidebar-card-title"><i class="fa-solid fa-shield-halved"></i> معايير وثقة كونكت تاق</h3>
+          
+          <div class="trust-feature-item">
+            <div class="trust-icon-box"><i class="fa-solid fa-bolt"></i></div>
+            <div class="trust-feature-text">
+              <h4>سرعة الرد والمتابعة</h4>
+              <p>مراجعة دقيقة وتواصل هندسي مبدئي خلال أقل من 24 ساعة من استلام الطلب.</p>
+            </div>
+          </div>
+
+          <div class="trust-feature-item">
+            <div class="trust-icon-box"><i class="fa-solid fa-file-contract"></i></div>
+            <div class="trust-feature-text">
+              <h4>اتفاقية سرية المعلومات (NDA)</h4>
+              <p>حماية قانونية وتقنية كاملة لفكرة مشروعك، بياناتك، وخططك المستقبلية.</p>
+            </div>
+          </div>
+
+          <div class="trust-feature-item">
+            <div class="trust-icon-box"><i class="fa-solid fa-comments"></i></div>
+            <div class="trust-feature-text">
+              <h4>استشارة أولية مجانية</h4>
+              <p>جلسة استكشاف ومناقشة فنية لتحديد أفضل الحلول قبل أي التزام مالي.</p>
+            </div>
+          </div>
+
+          <div class="trust-feature-item">
+            <div class="trust-icon-box"><i class="fa-solid fa-award"></i></div>
+            <div class="trust-feature-text">
+              <h4>ضمان التسليم والدعم</h4>
+              <p>التزام صارم بالجودة، اختبارات أمان مستمرة، ودعم فني ممتد بعد الإطلاق.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workflow Steps Card -->
+        <div class="order-sidebar-card">
+          <h3 class="sidebar-card-title"><i class="fa-solid fa-route"></i> خطوات معالجة طلبك</h3>
+          <ul class="workflow-steps-list">
+            <li class="workflow-step-item">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h4>استلام الطلب والدراسة</h4>
+                <p>مراجعة المتطلبات من قبل مهندسي التخصص وإعداد محاور المناقشة.</p>
+              </div>
+            </li>
+            <li class="workflow-step-item">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h4>جلسة الاكتشاف والتخطيط</h4>
+                <p>التواصل معك لمناقشة التفاصيل وتحديد نطاق العمل والتقنيات الملائمة.</p>
+              </div>
+            </li>
+            <li class="workflow-step-item">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h4>العرض الفني والمالي</h4>
+                <p>تسليم خطة عمل واضحة تتضمن المخرجات والتكلفة وجدول الإنجاز.</p>
+              </div>
+            </li>
+            <li class="workflow-step-item">
+              <span class="step-number">4</span>
+              <div class="step-content">
+                <h4>التنفيذ والإطلاق والضمان</h4>
+                <p>بدء العمل مع تسليمات مرحلية، تدقيق جودة، واختبارات تسليم نهائي.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Direct Instant Contact Card -->
+        <div class="direct-contact-box">
+          <h3>هل تحتاج مساعدة عاجلة؟</h3>
+          <p>إذا كان لديك استفسار فوري أو مشروع طارئ، يمكنك التواصل مباشرة مع مسؤولي خدمة العملاء عبر قنواتنا المباشرة:</p>
+          
+          <a href="https://t.me/connecttagye" target="_blank" rel="noopener noreferrer" class="direct-channel-link">
+            <i class="fa-brands fa-telegram" style="color: #24a1de;"></i>
+            <span>مراسلتنا عبر تليجرام الرسمي (@connecttagye)</span>
+          </a>
+
+          <a href="https://whatsapp.com/channel/0029VaasCef8qIztDeS8Sp1R" target="_blank" rel="noopener noreferrer" class="direct-channel-link">
+            <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+            <span>الانضمام لقناة واتساب الرسمية</span>
+          </a>
+
+          <a href="mailto:support@connecttag.org" class="direct-channel-link">
+            <i class="fa-regular fa-envelope" style="color: #38bdf8;"></i>
+            <span>support@connecttag.org</span>
+          </a>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>
@@ -174,79 +682,179 @@
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
-    const item = params.get('item');
-    const type = params.get('type') || 'service'; // 'service' or 'product'
+    const itemParam = params.get('item');
+    const serviceSlug = params.get('service');
+    const typeParam = params.get('type') || 'service'; // 'service' or 'product'
 
     const uiItemName = document.getElementById('item-name');
+    const uiItemDesc = document.getElementById('item-desc');
     const uiTypeLabel = document.getElementById('type-label');
     const uiProductInfo = document.getElementById('product-info');
     const uiSelectionGroup = document.getElementById('selection-group');
     const uiQuantityGroup = document.getElementById('quantity-group');
     const uiDetailsLabel = document.getElementById('details-label');
+    const uiDetails = document.getElementById('details');
     const uiSubmitBtn = document.getElementById('submit-btn');
     const uiMainHeading = document.getElementById('main-heading');
+    const serviceSelect = document.getElementById('service');
+    const hiddenItem = document.getElementById('hidden_item');
+    const hiddenType = document.getElementById('hidden_type');
+    const orderAlert = document.getElementById('orderAlert');
+    const alertMessage = document.getElementById('alertMessage');
 
-    if (item) {
-        uiProductInfo.style.display = 'block';
-        uiSelectionGroup.style.display = 'none';
-        document.getElementById('service').required = false;
+    // Mapping service slugs to catalog values
+    const serviceSlugMap = {
+      'cybersecurity': 'اختبار الاختراق والتقييم الأمني الشامل للأنظمة',
+      'cyber': 'اختبار الاختراق والتقييم الأمني الشامل للأنظمة',
+      'telecom': 'مسح وتحليل شبكات المحمول والترددات اللاسلكية',
+      'telecom-intelligence': 'مسح وتحليل شبكات المحمول والترددات اللاسلكية',
+      'web-app': 'تطوير تطبيقات هواتف ذكية (Android / iOS)',
+      'software': 'تطوير تطبيقات هواتف ذكية (Android / iOS)',
+      'apps': 'تطوير تطبيقات هواتف ذكية (Android / iOS)',
+      'hosting': 'سيرفرات خاصة VPS فائقة السرعة',
+      'cloud': 'سيرفرات خاصة VPS فائقة السرعة',
+      'api': 'خدمة الربط البرمجي لكواشف الأرقام وهوية المتصل',
+      'apis': 'خدمة الربط البرمجي لكواشف الأرقام وهوية المتصل',
+      'design': 'تصميم هوية بصرية كاملة وشعار مؤسسي',
+      'branding': 'تصميم هوية بصرية كاملة وشعار مؤسسي',
+      'marketing': 'إعلانات داخل شبكة تطبيقات كونكت تاق المباشرة',
+      'ads': 'إعلانات داخل شبكة تطبيقات كونكت تاق المباشرة',
+      'hardware': 'حلول وأنظمة التحكم والمراقبة بالدرونز',
+      'drones': 'حلول وأنظمة التحكم والمراقبة بالدرونز'
+    };
 
-        const decodedItem = decodeURIComponent(item);
-        uiItemName.innerText = decodedItem;
-        document.getElementById('hidden_item').value = decodedItem;
-        document.getElementById('hidden_type').value = type;
+    let preselectedItem = null;
 
-        if (type === 'product') {
-            uiTypeLabel.innerText = 'طلب منتج';
-            uiTypeLabel.style.background = '#fef3c7';
-            uiTypeLabel.style.color = '#92400e';
-            uiQuantityGroup.style.display = 'block';
-            uiDetailsLabel.innerText = 'ملاحظات إضافية (اللون، المقاس، عنوان التوصيل)';
-            uiMainHeading.innerText = 'طلب منتج';
-            uiSubmitBtn.innerHTML = 'تأكيد طلب الشراء <i class="fa-solid fa-cart-shopping" style="margin-right: 10px;"></i>';
-            document.title = "طلب " + decodedItem + " - كونكت تاق";
-        } else {
-            uiTypeLabel.innerText = 'طلب خدمة';
-            uiDetailsLabel.innerText = 'تفاصيل المشروع أو المتطلبات الفنية';
-            uiMainHeading.innerText = 'طلب خدمة';
-            document.title = "طلب خدمة " + decodedItem + " - كونكت تاق";
-        }
-    } else {
-        document.getElementById('service').required = true;
+    if (itemParam) {
+      preselectedItem = decodeURIComponent(itemParam);
+    } else if (serviceSlug && serviceSlugMap[serviceSlug.toLowerCase()]) {
+      preselectedItem = serviceSlugMap[serviceSlug.toLowerCase()];
     }
 
+    if (preselectedItem) {
+        uiProductInfo.style.display = 'block';
+        hiddenItem.value = preselectedItem;
+        hiddenType.value = typeParam;
+        uiItemName.innerText = preselectedItem;
+
+        // Try to match dropdown option if it exists
+        let optionFound = false;
+        for (let i = 0; i < serviceSelect.options.length; i++) {
+            if (serviceSelect.options[i].value === preselectedItem || serviceSelect.options[i].text.includes(preselectedItem)) {
+                serviceSelect.selectedIndex = i;
+                optionFound = true;
+                break;
+            }
+        }
+
+        if (typeParam === 'product') {
+            uiTypeLabel.innerHTML = '<i class="fa-solid fa-cart-shopping"></i> طلب شراء منتج';
+            uiTypeLabel.style.background = '#fef3c7';
+            uiTypeLabel.style.color = '#92400e';
+            uiProductInfo.style.background = '#fffbeb';
+            uiProductInfo.style.borderColor = '#fde68a';
+            uiItemDesc.innerText = 'منتج من أجهزة أو ملحقات كونكت تاق الذكية. يرجى تزويدنا بالملاحظات وعنوان التوصيل.';
+            uiQuantityGroup.style.display = 'block';
+            uiSelectionGroup.style.display = 'none';
+            serviceSelect.required = false;
+            uiDetailsLabel.innerHTML = '<i class="fa-solid fa-location-dot" style="color: #0077b6;"></i> تفاصيل التوصيل والمواصفات (اللون، العنوان، ملاحظات)';
+            uiDetails.placeholder = 'يرجى كتابة عنوان التوصيل بالتفصيل، وأي مواصفات خاصة كاللون أو القياس...';
+            uiMainHeading.innerText = 'طلب منتج: ' + preselectedItem;
+            uiSubmitBtn.innerHTML = '<i class="fa-solid fa-cart-arrow-down"></i> إرسال أمر الشراء بالبريد';
+            document.title = "طلب " + preselectedItem + " | متجر كونكت تاق";
+        } else {
+            uiTypeLabel.innerHTML = '<i class="fa-solid fa-cube"></i> طلب خدمة تقنية';
+            uiItemDesc.innerText = 'خدمة تقنية مخصصة من حلول كونكت تاق. سيقوم فريقنا الهندسي بمراجعتها ومتابعتك فوراً.';
+            uiDetailsLabel.innerHTML = '<i class="fa-solid fa-align-right" style="color: #0077b6;"></i> نطاق العمل والمتطلبات الفنية للخدمة';
+            uiDetails.placeholder = 'صف لنا باختصار أهدافك من هذه الخدمة، التقنيات المفضلة، أو التحديات التي ترغب في معالجتها...';
+            uiMainHeading.innerText = 'طلب خدمة: ' + preselectedItem;
+            document.title = "طلب خدمة " + preselectedItem + " | شركة كونكت تاق";
+            if (optionFound) {
+                uiSelectionGroup.style.display = 'none';
+                serviceSelect.required = false;
+            }
+        }
+    } else {
+        serviceSelect.required = true;
+    }
+
+    function showAlert(msg, isSuccess = true) {
+      alertMessage.innerText = msg;
+      orderAlert.style.borderColor = isSuccess ? '#a7f3d0' : '#fecaca';
+      orderAlert.style.background = isSuccess ? '#ecfdf5' : '#fef2f2';
+      orderAlert.style.color = isSuccess ? '#065f46' : '#991b1b';
+      orderAlert.classList.add('show');
+    }
+
+    function getOrderPayload() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const details = document.getElementById('details').value.trim();
+      const isProduct = hiddenType.value === 'product';
+      const quantity = document.getElementById('quantity').value || '1';
+
+      let chosenItem = preselectedItem || serviceSelect.value;
+      if (!chosenItem && !isProduct) {
+        chosenItem = serviceSelect.value;
+      }
+
+      return {
+        name,
+        email,
+        phone,
+        company,
+        details,
+        isProduct,
+        item: chosenItem,
+        quantity,
+        typeTitle: isProduct ? 'منتج' : 'خدمة'
+      };
+    }
+
+    function validateOrderForm() {
+      const form = document.getElementById('orderForm');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    function formatSummaryText(payload) {
+      let text = `*طلب ${payload.typeTitle} جديد من موقع كونكت تاق*\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `📌 *المطلوب:* ${payload.item || 'غير محدد'}\n`;
+      if (payload.isProduct) {
+        text += `📦 *الكمية:* ${payload.quantity}\n`;
+      }
+      text += `👤 *الاسم:* ${payload.name}\n`;
+      text += `📧 *البريد:* ${payload.email}\n`;
+      text += `📱 *رقم الهاتف / واتساب:* ${payload.phone}\n`;
+      if (payload.company) {
+        text += `🏢 *الشركة / المؤسسة:* ${payload.company}\n`;
+      }
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `📝 *تفاصيل ومتطلبات الطلب:*\n${payload.details || 'لا توجد ملاحظات إضافية'}\n`;
+      text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      text += `المصدر: connecttag.org/company/support/order`;
+      return text;
+    }
+
+    // Submit via Official Email
     const orderForm = document.getElementById('orderForm');
     if (orderForm) {
       orderForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        if (!validateOrderForm()) return;
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const company = document.getElementById('company').value;
-        const details = document.getElementById('details').value;
-
-        let finalItem = item ? decodeURIComponent(item) : document.getElementById('service').value;
-        const quantity = document.getElementById('quantity').value;
-        const finalType = type === 'product' ? 'منتج' : 'خدمة';
-
-        const subject = `طلب ${finalType} جديد: ${finalItem} - ${name}`;
-
-        let body = `تفاصيل الطلب من الموقع:\n`;
-        body += `--------------------------\n`;
-        body += `نوع الطلب: ${finalType}\n`;
-        body += `المطلوب: ${finalItem}\n`;
-        if (type === 'product') body += `الكمية: ${quantity}\n`;
-        body += `--------------------------\n`;
-        body += `الاسم: ${name}\n`;
-        body += `البريد الإلكتروني: ${email}\n`;
-        body += `رقم الهاتف: ${phone}\n`;
-        if (company) body += `اسم الشركة: ${company}\n`;
-        body += `--------------------------\n\n`;
-        body += `التفاصيل والملاحظات:\n${details}`;
+        const payload = getOrderPayload();
+        const subject = `طلب ${payload.typeTitle}: ${payload.item} - ${payload.name}`;
+        const body = formatSummaryText(payload).replace(/\*/g, '');
 
         let mailToAddress = "order@connecttag.org";
-        if (finalItem.includes("إعلان") || finalItem.includes("تسويق")) {
+        if (payload.item && (payload.item.includes("إعلان") || payload.item.includes("ترويجية") || payload.item.includes("تسويق"))) {
             mailToAddress = "ads@connecttag.org";
         }
 
@@ -254,8 +862,63 @@
                          "?subject=" + encodeURIComponent(subject) +
                          "&body=" + encodeURIComponent(body);
 
+        showAlert("تم تجهيز الطلب! يتم الآن فتح تطبيق البريد لإرساله. كما يمكنك نسخه عبر الزر أدناه.");
         window.location.href = mailtoLink;
       });
+    }
+
+    // Submit / Continue via WhatsApp
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', function() {
+        if (!validateOrderForm()) return;
+
+        const payload = getOrderPayload();
+        const text = formatSummaryText(payload);
+        const waUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);
+
+        showAlert("تم تجهيز رسالة الواتساب بنجاح! يتم الآن توجيهك للمحادثة لإرسالها مباشرة.");
+        window.open(waUrl, '_blank');
+      });
+    }
+
+    // Copy Summary to Clipboard
+    const copyBtn = document.getElementById('copy-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        if (!validateOrderForm()) return;
+
+        const payload = getOrderPayload();
+        const text = formatSummaryText(payload);
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function() {
+            showAlert("تم نسخ ملخص الطلب إلى الحافظة بنجاح! يمكنك لصقه وإرساله عبر أي تطبيق تفضله.");
+          }).catch(function() {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      });
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showAlert("تم نسخ ملخص الطلب إلى الحافظة بنجاح!");
+      } catch (err) {
+        showAlert("تعذر النسخ التلقائي، يرجى تحديد النص ونسخه يدوياً.", false);
+      }
+      document.body.removeChild(textArea);
     }
   });
 </script>
