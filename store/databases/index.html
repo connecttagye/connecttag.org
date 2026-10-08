@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>بنك قواعد البيانات والجداول المرجعية للمطورين والأنظمة | متجر كونكت تاق</title>
-<meta name="description" content="بنك البيانات المرجعية، جداول التهيئة والتأسيس (Seed Data)، وقواعد بيانات الدول، المهن، تصنيفات المتاجر، والأجهزة بصيغ SQL و JSON و CSV للمطورين والشركات.">
+<meta name="description" content="بنك البيانات المرجعية، جداول التهيئة والتأسيس (Seed Data)، وقواعد بيانات الدول، المهن، تصنيفات المتاجر، والأجهزة للمطورين والشركات.">
 <link rel="canonical" href="https://connecttag.org/store/databases" />
 
 <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/store/databases" />
 <meta property="og:type" content="website">
 <meta property="og:title" content="بنك قواعد البيانات والجداول المرجعية - كونكت تاق">
-<meta property="og:description" content="حزم بيانات جاهزة للاستيراد: دول ومدن، مهن وتخصصات، تصنيفات متاجر، وأجهزة ذكية بصيغ SQL و JSON." />
+<meta property="og:description" content="حزم بيانات جاهزة للاستيراد: دول ومدن، مهن وتخصصات، تصنيفات متاجر، وأجهزة ذكية." />
 <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
 <!-- Twitter OpenGraph meta -->
@@ -20,7 +20,7 @@
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/store/databases" />
 <meta name="twitter:title" content="بنك قواعد البيانات والجداول المرجعية - كونكت تاق">
-<meta name="twitter:description" content="حزم بيانات جاهزة للاستيراد: دول ومدن، مهن وتخصصات، تصنيفات متاجر، وأجهزة ذكية بصيغ SQL و JSON." />
+<meta name="twitter:description" content="حزم بيانات جاهزة للاستيراد: دول ومدن، مهن وتخصصات، تصنيفات متاجر، وأجهزة ذكية." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,31 +73,6 @@
         max-width: 780px;
         margin: 0 auto 30px;
         line-height: 1.8;
-    }
-
-    /* Switch to Hardware banner */
-    .switch-store-banner {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 20px;
-        padding: 14px 24px;
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 30px;
-        transition: 0.3s;
-    }
-    .switch-store-banner:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: #38bdf8;
-    }
-    .switch-store-banner a {
-        color: #38bdf8;
-        font-weight: 800;
-        text-decoration: none !important;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
     }
 
     /* Category Filters */
@@ -222,160 +197,31 @@
         flex-grow: 1;
     }
 
-    .dataset-specs-grid {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 14px 16px;
-        margin-bottom: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        font-size: 12.5px;
-    }
-    .spec-entry {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: #475569;
-    }
-    .spec-entry strong {
-        color: #0f172a;
-    }
-
-    .format-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 22px;
-    }
-    .fmt-pill {
-        font-family: var(--code-font);
-        font-size: 11px;
-        font-weight: 600;
-        padding: 3px 9px;
-        border-radius: 6px;
-        border: 1px solid #cbd5e1;
-        background: #ffffff;
-        color: #334155;
-    }
-    .fmt-sql { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
-    .fmt-json { background: #fefce8; border-color: #fef08a; color: #ca8a04; }
-    .fmt-csv { background: #f0fdf4; border-color: #bbf7d0; color: #16a34a; }
-    .fmt-excel { background: #ecfdf5; border-color: #a7f3d0; color: #059669; }
-
     .card-footer-action {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         margin-top: auto;
-        padding-top: 15px;
+        padding-top: 18px;
         border-top: 1px solid #f1f5f9;
-    }
-    .price-value {
-        font-size: 22px;
-        font-weight: 900;
-        color: #0f172a;
-    }
-    .price-value span {
-        font-size: 13px;
-        font-weight: 600;
-        color: #64748b;
-    }
-    .action-btns {
-        display: flex;
-        gap: 8px;
-    }
-    .btn-sample {
-        background: #f1f5f9;
-        color: #334155;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
-        padding: 8px 14px;
-        font-size: 12.5px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .btn-sample:hover {
-        background: #e2e8f0;
-        color: #0f172a;
     }
     .btn-buy-asset {
         background: #0284c7;
         color: #ffffff !important;
-        border-radius: 10px;
-        padding: 8px 18px;
-        font-size: 13px;
+        border-radius: 12px;
+        padding: 11px 22px;
+        font-size: 14px;
         font-weight: 800;
         text-decoration: none !important;
-        transition: 0.2s;
+        transition: 0.25s;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
     }
     .btn-buy-asset:hover {
         background: #0369a1;
         transform: translateY(-2px);
-    }
-
-    /* Modal for Code Preview */
-    .sample-modal {
-        display: none;
-        position: fixed;
-        z-index: 1050;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(4px);
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    .sample-modal.show { display: flex; }
-    .modal-content-box {
-        background: #0f172a;
-        color: #e2e8f0;
-        border-radius: 20px;
-        max-width: 650px;
-        width: 100%;
-        border: 1px solid #334155;
-        overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-    .modal-header-bar {
-        padding: 16px 22px;
-        border-bottom: 1px solid #334155;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .modal-header-bar h4 { margin: 0; font-size: 16px; font-weight: 800; color: #fff; }
-    .btn-close-modal {
-        background: transparent;
-        border: none;
-        color: #94a3b8;
-        font-size: 20px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .btn-close-modal:hover { color: #fff; }
-    .modal-body-content {
-        padding: 20px;
-        max-height: 400px;
-        overflow-y: auto;
-    }
-    .code-preview-block {
-        background: #020617;
-        padding: 16px;
-        border-radius: 12px;
-        font-family: var(--code-font);
-        font-size: 13px;
-        line-height: 1.6;
-        color: #38bdf8;
-        white-space: pre-wrap;
-        direction: ltr;
-        text-align: left;
-        border: 1px solid #1e293b;
     }
 
     /* Enterprise Custom DB Banner */
@@ -425,16 +271,8 @@
 
         <h1 data-aos="fade-up">بنك <span>قواعد البيانات</span> وجداول التهيئة</h1>
         <p data-aos="fade-up" data-aos-delay="100">
-            قواعد بيانات مرجعية مهيكلة، وجداول تأسيس جاهزة (Seed Data)، وقوائم منسدلة قياسية لمطوري البرمجيات وأنظمة ERP والمتاجر الإلكترونية، جاهزة للاستيراد الفوري بصيغ SQL و JSON و CSV.
+            قواعد بيانات مرجعية مهيكلة، وجداول تأسيس جاهزة (Seed Data)، وقوائم منسدلة قياسية لمطوري البرمجيات وأنظمة ERP والمتاجر الإلكترونية.
         </p>
-
-        <!-- Multi-Hub Switcher -->
-        <div class="switch-store-banner" data-aos="zoom-in" data-aos-delay="150">
-            <span style="color: #94a3b8; font-size: 13.5px;"><i class="fa-solid fa-layer-group"></i> أقسام المتجر الأخرى:</span>
-            <a href="https://connecttag.org/store/products"><i class="fa-solid fa-boxes-stacked"></i> متجر الأجهزة والمنتجات</a>
-            <span style="color: #475569;">|</span>
-            <a href="https://connecttag.org/store/digital-assets"><i class="fa-solid fa-key"></i> التراخيص والاشتراكات</a>
-        </div>
 
         <!-- Search Bar -->
         <div class="search-container" data-aos="fade-up" data-aos-delay="200">
@@ -459,11 +297,8 @@
     <div class="container">
         
         <div class="row align-items-center mb-30" style="margin-bottom: 30px;">
-            <div class="col-md-6 text-right">
-                <h2 class="section-title">حزم البيانات المتاحة للتحميل المباشر</h2>
-            </div>
-            <div class="col-md-6 text-left">
-                <span class="text-muted" style="font-weight: 700;" id="dataset-count">عرض 6 حزم بيانات</span>
+            <div class="col-md-12 text-right">
+                <h2 class="section-title">حزم البيانات المتاحة</h2>
             </div>
         </div>
 
@@ -480,31 +315,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        قاعدة بيانات عالمية موحدة وشاملة تضم أكثر من 250 دولة و 15,000 مدينة مع رموز ISO القياسية (Alpha-2, Alpha-3)، ومفاتيح الاتصال الدولية، والعملات، ومناطق التوقيت، مع الترجمة الكاملة باللغتين العربية والإنجليزية.
+                        قاعدة بيانات عالمية موحدة وشاملة تضم الدول والمدن مع رموز ISO القياسية، ومفاتيح الاتصال الدولية، والعملات، ومناطق التوقيت، مع الترجمة الكاملة باللغتين العربية والإنجليزية.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>عدد السجلات:</strong> +15,000</div>
-                        <div class="spec-entry"><i class="fa-solid fa-language"></i> <strong>اللغات:</strong> عربي / إنجليزي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-code-commit"></i> <strong>الترميز:</strong> UTF-8 MB4</div>
-                        <div class="spec-entry"><i class="fa-solid fa-arrows-rotate"></i> <strong>التحديث:</strong> شهري</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">MySQL (.sql)</span>
-                        <span class="fmt-pill fmt-sql">PostgreSQL (.sql)</span>
-                        <span class="fmt-pill fmt-json">JSON (.json)</span>
-                        <span class="fmt-pill fmt-csv">CSV (.csv)</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">25 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="countries"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%20%D9%88%D8%A7%D9%84%D9%85%D8%AF%D9%86%20%D9%88%D9%85%D9%81%D8%A7%D8%AA%D9%8A%D8%AD%20%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%20%D9%88%D8%A7%D9%84%D9%85%D8%AF%D9%86%20%D9%88%D9%85%D9%81%D8%A7%D8%AA%D9%8A%D8%AD%20%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -520,31 +337,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        قاعدة بيانات المهن الموحدة طبقاً للتصنيف المعياري الدولي للمهن الصادر عن منظمة العمل الدولية (ISCO-08)، مع المسميات الوظيفية التفصيلية، المجموعات الرئيسية والفرعية، والترميز الرقمي المعتمد في الأنظمة الحكومية والشركات.
+                        قاعدة بيانات المهن الموحدة طبقاً للتصنيف المعياري الدولي للمهن الصادر عن منظمة العمل الدولية (ISCO-08)، مع المسميات الوظيفية، المجموعات الرئيسية والفرعية، والترميز المعتمد في الأنظمة والشركات.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>عدد المهن:</strong> +1,850</div>
-                        <div class="spec-entry"><i class="fa-solid fa-sitemap"></i> <strong>المستويات:</strong> 4 مستويات</div>
-                        <div class="spec-entry"><i class="fa-solid fa-language"></i> <strong>اللغات:</strong> عربي / إنجليزي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-shield-halved"></i> <strong>المعيار:</strong> ISCO-08</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">SQL Dump</span>
-                        <span class="fmt-pill fmt-json">JSON Tree</span>
-                        <span class="fmt-pill fmt-csv">CSV Sheet</span>
-                        <span class="fmt-pill fmt-excel">Excel (.xlsx)</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">20 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="occupations"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%B3%D9%8A%20%D9%84%D9%84%D9%85%D9%87%D9%86%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%B3%D9%8A%20%D9%84%D9%84%D9%85%D9%87%D9%86%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -560,30 +359,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        شجرة تصنيفات هرمية كاملة (Product Taxonomy) معدة خصيصاً لمطوري المتاجر ومنصات البيع؛ تغطي أكثر من 2,400 صنف وتصنيف فرعي للمنتجات (إلكترونيات، أزياء، أجهزة، أغذية، عطور...) متوافقة مع معايير Google Shopping.
+                        شجرة تصنيفات هرمية كاملة (Product Taxonomy) معدة خصيصاً لمطوري المتاجر ومنصات البيع؛ تغطي أصناف وتصنيفات المنتجات (إلكترونيات، أزياء، أجهزة، أغذية، عطور...) متوافقة مع المعايير العالمية.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>عدد التصنيفات:</strong> +2,400</div>
-                        <div class="spec-entry"><i class="fa-solid fa-layer-group"></i> <strong>العمق:</strong> 3 إلى 5 طبقات</div>
-                        <div class="spec-entry"><i class="fa-solid fa-icons"></i> <strong>الرموز:</strong> FontAwesome Icons</div>
-                        <div class="spec-entry"><i class="fa-solid fa-language"></i> <strong>اللغات:</strong> ثنائي اللغة</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">SQL Schema & Data</span>
-                        <span class="fmt-pill fmt-json">Nested JSON</span>
-                        <span class="fmt-pill fmt-csv">CSV</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">30 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="taxonomy"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D9%81%20%D8%A7%D9%84%D9%87%D8%B1%D9%85%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AC%D8%B1%20%D8%A7%D9%84%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%A7%D9%84%D8%AA%D8%B5%D9%86%D9%8A%D9%81%20%D8%A7%D9%84%D9%87%D8%B1%D9%85%D9%8A%20%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AC%D8%B1%20%D8%A7%D9%84%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -599,31 +381,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        قاعدة بيانات حصرية لمطابقة أول 8 أرقام (TAC) من الرقم التسلسلي IMEI للهواتف وأجهزة المودم والأجهزة اللوحية؛ تتيح التعرف الآلي على الموديل، الشركة المصنعة، دعم شبكات الجيل 4G/5G/eSIM، واكتشاف الأجهزة المقلدة.
+                        قاعدة بيانات حصرية لمطابقة أول 8 أرقام (TAC) من الرقم التسلسلي IMEI للهواتف وأجهزة المودم؛ تتيح التعرف الآلي على الموديل، والشركة المصنعة، ودعم شبكات الاتصال، واكتشاف الأجهزة المقلدة.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>أكواد TAC:</strong> +85,000 كود</div>
-                        <div class="spec-entry"><i class="fa-solid fa-microchip"></i> <strong>الشركات:</strong> Apple, Samsung...</div>
-                        <div class="spec-entry"><i class="fa-solid fa-tower-cell"></i> <strong>المواصفات:</strong> الجيل ونوع الشريحة</div>
-                        <div class="spec-entry"><i class="fa-solid fa-arrows-rotate"></i> <strong>التحديث:</strong> فصلي</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">MySQL / MariaDB</span>
-                        <span class="fmt-pill fmt-sql">SQLite</span>
-                        <span class="fmt-pill fmt-json">JSON Fast Lookup</span>
-                        <span class="fmt-pill fmt-csv">CSV</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">45 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="imei"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D9%85%D9%88%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D9%88%D8%B1%D9%85%D9%88%D8%B2%20TAC%20IMEI" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D9%85%D9%88%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D9%88%D8%B1%D9%85%D9%88%D8%B2%20TAC%20IMEI" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -639,30 +403,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        جداول جاهزة تضم المستويات التعليمية (ثانوية، دبلوم، بكالوريوس، ماجستير، دكتوراه)، مصحوبة بأكثر من 450 تخصصاً علمياً وأكاديمياً مصنفاً طبقاً لمعيار اليونسكو الدولي لتصنيف التعليم (ISCED-F 2013).
+                        جداول جاهزة تضم المستويات والدرجات التعليمية (ثانوية، دبلوم، بكالوريوس، ماجستير، دكتوراه)، مصحوبة بالتخصصات العلمية والأكاديمية المصنفة طبقاً لمعايير التصنيف الدولي المعتمد.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>التخصصات:</strong> +450 تخصص</div>
-                        <div class="spec-entry"><i class="fa-solid fa-layer-group"></i> <strong>المستويات:</strong> 8 درجات علمية</div>
-                        <div class="spec-entry"><i class="fa-solid fa-building-columns"></i> <strong>المعيار:</strong> UNESCO ISCED</div>
-                        <div class="spec-entry"><i class="fa-solid fa-language"></i> <strong>اللغات:</strong> عربي / إنجليزي</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">SQL Script</span>
-                        <span class="fmt-pill fmt-json">JSON List</span>
-                        <span class="fmt-pill fmt-csv">CSV Table</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">15 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="education"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%A4%D9%87%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D9%84%D9%85%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%D8%A7%D8%AA" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%A4%D9%87%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D9%84%D9%85%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%D8%A7%D8%AA" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -678,30 +425,13 @@
                         </div>
                     </div>
                     <p class="dataset-desc">
-                        قاعدة بيانات مشغلي شبكات المحمول والاتصالات حول العالم (ITU-T E.212)؛ تتضمن أسماء المشغلين والشركات، رموز الدولة (MCC)، رموز الشبكة (MNC)، بروتوكولات التغطية (GSM, LTE, 5G)، والعلامات التجارية لكل مشغل.
+                        قاعدة بيانات مشغلي شبكات المحمول والاتصالات حول العالم؛ تتضمن أسماء المشغلين والشركات، رموز الدولة (MCC)، رموز الشبكة (MNC)، بروتوكولات التغطية، والعلامات التجارية لكل مشغل.
                     </p>
 
-                    <div class="dataset-specs-grid">
-                        <div class="spec-entry"><i class="fa-regular fa-folder"></i> <strong>المشغلين:</strong> +1,200 مشغل</div>
-                        <div class="spec-entry"><i class="fa-solid fa-globe"></i> <strong>الدول:</strong> 230 دولة ومنطقة</div>
-                        <div class="spec-entry"><i class="fa-solid fa-signal"></i> <strong>المعيار:</strong> ITU-T E.212</div>
-                        <div class="spec-entry"><i class="fa-solid fa-arrows-rotate"></i> <strong>التحديث:</strong> شهري</div>
-                    </div>
-
-                    <div class="format-pills">
-                        <span class="fmt-pill fmt-sql">SQL Dump</span>
-                        <span class="fmt-pill fmt-json">JSON</span>
-                        <span class="fmt-pill fmt-csv">CSV</span>
-                    </div>
-
                     <div class="card-footer-action">
-                        <div class="price-value">35 <span>دولار</span></div>
-                        <div class="action-btns">
-                            <button class="btn-sample" data-sample="telecom"><i class="fa-solid fa-eye"></i> معاينة</button>
-                            <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%AF%D9%84%D9%8A%D9%84%20%D9%85%D8%B4%D8%BA%D9%84%D9%8A%20%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA%20MCC%20MNC" class="btn-buy-asset">
-                                <i class="fa-solid fa-download"></i> طلب الحزمة
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=dataset&item=%D8%AF%D9%84%D9%8A%D9%84%20%D9%85%D8%B4%D8%BA%D9%84%D9%8A%20%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA%20MCC%20MNC" class="btn-buy-asset">
+                            <i class="fa-solid fa-download"></i> طلب حزمة البيانات
+                        </a>
                     </div>
                 </div>
             </div>
@@ -712,7 +442,7 @@
         <div class="custom-dataset-banner" data-aos="fade-up">
             <h3>هل تحتاج إلى قاعدة بيانات أو جدول تهيئة مخصص لمشروعك؟</h3>
             <p>
-                فريقنا البرمجي مستعد لجمع، هيكلة، وتنظيف أي بيانات متخصصة (محلية، عربية، أو دولية) وتجهيزها بالصيغة والهيكلية البرمجية التي تطلبها متوافقة مع قاعدة بياناتك.
+                فريقنا البرمجي مستعد لجمع، هيكلة، وتنظيف أي بيانات متخصصة وتجهيزها بالهيكلية البرمجية التي تطلبها متوافقة مع قاعدة بياناتك.
             </p>
             <a href="https://connecttag.org/company/support/order?type=custom-dataset" class="btn-custom-request">
                 <i class="fa-solid fa-database"></i> طلب قاعدة بيانات مخصصة
@@ -722,20 +452,6 @@
     </div>
 </section>
 
-<!-- Code Sample Modal Dialog -->
-<div class="sample-modal" id="sample-modal">
-    <div class="modal-content-box">
-        <div class="modal-header-bar">
-            <h4 id="modal-title">معاينة عينة من البيانات</h4>
-            <button class="btn-close-modal" id="btn-modal-close">&times;</button>
-        </div>
-        <div class="modal-body-content">
-            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 12px;" id="modal-desc">نموذج من بنية الحقول وصيغة البيانات الجاهزة:</p>
-            <pre class="code-preview-block" id="modal-code"></pre>
-        </div>
-    </div>
-</div>
-
 <site-footer></site-footer>
 </div>
 
@@ -743,16 +459,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Search & Filter
         const searchInput = document.getElementById('dataset-search');
         const catButtons = document.querySelectorAll('.cat-btn');
         const items = document.querySelectorAll('.dataset-item');
-        const countDisplay = document.getElementById('dataset-count');
 
         function filterDatasets() {
             const query = searchInput.value.toLowerCase().trim();
             const activeFilter = document.querySelector('.cat-btn.active').getAttribute('data-filter');
-            let visibleCount = 0;
 
             items.forEach(item => {
                 const text = item.innerText.toLowerCase();
@@ -763,13 +476,10 @@
 
                 if (matchesQuery && matchesCategory) {
                     item.style.display = 'block';
-                    visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
             });
-
-            countDisplay.innerText = `عرض ${visibleCount} حزم بيانات`;
         }
 
         searchInput.addEventListener('input', filterDatasets);
@@ -780,135 +490,6 @@
                 this.classList.add('active');
                 filterDatasets();
             });
-        });
-
-        // Sample Modals Data
-        const samples = {
-            countries: {
-                title: "عينة من جدول الدول والمدن ومفاتيح الاتصال (SQL / JSON)",
-                code: `-- SQL Table Schema & Seed Sample
-CREATE TABLE ct_countries (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  iso2 CHAR(2) NOT NULL,
-  iso3 CHAR(3) NOT NULL,
-  name_ar VARCHAR(100) NOT NULL,
-  name_en VARCHAR(100) NOT NULL,
-  dial_code VARCHAR(10) NOT NULL,
-  currency_code CHAR(3) NOT NULL,
-  capital_ar VARCHAR(100),
-  timezones JSON
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO ct_countries VALUES
-(1, 'YE', 'YEM', 'اليمن', 'Yemen', '+967', 'YER', 'صنعاء', '["Asia/Aden"]'),
-(2, 'SA', 'SAU', 'المملكة العربية السعودية', 'Saudi Arabia', '+966', 'SAR', 'الرياض', '["Asia/Riyadh"]'),
-(3, 'EG', 'EGY', 'مصر', 'Egypt', '+20', 'EGP', 'القاهرة', '["Africa/Cairo"]');`
-            },
-            occupations: {
-                title: "عينة من الدليل القياسي للمهن (ISCO-08)",
-                code: `// JSON Tree Structure
-[
-  {
-    "code": "2512",
-    "title_ar": "مطورو البرمجيات",
-    "title_en": "Software Developers",
-    "major_group": "2",
-    "major_title_ar": "المتخصصون والمهنيون",
-    "sub_major_title_ar": "أخصائيو تكنولوجيا المعلومات والاتصالات",
-    "tasks_summary": "تحليل متطلبات المستخدمين، تصميم وكتابة وتطوير الشيفرات البرمجية."
-  },
-  {
-    "code": "2521",
-    "title_ar": "مصممو ومديرو قواعد البيانات",
-    "title_en": "Database Designers and Administrators",
-    "major_group": "2",
-    "tasks_summary": "تصميم وتطوير وصيانة حلول قواعد البيانات وأمان البيانات واسترجاعها."
-  }
-]`
-            },
-            taxonomy: {
-                title: "عينة من التصنيف الهرمي لمنتجات المتاجر",
-                code: `-- E-Commerce Hierarchy Sample
-INSERT INTO ct_product_categories (id, parent_id, slug, name_ar, name_en, icon) VALUES
-(1, NULL, 'electronics', 'الإلكترونيات والتقنية', 'Electronics', 'fa-laptop'),
-(2, 1, 'smart-home', 'الأجهزة الذكية والأمن', 'Smart Home & Security', 'fa-shield-halved'),
-(3, 2, 'smart-locks', 'أقفال الأبواب الذكية', 'Smart Door Locks', 'fa-lock'),
-(4, 2, 'cctv-cameras', 'كاميرات المراقبة', 'Surveillance Cameras', 'fa-video'),
-(5, 1, 'data-storage', 'وسائط التخزين المشفرة', 'Secure Storage', 'fa-hard-drive');`
-            },
-            imei: {
-                title: "عينة من قاعدة بيانات TAC / IMEI",
-                code: `-- Fast IMEI TAC Matching Table
-SELECT 
-  tac,
-  manufacturer,
-  model_name,
-  marketing_name,
-  device_type,
-  network_bands,
-  sim_slots
-FROM ct_tac_database
-WHERE tac = '35875111';
-
-/* Output Result:
-tac: '35875111'
-manufacturer: 'Apple Inc'
-model_name: 'iPhone 15 Pro Max (A3106)'
-device_type: 'Smartphone'
-network_bands: 'GSM, UMTS, LTE, 5G NR'
-sim_slots: 'Dual SIM (nano-SIM & eSIM)'
-*/`
-            },
-            education: {
-                title: "عينة من دليل المؤهلات العلمية والتخصصات",
-                code: `// Educational Fields ISCED-F Mapping
-{
-  "degree_levels": [
-    {"level_id": 1, "name_ar": "ثانوية عامة أو ما يعادلها", "name_en": "Secondary Education"},
-    {"level_id": 2, "name_ar": "دبلوم فني / مهني متوسط", "name_en": "Technical Diploma"},
-    {"level_id": 3, "name_ar": "بكالوريوس / ليسانس", "name_en": "Bachelor Degree"},
-    {"level_id": 4, "name_ar": "ماجستير", "name_en": "Master Degree"},
-    {"level_id": 5, "name_ar": "دكتوراه", "name_en": "Doctorate / PhD"}
-  ],
-  "fields_sample": [
-    {"code": "0612", "name_ar": "تصميم وتطوير البرمجيات والتطبيقات", "name_en": "Software & Applications Development"},
-    {"code": "0613", "name_ar": "تصميم وإدارة الشبكات وقواعد البيانات", "name_en": "Database & Network Design"},
-    {"code": "0413", "name_ar": "التسويق والإعلان الرقمي", "name_en": "Marketing and Advertising"}
-  ]
-}`
-            },
-            telecom: {
-                title: "عينة من جدول مشغلي الاتصالات ورموز MCC/MNC",
-                code: `-- ITU-T E.212 Global Operators Sample
-INSERT INTO ct_telecom_operators (mcc, mnc, country_iso, brand, operator_legal, network_status) VALUES
-('421', '01', 'YE', 'SabaFon', 'SabaFon Telecom Co.', 'Operational (GSM/4G)'),
-('421', '02', 'YE', 'MTN / U', 'Yemen Mobile Operators', 'Operational (GSM/LTE)'),
-('421', '03', 'YE', 'Yemen Mobile', 'Yemen Mobile CDMA/4G/5G', 'Operational (CDMA/LTE)'),
-('421', '04', 'YE', 'Y Telecom', 'Y Telecom Systems', 'Operational (GSM/4G)'),
-('420', '01', 'SA', 'STC', 'Saudi Telecom Company', 'Operational (GSM/LTE/5G)'),
-('420', '03', 'SA', 'Mobily', 'Etihad Etisalat', 'Operational (GSM/LTE/5G)');`
-            }
-        };
-
-        const modal = document.getElementById('sample-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalCode = document.getElementById('modal-code');
-        const btnClose = document.getElementById('btn-modal-close');
-
-        document.querySelectorAll('.btn-sample').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const sampleKey = this.getAttribute('data-sample');
-                if (samples[sampleKey]) {
-                    modalTitle.innerText = samples[sampleKey].title;
-                    modalCode.innerText = samples[sampleKey].code;
-                    modal.classList.add('show');
-                }
-            });
-        });
-
-        btnClose.addEventListener('click', () => modal.classList.remove('show'));
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('show');
         });
     });
 </script>
