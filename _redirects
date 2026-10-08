@@ -240,3 +240,10 @@
 /author /blog/authors/ 301
 /author/ /blog/authors/ 301
 /author/* /blog/authors/:splat 301
+
+# Store & Digital Assets
+/store/products.html /store/products 301
+/store/digital-assets.html /store/digital-assets 301
+/products /store/products 301
+/digital-assets /store/digital-assets 301
+
