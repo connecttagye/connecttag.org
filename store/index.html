@@ -146,146 +146,119 @@
     .gateway-digital .gateway-action-btn { background: #059669; color: #ffffff !important; }
     .store-gateway-card:hover .gateway-action-btn { transform: translateX(-4px); }
 
-    /* Category Quick Links */
-    .store-categories { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
-    .cat-pill {
-        background: #fff;
-        border: 1px solid #cbd5e1;
-        padding: 9px 22px;
-        border-radius: 50px;
-        font-weight: 700;
+    /* Gateway Features Bullet List */
+    .gateway-features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 26px 0;
+        text-align: right;
+    }
+    .gateway-features li {
         font-size: 14px;
         color: #475569;
-        transition: 0.3s;
-        cursor: pointer;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
-        gap: 8px;
-        text-decoration: none !important;
-    }
-    .cat-pill:hover, .cat-pill.active {
-        background: var(--store-primary);
-        color: #fff;
-        border-color: var(--store-primary);
-        box-shadow: 0 8px 18px rgba(0, 119, 182, 0.2);
-        transform: translateY(-2px);
-    }
-
-    /* Search Bar Aesthetic */
-    .search-container { max-width: 580px; margin: 0 auto 35px; position: relative; }
-    .search-input {
-        width: 100%;
-        padding: 16px 24px 16px 50px;
-        border-radius: 50px;
-        border: 2px solid #e2e8f0;
-        background: #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-        font-size: 15px;
-        transition: 0.3s;
-    }
-    .search-input:focus { border-color: var(--store-primary); outline: none; box-shadow: 0 15px 35px rgba(0, 119, 182, 0.1); }
-    .search-icon { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: var(--store-primary); font-size: 18px; }
-
-    /* Product & Asset Cards */
-    .section-title { font-size: 26px; font-weight: 800; color: var(--store-dark); margin-bottom: 30px; position: relative; display: inline-block; }
-    .section-title::after { content: ''; position: absolute; bottom: -8px; right: 0; width: 45px; height: 4px; background: var(--store-primary); border-radius: 2px; }
-
-    .product-card {
-        background: #fff;
-        border-radius: 24px;
-        overflow: hidden;
-        margin-bottom: 30px;
-        box-shadow: var(--card-shadow);
-        transition: 0.35s ease;
-        border: 1px solid #e2e8f0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-    .product-card:hover { transform: translateY(-8px); box-shadow: var(--card-shadow-hover); border-color: #cbd5e1; }
-
-    .product-img-wrapper {
-        height: 200px;
-        background: #fcfcfc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        padding: 20px;
-    }
-    .product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s ease; }
-    .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
-
-    .badge-status {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        background: rgba(37, 211, 102, 0.12);
-        color: #16a34a;
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 800;
-        z-index: 2;
-    }
-    .badge-digital {
-        background: rgba(2, 132, 199, 0.12);
-        color: #0284c7;
-    }
-
-    .product-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
-    .product-cat { font-size: 12px; font-weight: 700; color: var(--store-primary); text-transform: uppercase; margin-bottom: 8px; }
-    .product-title { font-size: 18.5px; font-weight: 800; color: var(--store-dark); margin-bottom: 10px; line-height: 1.4; }
-    .product-desc { font-size: 13.5px; color: #64748b; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-
-    .price-tag { font-size: 22px; font-weight: 800; color: var(--store-dark); margin-bottom: 18px; display: flex; align-items: baseline; gap: 5px; }
-    .price-tag span { font-size: 14px; color: #94a3b8; font-weight: 600; }
-
-    .btn-buy {
-        background: var(--store-primary);
-        color: #fff !important;
-        border-radius: 14px;
-        padding: 12px;
-        text-align: center;
-        font-weight: 800;
-        text-decoration: none !important;
-        transition: 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         gap: 10px;
-        margin-top: auto;
-        box-shadow: 0 6px 16px rgba(0, 119, 182, 0.15);
+        font-weight: 600;
     }
-    .btn-buy:hover { background: var(--store-dark); transform: translateY(-2px); }
-
-    .btn-digital-buy {
-        background: #059669;
-        box-shadow: 0 6px 16px rgba(5, 150, 105, 0.2);
+    .gateway-hw .gateway-features li i {
+        color: #0077b6;
+        font-size: 13px;
+        background: #e0f2fe;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .btn-digital-buy:hover { background: #064e3b; }
+    .gateway-digital .gateway-features li i {
+        color: #059669;
+        font-size: 13px;
+        background: #ecfdf5;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-    /* Trust Section */
-    .trust-section { padding: 60px 0; background: #fff; border-top: 1px solid #f1f5f9; margin-top: 50px; }
-    .trust-card { text-align: center; padding: 20px; }
-    .trust-icon {
-        width: 65px;
-        height: 65px;
+    /* Enterprise Inquiry Box */
+    .store-inquiry-box {
+        background: #ffffff;
+        border-radius: 24px;
+        border: 2px dashed #cbd5e1;
+        padding: 28px 34px;
+        max-width: 980px;
+        margin: 15px auto 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        text-align: right;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    @media (max-width: 767px) {
+        .store-inquiry-box {
+            flex-direction: column;
+            text-align: center;
+            padding: 24px 20px;
+        }
+    }
+    .inquiry-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    @media (max-width: 767px) {
+        .inquiry-content {
+            flex-direction: column;
+        }
+    }
+    .inquiry-icon {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
         background: #f0f7ff;
         color: var(--store-primary);
-        border-radius: 18px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 26px;
-        margin: 0 auto 16px;
-        transition: 0.3s;
+        font-size: 24px;
     }
-    .trust-card:hover .trust-icon { background: var(--store-primary); color: #fff; }
-    .trust-card h4 { font-weight: 800; font-size: 17px; margin-bottom: 8px; }
-    .trust-card p { font-size: 13.5px; color: #64748b; margin: 0; }
+    .inquiry-text h3 {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--store-dark);
+        margin: 0 0 6px;
+    }
+    .inquiry-text p {
+        font-size: 14px;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.6;
+    }
+    .btn-inquiry {
+        background: var(--store-dark);
+        color: #ffffff !important;
+        font-weight: 800;
+        font-size: 14.5px;
+        padding: 12px 24px;
+        border-radius: 12px;
+        text-decoration: none !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        transition: 0.3s ease;
+    }
+    .btn-inquiry:hover {
+        background: var(--store-primary);
+        transform: translateY(-2px);
+    }
 </style>
 
 <!-- PWA & Mobile Optimization Tags -->
@@ -323,212 +296,73 @@
                 
                 <!-- Gateway 1: Physical Hardware -->
                 <a href="https://connecttag.org/store/products" class="store-gateway-card gateway-hw">
-                    <div class="gateway-top-meta">
-                        <div class="gateway-icon-circle"><i class="fa-solid fa-boxes-stacked"></i></div>
-                        <div>
-                            <h2>الأجهزة والمنتجات المادية</h2>
-                            <span>شحن وتوصيل لكافة المحافظات</span>
+                    <div class="gateway-header">
+                        <div class="gateway-top-meta">
+                            <div class="gateway-icon-circle"><i class="fa-solid fa-boxes-stacked"></i></div>
+                            <div>
+                                <h2>الأجهزة والمنتجات المادية</h2>
+                                <span>عتاد تقني وأنظمة أمنية ذكية</span>
+                            </div>
                         </div>
+                        <p>كاميرات مراقبة ذكية، أقفال أبواب بيومترية، أجهزة بصمة الحضور، هاردات SSD مشفرة، وملحقات تقنية مع الضمان والدعم الفني.</p>
+                        
+                        <ul class="gateway-features">
+                            <li><i class="fa-solid fa-check"></i> كاميرات مراقبة ذكية وأجهزة تحكم بالدخول</li>
+                            <li><i class="fa-solid fa-check"></i> أقفال بيومترية وأجهزة حضور وانصراف بالبصمة</li>
+                            <li><i class="fa-solid fa-check"></i> وحدات تخزين خارجية وهاردات SSD مشفرة</li>
+                            <li><i class="fa-solid fa-check"></i> شحن وتوصيل آمن لكافة المحافظات اليمنية</li>
+                        </ul>
                     </div>
-                    <p>كاميرات مراقبة ذكية، أقفال أبواب بيومترية، أجهزة بصمة الحضور، هاردات SSD مشفرة، وملحقات تقنية مع الضمان والدعم الفني.</p>
+
                     <div class="gateway-action-btn">
-                        <span>تصفح متجر الأجهزة</span>
+                        <span>دخول متجر الأجهزة والمنتجات</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
 
                 <!-- Gateway 2: Digital Assets & Datasets -->
                 <a href="https://connecttag.org/store/digital-assets" class="store-gateway-card gateway-digital">
-                    <div class="gateway-top-meta">
-                        <div class="gateway-icon-circle"><i class="fa-solid fa-database"></i></div>
-                        <div>
-                            <h2>الأصول والبيانات الرقمية</h2>
-                            <span>تسليم وتحميل فوري مباشر</span>
+                    <div class="gateway-header">
+                        <div class="gateway-top-meta">
+                            <div class="gateway-icon-circle"><i class="fa-solid fa-database"></i></div>
+                            <div>
+                                <h2>الأصول والبيانات الرقمية</h2>
+                                <span>حزم وقواعد بيانات مهيكلة للمطورين</span>
+                            </div>
                         </div>
+                        <p>بنك البيانات المرجعية للمطورين: جداول الدول والمدن، المهن والتعليم، تصنيفات المتاجر، وقواعد TAC/IMEI بصيغ SQL و JSON و CSV.</p>
+                        
+                        <ul class="gateway-features">
+                            <li><i class="fa-solid fa-check"></i> قاعدة بيانات الدول والمدن ومفاتيح الاتصال العالمية</li>
+                            <li><i class="fa-solid fa-check"></i> الدليل القياسي للمهن والقطاعات التجارية (ISCO)</li>
+                            <li><i class="fa-solid fa-check"></i> التصنيف الهرمي لمنتجات المتاجر والتجارة الإلكترونية</li>
+                            <li><i class="fa-solid fa-check"></i> قاعدة بيانات موديلات الأجهزة وفحص TAC / IMEI</li>
+                        </ul>
                     </div>
-                    <p>بنك البيانات المرجعية للمطورين: جداول الدول والمدن، المهن والتعليم، تصنيفات المتاجر، وقواعد TAC/IMEI بصيغ SQL و JSON و CSV.</p>
+
                     <div class="gateway-action-btn">
-                        <span>تصفح الأصول الرقمية</span>
+                        <span>دخول سوق الأصول والبيانات</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
 
             </div>
 
-            <div class="search-container" data-aos="fade-up" data-aos-delay="200">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <label for="store-search" class="sr-only" style="display:none;">بحث في المتجر</label>
-                <input type="text" class="search-input" id="store-search" placeholder="ابحث في جميع المنتجات والأصول الرقمية (مثلاً: قفل، هارد، دول، مهن...)">
-            </div>
-
-            <div class="store-categories" data-aos="fade-up" data-aos-delay="250">
-                <a href="#" class="cat-pill active" data-filter="all"><i class="fa-solid fa-border-all"></i> الكل</a>
-                <a href="#" class="cat-pill" data-filter="مادي"><i class="fa-solid fa-boxes-stacked"></i> منتجات مادية وأجهزة</a>
-                <a href="#" class="cat-pill" data-filter="رقمي"><i class="fa-solid fa-database"></i> أصول وقواعد بيانات</a>
-                <a href="#" class="cat-pill" data-filter="أنظمة الحماية"><i class="fa-solid fa-fingerprint"></i> أجهزة بصمة وأمان</a>
-                <a href="#" class="cat-pill" data-filter="تخزين البيانات"><i class="fa-solid fa-hard-drive"></i> تخزين</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Products & Datasets Grid -->
-<section style="padding: 60px 0;">
-    <div class="container">
-        <div class="row align-items-center mb-20" style="margin-bottom: 25px;">
-            <div class="col-md-6 text-right">
-                <h2 class="section-title">المعروضات والمنتجات المميزة</h2>
-            </div>
-            <div class="col-md-6 text-left">
-                <span class="text-muted" style="font-weight: 700;" id="product-count">عرض المعروضات المختارة</span>
-            </div>
-        </div>
-
-        <div class="row" id="products-container">
-
-            <!-- Physical Item 1 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="مادي أنظمة الحماية">
-                <div class="product-card">
-                    <span class="badge-status">منتج مادي</span>
-                    <div class="product-img-wrapper">
-                        <img src="https://connecttag.org/upload/store/product/smart-door-lock-5x1.webp" alt="مغلقة أبواب ذكية 5 في 1" loading="lazy">
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat">أنظمة الحماية والأجهزة</span>
-                        <h3 class="product-title">مغلقة أبواب ذكية 5×1</h3>
-                        <p class="product-desc">تحكم كامل في منزلك عبر البصمة، الكود، البطاقة، أو التطبيق الذكي من أي مكان في العالم.</p>
-                        <div class="price-tag">250 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D9%85%D8%BA%D9%84%D9%82%D8%A9%20%D8%A3%D8%A8%D9%88%D8%A7%D8%A8%20%D8%B0%D9%83%D9%8A%D8%A9%205%D7%971" class="btn-buy">
-                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
-                        </a>
+            <!-- Enterprise / Custom Inquiry Box -->
+            <div class="store-inquiry-box" data-aos="fade-up" data-aos-delay="200">
+                <div class="inquiry-content">
+                    <div class="inquiry-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="inquiry-text">
+                        <h3>هل تبحث عن طلب خاص أو توريد كميات للشركات؟</h3>
+                        <p>فريقنا التقني جاهز لتلبية متطلبات المشاريع وتوريد الأجهزة أو تجهيز حزم بيانات مخصصة بحسب احتياج مؤسستك.</p>
                     </div>
                 </div>
+                <a href="https://connecttag.org/company/support/order" class="btn-inquiry">
+                    <span>طلب توريد أو عرض سعر</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
             </div>
 
-            <!-- Digital Asset 1 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="رقمي">
-                <div class="product-card">
-                    <span class="badge-status badge-digital">أصل رقمي (تحميل فوري)</span>
-                    <div class="product-img-wrapper" style="background: #f0fdf4;">
-                        <i class="fa-solid fa-globe fa-5x" style="color: #059669;"></i>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat" style="color: #059669;">بيانات مرجعية SQL/JSON</span>
-                        <h3 class="product-title">قاعدة بيانات الدول والمدن ومفاتيح الاتصال</h3>
-                        <p class="product-desc">أكثر من 250 دولة و 15,000 مدينة مع رموز ISO ومفاتيح الاتصال والعملات جاهزة للاستيراد المباشر.</p>
-                        <div class="price-tag">25 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%20%D9%88%D8%A7%D9%84%D9%85%D8%AF%D9%86%20%D9%88%D9%85%D9%81%D8%A7%D8%AA%D9%8A%D8%AD%20%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84" class="btn-buy btn-digital-buy">
-                            <i class="fa-solid fa-download"></i> طلب وتحميل الحزمة
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Physical Item 2 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="مادي تخزين البيانات">
-                <div class="product-card">
-                    <span class="badge-status">منتج مادي</span>
-                    <div class="product-img-wrapper">
-                        <img src="https://connecttag.org/upload/store/product/samsung-ssd-t7-touch.webp" alt="هارد SSD T7 Touch" loading="lazy">
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat">تخزين البيانات والعتاد</span>
-                        <h3 class="product-title">هارد خارجي SSD T7 Touch</h3>
-                        <p class="product-desc">سرعة نقل فائقة تصل لـ 1050MB/s مع تشفير بيومتري بالبصمة لحماية بياناتك الحساسة عتادياً.</p>
-                        <div class="price-tag">200 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D9%87%D8%A7%D8%B1%D8%AF%20%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%20SSD%20T7%20Touch" class="btn-buy">
-                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Digital Asset 2 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="رقمي">
-                <div class="product-card">
-                    <span class="badge-status badge-digital">أصل رقمي (تحميل فوري)</span>
-                    <div class="product-img-wrapper" style="background: #f0fdf4;">
-                        <i class="fa-solid fa-user-tie fa-5x" style="color: #059669;"></i>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat" style="color: #059669;">أنظمة التوظيف والـ ERP</span>
-                        <h3 class="product-title">الدليل القياسي للمهن والأنشطة التجارية</h3>
-                        <p class="product-desc">أكثر من 1,800 مسمى وظيفي مصنف طبقاً للمعيار الدولي الموحد للمهن ISCO مع القطاعات والرموز.</p>
-                        <div class="price-tag">20 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%B3%D9%8A%20%D9%84%D9%84%D9%85%D9%87%D9%86%20%D9%88%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9" class="btn-buy btn-digital-buy">
-                            <i class="fa-solid fa-download"></i> طلب وتحميل الحزمة
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Physical Item 3 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="مادي تخزين البيانات">
-                <div class="product-card">
-                    <span class="badge-status">منتج مادي</span>
-                    <div class="product-img-wrapper">
-                        <img src="https://connecttag.org/upload/store/product/fingerprint-flash-drive-1tb.webp" alt="فلاش بصمة 1 تيرا" loading="lazy">
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat">تخزين البيانات والعتاد</span>
-                        <h3 class="product-title">فلاش بصمة معدني 1 تيرا</h3>
-                        <p class="product-desc">مساحة تخزين هائلة في جيبك مع أمان بيومتري لا يمكن اختراقه وتصميم معدني فخم ومقاوم للصدمات.</p>
-                        <div class="price-tag">130 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D9%81%D9%84%D8%A7%D8%B4%20%D8%A8%D8%B5%D9%85%D8%A9%201%20%D8%AA%D9%8A%D8%B1%D8%A7" class="btn-buy">
-                            <i class="fa-solid fa-cart-shopping"></i> اطلب الآن
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Digital Asset 3 -->
-            <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="رقمي">
-                <div class="product-card">
-                    <span class="badge-status badge-digital">أصل رقمي (تحميل فوري)</span>
-                    <div class="product-img-wrapper" style="background: #f0fdf4;">
-                        <i class="fa-solid fa-mobile-screen-button fa-5x" style="color: #059669;"></i>
-                    </div>
-                    <div class="product-body">
-                        <span class="product-cat" style="color: #059669;">اتصالات ومطابقة أجهزة</span>
-                        <h3 class="product-title">قاعدة بيانات موديلات الأجهزة و TAC / IMEI</h3>
-                        <p class="product-desc">مطابقة أول 8 أرقام من IMEI لتحديد الموديل، الشركة المصنعة، دعم شبكات 4G/5G/eSIM وكشف التزييف.</p>
-                        <div class="price-tag">45 <span>دولار</span></div>
-                        <a href="https://connecttag.org/company/support/order?type=product&item=%D9%82%D8%A7%D8%B9%D8%AF%D8%A9%20%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D9%85%D9%88%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%20%D8%A7%D9%84%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D9%88%D8%B1%D9%85%D9%88%D8%B2%20TAC%20IMEI" class="btn-buy btn-digital-buy">
-                            <i class="fa-solid fa-download"></i> طلب وتحميل الحزمة
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Trust Section -->
-<section class="trust-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="trust-card">
-                    <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h4>شحن مادي وتسليم رقمي فوري</h4>
-                    <p>توصيل آمن للأجهزة لكافة المحافظات، وتحميل فوري ومباشر لملفات قواعد البيانات والأصول الرقمية.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="trust-card">
-                    <div class="trust-icon"><i class="fa-solid fa-shield-check"></i></div>
-                    <h4>ضمان الجودة والدقة المعيارية</h4>
-                    <p>أجهزة مفحوصة ومضمونة، وقواعد بيانات مهيكلة وموثقة طبقاً لأحدث المعايير القياسية العالمية.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="trust-card">
-                    <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
-                    <h4>دعم فني واستشارات مجانية</h4>
-                    <p>مهندسو كونكت تاق جاهزون لمساعدتك في إعداد الأجهزة أو استيراد حزم البيانات في قواعد بياناتك.</p>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -537,49 +371,6 @@
 </div>
 
 <cookie-consent></cookie-consent>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('store-search');
-        const filterButtons = document.querySelectorAll('.cat-pill');
-        const productItems = document.querySelectorAll('.product-item');
-        const countDisplay = document.getElementById('product-count');
-
-        function updateUI() {
-            const term = searchInput.value.toLowerCase();
-            const activeFilter = document.querySelector('.cat-pill.active').getAttribute('data-filter');
-            let visibleCount = 0;
-
-            productItems.forEach(item => {
-                const text = item.innerText.toLowerCase();
-                const category = item.getAttribute('data-category') || '';
-
-                const matchesSearch = text.includes(term);
-                const matchesFilter = activeFilter === 'all' || category.includes(activeFilter);
-
-                if (matchesSearch && matchesFilter) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            countDisplay.innerText = `عرض ${visibleCount} منتجات مختارة`;
-        }
-
-        searchInput.addEventListener('input', updateUI);
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                filterButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                updateUI();
-            });
-        });
-    });
-</script>
 
 </body>
 </html>
