@@ -219,8 +219,12 @@
 /projects/bots/ /company/projects/bots/ 301
 /projects/design /company/projects/design/ 301
 /projects/design/ /company/projects/design/ 301
-/projects/desktop /company/projects/desktop/ 301
-/projects/desktop/ /company/projects/desktop/ 301
+/projects/desktop /company/projects/apps/ 301
+/projects/desktop/ /company/projects/apps/ 301
+/projects/desktop/* /company/projects/apps/ 301
+/company/projects/desktop /company/projects/apps/ 301
+/company/projects/desktop/ /company/projects/apps/ 301
+/company/projects/desktop/* /company/projects/apps/ 301
 /projects/libraries /company/projects/libraries/ 301
 /projects/libraries/ /company/projects/libraries/ 301
 /projects/sites /company/projects/sites/ 301
