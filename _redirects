@@ -246,6 +246,19 @@
 # Store & Digital Assets
 /store/products.html /store/products 301
 /store/digital-assets.html /store/digital-assets 301
+/store/databases.html /store/databases 301
+/store/database /store/databases 301
+/store/database/ /store/databases 301
+/databases /store/databases 301
+/database /store/databases 301
 /products /store/products 301
 /digital-assets /store/digital-assets 301
+/licenses /store/digital-assets 301
+/store/licenses /store/digital-assets 301
+
+# Crypto Exchange Redirects
+/crypto /company/services/crypto-exchange 301
+/crypto-exchange /company/services/crypto-exchange 301
+/services/crypto-exchange /company/services/crypto-exchange 301
+/company/services/crypto-exchange.html /company/services/crypto-exchange 301
 

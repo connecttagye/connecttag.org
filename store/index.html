@@ -64,21 +64,21 @@
     .hero-content h1 span { color: var(--store-primary); }
     .hero-content p { font-size: 17.5px; color: #64748b; max-width: 760px; margin: 0 auto 35px; line-height: 1.8; }
 
-    /* Gateway Dual Hub Cards */
+    /* Gateway Triple Hub Cards */
     .gateways-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-        max-width: 980px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1180px;
         margin: 0 auto 40px;
     }
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
         .gateways-grid { grid-template-columns: 1fr; gap: 20px; }
     }
     .store-gateway-card {
         background: #ffffff;
         border-radius: 24px;
-        padding: 32px 28px;
+        padding: 30px 24px;
         border: 2px solid #e2e8f0;
         box-shadow: 0 8px 24px rgba(0,0,0,0.04);
         text-align: right;
@@ -98,76 +98,79 @@
     .gateway-top-meta {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
         margin-bottom: 16px;
     }
     .gateway-icon-circle {
-        width: 60px;
-        height: 60px;
-        min-width: 60px;
-        border-radius: 18px;
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 26px;
+        font-size: 24px;
     }
     .gateway-hw .gateway-icon-circle { background: #e0f2fe; color: #0077b6; }
     .gateway-digital .gateway-icon-circle { background: #ecfdf5; color: #059669; }
+    .gateway-license .gateway-icon-circle { background: #f5f3ff; color: #7c3aed; }
 
     .gateway-top-meta h2 {
         margin: 0 0 4px;
-        font-size: 21px;
+        font-size: 19.5px;
         font-weight: 800;
         color: var(--store-dark);
     }
     .gateway-top-meta span {
-        font-size: 13px;
+        font-size: 12.5px;
         font-weight: 700;
         color: #64748b;
     }
     .store-gateway-card p {
-        font-size: 14px;
+        font-size: 13.5px;
         color: #64748b;
         line-height: 1.7;
-        margin-bottom: 22px;
+        margin-bottom: 18px;
     }
     .gateway-action-btn {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         font-weight: 800;
-        font-size: 14.5px;
-        padding: 10px 22px;
+        font-size: 14px;
+        padding: 10px 20px;
         border-radius: 12px;
         transition: 0.3s;
         width: fit-content;
     }
     .gateway-hw .gateway-action-btn { background: #0077b6; color: #ffffff !important; }
     .gateway-digital .gateway-action-btn { background: #059669; color: #ffffff !important; }
+    .gateway-license .gateway-action-btn { background: #7c3aed; color: #ffffff !important; }
     .store-gateway-card:hover .gateway-action-btn { transform: translateX(-4px); }
 
     /* Gateway Features Bullet List */
     .gateway-features {
         list-style: none;
         padding: 0;
-        margin: 20px 0 26px 0;
+        margin: 16px 0 24px 0;
         text-align: right;
     }
     .gateway-features li {
-        font-size: 14px;
+        font-size: 13px;
         color: #475569;
-        margin-bottom: 10px;
+        margin-bottom: 9px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 9px;
         font-weight: 600;
     }
     .gateway-hw .gateway-features li i {
         color: #0077b6;
-        font-size: 13px;
+        font-size: 12px;
         background: #e0f2fe;
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -175,10 +178,23 @@
     }
     .gateway-digital .gateway-features li i {
         color: #059669;
-        font-size: 13px;
+        font-size: 12px;
         background: #ecfdf5;
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .gateway-license .gateway-features li i {
+        color: #7c3aed;
+        font-size: 12px;
+        background: #f5f3ff;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -288,10 +304,10 @@
             <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المتجر", "url":"https://connecttag.org/store/"}]' data-aos="fade-down"></site-breadcrumb>
             <h1 data-aos="fade-up">متجر <span>كونكت تاق</span> التقني</h1>
             <p data-aos="fade-up" data-aos-delay="100">
-                منظومتك المتكاملة لاقتناء أحدث الأجهزة الذكية والأنظمة الأمنية المادية، أو تحميل الأصول وقواعد البيانات الرقمية المهيكلة للمطورين والشركات.
+                منظومتك المتكاملة لاقتناء الأجهزة الذكية والأنظمة الأمنية المادية، أو تحميل قواعد البيانات والجداول المرجعية المهيكلة، أو طلب وتجديد التراخيص والاشتراكات البرمجية المؤسسية.
             </p>
 
-            <!-- Dual Hub Gateways -->
+            <!-- Triple Hub Gateways -->
             <div class="gateways-grid" data-aos="zoom-in" data-aos-delay="150">
                 
                 <!-- Gateway 1: Physical Hardware -->
@@ -315,18 +331,18 @@
                     </div>
 
                     <div class="gateway-action-btn">
-                        <span>دخول متجر الأجهزة والمنتجات</span>
+                        <span>دخول متجر الأجهزة</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
 
-                <!-- Gateway 2: Digital Assets & Datasets -->
-                <a href="https://connecttag.org/store/digital-assets" class="store-gateway-card gateway-digital">
+                <!-- Gateway 2: Reference Databases & Seed Data -->
+                <a href="https://connecttag.org/store/databases" class="store-gateway-card gateway-digital">
                     <div class="gateway-header">
                         <div class="gateway-top-meta">
                             <div class="gateway-icon-circle"><i class="fa-solid fa-database"></i></div>
                             <div>
-                                <h2>الأصول والبيانات الرقمية</h2>
+                                <h2>قواعد البيانات وجداول التهيئة</h2>
                                 <span>حزم وقواعد بيانات مهيكلة للمطورين</span>
                             </div>
                         </div>
@@ -341,7 +357,33 @@
                     </div>
 
                     <div class="gateway-action-btn">
-                        <span>دخول سوق الأصول والبيانات</span>
+                        <span>دخول بنك قواعد البيانات</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </a>
+
+                <!-- Gateway 3: Software Licenses & Subscriptions -->
+                <a href="https://connecttag.org/store/digital-assets" class="store-gateway-card gateway-license">
+                    <div class="gateway-header">
+                        <div class="gateway-top-meta">
+                            <div class="gateway-icon-circle"><i class="fa-solid fa-key"></i></div>
+                            <div>
+                                <h2>التراخيص والاشتراكات البرمجية</h2>
+                                <span>حلول التحقيق الجنائي والأمان المؤسسي</span>
+                            </div>
+                        </div>
+                        <p>تراخيص منصات التحقيق والتحليل الجنائي الرقمي (DFIR)، حماية النقاط الطرفية EDR/XDR، أدوات فحص الثغرات، واشتراكات جدران الحماية.</p>
+                        
+                        <ul class="gateway-features">
+                            <li><i class="fa-solid fa-check"></i> تراخيص منصات استخراج وتحليل الأدلة الجنائية</li>
+                            <li><i class="fa-solid fa-check"></i> اشتراكات حماية النقاط الطرفية EDR ومكافحة الفدية</li>
+                            <li><i class="fa-solid fa-check"></i> تراخيص أدوات فحص الثغرات والتدقيق الأمني</li>
+                            <li><i class="fa-solid fa-check"></i> شهادات توقيع البرمجيات والأمان المؤسسي EV SSL</li>
+                        </ul>
+                    </div>
+
+                    <div class="gateway-action-btn">
+                        <span>تصفح التراخيص والاشتراكات</span>
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
