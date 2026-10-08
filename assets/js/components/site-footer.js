@@ -38,8 +38,6 @@ class SiteFooter extends HTMLElement {
               <li><a href="${baseUrl}/"><i class="fa-solid fa-angle-left"></i> الرئيسية</a></li>
               <li><a href="${baseUrl}/company/"><i class="fa-solid fa-angle-left"></i> من نحن</a></li>
               <li><a href="${baseUrl}/company/our-company"><i class="fa-solid fa-angle-left"></i> الشركة</a></li>
-              <li><a href="${baseUrl}/blog/"><i class="fa-solid fa-angle-left"></i> المدونة</a></li>
-              <li><a href="${baseUrl}/tools/"><i class="fa-solid fa-angle-left"></i> الأدوات</a></li>
               <li><a href="${baseUrl}/company/support/"><i class="fa-solid fa-angle-left"></i> الدعم والطلبات</a></li>
               <li><a href="${baseUrl}/company/support/faq"><i class="fa-solid fa-angle-left"></i> الأسئلة الشائعة</a></li>
               <li><a href="${baseUrl}/contact"><i class="fa-solid fa-angle-left"></i> اتصل بنا</a></li>
