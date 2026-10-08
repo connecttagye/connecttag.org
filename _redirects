@@ -3,6 +3,9 @@
 /about/about-site /about 301
 /company/about-site /about 301
 /services/* /company/services/:splat 301
+/company/services/autonomous-drone-systems /company/services/drone-solutions 301
+/company/services/drone-surveillance /company/services/drone-solutions 301
+/drones /company/services/drone-solutions 301
 
 # Projects &  Apps Redirects
 /projects /company/projects/ 301
