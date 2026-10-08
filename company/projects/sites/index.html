@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>مشاريع الويب والمتاجر الإلكترونية - كونكت تاق</title>
-<meta name="description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية في اليمن، بما في ذلك متجر روكسون اليمن والعديد من الحلول الرقمية.">
+<meta name="description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية في اليمن، بما في ذلك موقع وِجهة، متجر روكسون اليمن، والعديد من الحلول الرقمية.">
 <link rel="canonical" href="https://connecttag.org/company/projects/sites/" />
 
   <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/company/projects/sites/" />
 <meta property="og:type" content="website">
 <meta property="og:title" content="مشاريع الويب والمتاجر الإلكترونية - كونكت تاق">
-<meta property="og:description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية." />
+<meta property="og:description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية، بما في ذلك موقع وِجهة ومتجر روكسون اليمن." />
 <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
 <!-- twitter OpenGraph meta -->
@@ -20,7 +20,7 @@
 <meta name="twitter:site" content="@connecttagye" />
 <meta name="twitter:url" content="https://connecttag.org/company/projects/sites/" />
 <meta name="twitter:title" content="مشاريع الويب والمتاجر الإلكترونية - كونكت تاق">
-<meta name="twitter:description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية." />
+<meta name="twitter:description" content="تصفح معرض أعمالنا في تطوير مواقع الويب والمتاجر الإلكترونية الاحترافية، بما في ذلك موقع وِجهة ومتجر روكسون اليمن." />
 <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,15 +37,15 @@
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.17" defer></script>
 
 <style>
-    .web-project-card { background: #fff; border-radius: 20px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
+    .web-project-card { background: #fff; border-radius: 20px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; display: flex; flex-direction: column; height: calc(100% - 40px); }
     .web-project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-    .project-img-wrapper { position: relative; overflow: hidden; height: 250px; border-bottom: 1px solid #eee; }
+    .project-img-wrapper { position: relative; overflow: hidden; height: 250px; border-bottom: 1px solid #eee; flex-shrink: 0; }
     .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
     .web-project-card:hover .project-img-wrapper img { transform: scale(1.1); }
-    .project-info { padding: 25px; text-align: center; }
+    .project-info { padding: 25px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
     .project-info h3 { font-weight: bold; color: #333; margin-bottom: 10px; }
     .project-info .category { color: #e89a2f; font-weight: bold; margin-bottom: 15px; display: block; }
-    .project-info p { color: #777; font-size: 15px; margin-bottom: 20px; }
+    .project-info p { color: #777; font-size: 15px; margin-bottom: 20px; flex-grow: 1; }
     .tech-stack { margin-bottom: 20px; }
     .tech-stack span { background: #f0f7f9; color: #0052cc; padding: 4px 12px; border-radius: 15px; font-size: 12px; margin: 3px; display: inline-block; }
 </style>
@@ -80,8 +80,29 @@
 <div id="projects-list" style="padding: 80px 0; background: #fdfdfd;">
     <div class="container">
         <div class="row">
-            <!-- Project 1: Roxon -->
-            <div class="col-md-6" data-aos="fade-up">
+            <!-- Project 1: Wejhah Website -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="web-project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://connecttag.org/assets/img/site/wejhah-website.webp" alt="موقع وِجهة - Wejhah" loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <span class="category">موقع تعريفي وتطبيق ويب</span>
+                        <h3>وِجهة - Wejhah</h3>
+                        <p>الموقع التعريفي الرسمي لتطبيق وِجهة؛ دليلك الشامل في اليمن للأماكن والخدمات والمنشآت دون إنترنت، يتميز بتصميم تفاعلي سريع وتجربة مستخدم عصرية.</p>
+                        <div class="tech-stack">
+                            <span>Interactive Web</span>
+                            <span>Tailwind CSS</span>
+                            <span>Modern UI/UX</span>
+                            <span>Fast Performance</span>
+                        </div>
+                        <a href="https://site.wejhah.app/" target="_blank" rel="noopener" class="btn btn-warning" style="background:#e89a2f; border:none; border-radius:20px; padding:8px 30px; align-self: center;">زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Roxon -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="web-project-card">
                     <div class="project-img-wrapper">
                         <img src="https://connecttag.org/assets/img/site/roxon-website.webp" alt="متجر روكسون اليمن" loading="lazy">
@@ -95,13 +116,13 @@
                             <span>Responsive Design</span>
                             <span>Modern UI/UX</span>
                         </div>
-                        <a href="https://roxonye.com/" target="_blank" rel="noopener" class="btn btn-warning" style="background:#e89a2f; border:none; border-radius:20px; padding:8px 30px;">زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://roxonye.com/" target="_blank" rel="noopener" class="btn btn-warning" style="background:#e89a2f; border:none; border-radius:20px; padding:8px 30px; align-self: center;">زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2: APK Store -->
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <!-- Project 3: APK Store -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="web-project-card">
                     <div class="project-img-wrapper">
                         <img src="https://connecttag.org/assets/img/site/apk-store-website.webp" alt="متجر تطبيقات APK" style="object-fit: contain; padding: 40px; background: #f8f9fa;" loading="lazy">
@@ -115,7 +136,7 @@
                             <span>Android Apps</span>
                             <span>Fast Performance</span>
                         </div>
-                        <a href="https://apkstore.download/" target="_blank" rel="noopener" class="btn btn-warning" style="background:#e89a2f; border:none; border-radius:20px; padding:8px 30px;">زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://apkstore.download/" target="_blank" rel="noopener" class="btn btn-warning" style="background:#e89a2f; border:none; border-radius:20px; padding:8px 30px; align-self: center;">زيارة الموقع <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
             </div>

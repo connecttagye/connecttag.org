@@ -262,3 +262,11 @@
 /services/crypto-exchange /company/services/crypto-exchange 301
 /company/services/crypto-exchange.html /company/services/crypto-exchange 301
 
+# Local SEO & Google Maps Redirects
+/local-seo /company/services/local-seo 301
+/maps /company/services/local-seo 301
+/google-maps /company/services/local-seo 301
+/services/local-seo /company/services/local-seo 301
+/company/services/local-seo.html /company/services/local-seo 301
+
+

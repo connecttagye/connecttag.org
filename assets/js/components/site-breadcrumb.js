@@ -69,6 +69,7 @@ class SiteBreadcrumb extends HTMLElement {
         'digital-assets': 'التراخيص والاشتراكات البرمجية',
         'licenses': 'التراخيص والاشتراكات',
         'crypto-exchange': 'بيع وشراء العملات المشفرة',
+        'local-seo': 'خرائط Google والسيو المحلي',
         'about': 'من نحن',
         'our-company': 'عن الشركة',
         'about-site': 'حول الموقع',
