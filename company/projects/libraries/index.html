@@ -288,6 +288,7 @@
     }
     .badge-lang.lang-kotlin { background: #f3e8ff; color: #7e22ce; }
     .badge-lang.lang-python { background: #fef3c7; color: #b45309; }
+    .badge-lang.lang-php { background: #e0e7ff; color: #4338ca; }
     .badge-lang.lang-javascript { background: #fef9c3; color: #a16207; }
 
     .badge-category {
@@ -499,7 +500,7 @@
         <div class="row text-center g-3">
             <div class="col-6 col-md-3">
                 <div class="lib-stat-box">
-                    <span class="stat-number" id="stat-total-libs">56</span>
+                    <span class="stat-number" id="stat-total-libs">73</span>
                     <span class="stat-label">مكتبة مفتوحة المصدر</span>
                 </div>
             </div>
@@ -542,13 +543,13 @@
                     <span class="filter-label"><i class="fa-solid fa-code"></i> لغة البرمجة:</span>
                     <div class="filter-pills">
                         <button type="button" class="filter-pill-btn lang-pill active" data-lang="all">
-                            الكل <span class="badge-count" id="lang-count-all">56</span>
+                            الكل <span class="badge-count" id="lang-count-all">73</span>
                         </button>
                         <button type="button" class="filter-pill-btn lang-pill" data-lang="kotlin">
-                            <i class="fa-brands fa-android"></i> Kotlin <span class="badge-count" id="lang-count-kotlin">56</span>
+                            <i class="fa-brands fa-android"></i> Kotlin <span class="badge-count" id="lang-count-kotlin">71</span>
                         </button>
                         <button type="button" class="filter-pill-btn lang-pill" data-lang="python">
-                            <i class="fa-brands fa-python"></i> Python <span class="badge-count" id="lang-count-python">0</span>
+                            <i class="fa-brands fa-python"></i> Python <span class="badge-count" id="lang-count-python">1</span>
                         </button>
                         <button type="button" class="filter-pill-btn lang-pill" data-lang="javascript">
                             <i class="fa-brands fa-js"></i> JavaScript <span class="badge-count" id="lang-count-javascript">0</span>
@@ -562,29 +563,29 @@
                 <span class="filter-label"><i class="fa-solid fa-layer-group"></i> التصنيف:</span>
                 <div class="filter-pills">
                     <button type="button" class="filter-pill-btn cat-pill active" data-category="all">
-                        <i class="fa-solid fa-border-all"></i> كافة المكاتب <span class="badge-count" id="count-all">56</span>
+                        <i class="fa-solid fa-border-all"></i> كافة المكاتب <span class="badge-count" id="count-all">73</span>
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="ui">
-                        <i class="fa-solid fa-paintbrush"></i> واجهات وتفاعلات (UI) <span class="badge-count" id="count-ui">9</span>
+                        <i class="fa-solid fa-paintbrush"></i> واجهات وتفاعلات (UI) <span class="badge-count" id="count-ui">12</span>
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="network">
-                        <i class="fa-solid fa-wifi"></i> الشبكات والاتصال <span class="badge-count" id="count-network">7</span>
+                        <i class="fa-solid fa-wifi"></i> الشبكات والاتصال <span class="badge-count" id="count-network">9</span>
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="storage">
                         <i class="fa-solid fa-database"></i> التخزين والبيانات <span class="badge-count" id="count-storage">4</span>
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="security">
-                        <i class="fa-solid fa-shield-halved"></i> الأمان والتشفير <span class="badge-count" id="count-security">9</span>
+                        <i class="fa-solid fa-shield-halved"></i> الأمان والتشفير <span class="badge-count" id="count-security">12</span>
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="core">
-                        <i class="fa-solid fa-gears"></i> المعمارية والأدوات الأساسية <span class="badge-count" id="count-core">27</span>
+                        <i class="fa-solid fa-gears"></i> المعمارية والأدوات الأساسية <span class="badge-count" id="count-core">36</span>
                     </button>
                 </div>
             </div>
 
             <!-- Filter Status Strip -->
             <div class="filter-results-status">
-                <span id="results-count-text">يتم عرض <strong>56</strong> مكتبة برمجية</span>
+                <span id="results-count-text">يتم عرض <strong>73</strong> مكتبة برمجية</span>
                 <button type="button" id="reset-all-filters-btn" class="reset-filter-btn" style="display: none;">
                     <i class="fa-solid fa-rotate-left"></i> إعادة ضبط الفلاتر
                 </button>
@@ -2173,6 +2174,482 @@
                 </div>
             </div>
 
+            <!-- Library 57: billing-play-lib -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="billing-play-lib" data-desc="تجريد billing client مشتريات جوجل بلاي اشتراكات kotlin coroutines محرك اختبارات" data-tech="kotlin android google play billing client in-app purchases subscriptions fake engine coroutines" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-brands fa-google-play"></i>
+                    </div>
+                    <h3>billing-play-lib</h3>
+                    <p>تجريد متطور لـ Google Play Billing Client بتدفقات Kotlin Coroutines التفاعلية، دعم الاشتراكات، ومحرك اختبارات وهمي.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Play Billing</span>
+                        <span>In-App Purchases</span>
+                        <span>Subscriptions</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/billing-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:billing-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 58: update-play-lib -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="update-play-lib" data-desc="تحديثات التطبيقات داخل التطبيق google play in-app updates فوري ومرن مستمعات حالة" data-tech="kotlin android google play in-app updates immediate flexible flow state listeners fake engine" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>update-play-lib</h3>
+                    <p>إدارة وتسهيل تحديثات التطبيقات عبر Google Play In-App Updates بأنماط التحديث الفوري والمرن مع مستمعات حالة تفاعلية ومحاكي اختبارات.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>In-App Updates</span>
+                        <span>Immediate Flow</span>
+                        <span>Flexible Flow</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/update-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:update-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 59: review-play-lib -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="review-play-lib" data-desc="طلب تقييم التطبيق داخل التطبيق google play in-app review تتبع الجلسات معايير ذكية" data-tech="kotlin android google play in-app review session tracking criteria evaluator rating prompt" data-category="ui" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">واجهات وتفاعلات</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3>review-play-lib</h3>
+                    <p>مدير طلب تقييم التطبيق داخل التطبيق (Google Play In-App Review) بفترات قابلة للتكوين، وتتبع الجلسات، وتقييم المعايير الذكية.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>In-App Review</span>
+                        <span>Session Tracking</span>
+                        <span>Rating Prompt</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/review-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:review-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 60: integrity-play-lib -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="integrity-play-lib" data-desc="التحقق من سلامة التطبيق google play integrity api فحص بيئة الجهاز رموز الأمان المشفرة" data-tech="kotlin android play integrity api verdict tokens device environment check fake engine security" data-category="security" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">الأمان والتشفير</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>integrity-play-lib</h3>
+                    <p>التكامل مع Google Play Integrity API لطلب والتحقق من رموز السلامة المشفرة وفحص بيئة تشغيل الجهاز وموثوقية التطبيق.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Play Integrity</span>
+                        <span>Token Verdict</span>
+                        <span>Device Health</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/integrity-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:integrity-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 61: threat-engine-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="threat-engine-lib-kmp" data-desc="محرك كشف التهديدات الأمنية مطابقة مؤشرات الاختراق ioc domainsuffixtrie ipradixtree درجات الخطر" data-tech="kotlin kmp threat detection ioc matching domainsuffixtrie ipradixtree security ipc risk scoring" data-category="security" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">الأمان والتشفير</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h3>threat-engine-lib-kmp</h3>
+                    <p>محرك موحد لكشف التهديدات الأمنية ومطابقة مؤشرات الاختراق (IOC) عبر خوارزميات DomainSuffixTrie و IpRadixTree واحتساب درجات الخطر.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Threat Engine</span>
+                        <span>IOC Matching</span>
+                        <span>RadixTree / Trie</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/threat-engine-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:threat-engine-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 62: packet-dissector-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="packet-dissector-lib-kmp" data-desc="تشريح حزم الشبكة تحليل البروتوكولات dns wire tls client hello quic websocket تصدير har" data-tech="kotlin kmp network packet dissector dns wire tls hello quic websocket har exporter pcap" data-category="network" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">الشبكات والاتصال</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3>packet-dissector-lib-kmp</h3>
+                    <p>تشريح حزم الشبكة وتحليل البروتوكولات (DNS Wire, TLS Client/Server Hello, QUIC, WebSocket) وتصدير سجلات HAR عبر المنصات.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Packet Dissector</span>
+                        <span>DNS / TLS / QUIC</span>
+                        <span>HAR Exporter</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/packet-dissector-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:packet-dissector-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 63: automation-core-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="automation-core-lib-kmp" data-desc="محرك الأتمتة والقواعد event-driven rules engine محددات معدل الطلب rate limiters تقييم المشغلات" data-tech="kotlin kmp automation core rules engine rate limiters trigger evaluators scheduling models" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3>automation-core-lib-kmp</h3>
+                    <p>محرك أتمتة وقواعد مبني على الأحداث (Event-driven Rules Engine)، ومحددات معدل الطلب (Rate Limiters)، وتقييم المشغلات ونماذج الجدولة.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Rules Engine</span>
+                        <span>Rate Limiting</span>
+                        <span>Event Triggers</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/automation-core-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:automation-core-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 64: system-bridge-android -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="system-bridge-android" data-desc="جسر التفاعل مع نظام أندرويد الحافظة إخفاء الكيبورد موجه النوايا المشاركة hilt di" data-tech="kotlin android system bridge clipboard keyboard listener app intent dispatchers hilt di" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-bridge"></i>
+                    </div>
+                    <h3>system-bridge-android</h3>
+                    <p>جسر التفاعل مع نظام أندرويد: الحافظة، مستمعات إخفاء لوحة المفاتيح، موجه النوايا، المشاركة، والتكامل مع حقن التبعيات Hilt.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>System Bridge</span>
+                        <span>Hilt DI</span>
+                        <span>Keyboard Listener</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/system-bridge-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:system-bridge-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 65: serial-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="serial-lib-kmp" data-desc="اتصالات المنافذ التسلسلية serial usb-otg أندرويد و desktop jvm تدفقات تفاعلية watchdog" data-tech="kotlin kmp serial communication usb-otg android desktop jvm reactive flow watchdog dfu" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3>serial-lib-kmp</h3>
+                    <p>حزمة SDK شاملة لاتصالات المنافذ التسلسلية Serial و USB-OTG لنظامي Android و Desktop JVM بتدفقات تفاعلية ومراقبة Watchdog.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Serial Port</span>
+                        <span>USB-OTG</span>
+                        <span>Watchdog Flow</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/serial-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:serial-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 66: video-streaming-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="video-streaming-lib-kmp" data-desc="بث وفك تشفير الفيديو فائق السرعة rtsp server rtp h264 mjpeg media3 ffmpeg decoders" data-tech="kotlin kmp video streaming rtsp server rtp h264 packetizer skyv mjpeg media3 ffmpeg decoding" data-category="ui" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">واجهات وتفاعلات</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3>video-streaming-lib-kmp</h3>
+                    <p>حزمة بث وفك تشفير الفيديو فائق الانخفاض في زمن الوصول (RTSP Server, RTP H.264, MJPEG) ومفكوكات Media3 و FFmpeg.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>RTSP / RTP</span>
+                        <span>H.264 Streaming</span>
+                        <span>Media3 / FFmpeg</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/video-streaming-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:video-streaming-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 67: vision-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="vision-lib-kmp" data-desc="الرؤية الحاسوبية تتبع الأهداف البصرية bytetrack kalman filter استدلال ذكاء اصطناعي yolov8 litert" data-tech="kotlin kmp computer vision target tracking bytetrack kalman yolov8 litert on device inference" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3>vision-lib-kmp</h3>
+                    <p>الرؤية الحاسوبية فائقة السرعة، وتتبع الأهداف البصرية (ByteTrack, Kalman Filter)، والاستدلال العصبي على الأجهزة بـ YOLOv8 LiteRT.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Computer Vision</span>
+                        <span>Object Tracking</span>
+                        <span>YOLOv8 LiteRT</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/vision-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:vision-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 68: wireguard-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="wireguard-lib-kmp" data-desc="حزمة wireguard vpn متعددة المنصات kmp تحليل wg0 conf نفق مشفر إدارة دورة الحياة" data-tech="kotlin kmp wireguard vpn sdk wg0 conf parser tunnel lifecycle cryptokey storage multiplatform" data-category="network" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">الشبكات والاتصال</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3>wireguard-lib-kmp</h3>
+                    <p>حزمة SDK لمشروع WireGuard VPN متعددة المنصات (KMP Core)، تحليل ملفات wg0.conf، إدارة دورة حياة النفق، والتخزين المشفر للمفاتيح.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>WireGuard VPN</span>
+                        <span>wg0.conf Parser</span>
+                        <span>Tunnel Lifecycle</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/wireguard-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:wireguard-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 69: permissions-ui-compose -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="permissions-ui-compose" data-desc="واجهات طلب وإدارة أذونات أندرويد بـ jetpack compose حوارات التبرير rationale وشاشات التوجيه" data-tech="kotlin android jetpack compose permissions ui runtime permissions rationale dialogs settings" data-category="ui" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin Android</span>
+                        <span class="badge-category">واجهات وتفاعلات</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-hand-holding-hand"></i>
+                    </div>
+                    <h3>permissions-ui-compose</h3>
+                    <p>مكونات واجهات Jetpack Compose عصرية لطلب وإدارة وعرض أذونات أندرويد مع مربعات حوار التبرير وشاشات التوجيه للإعدادات.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Compose Permissions</span>
+                        <span>Rationale Dialog</span>
+                        <span>Permission UI</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/permissions-ui-compose" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:permissions-ui-compose:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 70: app-metadata-lib-kmp -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="app-metadata-lib-kmp" data-desc="تصنيف ذكي للتطبيقات استخراج البيانات الوصفية تقييم الموثوقية ومصادر التثبيت android jvm" data-tech="kotlin kmp app metadata categorization trust evaluation install source verification android jvm" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <h3>app-metadata-lib-kmp</h3>
+                    <p>تصنيف ذكي للتطبيقات، واستخراج البيانات الوصفية، وتقييم موثوقية التطبيقات ومصادر التثبيت لمنصتي Android و JVM.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>App Metadata</span>
+                        <span>Trust Evaluation</span>
+                        <span>Install Source</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/app-metadata-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:app-metadata-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 71: formatter-kit -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="formatter-kit" data-desc="تنسيق أحجام الملفات سرعات الشبكة معدلات البت الحزم والتواريخ kmp" data-tech="kotlin kmp formatter kit file sizes network speeds bitrates packets dates formatting" data-category="core" data-lang="kotlin">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-kotlin"><i class="fa-brands fa-android"></i> Kotlin KMP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-solid fa-text-slash"></i>
+                    </div>
+                    <h3>formatter-kit</h3>
+                    <p>أدوات تنسيق خفيفة ومتعددة المنصات لأحجام الملفات، سرعات الشبكة (Bps/Mbps)، معدلات البت، الحزم والتواريخ.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
+                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>File Sizes</span>
+                        <span>Network Speeds</span>
+                        <span>Formatters</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/formatter-kit" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:formatter-kit:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 72: apk-security-analyzer -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="apk-security-analyzer" data-desc="اختبار أمان تطبيقات أندرويد sast تدقيق معايير owasp masvs كشف المفاتيح والرموز المسربة وإصلاح الثغرات" data-tech="python security apk sast analyzer owasp masvs leaked secrets crypto audit decompile patcher" data-category="security" data-lang="python">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-python"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="badge-category">الأمان والتشفير</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <h3>apk-security-analyzer</h3>
+                    <p>جناح اختبارات أمان تطبيقات أندرويد الثابتة (SAST)، وتدقيق معايير OWASP MASVS، وكشف المفاتيح والرموز المسربة وإصلاح الثغرات.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>Python SAST</span>
+                        <span>OWASP MASVS</span>
+                        <span>Secret Hunting</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/apk-security-analyzer" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='pip install -r requirements.txt' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library 73: php-mvc-api-template -->
+            <div class="col-lg-4 col-md-6 mb-4 lib-col-item" data-name="php-mvc-api-template" data-desc="إطار عمل وقالب بادئ عصري وخفيف php mvc rest api توجيه regex وحقن تبعيات di و docker" data-tech="php mvc framework rest api boilerplate template routing dependency injection docker psr" data-category="core" data-lang="php">
+                <div class="lib-card">
+                    <div class="lib-card-top">
+                        <span class="badge-lang lang-php"><i class="fa-brands fa-php"></i> PHP</span>
+                        <span class="badge-category">المعمارية والأساس</span>
+                    </div>
+                    <div class="lib-icon">
+                        <i class="fa-brands fa-php"></i>
+                    </div>
+                    <h3>php-mvc-api-template</h3>
+                    <p>إطار عمل وقالب بادئ عصري وخفيف لـ PHP MVC و REST API، موجه بالكامل بدون مكتبات ثقيلة ويدعم Docker وتوجيه Regex.</p>
+                    <div class="platform-pills">
+                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
+                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> Web</span>
+                    </div>
+                    <div class="lib-tech">
+                        <span>PHP MVC</span>
+                        <span>REST API</span>
+                        <span>PSR Standards</span>
+                    </div>
+                    <div class="lib-actions">
+                        <a href="https://github.com/connecttag/php-mvc-api-template" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
+                        <button type="button" class="btn-copy-dep" data-dep='composer create-project connecttag/php-mvc-api-template' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- No Results Fallback State -->
@@ -2225,7 +2702,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const statTotal = document.getElementById('stat-total-libs');
         if (statTotal) statTotal.textContent = items.length;
         const counts = { all: 0, ui: 0, network: 0, storage: 0, security: 0, core: 0 };
-        const langCounts = { all: items.length, kotlin: 0, python: 0, javascript: 0 };
+        const langCounts = { all: items.length, kotlin: 0, python: 0, php: 0, javascript: 0 };
 
         items.forEach(function(item) {
             const lang = item.getAttribute('data-lang') || '';
