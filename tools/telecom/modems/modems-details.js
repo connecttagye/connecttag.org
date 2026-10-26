@@ -116,12 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "@type": "Brand",
                 "name": m.brand || "عام"
             },
-            "model": m.modelOrVersion || "",
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5",
-                "reviewCount": "1"
-            }
+            "model": m.modelOrVersion || ""
         };
         const schemaEl = document.getElementById('schema-product');
         if (schemaEl) schemaEl.textContent = JSON.stringify(schemaData);

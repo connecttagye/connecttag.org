@@ -552,8 +552,8 @@
                     </optgroup>
 
                     <optgroup label="10. اشتراكات وأدوات الذكاء الاصطناعي">
-                        <option value="اشتراكات نماذج الذكاء الاصطناعي المتقدمة (ChatGPT / Claude)">اشتراكات نماذج الذكاء الاصطناعي المتقدمة (ChatGPT / Claude)</option>
-                        <option value="أدوات الذكاء التوليدي وأرصدة الـ API (Midjourney / Cursor)">أدوات الذكاء التوليدي وأرصدة الـ API (Midjourney / Cursor)</option>
+                        <option value="اشتراكات نماذج الذكاء الاصطناعي المتقدمة">اشتراكات نماذج الذكاء الاصطناعي المتقدمة</option>
+                        <option value="أدوات الذكاء التوليدي وأرصدة الـ API">أدوات الذكاء التوليدي وأرصدة الـ API</option>
                     </optgroup>
 
                     <optgroup label="11. بيع وشراء وتداول العملات الرقمية والمشفرة">
@@ -583,8 +583,8 @@
                     <i class="fa-solid fa-paper-plane"></i> إرسال الطلب عبر البريد الرسمي
                   </button>
                   
-                  <button type="button" class="btn btn-submit-whatsapp" id="whatsapp-btn">
-                    <i class="fa-brands fa-whatsapp"></i> إرسال ومتابعة الطلب فوراً عبر واتساب
+                  <button type="button" class="btn btn-submit-whatsapp" id="whatsapp-btn" style="background: linear-gradient(135deg, #0088cc, #0052cc); box-shadow: 0 8px 20px rgba(0, 136, 204, 0.25);">
+                    <i class="fa-brands fa-telegram"></i> إرسال ومتابعة الطلب فوراً عبر تيليجرام الرسمي
                   </button>
 
                   <div class="text-center" style="margin-top: 10px;">
@@ -745,8 +745,8 @@
       'licenses': 'تراخيص منصات التحقيق الجنائي الرقمي (DFIR)',
       'license': 'تراخيص منصات التحقيق الجنائي الرقمي (DFIR)',
       'forensics': 'تراخيص منصات التحقيق الجنائي الرقمي (DFIR)',
-      'ai': 'اشتراكات نماذج الذكاء الاصطناعي المتقدمة (ChatGPT / Claude)',
-      'chatgpt': 'اشتراكات نماذج الذكاء الاصطناعي المتقدمة (ChatGPT / Claude)',
+      'ai': 'اشتراكات نماذج الذكاء الاصطناعي المتقدمة',
+      'chatgpt': 'اشتراكات نماذج الذكاء الاصطناعي المتقدمة',
       'crypto': 'شراء عملات رقمية ومستقرة (USDT / Bitcoin)',
       'crypto-exchange': 'شراء عملات رقمية ومستقرة (USDT / Bitcoin)',
       'usdt': 'شراء عملات رقمية ومستقرة (USDT / Bitcoin)',
@@ -983,7 +983,7 @@
       });
     }
 
-    // Submit / Continue via WhatsApp
+    // Submit / Continue via Official Telegram
     const whatsappBtn = document.getElementById('whatsapp-btn');
     if (whatsappBtn) {
       whatsappBtn.addEventListener('click', function() {
@@ -991,10 +991,10 @@
 
         const payload = getOrderPayload();
         const text = formatSummaryText(payload);
-        const waUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(text);
+        const tgUrl = "https://t.me/connecttagye?text=" + encodeURIComponent(text);
 
-        showAlert("تم تجهيز رسالة الواتساب بنجاح! يتم الآن توجيهك للمحادثة لإرسالها مباشرة.");
-        window.open(waUrl, '_blank');
+        showAlert("تم تجهيز ملخص الطلب بنجاح! يتم الآن توجيهك إلى حسابنا الرسمي على تيليجرام لإرساله مباشرة.");
+        window.open(tgUrl, '_blank');
       });
     }
 

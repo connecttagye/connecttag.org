@@ -329,7 +329,7 @@ function liveUpdate() {
     const ctx = templates[docType][lang];
     const date = new Date().toLocaleDateString(lang === 'ar' ? 'ar-YE' : 'en-US', {year:'numeric', month:'long', day:'numeric'});
 
-    let html = `<h1>${ctx.t.replace('{n}', n || '[...]')}</h1><p><strong>${ctx.up.replace('{d}', date)}</strong></p>`;
+    let html = `<h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;">${ctx.t.replace('{n}', n || '[...]')}</h2><p><strong>${ctx.up.replace('{d}', date)}</strong></p>`;
     html += ctx.in.replace(/{c}/g, c).replace(/{n}/g, n || '[...]') + "<br>";
     html += ctx.c1 + (ctx.c2 || "");
 
