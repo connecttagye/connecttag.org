@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>أسعار الصرف اليوم - كونكت تاق</title>
-<meta name="description" content="أسعار صرف الريال اليمني مقابل الدولار والسعودي في صنعاء وعدن. حاسبة صرف ذكية وتحديثات يومية لأسعار العملات.">
+<title>حاسبة ومتوسط أسعار الصرف في اليمن - كونكت تاق</title>
+<meta name="description" content="حاسبة تحويل العملات ومتوسط أسعار الصرف المرجعية التقديرية للريال اليمني مقابل الدولار والريال السعودي في صنعاء وعدن.">
 <link rel="canonical" href="https://connecttag.org/tools/finance/yemen-exchange/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +80,7 @@
     .result-val { font-size: 32px; font-weight: 900; color: var(--accent-color); display: block; }
 
     .update-time { font-size: 12px; color: #64748b; margin-top: 15px; text-align: center; }
-    .disclaimer { font-size: 11px; color: #94a3b8; line-height: 1.6; margin-top: 30px; text-align: center; }
+    .disclaimer { font-size: 12px; color: #64748b; line-height: 1.7; margin-top: 30px; text-align: center; background: #fff; padding: 18px 24px; border-radius: 16px; border: 1px solid #e2e8f0; }
 </style>
 
 <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.20" defer></script>
@@ -100,8 +100,8 @@
 <div class="exchange-container container">
     <div class="text-center mb-5">
         <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الخدمات المالية","url":"https://connecttag.org/tools/finance/"},{"title":"أسعار الصرف","url":"https://connecttag.org/tools/finance/yemen-exchange/"}]'></site-breadcrumb>
-        <h1 style="font-weight: 900; color: var(--primary-color);">أسعار الصرف</h1>
-        <p class="text-muted">متابعة دقيقة لأسعار صرف الريال اليمني في صنعاء وعدن لحظة بلحظة</p>
+        <h1 style="font-weight: 900; color: var(--primary-color);">حاسبة ومتوسط أسعار الصرف</h1>
+        <p class="text-muted">حاسبة تفاعلية لتحويل العملات مع جدول متوسط الأسعار المرجعية التقديرية للريال اليمني في صنعاء وعدن</p>
     </div>
 
     <div class="row g-4">
@@ -109,7 +109,7 @@
         <div class="col-md-6">
             <div class="rate-card">
                 <div class="card-header-custom">
-                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa-solid fa-building-columns"></i> أسعار الصرف - صنعاء</h4>
+                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa-solid fa-building-columns"></i> متوسط الصرف المرجعي - صنعاء</h4>
                 </div>
                 <div class="rate-body">
                     <div class="rate-item">
@@ -119,7 +119,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="sanaa-usd-buy">535</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -129,7 +129,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="sanaa-usd-sell">538</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -139,7 +139,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="sanaa-sar-buy">140</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -149,7 +149,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="sanaa-sar-sell">141</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
         <div class="col-md-6">
             <div class="rate-card">
                 <div class="card-header-custom card-header-aden">
-                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa-solid fa-building-columns"></i> أسعار الصرف - عدن</h4>
+                    <h4 class="mb-0" style="font-weight: 800;"><i class="fa-solid fa-building-columns"></i> متوسط الصرف المرجعي - عدن</h4>
                 </div>
                 <div class="rate-body">
                     <div class="rate-item">
@@ -170,7 +170,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="aden-usd-buy">1902</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -180,7 +180,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="aden-usd-sell">1915</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -190,7 +190,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="aden-sar-buy">498</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                     <div class="rate-item">
@@ -200,7 +200,7 @@
                         </div>
                         <div class="price-tag">
                             <span class="price-value" id="aden-sar-sell">501</span>
-                            <span class="price-label">ريال يمني</span>
+                            <span class="price-label">ريال يمني (تقديري)</span>
                         </div>
                     </div>
                 </div>
@@ -208,30 +208,34 @@
         </div>
     </div>
 
-    <div class="update-time" id="last-update">آخر تحديث: قبل قليل</div>
+    <div class="update-time" id="last-update">بيانات الجدول أعلاه تمثل متوسط الأسعار المرجعية التقديرية في السوق المحلية (قابلة للتعديل في الحاسبة أدناه)</div>
 
     <!-- Calculator -->
     <div class="calc-card">
         <h3 class="text-center mb-4" style="font-weight: 900;"><i class="fa-solid fa-calculator"></i> حاسبة الصرف الذكية</h3>
         <div class="row align-items-center">
-            <div class="col-md-5 mb-3 mb-md-0">
+            <div class="col-md-4 mb-3 mb-md-0">
                 <label class="small mb-2 d-block opacity-75">المبلغ المراد تحويله:</label>
                 <input type="number" id="calc-amount" class="calc-input" placeholder="0.00" oninput="calculate()">
             </div>
-            <div class="col-md-3 mb-3 mb-md-0">
+            <div class="col-md-4 mb-3 mb-md-0">
                 <label class="small mb-2 d-block opacity-75">العملة والمدينة:</label>
-                <select id="calc-type" class="calc-select" onchange="calculate()">
-                    <optgroup label="صنعاء">
+                <select id="calc-type" class="calc-select" onchange="onPairChange()">
+                    <optgroup label="صنعاء (متوسط مرجعي)">
                         <option value="sanaa-usd">دولار ← ريال (صنعاء)</option>
                         <option value="sanaa-sar">سعودي ← ريال (صنعاء)</option>
                     </optgroup>
-                    <optgroup label="عدن">
+                    <optgroup label="عدن (متوسط مرجعي)">
                         <option value="aden-usd">دولار ← ريال (عدن)</option>
                         <option value="aden-sar">سعودي ← ريال (عدن)</option>
                     </optgroup>
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <label class="small mb-2 d-block opacity-75">سعر الصرف المحتسب (قابل للتعديل يدوياً):</label>
+                <input type="number" id="calc-custom-rate" class="calc-input" value="535" step="any" oninput="calculate()">
+            </div>
+            <div class="col-12 mt-3">
                 <div class="result-display">
                     <span class="small d-block opacity-75 mb-1">النتيجة التقريبية:</span>
                     <span class="result-val" id="calc-result">0 ريال يمني</span>
@@ -241,38 +245,39 @@
     </div>
 
     <div class="disclaimer">
-        * ملاحظة: أسعار الصرف متغيرة بشكل مستمر وغير مستقرة. البيانات المعروضة هي متوسط أسعار السوق المحلية للاسترشاد فقط. كونكت تاق لا تتحمل أي مسؤولية عن تغييرات الأسعار أو العمليات المالية.
+        <strong>تنويه وإخلاء مسؤولية مالي:</strong> أسعار الصرف في السوق المحلية متغيرة باستمرار وتختلف من منشأة صرافة لأخرى ومن محافظة لأخرى. الأرقام المعروضة في هذه الصفحة هي متوسطات مرجعية تقديرية لأغراض الحساب والاسترشاد العام فقط، ولا تُعد نشرة مصرفية رسمية أو عرضاً مالياً ملزماً. يمكنك تعديل سعر الصرف يدوياً في الحاسبة أعلاه لمطابقة السعر الفعلي لديك.
     </div>
 </div>
 
 <site-footer></site-footer>
+<cookie-consent></cookie-consent>
 
 <script>
-    // Rates Data (Can be updated manually or via API)
+    // Reference Average Rates Data (Editable by the user in the calculator)
     const currentRates = {
-        sanaa: { usd_buy: 535, sar_buy: 140 },
-        aden: { usd_buy: 1902, sar_buy: 498 }
+        'sanaa-usd': 535,
+        'sanaa-sar': 140,
+        'aden-usd': 1902,
+        'aden-sar': 498
     };
+
+    function onPairChange() {
+        const type = document.getElementById('calc-type').value;
+        const rateInput = document.getElementById('calc-custom-rate');
+        if (rateInput && currentRates[type]) {
+            rateInput.value = currentRates[type];
+        }
+        calculate();
+    }
 
     function calculate() {
         const amount = parseFloat(document.getElementById('calc-amount').value) || 0;
-        const type = document.getElementById('calc-type').value;
+        const rate = parseFloat(document.getElementById('calc-custom-rate').value) || 0;
         const resultEl = document.getElementById('calc-result');
 
-        let result = 0;
-        if (type === 'sanaa-usd') result = amount * currentRates.sanaa.usd_buy;
-        else if (type === 'sanaa-sar') result = amount * currentRates.sanaa.sar_buy;
-        else if (type === 'aden-usd') result = amount * currentRates.aden.usd_buy;
-        else if (type === 'aden-sar') result = amount * currentRates.aden.sar_buy;
-
+        const result = amount * rate;
         resultEl.textContent = result.toLocaleString('ar-YE') + " ريال يمني";
     }
-
-    // Set last update time
-    const now = new Date();
-    document.getElementById('last-update').textContent = `آخر تحديث: ${now.toLocaleDateString('ar-YE')} - ${now.toLocaleTimeString('ar-YE')}`;
 </script>
 </body>
 </html>
-
-

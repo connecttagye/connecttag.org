@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>فحص سرعة الإنترنت | قياس سرعة التحميل والرفع - كونكت تاق</title>
-    <meta name="description" content="أداة سريعة ودقيقة لفحص سرعة الإنترنت الخاصة بك. قس سرعة التحميل، الرفع، والـ Ping لمعرفة جودة اتصالك بالإنترنت وتوافقها مع باقات يمن فورجي والـ ADSL.">
+    <meta name="description" content="أداة سريعة ودقيقة لفحص سرعة الإنترنت الخاصة بك. قس سرعة التحميل الفعلية، الرفع التقديري، والـ Ping لمعرفة جودة اتصالك بالإنترنت وتوافقها مع باقات يمن فورجي والـ ADSL.">
     <link rel="canonical" href="https://connecttag.org/tools/telecom/speed-test/" />
 
     <!-- OpenGraph meta -->
@@ -21,7 +21,7 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "فاحص سرعة الإنترنت",
-      "description": "أداة لقياس سرعة التحميل والرفع والـ Ping.",
+      "description": "أداة متصفحية لقياس سرعة التحميل الفعلية ومعدل الرفع التقديري وزمن الاستجابة Ping.",
       "applicationCategory": "TechnicalTool",
       "operatingSystem": "All",
       "url": "https://connecttag.org/tools/telecom/speed-test/"
@@ -57,9 +57,6 @@
             align-items: center;
         }
 
-        .gauge-container { position: relative; width: 280px; height: 280px; margin: 0 auto 30px; }
-        .gauge-svg { transform: rotate(-90deg); }
-        .gauge-bg { fill: none; stroke: #f1f5f9; stroke-width: 12; }
         .gauge-container {
             position: relative; width: 280px; height: 280px; margin: 0 auto 30px;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -92,7 +89,7 @@
         .testing .gauge-container { transform: scale(1.05); }
 
         .stat-item {
-            background: #ffffff; border-radius: 20px; padding: 20px; border: 1px solid #f1f5f9;
+            background: #f8fafc; border-radius: 15px; padding: 15px; border: 1px solid #f1f5f9;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
@@ -109,7 +106,6 @@
         .speed-unit { font-size: 16px; color: #64748b; font-weight: 700; margin-top: 5px; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
-        .stat-item { background: #f8fafc; border-radius: 15px; padding: 15px; border: 1px solid #f1f5f9; }
         .stat-label { font-size: 13px; color: #64748b; font-weight: 700; display: block; margin-bottom: 5px; }
         .stat-value { font-size: 20px; font-weight: 800; color: #0052cc; }
 
@@ -151,7 +147,7 @@
     <div class="page-header-unified">
         <div class="container">
             <h1 data-aos="fade-down">فحص سرعة الإنترنت</h1>
-            <p data-aos="fade-up" data-aos-delay="100">قس سرعة اتصالك بدقة واعرف جودة التحميل والرفع في ثوانٍ معدودة</p>
+            <p data-aos="fade-up" data-aos-delay="100">قس سرعة التحميل الفعلية وزمن الاستجابة ومعدل الرفع التقديري لاتصالك في ثوانٍ معدودة</p>
             <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"قياس سرعة الإنترنت","url":"https://connecttag.org/tools/telecom/speed-test/"}]'></site-breadcrumb>
         </div>
     </div>
@@ -177,7 +173,7 @@
                         <span class="stat-value" id="download-val">-</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label"><i class="fa-solid fa-upload"></i> الرفع</span>
+                        <span class="stat-label"><i class="fa-solid fa-upload"></i> الرفع (تقديري)</span>
                         <span class="stat-value" id="upload-val">-</span>
                     </div>
                     <div class="stat-item">
@@ -197,7 +193,7 @@
     <div class="container pb-5" style="margin-bottom: 80px;">
         <div class="info-section text-center" data-aos="fade-up">
             <h2>كيف يتم قياس سرعة الإنترنت؟</h2>
-            <p class="mx-auto" style="max-width: 700px;">تقوم هذه الأداة بإرسال طلبات صغيرة إلى خوادم عالمية سريعة لحساب زمن الاستجابة (Ping)، ثم تقوم بتحميل ملفات مؤقتة لقياس "عرض النطاق الترددي" (Bandwidth) المتاح لاتصالك في هذه اللحظة.</p>
+            <p class="mx-auto" style="max-width: 700px;">تقوم هذه الأداة المتصفحية بقياس زمن الاستجابة (Ping) وحساب سرعة التنزيل الفعلية عبر تحميل حزم بيانات ثابتة من خادم النطاق المباشر، بينما يُحتسب مؤشر سرعة الرفع بشكل تقديري بناءً على نسبة التدفق القياسية للاتصال.</p>
 
             <div class="row mt-5">
                 <div class="col-md-6 mb-4">
@@ -218,6 +214,7 @@
 </main>
 
 <site-footer></site-footer>
+<cookie-consent></cookie-consent>
 
 <script>
     const GAUGE_TOTAL = 628; // Circumference for r=100
@@ -278,22 +275,22 @@
         // 1. Phase: Ping
         setActiveStat(2);
         statusText.innerText = "جاري قياس زمن الاستجابة (Ping)...";
-        const startPing = Date.now();
+        const startPing = performance.now();
         try {
-            await fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-cache' });
-            const endPing = Date.now();
-            pingVal.innerText = (endPing - startPing) + " ms";
+            await fetch('https://connecttag.org/favicon.webp?t=' + Date.now(), { cache: 'no-store' });
+            const endPing = performance.now();
+            pingVal.innerText = Math.max(1, Math.round(endPing - startPing)) + " ms";
         } catch (e) { pingVal.innerText = "Error"; }
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 800));
 
         // 2. Phase: Download
         setActiveStat(0);
-        statusText.innerText = "جاري اختبار سرعة التحميل...";
-        const testFile = 'https://picsum.photos/v2/list?limit=50&t=' + Date.now();
+        statusText.innerText = "جاري اختبار سرعة التحميل الفعلية...";
+        const testFile = 'https://connecttag.org/assets/img/connect-tag-main-banner.webp?t=' + Date.now();
 
         try {
-            const startTime = Date.now();
-            const response = await fetch(testFile, { mode: 'cors', cache: 'no-cache' });
+            const startTime = performance.now();
+            const response = await fetch(testFile, { cache: 'no-store' });
             if (!response.ok) throw new Error("Network Error");
 
             const reader = response.body.getReader();
@@ -303,36 +300,35 @@
                 const {done, value} = await reader.read();
                 if (done) break;
                 loaded += value.length;
-                const elapsed = (Date.now() - startTime) / 1000;
+                const elapsed = (performance.now() - startTime) / 1000;
                 if (elapsed > 0) {
                     const mbps = (loaded * 8) / elapsed / 1024 / 1024;
                     updateGauge(mbps);
                 }
             }
 
-            const totalElapsed = (Date.now() - startTime) / 1000;
+            const totalElapsed = Math.max(0.05, (performance.now() - startTime) / 1000);
             const finalMbps = (loaded * 8) / totalElapsed / 1024 / 1024;
             downloadVal.innerText = finalMbps.toFixed(2) + " Mbps";
             updateGauge(finalMbps);
         } catch (e) {
             downloadVal.innerText = "فشل";
         }
-        await new Promise(r => setTimeout(r, 1200));
+        await new Promise(r => setTimeout(r, 1000));
 
-        // 3. Phase: Upload (Simulated)
+        // 3. Phase: Upload (Estimated Browser Ratio)
         setActiveStat(1);
-        statusText.innerText = "جاري تحليل سرعة الرفع...";
+        statusText.innerText = "جاري حساب معدل الرفع التقديري...";
         const baseSpeed = parseFloat(downloadVal.innerText) || 0;
 
-        // Simulating upload movement
         for(let i=0; i<=10; i++) {
-            const simSpeed = (baseSpeed * 0.3) * (i/10);
-            updateGauge(simSpeed);
-            await new Promise(r => setTimeout(r, 100));
+            const estSpeed = (baseSpeed * 0.3) * (i/10);
+            updateGauge(estSpeed);
+            await new Promise(r => setTimeout(r, 80));
         }
 
-        uploadVal.innerText = (baseSpeed * 0.3).toFixed(2) + " Mbps";
-        statusText.innerText = "اكتمل الفحص بنجاح!";
+        uploadVal.innerText = "~" + (baseSpeed * 0.3).toFixed(2) + " Mbps";
+        statusText.innerText = "اكتمل الفحص بنجاح (سرعة الرفع تقديرية بناءً على المتصفح)!";
 
         // Final State
         setActiveStat(-1);

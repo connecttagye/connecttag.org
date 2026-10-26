@@ -2,24 +2,20 @@
  * Connect Tag - Web Component: <cookie-consent>
  * GDPR, Google Consent Mode v2 & Google AdSense Privacy Policy Compliant Cookie Banner.
  */
-class CookieConsent extends HTMLElement {
-  connectedCallback() {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { window.dataLayer.push(arguments); }
+(function initGoogleConsentModeDefault() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
 
-    const savedChoice = localStorage.getItem('ct_cookie_accepted');
-    if (savedChoice === 'true' || savedChoice === 'essential') {
-      const granted = savedChoice === 'true' ? 'granted' : 'denied';
-      gtag('consent', 'default', {
-        'ad_storage': granted,
-        'ad_user_data': granted,
-        'ad_personalization': granted,
-        'analytics_storage': granted
-      });
-      return;
-    }
-
-    // Default denied before user interaction (Google Consent Mode v2 standard)
+  const savedChoice = localStorage.getItem('ct_cookie_accepted');
+  if (savedChoice === 'true' || savedChoice === 'essential') {
+    const granted = savedChoice === 'true' ? 'granted' : 'denied';
+    gtag('consent', 'default', {
+      'ad_storage': granted,
+      'ad_user_data': granted,
+      'ad_personalization': granted,
+      'analytics_storage': granted
+    });
+  } else {
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
@@ -27,6 +23,18 @@ class CookieConsent extends HTMLElement {
       'analytics_storage': 'denied',
       'wait_for_update': 500
     });
+  }
+})();
+
+class CookieConsent extends HTMLElement {
+  connectedCallback() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+
+    const savedChoice = localStorage.getItem('ct_cookie_accepted');
+    if (savedChoice === 'true' || savedChoice === 'essential') {
+      return;
+    }
 
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
 
@@ -76,4 +84,19 @@ class CookieConsent extends HTMLElement {
   }
 }
 
-customElements.define('cookie-consent', CookieConsent);
+if (!customElements.get('cookie-consent')) {
+  customElements.define('cookie-consent', CookieConsent);
+}
+
+// Auto-mount <cookie-consent> on any page where the HTML tag was omitted
+function ensureCookieConsentMounted() {
+  if (document.body && !document.querySelector('cookie-consent')) {
+    document.body.appendChild(document.createElement('cookie-consent'));
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', ensureCookieConsentMounted);
+} else {
+  ensureCookieConsentMounted();
+}
