@@ -1,40 +1,21 @@
-// --- site-policy-header.js ---
-/**
- * Connect Tag - Web Component: <site-policy-header>
- */
 class SitePolicyHeader extends HTMLElement {
-  connectedCallback() {
-    const titleAr = this.getAttribute('title-ar') || 'سياسة الخصوصية';
-    const titleEn = this.getAttribute('title-en') || 'Privacy Policy';
-    const backLink = this.getAttribute('back-link') || './';
-
-    this.innerHTML = `
-      <div class="ct-policy-header">
-        <div class="container text-center">
-          <div class="ct-policy-titles">
-            <h1>${titleAr}</h1>
-            <h2 class="subtitle-en">${titleEn}</h2>
-          </div>
-        </div>
-      </div>
-    `;
-  }
+connectedCallback() {
+const titleAr = this.getAttribute('title-ar') || 'سياسة الخصوصية';
+const titleEn = this.getAttribute('title-en') || 'Privacy Policy';
+const backLink = this.getAttribute('back-link') || './';
+this.innerHTML = `
+<div class="ct-policy-header"><div class="container text-center"><div class="ct-policy-titles"><h1>${titleAr}</h1><h2 class="subtitle-en">${titleEn}</h2></div></div></div>
+`;
+}
 }
 if (!customElements.get('site-policy-header')) {
-  customElements.define('site-policy-header', SitePolicyHeader);
+customElements.define('site-policy-header', SitePolicyHeader);
 }
-
-
-// --- site-policy-section.js ---
-/**
- * Connect Tag - Web Component: <site-policy-section>
- */
 class SitePolicySection extends HTMLElement {
-  connectedCallback() {
-    this.classList.add('ct-policy-content');
-    // We don't modify innerHTML, just act as a styled container
-  }
+connectedCallback() {
+this.classList.add('ct-policy-content');
+}
 }
 if (!customElements.get('site-policy-section')) {
-  customElements.define('site-policy-section', SitePolicySection);
+customElements.define('site-policy-section', SitePolicySection);
 }

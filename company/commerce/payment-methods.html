@@ -32,18 +32,16 @@
   <meta name="theme-color" content="#0052cc">
 
   <!-- Optimized Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
 
   <!-- Shared CSS Files -->
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.36">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.36">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.36">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.36">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.36">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.37">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.37">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.37">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.37">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.37">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.37">
 
   <style>
     /* Light Identity consistent with FAQ and Policy pages */
@@ -147,10 +145,10 @@
     }
   </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.36" data-cfasync="false" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.37" data-cfasync="false" defer></script>
 
 </head>
-<body data-spy="scroll" data-target="#navbar-main" class="preloader-visible">
+<body data-spy="scroll" data-target="#navbar-main">
 
 <site-preloader></site-preloader>
 <div id="home-content">
@@ -303,7 +301,6 @@
 </div>
 <cookie-consent></cookie-consent>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   window.addEventListener('load', function() {
     if (typeof AOS !== 'undefined') {

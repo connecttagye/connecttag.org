@@ -83,15 +83,13 @@
     <meta property="og:image:height" content="669">
     <meta property="og:image:type" content="image/webp">
     <meta property="og:image:alt" content="دليل أرقام الطوارئ والخدمات - كونكت تاق">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.36">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.36">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.36">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.36">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.37">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.37">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.37">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.37">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.37">
 
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #334155; }
@@ -148,8 +146,8 @@
         .no-results { text-align: center; padding: 60px 0; display: none; }
         .no-results i { font-size: 60px; color: #cbd5e1; margin-bottom: 20px; }
     </style>
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.36" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.36" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.37" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.37" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google Consent Mode v2 (Default State before AdSense) -->
   <script>
@@ -169,9 +167,27 @@
       });
     }
   </script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
-       crossorigin="anonymous"></script>
+  <!-- Google AdSense (Deferred until user interaction or idle after load to protect LCP/TBT) -->
+  <script>
+    (function() {
+      var loaded = false;
+      function loadAdSense() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357';
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, loadAdSense, { once: true, passive: true });
+      });
+      window.addEventListener('load', function() {
+        setTimeout(loadAdSense, 4000);
+      }, { once: true });
+    })();
+  </script>
 </head>
 <body>
 <site-toast></site-toast>

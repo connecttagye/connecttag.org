@@ -6,9 +6,12 @@
     <title>أنت غير متصل - كونكت تاق</title>
     <meta name="description" content="أنت غير متصل بالإنترنت حالياً. أعد الاتصال للاستمرار في تصفح موقع وخدمات كونكت تاق.">
     <meta name="robots" content="noindex, nofollow">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
     <style>
+        @font-face{font-family:'Cairo';font-style:normal;font-weight:200 1000;font-display:swap;src:url('https://connecttag.org/assets/fonts/cairo-arabic.woff2') format('woff2')}
+        @font-face{font-family:'Font Awesome 6 Free';font-style:normal;font-weight:900;font-display:swap;src:url('https://connecttag.org/assets/fonts/fa-solid-900.woff2') format('woff2')}
+        .fa-solid{display:inline-block;font-family:'Font Awesome 6 Free';font-weight:900;font-style:normal;line-height:1;-webkit-font-smoothing:antialiased}
+        .fa-wifi::before{content:'\f1eb'}.fa-rotate::before{content:'\f2f1'}
         body {
             background-color: #0a1128;
             color: #fff;
