@@ -51,8 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function getResourceIcon(res) {
         const url = String(res.url || '').toLowerCase();
         if (url.includes('play.google.com')) return 'fa-brands fa-google-play';
+        if (url.includes('apps.apple.com')) return 'fa-brands fa-app-store-ios';
         if (url.includes('youtube.com') || url.includes('youtu.be')) return 'fa-brands fa-youtube';
         if (url.includes('t.me') || url.includes('telegram')) return 'fa-brands fa-telegram';
+        if (ModemApp.isModemAppResource && ModemApp.isModemAppResource(res)) return 'fa-solid fa-mobile-screen-button';
         if (res.contentType === 'VIDEO') return 'fa-solid fa-circle-play';
         return 'fa-solid fa-up-right-from-square';
     }
@@ -121,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeCrumb) activeCrumb.textContent = displayName;
 
         const imgEl = document.getElementById('modem-image');
-        const primaryImg = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-        const backupImg = m.image?.remoteBackup || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+        const primaryImg = m.image?.content || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
+        const backupImg = m.image?.remoteBackup || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
         imgEl.src = primaryImg;
         imgEl.alt = displayName;
         imgEl.onerror = function() {
@@ -203,7 +205,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (m.price && Number(m.price.currentValue) > 0) {
                 const formattedPrice = Number(m.price.currentValue).toLocaleString('en-US');
                 const currencyLabel = m.price.currency === 'USD' ? '$' : 'ريال يمني';
-                pills.push(`<span class="modem-tag-pill" style="background:#eff6ff;color:#0052cc;border-color:#bfdbfe;"><i class="fa-solid fa-tag"></i> السعر التقريبي: ${formattedPrice} ${currencyLabel}</span>`);
+                const priceNote = m.price.note ? ` (${esc(m.price.note)})` : '';
+                pills.push(`<span class="modem-tag-pill" style="background:#eff6ff;color:#0052cc;border-color:#bfdbfe;"><i class="fa-solid fa-tag"></i> السعر التقريبي: ${formattedPrice} ${currencyLabel}${priceNote}</span>`);
+            }
+            if (m.availabilityStatus === 'غير متوفر') {
+                pills.push(`<span class="modem-tag-pill" style="background:#fef2f2;color:#b91c1c;border-color:#fecaca;"><i class="fa-solid fa-circle-exclamation"></i> ${esc(m.availabilityStatus)}</span>`);
+            }
+            if (m.rating && Number(m.rating.average) > 0) {
+                pills.push(`<span class="modem-tag-pill" style="background:#fffbeb;color:#b45309;border-color:#fde68a;"><i class="fa-solid fa-star" style="color:#f59e0b;"></i> التقييم: ${Number(m.rating.average)}/5</span>`);
             }
             if (pills.length > 0) {
                 tagsBar.innerHTML = pills.join('');
@@ -213,19 +222,79 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Available Colors Palette (CatalogColorTokens + DetailTechnicalSections.ColorPaletteSection)
+        const colorsBox = document.getElementById('modem-colors-box');
+        if (colorsBox) {
+            const rawColors = Array.isArray(m.colors) ? m.colors : [];
+            const resolvedColors = rawColors
+                .map(c => ModemApp.resolveColorToken ? ModemApp.resolveColorToken(c) : null)
+                .filter(Boolean);
+            if (resolvedColors.length > 0) {
+                colorsBox.innerHTML = `
+                    <span class="modem-colors-label"><i class="fa-solid fa-palette" style="color:#0052cc;"></i> الألوان المتوفرة:</span>
+                    ${resolvedColors.map(c => `
+                        <span class="modem-color-chip" title="${esc(c.nameEn || c.name)}">
+                            <span class="modem-color-swatch" style="background:${esc(c.hex)};"></span>
+                            <span>${esc(c.name)}</span>
+                        </span>
+                    `).join('')}
+                `;
+                colorsBox.style.display = 'flex';
+            } else {
+                colorsBox.style.display = 'none';
+            }
+        }
+
         document.getElementById('modem-description').innerHTML = ModemApp.formatDescriptionHtml(m.description || m.shortDescription || '');
+
+        // Notes, Hints, Advantages & Tips Callout (DetailInfoSections)
+        const notesBox = document.getElementById('modem-notes-box');
+        if (notesBox) {
+            const callouts = [];
+            if (m.alertMessage) {
+                callouts.push(`<div><strong style="color:#b91c1c;"><i class="fa-solid fa-triangle-exclamation"></i> تنبيه:</strong> ${esc(m.alertMessage)}</div>`);
+            }
+            if (m.notes) {
+                callouts.push(`<div><strong><i class="fa-solid fa-circle-info" style="color:#0052cc;"></i> ملاحظة:</strong> ${esc(m.notes)}</div>`);
+            }
+            if (m.advantages) {
+                callouts.push(`<div><strong><i class="fa-solid fa-star" style="color:#0052cc;"></i> المميزات:</strong> ${esc(m.advantages)}</div>`);
+            }
+            if (m.hint || m.hintMessage || m.infoMessage) {
+                const msg = m.hintMessage || m.infoMessage || m.hint;
+                callouts.push(`<div><strong><i class="fa-regular fa-lightbulb" style="color:#d97706;"></i> إرشاد:</strong> ${esc(msg)}</div>`);
+            }
+            if (Array.isArray(m.tips) && m.tips.length > 0) {
+                callouts.push(`<div><strong><i class="fa-solid fa-list-check" style="color:#0052cc;"></i> نصائح الاشتراك والاستخدام:</strong><ul>${m.tips.map(tip => `<li>${esc(tip)}</li>`).join('')}</ul></div>`);
+            }
+            if (callouts.length > 0) {
+                notesBox.innerHTML = callouts.join('<div style="margin-top:8px;"></div>');
+                notesBox.style.display = 'block';
+            } else {
+                notesBox.style.display = 'none';
+            }
+        }
 
         document.getElementById('spec-model').textContent = m.modelOrVersion || m.model || '-';
         document.getElementById('spec-type').textContent = m.category || '-';
         document.getElementById('spec-year').textContent = m.modelYear || '-';
 
-        if (m.additional && m.additional.modemSettings) {
-            const s = m.additional.modemSettings;
+        // Modem Settings & Login Credentials (ProductRepositoryImpl + NetworkUtil + ModemGuideText)
+        const resolvedSettings = ModemApp.resolveModemSettings
+            ? ModemApp.resolveModemSettings(m)
+            : (m.additional?.modemSettings || null);
+
+        if (resolvedSettings) {
+            const s = resolvedSettings;
             document.getElementById('config-panel').style.display = 'block';
 
-            const baseLink = (s.loginLink || 'http://192.168.0.1').replace(/\/+$/, '');
-            const pathPart = (s.loginLinkPath || '').trim();
-            const fullUrl = pathPart ? `${baseLink}${pathPart.startsWith('/') ? '' : '/'}${pathPart}` : baseLink;
+            const baseLink = ModemApp.normalizeModemUrl
+                ? (ModemApp.normalizeModemUrl(s.loginLink || 'http://192.168.0.1') || 'http://192.168.0.1').replace(/\/+$/, '')
+                : (s.loginLink || 'http://192.168.0.1').replace(/\/+$/, '');
+            const pathPart = String(s.loginLinkPath || '').trim();
+            const fullUrl = s.fullLoginUrl || (ModemApp.buildModemUrl
+                ? ModemApp.buildModemUrl(baseLink, pathPart)
+                : (pathPart ? `${baseLink}${pathPart.startsWith('/') ? '' : '/'}${pathPart}` : baseLink));
 
             const confLink = document.getElementById('conf-link');
             confLink.textContent = baseLink;
@@ -236,9 +305,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 openPanelBtn.href = fullUrl;
             }
 
+            const routeSub = document.getElementById('conf-route-sub');
+            if (routeSub) {
+                if (pathPart && fullUrl !== baseLink) {
+                    routeSub.textContent = `المسار الكامل: ${fullUrl}`;
+                    routeSub.style.display = 'block';
+                } else {
+                    routeSub.textContent = '';
+                    routeSub.style.display = 'none';
+                }
+            }
+
             const userRow = document.getElementById('conf-user-row');
             const confUser = document.getElementById('conf-user');
-            const isPassOnly = (s.loginBy || '').toUpperCase() === 'PASS';
+            const normLoginBy = ModemApp.normalizeModemLoginBy
+                ? ModemApp.normalizeModemLoginBy(s.loginBy)
+                : String(s.loginBy || '').toUpperCase();
+            const isPassOnly = normLoginBy === 'PASS';
 
             if (isPassOnly) {
                 if (userRow) userRow.style.display = 'none';
@@ -247,11 +330,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 confUser.textContent = s.defaultUserName || 'admin';
             }
 
-            const rawPass = (s.defaultPass || 'admin').trim();
+            const rawPass = String(s.defaultPass || (isPassOnly ? 'OUT' : 'admin')).trim();
+            const isStickerPass = ModemApp.isPrintedPassword
+                ? ModemApp.isPrintedPassword(rawPass)
+                : (rawPass === '' || rawPass.toLowerCase() === 'out');
             const passEl = document.getElementById('conf-pass');
             const copyPassBtn = document.getElementById('btn-copy-pass');
 
-            if (rawPass.toLowerCase() === 'out') {
+            if (isStickerPass) {
                 passEl.textContent = 'مدونة على الملصق خلف المودم';
                 passEl.style.direction = 'rtl';
                 passEl.style.fontFamily = 'inherit';
@@ -266,7 +352,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 passEl.style.color = '#006b98';
                 if (copyPassBtn) copyPassBtn.style.display = 'inline-flex';
             }
+
+            const setupStepEl = document.getElementById('conf-setup-step');
+            if (setupStepEl && ModemApp.modemInitialSetupDescription) {
+                const isPortable = Boolean(m.additional?.portable || (m.category && m.category.includes('محمول')));
+                const hasTouchScreen = Boolean(
+                    m.additional?.hasTouchScreen ||
+                    (ModemApp.hasTouchScreenHint && ModemApp.hasTouchScreenHint(m.description))
+                );
+                const setupText = ModemApp.modemInitialSetupDescription(isPortable, hasTouchScreen);
+                if (setupText) {
+                    setupStepEl.innerHTML = `<i class="fa-solid fa-wifi" style="color:#0052cc;margin-left:5px;"></i> <strong>التوصيل والتشغيل الأولي:</strong> ${esc(setupText)}`;
+                    setupStepEl.style.display = 'block';
+                } else {
+                    setupStepEl.style.display = 'none';
+                }
+            }
+
+            const guideStepEl = document.getElementById('conf-guide-step');
+            if (guideStepEl) {
+                const stepText = s.credentialsStepText || (ModemApp.buildLoginCredentialsStep
+                    ? ModemApp.buildLoginCredentialsStep(normLoginBy, s.defaultUserName, rawPass)
+                    : '');
+                if (stepText) {
+                    guideStepEl.innerHTML = `<i class="fa-solid fa-key" style="color:#0052cc;margin-left:5px;"></i> <strong>طريقة تسجيل الدخول:</strong> ${esc(stepText)}`;
+                    guideStepEl.style.display = 'block';
+                } else {
+                    guideStepEl.style.display = 'none';
+                }
+            }
         }
+
+        window.__CURRENT_MODEM__ = m;
 
         // Full Technical Specifications Section
         const fullSpecsSec = document.getElementById('full-specs-section');
@@ -275,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const groupsMap = new Map();
             m.attributes.forEach(attr => {
                 if (!attr || !attr.name || !(attr.displayValue || attr.value)) return;
-                const grp = attr.group || 'مواصفات عامة';
+                const grp = attr.group || 'المواصفات العامة';
                 if (!groupsMap.has(grp)) groupsMap.set(grp, []);
                 groupsMap.get(grp).push(attr);
             });
@@ -289,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${attrs.map(a => `
                                 <li class="spec-row-item">
                                     <span class="spec-row-name">${esc(a.name)}</span>
-                                    <span class="spec-row-val">${esc(a.displayValue || a.value)}</span>
+                                    <span class="spec-row-val">${esc(a.displayValue || a.value)}${a.note ? ` <small style="color:#64748b;font-weight:600;">(${esc(a.note)})</small>` : ''}</span>
                                 </li>
                             `).join('')}
                         </ul>
@@ -298,13 +415,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Resources & Management Apps Section
+        // Resources, Management Apps & Attachments Section
         const resourcesSec = document.getElementById('resources-section');
         const resourcesContainer = document.getElementById('resources-container');
-        if (resourcesSec && resourcesContainer && Array.isArray(m.resources) && m.resources.length > 0) {
+        const combinedResources = [
+            ...(Array.isArray(m.resources) ? m.resources : []),
+            ...(Array.isArray(m.attachments) ? m.attachments : [])
+        ];
+        if (resourcesSec && resourcesContainer && combinedResources.length > 0) {
             resourcesSec.style.display = 'block';
-            resourcesContainer.innerHTML = m.resources.map(res => {
-                const subText = res.description || res.group || 'رابط خارجي مفيد';
+            resourcesContainer.innerHTML = combinedResources.map(res => {
+                const isApp = ModemApp.isModemAppResource && ModemApp.isModemAppResource(res);
+                const subText = res.description || res.group || (isApp ? 'تطبيق إدارة المودم' : 'رابط خارجي مفيد');
                 return `
                     <a href="${esc(res.url)}" target="_blank" rel="noopener noreferrer" class="resource-card">
                         <div class="resource-info">
@@ -320,6 +442,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }).join('');
         }
 
+        // FAQs Section (UiContentDetailExtensions.getFilteredFaqs)
+        const faqsSec = document.getElementById('faqs-section');
+        const faqsContainer = document.getElementById('faqs-container');
+        if (faqsSec && faqsContainer) {
+            if (Array.isArray(m.faqs) && m.faqs.length > 0) {
+                faqsSec.style.display = 'block';
+                faqsContainer.innerHTML = m.faqs.map(faq => `
+                    <div class="spec-group-card">
+                        <h3 class="spec-group-header"><i class="fa-solid fa-circle-question"></i> ${esc(faq.question)}</h3>
+                        <div style="padding: 16px 20px; font-size: 14px; color: #334155; line-height: 1.75;">${esc(faq.answer)}</div>
+                    </div>
+                `).join('');
+            } else {
+                faqsSec.style.display = 'none';
+                faqsContainer.innerHTML = '';
+            }
+        }
+
         // Authorized Provider / Organization Section
         const providerSec = document.getElementById('provider-section');
         const providerContainer = document.getElementById('provider-container');
@@ -331,9 +471,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (resolvedOrgs.length > 0) {
                 providerSec.style.display = 'block';
                 providerContainer.innerHTML = resolvedOrgs.map(({ role, org }) => {
-                    const logoSrc = org.logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+                    const logoSrc = org.logo || 'https://connecttag.org/assets/img/about/connect-tag-team.webp';
                     const logoBackup = org.logoBackup || logoSrc;
-                    const roleBadge = role || org.categories?.[0] || 'الوكيل المعتمد';
+                    const rawRole = role || org.categories?.[0] || org.role || 'الوكيل المعتمد';
+                    const roleBadge = ModemApp.translateRole ? ModemApp.translateRole(rawRole) : rawRole;
+                    const verifiedIcon = org.isVerified
+                        ? ' <i class="fa-solid fa-circle-check" style="color:#0052cc;font-size:14px;" title="جهة موثقة"></i>'
+                        : '';
 
                     const contactPills = [];
                     (org.phones || []).forEach(ph => {
@@ -355,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     (org.emails || []).forEach(em => {
                         contactPills.push(`
-                            <a href="mailto:${esc(em.email)}" class="provider-contact-pill">
+                            <a href="mailto:${esc(em.email)}" class="provider-contact-pill" title="${esc(em.label || 'البريد الإلكتروني')}">
                                 <i class="fa-regular fa-envelope" style="color:#0052cc;"></i>
                                 <span dir="ltr">${esc(em.email)}</span>
                             </a>
@@ -366,6 +510,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <a href="${esc(org.website)}" target="_blank" rel="noopener noreferrer" class="provider-contact-pill">
                                 <i class="fa-solid fa-globe" style="color:#0052cc;"></i>
                                 <span>الموقع الرسمي</span>
+                            </a>
+                        `);
+                    }
+                    if (org.mapsUrl) {
+                        contactPills.push(`
+                            <a href="${esc(org.mapsUrl)}" target="_blank" rel="noopener noreferrer" class="provider-contact-pill">
+                                <i class="fa-solid fa-map-location-dot" style="color:#0052cc;"></i>
+                                <span>الموقع على الخريطة</span>
                             </a>
                         `);
                     }
@@ -391,11 +543,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                      height="60"
                                      onerror="this.onerror=null;this.src='${esc(logoBackup)}';">
                                 <div class="provider-title-wrap">
-                                    <h4>${esc(org.name)}</h4>
+                                    <h4>${esc(org.name)}${verifiedIcon}</h4>
                                     <span class="provider-role-badge">${esc(roleBadge)}</span>
                                 </div>
                             </div>
                             ${org.description ? `<p class="provider-desc">${esc(org.description)}</p>` : ''}
+                            ${org.advantages ? `<div class="provider-meta-line" style="margin-bottom:10px;"><i class="fa-solid fa-award" style="color:#0052cc;"></i> <span>${esc(org.advantages)}</span></div>` : ''}
                             ${contactPills.length > 0 ? `<div class="provider-contacts">${contactPills.join('')}</div>` : ''}
                             ${org.address ? `<div class="provider-meta-line"><i class="fa-solid fa-location-dot" style="color:#0052cc;"></i> <span>${esc(org.address)}</span></div>` : ''}
                             ${org.operatingHours ? `<div class="provider-meta-line"><i class="fa-regular fa-clock" style="color:#0052cc;"></i> <span>ساعات العمل: ${esc(org.operatingHours)}</span></div>` : ''}
@@ -409,25 +562,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getRelatedModems(catalog, currentModem) {
         if (!Array.isArray(catalog) || !currentModem) return [];
-        const linkedIds = new Set(
-            (currentModem.relatedLinks || []).map(l => String(l.targetId))
-        );
+        const linkMap = new Map();
+        (currentModem.relatedLinks || []).forEach((l, idx) => {
+            if (l && l.targetId && !linkMap.has(String(l.targetId))) {
+                linkMap.set(String(l.targetId), { ...l, rank: idx });
+            }
+        });
         const currentOrgIds = new Set(
             (currentModem.providers || []).map(p => String(p.orgId))
         );
 
         const others = catalog.filter(item => item.slug !== currentModem.slug && String(item.id) !== String(currentModem.id));
         const scored = others.map(item => {
+            const linkMeta = linkMap.get(String(item.id));
             let score = 0;
-            if (linkedIds.has(String(item.id))) score += 100;
+            if (linkMeta) score += 1000 - linkMeta.rank;
             if (Array.isArray(item.providers) && item.providers.some(p => currentOrgIds.has(String(p.orgId)))) score += 4;
             if (item.brand && item.brand === currentModem.brand) score += 3;
             if (item.category === currentModem.category) score += 2;
             if (item.isNew) score += 1;
-            return { item, score };
+            return { item, score, linkMeta };
         }).sort((a, b) => b.score - a.score);
 
-        return scored.slice(0, 4).map(entry => entry.item);
+        return scored.slice(0, 4).map(entry => ({
+            ...entry.item,
+            ...(entry.linkMeta ? {
+                _relationName: entry.linkMeta.relationName,
+                _relationReason: entry.linkMeta.reason
+            } : {})
+        }));
     }
 
     function updateSEOAndMeta(m, catalog) {
@@ -437,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
             m.shortDescription || m.summary || m.description || `المواصفات التقنية وإعدادات الدخول لمودم يمن فورجي ${displayName}`
         );
         const canonicalUrl = `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(m.slug)}`;
-        const imgUrl = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+        const imgUrl = m.image?.content || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
 
         document.title = pageTitle;
         document.getElementById('meta-description')?.setAttribute('content', cleanDesc);
@@ -479,6 +642,10 @@ document.addEventListener('DOMContentLoaded', function() {
             "url": `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(target.slug)}`
         }));
 
+        const schemaColor = Array.isArray(m.colors) && m.colors.length > 0
+            ? m.colors.map(c => (typeof c === 'object' ? c.name : String(c))).filter(Boolean)
+            : [];
+
         const schemaData = {
             "@context": "https://schema.org/",
             "@type": "Product",
@@ -497,6 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "countryOfOrigin": m.countryOfOrigin || "الصين",
             "model": m.modelOrVersion || m.model || "",
             "category": m.category || "مودم 4G",
+            ...(schemaColor.length > 0 ? { "color": schemaColor } : {}),
             ...(additionalProperty.length > 0 ? { "additionalProperty": additionalProperty } : {}),
             ...(isSimilarTo.length > 0 ? { "isSimilarTo": isSimilarTo } : {}),
             "offers": {
@@ -535,20 +703,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const sample = getRelatedModems(catalog, currentModem);
         container.innerHTML = sample.map(item => {
             const name = ModemApp.formatDisplayName(item);
-            const primaryImg = item.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-            const backupImg = item.image?.remoteBackup || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+            const primaryImg = item.image?.content || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
+            const backupImg = item.image?.remoteBackup || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
+            const relLabel = item._relationReason || item._relationName || item.category || '';
             return `
                 <div class="col-6 col-md-3">
                     <a href="details?slug=${encodeURIComponent(item.slug)}" class="related-card">
                         <img src="${primaryImg}"
-                             alt="${name}"
+                             alt="${esc(name)}"
                              class="img-fluid"
                              loading="lazy"
                              width="160"
                              height="110"
-                             onerror="this.onerror=null;this.src='${backupImg}';">
-                        <h5>${name}</h5>
-                        <small class="text-muted">${item.category || ''}</small>
+                             onerror="this.onerror=null;this.src='${esc(backupImg)}';">
+                        <h5>${esc(name)}</h5>
+                        <small class="text-muted">${esc(relLabel)}</small>
                     </a>
                 </div>
             `;
@@ -564,5 +733,17 @@ function copyText(id) {
         ModemApp.showToast('تم نسخ: ' + text);
     }).catch(() => {
         ModemApp.showToast('تعذر النسخ');
+    });
+}
+
+function copyShareCard() {
+    const modem = window.__CURRENT_MODEM__;
+    if (!modem || !ModemApp.formatModemShareText) return;
+    const shareText = ModemApp.formatModemShareText(modem);
+    if (!shareText) return;
+    navigator.clipboard.writeText(shareText).then(() => {
+        ModemApp.showToast('تم نسخ بطاقة بيانات المودم الكاملة');
+    }).catch(() => {
+        ModemApp.showToast('تعذر نسخ بطاقة المودم');
     });
 }

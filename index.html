@@ -37,7 +37,7 @@
   <meta property="og:site_name" content="كونكت تاق - Connect Tag">
   <meta property="og:title" content="كونكت تاق - Connect Tag | حلول برمجية، أمن سيبراني، وشبكات الاتصالات">
   <meta property="og:description" content="كونكت تاق للحلول الرقمية: تطوير البرمجيات، الأمن السيبراني وحماية الأصول، بيانات الاتصالات ومسح الإشارات، الاستضافة السحابية وواجهات الـ API." />
-  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+  <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-team.webp">
   <meta property="og:image:alt" content="كونكت تاق - Connect Tag" />
   <meta property="og:locale" content="ar_AR" />
 
@@ -47,7 +47,7 @@
   <meta name="twitter:url" content="https://connecttag.org/" />
   <meta name="twitter:title" content="كونكت تاق - Connect Tag | حلول برمجية، أمن سيبراني، وشبكات الاتصالات">
   <meta name="twitter:description" content="كونكت تاق للحلول الرقمية: تطوير البرمجيات، الأمن السيبراني وحماية الأصول، بيانات الاتصالات ومسح الإشارات، الاستضافة السحابية وواجهات الـ API." />
-  <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" />
+  <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-team.webp" />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -95,7 +95,7 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي",
-      "image": "https://connecttag.org/assets/img/about/connect-tag-it-company.webp",
+      "image": "https://connecttag.org/assets/img/about/connect-tag-team.webp",
       "@id": "https://connecttag.org/",
       "priceRange": "$$",
       "url": "https://connecttag.org/",
@@ -125,42 +125,20 @@
 
 
   <!-- Optimized Google Fonts & Font Optimization -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"></noscript>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
+  <!-- Preload Critical Hero Image -->
+  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp?v=1.1.31" as="image" type="image/webp" fetchpriority="high">
+
   <style>
-
-    /* إزالة القيود التي سببت تشوه العناصر المنبثقة */
-    .tech-slider {
-      min-height: 60px;
-      overflow: hidden;
+    /* Base Box Model & Typography Reset to prevent CLS when Bootstrap/Styles load */
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-
-    /* إصلاح الصور دون المساس بالتخطيط */
-    .img-responsive {
-        height: auto;
-        max-width: 100%;
-    }
-
-    /* Flex Grid Layout Fix */
-    .services-flex-row, .blog-flex-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-right: -15px;
-      margin-left: -15px;
-    }
-    .services-flex-row > [class*='col-'], .blog-flex-row > [class*='col-'] {
-      display: flex;
-      flex-direction: column;
-    }
-
-
-
-    /* Connect Tag - Shared Styles */
     :root {
       --ct-primary: #0052cc;
       --ct-primary-hover: #003db3;
@@ -175,29 +153,8 @@
       --ct-text-dark: #1e293b;
       --ct-border: rgba(0, 180, 216, 0.15);
       --ct-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      --ct-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-      --ct-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* حجز مساحة للصور لمنع CLS */
-    .tech-item i { width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; }
-    .service-card .icon-wrapper { min-height: 80px; display: flex; align-items: center; justify-content: center; }
-
-
-    .img-circle2 {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      background-color: rgba(255,255,255,0.05);
-      object-fit: cover;
-      display: block;
-    }
-
-    /* حجز مساحة لشريط التقنيات */
-    .tech-slider {
-      min-height: 60px;
-      contain: layout paint;
+      --ct-font-family: 'Cairo', 'Cairo-Fallback', system-ui, -apple-system, sans-serif;
+      --ct-transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     @font-face {
       font-family: 'Cairo-Fallback';
@@ -209,141 +166,512 @@
     }
     @font-face {
       font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 900;
       font-display: swap;
       src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Font Awesome 6 Brands';
+      font-style: normal;
+      font-weight: 400;
       font-display: swap;
       src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
     }
     @font-face {
       font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 400;
       font-display: swap;
       src: url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/webfonts/fa-regular-400.woff2') format('woff2');
     }
-    :root { font-display: swap; }
-    #preloader {
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a1128;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #131e3a;
+      border: 3px solid #0a1128;
+      border-radius: 10px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: #0a1128;
+      font-family: 'Cairo', 'Cairo-Fallback', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+      text-align: right;
+      -webkit-font-smoothing: antialiased;
+    }
+    #home-content {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    main#main-content {
+      flex: 1 0 auto;
+      width: 100%;
+    }
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @media (min-width: 768px) {
+      .container { width: 750px; }
+    }
+    @media (min-width: 992px) {
+      .container { width: 970px; }
+    }
+    @media (min-width: 1200px) {
+      .container { width: 1170px; }
+    }
+    .fa-solid, .fa-regular, .fa-brands {
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      line-height: 1;
+      text-rendering: auto;
+    }
+
+    /* Critical Header & Cookie Banner Styles (matches components.min.css 1:1) */
+    site-header {
+      display: block;
+      width: 100%;
+      position: relative;
+      z-index: 1000;
+      min-height: 80px;
+    }
+    .ct-skip-link {
+      position: absolute;
+      top: -100px;
+      right: 16px;
+      background: #0052cc;
+      color: #fff !important;
+      padding: 10px 20px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none !important;
+      z-index: 100001;
+    }
+    .ct-header-navbar {
+      background-color: rgba(10, 17, 40, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 180, 216, 0.18);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
       width: 100%;
-      height: 100%;
-      background: #050505;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999999;
-      transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-      overflow: hidden;
+      z-index: 10000;
+      transition: var(--ct-transition);
     }
-    .preloader-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 20% 20%, rgba(0, 82, 204, 0.2) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(0, 180, 216, 0.15) 0%, transparent 40%);
-      filter: blur(80px);
-      animation: bgMove 10s ease infinite alternate;
-    }
-    @keyframes bgMove {
-      0% { transform: scale(1) translate(0, 0); }
-      100% { transform: scale(1.2) translate(2%, 2%); }
-    }
-    .preloader-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 20px;
-    }
-    .loader-logo {
-      margin-bottom: 25px;
+    .ct-header-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-    .loader-logo i {
-      font-size: 40px;
-      color: #00b4d8;
-    }
-    .loader-logo span {
-      font-size: 32px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .progress-container {
-      width: 280px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      overflow: hidden;
+      justify-content: space-between;
+      padding: 12px 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #0052cc, #00b4d8);
-      transition: width 0.4s ease;
+    .ct-logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none !important;
     }
-    .preloader-hidden {
+    .ct-logo-brand img {
+      height: 42px;
+      width: 105px;
+      object-fit: contain;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 2px 10px rgba(0, 180, 216, 0.25));
+    }
+    .ct-nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 8px;
+    }
+    .ct-nav-item {
+      position: relative;
+    }
+    .ct-nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none !important;
+      transition: var(--ct-transition);
+      display: inline-block;
+    }
+    .ct-nav-cta {
+      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
+      color: #ffffff !important;
+      border-radius: 25px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 15px rgba(0, 82, 204, 0.35);
+    }
+    .ct-mobile-toggle {
+      display: none;
+      min-width: 48px;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--ct-border);
+      color: #fff;
+      font-size: 20px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--ct-transition);
+    }
+    cookie-consent {
+      display: block;
+    }
+    .ct-cookie-banner {
+      position: fixed;
+      bottom: 25px;
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      max-width: 580px;
+      background: rgba(10, 17, 40, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 180, 216, 0.35);
+      border-radius: 20px;
+      padding: 22px 28px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 180, 216, 0.15);
+      z-index: 99999;
+      color: #fff;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-align: center;
+    }
+    .ct-cookie-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .ct-cookie-text {
+      text-align: center;
+      width: 100%;
+    }
+    .ct-cookie-text p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: center;
+    }
+    .ct-cookie-text a {
+      color: #00b4d8;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .ct-cookie-btn {
+      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
+      color: #fff;
+      border: none;
+      padding: 10px 36px;
+      min-height: 48px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--ct-primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
       opacity: 0;
       visibility: hidden;
     }
-    #preloader-skeleton {
-      position: fixed;
-      top: 0;
-      left: 0;
+    @media (max-width: 768px) {
+      .ct-cookie-banner {
+        bottom: 15px;
+        width: calc(100% - 24px);
+        padding: 18px 20px;
+      }
+      .ct-cookie-content {
+        gap: 14px;
+      }
+      .ct-cookie-btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+    @media (max-width: 991px) {
+      .ct-mobile-toggle {
+        display: inline-flex;
+      }
+      site-header nav {
+        display: contents;
+      }
+      .ct-nav-menu {
+        display: none;
+      }
+    }
+
+
+    /* Critical Hero & Above-the-Fold Styles (matches styles.min.css & shared-styles.css) */
+    #headerwrap {
+      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp?v=1.1.31') no-repeat center center;
+      margin-top: -50px;
+      padding-top: 180px;
+      padding-bottom: 140px;
+      min-height: 750px;
       width: 100%;
-      height: 100vh;
-      background: #050505;
-      z-index: 999999;
-      padding: 20px;
+      background-size: cover;
+      background-position: center left;
+      display: flex;
+      align-items: center;
+      text-align: right;
+    }
+    #headerwrap .container {
+      width: 100%;
+      min-height: 450px;
+      padding-left: 30px;
+      padding-right: 50px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    #headerwrap .container .row {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .hero-content-box {
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: 0 !important;
+      float: right !important;
+      text-align: right !important;
+      max-width: 620px;
+      padding: 30px 20px 30px 0;
+    }
+    .hero-main-h1 {
+      color: #ffffff;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      margin: 0 0 25px 0 !important;
+      line-height: 1.35 !important;
+      text-align: right !important;
+    }
+    #typed-text {
+      display: inline-block;
+      min-width: 185px;
+      text-align: right;
+    }
+    #typed-text:empty::before {
+      content: 'كونكت تاق';
+      opacity: 0.5;
+    }
+    .hero-lead-p {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.9;
+      margin: 0 0 35px 0 !important;
+      max-width: 580px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      text-align: right !important;
+    }
+    .hero-cta-group {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .hero-btn-primary {
+      font-weight: 700;
+      font-size: 18px;
+      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%) !important;
+      color: #fff !important;
+      border-radius: 30px;
+      padding: 14px 45px;
+      border: none;
+      box-shadow: 0 10px 25px rgba(0, 82, 204, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      text-decoration: none;
+    }
+    .hero-btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0, 180, 216, 0.5);
+      color: #fff !important;
+    }
+    @media (max-width: 991px) {
+      #headerwrap {
+        text-align: center;
+        padding-top: 140px;
+        padding-bottom: 80px;
+        min-height: 650px;
+      }
+      #headerwrap .container .row {
+        justify-content: center;
+      }
+      .hero-content-box {
+        text-align: center !important;
+        background: rgba(10, 17, 40, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(0, 180, 216, 0.2);
+        padding: 35px 25px !important;
+        margin: 0 auto !important;
+        float: none !important;
+        max-width: 100%;
+      }
+      .hero-main-h1 {
+        text-align: center !important;
+        font-size: 32px;
+      }
+      #typed-text {
+        text-align: center;
+      }
+      .hero-lead-p {
+        text-align: center !important;
+        margin: 0 auto 30px auto !important;
+        font-size: 18px;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 768px) {
+      .container {
+        width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin: 0 !important;
+      }
+      .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+
+    /* Critical Tech Slider Styles (matches styles.min.css exactly) */
+    .tech-slider {
+      overflow: hidden;
+      padding: 30px 0;
+      background: #0d1527;
+      white-space: nowrap;
+      position: relative;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba(0, 180, 216, 0.15);
+      border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+      contain: layout paint;
+    }
+    .tech-slide-track {
+      display: flex;
+      width: max-content;
+    }
+    .tech-item {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      align-items: center;
+      margin: 0 40px;
+      flex-shrink: 0;
     }
-    .skeleton-box {
-      display: inline-block;
-      height: 1em;
-      position: relative;
-      overflow: hidden;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 4px;
+    .tech-slider i {
+      min-width: 45px;
+      height: 45px;
+      font-size: 45px;
+      line-height: 45px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
-    .skeleton-box::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      transform: translateX(-100%);
-      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0));
-      animation: shimmer 2s infinite;
-      content: '';
+    .tech-item span {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 600;
     }
-    @keyframes shimmer { 100% { transform: translateX(100%); } }
-    .skeleton-header { height: 60px; width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
-    .skeleton-logo { width: 120px; height: 30px; }
-    .skeleton-nav { width: 200px; height: 20px; }
-    .skeleton-hero { height: 300px; width: 80%; margin: 0 auto; border-radius: 20px; }
-    .skeleton-text-center { width: 60%; height: 20px; margin: 20px auto; }
-    .skeleton-btn { width: 180px; height: 50px; margin: 30px auto; border-radius: 30px; }
-  </style>
 
-  <!-- Preload Critical Hero Image -->
-  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp" as="image" fetchpriority="high">
-
-  <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
-  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.30"></noscript>
-
-  <link rel="preload" href="assets/css/styles.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.30"></noscript>
-  <style>
-    /* Page specific overrides */
-    body { background-color: #0a1128; }
-    #typed-text:empty::before { content: 'كونكت تاق'; opacity: 0.5; }
+    /* Layout & Section Helpers */
+    .img-responsive {
+      height: auto;
+      max-width: 100%;
+    }
+    .services-flex-row, .blog-flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+    .services-flex-row > [class*='col-'], .blog-flex-row > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card .icon-wrapper {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-circle2 {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      background-color: rgba(255,255,255,0.05);
+      object-fit: cover;
+      display: block;
+    }
 
     /* Hardware Section Enhancements */
     .hardware-card {
@@ -351,7 +679,7 @@
       border: 1px solid rgba(0, 180, 216, 0.18);
       border-radius: 20px;
       padding: 35px 24px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
       height: 100%;
       margin-bottom: 30px;
       position: relative;
@@ -394,7 +722,7 @@
       font-size: 30px;
       color: #00b4d8;
       margin-bottom: 15px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background 0.4s ease;
     }
     .hardware-icon-box i {
       margin: 0 !important;
@@ -441,14 +769,14 @@
       font-size: 12px;
     }
     .btn-gradient {
-      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
+      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%) !important;
       color: #fff !important;
       border: none;
       border-radius: 25px;
       padding: 10px 24px;
       font-weight: 700;
       font-size: 14px;
-      transition: all 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -462,157 +790,62 @@
       filter: brightness(1.1);
     }
     .btn-gradient i {
-      transition: 0.3s;
+      transition: transform 0.3s ease;
       margin: 0 !important;
       font-size: 18px;
     }
     .btn-gradient:hover i {
       transform: translateX(-5px);
     }
-    /* Critical CSS to prevent FCP/LCP delay */
-    #headerwrap {
-      min-height: 750px;
-      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp') no-repeat center center;
-      background-size: cover;
-      background-position: center left;
-      display: flex;
-      align-items: center;
-      text-align: right;
-    }
-    #headerwrap .container {
-      padding-left: 30px;
-      padding-right: 50px;
-      width: 100%;
-    }
-    #headerwrap .container .row {
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .hero-content-box {
-      margin-left: auto !important;
-      margin-right: 0 !important;
-      float: right !important;
-      text-align: right !important;
-      max-width: 620px;
-      padding: 30px 20px 30px 0;
-    }
-    .hero-main-h1 {
-      color: #ffffff;
-      font-size: 42px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-      margin: 0 0 25px 0 !important;
-      line-height: 1.35 !important;
-      text-align: right !important;
-    }
-    .hero-lead-p {
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1.9;
-      margin: 0 0 35px 0 !important;
-      max-width: 580px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-      text-align: right !important;
-    }
-    .hero-cta-group {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-    }
-    .hero-btn-primary {
-      font-weight: 700;
-      font-size: 18px;
-      background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
-      color: #fff !important;
-      border-radius: 30px;
-      padding: 14px 45px;
-      border: none;
-      box-shadow: 0 10px 25px rgba(0, 82, 204, 0.4);
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0;
-    }
-    .hero-btn-primary:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 15px 35px rgba(0, 180, 216, 0.5);
-      color: #fff !important;
-    }
-    @media (max-width: 991px) {
-      #headerwrap {
-        text-align: center;
-        padding-top: 140px;
-        padding-bottom: 80px;
-        min-height: 650px;
-      }
-      #headerwrap .container .row {
-        justify-content: center;
-      }
-      .hero-content-box {
-        text-align: center !important;
-        background: rgba(10, 17, 40, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 20px;
-        border: 1px solid rgba(0, 180, 216, 0.2);
-        padding: 35px 25px !important;
-        margin: 0 auto !important;
-        float: none !important;
-        max-width: 100%;
-      }
-      .hero-main-h1 {
-        text-align: center !important;
-        font-size: 32px;
-      }
-      .hero-lead-p {
-        text-align: center !important;
-        margin: 0 auto 30px auto !important;
-        font-size: 18px;
-      }
-      .hero-cta-group {
-        justify-content: center;
-      }
-    }
-    .preloader-visible { overflow: hidden; }
-
     @media (max-width: 480px) {
-        .btn-gradient {
-            padding: 14px 30px;
-            font-size: 15px;
-        }
+      .btn-gradient {
+        padding: 14px 30px;
+        font-size: 15px;
+      }
     }
   </style>
 
-  <!-- Non-blocking CSS -->
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.30"></noscript>
+  <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
+  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.31"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.30"></noscript>
+  <link rel="preload" href="assets/css/styles.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.31"></noscript>
+
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.31"></noscript>
+
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.31"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
 
-  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+  <script src="assets/js/components/components-bundle.js?v=1.1.31" data-cfasync="false" defer></script>
 
-  <link rel="preload" href="assets/css/animate-custom.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/animate-custom.min.css?v=1.1.30"></noscript>
-
-
-<script src="assets/js/components/components-bundle.js?v=1.1.30" data-cfasync="false" defer></script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
-       crossorigin="anonymous"></script>
+  <!-- Google AdSense (Deferred until user interaction or idle after load to protect LCP/TBT) -->
+  <script>
+    (function() {
+      var loaded = false;
+      function loadAdSense() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357';
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, loadAdSense, { once: true, passive: true });
+      });
+      window.addEventListener('load', function() {
+        setTimeout(loadAdSense, 4000);
+      }, { once: true });
+    })();
+  </script>
 </head>
-<body data-spy="scroll" data-target="#navbar-main" data-offset="100" class="preloader-visible">
+<body data-spy="scroll" data-target="#navbar-main" data-offset="100">
 
 <site-preloader></site-preloader>
 <div id="home-content">
@@ -626,15 +859,15 @@
 <div id="headerwrap">
   <div class="container">
     <div class="row">
-      <div class="col-md-7 col-lg-6 col-md-offset-5 col-lg-offset-6 hero-content-box animated fadeInRight">
-        <h1 class="hero-main-h1">
-          Connect Tag - <span id="typed-text" style="color: #00b4d8; display: inline-block; min-width: 185px; vertical-align: bottom;">كونكت تاق</span>
+      <div class="col-md-7 col-lg-6 col-md-offset-5 col-lg-offset-6 hero-content-box">
+        <h1 class="hero-main-h1" aria-label="Connect Tag - كونكت تاق">
+          Connect Tag - <span id="typed-text" aria-hidden="true" style="color: #00b4d8; display: inline-block; min-width: 185px; vertical-align: bottom;">كونكت تاق</span>
         </h1>
-        <p class="hero-lead-p animated fadeInUp">
+        <p class="hero-lead-p">
           منصتك الشاملة للحلول البرمجية، الأدوات الذكية، وتطبيقات الويب والموبايل والخدمات التقنية المتكاملة.
         </p>
-        <div class="hero-cta-group animated fadeInUp">
-          <a href="#services" class="btn hero-btn-primary">ابدأ رحلتك معنا <i class="fa-solid fa-arrow-left"></i></a>
+        <div class="hero-cta-group">
+          <a href="#services" class="btn hero-btn-primary">ابدأ رحلتك معنا <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -642,53 +875,53 @@
 </div>
 
 <!-- Tech Slider Section -->
-<div class="tech-slider">
+<div class="tech-slider" aria-label="التقنيات التي نعمل بها">
     <div class="tech-slide-track">
-        <div class="tech-item"><i class="fa-solid fa-rocket"></i><span>Jetpack Compose</span></div>
-        <div class="tech-item"><i class="fa-solid fa-code"></i><span>JavaScript</span></div>
-        <div class="tech-item"><i class="fa-brands fa-android"></i><span>Kotlin</span></div>
-        <div class="tech-item"><i class="fa-regular fa-file-code"></i><span>PHP</span></div>
-        <div class="tech-item"><i class="fa-solid fa-terminal"></i><span>Python</span></div>
-        <div class="tech-item"><i class="fa-solid fa-coffee"></i><span>Java</span></div>
-        <div class="tech-item"><i class="fa-solid fa-server"></i><span>Node.js</span></div>
-        <div class="tech-item"><i class="fa-solid fa-plug"></i><span>Rest API</span></div>
-        <div class="tech-item"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
-        <div class="tech-item"><i class="fa-solid fa-cubes"></i><span>Laravel</span></div>
-        <div class="tech-item"><i class="fa-brands fa-firebase"></i><span>Firebase</span></div>
-        <div class="tech-item"><i class="fa-solid fa-database"></i><span>Databases</span></div>
-        <div class="tech-item"><i class="fa-brands fa-cloudflare"></i><span>Cloudflare</span></div>
-        <div class="tech-item"><i class="fa-brands fa-apple"></i><span>iOS Apps</span></div>
-        <div class="tech-item"><i class="fa-solid fa-object-group"></i><span>UI/UX</span></div>
-        <div class="tech-item"><i class="fa-solid fa-chart-line"></i><span>SEO</span></div>
-        <div class="tech-item"><i class="fa-solid fa-lock"></i><span>Security</span></div>
-        <div class="tech-item"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
-        <div class="tech-item"><i class="fa-solid fa-code-fork"></i><span>Git</span></div>
-        <div class="tech-item"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
-        <div class="tech-item"><i class="fa-brands fa-css3"></i><span>CSS3</span></div>
-        <div class="tech-item"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
+        <div class="tech-item"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>Jetpack Compose</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code" aria-hidden="true"></i><span>JavaScript</span></div>
+        <div class="tech-item"><i class="fa-brands fa-android" aria-hidden="true"></i><span>Kotlin</span></div>
+        <div class="tech-item"><i class="fa-regular fa-file-code" aria-hidden="true"></i><span>PHP</span></div>
+        <div class="tech-item"><i class="fa-solid fa-terminal" aria-hidden="true"></i><span>Python</span></div>
+        <div class="tech-item"><i class="fa-solid fa-coffee" aria-hidden="true"></i><span>Java</span></div>
+        <div class="tech-item"><i class="fa-solid fa-server" aria-hidden="true"></i><span>Node.js</span></div>
+        <div class="tech-item"><i class="fa-solid fa-plug" aria-hidden="true"></i><span>Rest API</span></div>
+        <div class="tech-item"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div>
+        <div class="tech-item"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span>Laravel</span></div>
+        <div class="tech-item"><i class="fa-brands fa-firebase" aria-hidden="true"></i><span>Firebase</span></div>
+        <div class="tech-item"><i class="fa-solid fa-database" aria-hidden="true"></i><span>Databases</span></div>
+        <div class="tech-item"><i class="fa-brands fa-cloudflare" aria-hidden="true"></i><span>Cloudflare</span></div>
+        <div class="tech-item"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>iOS Apps</span></div>
+        <div class="tech-item"><i class="fa-solid fa-object-group" aria-hidden="true"></i><span>UI/UX</span></div>
+        <div class="tech-item"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>SEO</span></div>
+        <div class="tech-item"><i class="fa-solid fa-lock" aria-hidden="true"></i><span>Security</span></div>
+        <div class="tech-item"><i class="fa-brands fa-linux" aria-hidden="true"></i><span>Linux</span></div>
+        <div class="tech-item"><i class="fa-solid fa-code-fork" aria-hidden="true"></i><span>Git</span></div>
+        <div class="tech-item"><i class="fa-brands fa-html5" aria-hidden="true"></i><span>HTML5</span></div>
+        <div class="tech-item"><i class="fa-brands fa-css3" aria-hidden="true"></i><span>CSS3</span></div>
+        <div class="tech-item"><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></div>
         <!-- Repeat for continuous loop -->
-        <div class="tech-item"><i class="fa-solid fa-rocket"></i><span>Jetpack Compose</span></div>
-        <div class="tech-item"><i class="fa-solid fa-code"></i><span>JavaScript</span></div>
-        <div class="tech-item"><i class="fa-brands fa-android"></i><span>Kotlin</span></div>
-        <div class="tech-item"><i class="fa-regular fa-file-code"></i><span>PHP</span></div>
-        <div class="tech-item"><i class="fa-solid fa-terminal"></i><span>Python</span></div>
-        <div class="tech-item"><i class="fa-solid fa-coffee"></i><span>Java</span></div>
-        <div class="tech-item"><i class="fa-solid fa-server"></i><span>Node.js</span></div>
-        <div class="tech-item"><i class="fa-solid fa-plug"></i><span>Rest API</span></div>
-        <div class="tech-item"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
-        <div class="tech-item"><i class="fa-solid fa-cubes"></i><span>Laravel</span></div>
-        <div class="tech-item"><i class="fa-brands fa-firebase"></i><span>Firebase</span></div>
-        <div class="tech-item"><i class="fa-solid fa-database"></i><span>Databases</span></div>
-        <div class="tech-item"><i class="fa-brands fa-cloudflare"></i><span>Cloudflare</span></div>
-        <div class="tech-item"><i class="fa-brands fa-apple"></i><span>iOS Apps</span></div>
-        <div class="tech-item"><i class="fa-solid fa-object-group"></i><span>UI/UX</span></div>
-        <div class="tech-item"><i class="fa-solid fa-chart-line"></i><span>SEO</span></div>
-        <div class="tech-item"><i class="fa-solid fa-lock"></i><span>Security</span></div>
-        <div class="tech-item"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
-        <div class="tech-item"><i class="fa-solid fa-code-fork"></i><span>Git</span></div>
-        <div class="tech-item"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
-        <div class="tech-item"><i class="fa-brands fa-css3"></i><span>CSS3</span></div>
-        <div class="tech-item"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-rocket" aria-hidden="true"></i><span>Jetpack Compose</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-code" aria-hidden="true"></i><span>JavaScript</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-android" aria-hidden="true"></i><span>Kotlin</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-regular fa-file-code" aria-hidden="true"></i><span>PHP</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-terminal" aria-hidden="true"></i><span>Python</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-coffee" aria-hidden="true"></i><span>Java</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-server" aria-hidden="true"></i><span>Node.js</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-plug" aria-hidden="true"></i><span>Rest API</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span>Laravel</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-firebase" aria-hidden="true"></i><span>Firebase</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-database" aria-hidden="true"></i><span>Databases</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-cloudflare" aria-hidden="true"></i><span>Cloudflare</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>iOS Apps</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-object-group" aria-hidden="true"></i><span>UI/UX</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>SEO</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-lock" aria-hidden="true"></i><span>Security</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-linux" aria-hidden="true"></i><span>Linux</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-code-fork" aria-hidden="true"></i><span>Git</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-html5" aria-hidden="true"></i><span>HTML5</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-css3" aria-hidden="true"></i><span>CSS3</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></div>
     </div>
 </div>
 
@@ -702,20 +935,20 @@
     <div class="row white">
       <h2 class="centered">من نحن</h2>
       <hr>
-      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp" align="" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
+      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp?v=1.1.31" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
       <div class="col-md-6" data-aos="fade-left">
         <h3>شركة كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي</h3>
         <p>كونكت تاق هي شركة رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية المتكاملة. نحن نجمع بين الخبرة التقنية والإبداع الفني لنقدم خدمات تصميم وتسويق رقمي تلبي تطلعات عملائنا في اليمن والمنطقة العربية بكفاءة واحترافية عالية.</p>
         <div style="margin-top: 20px;">
-          <a href="https://connecttag.org/company/our-company" class="btn btn-lg" style="background: #0052cc; color: #fff; border-radius: 30px; padding: 10px 40px; box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);">اقرأ المزيد</a>
+          <a href="https://connecttag.org/company/our-company" class="btn btn-lg" aria-label="اقرأ المزيد عن شركة كونكت تاق" style="background: #0052cc; color: #fff; border-radius: 30px; padding: 10px 40px; box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);">اقرأ المزيد</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section-divider" style="transform: rotate(180deg);">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+<div class="section-divider" aria-hidden="true" style="transform: rotate(180deg);">
+    <svg aria-hidden="true" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.83C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="divider-fill-light"></path>
     </svg>
 </div>
@@ -739,7 +972,7 @@
           <h3>تطوير المواقع وتطبيقات الهواتف</h3>
           <p>بناء وتطوير تطبيقات الهواتف الذكية (Android & iOS) والمواقع التفاعلية بأحدث التقنيات العالمية، لتجربة مستخدم استثنائية وأداء فائق التوسع.</p>
           <div class="service-btns">
-            <a href="https://connecttag.org/company/services/web-app-development" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+            <a href="https://connecttag.org/company/services/web-app-development" class="btn btn-sm" aria-label="تفاصيل الخدمة - تطوير المواقع وتطبيقات الهواتف" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -752,7 +985,7 @@
           <h3>الأمن السيبراني وحماية الأصول</h3>
           <p>تحصين النطاقات من الانتحال (DMARC/DNSSEC)، حماية التطبيقات ضد الهندسة العكسية، جدران حماية سحابية WAF، وتدقيق واختبارات اختراق شاملة.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/cybersecurity-solutions" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/cybersecurity-solutions" class="btn btn-sm" aria-label="تفاصيل الخدمة - الأمن السيبراني وحماية الأصول" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -765,7 +998,7 @@
           <h3>بيانات ومسح الاتصالات والواي فاي</h3>
           <p>توثيق بيانات المشغلين ومفاتيح الدول (MCC/MNC)، مسح خلايا وأبراج الجوال (Cell-ID)، تحليل جودة الإشارة RSRP/SINR، ومسح شبكات الواي فاي.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/telecom-intelligence" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/telecom-intelligence" class="btn btn-sm" aria-label="تفاصيل الخدمة - بيانات ومسح الاتصالات والواي فاي" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -778,7 +1011,7 @@
           <h3>حلول الـ API وتكامل البيانات</h3>
           <p>ربط تطبيقاتكم وأنظمتكم بقواعد بياناتنا الضخمة برمجياً: كاشف الأرقام، فحص IMEI، بيانات المشغلين، وتدقيق العناوين والشبكات بسرعة استجابة عالية.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/api-solutions" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/api-solutions" class="btn btn-sm" aria-label="تفاصيل الخدمة - حلول الـ API وتكامل البيانات" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -791,7 +1024,7 @@
           <h3>الاستضافة السحابية وإدارة النطاقات</h3>
           <p>بنية سحابية متطورة تضمن استقرار موقعك بنسبة 99.9% مع أقراص NVMe، حجز وإدارة النطاقات العالمية واليمنية (.ye)، وشهادات SSL مجانية.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/hosting-services" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/hosting-services" class="btn btn-sm" aria-label="تفاصيل الخدمة - الاستضافة السحابية وإدارة النطاقات" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -804,7 +1037,7 @@
           <h3>التصميم الإبداعي وواجهات UX/UI</h3>
           <p>بناء الهويات البصرية والشعارات التي تميز علامتك التجارية، وهندسة واجهات وتجارب استخدام رقمية مريحة تعزز ولاء عملائك وتزيد من المبيعات.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/creative-design" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/creative-design" class="btn btn-sm" aria-label="تفاصيل الخدمة - التصميم الإبداعي وواجهات UX/UI" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -817,7 +1050,7 @@
           <h3>التسويق الرقمي وتحسين الـ SEO</h3>
           <p>استراتيجيات نمو تسويقية قائمة على تحليل البيانات، إدارة الحملات الإعلانية الممولة، وتحسين ظهورك في محركات البحث (SEO) لزيادة المبيعات والوصول.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/company/services/digital-marketing" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
+             <a href="https://connecttag.org/company/services/digital-marketing" class="btn btn-sm" aria-label="تفاصيل الخدمة - التسويق الرقمي وتحسين الـ SEO" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تفاصيل الخدمة</a>
           </div>
         </div>
       </div>
@@ -830,14 +1063,14 @@
           <h3>استشارات تقنية وحلول مخصصة</h3>
           <p>دراسة متطلبات مشروعك وتقديم استشارات هندسية متخصصة لاختيار أفضل التقنيات، مع بناء وتطوير حلول برمجية وهندسية مفصلة حسب الطلب.</p>
           <div class="service-btns">
-             <a href="https://connecttag.org/contact" class="btn btn-sm" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تواصل معنا</a>
+             <a href="https://connecttag.org/contact" class="btn btn-sm" aria-label="تواصل معنا - استشارات تقنية وحلول مخصصة" style="color:#0052cc; border:1px solid #0052cc; border-radius:20px;">تواصل معنا</a>
           </div>
         </div>
       </div>
 
     </div>
     <div class="row text-center" style="margin-top: 40px;">
-        <a href="https://connecttag.org/company/services/" class="btn btn-lg" style="background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: #fff; border-radius: 30px; padding: 14px 50px; box-shadow: 0 4px 15px rgba(0, 82, 204, 0.35); border: none; font-weight: 800; font-size: 17px;">استكشف كافة تفاصيل وباقات الخدمات <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i></a>
+        <a href="https://connecttag.org/company/services/" class="btn btn-lg" style="background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: #fff; border-radius: 30px; padding: 14px 50px; box-shadow: 0 4px 15px rgba(0, 82, 204, 0.35); border: none; font-weight: 800; font-size: 17px;">استكشف كافة تفاصيل وباقات الخدمات <i class="fa-solid fa-arrow-left" aria-hidden="true" style="margin-right: 8px;"></i></a>
     </div>
     <!-- row --> 
   </div>
@@ -860,7 +1093,7 @@
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
                 <div class="hardware-card">
                     <div class="hardware-icon-box">
-                        <i class="fa-solid fa-laptop"></i>
+                        <i class="fa-solid fa-laptop" aria-hidden="true"></i>
                     </div>
                     <h3 style="color: #ffffff !important;">أجهزة وحواسيب</h3>
                     <p style="flex-grow: 1; color: #cbd5e1 !important;">توريد أحدث أجهزة الكمبيوتر، اللابتوبات، والسيرفرات المتطورة لقطاع الأعمال والأفراد.</p>
@@ -870,7 +1103,7 @@
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
                 <div class="hardware-card">
                     <div class="hardware-icon-box">
-                        <i class="fa-solid fa-video"></i>
+                        <i class="fa-solid fa-video" aria-hidden="true"></i>
                     </div>
                     <h3 style="color: #ffffff !important;">أنظمة المراقبة</h3>
                     <p style="flex-grow: 1; color: #cbd5e1 !important;">حلول مراقبة ذكية تشمل كاميرات عالية الدقة (IP) وأنظمة تسجيل متقدمة للمنشآت.</p>
@@ -880,7 +1113,7 @@
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
                 <div class="hardware-card">
                     <div class="hardware-icon-box">
-                        <i class="fa-solid fa-shield"></i>
+                        <i class="fa-solid fa-shield" aria-hidden="true"></i>
                     </div>
                     <h3 style="color: #ffffff !important;">الأمن والسلامة</h3>
                     <p style="flex-grow: 1; color: #cbd5e1 !important;">أنظمة حماية متكاملة، أجهزة إنذار، وحلول الوصول الذكي لضمان أمان ممتلكاتك.</p>
@@ -890,7 +1123,7 @@
             <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
                 <div class="hardware-card">
                     <div class="hardware-icon-box">
-                        <i class="fa-solid fa-microchip"></i>
+                        <i class="fa-solid fa-microchip" aria-hidden="true"></i>
                     </div>
                     <h3 style="color: #ffffff !important;">المعدات الفنية</h3>
                     <p style="flex-grow: 1; color: #cbd5e1 !important;">توفير كافة الملحقات والقطع الفنية الدقيقة والمعدات اللازمة للبنية التحتية التقنية.</p>
@@ -902,7 +1135,7 @@
             <div class="col-lg-12">
                 <a href="https://connecttag.org/store/products" class="btn btn-lg btn-gradient">
                     <span>اكتشف جميع منتجاتنا</span>
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -932,67 +1165,67 @@
 
     <div class="row services-flex-row">
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp?v=1.1.31" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الفحص التقني الشامل للمواقع (Technical SEO)</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج بحث جوجل...</p>
-            <a href="https://connecttag.org/blog/technical-seo-audit-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/technical-seo-audit-guide" aria-label="اقرأ المزيد - الفحص التقني الشامل للمواقع (Technical SEO)" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
           <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل Room KMP و DataStore: تأمين البيانات</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إتقان تخزين وتشفير البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية...</p>
-            <a href="https://connecttag.org/blog/kmp-data-management-room-datastore" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/kmp-data-management-room-datastore" aria-label="اقرأ المزيد - دليل Room KMP و DataStore: تأمين البيانات" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
           <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">KMP vs Flutter: أيهما تختار؟</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء KMP الأصيل وسرعة تطوير Flutter المذهلة...</p>
-            <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison" aria-label="اقرأ المزيد - KMP vs Flutter: أيهما تختار؟" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/iis-hardening-guide.webp" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/iis-hardening-guide.webp?v=1.1.31" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل تأمين خادم IIS ضد الهجمات السيبرانية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر...</p>
-            <a href="https://connecttag.org/blog/iis-hardening-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/iis-hardening-guide" aria-label="اقرأ المزيد - دليل تأمين خادم IIS ضد الهجمات السيبرانية" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/jetpack-compose.webp?v=1.1.31" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الدليل الشامل لـ Jetpack Compose</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعرف على الأداة الثورية لبناء واجهات تطبيقات الأندرويد العصرية...</p>
-            <a href="https://connecttag.org/blog/jetpack-compose-guide" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/jetpack-compose-guide" aria-label="اقرأ المزيد - الدليل الشامل لـ Jetpack Compose" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
-        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition:0.3s; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/android-reverse-engineering.webp" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+        <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+          <img src="https://connecttag.org/upload/android-reverse-engineering.webp?v=1.1.31" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">حماية تطبيقات الأندرويد من الهندسة العكسية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية تأمين تطبيقك وحماية الكود المصدري من التلاعب والاختراق...</p>
-            <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" style="font-weight:bold; margin-top: auto; color: #0052cc;">اقرأ المزيد <i class="fa-solid fa-angle-left"></i></a>
+            <a href="https://connecttag.org/blog/android-app-security-reverse-engineering" aria-label="اقرأ المزيد - حماية تطبيقات الأندرويد من الهندسة العكسية" style="font-weight:bold; margin-top: auto; color: #0052cc; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 6px 0;">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>

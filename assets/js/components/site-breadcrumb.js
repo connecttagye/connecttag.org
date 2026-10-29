@@ -124,7 +124,7 @@ class SiteBreadcrumb extends HTMLElement {
       return `
         <li class="ct-breadcrumb-item ${isLast ? 'active' : ''}">
           ${isLast ? `<span${idAttr}>${item.title}</span>` : `<a href="${item.url || '#'}"${idAttr}>${item.title}</a>`}
-          ${!isLast ? '<span class="ct-breadcrumb-separator"><i class="fa-solid fa-chevron-left"></i></span>' : ''}
+          ${!isLast ? '<span class="ct-breadcrumb-separator" aria-hidden="true"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></span>' : ''}
         </li>
       `;
     }).join('');

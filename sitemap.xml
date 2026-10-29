@@ -594,6 +594,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/tools/security/password-breach-checker/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/tools/security/privacy-generator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -1027,6 +1033,24 @@
   <url>
     <loc>https://connecttag.org/company/projects/sites/</loc>
     <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/best-yemen-4g-modem-buying-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/yemen-4g-modem-settings-security-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

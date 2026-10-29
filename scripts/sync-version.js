@@ -67,13 +67,35 @@ if (fs.existsSync(swPath)) {
     console.log(`Updated sw.js to ${CACHE_NAME}`);
 }
 
-// 3. Update components-bundle.js
+// 3. Update components-bundle.js & site-header.js
 const bundlePath = path.join(ROOT_DIR, 'assets/js/components/components-bundle.js');
 if (fs.existsSync(bundlePath)) {
     let bundleContent = fs.readFileSync(bundlePath, 'utf8');
     bundleContent = bundleContent.replace(/const ASSET_VERSION = '[^']*';/, `const ASSET_VERSION = '${VERSION}';`);
+    bundleContent = bundleContent.replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
     fs.writeFileSync(bundlePath, bundleContent);
     console.log(`Updated components-bundle.js to ${VERSION}`);
 }
+
+const headerPath = path.join(ROOT_DIR, 'assets/js/components/site-header.js');
+if (fs.existsSync(headerPath)) {
+    let headerContent = fs.readFileSync(headerPath, 'utf8');
+    headerContent = headerContent.replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
+    fs.writeFileSync(headerPath, headerContent);
+    console.log(`Updated site-header.js to ${VERSION}`);
+}
+
+// 4. Update CSS files with versioned .webp URLs
+['assets/css/styles.css', 'assets/css/styles.min.css'].forEach(relCss => {
+    const cssPath = path.join(ROOT_DIR, relCss);
+    if (fs.existsSync(cssPath)) {
+        let cssContent = fs.readFileSync(cssPath, 'utf8');
+        const updatedCss = cssContent.replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
+        if (cssContent !== updatedCss) {
+            fs.writeFileSync(cssPath, updatedCss);
+            console.log(`Updated ${relCss} to ${VERSION}`);
+        }
+    }
+});
 
 console.log('--- Version Sync Completed Successfully ---');

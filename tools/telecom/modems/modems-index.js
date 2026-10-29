@@ -59,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         return org ? `${org.name || ''} ${org.nameEn || ''}` : '';
                     }).join(' ')
                     : '';
+                const colorTerms = Array.isArray(item.colors)
+                    ? item.colors.map(c => typeof c === 'string' ? c : `${c.name || ''} ${c.nameEn || ''} ${c.raw || ''}`).join(' ')
+                    : '';
+                const advantageTerms = Array.isArray(item.advantages)
+                    ? item.advantages.join(' ')
+                    : String(item.advantages || '');
+                const tipTerms = Array.isArray(item.tips) ? item.tips.join(' ') : '';
                 const haystack = [
                     item.arabicName,
                     item.englishName,
@@ -67,12 +74,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.brand,
                     item.description,
                     item.shortDescription,
+                    item.summary,
+                    item.notes,
+                    item.hint,
+                    item.alertMessage,
+                    item.hintMessage,
+                    item.infoMessage,
                     item.keyWords,
                     item.keyWordsEnglish,
+                    item.additional?.modemSettings?.ipAddress,
                     item.additional?.modemSettings?.loginLink,
+                    item.additional?.modemSettings?.fullLoginUrl,
                     tagTerms,
                     attrTerms,
-                    providerTerms
+                    providerTerms,
+                    colorTerms,
+                    advantageTerms,
+                    tipTerms
                 ].filter(Boolean).join(' ').toLowerCase();
                 return haystack.includes(currentSearch);
             });
@@ -109,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.shortDescription || item.summary || item.description || 'المواصفات الكاملة وإعدادات الدخول لمودم يمن فورجي.'
             );
             const targetSlug = encodeURIComponent(item.slug || item.id || '');
-            const primaryImg = item.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
-            const backupImg = item.image?.remoteBackup || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+            const primaryImg = item.image?.content || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
+            const backupImg = item.image?.remoteBackup || 'https://connecttag.org/assets/img/covers/modems-catalog-cover.webp';
 
             const cardCol = document.createElement('div');
             cardCol.className = 'col-md-4 col-sm-6';

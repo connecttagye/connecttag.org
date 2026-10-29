@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentUrl = comp.slug
             ? `https://connecttag.org/tools/telecom/company/services?slug=${encodeURIComponent(comp.slug)}`
             : `https://connecttag.org/tools/telecom/company/services?companyId=${encodeURIComponent(comp.id)}`;
-        const logoUrl = comp.logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+        const logoUrl = comp.logo || 'https://connecttag.org/assets/img/about/connect-tag-team.webp';
 
         document.title = pageTitle;
         document.getElementById('meta-description')?.setAttribute('content', pageDesc);

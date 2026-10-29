@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentUrl = c && c.slug
             ? `https://connecttag.org/tools/telecom/company/details?slug=${encodeURIComponent(c.slug)}`
             : (c && c.id ? `https://connecttag.org/tools/telecom/company/details?id=${encodeURIComponent(c.id)}` : window.location.href);
-        const logoUrl = logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
+        const logoUrl = logo || 'https://connecttag.org/assets/img/about/connect-tag-team.webp';
 
         document.getElementById('meta-description')?.setAttribute('content', desc);
         document.getElementById('canonical-url')?.setAttribute('href', currentUrl);

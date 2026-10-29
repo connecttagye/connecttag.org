@@ -4,9 +4,11 @@
  */
 class SitePreloader extends HTMLElement {
   connectedCallback() {
-    document.body.classList.remove('preloader-visible');
+    if (document.body.classList.contains('preloader-visible')) {
+      document.body.classList.remove('preloader-visible');
+      document.body.style.overflow = '';
+    }
     document.body.classList.add('loaded', 'page-entered');
-    document.body.style.overflow = 'auto';
     const home = document.getElementById('home-content');
     if (home) {
       home.classList.add('visible');

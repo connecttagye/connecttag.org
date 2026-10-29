@@ -187,6 +187,27 @@ class SiteRelatedPosts extends HTMLElement {
     // 2. Global Articles Registry
     const allPosts = [
       {
+        id: "yemen-telecom-companies-codes-services-guide",
+        title: "دليل أكواد وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو، سبأفون، واي)",
+        link: "blog/yemen-telecom-companies-codes-services-guide",
+        image: "upload/yemen-telecom-codes-guide.webp",
+        excerpt: "المرجع الشامل لأكواد استعلام الرصيد، باقات 4G، تحويل الرصيد، سلفني، والكاشف الذكي لجميع الشبكات."
+      },
+      {
+        id: "yemen-4g-modem-settings-security-guide",
+        title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
+        link: "blog/yemen-4g-modem-settings-security-guide",
+        image: "upload/yemen-4g-modem-settings-guide.webp",
+        excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
+      },
+      {
+        id: "best-yemen-4g-modem-buying-guide",
+        title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
+        link: "blog/best-yemen-4g-modem-buying-guide",
+        image: "upload/best-yemen-4g-modem-guide.webp",
+        excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
+      },
+      {
         id: "technical-seo-audit-guide",
         title: "الفحص التقني الشامل للمواقع (Technical SEO Audit)",
         link: "blog/technical-seo-audit-guide",

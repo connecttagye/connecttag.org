@@ -1,25 +1,39 @@
 export default class HistoryManager {
-    constructor(key = 'seo_history', limit = 5) {
+    constructor(key = 'seo_history', limit = 6) {
         this.key = key;
         this.limit = limit;
     }
 
-    save(title, source) {
+    save(title, source, score = null) {
         let history = this.getAll();
         history = history.filter(h => h.source !== source);
         history.unshift({
-            title,
+            title: title || 'تحليل موقع',
             source,
-            date: new Date().toLocaleTimeString('ar-YE')
+            score,
+            date: new Date().toLocaleTimeString('ar-YE', { hour: '2-digit', minute: '2-digit' })
         });
-        localStorage.setItem(this.key, JSON.stringify(history.slice(0, this.limit)));
+        try {
+            localStorage.setItem(this.key, JSON.stringify(history.slice(0, this.limit)));
+        } catch {
+            // Ignore quota errors
+        }
     }
 
     getAll() {
-        return JSON.parse(localStorage.getItem(this.key) || '[]');
+        try {
+            const raw = localStorage.getItem(this.key);
+            return raw ? JSON.parse(raw) : [];
+        } catch {
+            return [];
+        }
     }
 
     clear() {
-        localStorage.removeItem(this.key);
+        try {
+            localStorage.removeItem(this.key);
+        } catch {
+            // Ignore errors
+        }
     }
 }

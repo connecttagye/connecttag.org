@@ -13,14 +13,14 @@
     <meta name="twitter:url" content="https://connecttag.org/tools/telecom/speed-test/">
     <meta name="twitter:title" content="فحص سرعة الإنترنت | قياس سرعة التحميل والرفع - كونكت تاق">
     <meta name="twitter:description" content="أداة سريعة ودقيقة لفحص سرعة الإنترنت الخاصة بك. قس سرعة التحميل الفعلية، الرفع التقديري، والـ Ping لمعرفة جودة اتصالك بالإنترنت وتوافقها مع باقات يمن فورجي والـ ADSL.">
-    <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/speed-test-cover.webp">
 
     <!-- OpenGraph meta -->
     <meta property="og:url" content="https://connecttag.org/tools/telecom/speed-test/" />
     <meta property="og:type" content="website">
     <meta property="og:title" content="فحص سرعة الإنترنت - كونكت تاق" />
     <meta property="og:description" content="قس سرعة اتصالك بالإنترنت الآن بضغطة زر واحدة." />
-    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <meta property="og:image" content="https://connecttag.org/assets/img/covers/speed-test-cover.webp">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -43,11 +43,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.30">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.30">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.30">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.31">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
@@ -73,7 +72,7 @@
             position: relative; width: 280px; height: 280px; margin: 0 auto 30px;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .gauge-svg { transform: rotate(-90deg); filter: drop-shadow(0 0 10px rgba(0,107,152,0.1)); }
+        .gauge-svg { width: 100%; height: 100%; transform: rotate(-90deg); filter: drop-shadow(0 0 10px rgba(0,107,152,0.1)); }
         .gauge-bg { fill: none; stroke: #f1f5f9; stroke-width: 10; }
         .gauge-fill {
             fill: none; stroke: #006b98; stroke-width: 12;
@@ -149,7 +148,7 @@
             .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.30" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
@@ -172,7 +171,7 @@
             <div class="speed-test-card" data-aos="zoom-in" style="display: inline-block; text-align: right;">
                 <div class="gauge-container" style="margin-left: auto; margin-right: auto;">
                     <div class="gauge-ray"></div>
-                    <svg class="gauge-svg" width="280" height="280">
+                    <svg class="gauge-svg" width="280" height="280" viewBox="0 0 280 280">
                         <circle class="gauge-bg" cx="140" cy="140" r="100"></circle>
                         <circle id="gauge-fill" class="gauge-fill" cx="140" cy="140" r="100"></circle>
                     </svg>
@@ -188,7 +187,7 @@
                         <span class="stat-value" id="download-val">-</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label"><i class="fa-solid fa-upload"></i> الرفع (تقديري)</span>
+                        <span class="stat-label"><i class="fa-solid fa-upload"></i> الرفع</span>
                         <span class="stat-value" id="upload-val">-</span>
                     </div>
                     <div class="stat-item">
@@ -233,8 +232,12 @@
 
 <script>
     const GAUGE_TOTAL = 628; // Circumference for r=100
+    const CF_DOWN_URL = 'https://speed.cloudflare.com/__down';
+    const CF_UP_URL = 'https://speed.cloudflare.com/__up';
+
     const fill = document.getElementById('gauge-fill');
     const speedDisplay = document.getElementById('speed-display');
+    const unitDisplay = document.getElementById('unit-display');
     const downloadVal = document.getElementById('download-val');
     const uploadVal = document.getElementById('upload-val');
     const pingVal = document.getElementById('ping-val');
@@ -244,20 +247,19 @@
     const statItems = document.querySelectorAll('.stat-item');
 
     function updateGauge(val) {
-        // Assume 50 Mbps is the max for gauge visual
-        const percent = Math.min(val / 50, 1);
+        const clamped = Math.max(0, val);
+        const percent = Math.min(Math.pow(clamped / 100, 0.65), 1);
         const offset = GAUGE_TOTAL - (GAUGE_TOTAL * percent);
         fill.style.strokeDashoffset = offset;
 
-        // Color coding
         fill.classList.remove('speed-low', 'speed-mid', 'speed-high');
         speedDisplay.classList.remove('speed-low', 'speed-mid', 'speed-high');
 
-        if (val > 0) {
-            if (val < 5) {
+        if (clamped > 0) {
+            if (clamped < 5) {
                 fill.classList.add('speed-low');
                 speedDisplay.classList.add('speed-low');
-            } else if (val < 20) {
+            } else if (clamped < 20) {
                 fill.classList.add('speed-mid');
                 speedDisplay.classList.add('speed-mid');
             } else {
@@ -266,7 +268,7 @@
             }
         }
 
-        speedDisplay.innerText = val.toFixed(1);
+        speedDisplay.innerText = clamped.toFixed(1);
     }
 
     function setActiveStat(index) {
@@ -275,116 +277,185 @@
         });
     }
 
+    async function measurePing() {
+        const samples = [];
+        // Warm-up request to establish TCP/TLS connection (excluded from latency average)
+        await fetch(`${CF_DOWN_URL}?bytes=0&t=${Date.now()}_warmup`, { cache: 'no-store', mode: 'cors' });
+
+        for (let i = 0; i < 4; i++) {
+            const t0 = performance.now();
+            await fetch(`${CF_DOWN_URL}?bytes=0&t=${Date.now()}_${i}`, { cache: 'no-store', mode: 'cors' });
+            const rtt = performance.now() - t0;
+            samples.push(rtt);
+        }
+        samples.sort((a, b) => a - b);
+        return Math.max(1, Math.round(samples[0]));
+    }
+
+    async function measureDownload(onProgress, pingMs = 50) {
+        // Adaptive chunk sizes: scales automatically to connection speed
+        const baseChunks = [150000, 500000, 1500000, 3000000, 6000000];
+        let totalBytes = 0;
+        let totalSeconds = 0;
+        const phaseStart = performance.now();
+        const maxDurationMs = 3800;
+
+        for (let i = 0; i < baseChunks.length; i++) {
+            let bytesToRequest = baseChunks[i];
+            if (i > 0 && totalSeconds > 0) {
+                const currentBps = totalBytes / totalSeconds;
+                // Cap next chunk so it takes at most ~1.4s on the user's actual speed
+                bytesToRequest = Math.min(bytesToRequest, Math.max(100000, Math.round(currentBps * 1.4)));
+            }
+
+            const url = `${CF_DOWN_URL}?bytes=${bytesToRequest}&t=${Date.now()}_${i}`;
+            const reqStart = performance.now();
+            const response = await fetch(url, { cache: 'no-store', mode: 'cors' });
+            if (!response.ok) throw new Error('Download HTTP error');
+
+            const chunkStart = performance.now();
+            let chunkBytes = 0;
+
+            if (response.body && response.body.getReader) {
+                const reader = response.body.getReader();
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    chunkBytes += value.byteLength;
+                    const rawElapsedMs = Math.max(performance.now() - chunkStart, (performance.now() - reqStart) - pingMs);
+                    const elapsedChunkSec = Math.max(0.02, rawElapsedMs / 1000);
+                    const cumulativeSec = totalSeconds + elapsedChunkSec;
+                    const cumulativeBytes = totalBytes + chunkBytes;
+                    if (cumulativeSec > 0.05) {
+                        const liveMbps = (cumulativeBytes * 8) / cumulativeSec / 1e6;
+                        onProgress(liveMbps);
+                    }
+                }
+            } else {
+                const buf = await response.arrayBuffer();
+                chunkBytes = buf.byteLength;
+            }
+
+            const finalChunkMs = Math.max(performance.now() - chunkStart, (performance.now() - reqStart) - pingMs);
+            const chunkElapsedSec = Math.max(0.02, finalChunkMs / 1000);
+            totalBytes += chunkBytes;
+            totalSeconds += chunkElapsedSec;
+
+            const currentMbps = (totalBytes * 8) / totalSeconds / 1e6;
+            onProgress(currentMbps);
+
+            if ((performance.now() - phaseStart) >= maxDurationMs && i >= 1) {
+                break;
+            }
+        }
+
+        if (totalBytes === 0 || totalSeconds <= 0) throw new Error('No bytes downloaded');
+        return (totalBytes * 8) / totalSeconds / 1e6;
+    }
+
+    async function measureUpload(onProgress, fallbackDownloadMbps, pingMs = 50) {
+        try {
+            const baseSizes = [50000, 150000, 400000];
+            let totalBytes = 0;
+            let totalSeconds = 0;
+            const phaseStart = performance.now();
+
+            for (let i = 0; i < baseSizes.length; i++) {
+                let size = baseSizes[i];
+                if (i > 0 && totalSeconds > 0) {
+                    const currentBps = totalBytes / totalSeconds;
+                    // Scale upload chunk so it takes at most ~1.2s on slow links
+                    size = Math.min(size, Math.max(30000, Math.round(currentBps * 1.2)));
+                }
+                const payload = new Uint8Array(size);
+                const t0 = performance.now();
+                const res = await fetch(`${CF_UP_URL}?t=${Date.now()}_${i}`, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-store',
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                    body: payload
+                });
+                if (!res.ok) throw new Error('Upload HTTP error');
+                const netUploadMs = Math.max(20, (performance.now() - t0) - pingMs);
+                const elapsedSec = netUploadMs / 1000;
+                totalBytes += size;
+                totalSeconds += elapsedSec;
+
+                const currentMbps = (totalBytes * 8) / totalSeconds / 1e6;
+                onProgress(currentMbps);
+
+                if ((performance.now() - phaseStart) >= 2800 && i >= 1) break;
+            }
+
+            return {
+                mbps: (totalBytes * 8) / totalSeconds / 1e6,
+                estimated: false
+            };
+        } catch (err) {
+            const est = Math.max(0.1, fallbackDownloadMbps * 0.35);
+            onProgress(est);
+            return { mbps: est, estimated: true };
+        }
+    }
+
     async function startTest() {
         btn.disabled = true;
         card.classList.add('testing');
-        statusText.innerText = "جاري تهيئة الاتصال...";
+        statusText.innerText = "جاري تهيئة الاتصال بخادم القياس...";
 
         // Reset UI
         downloadVal.innerText = "-";
         uploadVal.innerText = "-";
         pingVal.innerText = "-";
+        unitDisplay.innerText = "Mbps";
         updateGauge(0);
-        await new Promise(r => setTimeout(r, 800));
 
         // 1. Phase: Ping
         setActiveStat(2);
-        statusText.innerText = "جاري قياس زمن الاستجابة (Ping)...";
-        let measuredPingMs = 30;
-        const startPing = performance.now();
+        statusText.innerText = "جاري قياس زمن الاستجابة الفعلي (Ping)...";
+        let pingMs = 50;
         try {
-            await fetch('/favicon.webp?t=' + Date.now(), { cache: 'no-store' });
-            const endPing = performance.now();
-            measuredPingMs = Math.max(1, Math.round(endPing - startPing));
-            pingVal.innerText = measuredPingMs + " ms";
-        } catch (e) { pingVal.innerText = "Error"; }
-        await new Promise(r => setTimeout(r, 800));
+            pingMs = await measurePing();
+            pingVal.innerText = pingMs + " ms";
+        } catch (e) {
+            pingVal.innerText = "تعذر القياس";
+        }
 
-        // 2. Phase: Download (Multiple batches over ~3s, timing payload transfer after fetch headers)
+        // 2. Phase: Download
         setActiveStat(0);
-        statusText.innerText = "جاري اختبار سرعة التحميل الفعلية...";
-
+        statusText.innerText = "جاري اختبار سرعة التحميل الفعلية (Download)...";
+        let finalDownloadMbps = 0;
         try {
-            let totalLoaded = 0;
-            let totalTransferSeconds = 0;
-            const minBatches = 6;
-            const maxBatches = 10;
-            const targetDurationMs = 3000;
-            const phaseStartWall = performance.now();
-
-            for (let i = 0; i < maxBatches; i++) {
-                const testFile = `/assets/img/connect-tag-main-banner.webp?t=${Date.now()}_${i}_${Math.random().toString(36).slice(2)}`;
-                const reqStart = performance.now();
-                const response = await fetch(testFile, { cache: 'no-store' });
-                if (!response.ok) throw new Error("Network Error");
-
-                // Start measuring payload transfer time after headers are received
-                const startTime = performance.now();
-                let batchLoaded = 0;
-
-                if (response.body && response.body.getReader) {
-                    const reader = response.body.getReader();
-                    while (true) {
-                        const { done, value } = await reader.read();
-                        if (done) break;
-                        batchLoaded += value.byteLength;
-                        const currentBatchSec = (performance.now() - startTime) / 1000;
-                        const cumulativeSec = totalTransferSeconds + currentBatchSec;
-                        const cumulativeBytes = totalLoaded + batchLoaded;
-                        if (cumulativeSec > 0.01) {
-                            const liveMbps = (cumulativeBytes * 8) / cumulativeSec / (1024 * 1024);
-                            updateGauge(liveMbps);
-                        }
-                    }
-                } else {
-                    const buf = await response.arrayBuffer();
-                    batchLoaded = buf.byteLength;
-                }
-
-                const bodyTransferMs = performance.now() - startTime;
-                const fallbackTransferMs = Math.max(5, (performance.now() - reqStart) - (measuredPingMs * 0.5));
-                const effectiveBatchSec = (bodyTransferMs >= 5 ? bodyTransferMs : fallbackTransferMs) / 1000;
-
-                totalLoaded += batchLoaded;
-                totalTransferSeconds += effectiveBatchSec;
-
-                const avgMbps = (totalLoaded * 8) / Math.max(0.05, totalTransferSeconds) / (1024 * 1024);
-                updateGauge(avgMbps);
-
-                if (i + 1 >= minBatches && (performance.now() - phaseStartWall) >= targetDurationMs) {
-                    break;
-                }
-            }
-
-            if (totalLoaded === 0) throw new Error("Empty payload");
-
-            const finalMbps = (totalLoaded * 8) / Math.max(0.05, totalTransferSeconds) / (1024 * 1024);
-            downloadVal.innerText = finalMbps.toFixed(2) + " Mbps";
-            updateGauge(finalMbps);
+            finalDownloadMbps = await measureDownload((liveMbps) => {
+                updateGauge(liveMbps);
+            }, pingMs);
+            downloadVal.innerText = finalDownloadMbps.toFixed(2) + " Mbps";
+            updateGauge(finalDownloadMbps);
         } catch (e) {
             downloadVal.innerText = "فشل";
-            statusText.innerText = "تعذر إكمال فحص سرعة التحميل. يرجى التحقق من الاتصال والمحاولة مجدداً.";
+            statusText.innerText = "تعذر إكمال فحص سرعة التحميل. يرجى التحقق من اتصالك بالإنترنت والمحاولة مجدداً.";
             setActiveStat(-1);
             card.classList.remove('testing');
             btn.disabled = false;
             btn.innerText = "إعادة الفحص";
             return;
         }
-        await new Promise(r => setTimeout(r, 1000));
 
-        // 3. Phase: Upload (Estimated Browser Ratio)
+        await new Promise(r => setTimeout(r, 400));
+
+        // 3. Phase: Upload
         setActiveStat(1);
-        statusText.innerText = "جاري حساب معدل الرفع التقديري...";
-        const baseSpeed = parseFloat(downloadVal.innerText) || 0;
+        statusText.innerText = "جاري اختبار سرعة الرفع الفعلية (Upload)...";
+        const uploadResult = await measureUpload((liveUpMbps) => {
+            updateGauge(liveUpMbps);
+        }, finalDownloadMbps, pingMs);
 
-        for(let i=0; i<=10; i++) {
-            const estSpeed = (baseSpeed * 0.3) * (i/10);
-            updateGauge(estSpeed);
-            await new Promise(r => setTimeout(r, 80));
-        }
-
-        uploadVal.innerText = "~" + (baseSpeed * 0.3).toFixed(2) + " Mbps";
-        statusText.innerText = "اكتمل الفحص بنجاح (سرعة الرفع تقديرية بناءً على المتصفح)!";
+        uploadVal.innerText = (uploadResult.estimated ? "~" : "") + uploadResult.mbps.toFixed(2) + " Mbps";
+        updateGauge(finalDownloadMbps);
+        statusText.innerText = uploadResult.estimated
+            ? "اكتمل الفحص بنجاح (سرعة الرفع تقديرية)!"
+            : "اكتمل فحص سرعة التحميل والرفع والـ Ping بنجاح!";
 
         // Final State
         setActiveStat(-1);
@@ -394,8 +465,5 @@
     }
     window.startSpeedTest = startTest;
 </script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>

@@ -21,6 +21,7 @@
 
 ### Security & Privacy
 - [Crypto Toolbox](https://connecttag.org/tools/security/crypto-toolbox/): Secure AES encryption, Base64 encoding, and SHA/MD5 hashing.
+- [Password Breach Checker (k-Anonymity)](https://connecttag.org/tools/security/password-breach-checker/): Check if a password has appeared in global data breaches using local SHA-1 k-Anonymity (5-char prefix range query) and entropy analysis without transmitting the password.
 - [EXIF Metadata Remover](https://connecttag.org/tools/security/exif-remover/): Clean private data (GPS, Device Info) from images before sharing.
 - [Privacy Policy Generator](https://connecttag.org/tools/security/privacy-generator/): Generate professional legal documents for apps and websites.
 

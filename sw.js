@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v84';
+const CACHE_NAME = 'connecttag-cache-v85';
 const OFFLINE_URL = 'https://connecttag.org/offline';
 
 const ASSETS_TO_CACHE = [
@@ -9,11 +9,11 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.png',
   'https://connecttag.org/icon-512.png',
-  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.30',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.30',
-  'https://connecttag.org/assets/css/components.min.css?v=1.1.30',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.30',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.30'
+  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.31',
+  'https://connecttag.org/assets/css/components.min.css?v=1.1.31',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.31',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31'
 ];
 
 // Install Event
@@ -21,36 +21,27 @@ self.addEventListener('install', event => {
   if (!ENABLE_CACHE) return self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('SW: Caching initial assets');
-        return cache.addAll(ASSETS_TO_CACHE);
-      })
+      .then(cache => Promise.allSettled(ASSETS_TO_CACHE.map(url => cache.add(url))))
       .then(() => self.skipWaiting())
   );
 });
 
 // Activate Event
 self.addEventListener('activate', event => {
-  console.log('SW: Activate Event - Cleaning up old caches');
   event.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys
         .filter(key => key !== CACHE_NAME)
-        .map(key => {
-            console.log('SW: Deleting old cache:', key);
-            return caches.delete(key);
-        })
+        .map(key => caches.delete(key))
       );
-    }).then(() => {
-        console.log('SW: Now controlling all clients');
-        return self.clients.claim();
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
 // Fetch Event - Network First Strategy
 self.addEventListener('fetch', event => {
   if (!ENABLE_CACHE) return;
+  if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith(self.location.origin)) return;
 
   event.respondWith(

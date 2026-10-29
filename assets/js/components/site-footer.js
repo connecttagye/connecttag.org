@@ -55,8 +55,8 @@ class SiteFooter extends HTMLElement {
 
           <div class="ct-footer-col">
             <h2 class="ct-footer-heading">معلومات التواصل</h2>
-            <p><i class="fa-solid fa-location-dot" style="color: var(--ct-primary);" aria-hidden="true"></i> اليمن، صنعاء</p>
-            <p><i class="fa-solid fa-envelope" style="color: var(--ct-primary);" aria-hidden="true"></i> info@connecttag.org</p>
+            <p><i class="fa-solid fa-location-dot" style="color: var(--ct-secondary);" aria-hidden="true"></i> اليمن، صنعاء</p>
+            <p><i class="fa-solid fa-envelope" style="color: var(--ct-secondary);" aria-hidden="true"></i> info@connecttag.org</p>
             <div class="ct-qr-contact" style="margin-top: 15px;">
               <img src="${baseUrl}/assets/img/qr-contact.webp"
                    alt="رمز الاستجابة السريعة للتواصل مع كونكت تاق"

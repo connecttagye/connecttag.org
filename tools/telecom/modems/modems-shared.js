@@ -1,10 +1,148 @@
 /**
  * Shared logic for Connect Tag Modems Directory (Local-First V8 Architecture)
+ * Synchronized with Yemen4g_main (NetworkUtil, ProductRepositoryImpl, CatalogColorTokens,
+ * ModemGuideText, ModemDetailsShareFormatter).
  */
 const ModemApp = (function() {
     const API_URL = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
     const CACHE_KEY = 'modems_list_cache';
     const CACHE_TIME = 12 * 60 * 60 * 1000; // 12 Hours
+
+    /**
+     * Port of CatalogColorTokens.kt from Yemen4g_main (all 68 color definitions + Arabic/English aliases).
+     */
+    const CATALOG_COLOR_DEFINITIONS = [
+        // Basic & Neutral Colors
+        { arabicName: 'أسود', englishName: 'Black', hex: '#222222', aliases: ['اسود'] },
+        { arabicName: 'أسود فاقع', englishName: 'Jet Black', hex: '#1A1A1A', aliases: ['اسود فاقع', 'أسود حالك', 'اسود حالك', 'أسود غامق', 'اسود غامق', 'deep black'] },
+        { arabicName: 'أسود مطفي', englishName: 'Matte Black', hex: '#2B2B2B', aliases: ['اسود مطفي', 'أسود غير لامع', 'اسود غير لامع'] },
+        { arabicName: 'فحمي', englishName: 'Charcoal', hex: '#36454F', aliases: ['رمادي فحمي'] },
+        { arabicName: 'جرافيت', englishName: 'Graphite', hex: '#383838', aliases: ['غرافيت'] },
+        { arabicName: 'أبيض', englishName: 'White', hex: '#FFFFFF', aliases: ['ابيض'] },
+        { arabicName: 'أبيض فاقع', englishName: 'Bright White', hex: '#F9F9F9', aliases: ['ابيض فاقع', 'أبيض ناصع', 'ابيض ناصع', 'pure white'] },
+        { arabicName: 'أبيض لؤلؤي', englishName: 'Pearl White', hex: '#F5F5F7', aliases: ['ابيض لؤلؤي', 'لؤلؤي', 'pearl'] },
+        { arabicName: 'أبيض مطفي', englishName: 'Matte White', hex: '#F2F2F2', aliases: ['ابيض مطفي'] },
+        { arabicName: 'عاجي', englishName: 'Ivory', hex: '#FFFFF0', aliases: ['أوف وايت', 'اوف وايت', 'off white', 'off-white'] },
+        { arabicName: 'كريمي', englishName: 'Cream', hex: '#FFFDD0', aliases: ['قشدي'] },
+        { arabicName: 'رمادي', englishName: 'Gray', hex: '#808080', aliases: ['grey'] },
+        { arabicName: 'رصاصي', englishName: 'Lead Gray', hex: '#808080', aliases: ['رمادي رصاصي', '0xff808080'] },
+        { arabicName: 'رمادي فاتح', englishName: 'Light Gray', hex: '#D3D3D3', aliases: ['light grey', 'رصاصي فاتح'] },
+        { arabicName: 'رمادي غامق', englishName: 'Dark Gray', hex: '#4A4A4A', aliases: ['dark grey', 'رمادي داكن', 'رصاصي غامق'] },
+        { arabicName: 'رمادي فلكي', englishName: 'Space Gray', hex: '#53565A', aliases: ['space grey', 'رمادي فضائي'] },
+        { arabicName: 'أردوازي', englishName: 'Slate Gray', hex: '#708090', aliases: ['رمادي أردوازي', 'slate', 'slate grey'] },
+
+        // Metallic Colors
+        { arabicName: 'فضي', englishName: 'Silver', hex: '#C0C0C0' },
+        { arabicName: 'فضي فاتح', englishName: 'Light Silver', hex: '#C0C0C0', aliases: ['فضي لامع'] },
+        { arabicName: 'فضي غامق', englishName: 'Dark Silver', hex: '#A9A9A9' },
+        { arabicName: 'تيتانيوم', englishName: 'Titanium', hex: '#878681', aliases: ['تيتانيوم طبيعي', 'natural titanium'] },
+        { arabicName: 'بلاتيني', englishName: 'Platinum', hex: '#E5E4E2' },
+        { arabicName: 'ذهبي', englishName: 'Gold', hex: '#D4AF37', aliases: ['golden'] },
+        { arabicName: 'ذهبي فاتح', englishName: 'Light Gold', hex: '#D4AF37', aliases: ['ذهبي لامع'] },
+        { arabicName: 'ذهبي شامبانيا', englishName: 'Champagne Gold', hex: '#F7E7CE', aliases: ['شامبانيا', 'champagne'] },
+        { arabicName: 'ذهبي وردي', englishName: 'Rose Gold', hex: '#B76E79', aliases: ['روز جولد', 'روز قولد', 'rose-gold'] },
+        { arabicName: 'برونزي', englishName: 'Bronze', hex: '#CD7F32' },
+        { arabicName: 'نحاسي', englishName: 'Copper', hex: '#B87333' },
+
+        // Red & Pink Spectrum
+        { arabicName: 'أحمر', englishName: 'Red', hex: '#D32F2F', aliases: ['احمر'] },
+        { arabicName: 'أحمر غامق', englishName: 'Dark Red', hex: '#8B0000', aliases: ['احمر غامق', 'أحمر داكن', 'احمر داكن'] },
+        { arabicName: 'أحمر فاتح', englishName: 'Light Red', hex: '#FF5252', aliases: ['احمر فاتح'] },
+        { arabicName: 'عنابي', englishName: 'Maroon', hex: '#800000', aliases: ['مارون', 'دم الغزال'] },
+        { arabicName: 'خمري', englishName: 'Burgundy', hex: '#800020', aliases: ['برغندي', 'نبيتي'] },
+        { arabicName: 'قرمزي', englishName: 'Crimson', hex: '#DC143C' },
+        { arabicName: 'مرجاني', englishName: 'Coral', hex: '#FF7F50' },
+        { arabicName: 'وردي', englishName: 'Pink', hex: '#E91E63', aliases: ['زهري'] },
+        { arabicName: 'وردي فاتح', englishName: 'Light Pink', hex: '#EBC1D5', aliases: ['زهري فاتح', 'بيبي بينك', 'baby pink'] },
+        { arabicName: 'وردي غامق', englishName: 'Rose', hex: '#C48B9F', aliases: ['روز', 'وردي داكن', 'dark pink'] },
+        { arabicName: 'فوشيا', englishName: 'Magenta', hex: '#FF00FF', aliases: ['ماجنتا', 'fuchsia'] },
+        { arabicName: 'خوخي', englishName: 'Peach', hex: '#FFE5B4', aliases: ['مشمشي'] },
+
+        // Blue & Cyan Spectrum
+        { arabicName: 'أزرق', englishName: 'Blue', hex: '#1976D2', aliases: ['ازرق'] },
+        { arabicName: 'أزرق فاتح', englishName: 'Light Blue', hex: '#64B5F6', aliases: ['ازرق فاتح', 'لبني'] },
+        { arabicName: 'أزرق سماوي', englishName: 'Sky Blue', hex: '#87CEEB', aliases: ['ازرق سماوي', 'سماوي', 'sky'] },
+        { arabicName: 'أزرق غامق', englishName: 'Dark Blue', hex: '#0D47A1', aliases: ['ازرق غامق', 'أزرق داكن', 'ازرق داكن'] },
+        { arabicName: 'كحلي', englishName: 'Navy Blue', hex: '#1B263B', aliases: ['أزرق كحلي', 'ازرق كحلي', 'أزرق بحري', 'ازرق بحري', 'navy'] },
+        { arabicName: 'أزرق ملكي', englishName: 'Royal Blue', hex: '#4169E1', aliases: ['ازرق ملكي'] },
+        { arabicName: 'أزرق فولاذي', englishName: 'Steel Blue', hex: '#4682B4', aliases: ['ازرق فولاذي', 'أزرق معدني', 'ازرق معدني'] },
+        { arabicName: 'أزرق ثلجي', englishName: 'Ice Blue', hex: '#99FFFF', aliases: ['ازرق ثلجي', 'ثلجي'] },
+        { arabicName: 'سماوي', englishName: 'Cyan', hex: '#00BCD4', aliases: ['سيان'] },
+        { arabicName: 'فيروزي', englishName: 'Turquoise', hex: '#40E0D0', aliases: ['تركواز'] },
+        { arabicName: 'أزرق مخضر', englishName: 'Teal', hex: '#008080', aliases: ['ازرق مخضر', 'بترولي', 'تيل'] },
+        { arabicName: 'نيلي', englishName: 'Indigo', hex: '#3F51B5', aliases: ['إنديجو'] },
+
+        // Green Spectrum
+        { arabicName: 'أخضر', englishName: 'Green', hex: '#2E7D32', aliases: ['اخضر'] },
+        { arabicName: 'أخضر فاتح', englishName: 'Light Green', hex: '#81C784', aliases: ['اخضر فاتح'] },
+        { arabicName: 'أخضر غامق', englishName: 'Dark Green', hex: '#1B5E20', aliases: ['اخضر غامق', 'أخضر داكن', 'اخضر داكن', 'أخضر غابي', 'forest green'] },
+        { arabicName: 'أخضر نعناعي', englishName: 'Mint Green', hex: '#A6E3D1', aliases: ['اخضر نعناعي', 'نعناعي', 'mint'] },
+        { arabicName: 'أخضر فستقي', englishName: 'Pistachio', hex: '#8DA47E', aliases: ['اخضر فستقي', 'فستقي', 'pistachio green'] },
+        { arabicName: 'أخضر باهت', englishName: 'Dusty Green', hex: '#7B9E9E', aliases: ['اخضر باهت', 'أخضر مغبر', 'اخضر مغبر', 'أخضر ميرمية', 'sage green', 'sage'] },
+        { arabicName: 'زيتوني', englishName: 'Olive', hex: '#808000', aliases: ['أخضر زيتوني', 'اخضر زيتوني', 'زيتي', 'olive green'] },
+        { arabicName: 'زمردي', englishName: 'Emerald', hex: '#50C878', aliases: ['أخضر زمردي', 'اخضر زمردي', 'emerald green'] },
+        { arabicName: 'ليموني', englishName: 'Lime', hex: '#CDDC39', aliases: ['أخضر ليموني', 'اخضر ليموني', 'lime green'] },
+
+        // Yellow & Orange Spectrum
+        { arabicName: 'أصفر', englishName: 'Yellow', hex: '#FBC02D', aliases: ['اصفر'] },
+        { arabicName: 'أصفر فاتح', englishName: 'Light Yellow', hex: '#FFF59D', aliases: ['اصفر فاتح'] },
+        { arabicName: 'خردلي', englishName: 'Mustard', hex: '#E1AD01', aliases: ['أصفر خردلي', 'اصفر خردلي', 'مستردة', 'mustard yellow'] },
+        { arabicName: 'كهرماني', englishName: 'Amber', hex: '#FFC107', aliases: ['عنبري'] },
+        { arabicName: 'برتقالي', englishName: 'Orange', hex: '#F57C00' },
+        { arabicName: 'برتقالي فاتح', englishName: 'Light Orange', hex: '#FFB74D' },
+        { arabicName: 'برتقالي غامق', englishName: 'Dark Orange', hex: '#E65100', aliases: ['برتقالي داكن'] },
+
+        // Purple & Violet Spectrum
+        { arabicName: 'بنفسجي', englishName: 'Purple', hex: '#6A1B9A', aliases: ['أرجواني', 'ارجواني'] },
+        { arabicName: 'بنفسجي فاتح', englishName: 'Light Purple', hex: '#CE93D8', aliases: ['أرجواني فاتح', 'ارجواني فاتح'] },
+        { arabicName: 'بنفسجي غامق', englishName: 'Dark Purple', hex: '#4A148C', aliases: ['بنفسجي داكن', 'أرجواني غامق'] },
+        { arabicName: 'لافندر', englishName: 'Lavender', hex: '#E6E6FA', aliases: ['خزامى', 'بنفسجي خزامي'] },
+        { arabicName: 'موف', englishName: 'Violet', hex: '#8F00FF', aliases: ['فيوليت', 'mauve'] },
+        { arabicName: 'ليلكي', englishName: 'Lilac', hex: '#C8A2C8' },
+        { arabicName: 'برقوقي', englishName: 'Plum', hex: '#8E4585' },
+
+        // Brown & Earthy Spectrum
+        { arabicName: 'بني', englishName: 'Brown', hex: '#795548' },
+        { arabicName: 'بني فاتح', englishName: 'Light Brown', hex: '#A1887F', aliases: ['عسلي'] },
+        { arabicName: 'بني غامق', englishName: 'Dark Brown', hex: '#4E342E', aliases: ['بني داكن', 'شوكولاتة', 'chocolate'] },
+        { arabicName: 'بيج', englishName: 'Beige', hex: '#F5F5DC', aliases: ['رملي', 'sand'] },
+        { arabicName: 'كاكي', englishName: 'Khaki', hex: '#C3B091' },
+        { arabicName: 'جملي', englishName: 'Camel', hex: '#C19A6B', aliases: ['تان', 'tan'] },
+        { arabicName: 'كراميل', englishName: 'Caramel', hex: '#FFD59A' },
+        { arabicName: 'قهوي', englishName: 'Coffee', hex: '#6F4E37', aliases: ['موكا', 'mocha'] }
+    ];
+
+    const COLOR_TOKEN_MAP = (function buildColorLookupIndex() {
+        const index = {};
+        for (const def of CATALOG_COLOR_DEFINITIONS) {
+            const entry = { hex: def.hex, name: def.arabicName, nameEn: def.englishName };
+            const keys = [def.arabicName, def.englishName, ...(def.aliases || [])];
+            for (const k of keys) {
+                const norm = String(k || '').trim().toLowerCase();
+                if (norm && !index[norm]) {
+                    index[norm] = entry;
+                }
+            }
+        }
+        return index;
+    })();
+
+    function parseFlexibleHexColorOrNull(value) {
+        const cleaned = String(value || '').trim().replace(/^(#|0x)/i, '');
+        if (!/^[0-9a-f]{6}([0-9a-f]{2})?$/i.test(cleaned)) return null;
+        const rgb = cleaned.length === 8 ? cleaned.slice(2) : cleaned;
+        return '#' + rgb.toUpperCase();
+    }
+
+    function isLightHex(hex) {
+        const clean = String(hex || '').replace(/^#/, '');
+        if (clean.length !== 6) return false;
+        const r = parseInt(clean.slice(0, 2), 16);
+        const g = parseInt(clean.slice(2, 4), 16);
+        const b = parseInt(clean.slice(4, 6), 16);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance > 0.72;
+    }
 
     function escapeHtml(str) {
         return String(str || '')
@@ -15,10 +153,664 @@ const ModemApp = (function() {
             .replace(/'/g, '&#39;');
     }
 
+    /**
+     * Port of NetworkUtil.normalizeModemUrl from Yemen4g_main (including 0..255 octet bounds validation).
+     */
+    function normalizeModemUrl(value) {
+        const trimmed = String(value || '').trim();
+        if (!trimmed) return '';
+        const withScheme = /^https?:\/\//i.test(trimmed) ? trimmed : `http://${trimmed}`;
+        const compactMatch = withScheme.match(/^(https?:\/\/)192168\.(\d{1,3})\.(\d{1,3})(.*)$/i);
+        if (!compactMatch) return withScheme;
+        const third = Number(compactMatch[2]);
+        const fourth = Number(compactMatch[3]);
+        if (third < 0 || third > 255 || fourth < 0 || fourth > 255) return withScheme;
+        return `${compactMatch[1]}192.168.${third}.${fourth}${compactMatch[4]}`;
+    }
+
+    /**
+     * Port of NetworkUtil.extractModemHost from Yemen4g_main.
+     */
+    function extractModemHost(value) {
+        const normalized = normalizeModemUrl(value);
+        if (!normalized) return null;
+        try {
+            const parsed = new URL(normalized);
+            return parsed.hostname ? parsed.hostname.toLowerCase() : null;
+        } catch (_) {
+            const withoutScheme = normalized.replace(/^https?:\/\//i, '');
+            const hostPart = withoutScheme.split(/[/?#]/)[0].split(':')[0].trim().toLowerCase();
+            return hostPart || null;
+        }
+    }
+
+    /**
+     * Port of NetworkUtil.modemHostsMatch from Yemen4g_main.
+     */
+    function modemHostsMatch(first, second) {
+        const firstHost = extractModemHost(first);
+        const secondHost = extractModemHost(second);
+        if (!firstHost || !secondHost) return false;
+        return firstHost === secondHost;
+    }
+
+    /**
+     * Port of NetworkUtil.isSupportedPrivateModemUrl from Yemen4g_main.
+     */
+    function isSupportedPrivateModemUrl(url) {
+        const host = extractModemHost(url);
+        if (!host) return false;
+        const parts = host.split('.');
+        if (parts.length !== 4) return false;
+        const octets = parts.map(p => (/^\d+$/.test(p) ? Number(p) : -1));
+        if (octets.some(o => o < 0 || o > 255)) return false;
+        const [a, b] = octets;
+        return a === 10 || (a === 192 && b === 168) || (a === 172 && b >= 16 && b <= 31);
+    }
+
+    /**
+     * Port of ModemUrlTrust.isTrustedModemPage from Yemen4g_main.
+     */
+    function isTrustedModemPage(candidateUrl, trustedGatewayUrl) {
+        const candidate = String(candidateUrl || '').trim();
+        if (!candidate) return false;
+        if (candidate === 'about:blank') return true;
+        if (!/^https?:\/\//i.test(candidate)) return false;
+        const trusted = String(trustedGatewayUrl || '').trim();
+        if (trusted) {
+            return modemHostsMatch(candidate, trusted);
+        }
+        return isSupportedPrivateModemUrl(candidate);
+    }
+
+    /**
+     * Port of NetworkUtil.findSupportedPrivateGatewayAddress from Yemen4g_main.
+     */
+    function findSupportedPrivateGatewayAddress(candidates) {
+        if (!Array.isArray(candidates)) return null;
+        for (const rawCandidate of candidates) {
+            const candidate = String(rawCandidate || '').trim();
+            if (candidate && isSupportedPrivateModemUrl(candidate)) {
+                return extractModemHost(candidate) || candidate;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Port of NetworkUtil.toModemRouteKey from Yemen4g_main.
+     */
+    function toModemRouteKey(value) {
+        const trimmed = String(value || '').trim();
+        if (!trimmed) return '';
+        let routeCandidate = trimmed;
+        if (/^https?:\/\//i.test(trimmed)) {
+            try {
+                const parsed = new URL(trimmed);
+                const pathPart = (parsed.pathname || '').replace(/^\/+|\/+$/g, '');
+                const queryPart = parsed.search ? parsed.search : '';
+                const fragmentPart = parsed.hash ? parsed.hash : '';
+                routeCandidate = `${pathPart}${queryPart}${fragmentPart}`;
+            } catch (_) {
+                const afterHost = trimmed.replace(/^https?:\/\/[^/?#]+/i, '');
+                routeCandidate = afterHost;
+            }
+        }
+        return routeCandidate.replace(/^\/+|\/+$/g, '').toLowerCase();
+    }
+
+    /**
+     * Port of NetworkUtil.containsModemRoute from Yemen4g_main.
+     */
+    function containsModemRoute(baseUrl, pathStr) {
+        const baseRoute = toModemRouteKey(baseUrl);
+        const pathRoute = toModemRouteKey(pathStr);
+        if (!baseRoute || !pathRoute) return false;
+        return (
+            baseRoute === pathRoute ||
+            baseRoute.startsWith(`${pathRoute}?`) ||
+            baseRoute.startsWith(`${pathRoute}#`) ||
+            baseRoute.endsWith(`/${pathRoute}`) ||
+            baseRoute.includes(`/${pathRoute}?`) ||
+            baseRoute.includes(`/${pathRoute}#`)
+        );
+    }
+
+    /**
+     * Port of NetworkUtil.buildModemUrl from Yemen4g_main.
+     */
+    function buildModemUrl(baseUrl, pathStr) {
+        const normalizedBaseUrl = normalizeModemUrl(baseUrl);
+        if (!normalizedBaseUrl) return '';
+        const cleanPath = String(pathStr || '').trim();
+        if (!cleanPath) return normalizedBaseUrl;
+        if (/^https?:\/\//i.test(cleanPath)) return normalizeModemUrl(cleanPath);
+        if (containsModemRoute(normalizedBaseUrl, cleanPath)) return normalizedBaseUrl;
+        return `${normalizedBaseUrl.replace(/\/+$/, '')}/${cleanPath.replace(/^\/+/, '')}`;
+    }
+
+    /**
+     * Port of ModemDetectionResolver.resolve from Yemen4g_main.
+     */
+    function resolveDetectedModem(modems, detectedIp, detectedHost, macVendor, ssid) {
+        if (!Array.isArray(modems) || modems.length === 0) return null;
+        const cleanIp = String(detectedIp || '').trim();
+        const cleanHost = extractModemHost(detectedHost) || extractModemHost(cleanIp) || '';
+        const rawVendor = String(macVendor || '').trim();
+        const cleanVendor = rawVendor && rawVendor.toLowerCase() !== 'unknown' ? rawVendor.toLowerCase() : '';
+        const rawSsid = String(ssid || '').trim().replace(/^"+|"+$/g, '');
+        const cleanSsid = rawSsid && rawSsid.toLowerCase() !== '<unknown ssid>' && rawSsid.toLowerCase() !== 'unknown'
+            ? rawSsid
+            : '';
+
+        const getModemLoginUrl = (modem) => {
+            return modem?.additional?.modemSettings?.loginLink ||
+                modem?.additional?.modemSettings?.ipAddress ||
+                modem?.metadata2?.loginLink ||
+                '';
+        };
+
+        // 1. Exact Vendor + Gateway IP Match
+        if (cleanVendor && cleanHost) {
+            const exactVendorAndIpMatch = modems.find(modem => {
+                const brand = String(modem?.brand || '').toLowerCase();
+                const manufacturer = String(modem?.manufacturer || '').toLowerCase();
+                const matchesVendor = (brand && (brand.includes(cleanVendor) || cleanVendor.includes(brand))) ||
+                    (manufacturer && manufacturer.includes(cleanVendor));
+                return matchesVendor && modemHostsMatch(getModemLoginUrl(modem), cleanHost);
+            });
+            if (exactVendorAndIpMatch) return exactVendorAndIpMatch;
+        }
+
+        // 2. Wi-Fi SSID Model Match
+        if (cleanSsid) {
+            const normalizedSsid = cleanSsid.toLowerCase()
+                .replace(/4g|5g|lte|wifi|yemen/gi, '')
+                .replace(/[-_\s]/g, '');
+            if (normalizedSsid.length >= 3) {
+                const ssidMatch = modems.find(modem => {
+                    const modelCandidate = String(modem?.modelOrVersion || modem?.model || modem?.englishName || '')
+                        .toLowerCase()
+                        .replace(/[-_\s]/g, '');
+                    return modelCandidate.length >= 3 &&
+                        (normalizedSsid.includes(modelCandidate) || modelCandidate.includes(normalizedSsid));
+                });
+                if (ssidMatch) return ssidMatch;
+            }
+        }
+
+        // 3. Vendor-Only Match
+        if (cleanVendor) {
+            const vendorOnlyMatch = modems.find(modem => {
+                const brand = String(modem?.brand || '').toLowerCase();
+                const manufacturer = String(modem?.manufacturer || '').toLowerCase();
+                return (brand && (brand.includes(cleanVendor) || cleanVendor.includes(brand))) ||
+                    (manufacturer && manufacturer.includes(cleanVendor));
+            });
+            if (vendorOnlyMatch) return vendorOnlyMatch;
+        }
+
+        // 4. Gateway IP Match (single or preferred Huawei/ZTE)
+        if (cleanHost) {
+            const ipMatches = modems.filter(modem => modemHostsMatch(getModemLoginUrl(modem), cleanHost));
+            if (ipMatches.length === 1) return ipMatches[0];
+            if (ipMatches.length > 1) {
+                return ipMatches.find(modem => {
+                    const brand = String(modem?.brand || '').toLowerCase();
+                    return brand.includes('huawei') || brand.includes('zte');
+                }) || ipMatches[0];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Port of ProductRepositoryImpl.hasTouchScreenHint from Yemen4g_main.
+     */
+    function hasTouchScreenHint(description) {
+        const normalized = String(description || '').trim();
+        if (!normalized) return false;
+        return normalized.includes('شاشة لمس') ||
+            normalized.includes('شاشه لمس') ||
+            normalized.includes('باللمس') ||
+            normalized.toLowerCase().includes('touch screen') ||
+            normalized.toLowerCase().includes('touchscreen');
+    }
+
+    /**
+     * Port of ProductRepositoryImpl.normalizeModemLoginBy from Yemen4g_main.
+     */
+    function normalizeModemLoginBy(value) {
+        return String(value || '').trim().replace(/^\/+/, '').toUpperCase();
+    }
+
+    /**
+     * Port of ModemGuideText.isPrintedPassword from Yemen4g_main.
+     */
+    function isPrintedPassword(defaultPass) {
+        const clean = String(defaultPass || '').trim();
+        return !clean || clean.toUpperCase() === 'OUT';
+    }
+
+    /**
+     * Port of ModemGuideText.resolvePasswordDisplayValue from Yemen4g_main.
+     */
+    function resolvePasswordDisplayValue(defaultPass) {
+        if (isPrintedPassword(defaultPass)) {
+            return 'مدونة على الملصق خلف المودم';
+        }
+        return String(defaultPass).trim();
+    }
+
+    /**
+     * Port of ModemGuideText.modemInitialSetupDescription from Yemen4g_main.
+     */
+    function modemInitialSetupDescription(isPortable, hasTouchScreen) {
+        if (isPortable === false) {
+            return 'وصّل المودم بمصدر الطاقة وشغّله، ثم اتصل بشبكة الواي فاي الخاصة به من هاتفك أو جهازك. اسم الشبكة (SSID) وكلمة المرور الافتراضية مدونان على الملصق خلف المودم أو أسفله.';
+        }
+        if (hasTouchScreen === true) {
+            return 'شغّل المودم وتأكد من وجود شحن كافٍ، ثم اتصل بشبكة الواي فاي الخاصة به. يمكنك معرفة اسم الشبكة (SSID) وكلمة المرور من شاشة المودم مباشرة أو من الملصق الموجود خلف البطارية.';
+        }
+        return 'شغّل المودم وتأكد من وجود شحن كافٍ، ثم اتصل بشبكة الواي فاي الخاصة به. اسم الشبكة (SSID) وكلمة المرور الافتراضية مدونان على الملصق خلف المودم أو تحت البطارية.';
+    }
+
+    /**
+     * Port of ModemGuideText.buildLoginCredentialsStep from Yemen4g_main.
+     */
+    function buildLoginCredentialsStep(loginBy, defaultUserName, defaultPass) {
+        const normLoginBy = normalizeModemLoginBy(loginBy);
+        const printedPass = isPrintedPassword(defaultPass);
+        const resolvedUser = String(defaultUserName || '').trim() || 'admin';
+        const cleanPass = String(defaultPass || '').trim();
+
+        if (normLoginBy === 'PASS') {
+            return printedPass
+                ? 'أدخل كلمة مرور صفحة الإعدادات المسجلة على الملصق خلف المودم، ثم اضغط على تسجيل الدخول (Login).'
+                : `أدخل كلمة المرور (${cleanPass})، ثم اضغط على تسجيل الدخول (Login).`;
+        }
+        return printedPass
+            ? `أدخل اسم المستخدم (${resolvedUser}) وكلمة المرور المسجلة على الملصق خلف المودم، ثم اضغط على تسجيل الدخول (Login).`
+            : `أدخل اسم المستخدم (${resolvedUser}) وكلمة المرور (${cleanPass || 'admin'})، ثم اضغط على تسجيل الدخول (Login).`;
+    }
+
+    /**
+     * Port of ModemGuideText.modemLoginDescription from Yemen4g_main.
+     */
+    function modemLoginDescription(loginUrl, loginBy, defaultUserName, defaultPass) {
+        const resolvedUrl = normalizeModemUrl(loginUrl) || 'http://192.168.0.1';
+        const credentialsStep = buildLoginCredentialsStep(loginBy, defaultUserName, defaultPass);
+        return `افتح المتصفح وانتقل إلى العنوان (${resolvedUrl})، ثم ${credentialsStep}`;
+    }
+
+    /**
+     * Port of ModemGuideScreen sticker image resolver from Yemen4g_main.
+     */
+    function resolveStickerImageUrl(item) {
+        if (!item) return '';
+        const gallery = Array.isArray(item.gallery) ? item.gallery : [];
+        const stickerEntry = gallery.find(med => {
+            if (!med) return false;
+            const hay = `${med.caption || ''} ${med.url || ''} ${med.remoteBackup || ''}`.toLowerCase();
+            return hay.includes('sticker') || hay.includes('label') || hay.includes('back') ||
+                hay.includes('ملصق') || hay.includes('خلف');
+        });
+        if (stickerEntry) return stickerEntry.url || stickerEntry.remoteBackup || '';
+        return '';
+    }
+
+    /**
+     * Port of ProductRepositoryImpl.resolveModemSettings + ModemDetailsShareFormatter.resolveModemCredentials.
+     */
+    function resolveModemSettings(item) {
+        if (!item) return null;
+        const raw = item.additional?.modemSettings || {};
+        const meta = item.metadata2 || {};
+        const attrs = item.attributes || item.relatedData?.attributes || [];
+        const resources = item.resources || item.relatedData?.contentResources || [];
+
+        const findAttr = (codes, nameTerms = []) => {
+            const hit = attrs.find(a => {
+                if (!a || a.active === false) return false;
+                const val = a.value ?? a.displayValue;
+                if (!val) return false;
+                const code = String(a.code || a.attribute?.code || '').toLowerCase();
+                const name = String(a.name || a.attribute?.name || a.description || '').toLowerCase();
+                if (codes.includes(code)) return true;
+                return nameTerms.some(t => name.includes(t));
+            });
+            return hit ? String(hit.value ?? hit.displayValue).trim() : '';
+        };
+
+        const resourceLogin = resources.find(r => {
+            if (!r || r.active === false) return false;
+            const rType = String(r.type || '').toUpperCase();
+            const rUrl = String(r.url || r.content || r.action?.content || '').trim();
+            return rType === 'MODEM_SETTINGS' || isSupportedPrivateModemUrl(rUrl);
+        });
+        const resourceUrl = resourceLogin ? String(resourceLogin.url || resourceLogin.content || resourceLogin.action?.content || '').trim() : '';
+
+        const rawLoginLink = (
+            raw.loginLink ||
+            raw.ipAddress ||
+            meta.loginLink ||
+            meta.ipAddress ||
+            findAttr(['login-link', 'gateway-ip', 'admin-url', 'ip-address'], ['ip', 'gateway', 'login', 'عنوان الدخول', 'عنوان الاعدادات']) ||
+            resourceUrl
+        ).trim();
+
+        const loginLink = normalizeModemUrl(rawLoginLink);
+        const loginLinkPath = String(raw.loginLinkPath ?? meta.loginLinkPath ?? findAttr(['login-link-path', 'admin-path']) ?? '').trim();
+        const rawLoginBy = normalizeModemLoginBy(raw.loginBy || meta.loginBy || findAttr(['login-by', 'auth-type']));
+        const rawUser = String(
+            raw.defaultUserName ??
+            meta.defaultUserName ??
+            meta.userName ??
+            findAttr(['default-username', 'admin-user', 'username'], ['username', 'اسم المستخدم']) ??
+            ''
+        ).trim();
+        const rawPass = String(
+            raw.defaultPass ??
+            meta.defaultPass ??
+            meta.password ??
+            findAttr(['default-pass', 'admin-password', 'password'], ['password', 'كلمة المرور']) ??
+            ''
+        ).trim();
+
+        if (!loginLink && !rawUser && !rawPass) {
+            return null;
+        }
+
+        const effectiveLoginLink = loginLink || 'http://192.168.0.1';
+        const fullLoginUrl = buildModemUrl(effectiveLoginLink, loginLinkPath);
+        let ipAddress = String(raw.ipAddress || meta.ipAddress || '').trim();
+        if (!ipAddress) {
+            ipAddress = effectiveLoginLink.replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+        }
+
+        const loginBy = rawLoginBy === 'PASS'
+            ? 'PASS'
+            : (rawLoginBy === 'USER_PASS'
+                ? 'USER_PASS'
+                : (rawPass.toUpperCase() === 'OUT' && !rawUser ? 'PASS' : 'USER_PASS'));
+
+        const defaultUserName = loginBy === 'PASS' ? '' : (rawUser || 'admin');
+        const defaultPass = loginBy === 'PASS'
+            ? (isPrintedPassword(rawPass) ? 'OUT' : rawPass)
+            : (rawPass || 'admin');
+        const hasPrintedPassword = isPrintedPassword(defaultPass);
+
+        return {
+            ipAddress,
+            loginLink: effectiveLoginLink,
+            loginLinkPath,
+            fullLoginUrl,
+            loginBy,
+            defaultUserName,
+            defaultPass,
+            hasPrintedPassword,
+            passwordDisplayValue: resolvePasswordDisplayValue(defaultPass),
+            credentialsStepText: buildLoginCredentialsStep(loginBy, defaultUserName, defaultPass),
+            ...(raw.subnetMask ? { subnetMask: String(raw.subnetMask).trim() } : {}),
+            ...(raw.gateway ? { gateway: String(raw.gateway).trim() } : {}),
+            ...(raw.dns ? { dns: String(raw.dns).trim() } : {})
+        };
+    }
+
+    /**
+     * Port of CatalogColorTokens.resolve from Yemen4g_main.
+     */
+    function resolveColorToken(colorEntry) {
+        if (!colorEntry) return null;
+        if (typeof colorEntry === 'object' && colorEntry.hex) {
+            const rawKey = String(colorEntry.raw || colorEntry.name || '').trim().toLowerCase();
+            const token = COLOR_TOKEN_MAP[rawKey];
+            const hex = token ? token.hex : colorEntry.hex;
+            return {
+                raw: colorEntry.raw || colorEntry.name || '',
+                name: token ? token.name : (colorEntry.name || colorEntry.raw || ''),
+                nameEn: token ? token.nameEn : (colorEntry.nameEn || colorEntry.raw || ''),
+                hex,
+                isLight: isLightHex(hex)
+            };
+        }
+        const raw = String(colorEntry || '').trim();
+        if (!raw) return null;
+        const key = raw.toLowerCase();
+        if (COLOR_TOKEN_MAP[key]) {
+            const token = COLOR_TOKEN_MAP[key];
+            return { raw, name: token.name, nameEn: token.nameEn, hex: token.hex, isLight: isLightHex(token.hex) };
+        }
+        const parsedHex = parseFlexibleHexColorOrNull(raw);
+        if (parsedHex) {
+            return { raw, name: raw, nameEn: raw, hex: parsedHex, isLight: isLightHex(parsedHex) };
+        }
+        return { raw, name: raw, nameEn: raw, hex: '#8E8E93', isLight: false };
+    }
+
+    /**
+     * Port of ModemDetailsShareFormatter.isModemAppResource from Yemen4g_main.
+     */
+    function isModemAppResource(res) {
+        if (!res) return false;
+        if (res.isApp === true) return true;
+        const group = String(res.group || '').toLowerCase();
+        const contentType = String(res.contentType || '').toLowerCase();
+        const type = String(res.type || '').toLowerCase();
+        const title = String(res.title || '').toLowerCase();
+        const content = String(res.url || res.content || '').toLowerCase();
+        return (
+            group.includes('تطبيق') ||
+            group.includes('app') ||
+            contentType === 'app' ||
+            contentType === 'apk' ||
+            type === 'app' ||
+            title.includes('تطبيق') ||
+            title.includes('ادارة') ||
+            title.includes('إدارة') ||
+            content.includes('play.google.com') ||
+            content.includes('apps.apple.com') ||
+            content.endsWith('.apk')
+        );
+    }
+
+    /**
+     * Port of ModemDetailsShareFormatter.format from Yemen4g_main.
+     */
+    function formatModemShareText(item) {
+        if (!item) return '';
+        const sections = [];
+
+        // 1. Header
+        const headerLines = [];
+        const arabicTitle = String(item.arabicName || '').trim();
+        const englishTitle = String(item.englishName || '').trim();
+        const title = arabicTitle || englishTitle;
+        if (title) {
+            headerLines.push(`📱 *${title}*`);
+        }
+        if (englishTitle && englishTitle.toLowerCase() !== title.toLowerCase()) {
+            headerLines.push(`🌐 ${englishTitle}`);
+        }
+        const brand = String(item.brand || item.manufacturer || '').trim();
+        const model = String(item.modelOrVersion || item.model || '').trim();
+        const brandModelParts = [];
+        if (brand) brandModelParts.push(brand);
+        if (model && model.toLowerCase() !== brand.toLowerCase()) brandModelParts.push(model);
+        if (brandModelParts.length > 0) {
+            headerLines.push(`🏷️ الطراز: ${brandModelParts.join(' - ')}`);
+        }
+        const cat = String(item.category || '').trim();
+        const subCat = String(item.subCategory || '').trim();
+        const catParts = [];
+        if (cat) catParts.push(cat);
+        if (subCat && subCat.toLowerCase() !== cat.toLowerCase()) catParts.push(subCat);
+        if (catParts.length > 0) {
+            headerLines.push(`📂 الفئة: ${catParts.join(' • ')}`);
+        }
+        const priceVal = Number(item.price?.currentValue || 0);
+        if (priceVal > 0) {
+            const formattedAmount = Math.round(priceVal).toLocaleString('en-US');
+            const rawCurr = String(item.price?.currency || '').trim().toUpperCase();
+            const currLabel = (!rawCurr || rawCurr === 'RYE' || rawCurr === 'YER' || rawCurr === 'ريال') ? 'ريال يمني' : rawCurr;
+            const notePart = item.price?.note ? ` (${String(item.price.note).trim()})` : '';
+            headerLines.push(`💰 السعر التقريبي: ${formattedAmount} ${currLabel}${notePart}`);
+        }
+        if (headerLines.length > 0) sections.push(headerLines.join('\n'));
+
+        // 2. Summary
+        const overview = [item.summary, item.shortDescription, item.description]
+            .map(s => String(s || '').trim())
+            .find(Boolean);
+        if (overview) {
+            sections.push(`📝 *نبذة سريعة:*\n${overview}`);
+        }
+
+        // 3. Advantages
+        const rawAdvantages = Array.isArray(item.advantages)
+            ? item.advantages.join('\n')
+            : String(item.advantages || '').trim();
+        if (rawAdvantages) {
+            const advLines = rawAdvantages
+                .split(/\r?\n/)
+                .map(l => l.trim().replace(/^[-•*]\s*/, ''))
+                .filter(Boolean)
+                .map(l => `• ${l}`);
+            if (advLines.length > 0) {
+                sections.push(`✨ *أبرز المميزات:*\n${advLines.join('\n')}`);
+            }
+        }
+
+        // 4. Technical Specs
+        const attrs = Array.isArray(item.attributes) ? item.attributes : [];
+        if (attrs.length > 0) {
+            const specLines = ['⚙️ *المواصفات الفنية:*'];
+            const grouped = new Map();
+            for (const a of attrs) {
+                if (!a || !(a.displayValue || a.value)) continue;
+                const grp = String(a.group || 'المواصفات العامة').trim();
+                if (!grouped.has(grp)) grouped.set(grp, []);
+                grouped.get(grp).push(a);
+            }
+            for (const [grpName, grpItems] of grouped.entries()) {
+                if (grouped.size > 1 || grpName !== 'المواصفات العامة') {
+                    specLines.push(`▫️ *${grpName}:*`);
+                }
+                for (const a of grpItems) {
+                    const label = String(a.name || a.nameEn || a.code || 'مواصفة').trim();
+                    const val = String(a.displayValue || a.value || '').trim();
+                    const noteSuffix = a.note ? ` (${String(a.note).trim()})` : '';
+                    specLines.push(`• ${label}: ${val}${noteSuffix}`);
+                }
+            }
+            if (specLines.length > 1) sections.push(specLines.join('\n'));
+        }
+
+        // 5. Modem Login Credentials
+        const ms = resolveModemSettings(item);
+        if (ms) {
+            const credLines = ['🔐 *بيانات الدخول لإعدادات المودم:*'];
+            credLines.push(`• رابط الإعدادات: ${ms.fullLoginUrl}`);
+            if (ms.loginBy !== 'PASS' && ms.defaultUserName) {
+                credLines.push(`• اسم المستخدم: ${ms.defaultUserName}`);
+            }
+            credLines.push(`• كلمة المرور: ${ms.passwordDisplayValue}`);
+            if (ms.subnetMask) credLines.push(`• قناع الشبكة: ${ms.subnetMask}`);
+            if (ms.gateway) credLines.push(`• البوابة الافتراضية: ${ms.gateway}`);
+            if (ms.dns) credLines.push(`• خادم DNS: ${ms.dns}`);
+            sections.push(credLines.join('\n'));
+        }
+
+        // 6. Tips
+        const tips = (Array.isArray(item.tips) ? item.tips : [])
+            .map(t => String(t || '').trim())
+            .filter(Boolean);
+        if (tips.length > 0) {
+            const tipLines = ['💡 *نصائح الاستخدام:*'];
+            tips.forEach((tip, idx) => tipLines.push(`${idx + 1}. ${tip}`));
+            sections.push(tipLines.join('\n'));
+        }
+
+        // 7. Important Notes
+        const seenNotes = new Set();
+        const notesList = [item.alertMessage, item.hintMessage, item.infoMessage, item.notes]
+            .map(n => String(n || '').trim())
+            .filter(n => {
+                if (!n || seenNotes.has(n)) return false;
+                seenNotes.add(n);
+                return true;
+            });
+        if (notesList.length > 0) {
+            const noteLines = ['⚠️ *ملاحظات هامة:*'];
+            notesList.forEach(n => noteLines.push(`• ${n}`));
+            sections.push(noteLines.join('\n'));
+        }
+
+        // 8. Modem Management Apps
+        const appResources = (Array.isArray(item.resources) ? item.resources : []).filter(isModemAppResource);
+        if (appResources.length > 0) {
+            const appLines = ['📲 *تطبيقات إدارة المودم:*'];
+            for (const app of appResources) {
+                const titleStr = String(app.title || 'تطبيق إدارة المودم').trim();
+                const urlStr = String(app.url || app.content || '').trim();
+                if (urlStr) appLines.push(`• ${titleStr}: ${urlStr}`);
+            }
+            if (appLines.length > 1) sections.push(appLines.join('\n'));
+        }
+
+        // 9. Footer
+        const slugUrl = item.slug
+            ? `https://connecttag.org/tools/telecom/modems/details.html?slug=${encodeURIComponent(item.slug)}`
+            : 'https://connecttag.org/tools/telecom/modems/';
+        sections.push(`━━━━━━━━━━━━━━\nعبر دليل مودمات الفورجي - كونكت تاق\n${slugUrl}`);
+
+        return sections.join('\n\n').trim();
+    }
+
+    function translateRole(role) {
+        const r = String(role || '').trim();
+        if (!r) return 'الوكيل المعتمد';
+        const map = {
+            'ISP': 'مزود خدمة الإنترنت الرسمي',
+            'Manufacturer': 'الشركة المصنّعة',
+            'Importer': 'المستورد المعتمد',
+            'Distributor': 'الموزع المعتمد',
+            'Owner': 'مالك العلامة التجارية',
+            'التاجر': 'الوكيل / التاجر المعتمد',
+            'مزود': 'المزود الرسمي'
+        };
+        return map[r] || r;
+    }
+
     return {
         apiUrl: API_URL,
         cacheKey: CACHE_KEY,
         escapeHtml: escapeHtml,
+        normalizeModemUrl: normalizeModemUrl,
+        extractModemHost: extractModemHost,
+        modemHostsMatch: modemHostsMatch,
+        isSupportedPrivateModemUrl: isSupportedPrivateModemUrl,
+        isTrustedModemPage: isTrustedModemPage,
+        findSupportedPrivateGatewayAddress: findSupportedPrivateGatewayAddress,
+        toModemRouteKey: toModemRouteKey,
+        containsModemRoute: containsModemRoute,
+        buildModemUrl: buildModemUrl,
+        resolveDetectedModem: resolveDetectedModem,
+        hasTouchScreenHint: hasTouchScreenHint,
+        normalizeModemLoginBy: normalizeModemLoginBy,
+        isPrintedPassword: isPrintedPassword,
+        resolvePasswordDisplayValue: resolvePasswordDisplayValue,
+        modemInitialSetupDescription: modemInitialSetupDescription,
+        buildLoginCredentialsStep: buildLoginCredentialsStep,
+        modemLoginDescription: modemLoginDescription,
+        resolveStickerImageUrl: resolveStickerImageUrl,
+        resolveModemSettings: resolveModemSettings,
+        parseFlexibleHexColorOrNull: parseFlexibleHexColorOrNull,
+        resolveColorToken: resolveColorToken,
+        isModemAppResource: isModemAppResource,
+        formatModemShareText: formatModemShareText,
+        translateRole: translateRole,
 
         /**
          * Returns local pre-bundled modems data immediately if available.
@@ -200,3 +992,7 @@ const ModemApp = (function() {
         }
     };
 })();
+if (typeof window !== 'undefined') {
+    window.ModemApp = ModemApp;
+    window.ModemsShared = ModemApp;
+}

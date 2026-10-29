@@ -12,35 +12,38 @@
 
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
+    const hadController = Boolean(navigator.serviceWorker.controller);
+
     const registerSW = () => {
       // Ensure sw.js is resolved from root correctly
       const swPath = baseUrl.endsWith('/') ? baseUrl + 'sw.js' : baseUrl + '/sw.js';
 
       // updateViaCache: 'none' forces the browser to bypass its own cache when checking for updates to sw.js
       navigator.serviceWorker.register(swPath, { updateViaCache: 'none' })
-        .then(reg => {
-          console.log('SW Registered at:', swPath);
-
-          // Check for updates frequently
-          reg.update();
-        })
-        .catch(err => console.log('SW Registration Failed', err));
+        .catch(() => {});
     };
 
-    // Force a one-time reload when a new service worker takes control
+    // Only reload when an existing controller is replaced by a new service worker update
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (!refreshing) {
-        console.log('SW: New controller found, reloading page to apply updates...');
-        window.location.reload();
+      if (hadController && !refreshing) {
         refreshing = true;
+        window.location.reload();
       }
     });
 
+    const scheduleSW = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(registerSW, { timeout: 4000 });
+      } else {
+        setTimeout(registerSW, 2000);
+      }
+    };
+
     if (document.readyState === 'complete') {
-      registerSW();
+      scheduleSW();
     } else {
-      window.addEventListener('load', registerSW);
+      window.addEventListener('load', scheduleSW, { once: true });
     }
   }
 

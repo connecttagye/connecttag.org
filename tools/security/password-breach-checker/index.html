@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق</title>
+<meta name="description" content="افحص ما إذا كانت كلمة المرور الخاصة بك قد ظهرت في تسريبات البيانات العالمية باستخدام تقنية k-Anonymity محلياً في متصفحك دون إرسال كلمة المرور أبداً.">
+<link rel="canonical" href="https://connecttag.org/tools/security/password-breach-checker/">
+    <!-- OpenGraph Meta -->
+    <meta property="og:url" content="https://connecttag.org/tools/security/password-breach-checker/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
+    <meta property="og:description" content="افحص ما إذا كانت كلمة المرور الخاصة بك قد ظهرت في تسريبات البيانات العالمية باستخدام تقنية k-Anonymity محلياً في متصفحك دون إرسال كلمة المرور أبداً.">
+    <meta property="og:image" content="https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp">
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@connecttagye">
+    <meta name="twitter:url" content="https://connecttag.org/tools/security/password-breach-checker/">
+    <meta name="twitter:title" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
+    <meta name="twitter:description" content="افحص ما إذا كانت كلمة المرور الخاصة بك قد ظهرت في تسريبات البيانات العالمية باستخدام تقنية k-Anonymity محلياً في متصفحك دون إرسال كلمة المرور أبداً.">
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp">
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@graph": [
+            {
+                  "@type": "WebApplication",
+                  "name": "فاحص تسرب كلمات المرور محلياً (Password Breach Checker - k-Anonymity)",
+                  "description": "أداة مجانية لفحص تسرب كلمات المرور في قواعد البيانات العالمية عبر تقنية k-Anonymity وبصمة SHA-1 محلياً في المتصفح مع تحليل الإنتروبيا والأنماط الضعيفة.",
+                  "url": "https://connecttag.org/tools/security/password-breach-checker/",
+                  "applicationCategory": "SecurityApplication",
+                  "operatingSystem": "All",
+                  "inLanguage": "ar",
+                  "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                  },
+                  "author": {
+                        "@type": "Organization",
+                        "name": "ConnectTag",
+                        "url": "https://connecttag.org"
+                  }
+            },
+            {
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                        {
+                              "@type": "ListItem",
+                              "position": 1,
+                              "name": "الرئيسية",
+                              "item": "https://connecttag.org/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "الأدوات",
+                              "item": "https://connecttag.org/tools/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "الأمن والخصوصية",
+                              "item": "https://connecttag.org/tools/security/"
+                        },
+                        {
+                              "@type": "ListItem",
+                              "position": 4,
+                              "name": "فاحص تسرب كلمات المرور",
+                              "item": "https://connecttag.org/tools/security/password-breach-checker/"
+                        }
+                  ]
+            },
+            {
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                        {
+                              "@type": "Question",
+                              "name": "هل يتم إرسال كلمة المرور الخاصة بي عبر الإنترنت أثناء الفحص؟",
+                              "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "إطلاقاً. تعمل الأداة بتقنية k-Anonymity؛ حيث يقوم متصفحك بحساب بصمة SHA-1 محلياً ثم يرسل أول 5 أحرف فقط من البصمة، وتتم مطابقة الـ 35 حرفاً المتبقية داخل جهازك فقط."
+                              }
+                        },
+                        {
+                              "@type": "Question",
+                              "name": "ماذا أفعل إذا ظهرت كلمة المرور الخاصة بي في التسريبات؟",
+                              "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "يجب تغيير كلمة المرور فوراً في جميع الحسابات التي تستخدمها فيها، وتفعيل المصادقة الثنائية (2FA)، واستخدام مولد كلمات مرور عشوائية لإنشاء كلمة مرور فريدة لكل حساب."
+                              }
+                        }
+                  ]
+            }
+      ]
+}
+    </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.31">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.31">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.31">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.31" defer></script>
+
+<style>
+    body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; transition: 0.3s; }
+
+    .privacy-shield-banner {
+        background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+        border: 1px solid #bfdbfe;
+        border-radius: 16px;
+        padding: 16px 20px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-align: right;
+    }
+    .privacy-shield-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #006b98;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+    .privacy-shield-text h2 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+    }
+    .privacy-shield-text p {
+        font-size: 13px;
+        color: #475569;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Mode Tabs */
+    .mode-tabs {
+        display: flex;
+        gap: 10px;
+        background: #f1f5f9;
+        padding: 6px;
+        border-radius: 16px;
+        margin-bottom: 25px;
+    }
+    .mode-tab-btn {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 14px;
+        color: #475569;
+        cursor: pointer;
+        transition: 0.25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .mode-tab-btn.active {
+        background: #ffffff;
+        color: #006b98;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Input Area */
+    .password-input-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #f8fafc;
+        border: 2px solid #cbd5e1;
+        border-radius: 18px;
+        padding: 6px 10px;
+        transition: 0.3s;
+        margin-bottom: 14px;
+    }
+    .password-input-group:focus-within {
+        border-color: #006b98;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(0, 107, 152, 0.12);
+    }
+    .password-input-field {
+        flex: 1;
+        border: none;
+        background: transparent;
+        padding: 12px 14px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #0f172a;
+        outline: none;
+        direction: ltr;
+        text-align: left;
+        font-family: monospace;
+        letter-spacing: 1px;
+    }
+    .password-input-field::placeholder {
+        font-family: 'Cairo', sans-serif;
+        letter-spacing: 0;
+        direction: rtl;
+        text-align: right;
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .input-action-btn {
+        width: 42px;
+        height: 42px;
+        border: none;
+        background: #e2e8f0;
+        color: #334155;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 6px;
+    }
+    .input-action-btn:hover {
+        background: #cbd5e1;
+        color: #0f172a;
+    }
+
+    .quick-actions-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .quick-sample-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .btn-chip {
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        color: #334155;
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .btn-chip:hover {
+        border-color: #006b98;
+        color: #006b98;
+        background: #f0f9ff;
+    }
+
+    .live-toggle-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #475569;
+        cursor: pointer;
+        user-select: none;
+    }
+    .live-toggle-label input {
+        width: 17px;
+        height: 17px;
+        accent-color: #006b98;
+        cursor: pointer;
+    }
+
+    .btn-check-breach {
+        width: 100%;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 16px;
+        background: #006b98;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .btn-check-breach:hover:not(:disabled) {
+        background: #004d6e;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 107, 152, 0.2);
+    }
+    .btn-check-breach:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+    /* Verdict Banner */
+    .verdict-card {
+        margin-top: 25px;
+        border-radius: 20px;
+        padding: 24px;
+        text-align: right;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    }
+    .verdict-safe {
+        background: #f0fdf4;
+        border-color: #86efac;
+        color: #14532d;
+    }
+    .verdict-pwned {
+        background: #fef2f2;
+        border-color: #fca5a5;
+        color: #7f1d1d;
+    }
+    .verdict-warn {
+        background: #fffbeb;
+        border-color: #fcd34d;
+        color: #78350f;
+    }
+    .verdict-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 12px;
+    }
+    .verdict-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+    .verdict-safe .verdict-icon { background: #16a34a; color: #fff; }
+    .verdict-pwned .verdict-icon { background: #dc2626; color: #fff; }
+    .verdict-warn .verdict-icon { background: #d97706; color: #fff; }
+
+    .verdict-title {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0 0 4px 0;
+    }
+    .verdict-subtitle {
+        font-size: 14px;
+        margin: 0;
+        opacity: 0.92;
+        line-height: 1.6;
+    }
+
+    /* k-Anonymity Transparency Box */
+    .kanon-inspector {
+        margin-top: 22px;
+        background: #0f172a;
+        color: #f8fafc;
+        border-radius: 18px;
+        padding: 20px;
+        text-align: right;
+    }
+    .kanon-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+        border-bottom: 1px solid #1e293b;
+        padding-bottom: 10px;
+    }
+    .kanon-title {
+        font-size: 14px;
+        font-weight: 800;
+        color: #38bdf8;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .hash-display-box {
+        background: #1e293b;
+        border-radius: 12px;
+        padding: 14px;
+        direction: ltr;
+        text-align: left;
+        font-family: monospace;
+        font-size: 15px;
+        word-break: break-all;
+        line-height: 1.8;
+        margin-bottom: 14px;
+        border: 1px solid #334155;
+    }
+    .hash-prefix-badge {
+        background: #0284c7;
+        color: #fff;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        margin-right: 4px;
+        display: inline-block;
+    }
+    .hash-suffix-badge {
+        color: #4ade80;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .kanon-legend {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        font-size: 12px;
+    }
+    .kanon-stat-item {
+        background: #1e293b;
+        border-radius: 10px;
+        padding: 10px 12px;
+        border: 1px solid #334155;
+    }
+    .kanon-stat-label {
+        color: #94a3b8;
+        display: block;
+        margin-bottom: 3px;
+    }
+    .kanon-stat-val {
+        color: #f8fafc;
+        font-weight: 800;
+        font-size: 13px;
+        direction: ltr;
+        display: inline-block;
+    }
+
+    /* Entropy & Strength Grid */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 14px;
+        margin-top: 20px;
+        text-align: right;
+    }
+    .metric-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 14px 16px;
+    }
+    .metric-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #64748b;
+        margin-bottom: 4px;
+    }
+    .metric-value {
+        font-size: 17px;
+        font-weight: 900;
+        color: #0f172a;
+    }
+
+    .pattern-warnings-list {
+        margin-top: 16px;
+        padding: 0;
+        list-style: none;
+        text-align: right;
+    }
+    .pattern-warnings-list li {
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        color: #9a3412;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .pattern-warnings-list li.good-pattern {
+        background: #f0fdf4;
+        border-color: #bbf7d0;
+        color: #166534;
+    }
+
+    /* Batch Mode */
+    .batch-textarea {
+        width: 100%;
+        min-height: 150px;
+        border-radius: 16px;
+        border: 2px solid #cbd5e1;
+        background: #f8fafc;
+        padding: 14px;
+        font-family: monospace;
+        font-size: 14px;
+        direction: ltr;
+        text-align: left;
+        resize: vertical;
+        outline: none;
+        margin-bottom: 14px;
+    }
+    .batch-textarea:focus {
+        border-color: #006b98;
+        background: #fff;
+    }
+    .batch-table-wrap {
+        margin-top: 20px;
+        overflow-x: auto;
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
+    }
+    .batch-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        text-align: right;
+    }
+    .batch-table th {
+        background: #f1f5f9;
+        color: #334155;
+        font-weight: 800;
+        padding: 12px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .batch-table td {
+        padding: 11px 12px;
+        border-bottom: 1px solid #f1f5f9;
+        vertical-align: middle;
+    }
+    .badge-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 800;
+    }
+    .badge-status.safe { background: #dcfce7; color: #166534; }
+    .badge-status.pwned { background: #fee2e2; color: #991b1b; }
+</style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
+       crossorigin="anonymous"></script>
+</head>
+<body>
+<site-toast></site-toast>
+<site-preloader></site-preloader>
+
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+    <div class="page-header-unified">
+        <div class="container">
+            <h1 data-aos="fade-down">فاحص تسرب كلمات المرور محلياً (k-Anonymity)</h1>
+            <p data-aos="fade-up" data-aos-delay="100">تحقق مما إذا كانت كلمة المرور قد ظهرت في تسريبات البيانات العالمية دون أن تغادر متصفحك أبداً</p>
+            <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الأمن والخصوصية","url":"https://connecttag.org/tools/security/"},{"title":"فاحص تسرب كلمات المرور","url":"https://connecttag.org/tools/security/password-breach-checker/"}]'></site-breadcrumb>
+        </div>
+    </div>
+
+    <div class="tool-main-wrapper">
+        <div class="container">
+            <div class="tool-card-base" data-aos="zoom-in" style="max-width: 780px;">
+
+                <!-- Zero-Knowledge Privacy Guarantee -->
+                <div class="privacy-shield-banner">
+                    <div class="privacy-shield-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="privacy-shield-text">
+                        <h2>حماية خصوصية مطلقة (Zero-Knowledge / k-Anonymity)</h2>
+                        <p>يقوم متصفحك بحساب بصمة <code>SHA-1</code> محلياً، ويرسل <strong>أول 5 أحرف فقط</strong> من البصمة إلى قاعدة بيانات التسريبات العالمية، ثم يطابق الـ <strong>35 حرفاً المتبقية</strong> داخل جهازك حصرياً.</p>
+                    </div>
+                </div>
+
+                <!-- Mode Selector Tabs -->
+                <div class="mode-tabs" role="tablist">
+                    <button type="button" class="mode-tab-btn active" id="tabSingleBtn" onclick="switchMode('single')">
+                        <i class="fa-solid fa-magnifying-glass-shield"></i> الفحص الفردي المفصل
+                    </button>
+                    <button type="button" class="mode-tab-btn" id="tabBatchBtn" onclick="switchMode('batch')">
+                        <i class="fa-solid fa-list-check"></i> الفحص الجماعي (Batch Audit)
+                    </button>
+                </div>
+
+                <!-- ==================== SINGLE CHECK PANEL ==================== -->
+                <div id="singleModePanel">
+                    <div class="password-input-group">
+                        <input
+                            type="password"
+                            id="passwordInput"
+                            class="password-input-field"
+                            placeholder="أدخل كلمة المرور المراد فحصها هنا..."
+                            autocomplete="off"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            aria-label="كلمة المرور المراد فحصها"
+                        >
+                        <button type="button" class="input-action-btn" id="toggleVisBtn" onclick="togglePasswordVisibility()" title="إظهار / إخفاء كلمة المرور" aria-label="إظهار أو إخفاء كلمة المرور">
+                            <i class="fa-solid fa-eye" id="toggleVisIcon"></i>
+                        </button>
+                        <button type="button" class="input-action-btn" onclick="clearSingleInput()" title="مسح الحقل" aria-label="مسح الحقل">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <div class="quick-actions-bar">
+                        <div class="quick-sample-btns">
+                            <button type="button" class="btn-chip" onclick="fillSamplePassword('password123')">
+                                <i class="fa-solid fa-triangle-exclamation text-danger"></i> تجربة كلمة مسربة (password123)
+                            </button>
+                            <button type="button" class="btn-chip" onclick="generateAndTestSafePassword()">
+                                <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> توليد وفحص كلمة آمنة عشوائية
+                            </button>
+                        </div>
+                        <label class="live-toggle-label">
+                            <input type="checkbox" id="liveCheckToggle" onchange="onLiveToggleChange()">
+                            <span>فحص تلقائي أثناء الكتابة</span>
+                        </label>
+                    </div>
+
+                    <button type="button" class="btn-check-breach" id="checkBtn" onclick="runSingleBreachCheck()">
+                        <i class="fa-solid fa-shield-halved"></i> فحص التسرب وقوة كلمة المرور الآن
+                    </button>
+
+                    <!-- Result Area -->
+                    <div id="singleResultContainer" style="display: none;">
+                        <!-- Verdict Banner -->
+                        <div id="verdictCard" class="verdict-card verdict-safe">
+                            <div class="verdict-header">
+                                <div class="verdict-icon" id="verdictIcon">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="verdict-title" id="verdictTitle">-</h3>
+                                    <p class="verdict-subtitle" id="verdictSubtitle">-</p>
+                                </div>
+                            </div>
+                            <div id="compromisedActionBox" style="display: none; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(220, 38, 38, 0.2);" class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                                <span class="small fw-bold"><i class="fa-solid fa-bolt"></i> نصيحة فورية: استبدل هذه الكلمة بكلمة عشوائية فريدة لا يمكن تخمينها.</span>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-sm btn-danger fw-bold rounded-pill px-3" onclick="generateAndTestSafePassword()">
+                                        <i class="fa-solid fa-rotate"></i> توليد بديل آمن فوراً
+                                    </button>
+                                    <a href="https://connecttag.org/tools/security/password-generator/" class="btn btn-sm btn-outline-dark fw-bold rounded-pill px-3">
+                                        فتح مولد كلمات المرور
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live k-Anonymity Transparency Inspector -->
+                        <div class="kanon-inspector">
+                            <div class="kanon-header">
+                                <div class="kanon-title">
+                                    <i class="fa-solid fa-microchip"></i> لوحة شفافية بصمة SHA-1 (k-Anonymity Inspector)
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-info rounded-pill py-1 px-3" style="font-size: 11px; font-weight: 700;" onclick="toggleSuffixMask()">
+                                    <i class="fa-solid fa-eye-slash" id="suffixMaskIcon"></i> <span id="suffixMaskLabel">إظهار اللاحقة المحلية</span>
+                                </button>
+                            </div>
+
+                            <div class="hash-display-box" aria-live="polite">
+                                <span class="hash-prefix-badge" id="hashPrefixText" title="البادئة المرسلة (5 أحرف)">-----</span><span class="hash-suffix-badge" id="hashSuffixText" title="اللاحقة المحلية (35 حرفاً لم تغادر متصفحك)">•••••••••••••••••••••••••••••••••••</span>
+                            </div>
+
+                            <div class="kanon-legend">
+                                <div class="kanon-stat-item">
+                                    <span class="kanon-stat-label">الجزء المرسل للشبكة (Prefix):</span>
+                                    <span class="kanon-stat-val text-info" id="statSentPrefix">5 محارف فقط (12.5%)</span>
+                                </div>
+                                <div class="kanon-stat-item">
+                                    <span class="kanon-stat-label">الجزء المحفوظ محلياً (Suffix):</span>
+                                    <span class="kanon-stat-val text-success">35 محرفاً (87.5% محلي)</span>
+                                </div>
+                                <div class="kanon-stat-item">
+                                    <span class="kanon-stat-label">البصمات المرشحة المستلمة:</span>
+                                    <span class="kanon-stat-val" id="statCandidateCount">-</span>
+                                </div>
+                                <div class="kanon-stat-item">
+                                    <span class="kanon-stat-label">زمن الفحص وحماية الترافيك:</span>
+                                    <span class="kanon-stat-val" id="statLatency">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Local Entropy & Weakness Metrics -->
+                        <div class="metrics-grid">
+                            <div class="metric-box">
+                                <div class="metric-label">الإنتروبيا الرياضية (Entropy)</div>
+                                <div class="metric-value" id="metricEntropy">0 bits</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-label">الوقت التقديري للكسر (Offline)</div>
+                                <div class="metric-value" id="metricCrackTime">-</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-label">طول الكلمة / حوض الرموز</div>
+                                <div class="metric-value" id="metricPoolInfo">0 حرف</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-label">التقييم الأمني الشامل</div>
+                                <div class="metric-value" id="metricOverallGrade">-</div>
+                            </div>
+                        </div>
+
+                        <ul class="pattern-warnings-list" id="patternWarningsList"></ul>
+                    </div>
+                </div>
+
+                <!-- ==================== BATCH CHECK PANEL ==================== -->
+                <div id="batchModePanel" style="display: none;">
+                    <p class="text-right small text-muted mb-2">
+                        <i class="fa-solid fa-circle-info text-primary"></i> أدخل حتى <strong>25 كلمة مرور</strong> (كلمة واحدة في كل سطر) لفحصها دفعة واحدة بتقنية <code>k-Anonymity</code> دون كشفها على الشاشة أو إرسالها للخادم:
+                    </p>
+                    <textarea
+                        id="batchInput"
+                        class="batch-textarea"
+                        placeholder="أدخل كلمة مرور في كل سطر (بحد أقصى 25 سطراً)..."
+                        aria-label="قائمة كلمات المرور للفحص الجماعي"
+                    ></textarea>
+
+                    <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-3">
+                        <button type="button" class="btn-chip" onclick="fillBatchSample()">
+                            <i class="fa-solid fa-flask text-primary"></i> تعبئة قائمة اختبارية (4 كلمات)
+                        </button>
+                        <button type="button" class="btn-chip" onclick="clearBatchInput()">
+                            <i class="fa-solid fa-trash-can text-danger"></i> مسح القائمة
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn-check-breach" id="batchCheckBtn" onclick="runBatchBreachCheck()">
+                        <i class="fa-solid fa-layer-group"></i> بدء الفحص الجماعي الآمن
+                    </button>
+
+                    <div id="batchResultContainer" style="display: none;">
+                        <div class="batch-table-wrap">
+                            <table class="batch-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>معاينة مقنّعة</th>
+                                        <th>بادئة SHA-1</th>
+                                        <th>الإنتروبيا</th>
+                                        <th>مرات التسرب</th>
+                                        <th>الحالة الأمنية</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="batchTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Educational Info Section -->
+    <div class="container">
+        <div class="info-section text-center" data-aos="fade-up">
+            <h2>كيف تحميك تقنية k-Anonymity أثناء الفحص؟</h2>
+            <p class="mx-auto" style="max-width: 800px;">
+                عند التحقق من تسرب كلمة مرور بالطريقة التقليدية، قد تضطر لإرسال كلمة المرور إلى خادم خارجي، مما يعرضها للخطر. أما تقنية <strong>k-Anonymity</strong> التي ابتكرها الباحث الأمني <em>Troy Hunt</em> وتديرها شبكة <em>Cloudflare</em>، فتعمل بطريقة رياضية تمنع الخادم من معرفة كلمة مرورك نهائياً.
+            </p>
+
+            <div class="row text-right mt-5">
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:17px; font-weight:800; color:#0f172a;">
+                        <i class="fa-solid fa-1 text-primary"></i> التجزئة المحلية (SHA-1)
+                    </h3>
+                    <p style="font-size:14px; color:#475569;">
+                        يحوّل متصفحك كلمة المرور داخلياً عبر محرك التشفير القياسي (Web Crypto API) إلى بصمة مكونة من 40 محرفاً سداسياً عشرياً.
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:17px; font-weight:800; color:#0f172a;">
+                        <i class="fa-solid fa-2 text-primary"></i> إرسال 5 أحرف فقط
+                    </h3>
+                    <p style="font-size:14px; color:#475569;">
+                        يُرسل المتصفح أول 5 محارف فقط من البصمة، فيرد الخادم بقائمة تضم نحو 500 إلى 1,000 بصمة تشترك في نفس البداية مع تفعيل حشو الحزم (Add-Padding).
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 style="font-size:17px; font-weight:800; color:#0f172a;">
+                        <i class="fa-solid fa-3 text-primary"></i> المطابقة داخل جهازك
+                    </h3>
+                    <p style="font-size:14px; color:#475569;">
+                        يقارن متصفحك الـ 35 محرفاً المتبقية محلياً بالقائمة المستلمة ليعرف عدد مرات ظهور كلمة المرور في التسريبات دون أن يغادر السر جهازك.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+<cookie-consent></cookie-consent>
+</div>
+
+<script>
+// In-memory cache for 5-char SHA-1 range responses to avoid redundant network calls
+const rangePrefixCache = new Map();
+
+let currentRawSuffix = '';
+let isSuffixMasked = true;
+let liveDebounceTimer = null;
+
+/**
+ * Switch between Single and Batch audit modes
+ */
+function switchMode(mode) {
+    const singlePanel = document.getElementById('singleModePanel');
+    const batchPanel = document.getElementById('batchModePanel');
+    const tabSingleBtn = document.getElementById('tabSingleBtn');
+    const tabBatchBtn = document.getElementById('tabBatchBtn');
+
+    if (mode === 'batch') {
+        singlePanel.style.display = 'none';
+        batchPanel.style.display = 'block';
+        tabSingleBtn.classList.remove('active');
+        tabBatchBtn.classList.add('active');
+    } else {
+        singlePanel.style.display = 'block';
+        batchPanel.style.display = 'none';
+        tabSingleBtn.classList.add('active');
+        tabBatchBtn.classList.remove('active');
+    }
+}
+
+/**
+ * Toggle password visibility in single input
+ */
+function togglePasswordVisibility() {
+    const input = document.getElementById('passwordInput');
+    const icon = document.getElementById('toggleVisIcon');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+    } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+    }
+}
+
+/**
+ * Clear single password input and hide results
+ */
+function clearSingleInput() {
+    const input = document.getElementById('passwordInput');
+    input.value = '';
+    currentRawSuffix = '';
+    document.getElementById('singleResultContainer').style.display = 'none';
+    input.focus();
+}
+
+/**
+ * Toggle display of the local 35-char SHA-1 suffix
+ */
+function toggleSuffixMask() {
+    if (!currentRawSuffix) return;
+    isSuffixMasked = !isSuffixMasked;
+    const suffixEl = document.getElementById('hashSuffixText');
+    const iconEl = document.getElementById('suffixMaskIcon');
+    const labelEl = document.getElementById('suffixMaskLabel');
+
+    if (isSuffixMasked) {
+        suffixEl.textContent = '•'.repeat(35);
+        iconEl.className = 'fa-solid fa-eye-slash';
+        labelEl.textContent = 'إظهار اللاحقة المحلية';
+    } else {
+        suffixEl.textContent = currentRawSuffix;
+        iconEl.className = 'fa-solid fa-eye';
+        labelEl.textContent = 'إخفاء اللاحقة المحلية';
+    }
+}
+
+/**
+ * Compute uppercase 40-char SHA-1 hex string locally using Web Crypto API
+ */
+async function sha1HexLocal(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-1', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+
+/**
+ * Query Have I Been Pwned Range API with k-Anonymity (5-char prefix) and Add-Padding
+ */
+async function queryPwnedRange(prefix) {
+    const upperPrefix = prefix.toUpperCase();
+    if (rangePrefixCache.has(upperPrefix)) {
+        return {
+            lines: rangePrefixCache.get(upperPrefix),
+            cached: true,
+            latencyMs: 0
+        };
+    }
+
+    const startTime = performance.now();
+    const response = await fetch(`https://api.pwnedpasswords.com/range/${upperPrefix}`, {
+        method: 'GET',
+        headers: {
+            'Add-Padding': 'true'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+    }
+
+    const rawText = await response.text();
+    const latencyMs = Math.round(performance.now() - startTime);
+    const lines = rawText.split(/\r?\n/).filter(Boolean);
+    rangePrefixCache.set(upperPrefix, lines);
+
+    return {
+        lines,
+        cached: false,
+        latencyMs
+    };
+}
+
+/**
+ * Lookup suffix in range lines; ignore padded 0-count entries
+ */
+function findBreachCountInRange(lines, suffix) {
+    const target = suffix.toUpperCase();
+    let validCandidates = 0;
+    let matchedCount = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+        const parts = lines[i].split(':');
+        if (parts.length !== 2) continue;
+        const lineSuffix = parts[0].trim().toUpperCase();
+        const count = parseInt(parts[1].trim(), 10) || 0;
+        if (count > 0) validCandidates++;
+        if (lineSuffix === target && count > 0) {
+            matchedCount = count;
+        }
+    }
+
+    return {
+        breachCount: matchedCount,
+        totalLines: lines.length,
+        validCandidates
+    };
+}
+
+/**
+ * Local Password Entropy & Weakness Pattern Analyzer
+ */
+function analyzePasswordLocally(pw) {
+    const length = pw.length;
+    let poolSize = 0;
+    const hasLower = /[a-z]/.test(pw);
+    const hasUpper = /[A-Z]/.test(pw);
+    const hasDigit = /[0-9]/.test(pw);
+    const hasSymbol = /[^A-Za-z0-9\u0600-\u06FF]/.test(pw);
+    const hasArabic = /[\u0600-\u06FF]/.test(pw);
+
+    if (hasLower) poolSize += 26;
+    if (hasUpper) poolSize += 26;
+    if (hasDigit) poolSize += 10;
+    if (hasSymbol) poolSize += 32;
+    if (hasArabic) poolSize += 36;
+
+    const rawEntropy = poolSize > 0 ? Math.round(length * Math.log2(poolSize)) : 0;
+    const warnings = [];
+    let penaltyBits = 0;
+
+    if (length < 8) {
+        warnings.push('طول كلمة المرور قصير جداً (أقل من 8 أحرف)، مما يجعلها عرضة للكسر الفوري.');
+        penaltyBits += 15;
+    } else if (length < 12) {
+        warnings.push('يفضل أن لا يقل طول كلمة المرور عن 12 إلى 16 حرفاً لزيادة الأمان.');
+    }
+
+    const classesCount = [hasLower, hasUpper, hasDigit, hasSymbol, hasArabic].filter(Boolean).length;
+    if (classesCount <= 1) {
+        warnings.push('تعتمد كلمة المرور على نوع واحد فقط من المحارف (أرقام فقط أو حروف فقط).');
+        penaltyBits += 12;
+    }
+
+    if (/(.)\1{2,}/.test(pw)) {
+        warnings.push('تحتوي على تكرار متتالي لنفس الحرف أو الرقم (مثل aaa أو 111).');
+        penaltyBits += 10;
+    }
+
+    const lowerPw = pw.toLowerCase();
+    const commonSequences = ['1234', '2345', '3456', '4567', '5678', '6789', '0123', 'abcd', 'bcde', 'qwerty', 'asdf', 'zxcv', 'password', 'admin', 'welcome', 'iloveyou'];
+    if (commonSequences.some(seq => lowerPw.includes(seq))) {
+        warnings.push('تحتوي على متسلسلة شائعة أو نمط لوحة مفاتيح معروف (مثل 1234 أو qwerty أو password).');
+        penaltyBits += 18;
+    }
+
+    if (/\b(19[5-9]\d|20[0-3]\d)\b/.test(pw) || /(19[7-9]\d|20[0-2]\d)/.test(pw)) {
+        warnings.push('تتضمن سنة ميلادية أو تاريخاً شائعاً (19xx / 20xx) يسهل تخمينه.');
+        penaltyBits += 8;
+    }
+
+    const effectiveEntropy = Math.max(1, rawEntropy - penaltyBits);
+
+    // Offline fast hash cracking estimate at 10^10 guesses/sec
+    const guessesPerSec = 1e10;
+    const seconds = Math.pow(2, effectiveEntropy) / guessesPerSec;
+    let crackTimeText = 'أقل من ثانية واحدة ⚡';
+    if (seconds >= 1 && seconds < 60) {
+        crackTimeText = `${Math.round(seconds)} ثانية`;
+    } else if (seconds >= 60 && seconds < 3600) {
+        crackTimeText = `${Math.round(seconds / 60)} دقيقة`;
+    } else if (seconds >= 3600 && seconds < 86400) {
+        crackTimeText = `${Math.round(seconds / 3600)} ساعة`;
+    } else if (seconds >= 86400 && seconds < 31536000) {
+        crackTimeText = `${Math.round(seconds / 86400)} يوم`;
+    } else if (seconds >= 31536000 && seconds < 31536000 * 1000) {
+        crackTimeText = `${Math.round(seconds / 31536000).toLocaleString('ar-YE')} سنة`;
+    } else if (seconds >= 31536000 * 1000) {
+        crackTimeText = 'ملايين السنين 🛡️';
+    }
+
+    return {
+        length,
+        poolSize,
+        rawEntropy,
+        effectiveEntropy,
+        crackTimeText,
+        warnings
+    };
+}
+
+/**
+ * Run single password breach check & local analysis
+ */
+async function runSingleBreachCheck() {
+    const input = document.getElementById('passwordInput');
+    const pw = input.value;
+    if (!pw) {
+        if (window.showToast) window.showToast('يرجى إدخال كلمة المرور المراد فحصها أولاً', 'warn');
+        input.focus();
+        return;
+    }
+
+    const checkBtn = document.getElementById('checkBtn');
+    checkBtn.disabled = true;
+    checkBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري حساب بصمة SHA-1 والفحص الآمن...';
+
+    try {
+        const fullHash = await sha1HexLocal(pw);
+        const prefix = fullHash.slice(0, 5);
+        const suffix = fullHash.slice(5);
+        currentRawSuffix = suffix;
+
+        // Update k-Anonymity Inspector
+        document.getElementById('hashPrefixText').textContent = prefix;
+        document.getElementById('hashSuffixText').textContent = isSuffixMasked ? '•'.repeat(35) : suffix;
+
+        const rangeResult = await queryPwnedRange(prefix);
+        const matchInfo = findBreachCountInRange(rangeResult.lines, suffix);
+        const localAnalysis = analyzePasswordLocally(pw);
+
+        renderSingleResult(matchInfo, rangeResult, localAnalysis, prefix);
+    } catch (err) {
+        console.error('Breach check error:', err);
+        if (window.showToast) window.showToast('تعذر الاتصال بخدمة الفحص، تم عرض التحليل المحلي فقط.', 'error');
+        const localAnalysis = analyzePasswordLocally(pw);
+        renderSingleOfflineFallback(localAnalysis);
+    } finally {
+        checkBtn.disabled = false;
+        checkBtn.innerHTML = '<i class="fa-solid fa-shield-halved"></i> فحص التسرب وقوة كلمة المرور الآن';
+    }
+}
+
+/**
+ * Render single password result UI
+ */
+function renderSingleResult(matchInfo, rangeResult, localAnalysis, prefix) {
+    const container = document.getElementById('singleResultContainer');
+    const verdictCard = document.getElementById('verdictCard');
+    const verdictIcon = document.getElementById('verdictIcon');
+    const verdictTitle = document.getElementById('verdictTitle');
+    const verdictSubtitle = document.getElementById('verdictSubtitle');
+    const actionBox = document.getElementById('compromisedActionBox');
+
+    container.style.display = 'block';
+
+    // Update k-Anonymity telemetry
+    document.getElementById('statSentPrefix').textContent = `${prefix} (5 أحرف فقط)`;
+    document.getElementById('statCandidateCount').textContent = `${matchInfo.totalLines.toLocaleString('ar-YE')} بصمة مستلمة`;
+    document.getElementById('statLatency').textContent = rangeResult.cached
+        ? '0 ms (من الذاكرة المؤقتة) · Add-Padding'
+        : `${rangeResult.latencyMs} ms · Add-Padding`;
+
+    // Update Entropy & Strength metrics
+    document.getElementById('metricEntropy').textContent = `${localAnalysis.effectiveEntropy} bits`;
+    document.getElementById('metricCrackTime').textContent = localAnalysis.crackTimeText;
+    document.getElementById('metricPoolInfo').textContent = `${localAnalysis.length} حرف (حوض: ${localAnalysis.poolSize})`;
+
+    const gradeEl = document.getElementById('metricOverallGrade');
+
+    if (matchInfo.breachCount > 0) {
+        verdictCard.className = 'verdict-card verdict-pwned';
+        verdictIcon.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+        verdictTitle.textContent = `تحذير أمني: كلمة المرور مسربة (${matchInfo.breachCount.toLocaleString('ar-YE')} مرة)!`;
+        verdictSubtitle.textContent = `ظهرت كلمة المرور هذه في ${matchInfo.breachCount.toLocaleString('ar-YE')} تسرب بيانات عالمي سابق.هاجمو الحسابات يستخدمون هذه القوائم في هجمات التخمين الآلي (Credential Stuffing)؛ يجب عدم استخدامها نهائياً.`;
+        actionBox.style.display = 'flex';
+        gradeEl.textContent = 'خطرة / مخترقة ❌';
+        gradeEl.style.color = '#dc2626';
+    } else if (localAnalysis.effectiveEntropy < 50 || localAnalysis.warnings.length > 0) {
+        verdictCard.className = 'verdict-card verdict-warn';
+        verdictIcon.innerHTML = '<i class="fa-solid fa-shield-exclamation"></i>';
+        verdictTitle.textContent = 'لم تظهر في التسريبات، لكن بنيتها ضعيفة أو قابلة للتخمين';
+        verdictSubtitle.textContent = 'لم يتم العثور على بصمة كلمة المرور في قواعد البيانات المسربة، ولكن تحليل الإنتروبيا المحلي كشف عن نقاط ضعف قد تسمح بكسرها عبر التخمين.';
+        actionBox.style.display = 'flex';
+        gradeEl.textContent = 'متوسطة / تحتاج تقوية ⚠️';
+        gradeEl.style.color = '#d97706';
+    } else {
+        verdictCard.className = 'verdict-card verdict-safe';
+        verdictIcon.innerHTML = '<i class="fa-solid fa-shield-check"></i>';
+        verdictTitle.textContent = 'ممتاز! لم يتم العثور على أي تسرب لكلمة المرور ✅';
+        verdictSubtitle.textContent = 'لم تظهر هذه الكلمة في أي من التسريبات العالمية المفحوصة، كما أنها تتمتع بإنتروبيا قوية ومقاومة عالية ضد هجمات التخمين.';
+        actionBox.style.display = 'none';
+        gradeEl.textContent = 'قوية وآمنة ✅';
+        gradeEl.style.color = '#16a34a';
+    }
+
+    // Render pattern warnings
+    const warningsList = document.getElementById('patternWarningsList');
+    warningsList.innerHTML = '';
+    if (localAnalysis.warnings.length === 0 && matchInfo.breachCount === 0) {
+        const li = document.createElement('li');
+        li.className = 'good-pattern';
+        li.innerHTML = '<i class="fa-solid fa-circle-check"></i> لم يتم رصد أي أنماط متكررة أو متتاليات لوحة مفاتيح ضعيفة في كلمة المرور.';
+        warningsList.appendChild(li);
+    } else {
+        localAnalysis.warnings.forEach(warnText => {
+            const li = document.createElement('li');
+            li.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> <span>${warnText}</span>`;
+            warningsList.appendChild(li);
+        });
+    }
+}
+
+/**
+ * Fallback if offline
+ */
+function renderSingleOfflineFallback(localAnalysis) {
+    const container = document.getElementById('singleResultContainer');
+    container.style.display = 'block';
+    const verdictCard = document.getElementById('verdictCard');
+    verdictCard.className = 'verdict-card verdict-warn';
+    document.getElementById('verdictTitle').textContent = 'تعذر الوصول لخادم التسريبات (تم إجراء الفحص المحلي فقط)';
+    document.getElementById('verdictSubtitle').textContent = 'تحقق من اتصالك بالإنترنت لفحص قاعدة بيانات k-Anonymity. تم تحديث مقاييس الإنتروبيا بالأسفل محلياً.';
+    document.getElementById('metricEntropy').textContent = `${localAnalysis.effectiveEntropy} bits`;
+    document.getElementById('metricCrackTime').textContent = localAnalysis.crackTimeText;
+    document.getElementById('metricPoolInfo').textContent = `${localAnalysis.length} حرف (حوض: ${localAnalysis.poolSize})`;
+}
+
+/**
+ * Fill sample password and run check
+ */
+function fillSamplePassword(sample) {
+    const input = document.getElementById('passwordInput');
+    input.value = sample;
+    runSingleBreachCheck();
+}
+
+/**
+ * Generate a cryptographically strong random password locally and check it
+ */
+function generateAndTestSafePassword() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*_+-=';
+    const rand = new Uint32Array(18);
+    window.crypto.getRandomValues(rand);
+    let generated = '';
+    for (let i = 0; i < rand.length; i++) {
+        generated += chars[rand[i] % chars.length];
+    }
+
+    const input = document.getElementById('passwordInput');
+    input.type = 'text';
+    document.getElementById('toggleVisIcon').className = 'fa-solid fa-eye-slash';
+    input.value = generated;
+
+    if (window.showToast) {
+        window.showToast('تم توليد كلمة مرور عشوائية آمنة وفحصها محلياً!', 'success');
+    }
+    runSingleBreachCheck();
+}
+
+/**
+ * Live check toggle handler
+ */
+function onLiveToggleChange() {
+    const enabled = document.getElementById('liveCheckToggle').checked;
+    const input = document.getElementById('passwordInput');
+    if (enabled && input.value.trim().length > 0) {
+        runSingleBreachCheck();
+    }
+}
+
+document.getElementById('passwordInput').addEventListener('input', () => {
+    const liveEnabled = document.getElementById('liveCheckToggle').checked;
+    if (!liveEnabled) return;
+    clearTimeout(liveDebounceTimer);
+    const val = document.getElementById('passwordInput').value;
+    if (!val) {
+        document.getElementById('singleResultContainer').style.display = 'none';
+        return;
+    }
+    liveDebounceTimer = setTimeout(() => {
+        runSingleBreachCheck();
+    }, 450);
+});
+
+document.getElementById('passwordInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        runSingleBreachCheck();
+    }
+});
+
+/**
+ * ==================== BATCH AUDIT FUNCTIONS ====================
+ */
+function fillBatchSample() {
+    document.getElementById('batchInput').value = [
+        '123456',
+        'password123',
+        'qwerty2024',
+        'K9#mP2$vL8@nQ5!zR4'
+    ].join('\n');
+}
+
+function clearBatchInput() {
+    document.getElementById('batchInput').value = '';
+    document.getElementById('batchResultContainer').style.display = 'none';
+}
+
+function maskPasswordPreview(pw) {
+    if (pw.length <= 2) return '••';
+    if (pw.length <= 5) return pw[0] + '•'.repeat(pw.length - 1);
+    return pw.slice(0, 2) + '•'.repeat(Math.min(8, pw.length - 3)) + pw.slice(-1);
+}
+
+async function runBatchBreachCheck() {
+    const rawLines = document.getElementById('batchInput').value
+        .split(/\r?\n/)
+        .map(s => s.trim())
+        .filter(Boolean);
+
+    if (rawLines.length === 0) {
+        if (window.showToast) window.showToast('يرجى إدخال كلمة مرور واحدة على الأقل في القائمة', 'warn');
+        return;
+    }
+
+    const items = rawLines.slice(0, 25);
+    const btn = document.getElementById('batchCheckBtn');
+    const tbody = document.getElementById('batchTableBody');
+    const container = document.getElementById('batchResultContainer');
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري فحص القائمة بتقنية k-Anonymity...';
+    tbody.innerHTML = '';
+    container.style.display = 'block';
+
+    try {
+        for (let i = 0; i < items.length; i++) {
+            const pw = items[i];
+            const fullHash = await sha1HexLocal(pw);
+            const prefix = fullHash.slice(0, 5);
+            const suffix = fullHash.slice(5);
+            const localAnalysis = analyzePasswordLocally(pw);
+
+            const rangeResult = await queryPwnedRange(prefix);
+            const matchInfo = findBreachCountInRange(rangeResult.lines, suffix);
+
+            const tr = document.createElement('tr');
+            const isPwned = matchInfo.breachCount > 0;
+
+            const tdIndex = document.createElement('td');
+            tdIndex.textContent = String(i + 1);
+
+            const tdMask = document.createElement('td');
+            tdMask.style.direction = 'ltr';
+            tdMask.style.fontFamily = 'monospace';
+            tdMask.textContent = maskPasswordPreview(pw);
+
+            const tdPrefix = document.createElement('td');
+            tdPrefix.innerHTML = `<code class="fw-bold text-primary">${prefix}•••</code>`;
+
+            const tdEntropy = document.createElement('td');
+            tdEntropy.textContent = `${localAnalysis.effectiveEntropy} bits`;
+
+            const tdCount = document.createElement('td');
+            tdCount.className = 'fw-bold';
+            tdCount.style.color = isPwned ? '#dc2626' : '#16a34a';
+            tdCount.textContent = isPwned ? `${matchInfo.breachCount.toLocaleString('ar-YE')} تسرب` : '0';
+
+            const tdStatus = document.createElement('td');
+            if (isPwned) {
+                tdStatus.innerHTML = '<span class="badge-status pwned"><i class="fa-solid fa-circle-xmark"></i> مسربة - يجب تغييرها</span>';
+            } else if (localAnalysis.effectiveEntropy < 50) {
+                tdStatus.innerHTML = '<span class="badge-status" style="background:#fef3c7;color:#92400e;"><i class="fa-solid fa-triangle-exclamation"></i> غير مسربة لكن ضعيفة</span>';
+            } else {
+                tdStatus.innerHTML = '<span class="badge-status safe"><i class="fa-solid fa-circle-check"></i> آمنة وقوية</span>';
+            }
+
+            tr.appendChild(tdIndex);
+            tr.appendChild(tdMask);
+            tr.appendChild(tdPrefix);
+            tr.appendChild(tdEntropy);
+            tr.appendChild(tdCount);
+            tr.appendChild(tdStatus);
+            tbody.appendChild(tr);
+        }
+
+        if (window.showToast) {
+            window.showToast(`اكتمل فحص ${items.length} كلمة مرور بنجاح!`, 'success');
+        }
+    } catch (err) {
+        console.error('Batch check error:', err);
+        if (window.showToast) window.showToast('حدث خطأ أثناء الفحص الجماعي، يرجى المحاولة مجدداً.', 'error');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-layer-group"></i> بدء الفحص الجماعي الآمن';
+    }
+}
+
+window.addEventListener('load', () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, once: true });
+    }
+});
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+</html>

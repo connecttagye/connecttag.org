@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="تفاصيل المودم - دليل يمن فورجي - كونكت تاق">
     <meta property="og:description" content="المواصفات التقنية الكاملة وإعدادات مودم يمن فورجي المحدد.">
-    <meta property="og:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <meta property="og:image" content="https://connecttag.org/assets/img/covers/modem-details-cover.webp">
 
     <!-- Twitter Meta -->
     <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,7 @@
     <meta name="twitter:url" content="https://connecttag.org/tools/telecom/modems/details">
     <meta name="twitter:title" content="تفاصيل المودم - دليل يمن فورجي - كونكت تاق">
     <meta name="twitter:description" content="المواصفات التقنية الكاملة وإعدادات مودم يمن فورجي المحدد.">
-    <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/modem-details-cover.webp">
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json" id="schema-product">
@@ -54,12 +54,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.30">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.30">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.30">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.31">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.30" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31" defer></script>
 
     <style>
         @font-face {
@@ -270,6 +270,81 @@
             height: 7px;
             border-radius: 50%;
             display: inline-block;
+        }
+
+        /* Colors Palette Bar (CatalogColorTokens) */
+        .modem-colors-box {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 10px 14px;
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 12px;
+        }
+        .modem-colors-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #475569;
+            margin-left: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .modem-color-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            font-size: 12px;
+            font-weight: 700;
+            color: #334155;
+        }
+        .modem-color-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid rgba(15, 23, 42, 0.18);
+            flex-shrink: 0;
+        }
+
+        /* Notes, Hints & Tips Callout (DetailInfoSections) */
+        .modem-notes-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid #0052cc;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 22px;
+            font-size: 13.5px;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .modem-notes-box ul {
+            margin: 6px 0 0;
+            padding-right: 18px;
+        }
+        .conf-route-sub {
+            font-size: 11.5px;
+            color: #64748b;
+            direction: ltr;
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+        .conf-guide-step {
+            font-size: 12px;
+            color: #334155;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 9px 12px;
+            margin: 12px 0 0;
+            line-height: 1.65;
         }
 
         /* Enriched Sections (Full Specs, Resources, Providers) */
@@ -580,7 +655,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="product-showcase">
-                    <img id="modem-image" src="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" alt="صورة مودم يمن فورجي" fetchpriority="high" width="380" height="285">
+                    <img id="modem-image" src="https://connecttag.org/assets/img/covers/modems-catalog-cover.webp" alt="صورة مودم يمن فورجي" fetchpriority="high" width="380" height="285">
                     <div id="modem-gallery-caption" class="gallery-caption" style="display:none;"></div>
                     <div id="modem-gallery-thumbs" class="gallery-thumbs" style="display:none;"></div>
                 </div>
@@ -595,7 +670,11 @@
 
                     <div id="modem-tags-bar" class="modem-tags-bar" style="display:none;"></div>
 
+                    <div id="modem-colors-box" class="modem-colors-box" style="display:none;"></div>
+
                     <div id="modem-description" class="description-text"></div>
+
+                    <div id="modem-notes-box" class="modem-notes-box" style="display:none;"></div>
 
                     <div class="specs-grid">
                         <div class="spec-card">
@@ -627,6 +706,7 @@
                                     <button class="btn-copy-sm" onclick="copyText('conf-link')"><i class="fa-regular fa-copy"></i> نسخ</button>
                                 </div>
                             </div>
+                            <div id="conf-route-sub" class="conf-route-sub" style="display:none;"></div>
                         </div>
                         <div class="config-item" id="conf-user-row">
                             <span class="config-label">اسم المستخدم الافتراضي</span>
@@ -642,7 +722,12 @@
                                 <button id="btn-copy-pass" class="btn-copy-sm" onclick="copyText('conf-pass')"><i class="fa-regular fa-copy"></i> نسخ</button>
                             </div>
                         </div>
-                        <p style="font-size: 11px; color: #475569; margin: 12px 0 0;"><i class="fa-solid fa-circle-info"></i> يرجى التأكد من اتصالك بشبكة واي فاي المودم أولاً قبل فتح الرابط.</p>
+                        <div id="conf-setup-step" class="conf-guide-step" style="display:none; margin-bottom: 8px;"></div>
+                        <div id="conf-guide-step" class="conf-guide-step" style="display:none;"></div>
+                        <div style="margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px;">
+                            <p style="font-size: 11px; color: #475569; margin: 0;"><i class="fa-solid fa-circle-info"></i> يرجى التأكد من اتصالك بشبكة واي فاي المودم أولاً قبل فتح الرابط.</p>
+                            <button id="btn-share-card" type="button" class="btn-copy-sm" onclick="copyShareCard()"><i class="fa-solid fa-share-nodes"></i> نسخ بطاقة المودم</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -658,6 +743,12 @@
         <section id="resources-section" class="enriched-section" style="display:none;">
             <h2 class="enriched-section-title"><i class="fa-solid fa-sliders"></i> تطبيقات وشروحات إدارة المودم</h2>
             <div id="resources-container" class="resources-grid"></div>
+        </section>
+
+        <!-- Frequently Asked Questions (FAQs) -->
+        <section id="faqs-section" class="enriched-section" style="display:none;">
+            <h2 class="enriched-section-title"><i class="fa-solid fa-circle-question"></i> الأسئلة الشائعة حول المودم</h2>
+            <div id="faqs-container" class="specs-groups-wrapper"></div>
         </section>
 
         <!-- Authorized Provider / Organization -->
@@ -684,8 +775,8 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.30" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.30" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.30" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.31" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.31" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.31" defer></script>
 </body>
 </html>

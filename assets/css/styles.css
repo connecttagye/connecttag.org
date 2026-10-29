@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-
 /* Color Variables Concept:
    Deep Cyber Navy: #0a1128 (Primary Deep Dark)
    Royal Tech Blue: #0052cc (Primary Brand)
@@ -10,7 +8,7 @@
 html, button, input, select, textarea {
 	color: #222;
 	text-align: right;
-    font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Cairo', 'Cairo-Fallback', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
 }
 ::-moz-selection {
@@ -73,7 +71,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #fff;
-	font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: 'Cairo', 'Cairo-Fallback', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 	color: #444;
@@ -206,11 +204,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 #typed-text {
   display: inline-block;
-  min-width: 250px; /* Reserved space for the longest word */
+  min-width: 185px; /* Reserved space for the longest word */
   text-align: right;
-  vertical-align: middle;
-  line-height: 1;
-  min-height: 1.2em;
 }
 h2 {
 	font-size: 34px;
@@ -289,7 +284,7 @@ blockquote {
 a {
 	color: #0052cc;
 	word-wrap: break-word;
-	transition: all 0.3s ease;
+	transition: color 0.3s ease;
 }
 a:hover, a:focus {
 	color: #00b4d8;
@@ -302,7 +297,7 @@ a:hover, a:focus {
    ========================================================================== */
 
 #headerwrap {
-	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp') no-repeat center center;
+	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp?v=1.1.31') no-repeat center center;
 	margin-top: -50px;
 	padding-top: 180px;
 	min-height: 750px;
@@ -328,6 +323,7 @@ a:hover, a:focus {
     margin-right: 0;
 }
 .hero-content-box {
+    width: 100% !important;
     margin-left: auto !important;
     margin-right: 0 !important;
     float: right !important;
@@ -369,7 +365,7 @@ a:hover, a:focus {
 	padding: 14px 45px;
 	border: none;
 	box-shadow: 0 10px 25px rgba(0, 82, 204, 0.4);
-	transition: all 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	display: inline-flex;
 	align-items: center;
 	gap: 12px;
@@ -405,6 +401,9 @@ a:hover, a:focus {
 	.hero-main-h1 {
 		text-align: center !important;
 		font-size: 32px;
+	}
+	#typed-text {
+		text-align: center;
 	}
 	.hero-lead-p {
 		text-align: center !important;
@@ -456,7 +455,7 @@ a:hover, a:focus {
     margin-bottom: 30px;
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 82, 204, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
     border: 1px solid #f0f0f0;
     flex: 1;
     display: flex;
@@ -484,7 +483,7 @@ a:hover, a:focus {
     margin: 0 auto 30px;
     color: #0052cc;
     font-size: 38px;
-    transition: all 0.4s ease;
+    transition: transform 0.4s ease, background-color 0.4s ease, color 0.4s ease;
 }
 
 .service-card:hover .icon-wrapper {
@@ -507,9 +506,13 @@ a:hover, a:focus {
 }
 
 .service-card .btn-sm {
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: 700;
-    padding: 8px 20px;
+    padding: 10px 24px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mb-50 { margin-bottom: 50px; }
@@ -816,7 +819,7 @@ a:hover, a:focus {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px;
-    transition: 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 .glass-card:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -902,10 +905,16 @@ a:hover, a:focus {
     flex-shrink: 0;
 }
 .tech-slider i {
+    min-width: 45px;
+    height: 45px;
     font-size: 45px;
+    line-height: 45px;
     color: #94a3b8;
     margin-bottom: 10px;
-    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 .tech-item span {
     font-size: 13px;

@@ -11,10 +11,11 @@
         const preloader = document.getElementById('preloader') || document.getElementById('preloader-skeleton');
 
         // Always ensure body is unlocked even if preloader element is not found
-        document.body.classList.remove('preloader-visible');
-        document.body.classList.add('loaded');
-        document.body.classList.add('page-entered');
-        document.body.style.overflow = 'auto';
+        if (document.body.classList.contains('preloader-visible')) {
+            document.body.classList.remove('preloader-visible');
+            document.body.style.overflow = '';
+        }
+        document.body.classList.add('loaded', 'page-entered');
 
         if (!preloader || preloader.classList.contains('preloader-hidden')) return;
 
@@ -52,8 +53,13 @@
                         once: true,
                         startEvent: 'DOMContentLoaded'
                     });
+                } else {
+                    document.querySelectorAll('[data-aos]').forEach(el => {
+                        el.classList.add('aos-animate');
+                        el.removeAttribute('data-aos');
+                    });
                 }
-            }, 100);
+            }, 50);
         }
 
         triggerAOS();

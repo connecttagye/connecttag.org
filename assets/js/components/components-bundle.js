@@ -50,35 +50,38 @@
 
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
+    const hadController = Boolean(navigator.serviceWorker.controller);
+
     const registerSW = () => {
       // Ensure sw.js is resolved from root correctly
       const swPath = baseUrl.endsWith('/') ? baseUrl + 'sw.js' : baseUrl + '/sw.js';
 
       // updateViaCache: 'none' forces the browser to bypass its own cache when checking for updates to sw.js
       navigator.serviceWorker.register(swPath, { updateViaCache: 'none' })
-        .then(reg => {
-          console.log('SW Registered at:', swPath);
-
-          // Check for updates frequently
-          reg.update();
-        })
-        .catch(err => console.log('SW Registration Failed', err));
+        .catch(() => {});
     };
 
-    // Force a one-time reload when a new service worker takes control
+    // Only reload when upgrading from an existing Service Worker controller, never on first install
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (!refreshing) {
-        console.log('SW: New controller found, reloading page to apply updates...');
-        window.location.reload();
+      if (hadController && !refreshing) {
         refreshing = true;
+        window.location.reload();
       }
     });
 
+    const scheduleSW = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(registerSW, { timeout: 4000 });
+      } else {
+        setTimeout(registerSW, 2000);
+      }
+    };
+
     if (document.readyState === 'complete') {
-      registerSW();
+      scheduleSW();
     } else {
-      window.addEventListener('load', registerSW);
+      window.addEventListener('load', scheduleSW, { once: true });
     }
   }
 
@@ -92,9 +95,11 @@
  */
 class SitePreloader extends HTMLElement {
   connectedCallback() {
-    document.body.classList.remove('preloader-visible');
+    if (document.body.classList.contains('preloader-visible')) {
+      document.body.classList.remove('preloader-visible');
+      document.body.style.overflow = '';
+    }
     document.body.classList.add('loaded', 'page-entered');
-    document.body.style.overflow = 'auto';
     const home = document.getElementById('home-content');
     if (home) {
       home.classList.add('visible');
@@ -137,7 +142,7 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.30" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.31" alt="كونكت تاق - Connect Tag" width="105" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
@@ -277,8 +282,8 @@ class SiteFooter extends HTMLElement {
 
           <div class="ct-footer-col">
             <h2 class="ct-footer-heading">معلومات التواصل</h2>
-            <p><i class="fa-solid fa-location-dot" style="color: var(--ct-primary);" aria-hidden="true"></i> اليمن، صنعاء</p>
-            <p><i class="fa-solid fa-envelope" style="color: var(--ct-primary);" aria-hidden="true"></i> info@connecttag.org</p>
+            <p><i class="fa-solid fa-location-dot" style="color: var(--ct-secondary);" aria-hidden="true"></i> اليمن، صنعاء</p>
+            <p><i class="fa-solid fa-envelope" style="color: var(--ct-secondary);" aria-hidden="true"></i> info@connecttag.org</p>
             <div class="ct-qr-contact" style="margin-top: 15px;">
               <img src="${baseUrl}/assets/img/qr-contact.webp"
                    alt="رمز الاستجابة السريعة للتواصل مع كونكت تاق"
@@ -448,7 +453,7 @@ class SiteBreadcrumb extends HTMLElement {
       return `
         <li class="ct-breadcrumb-item ${isLast ? 'active' : ''}">
           ${isLast ? `<span${idAttr}>${item.title}</span>` : `<a href="${item.url || '#'}"${idAttr}>${item.title}</a>`}
-          ${!isLast ? '<span class="ct-breadcrumb-separator"><i class="fa-solid fa-chevron-left"></i></span>' : ''}
+          ${!isLast ? '<span class="ct-breadcrumb-separator" aria-hidden="true"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></span>' : ''}
         </li>
       `;
     }).join('');
@@ -891,32 +896,25 @@ if (document.readyState === 'loading') {
     function hidePreloader() {
         const preloader = document.getElementById('preloader') || document.getElementById('preloader-skeleton');
 
-        // Always ensure body is unlocked even if preloader element is not found
-        document.body.classList.remove('preloader-visible');
-        document.body.classList.add('loaded');
-        document.body.classList.add('page-entered');
-        document.body.style.overflow = 'auto';
+        if (document.body.classList.contains('preloader-visible')) {
+            document.body.classList.remove('preloader-visible');
+            document.body.style.overflow = '';
+        }
+        document.body.classList.add('loaded', 'page-entered');
 
         if (!preloader || preloader.classList.contains('preloader-hidden')) return;
 
-        // Force immediate visual transition
         preloader.classList.add('preloader-hidden');
-
-        // Clean up memory
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
     }
 
-    // Trigger as soon as the DOM is ready (Lighthouse/FCP/LCP win)
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
         hidePreloader();
     } else {
-        document.addEventListener('DOMContentLoaded', hidePreloader);
+        document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
     }
-
-    // Final safety fallback
-    setTimeout(hidePreloader, 3000);
 })();
 
 // 2. Core Site Logic (Independent of jQuery)
@@ -933,8 +931,13 @@ if (document.readyState === 'loading') {
                         once: true,
                         startEvent: 'DOMContentLoaded'
                     });
+                } else {
+                    document.querySelectorAll('[data-aos]').forEach(el => {
+                        el.classList.add('aos-animate');
+                        el.removeAttribute('data-aos');
+                    });
                 }
-            }, 100);
+            }, 50);
         }
 
         triggerAOS();
