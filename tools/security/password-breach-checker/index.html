@@ -13,6 +13,10 @@
     <meta property="og:title" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
     <meta property="og:description" content="افحص ما إذا كانت كلمة المرور الخاصة بك قد ظهرت في تسريبات البيانات العالمية باستخدام تقنية k-Anonymity محلياً في متصفحك دون إرسال كلمة المرور أبداً.">
     <meta property="og:image" content="https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="669">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
     <!-- Twitter Meta -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@connecttagye">
@@ -20,83 +24,86 @@
     <meta name="twitter:title" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
     <meta name="twitter:description" content="افحص ما إذا كانت كلمة المرور الخاصة بك قد ظهرت في تسريبات البيانات العالمية باستخدام تقنية k-Anonymity محلياً في متصفحك دون إرسال كلمة المرور أبداً.">
     <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp">
+    <meta name="twitter:image:alt" content="فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق">
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
 {
-      "@context": "https://schema.org",
-      "@graph": [
-            {
-                  "@type": "WebApplication",
-                  "name": "فاحص تسرب كلمات المرور محلياً (Password Breach Checker - k-Anonymity)",
-                  "description": "أداة مجانية لفحص تسرب كلمات المرور في قواعد البيانات العالمية عبر تقنية k-Anonymity وبصمة SHA-1 محلياً في المتصفح مع تحليل الإنتروبيا والأنماط الضعيفة.",
-                  "url": "https://connecttag.org/tools/security/password-breach-checker/",
-                  "applicationCategory": "SecurityApplication",
-                  "operatingSystem": "All",
-                  "inLanguage": "ar",
-                  "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                  },
-                  "author": {
-                        "@type": "Organization",
-                        "name": "ConnectTag",
-                        "url": "https://connecttag.org"
-                  }
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebApplication",
+            "name": "فاحص تسرب كلمات المرور محلياً (Password Breach Checker - k-Anonymity)",
+            "description": "أداة مجانية لفحص تسرب كلمات المرور في قواعد البيانات العالمية عبر تقنية k-Anonymity وبصمة SHA-1 محلياً في المتصفح مع تحليل الإنتروبيا والأنماط الضعيفة.",
+            "url": "https://connecttag.org/tools/security/password-breach-checker/",
+            "applicationCategory": "SecurityApplication",
+            "operatingSystem": "All",
+            "inLanguage": "ar",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
             },
-            {
-                  "@type": "BreadcrumbList",
-                  "itemListElement": [
-                        {
-                              "@type": "ListItem",
-                              "position": 1,
-                              "name": "الرئيسية",
-                              "item": "https://connecttag.org/"
-                        },
-                        {
-                              "@type": "ListItem",
-                              "position": 2,
-                              "name": "الأدوات",
-                              "item": "https://connecttag.org/tools/"
-                        },
-                        {
-                              "@type": "ListItem",
-                              "position": 3,
-                              "name": "الأمن والخصوصية",
-                              "item": "https://connecttag.org/tools/security/"
-                        },
-                        {
-                              "@type": "ListItem",
-                              "position": 4,
-                              "name": "فاحص تسرب كلمات المرور",
-                              "item": "https://connecttag.org/tools/security/password-breach-checker/"
-                        }
-                  ]
+            "author": {
+                "@type": "Organization",
+                "name": "ConnectTag",
+                "url": "https://connecttag.org"
             },
-            {
-                  "@type": "FAQPage",
-                  "mainEntity": [
-                        {
-                              "@type": "Question",
-                              "name": "هل يتم إرسال كلمة المرور الخاصة بي عبر الإنترنت أثناء الفحص؟",
-                              "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "إطلاقاً. تعمل الأداة بتقنية k-Anonymity؛ حيث يقوم متصفحك بحساب بصمة SHA-1 محلياً ثم يرسل أول 5 أحرف فقط من البصمة، وتتم مطابقة الـ 35 حرفاً المتبقية داخل جهازك فقط."
-                              }
-                        },
-                        {
-                              "@type": "Question",
-                              "name": "ماذا أفعل إذا ظهرت كلمة المرور الخاصة بي في التسريبات؟",
-                              "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "يجب تغيير كلمة المرور فوراً في جميع الحسابات التي تستخدمها فيها، وتفعيل المصادقة الثنائية (2FA)، واستخدام مولد كلمات مرور عشوائية لإنشاء كلمة مرور فريدة لكل حساب."
-                              }
-                        }
-                  ]
-            }
-      ]
+            "image": "https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "الرئيسية",
+                    "item": "https://connecttag.org/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "الأدوات",
+                    "item": "https://connecttag.org/tools/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "الأمن والخصوصية",
+                    "item": "https://connecttag.org/tools/security/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "فاحص تسرب كلمات المرور",
+                    "item": "https://connecttag.org/tools/security/password-breach-checker/"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "هل يتم إرسال كلمة المرور الخاصة بي عبر الإنترنت أثناء الفحص؟",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "إطلاقاً. تعمل الأداة بتقنية k-Anonymity؛ حيث يقوم متصفحك بحساب بصمة SHA-1 محلياً ثم يرسل أول 5 أحرف فقط من البصمة، وتتم مطابقة الـ 35 حرفاً المتبقية داخل جهازك فقط."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "ماذا أفعل إذا ظهرت كلمة المرور الخاصة بي في التسريبات؟",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "يجب تغيير كلمة المرور فوراً في جميع الحسابات التي تستخدمها فيها، وتفعيل المصادقة الثنائية (2FA)، واستخدام مولد كلمات مرور عشوائية لإنشاء كلمة مرور فريدة لكل حساب."
+                    }
+                }
+            ],
+            "image": "https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp"
+        }
+    ]
 }
-    </script>
+  </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

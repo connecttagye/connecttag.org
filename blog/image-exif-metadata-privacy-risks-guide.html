@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟ - كونكت تاق</title>
+    <meta name="description" content="تعرف على مخاطر البيانات الوصفية المخفية داخل الصور (EXIF Metadata) مثل إحداثيات الموقع الجغرافي GPS ونوع الهاتف ووقت الالتقاط، ومتى تبقى مكشوفة في واتساب وتيليجرام، وكيف تحذفها محلياً.">
+    <link rel="canonical" href="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟ - كونكت تاق">
+    <meta property="og:description" content="تعرف على مخاطر البيانات الوصفية المخفية داخل الصور (EXIF Metadata) مثل إحداثيات GPS ونوع الهاتف، وكيف تحذفها نهائياً قبل المشاركة." />
+    <meta property="og:image" content="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp">
+    <meta property="og:image:alt" content="مخاطر البيانات المخفية في الصور EXIF Metadata وطريقة حذف الموقع الجغرافي">
+    <meta property="article:published_time" content="2026-10-29T16:00:00+03:00">
+    <meta property="article:modified_time" content="2026-10-29T18:30:00+03:00">
+    <meta property="article:section" content="الأمن السيبراني">
+
+    <!-- twitter OpenGraph meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide" />
+    <meta name="twitter:title" content="مخاطر البيانات المخفية في الصور (EXIF Metadata) وطريقة حذفها">
+    <meta name="twitter:description" content="كيف تكشف صور الهاتف إحداثيات منزلك أو مكتبك عبر بيانات EXIF؟ ومتى تبقى مكشوفة عند الإرسال؟" />
+    <meta name="twitter:image" content="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" />
+    <meta name="twitter:image:alt" content="مخاطر البيانات المخفية في الصور EXIF Metadata وطريقة حذف الموقع الجغرافي" />
+    <meta name="twitter:site" content="@connecttagye" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+    <link rel="preload" href="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.31"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.31">
+
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.31" defer></script>
+
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟",
+    "description": "تعرف على مخاطر البيانات الوصفية المخفية داخل الصور (EXIF Metadata) مثل إحداثيات الموقع الجغرافي GPS ونوع الهاتف ووقت الالتقاط، ومتى تبقى مكشوفة في واتساب وتيليجرام، وكيف تحذفها محلياً.",
+    "image": "https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-10-29T16:00:00+03:00",
+    "dateModified": "2026-10-29T18:30:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide"
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل يرسل واتساب وتيليجرام الموقع الجغرافي المخفي داخل الصورة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عند إرسال الصورة بالطريقة العادية كصورة مضغوطة في واتساب أو تيليجرام، يقوم التطبيق بإعادة ضغطها وحذف بيانات EXIF تلقائياً. ولكن إذا قمت بإرسال الصورة كمستند أو ملف (Send as Document / File) للحفاظ على جودتها الأصلية، فإن كافة البيانات المخفية بما فيها إحداثيات الموقع الجغرافي GPS ونوع الهاتف تبقى موجودة ومكشوفة للطرف الآخر."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يؤدي حذف بيانات EXIF إلى تقليل جودة الصورة أو دقتها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، عملية تنظيف بيانات EXIF تزيل فقط الترويسة النصية المخفية (Metadata Header) المرفقة بالملف أو تعيد رسم البكسلات الصافية دون المساس بأبعاد الصورة أو وضوحها البصري."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي صيغ الصور التي تخزن بيانات EXIF والموقع الجغرافي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "صيغة JPEG / JPG وصيغة HEIC (المعتمدة في هواتف آيفون) وصور الخام RAW هي الأكثر تخزيناً لبيانات EXIF الكاملة وإحداثيات GPS. كما يمكن لصيغ PNG وWebP وملفات PDF الاحتفاظ ببيانات وصفية (XMP /EXIF) وإن كان ذلك بدرجة أقل شيوعاً في كاميرات الهواتف."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل أخذ لقطة شاشة (Screenshot) للصورة يلغي بيانات الموقع الجغرافي منها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، لقطة الشاشة تنشئ ملف صورة جديداً لا يحتوي على إحداثيات GPS الخاصة بالصورة الأصلية، ولكنها تقلل من دقة الصورة وأبعادها بشكل ملحوظ. لذلك يُعد استخدام أداة حذف بيانات EXIF المباشرة أفضل بكثير للحفاظ على الجودة الأصلية للصورة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل أداة منظف بصمة الصور في موقع كونكت تاق ترفع صوري إلى خادم خارجي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "إطلاقاً؛ تعمل أداة منظف بصمة الصور (EXIF Remover) في كونكت تاق بمعالجة محلية 100% داخل متصفح جهازك (Client-Side Processing) عبر تقنية HTML5 Canvas، ولا تغادر صورك هاتفك أو حاسوبك إلى أي خادم خارجي."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "مخاطر البيانات المخفية في الصور (EXIF Metadata)",
+        "item": "https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide"
+      }
+    ]
+  }
+]
+    </script>
+
+    <!-- PWA & Mobile Optimization Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0052cc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
+         crossorigin="anonymous"></script>
+
+    <style>
+        .privacy-alert-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 5px solid #dc2626;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 22px 0;
+        }
+        .privacy-tip-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-right: 5px solid #0284c7;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 24px 0;
+        }
+        .exif-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+        }
+        .status-stripped {
+            color: #15803d;
+            font-weight: 700;
+        }
+        .status-exposed {
+            color: #b91c1c;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"مخاطر البيانات المخفية في الصور (EXIF Metadata)", "url":"https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide"}]'></site-breadcrumb>
+
+                <h1>مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟</h1>
+
+                <site-article-meta
+                  date="29 أكتوبر 2026"
+                  updated="29 أكتوبر 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" class="img-responsive" alt="مخاطر البيانات المخفية في الصور EXIF Metadata وطريقة حذف الموقع الجغرافي" fetchpriority="high" width="1264" height="848" decoding="async">
+
+                <p>عندما تلتقط صورة بهاتفك الذكي لمنتج ترغب في بيعه على الإنترنت، أو لوثيقة عمل، أو حتى لمنظر طبيعي من نافذة منزلك، فإن الكاميرا لا تحفظ البكسلات المرئية فحسب؛ بل تدمج داخل ملف الصورة سجلاً رقمياً خفياً يُعرف باسم <strong>بيانات EXIF الوصفية (Exchangeable Image File Format)</strong>. هذا السجل غير المرئي يمكن لأي شخص يمتلك الملف الأصلي قراءته بضغطة زر واحدة لمعرفة <strong>إحداثيات موقعك الجغرافي الدقيق (GPS) على الخريطة</strong>، ونوع هاتفك، واللحظة الزمنية الدقيقة لالتقاط الصورة.</p>
+
+                <p>في هذا الدليل التوعوي والعملي، نشرح بالتفصيل ما الذي تخزنه الكاميرا داخل صورك، ومتى تبقى هذه البيانات مكشوفة عند إرسالها عبر تطبيقات المراسلة مثل واتساب وتيليجرام، وكيف يمكنك مسح البصمة الرقمية لصورك محلياً في ثوانٍ عبر <a href="https://connecttag.org/tools/security/exif-remover/">أداة منظف بصمة الصور والخصوصية (EXIF Remover)</a>.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-user-shield"></i> خلاصة الدليل لحماية خصوصية صورك:</div>
+                    <ul class="summary-list">
+                        <li><strong>ماذا تخزن الصورة؟</strong> إحداثيات خط الطول والعرض (GPS)، الارتفاع عن سطح البحر، طراز الهاتف ونظام التشغيل، وتاريخ ووقت الالتقاط بالثانية.</li>
+                        <li><strong>الفخ الأكثر شيوعاً:</strong> إرسال الصورة <strong>«كمستند / ملف» (Document)</strong> في واتساب أو تيليجرام أو عبر البريد الإلكتروني يحافظ على بيانات الموقع الجغرافي كاملة ولا يحذفها!</li>
+                        <li><strong>التنظيف الآمن 100%:</strong> استخدام <a href="https://connecttag.org/tools/security/exif-remover/">منظف بصمة الصور EXIF Remover</a> لتجريد الصورة من جميع البيانات المخفية داخل متصفحك قبل نشرها أو إرسالها.</li>
+                        <li><strong>الوقاية المستمرة:</strong> إيقاف خيار «حفظ الموقع الجغرافي» (Location Tags) من إعدادات تطبيق الكاميرا في هاتفك.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#what-is-exif">أولاً: ما هي بيانات EXIF الوصفية وما الذي تخزنه داخل كل صورة؟</a></li>
+                        <li><a href="#privacy-risks">ثانياً: المخاطر الأمنية الحقيقية لمشاركة الصور ببياناتها الأصلية</a></li>
+                        <li><a href="#social-apps-behavior">ثالثاً: متى تحذف تطبيقات التواصل بيانات EXIF ومتى تبقى مكشوفة؟</a></li>
+                        <li><a href="#how-to-remove-exif">رابعاً: طريقة حذف بيانات EXIF من الصور محلياً وبدون برامج</a></li>
+                        <li><a href="#disable-camera-gps">خامساً: كيف تمنع كاميرا الهاتف (أندرويد وآيفون) من تسجيل الموقع مستقبلاً؟</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول بصمة الصور والخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="what-is-exif">أولاً: ما هي بيانات EXIF الوصفية وما الذي تخزنه داخل كل صورة؟</h2>
+                <p>تم ابتكار معيار <strong>EXIF</strong> في الأصل لمساعدة المصورين المحترفين وأنظمة أرشفة الصور على تذكر إعدادات العدسة وتاريخ الالتقاط وفرز الألبومات حسب المدن. لكن مع انتشار الهواتف الذكية المزودة بشرائح تحديد المواقع (GPS)، تحولت ترويسة EXIF إلى بطاقة هوية كاملة مرفقة بكل صورة بصيغة <code>JPG/JPEG</code> أو <code>HEIC</code>.</p>
+
+                <p>يوضح الجدول التالي أبرز الحقول التي يتم تخزينها تلقائياً داخل ملف الصورة دون أن تظهر على الشاشة:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered exif-table">
+                        <thead>
+                            <tr>
+                                <th>فئة البيانات</th>
+                                <th>الحقول المخزنة داخل الصورة (EXIF Tags)</th>
+                                <th>ماذا تكشف عنك؟</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>الموقع الجغرافي الدقيق</strong></td>
+                                <td><code>GPSLatitude</code>, <code>GPSLongitude</code>, <code>GPSAltitude</code>, <code>GPSImgDirection</code></td>
+                                <td>موقع المنزل أو المكتب بدقة تصل إلى 3–5 أمتار، الطابق التقريبي (عبر الارتفاع)، والاتجاه الذي كنت تقف فيه.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>بصمة الجهاز والنظام</strong></td>
+                                <td><code>Make</code>, <code>Model</code>, <code>Software</code>, <code>LensSerialNumber</code></td>
+                                <td>الشركة المصنعة، الطراز الدقيق للهاتف، رقم إصدار نظام أندرويد أو iOS، والرقم التسلسلي للعدسة في الكاميرات الرقمية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الطابع الزمني</strong></td>
+                                <td><code>DateTimeOriginal</code>, <code>OffsetTimeOriginal</code>, <code>SubSecTime</code></td>
+                                <td>التاريخ والساعة والدقيقة والثانية التي التُقطت فيها الصورة، بالإضافة إلى المنطقة الزمنية للبلد.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>خصائص الكاميرا والصورة المصغرة</strong></td>
+                                <td><code>ISO</code>, <code>FocalLength</code>, <code>Flash</code>, <code>ThumbnailImage</code></td>
+                                <td>قد تحتفظ بعض البرامج بصورة مصغرة (Thumbnail) أصلية داخل الـ EXIF حتى بعد اقتصاص جزء من الصورة الرئيسية!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+
+                <h2 id="privacy-risks">ثانياً: المخاطر الأمنية الحقيقية لمشاركة الصور ببياناتها الأصلية</h2>
+                <p>قد يظن البعض أن هذه البيانات مجرد أرقام تقنية غير ضارة، لكن في الواقع الأمني تسببت بيانات EXIF في كشف مواقع حساسة في آلاف الحالات:</p>
+
+                <ul>
+                    <li><strong>كشف عنوان السكن أو العمل عند البيع والشراء:</strong> عندما تلتقط صورة لجهاز لابتوب أو هاتف أو قطعة أثاث داخل منزلك وترفعها كملف أصلي في منصات الإعلانات المبوبة أو المجموعات، يمكن لأي شخص تحميل الصورة واستخراج إحداثيات منزلك بدقة على خرائط جوجل.</li>
+                    <li><strong>مخاطر الصورة المصغرة المخفية (Embedded Thumbnail Leak):</strong> بعض برامج تعديل الصور القديمة تقوم باقتصاص (Crop) الصورة لإخفاء معلومة حساسة في الأطراف، لكنها تنسى تحديث الصورة المصغرة المخزنة داخل ترويسة EXIF، مما يسمح باستعادة الأجزاء المقصوصة!</li>
+                    <li><strong>ربط الحسابات المجهولة بالهوية الحقيقية (OSINT Tracking):</strong> يستخدم محللو الاستخبارات مفتوحة المصدر (OSINT) تطابق طراز الهاتف وإصدار النظام والرقم التسلسلي للعدسة للربط بين حسابات مختلفة تنشر صوراً ملتقطة بنفس الجهاز.</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="social-apps-behavior">ثالثاً: متى تحذف تطبيقات التواصل بيانات EXIF ومتى تبقى مكشوفة؟</h2>
+                <p>هذا هو السؤال الأهم الذي يقع فيه معظم المستخدمين في فخ الشعور الكاذب بالأمان؛ فبينما تقوم بعض المنصات بحذف بيانات EXIF عند ضغط الصور، تتركها منصات وطرق إرسال أخرى مكشوفة بالكامل:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered exif-table">
+                        <thead>
+                            <tr>
+                                <th>وسيلة مشاركة الصورة</th>
+                                <th>حالة بيانات EXIF و GPS</th>
+                                <th>التفسير التقني</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>واتساب / تيليجرام (إرسال كصورة عادية)</strong></td>
+                                <td><span class="status-stripped"><i class="fa-solid fa-shield-check"></i> تُحذف تلقائياً</span></td>
+                                <td>يقوم التطبيق بضغط الصورة وإعادة ترميزها، مما يزيل الترويسة الوصفية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>واتساب / تيليجرام (إرسال كمستند Document / File)</strong></td>
+                                <td><span class="status-exposed"><i class="fa-solid fa-triangle-exclamation"></i> تبقى مكشوفة 100%!</span></td>
+                                <td>يتم نقل الملف الخام كما هو بايت بـ بايت دون أي تعديل، فتصل إحداثيات GPS للطرف الآخر!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>البريد الإلكتروني (Gmail / Outlook كمرفق)</strong></td>
+                                <td><span class="status-exposed"><i class="fa-solid fa-triangle-exclamation"></i> تبقى مكشوفة 100%!</span></td>
+                                <td>المرفقات البريدية تحافظ على الملف الأصلي بكامل بياناته الوصفية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الروابط السحابية (Google Drive / OneDrive / Dropbox)</strong></td>
+                                <td><span class="status-exposed"><i class="fa-solid fa-triangle-exclamation"></i> تبقى مكشوفة 100%!</span></td>
+                                <td>يمكن لأي شخص لديه رابط العرض فتح لوحة «تفاصيل الملف» ورؤية خريطة الموقع ونوع الهاتف مباشرة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>رفع الصور مباشرة إلى المنتديات والمدونات والمتاجر</strong></td>
+                                <td><span class="status-exposed"><i class="fa-solid fa-triangle-exclamation"></i> غالباً تبقى مكشوفة</span></td>
+                                <td>ما لم يقم الموقع ببرمجة مكتبة خاصة لمسح EXIF عند الرفع، تظل البيانات متاحة لأي زائر يحمّل الصورة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>فيسبوك، إنستغرام، ومنصة X (تويتر)</strong></td>
+                                <td><span class="status-stripped"><i class="fa-solid fa-shield-check"></i> تُحذف من العرض العام</span></td>
+                                <td>تزيل هذه المنصات بيانات EXIF قبل عرض الصورة للجمهور، لكن المنصة نفسها تقرأها وتحتفظ بها في خوادمها.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="privacy-alert-box">
+                    <strong><i class="fa-solid fa-circle-exclamation" style="color: #dc2626;"></i> تنبيه مهم جداً:</strong><br>
+                    يلجأ الكثير من المستخدمين والمصممين إلى إرسال الصور في واتساب وتيليجرام بصيغة <strong>«مستند» (Document)</strong> للحفاظ على دقة الصورة العالية وعدم ضغطها. تذكر دائماً أن هذه الطريقة ترسل إحداثيات الموقع الجغرافي (GPS) كاملة للطرف المستقبل ما لم تقم بتنظيف الصورة أولاً!
+                </div>
+
+                <hr>
+
+                <h2 id="how-to-remove-exif">رابعاً: طريقة حذف بيانات EXIF من الصور محلياً وبدون برامج</h2>
+                <p>لتنظيف صورك بسهولة مع الحفاظ على جودتها وأبعادها الكاملة ودون الحاجة لتثبيت أي تطبيقات خارجية، وفرنا في موقع كونكت تاق <a href="https://connecttag.org/tools/security/exif-remover/"><strong>أداة منظف بصمة الصور والخصوصية (EXIF Remover)</strong></a> التي تعمل بمعالجة محلية 100% داخل متصفحك:</p>
+
+                <ol>
+                    <li>ادخل إلى صفحة <a href="https://connecttag.org/tools/security/exif-remover/">منظف بصمة الصور والخصوصية (EXIF Remover)</a> من هاتفك أو حاسوبك.</li>
+                    <li>اختر صورة واحدة أو عدة صور دفعة واحدة (تدعم الأداة صيغ <code>JPG</code> و<code>PNG</code> و<code>WebP</code>).</li>
+                    <li>اضغط على زر <strong>«حذف جميع البيانات المخفية وتحميل الصور»</strong>.</li>
+                    <li>تقوم الأداة بإعادة رسم البكسلات الصافية فقط داخل ذاكرة المتصفح (HTML5 Canvas) وتجريد الملف من كافة ترويسات <code>EXIF</code> و<code>GPS</code> و<code>XMP</code>، ثم تنزيل نسخة نظيفة تماماً جاهزة للمشاركة الآمنة.</li>
+                </ol>
+
+                <div class="privacy-tip-box">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: #0284c7;"></i> <strong>تحويل الصيغة وتقليل الحجم في خطوة واحدة:</strong><br>
+                    إذا كنت صاحب موقع إلكتروني أو متجر وترغب في تنظيف الصور وتحويلها في الوقت نفسه إلى صيغة الجيل الحديث <code>WebP</code> لتسريع موقعك، يمكنك استخدام <a href="https://connecttag.org/tools/design/image-converter/"><strong>أداة محول صيغ الصور وضغط الحجم</strong></a> التي تعمل أيضاً محلياً داخل المتصفح وتزيل بيانات EXIF تلقائياً أثناء التحويل. كما يمكنك استكشاف بقية الأدوات في <a href="https://connecttag.org/tools/security/">قسم أدوات الأمن والخصوصية</a>.
+                </div>
+
+                <hr>
+
+                <h2 id="disable-camera-gps">خامساً: كيف تمنع كاميرا الهاتف (أندرويد وآيفون) من تسجيل الموقع مستقبلاً؟</h2>
+                <p>كإجراء وقائي دائم، يُنصح بإيقاف ميزة حفظ الموقع الجغرافي في تطبيق الكاميرا الافتراضي لهاتفك حتى لا تُسجَّل إحداثيات GPS في صورك الجديدة من الأساس:</p>
+
+                <h3>1. في هواتف أندرويد (Samsung / Xiaomi / Pixel وغيرها):</h3>
+                <ul>
+                    <li>افتح تطبيق <strong>الكاميرا (Camera)</strong> ثم اضغط على أيقونة <strong>الإعدادات (⚙️)</strong> في الزاوية العلوية.</li>
+                    <li>ابحث عن خيار <strong>«علامات الموقع» (Location tags)</strong> أو <strong>«حفظ معلومات الموقع» (Save location info)</strong> وقم بإيقاف تفعيله.</li>
+                    <li>يمكنك أيضاً سحب صلاحية الموقع من تطبيق الكاميرا عبر الذهاب إلى: <strong>إعدادات الهاتف &larr; التطبيقات &larr; الكاميرا &larr; الأذونات &larr; الموقع &larr; عدم السماح</strong>.</li>
+                </ul>
+
+                <h3>2. في هواتف آيفون (iOS):</h3>
+                <ul>
+                    <li>افتح <strong>الإعدادات (Settings) &larr; الخصوصية والأمن (Privacy &amp; Security) &larr; خدمات الموقع (Location Services)</strong>.</li>
+                    <li>اختر تطبيق <strong>الكاميرا (Camera)</strong> وحدد الخيار <strong>«مطلقاً» (Never)</strong>.</li>
+                    <li>عند مشاركة صورة قديمة من تطبيق الصور في آيفون، اضغط على زر <strong>«الخيارات» (Options)</strong> أعلى شاشة المشاركة وأوقف خيار <strong>«الموقع» (Location)</strong> قبل الإرسال.</li>
+                </ul>
+
+                <hr>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول بصمة الصور والخصوصية</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يرسل واتساب وتيليجرام الموقع الجغرافي المخفي داخل الصورة؟</div>
+                        <div class="faq-answer">عند إرسال الصورة بالطريقة العادية كصورة مضغوطة في واتساب أو تيليجرام، يقوم التطبيق بإعادة ضغطها وحذف بيانات EXIF تلقائياً. ولكن إذا قمت بإرسال الصورة كمستند أو ملف (Send as Document / File) للحفاظ على جودتها الأصلية، فإن كافة البيانات المخفية بما فيها إحداثيات الموقع الجغرافي GPS ونوع الهاتف تبقى موجودة ومكشوفة للطرف الآخر.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يؤدي حذف بيانات EXIF إلى تقليل جودة الصورة أو دقتها؟</div>
+                        <div class="faq-answer">لا، عملية تنظيف بيانات EXIF تزيل فقط الترويسة النصية المخفية (Metadata Header) المرفقة بالملف أو تعيد رسم البكسلات الصافية دون المساس بأبعاد الصورة أو وضوحها البصري.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي صيغ الصور التي تخزن بيانات EXIF والموقع الجغرافي؟</div>
+                        <div class="faq-answer">صيغة JPEG / JPG وصيغة HEIC (المعتمدة في هواتف آيفون) وصور الخام RAW هي الأكثر تخزيناً لبيانات EXIF الكاملة وإحداثيات GPS. كما يمكن لصيغ PNG وWebP وملفات PDF الاحتفاظ ببيانات وصفية (XMP /EXIF) وإن كان ذلك بدرجة أقل شيوعاً في كاميرات الهواتف.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل أخذ لقطة شاشة (Screenshot) للصورة يلغي بيانات الموقع الجغرافي منها؟</div>
+                        <div class="faq-answer">نعم، لقطة الشاشة تنشئ ملف صورة جديداً لا يحتوي على إحداثيات GPS الخاصة بالصورة الأصلية، ولكنها تقلل من دقة الصورة وأبعادها بشكل ملحوظ. لذلك يُعد استخدام أداة حذف بيانات EXIF المباشرة أفضل بكثير للحفاظ على الجودة الأصلية للصورة.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل أداة منظف بصمة الصور في موقع كونكت تاق ترفع صوري إلى خادم خارجي؟</div>
+                        <div class="faq-answer">إطلاقاً؛ تعمل أداة منظف بصمة الصور (EXIF Remover) في كونكت تاق بمعالجة محلية 100% داخل متصفح جهازك (Client-Side Processing) عبر تقنية HTML5 Canvas، ولا تغادر صورك هاتفك أو حاسوبك إلى أي خادم خارجي.</div>
+                    </div>
+                </section>
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="website-security-simple-steps, android-manifest-security-exported-components-guide, api-security-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

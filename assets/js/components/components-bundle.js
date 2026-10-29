@@ -791,6 +791,15 @@ if (document.readyState === 'loading') {
   };
 
   const showPrompt = () => {
+    const cookieBanner = document.getElementById('ct-cookie-banner');
+    if (cookieBanner && !cookieBanner.classList.contains('hidden') && !window.location.search.includes('debug_pwa=true')) {
+      cookieBanner.addEventListener('click', (e) => {
+        if (e.target.closest('.ct-cookie-btn')) {
+          setTimeout(showPrompt, 600);
+        }
+      }, { once: true });
+      return;
+    }
     const prompt = document.getElementById('pwa-install-prompt');
     if (prompt) {
       console.log('PWA: Making prompt visible');

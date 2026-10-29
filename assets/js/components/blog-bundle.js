@@ -187,6 +187,20 @@ class SiteRelatedPosts extends HTMLElement {
     // 2. Global Articles Registry
     const allPosts = [
       {
+        id: "image-exif-metadata-privacy-risks-guide",
+        title: "مخاطر البيانات المخفية في الصور (EXIF Metadata) وطريقة حذفها",
+        link: "blog/image-exif-metadata-privacy-risks-guide",
+        image: "upload/image-exif-metadata-privacy-guide.webp",
+        excerpt: "كيف تكشف صور الهاتف إحداثيات موقعك الجغرافي GPS ونوع جهازك، ومتى تبقى مكشوفة في واتساب وتيليجرام."
+      },
+      {
+        id: "android-manifest-security-exported-components-guide",
+        title: "ثغرات ملف AndroidManifest.xml وأمن المكونات والـ Deep Links",
+        link: "blog/android-manifest-security-exported-components-guide",
+        image: "upload/android-manifest-security-guide.webp",
+        excerpt: "دليل هندسي لحماية تطبيقك من اختراق الـ Exported Components وثغرات Intent Redirection وDeep Link Hijacking."
+      },
+      {
         id: "yemen-telecom-companies-codes-services-guide",
         title: "دليل أكواد وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو، سبأفون، واي)",
         link: "blog/yemen-telecom-companies-codes-services-guide",

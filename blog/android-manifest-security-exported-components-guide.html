@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ثغرات ملف AndroidManifest.xml وأمن المكونات: حماية الـ Exported Components وDeep Links - كونكت تاق</title>
+    <meta name="description" content="دليل هندسي شامل لمطوري أندرويد حول اكتشاف وإغلاق ثغرات ملف AndroidManifest.xml: تأمين المكونات المصدّرة (Exported Components)، منع اختطاف الروابط العميقة (Deep Link Hijacking)، وتجنب رفض جوجل بلاي.">
+    <link rel="canonical" href="https://connecttag.org/blog/android-manifest-security-exported-components-guide" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/blog/android-manifest-security-exported-components-guide" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ثغرات ملف AndroidManifest.xml وأمن المكونات: حماية الـ Exported Components وDeep Links - كونكت تاق">
+    <meta property="og:description" content="دليل هندسي شامل لمطوري أندرويد حول اكتشاف وإغلاق ثغرات ملف AndroidManifest.xml، تأمين المكونات المصدّرة، وحماية الروابط العميقة عبر Android App Links." />
+    <meta property="og:image" content="https://connecttag.org/upload/android-manifest-security-guide.webp">
+    <meta property="og:image:alt" content="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد">
+    <meta property="article:published_time" content="2026-10-29T15:00:00+03:00">
+    <meta property="article:modified_time" content="2026-10-29T18:30:00+03:00">
+    <meta property="article:section" content="الأمن السيبراني">
+
+    <!-- twitter OpenGraph meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://connecttag.org/blog/android-manifest-security-exported-components-guide" />
+    <meta name="twitter:title" content="ثغرات ملف AndroidManifest.xml وأمن المكونات في أندرويد">
+    <meta name="twitter:description" content="كيف تحمي تطبيقك من اختراق الـ Exported Components وثغرات Intent Redirection وDeep Link Hijacking؟" />
+    <meta name="twitter:image" content="https://connecttag.org/upload/android-manifest-security-guide.webp" />
+    <meta name="twitter:image:alt" content="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد" />
+    <meta name="twitter:site" content="@connecttagye" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+    <link rel="preload" href="https://connecttag.org/upload/android-manifest-security-guide.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.31">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.31" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.31"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.31">
+
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.31" defer></script>
+
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟",
+    "description": "دليل هندسي شامل لمطوري أندرويد حول اكتشاف وإغلاق ثغرات ملف AndroidManifest.xml: تأمين المكونات المصدّرة (Exported Components)، منع اختطاف الروابط العميقة (Deep Link Hijacking)، وتجنب رفض جوجل بلاي.",
+    "image": "https://connecttag.org/upload/android-manifest-security-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-10-29T15:00:00+03:00",
+    "dateModified": "2026-10-29T18:30:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/android-manifest-security-exported-components-guide"
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "متى يكون المكون في أندرويد مصدّراً (Exported) بشكل افتراضي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في الإصدارات الأقدم من أندرويد 12 (API 31)، كان أي مكون (Activity أو Service أو BroadcastReceiver) يحتوي بداخله على وسم <intent-filter> يصبح مصدّراً (android:exported=\"true\") تلقائياً. ابتداءً من أندرويد 12، أصبح التصريح الصريح عن خاصية android:exported إلزامياً، لكن الخطر يظل قائماً عندما يضبطها المطور على true دون التحقق من هوية المرسل."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق الأمني بين الروابط العميقة التقليدية (Custom Scheme Deep Links) وروابط Android App Links؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الروابط التقليدية التي تستخدم مخططاً مخصصاً مثل myapp://pay لا تتحقق من ملكية النطاق، مما يسمح لأي تطبيق خبيث على جهاز المستخدم بتسجيل نفس المخطط واعتراض الرابط (Deep Link Hijacking). أما Android App Links فتستخدم بروتوكول https:// مع خاصية android:autoVerify=\"true\" وملف تحقق رقمي مشفر على الخادم (/.well-known/assetlinks.json) يثبت ملكية النطاق حصرياً لتطبيقك."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي ثغرة Intent Redirection وكيف أحمي تطبيقي منها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تحدث ثغرة Intent Redirection عندما يستقبل مكون مصدّر (Exported Activity) كائن Intent خارجي يحتوي بداخله على Intent آخر مضمن (Parcelable Extra)، ثم يقوم بتمريره مباشرة إلى دالة startActivity() أو startService(). هذا يسمح للمهاجم بفتح شاشات داخلية غير مصدّرة أو سرقة ملفات التطبيق الخاصة. وللحماية منها يجب عدم تمرير أي Intent قادم من مصدر خارجي غير موثوق، والتحقق الصارم من اسم الحزمة والوجهة قبل التنفيذ."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يمثل تفعيل android:allowBackup=\"true\" خطراً أمنياً على تطبيقات أندرويد؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عند ترك خاصية android:allowBackup=\"true\"، يمكن لأي شخص يمتلك وصولاً فعلياً للجهاز عبر مصحح أندرويد (ADB) استخراج نسخة كاملة من بيانات التطبيق المحلية مثل قواعد البيانات وملفات SharedPreferences غير المشفرة. لذلك يُنصح بتعطيلها في التطبيقات الحساسة أو تقييد الملفات المسموح بنسخها بدقة عبر ملف android:dataExtractionRules."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أشارك ملفات تطبيقي مع تطبيقات أخرى بأمان دون تصدير ContentProvider للعامة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الحل القياسي الآمن هو استخدام فئة FileProvider مع ضبط android:exported=\"false\" وتفعيل android:grantUriPermissions=\"true\"، ثم تحديد المجلدات المسموح بها فقط داخل ملف XML مخصص، ومنح إذن قراءة مؤقت (FLAG_GRANT_READ_URI_PERMISSION) للتطبيق المستهدف فقط عند إرسال الـ Intent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي أبرز صلاحيات AndroidManifest.xml التي تسبب رفض التطبيق في متجر Google Play؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "أبرز الصلاحيات المقيدة بشدة في متجر Google Play هي: QUERY_ALL_PACKAGES (ويجب استبدالها بوسم <queries>)، صلاحيات الرسائل والمكالمات (READ_SMS وREAD_CALL_LOG)، صلاحية الموقع في الخلفية (ACCESS_BACKGROUND_LOCATION)، صلاحية إدارة كل الملفات (MANAGE_EXTERNAL_STORAGE)، وصلاحيات الصور الدائمة (READ_MEDIA_IMAGES) التي يُفضل استبدالها بأداة Android Photo Picker."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ثغرات ملف AndroidManifest.xml وأمن المكونات",
+        "item": "https://connecttag.org/blog/android-manifest-security-exported-components-guide"
+      }
+    ]
+  }
+]
+    </script>
+
+    <!-- PWA & Mobile Optimization Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0052cc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
+         crossorigin="anonymous"></script>
+
+    <style>
+        .vuln-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-right: 5px solid #dc2626;
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin: 22px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+        .vuln-card h3 {
+            margin-top: 0;
+            color: #991b1b;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+        .remediation-card {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 5px solid #16a34a;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 18px 0 26px;
+        }
+        .tool-cta-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-right: 5px solid #0284c7;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin: 24px 0;
+        }
+        .manifest-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"ثغرات ملف AndroidManifest.xml وأمن المكونات", "url":"https://connecttag.org/blog/android-manifest-security-exported-components-guide"}]'></site-breadcrumb>
+
+                <h1>ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟</h1>
+
+                <site-article-meta
+                  date="29 أكتوبر 2026"
+                  updated="29 أكتوبر 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/android-manifest-security-guide.webp" class="img-responsive" alt="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد" fetchpriority="high" width="1264" height="848" decoding="async">
+
+                <p>عندما يبدأ أي باحث أمني أو مهاجم بفحص تطبيق أندرويد، فإنه لا يبدأ بقراءة آلاف الأسطر البرمجية في طبقات Kotlin أو Java، بل يتجه فوراً إلى ملف واحد يُمثّل الخريطة المعمارية الكاملة للتطبيق: <strong>ملف <code>AndroidManifest.xml</code></strong>. خطأ واحد في هذا الملف — مثل ترك شاشة داخلية بوضع <code>android:exported="true"</code> أو إعداد رابط عميق (Deep Link) بدون تحقق رقمي — كفيل بتمكين أي تطبيق خبيث مثبت على هاتف المستخدم من تجاوز شاشة تسجيل الدخول، أو سرقة رموز الجلسة (Tokens)، أو قراءة ملفات التطبيق الخاصة حتى لو كان كود التطبيق مشوشاً بالكامل عبر R8.</p>
+
+                <p>بينما تناولنا في دليل سابق <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">حماية تطبيقات الأندرويد من الهندسة العكسية وتشويش الكود</a>، يركز هذا الدليل الهندسي الشامل على <strong>أمن المعمارية وحماية مكونات التطبيق الأربعة</strong> (Activities، Services، BroadcastReceivers، وContentProviders)، وإغلاق ثغرات الروابط العميقة، وضبط الصلاحيات وفق أحدث معايير أمان أندرويد ومتجر Google Play.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> ملخص القواعد الذهبية لتأمين ملف AndroidManifest.xml:</div>
+                    <ul class="summary-list">
+                        <li><strong>إغلاق المكونات الخاصة:</strong> ضبط <code>android:exported="false"</code> لجميع الشاشات والخدمات الداخلية التي لا تحتاج لاستقبال طلبات من تطبيقات خارجية.</li>
+                        <li><strong>منع ثغرة Intent Redirection:</strong> عدم تمرير أي كائن <code>Intent</code> متداخل قادم من خارج التطبيق إلى دوال <code>startActivity()</code> دون تحقق صارم.</li>
+                        <li><strong>اعتماد Android App Links:</strong> استبدال مخططات الروابط التقليدية (<code>myapp://</code>) بروابط <code>https://</code> الموثقة عبر ملف <code>assetlinks.json</code> لمنع اختطاف الروابط.</li>
+                        <li><strong>عزل مشاركة الملفات:</strong> استخدام <code>FileProvider</code> غير مصدّر مع أذونات URI مؤقتة بدلاً من فتح <code>ContentProvider</code> للعامة.</li>
+                        <li><strong>تأمين وسم <code>&lt;application&gt;</code>:</strong> تعطيل النسخ الاحتياطي غير المشفر وتقييد الاتصالات النصية غير المشفرة (Cleartext HTTP).</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#attack-surface">أولاً: كيف يقرأ المهاجم ملف AndroidManifest.xml لرسم سطح الهجوم؟</a></li>
+                        <li><a href="#exported-components">ثانياً: ثغرات المكونات المصدّرة (Exported Components) و Intent Redirection</a></li>
+                        <li><a href="#content-providers">ثالثاً: تأمين مزودات المحتوى (ContentProviders) ومشاركة الملفات بأمان</a></li>
+                        <li><a href="#deep-links-security">رابعاً: ثغرات اختطاف الروابط العميقة (Deep Link Hijacking) والانتقال إلى App Links</a></li>
+                        <li><a href="#application-flags">خامساً: أخطر إعدادات وسم &lt;application&gt; (allowBackup و Cleartext Traffic)</a></li>
+                        <li><a href="#permissions-audit">سادساً: تدقيق الصلاحيات الحساسة وتجنب رفض متجر Google Play</a></li>
+                        <li><a href="#faq">سابعاً: الأسئلة الشائعة حول أمن ملف المانيفست</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="attack-surface">أولاً: كيف يقرأ المهاجم ملف AndroidManifest.xml لرسم سطح الهجوم؟</h2>
+                <p>يعمل نظام أندرويد بمبدأ العزل الأمني للتطبيقات (Application Sandbox)، حيث يحصل كل تطبيق على معرّف مستخدم مستقل (UID) يمنع التطبيقات الأخرى من قراءة ملفاته مباشرة. غير أن النظام يوفر قنوات اتصال بين التطبيقات (IPC - Inter-Process Communication) عبر كائنات <code>Intent</code> ومزودات المحتوى.</p>
+                <p>عندما يقوم المهاجم بفك حزمة التطبيق، فإنه يبحث داخل <code>AndroidManifest.xml</code> عن أربعة أهداف رئيسية:</p>
+                <ol>
+                    <li>المكونات التي تحمل الخاصية <code>android:exported="true"</code> أو تحتوي على <code>&lt;intent-filter&gt;</code> بدون حماية بصلاحية توقيع رقمي.</li>
+                    <li>مخططات الروابط العميقة (<code>&lt;data android:scheme="..." /&gt;</code>) التي تعالج عمليات حساسة مثل إعادة تعيين كلمة المرور أو الدفع أو فتح صفحات WebView.</li>
+                    <li>إعدادات التصحيح والنسخ الاحتياطي والشبكة على مستوى التطبيق بالكامل.</li>
+                    <li>الصلاحيات المفرطة أو المخصصة بمعامل حماية ضعيف (<code>protectionLevel="normal"</code> بدلاً من <code>"signature"</code>).</li>
+                </ol>
+
+                <div class="tool-cta-box">
+                    <i class="fa-solid fa-magnifying-glass-chart" style="color: #0284c7;"></i> <strong>فحص فوري لملف تطبيقك:</strong><br>
+                    يمكنك لصق كود ملف المانيفست الخاص بمشروعك الآن في <a href="https://connecttag.org/tools/mobile/manifest-analyzer/"><strong>أداة فاحص ملف AndroidManifest.xml</strong></a> لاكتشاف الصلاحيات عالية الخطورة التي قد تعرض تطبيقك للرفض في مراجعة متجر جوجل بلاي.
+                </div>
+
+                <hr>
+
+                <h2 id="exported-components">ثانياً: ثغرات المكونات المصدّرة (Exported Components) و Intent Redirection</h2>
+                <p>ابتداءً من أندرويد 12 (API 31)، فرضت جوجل على جميع المطورين كتابة خاصية <code>android:exported</code> صراحةً لأي مكون يحتوي على <code>&lt;intent-filter&gt;</code>. لكن المشكلة التي نراها في كثير من المشاريع هي أن المطور يضع <code>android:exported="true"</code> لإسكات خطأ البناء (Compilation Error) دون إدراك العواقب الأمنية!</p>
+
+                <div class="vuln-card">
+                    <h3><i class="fa-solid fa-bug"></i> سيناريو الاختراق الأول: تجاوز المصادقة وفتح شاشات داخلية (Access Control Bypass)</h3>
+                    <p style="margin-bottom: 0;">إذا كانت لديك شاشة مثل <code>AdminSettingsActivity</code> أو <code>WalletTransferActivity</code> مضبوطة على <code>android:exported="true"</code>، فإن أي تطبيق آخر مثبت على الهاتف (أو عبر أوامر <code>adb shell am start</code>) يستطيع تشغيل هذه الشاشة مباشرة وتجاوز شاشة تسجيل الدخول أو رمز البصمة (Biometric Prompt) التي وضعتها في <code>SplashActivity</code>!</p>
+                </div>
+
+                <site-code-block language="XML" title="مثال خاطئ مقابل الإعداد الآمن للمكونات في AndroidManifest.xml">
+&lt;!-- ❌ خطر أمني: شاشة داخلية مصدّرة للعامة بدون مبرر --&gt;
+&lt;activity
+    android:name=".ui.profile.AccountSettingsActivity"
+    android:exported="true" /&gt;
+
+&lt;!-- ✅ الإعداد الآمن: إغلاق المكون أمام التطبيقات الخارجية --&gt;
+&lt;activity
+    android:name=".ui.profile.AccountSettingsActivity"
+    android:exported="false" /&gt;
+
+&lt;!-- ✅ إذا كان المكون يجب أن يُستدعى فقط من تطبيقات شركتك الموقعة بنفس المفتاح --&gt;
+&lt;permission
+    android:name="com.example.app.permission.INTERNAL_IPC"
+    android:protectionLevel="signature" /&gt;
+
+&lt;service
+    android:name=".sync.DataSyncService"
+    android:exported="true"
+    android:permission="com.example.app.permission.INTERNAL_IPC" /&gt;
+                </site-code-block>
+
+                <h3>ثغرة إعادة توجيه النوايا (Intent Redirection)</h3>
+                <p>حتى لو قمت بضبط جميع شاشاتك الحساسة على <code>android:exported="false"</code>، قد تقع في واحدة من أخطر ثغرات تطبيقات أندرويد وهي <strong>Intent Redirection</strong>. تحدث هذه الثغرة عندما تقوم شاشة عامة مصدّرة (مثل شاشة التوجيه <code>RouterActivity</code>) باستخراج كائن <code>Intent</code> مضمّن داخل البيانات الإضافية (Extras) وتشغيله مباشرةً بصلاحيات التطبيق نفسه:</p>
+
+                <site-code-block language="Kotlin" title="كيفية إغلاق ثغرة Intent Redirection في كود Kotlin">
+// ❌ كود ضعيف أمنياً: يثق بأي Intent قادم من تطبيق خارجي وينفذه بصلاحيات التطبيق!
+val nextIntent = intent.getParcelableExtra&lt;Intent&gt;("EXTRA_NEXT_INTENT")
+if (nextIntent != null) {
+    startActivity(nextIntent) // يمكن للمهاجم فتح أي Activity غير مصدّرة أو سرقة FileProvider!
+}
+
+// ✅ الحل الهندسي الآمن: التحقق من أن الوجهة تنتمي لحزمة تطبيقك ومسموح بها في القائمة البيضاء
+val allowedTargets = setOf(
+    "com.example.app.ui.HomeActivity",
+    "com.example.app.ui.NotificationsActivity"
+)
+val targetComponent = nextIntent?.component
+if (targetComponent != null &amp;&amp;
+    targetComponent.packageName == packageName &amp;&amp;
+    targetComponent.className in allowedTargets) {
+    // إزالة أي أذونات URI خبيثة قد يحقنها المهاجم
+    nextIntent.removeFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+    nextIntent.removeFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+    startActivity(nextIntent)
+}
+                </site-code-block>
+
+                <hr>
+
+                <h2 id="content-providers">ثالثاً: تأمين مزودات المحتوى (ContentProviders) ومشاركة الملفات بأمان</h2>
+                <p>يُستخدم <code>ContentProvider</code> لإدارة الوصول إلى البيانات المهيكلة أو مشاركة الملفات (مثل ملفات PDF أو الصور) مع تطبيقات أخرى. إذا تم تصدير <code>ContentProvider</code> بالخطأ، يمكن لأي تطبيق خبيث تنفيذ استعلامات <code>content://</code> لقراءة قواعد بياناتك (راجع دليل <a href="https://connecttag.org/blog/kmp-data-management-room-datastore">تخزين وتشفير البيانات في Room و DataStore</a>) أو استغلال ثغرات اجتياز المسار (Path Traversal <code>../</code>).</p>
+
+                <div class="remediation-card">
+                    <strong><i class="fa-solid fa-check-circle" style="color: #16a34a;"></i> المعيار القياسي لمشاركة الملفات عبر <code>FileProvider</code>:</strong>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li>اضبط دائماً <code>android:exported="false"</code> في تعريف <code>FileProvider</code>.</li>
+                        <li>فعّل <code>android:grantUriPermissions="true"</code> لمنح صلاحية قراءة مؤقتة للملف المحدد فقط.</li>
+                        <li>لا تستخدم أبداً المسار الجذري العام <code>&lt;root-path name="root" path="." /&gt;</code> في ملف <code>file_paths.xml</code>، بل حدد مجلدات فرعية دقيقة مثل <code>&lt;cache-path name="shared_invoices" path="invoices/" /&gt;</code>.</li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="deep-links-security">رابعاً: ثغرات اختطاف الروابط العميقة (Deep Link Hijacking) والانتقال إلى App Links</h2>
+                <p>تعتمد معظم التطبيقات الحديثة على الروابط العميقة (Deep Links) لإعادة توجيه المستخدم بعد الدفع الإلكتروني، أو تسجيل الدخول عبر OAuth2، أو فتح صفحة منتج معين. وهنا ينقسم التنفيذ في <code>AndroidManifest.xml</code> إلى نوعين بينهما فرق أمني جوهري:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered manifest-table">
+                        <thead>
+                            <tr>
+                                <th>وجه المقارنة</th>
+                                <th>الروابط العميقة التقليدية (Custom Scheme)</th>
+                                <th>روابط أندرويد الموثقة (Android App Links)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>صيغة الرابط</strong></td>
+                                <td><code>myapp://checkout/callback?token=...</code></td>
+                                <td><code>https://example.com/checkout/callback</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>التحقق من ملكية النطاق</strong></td>
+                                <td>❌ لا يوجد؛ أي تطبيق يمكنه تسجيل نفس الـ Scheme</td>
+                                <td>✅ تحقق رقمي مشفر عبر <code>assetlinks.json</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>خطر اختطاف الرابط (Hijacking)</strong></td>
+                                <td>عالي جداً (يمكن لتطبيق خبيث سرقة رموز OAuth)</td>
+                                <td>محمي؛ يفتح تطبيقك الرسمي مباشرة دون نافذة اختيار</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>لتأمين الروابط العميقة في تطبيقك بشكل كامل، استخدم دائماً <code>android:autoVerify="true"</code> مع بروتوكول <code>https</code>، وتحقق من صحة المعاملات القادمة من الرابط قبل تنفيذ أي إجراء حساس:</p>
+
+                <site-code-block language="XML" title="إعداد Android App Links الموثق داخل AndroidManifest.xml">
+&lt;activity
+    android:name=".ui.deeplink.DeepLinkHandlerActivity"
+    android:exported="true"&gt;
+    &lt;intent-filter android:autoVerify="true"&gt;
+        &lt;action android:name="android.intent.action.VIEW" /&gt;
+        &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+        &lt;category android:name="android.intent.category.BROWSABLE" /&gt;
+
+        &lt;data
+            android:scheme="https"
+            android:host="connecttag.org"
+            android:pathPrefix="/app/verify" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+                </site-code-block>
+
+                <div class="tool-cta-box">
+                    <i class="fa-solid fa-link" style="color: #0284c7;"></i> <strong>إنشاء واختبار الروابط العميقة:</strong><br>
+                    استخدم <a href="https://connecttag.org/tools/mobile/deep-link-generator/"><strong>أداة مولد الروابط العميقة (Deep Link Generator)</strong></a> لتوليد روابط <code>https://</code> وروابط <code>intent://</code> مع كود الـ XML الجاهز ورمز الباركود QR لاختبار سلوك تطبيقك مباشرة على الهاتف.
+                </div>
+
+                <hr>
+
+                <h2 id="application-flags">خامساً: أخطر إعدادات وسم &lt;application&gt; (allowBackup و Cleartext Traffic)</h2>
+                <p>إلى جانب تأمين المكونات الفردية، توجد ثلاث خصائص في وسم <code>&lt;application&gt;</code> تُعد من أكثر نقاط الضعف شيوعاً في تقارير الفحص الأمني (Penetration Testing):</p>
+
+                <ol>
+                    <li>
+                        <strong>إيقاف النسخ الاحتياطي غير المقيد (<code>android:allowBackup="false"</code>):</strong>
+                        عند تفعيل <code>allowBackup="true"</code>، يمكن استخراج الملفات المحلية عبر أوامر ADB في حال وصول شخص إلى الهاتف. في التطبيقات البنكية والأمنية يجب ضبطها على <code>false</code>، أو استخدام <code>android:dataExtractionRules="@xml/data_extraction_rules"</code> لاستثناء ملفات التوكن وقواعد البيانات من النسخ السحابي ونقل الجهاز.
+                    </li>
+                    <li>
+                        <strong>منع الاتصالات غير المشفرة (<code>android:usesCleartextTraffic="false"</code>):</strong>
+                        يمنع التطبيق من إرسال أي طلبات عبر بروتوكول <code>http://</code> غير المشفر الذي يسهل اعتراضه عبر هجمات الرجل في المنتصف (MITM)، مع ربطه بملف <code>android:networkSecurityConfig="@xml/network_security_config"</code> لتطبيق تثبيت الشهادات (SSL Pinning) وتأمين الاتصال مع الخادم (راجع <a href="https://connecttag.org/blog/api-security-guide">دليل حماية واجهات برمجة التطبيقات API Security</a>).
+                    </li>
+                    <li>
+                        <strong>التأكد من تعطيل وضع التصحيح (<code>android:debuggable="false"</code>):</strong>
+                        يقوم نظام البناء (Gradle) بضبطها تلقائياً في نسخ الإطلاق (Release)، لكن إضافتها يدوياً بقيمة <code>true</code> في ملف المانيفست الرئيسي يفتح الباب لربط مصحح الأخطاء (Java Debugger) وقراءة الذاكرة الحية للتطبيق بالكامل.
+                    </li>
+                </ol>
+
+                <hr>
+
+                <h2 id="permissions-audit">سادساً: تدقيق الصلاحيات الحساسة وتجنب رفض متجر Google Play</h2>
+                <p>لا يقتصر خطر الصلاحيات الزائدة في <code>AndroidManifest.xml</code> على الجانب الأمني فحسب، بل يُعد السبب رقم واحد لرفض تحديثات التطبيقات في مراجعة Google Play. احرص على مراجعة النقاط التالية قبل رفع أي إصدار جديد:</p>
+
+                <ul>
+                    <li><strong>استبدال <code>QUERY_ALL_PACKAGES</code> بوسم <code>&lt;queries&gt;</code>:</strong> إذا كان تطبيقك يحتاج فقط للتحقق من وجود تطبيق معين (مثل واتساب أو تطبيق دفع إلكتروني)، فلا تطلب صلاحية كشف جميع التطبيقات، بل حدد الحزمة المطلوبة فقط داخل وسم <code>&lt;queries&gt;</code>.</li>
+                    <li><strong>استخدام <code>Android Photo Picker</code> بدلاً من صلاحيات الوسائط الدائمة:</strong> إذا كان المستخدم يختار صورة للملف الشخصي أو يرفق إيصالاً، استخدم منتقي الصور الرسمي للنظام دون طلب <code>READ_MEDIA_IMAGES</code>.</li>
+                    <li><strong>مراجعة الصلاحيات المدمجة من المكتبات الخارجية (Merged Manifest):</strong> قد تضيف مكتبة خارجية (SDK) صلاحية حساسة إلى ملف المانيفست المدمج دون علمك! افحص تبويب <strong>Merged Manifest</strong> في Android Studio واستخدم <code>tools:node="remove"</code> لحذف أي صلاحية غير ضرورية.</li>
+                </ul>
+
+                <div class="tool-cta-box">
+                    <i class="fa-solid fa-shield-cat" style="color: #0284c7;"></i> <strong>أدوات مساعدة لمطوري أندرويد:</strong><br>
+                    يمكنك توليد أكواد الصلاحيات المتوافقة مع معايير أندرويد الحديثة عبر <a href="https://connecttag.org/tools/mobile/android-permissions/"><strong>أداة مولد صلاحيات أندرويد</strong></a>، ثم التحقق من خلو ملفك النهائي من الصلاحيات المحظورة عبر <a href="https://connecttag.org/tools/mobile/manifest-analyzer/"><strong>فاحص ملف AndroidManifest.xml</strong></a>.
+                </div>
+
+                <hr>
+
+                <section class="faq-section" id="faq">
+                    <h2>سابعاً: الأسئلة الشائعة حول أمن ملف المانيفست</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> متى يكون المكون في أندرويد مصدّراً (Exported) بشكل افتراضي؟</div>
+                        <div class="faq-answer">في الإصدارات الأقدم من أندرويد 12 (API 31)، كان أي مكون (Activity أو Service أو BroadcastReceiver) يحتوي بداخله على وسم &lt;intent-filter&gt; يصبح مصدّراً (android:exported="true") تلقائياً. ابتداءً من أندرويد 12، أصبح التصريح الصريح عن خاصية android:exported إلزامياً، لكن الخطر يظل قائماً عندما يضبطها المطور على true دون التحقق من هوية المرسل.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق الأمني بين الروابط العميقة التقليدية (Custom Scheme Deep Links) وروابط Android App Links؟</div>
+                        <div class="faq-answer">الروابط التقليدية التي تستخدم مخططاً مخصصاً مثل myapp://pay لا تتحقق من ملكية النطاق، مما يسمح لأي تطبيق خبيث على جهاز المستخدم بتسجيل نفس المخطط واعتراض الرابط (Deep Link Hijacking). أما Android App Links فتستخدم بروتوكول https:// مع خاصية android:autoVerify="true" وملف تحقق رقمي مشفر على الخادم (/.well-known/assetlinks.json) يثبت ملكية النطاق حصرياً لتطبيقك.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي ثغرة Intent Redirection وكيف أحمي تطبيقي منها؟</div>
+                        <div class="faq-answer">تحدث ثغرة Intent Redirection عندما يستقبل مكون مصدّر (Exported Activity) كائن Intent خارجي يحتوي بداخله على Intent آخر مضمن (Parcelable Extra)، ثم يقوم بتمريره مباشرة إلى دالة startActivity() أو startService(). هذا يسمح للمهاجم بفتح شاشات داخلية غير مصدّرة أو سرقة ملفات التطبيق الخاصة. وللحماية منها يجب عدم تمرير أي Intent قادم من مصدر خارجي غير موثوق، والتحقق الصارم من اسم الحزمة والوجهة قبل التنفيذ.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يمثل تفعيل android:allowBackup="true" خطراً أمنياً على تطبيقات أندرويد؟</div>
+                        <div class="faq-answer">عند ترك خاصية android:allowBackup="true"، يمكن لأي شخص يمتلك وصولاً فعلياً للجهاز عبر مصحح أندرويد (ADB) استخراج نسخة كاملة من بيانات التطبيق المحلية مثل قواعد البيانات وملفات SharedPreferences غير المشفرة. لذلك يُنصح بتعطيلها في التطبيقات الحساسة أو تقييد الملفات المسموح بنسخها بدقة عبر ملف android:dataExtractionRules.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أشارك ملفات تطبيقي مع تطبيقات أخرى بأمان دون تصدير ContentProvider للعامة؟</div>
+                        <div class="faq-answer">الحل القياسي الآمن هو استخدام فئة FileProvider مع ضبط android:exported="false" وتفعيل android:grantUriPermissions="true"، ثم تحديد المجلدات المسموح بها فقط داخل ملف XML مخصص، ومنح إذن قراءة مؤقت (FLAG_GRANT_READ_URI_PERMISSION) للتطبيق المستهدف فقط عند إرسال الـ Intent.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي أبرز صلاحيات AndroidManifest.xml التي تسبب رفض التطبيق في متجر Google Play؟</div>
+                        <div class="faq-answer">أبرز الصلاحيات المقيدة بشدة في متجر Google Play هي: QUERY_ALL_PACKAGES (ويجب استبدالها بوسم &lt;queries&gt;)، صلاحيات الرسائل والمكالمات (READ_SMS وREAD_CALL_LOG)، صلاحية الموقع في الخلفية (ACCESS_BACKGROUND_LOCATION)، صلاحية إدارة كل الملفات (MANAGE_EXTERNAL_STORAGE)، وصلاحيات الصور الدائمة (READ_MEDIA_IMAGES) التي يُفضل استبدالها بأداة Android Photo Picker.</div>
+                    </div>
+                </section>
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="android-app-security-reverse-engineering, kmp-data-management-room-datastore, api-security-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
