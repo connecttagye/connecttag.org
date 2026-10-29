@@ -14,6 +14,10 @@
 <meta property="og:title" content="وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق">
 <meta property="og:description" content="دليل شامل لاستخدام جدار حماية كلاود فلير لحماية موقعك من الهجمات السيبرانية." />
 <meta property="og:image" content="https://connecttag.org/upload/waf-cloudflare.webp">
+  <meta property="og:image:alt" content="جدار حماية كلاود فلير WAF">
+  <meta property="article:published_time" content="2026-08-16T11:00:00+03:00">
+  <meta property="article:modified_time" content="2026-08-16T11:00:00+03:00">
+  <meta property="article:section" content="الأمن السيبراني">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -21,24 +25,25 @@
 <meta name="twitter:title" content="وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق">
 <meta name="twitter:description" content="دليل شامل لاستخدام جدار حماية كلاود فلير لحماية موقعك من الهجمات السيبرانية." />
 <meta name="twitter:image" content="https://connecttag.org/upload/waf-cloudflare.webp" />
-<meta name="twitter:site" content="@connecttag_org" />
+  <meta name="twitter:image:alt" content="جدار حماية كلاود فلير WAF" />
+<meta name="twitter:site" content="@connecttagye" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.27" defer></script>
 
 <script type="application/ld+json">
 [
@@ -66,7 +71,9 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/cloudflare-waf-security-guide"
-    }
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
   },
   {
     "@context": "https://schema.org",
@@ -159,10 +166,12 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" fetchpriority="high">
+                <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" fetchpriority="high" width="2752" height="1536">
+
+                <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك (ويمكنك الاطلاع أيضاً على <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">دليل ضبط إعدادات كلاود فلير بأفضل الممارسات</a>). في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
 
                 <div class="summary-box">
-                    <h3><i class="fa-solid fa-list-check"></i> خلاصة الدليل:</h3>
+                    <div class="summary-title"><i class="fa-solid fa-list-check"></i> خلاصة الدليل:</div>
                     <ul class="summary-list">
                         <li>التعرف على كيفية عمل جدار حماية تطبيقات الويب (WAF).</li>
                         <li>أهم 3 قواعد جدار حماية يجب تفعيلها فوراً لتأمين موقعك.</li>
@@ -184,7 +193,6 @@
                     </ul>
                 </div>
 
-                <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك (ويمكنك الاطلاع أيضاً على <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">دليل ضبط إعدادات كلاود فلير بأفضل الممارسات</a>). في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
 
                 <h2 id="firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
                 <p>تسمح لك "قوانين جدار الحماية" في كلاود فلير بالتحكم الكامل في من يمكنه الوصول إلى موقعك وبأي شروط. يمكنك بناء قوانين ذكية بناءً على عدة معايير:</p>
@@ -204,26 +212,26 @@
                 <div class="security-card">
                     <h3>أ. حماية لوحة تحكم ووردبريس (/wp-admin)</h3>
                     <p>منع الغرباء من الوصول لصفحة الدخول. يمكنك السماح فقط لعنوان IP الخاص بك أو بلدك.</p>
-                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
-                        (http.request.uri.path contains "/wp-admin" or http.request.uri.path contains "/wp-login.php") and ip.src ne YOUR_IP_HERE
-                    </div>
+                    <site-code-block language="WAF Expression" title="تقييد الوصول للوحة التحكم">
+(http.request.uri.path contains "/wp-admin" or http.request.uri.path contains "/wp-login.php") and ip.src ne YOUR_IP_HERE
+                    </site-code-block>
                     <p><small>* استبدل <code>YOUR_IP_HERE</code> بعنوان IP الخاص بك واضبط الإجراء على <strong>Block</strong>.</small></p>
                 </div>
 
                 <div class="security-card">
                     <h3>ب. حظر الوصول للملفات الحساسة (.env / config)</h3>
                     <p>لمنع المخترقين من تحميل ملفات تحتوي على بيانات قواعد البيانات أو مفاتيح API.</p>
-                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
-                        (http.request.uri.path contains ".env") or (http.request.uri.path contains "config.php") or (http.request.uri.path contains "web.config")
-                    </div>
+                    <site-code-block language="WAF Expression" title="حظر الوصول للملفات الحساسة">
+(http.request.uri.path contains ".env") or (http.request.uri.path contains "config.php") or (http.request.uri.path contains "web.config")
+                    </site-code-block>
                 </div>
 
                 <div class="security-card">
                     <h3>ج. منع الهجمات عبر User-Agent مشبوه</h3>
                     <p>حظر أدوات الفحص الآلية والمتصفحات الوهمية التي يستخدمها المخترقون.</p>
-                    <div style="background: #2d3436; color: #fff; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; margin-bottom: 10px;">
-                        (http.user_agent contains "python-requests") or (http.user_agent contains "curl") or (http.user_agent contains "sqlmap")
-                    </div>
+                    <site-code-block language="WAF Expression" title="حظر أدوات المسح الآلية">
+(http.user_agent contains "python-requests") or (http.user_agent contains "curl") or (http.user_agent contains "sqlmap")
+                    </site-code-block>
                 </div>
 
                 <div class="danger-zone" style="border-right: 5px solid #d9534f; background: #fff5f5; padding: 20px; border-radius: 10px; margin: 25px 0;">

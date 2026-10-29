@@ -12,21 +12,21 @@ class SiteShareButtons extends HTMLElement {
 
     this.innerHTML = `
       <div class="ct-share-container">
-        <h4 class="ct-share-title">شارك :</h4>
+        <h3 class="ct-share-title" style="margin-top:0;">شارك :</h3>
         <div class="ct-share-grid">
           ${isShareSupported ? `
-            <a href="#" class="ct-share-btn native-share" title="مشاركة عبر الهاتف">
-              <i class="fa-solid fa-share-nodes"></i>
+            <a href="#" class="ct-share-btn native-share" title="مشاركة عبر الهاتف" aria-label="مشاركة عبر الهاتف">
+              <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
             </a>
           ` : ''}
-          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب">
-            <i class="fa-brands fa-whatsapp"></i>
+          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب" aria-label="مشاركة عبر واتساب">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
           </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn facebook" title="مشاركة عبر فيسبوك">
-            <i class="fa-brands fa-facebook"></i>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn facebook" title="مشاركة عبر فيسبوك" aria-label="مشاركة عبر فيسبوك">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
           </a>
-          <a href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}" target="_blank" rel="noopener" class="ct-share-btn telegram" title="مشاركة عبر تليجرام">
-            <i class="fa-brands fa-telegram"></i>
+          <a href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}" target="_blank" rel="noopener" class="ct-share-btn telegram" title="مشاركة عبر تليجرام" aria-label="مشاركة عبر تليجرام">
+            <i class="fa-brands fa-telegram" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -47,4 +47,8 @@ class SiteShareButtons extends HTMLElement {
   }
 }
 
-customElements.define('site-share-buttons', SiteShareButtons);
+if (!customElements.get('site-share-buttons')) {
+if (!customElements.get('site-share-buttons')) {
+  customElements.define('site-share-buttons', SiteShareButtons);
+}
+}

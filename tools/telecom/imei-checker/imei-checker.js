@@ -8,21 +8,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const historySection = document.getElementById('historySection');
     const historyList = document.getElementById('historyList');
 
+    function notifyToast(message, type = 'info') {
+        if (window.showToast) {
+            window.showToast(message, type);
+        } else if (window.toast && typeof window.toast.show === 'function') {
+            window.toast.show(message, type);
+        }
+    }
+
+    function inferSearchType(val) {
+        const clean = String(val || '').trim();
+        if (/^\d{15}$/.test(clean)) return 'imei';
+        if (/^\d{8}$/.test(clean)) return 'tac';
+        return 'q';
+    }
+
+    function updateInputValidationState() {
+        const checkedRadio = document.querySelector('input[name="searchType"]:checked');
+        const type = checkedRadio ? checkedRadio.value : 'imei';
+        if (type !== 'q') {
+            searchInput.value = searchInput.value.replace(/\D/g, '');
+        }
+        const val = searchInput.value.trim();
+        if ((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8) || (type === 'q' && val.length >= 2)) {
+            searchInput.classList.add('valid-input');
+        } else {
+            searchInput.classList.remove('valid-input');
+        }
+    }
+
+    function applySearchTypeUI(type, preserveValue = false) {
+        const radio = document.querySelector(`input[name="searchType"][value="${type}"]`);
+        if (radio) radio.checked = true;
+
+        if (!preserveValue) {
+            searchInput.value = '';
+            searchInput.classList.remove('valid-input');
+        }
+
+        if (type === 'imei') {
+            searchInput.placeholder = 'أدخل 15 رقماً هنا...';
+            searchInput.setAttribute('maxlength', '15');
+            searchInput.setAttribute('inputmode', 'numeric');
+        } else if (type === 'tac') {
+            searchInput.placeholder = 'أدخل أول 8 أرقام (TAC)...';
+            searchInput.setAttribute('maxlength', '8');
+            searchInput.setAttribute('inputmode', 'numeric');
+        } else {
+            searchInput.placeholder = 'اكتب اسم الجهاز أو الموديل (مثال: ZTE, L818)...';
+            searchInput.removeAttribute('maxlength');
+            searchInput.setAttribute('inputmode', 'text');
+        }
+    }
+
     loadHistory();
 
     // Input Validation (Allow text when searching by name 'q')
-    searchInput.addEventListener('input', function() {
-        const type = document.querySelector('input[name="searchType"]:checked').value;
-        if (type !== 'q') {
-            this.value = this.value.replace(/\D/g, ''); // Numbers only
-        }
-        const val = this.value.trim();
-        if ((type === 'imei' && val.length === 15) || (type === 'tac' && val.length === 8) || (type === 'q' && val.length > 2)) {
-            this.classList.add('valid-input');
-        } else {
-            this.classList.remove('valid-input');
-        }
-    });
+    searchInput.addEventListener('input', updateInputValidationState);
 
     btnSearch.addEventListener('click', performSearch);
     searchInput.addEventListener('keypress', function(e) {
@@ -36,10 +78,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function performSearch() {
         const val = searchInput.value.trim();
-        const type = document.querySelector('input[name="searchType"]:checked').value;
+        const checkedRadio = document.querySelector('input[name="searchType"]:checked');
+        const type = checkedRadio ? checkedRadio.value : 'imei';
 
         if (!val) {
             showError('يرجى إدخال قيمة البحث أولاً.');
+            return;
+        }
+
+        if (type === 'imei' && !/^\d{15}$/.test(val)) {
+            showError('يرجى إدخال رقم IMEI صحيح مكون من 15 رقماً.');
+            return;
+        }
+
+        if (type === 'tac' && !/^\d{8}$/.test(val)) {
+            showError('يرجى إدخال رقم TAC صحيح مكون من 8 أرقام.');
+            return;
+        }
+
+        if (type === 'q' && val.length < 2) {
+            showError('يرجى إدخال حرفين على الأقل للبحث بالاسم.');
             return;
         }
 
@@ -73,21 +131,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset Turnstile for next attempt
                 if (window.turnstile) {
                     turnstile.reset();
-                    currentTurnstileToken = '';
                 }
+                currentTurnstileToken = '';
 
                 if (data.success && data.result) {
-                    // If it's a search result (array), take the first item
-                    const result = Array.isArray(data.result) ? data.result[0] : data.result;
-
-                    if (result) {
-                        displayResult(result);
-                        saveToHistory(val);
+                    if (Array.isArray(data.result)) {
+                        if (data.result.length > 0) {
+                            renderMultipleMatches(data.result);
+                            displayResult(data.result[0], true);
+                            saveToHistory(val, type);
+                        } else {
+                            showError('لم يتم العثور على سجلات مطابقة لهذا البحث.');
+                        }
                     } else {
-                        showError('لم يتم العثور على سجلات مطابقة لهذا الرقم.');
+                        renderMultipleMatches([]);
+                        displayResult(data.result, true);
+                        saveToHistory(val, type);
                     }
                 } else {
-                    // Handle error object or string
                     const msg = data.error ? (typeof data.error === 'object' ? data.error.message : data.error) : 'لم يتم العثور على نتائج.';
                     showError(msg);
                 }
@@ -97,11 +158,73 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Fetch error:', error);
             searchBox.classList.remove('scanning');
             skeletonLoader.style.display = 'none';
+            if (window.turnstile) {
+                turnstile.reset();
+            }
+            currentTurnstileToken = '';
             showError('عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.');
         });
     }
 
-    function displayResult(data) {
+    function renderMultipleMatches(items) {
+        let selectorEl = document.getElementById('multiResultsSelector');
+        if (!selectorEl) {
+            selectorEl = document.createElement('div');
+            selectorEl.id = 'multiResultsSelector';
+            selectorEl.style.cssText = 'margin: 0 0 22px; padding: 14px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; display: none;';
+            const headerEl = resultCard.querySelector('.result-header');
+            if (headerEl && headerEl.nextSibling) {
+                resultCard.insertBefore(selectorEl, headerEl.nextSibling);
+            } else {
+                resultCard.prepend(selectorEl);
+            }
+        }
+
+        if (!Array.isArray(items) || items.length <= 1) {
+            selectorEl.style.display = 'none';
+            selectorEl.innerHTML = '';
+            return;
+        }
+
+        selectorEl.style.display = 'block';
+        const titleHtml = `<div style="font-size: 13px; font-weight: 800; color: #0052cc; margin-bottom: 10px;"><i class="fa-solid fa-layer-group" style="margin-left: 6px;"></i> تم العثور على (${items.length}) أجهزة مطابقة — اختر الجهاز لعرض مواصفاته:</div>`;
+        const pillsContainer = document.createElement('div');
+        pillsContainer.style.cssText = 'display: flex; flex-wrap: wrap; gap: 8px;';
+
+        selectorEl.innerHTML = titleHtml;
+        selectorEl.appendChild(pillsContainer);
+
+        items.forEach((item, idx) => {
+            const brand = item.brandName || item.brand_name || item.manufacturerName || item.manufacturer_name || '';
+            const marketing = item.marketingName || item.marketing_name || '';
+            const model = item.modelName || item.model_name || '';
+            const tac = item.tac || '';
+            const labelText = [brand, marketing || model, tac ? `(${tac})` : ''].filter(Boolean).join(' ') || `جهاز #${idx + 1}`;
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = labelText;
+            btn.style.cssText = idx === 0
+                ? 'padding: 6px 14px; border-radius: 50px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: 0.2s; border: 1px solid #0052cc; background: #006b98; color: #ffffff;'
+                : 'padding: 6px 14px; border-radius: 50px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: 0.2s; border: 1px solid #cbd5e1; background: #ffffff; color: #334155;';
+
+            btn.onclick = function() {
+                Array.from(pillsContainer.children).forEach(child => {
+                    child.style.background = '#ffffff';
+                    child.style.color = '#334155';
+                    child.style.borderColor = '#cbd5e1';
+                });
+                this.style.background = '#006b98';
+                this.style.color = '#ffffff';
+                this.style.borderColor = '#0052cc';
+                displayResult(item, false);
+            };
+
+            pillsContainer.appendChild(btn);
+        });
+    }
+
+    function displayResult(data, shouldScroll = true) {
         if (!data) return;
 
         // Helper to format values
@@ -213,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnCopy.onclick = () => {
                 const text = `تفاصيل الجهاز من كونكت تاق:\n- الشركة: ${brand}\n- الموديل: ${marketing}\n- طراز: ${model}\n- رقم TAC: ${tac}`;
                 navigator.clipboard.writeText(text).then(() => {
-                    if (window.toast) window.toast.show('تم نسخ التفاصيل!', 'success');
+                    notifyToast('تم نسخ التفاصيل!', 'success');
                 });
             };
         }
@@ -227,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
 
-        if (window.innerWidth < 768) {
+        if (shouldScroll && window.innerWidth < 768) {
             window.scrollTo({ top: resultCard.offsetTop - 40, behavior: 'smooth' });
         }
     }
@@ -238,25 +361,37 @@ document.addEventListener('DOMContentLoaded', function() {
         searchBox.classList.remove('scanning');
     }
 
-    function saveToHistory(val) {
+    function saveToHistory(val, type) {
         let history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
-        if (!history.includes(val)) {
-            history.unshift(val);
-            if (history.length > 6) history.pop();
-            localStorage.setItem('check_imei_history', JSON.stringify(history));
-            loadHistory();
-        }
+        const resolvedType = type || inferSearchType(val);
+        history = history.filter(item => {
+            const existingVal = typeof item === 'object' && item !== null ? item.value : item;
+            return existingVal !== val;
+        });
+        history.unshift({ value: val, type: resolvedType });
+        if (history.length > 6) history.pop();
+        localStorage.setItem('check_imei_history', JSON.stringify(history));
+        loadHistory();
     }
 
     function loadHistory() {
         const history = JSON.parse(localStorage.getItem('check_imei_history') || '[]');
         if (history.length > 0) {
             historySection.style.display = 'block';
-            historyList.innerHTML = history.map(item => `<span class="history-item">${item}</span>`).join('');
+            historyList.innerHTML = history.map(item => {
+                const val = typeof item === 'object' && item !== null ? item.value : String(item);
+                const type = (typeof item === 'object' && item !== null && item.type) ? item.type : inferSearchType(val);
+                const safeVal = val.replace(/"/g, '&quot;');
+                return `<span class="history-item" data-value="${safeVal}" data-type="${type}">${val}</span>`;
+            }).join('');
 
             document.querySelectorAll('.history-item').forEach(item => {
                 item.onclick = function() {
-                    searchInput.value = this.textContent;
+                    const val = this.getAttribute('data-value') || this.textContent.trim();
+                    const type = this.getAttribute('data-type') || inferSearchType(val);
+                    applySearchTypeUI(type, true);
+                    searchInput.value = val;
+                    updateInputValidationState();
                     performSearch();
                 };
             });
@@ -268,29 +403,13 @@ document.addEventListener('DOMContentLoaded', function() {
     window.clearHistory = function() {
         localStorage.removeItem('check_imei_history');
         loadHistory();
-        if (window.toast) window.toast.show('تم مسح سجل البحث', 'info');
+        notifyToast('تم مسح سجل البحث', 'info');
     };
 
     // Change input constraints on radio change
     document.querySelectorAll('input[name="searchType"]').forEach(radio => {
         radio.addEventListener('change', function() {
-            const type = this.value;
-            searchInput.value = '';
-            searchInput.classList.remove('valid-input');
-
-            if (type === 'imei') {
-                searchInput.placeholder = 'أدخل 15 رقماً هنا...';
-                searchInput.setAttribute('maxlength', '15');
-                searchInput.setAttribute('inputmode', 'numeric');
-            } else if (type === 'tac') {
-                searchInput.placeholder = 'أدخل أول 8 أرقام (TAC)...';
-                searchInput.setAttribute('maxlength', '8');
-                searchInput.setAttribute('inputmode', 'numeric');
-            } else {
-                searchInput.placeholder = 'اكتب اسم الجهاز أو الموديل (مثال: ZTE, L818)...';
-                searchInput.removeAttribute('maxlength');
-                searchInput.setAttribute('inputmode', 'text');
-            }
+            applySearchTypeUI(this.value, false);
             searchInput.focus();
         });
     });

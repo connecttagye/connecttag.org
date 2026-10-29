@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function processCatalog(catalog) {
-        const modem = catalog.find(item => item.slug === slug);
+        const modem = ModemApp.findModemBySlugOrId ? ModemApp.findModemBySlugOrId(catalog, slug) : catalog.find(item => item.slug === slug);
         hideLoading();
         if (modem) {
             renderDetails(modem);
@@ -79,10 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 { title: 'دليل مودمات يمن فورجي 4G', url: 'https://connecttag.org/tools/telecom/modems/' },
                 { title: displayName, url: canonicalHref, id: 'breadcrumb-active' }
             ]));
-        } else {
-            const activeCrumb = document.getElementById('breadcrumb-active');
-            if (activeCrumb) activeCrumb.textContent = displayName;
         }
+        const activeCrumb = document.getElementById('breadcrumb-active');
+        if (activeCrumb) activeCrumb.textContent = displayName;
 
         const imgEl = document.getElementById('modem-image');
         const primaryImg = m.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
@@ -101,26 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('spec-model').textContent = m.modelOrVersion || m.model || '-';
         document.getElementById('spec-type').textContent = m.category || '-';
         document.getElementById('spec-year').textContent = m.modelYear || '-';
-
-        // Smart 4th spec card: show condition if present, otherwise approximate price or country of origin
-        const condCardLabel = document.getElementById('spec-condition-label');
-        const condCardIcon = document.getElementById('spec-condition-icon');
-        const condCardVal = document.getElementById('spec-condition');
-
-        if (m.condition && m.condition.trim()) {
-            if (condCardLabel) condCardLabel.textContent = 'الحالة';
-            if (condCardIcon) condCardIcon.className = 'fa-solid fa-circle-info';
-            condCardVal.textContent = m.condition;
-        } else if (m.price && Number(m.price.currentValue) > 0) {
-            if (condCardLabel) condCardLabel.textContent = 'السعر التقريبي';
-            if (condCardIcon) condCardIcon.className = 'fa-solid fa-coins';
-            const currencyLabel = m.price.currency === 'RYE' ? 'ر.ي' : (m.price.currency || '');
-            condCardVal.textContent = `${Number(m.price.currentValue).toLocaleString('en-US')} ${currencyLabel}`.trim();
-        } else {
-            if (condCardLabel) condCardLabel.textContent = 'بلد المنشأ';
-            if (condCardIcon) condCardIcon.className = 'fa-solid fa-earth-asia';
-            condCardVal.textContent = m.countryOfOrigin || 'الصين';
-        }
 
         if (m.additional && m.additional.modemSettings) {
             const s = m.additional.modemSettings;

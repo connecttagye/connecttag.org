@@ -1,6 +1,6 @@
 # Connect Tag - Technical Tools & IT Solutions Hub
 
-> Information about technical tools, developers utilities, and IT services provided by Connect Tag.
+> Information about technical tools, developer utilities, cybersecurity resources, and IT services provided by Connect Tag (connecttag.org).
 
 ## Core Technical Tools
 
@@ -10,10 +10,12 @@
 - [Yemen 4G Modems Guide](https://connecttag.org/tools/telecom/modems/): Detailed specifications and settings for Yemen 4G approved devices.
 - [Telecom Companies Directory](https://connecttag.org/tools/telecom/company/): Quick access to services, codes, and internet packages for Yemeni providers.
 
-### Developer Utilities
+### Developer & Web Auditing Utilities
+- [Website & Technical SEO Checker](https://connecttag.org/tools/web/site-checker/): Comprehensive platform to audit Technical SEO, content keywords, HTML structure, and HTTP security headers.
 - [JSON Formatter & Validator](https://connecttag.org/tools/web/json-formatter/): Beautify, minify, and validate JSON structures for app development.
 - [JWT Debugger](https://connecttag.org/tools/web/jwt-debugger/): Decode, verify, and generate JSON Web Tokens (HS256).
 - [Android Permissions Generator](https://connecttag.org/tools/mobile/android-permissions/): Visual selector to generate AndroidManifest.xml permission codes.
+- [Android Manifest Security Analyzer](https://connecttag.org/tools/mobile/manifest-analyzer/): Inspect and audit AndroidManifest.xml files for security risks and excessive permissions.
 - [RegEx Tester](https://connecttag.org/tools/web/regex-tester/): Test and analyze Regular Expressions with full Arabic language support.
 - [Deep Link Generator](https://connecttag.org/tools/mobile/deep-link-generator/): Create and test mobile app deep links (intent:// and https://).
 
@@ -28,14 +30,38 @@
 - [Solar Energy Calculator](https://connecttag.org/tools/energy/solar-calculator/): Design and size home solar power systems based on appliances load.
 
 ### Content & Design
+- [Image Format Converter & Compressor](https://connecttag.org/tools/design/image-converter/): Convert and compress images to modern WebP, PNG, and JPEG formats locally in the browser.
 - [Word & Character Counter](https://connecttag.org/tools/misc/word-counter/): Analyze text length and clean Arabic content (remove diacritics/spaces).
 - [Color Palette Extractor](https://connecttag.org/tools/design/color-extractor/): Extract Hex/RGB codes from any uploaded image or logo.
 
+## Technical Blog & Engineering Guides
+- [Connect Tag Blog Hub](https://connecttag.org/blog/): Specialized Arabic articles in software engineering, cybersecurity, cloud infrastructure, digital marketing, and telecom.
+- [Technical SEO Audit Guide](https://connecttag.org/blog/technical-seo-audit-guide): Comprehensive guide to auditing meta tags, semantic HTML5, Core Web Vitals, and HTTP security headers.
+- [KMP Data Management with Room & DataStore](https://connecttag.org/blog/kmp-data-management-room-datastore): Architectural guide for local storage and encryption in Kotlin Multiplatform (Android & iOS).
+- [Kotlin Multiplatform (KMP) vs Flutter Comparison](https://connecttag.org/blog/kmp-vs-flutter-comparison): In-depth engineering comparison of performance, native UI sharing, and business suitability.
+- [Jetpack Compose Modern Android UI Guide](https://connecttag.org/blog/jetpack-compose-guide): Declarative UI development best practices and state management for Android.
+- [Android App Security & Anti-Reverse Engineering](https://connecttag.org/blog/android-app-security-reverse-engineering): Protecting mobile apps using R8 obfuscation, NDK C++, SSL Pinning, and Play Integrity API.
+- [Advanced Database Security Architecture](https://connecttag.org/blog/advanced-database-security-architecture): Preventing SQL Injection, designing RBAC permissions, UUIDs, and TDE encryption.
+- [REST & GraphQL API Security Guide](https://connecttag.org/blog/api-security-guide): Defending APIs against OWASP Top 10 threats, BOLA, JWT vulnerabilities, and rate-limiting attacks.
+- [Windows Server IIS Hardening Guide](https://connecttag.org/blog/iis-hardening-guide): Enterprise security configuration, TLS 1.3 hardening, application pool isolation, and HTTP headers.
+- [Deploying Delphi ISAPI DLLs on IIS](https://connecttag.org/blog/iis-isapi-deployment-guide): Production deployment and performance tuning for native ISAPI web modules on Windows Server.
+- [Cloudflare WAF Security Rules Guide](https://connecttag.org/blog/cloudflare-waf-security-guide): Custom firewall rules to block automated bots, country-level attacks, and path scanning.
+- [Cloudflare Settings & Speed Optimization Guide](https://connecttag.org/blog/cloudflare-settings-optimization-guide): Configuring SSL Full (Strict), HTTP/3, Brotli, Early Hints, and caching for optimal TTFB.
+- [Cloudflare Pages Hosting Guide](https://connecttag.org/blog/cloudflare-pages-hosting-guide): Deploying ultra-fast static and JAMstack websites with Git integration on Cloudflare's edge network.
+- [How to Choose Web Hosting](https://connecttag.org/blog/choosing-web-hosting): Comparing Shared, VPS, Dedicated, and Cloud hosting based on NVMe storage, uptime, and security.
+- [Website Security in Simple Steps](https://connecttag.org/blog/website-security-simple-steps): Essential checklist for SSL certificates, strong authentication, backups, and security auditing.
+- [Google Business Profile & Local SEO Guide](https://connecttag.org/blog/google-business-profile-guide): Registering, verifying, and optimizing business listings on Google Maps and Local Search.
+- [Importance of Digital Marketing for Startups](https://connecttag.org/blog/digital-marketing-importance): ROI-driven strategies across SEO, content marketing, and targeted social campaigns.
+- [Why Your Business Needs a Mobile App](https://connecttag.org/blog/why-your-business-needs-app): How custom mobile applications increase customer retention, brand loyalty, and direct sales.
+- [Yemen Telecom & Internet Sector Guide](https://connecttag.org/blog/yemen-telecom-ministry-guide): Comprehensive overview of telecom operators, Yemen Net services, and infrastructure in Yemen.
+- [Yemen Internet Comparison: 4G vs ADSL vs Fiber](https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber): Technical comparison of speeds, latency, costs, and coverage across Yemeni internet technologies.
+- [How to Check Yemen 4G Balance & Packages](https://connecttag.org/blog/how-to-check-yemen-4g-balance): Step-by-step methods to query Yemen 4G subscriber balance and renew packages.
+
 ## Main Services
-- **Web & Mobile Development**: Professional solutions using Flutter, Jetpack Compose, and modern web frameworks.
+- **Web & Mobile Development**: Professional solutions using Kotlin Multiplatform, Flutter, Jetpack Compose, and modern web frameworks.
 - **Telecom Solutions**: Infrastructure and technical support for internet subscribers.
-- **Cybersecurity Services**: Digital privacy auditing and data protection strategies.
-- **Digital Marketing**: Strategic growth and online presence optimization.
+- **Cybersecurity Services**: Digital privacy auditing, server hardening, and data protection strategies.
+- **Digital Marketing & Local SEO**: Strategic growth, Technical SEO auditing, and Google Maps verification.
 
 ## Contacts & Social
 - Twitter: [@connecttagye](https://x.com/connecttagye)

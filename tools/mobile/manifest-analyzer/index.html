@@ -80,14 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
@@ -132,6 +133,7 @@
        crossorigin="anonymous"></script>
 </head>
 <body>
+<site-toast></site-toast>
 <site-header></site-header>
 
 <main id="main-content">
@@ -186,10 +188,20 @@
 
 <script>
     const sensitivePermissions = [
-        { name: "ACCESS_BACKGROUND_LOCATION", level: "danger", title: "الوصول للموقع في الخلفية", desc: "جوجل تطلب مبرراً قوياً جداً لهذه الصلاحية. إذا لم تكن ميزة أساسية، سيتم رفض التطبيق." },
-        { name: "QUERY_ALL_PACKAGES", level: "danger", title: "الاستعلام عن كافة التطبيقات", desc: "صلاحية حساسة. تمنع جوجل استخدامها إلا للتطبيقات التي وظيفتها الأساسية البحث في الجهاز." },
-        { name: "READ_SMS", level: "danger", title: "قراءة الرسائل النصية (SMS)", desc: "مرفوضة تماماً إلا إذا كان التطبيق هو تطبيق الرسائل الافتراضي." },
-        { name: "MANAGE_EXTERNAL_STORAGE", level: "warning", title: "إدارة التخزين الخارجي الكامل", desc: "في أندرويد 11+، يجب استخدام Scoped Storage بدلاً من هذه الصلاحية." }
+        { name: "ACCESS_BACKGROUND_LOCATION", level: "danger", title: "الوصول للموقع في الخلفية (ACCESS_BACKGROUND_LOCATION)", desc: "جوجل تطلب مبرراً قوياً جداً وفيديو توضيحي لهذه الصلاحية. إذا لم تكن ميزة أساسية، سيتم رفض التطبيق." },
+        { name: "QUERY_ALL_PACKAGES", level: "danger", title: "الاستعلام عن كافة التطبيقات (QUERY_ALL_PACKAGES)", desc: "صلاحية عالية الحساسية. تمنع جوجل استخدامها إلا للتطبيقات التي وظيفتها الأساسية البحث في الجهاز أو إدارة الملفات/الأمان، ويفضل استبدالها بوسم &lt;queries&gt;." },
+        { name: "READ_SMS", level: "danger", title: "قراءة الرسائل النصية (READ_SMS)", desc: "مرفوضة تماماً إلا إذا كان التطبيق هو تطبيق الرسائل الافتراضي. استخدم SMS Retriever API للتحقق من الرموز (OTP)." },
+        { name: "SEND_SMS", level: "danger", title: "إرسال الرسائل النصية (SEND_SMS)", desc: "تخضع لسياسة صارمة من جوجل ولا تُقبل إلا لتطبيقات المراسلة الافتراضية." },
+        { name: "RECEIVE_SMS", level: "danger", title: "استقبال الرسائل النصية (RECEIVE_SMS)", desc: "مقيدة بشدة في متجر جوجل بلاي؛ يُنصح باستخدام واجهة SMS User Consent API كبديل آمن." },
+        { name: "READ_CALL_LOG", level: "danger", title: "قراءة سجل المكالمات (READ_CALL_LOG)", desc: "مقيدة لتطبيقات الهاتف الافتراضية فقط ولا يُسمح بها للتطبيقات العادية." },
+        { name: "WRITE_CALL_LOG", level: "danger", title: "تعديل سجل المكالمات (WRITE_CALL_LOG)", desc: "صلاحية حساسة جداً ومقتصرة على تطبيقات الاتصال الافتراضية المعتمدة." },
+        { name: "PROCESS_OUTGOING_CALLS", level: "danger", title: "اعتراض المكالمات الصادرة (PROCESS_OUTGOING_CALLS)", desc: "صلاحية مهملة (Deprecated) وعالية الخطورة وقد تؤدي لرفض التطبيق فوراً." },
+        { name: "REQUEST_INSTALL_PACKAGES", level: "danger", title: "تثبيت حزم تطبيقات خارجية (REQUEST_INSTALL_PACKAGES)", desc: "تخضع لمراجعة مشددة في جوجل بلاي ولا يُسمح بها إلا لمتاجر التطبيقات أو مديري الملفات." },
+        { name: "BIND_ACCESSIBILITY_SERVICE", level: "danger", title: "خدمات تسهيل الاستخدام (BIND_ACCESSIBILITY_SERVICE)", desc: "تتطلب إفصاحاً بارزاً وموافقة صريحة، ولا يُسمح بها إلا لمساعدة ذوي الاحتياجات الخاصة." },
+        { name: "MANAGE_EXTERNAL_STORAGE", level: "warning", title: "إدارة التخزين الخارجي الكامل (MANAGE_EXTERNAL_STORAGE)", desc: "في أندرويد 11+، يجب استخدام Scoped Storage أو MediaStore بدلاً من هذه الصلاحية إلا لمديري الملفات." },
+        { name: "SYSTEM_ALERT_WINDOW", level: "warning", title: "الظهور فوق التطبيقات الأخرى (SYSTEM_ALERT_WINDOW)", desc: "قد تؤثر على تجربة المستخدم وتخضع لقيود في أندرويد الحديث؛ تأكد من ضرورتها الوظيفية." },
+        { name: "READ_MEDIA_IMAGES", level: "warning", title: "الوصول الدائم للصور (READ_MEDIA_IMAGES)", desc: "تفرض سياسة جوجل بلاي الحديثة استخدام أداة اختيار الصور (Android Photo Picker) بدلاً من طلب إذن الوصول الكامل للصور إلا عند الضرورة القصوى." },
+        { name: "READ_MEDIA_VIDEO", level: "warning", title: "الوصول الدائم للفيديو (READ_MEDIA_VIDEO)", desc: "تفرض سياسة جوجل بلاي الحديثة استخدام أداة اختيار الوسائط (Photo Picker) للوصول المؤقت بدلاً من هذه الصلاحية." }
     ];
 
     function analyzeManifest() {
@@ -197,14 +209,26 @@
         const reportContainer = document.getElementById('report-container');
         const reportList = document.getElementById('report-list');
 
-        if (!xmlText.trim()) return;
+        if (!xmlText.trim()) {
+            if (window.showToast) window.showToast('يرجى لصق محتوى ملف AndroidManifest.xml أولاً', 'warn');
+            return;
+        }
+
+        const cleanXml = xmlText.replace(/<!--[\s\S]*?-->/g, '');
 
         reportList.innerHTML = "";
         reportContainer.style.display = "block";
 
+        if (!/<manifest\b/i.test(cleanXml)) {
+            addReportItem("danger", "ملف غير صالح", "النص المدخل لا يبدو أنه ملف AndroidManifest.xml صالح (لا يحتوي على وسم &lt;manifest&gt;). يرجى التأكد من لصق كود XML الصحيح.");
+            if (window.showToast) window.showToast('يرجى إدخال ملف AndroidManifest.xml صالح', 'error');
+            reportContainer.scrollIntoView({ behavior: 'smooth' });
+            return;
+        }
+
         let findingsCount = 0;
         sensitivePermissions.forEach(p => {
-            if (xmlText.includes(p.name)) {
+            if (cleanXml.includes(p.name)) {
                 findingsCount++;
                 addReportItem(p.level, p.title, p.desc);
             }

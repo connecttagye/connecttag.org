@@ -80,14 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; transition: 0.3s; }
@@ -186,7 +187,7 @@
        crossorigin="anonymous"></script>
 </head>
 <body>
-
+<site-toast></site-toast>
 <site-preloader></site-preloader>
 
 <div id="home-content">
@@ -285,26 +286,45 @@ function generate() {
     const numbers = document.getElementById('checkNumbers').checked;
     const symbols = document.getElementById('checkSymbols').checked;
 
-    let availableChars = '';
-    if (upper) availableChars += charset.upper;
-    if (lower) availableChars += charset.lower;
-    if (numbers) availableChars += charset.numbers;
-    if (symbols) availableChars += charset.symbols;
+    const selectedSets = [];
+    if (upper) selectedSets.push(charset.upper);
+    if (lower) selectedSets.push(charset.lower);
+    if (numbers) selectedSets.push(charset.numbers);
+    if (symbols) selectedSets.push(charset.symbols);
 
-    if (!availableChars) {
+    if (selectedSets.length === 0) {
         document.getElementById('passwordResult').innerText = 'اختر خياراً!';
+        const fill = document.getElementById('strengthFill');
+        const text = document.getElementById('strengthText');
+        fill.style.width = '0%';
+        text.innerText = '-';
+        if (window.showToast) window.showToast('يرجى تحديد خيار واحد على الأقل لتوليد كلمة المرور', 'warn');
         return;
     }
 
-    let password = '';
-    const crypto = window.crypto || window.msCrypto;
-    const array = new Uint32Array(length);
-    crypto.getRandomValues(array);
+    const availableChars = selectedSets.join('');
+    const cryptoObj = window.crypto || window.msCrypto;
+    const array = new Uint32Array(length * 2);
+    cryptoObj.getRandomValues(array);
 
-    for (let i = 0; i < length; i++) {
-        password += availableChars[array[i] % availableChars.length];
+    const passwordChars = [];
+    for (let i = 0; i < selectedSets.length && i < length; i++) {
+        const set = selectedSets[i];
+        passwordChars.push(set[array[i] % set.length]);
     }
 
+    for (let i = passwordChars.length; i < length; i++) {
+        passwordChars.push(availableChars[array[i] % availableChars.length]);
+    }
+
+    for (let i = passwordChars.length - 1; i > 0; i--) {
+        const j = array[length + i] % (i + 1);
+        const temp = passwordChars[i];
+        passwordChars[i] = passwordChars[j];
+        passwordChars[j] = temp;
+    }
+
+    const password = passwordChars.join('');
     document.getElementById('passwordResult').innerText = password;
     calculateStrength(password);
 }
@@ -335,7 +355,10 @@ function calculateStrength(pw) {
 
 function copyPassword() {
     const pw = document.getElementById('passwordResult').innerText;
-    if (pw === 'اختر خياراً!') return;
+    if (pw === 'اختر خياراً!') {
+        if (window.showToast) window.showToast('يرجى توليد كلمة مرور صالحة أولاً', 'warn');
+        return;
+    }
 
     navigator.clipboard.writeText(pw).then(() => {
         if(window.showToast) window.showToast('تم نسخ كلمة المرور بنجاح!', 'success');
@@ -343,9 +366,10 @@ function copyPassword() {
 }
 
 window.onload = () => {
+    if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
     generate();
 };
 </script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

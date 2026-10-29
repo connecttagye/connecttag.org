@@ -12,18 +12,22 @@ class SiteAuthorBox extends HTMLElement {
     this.innerHTML = `
       <a href="${link}" class="ct-author-card-simple">
         <div class="ct-author-avatar">
-          <img src="${avatar}" alt="${name}" loading="lazy">
+          <img src="${avatar}" alt="${name}" width="45" height="45" loading="lazy">
         </div>
         <div class="ct-author-info">
           <span class="ct-author-label">الكاتب</span>
-          <h4 class="ct-author-name">${name}</h4>
+          <span class="ct-author-name">${name}</span>
         </div>
-        <div class="ct-author-arrow">
-          <i class="fa-solid fa-chevron-left"></i>
+        <div class="ct-author-arrow" aria-hidden="true">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </div>
       </a>
     `;
   }
 }
 
-customElements.define('site-author-box', SiteAuthorBox);
+if (!customElements.get('site-author-box')) {
+if (!customElements.get('site-author-box')) {
+  customElements.define('site-author-box', SiteAuthorBox);
+}
+}

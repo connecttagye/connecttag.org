@@ -17,6 +17,9 @@ export default class AnalyzerCore {
         if ((type === 'trust' || type === 'all') && !this.auditors.security) {
             promises.push(import('../auditors/security.js').then(m => this.auditors.security = m));
         }
+        if (!this.auditors.tech) {
+            promises.push(import('../auditors/tech.js').then(m => this.auditors.tech = m));
+        }
         await Promise.all(promises);
     }
 
@@ -68,6 +71,8 @@ export default class AnalyzerCore {
         const { seo, security: sec, tech, content } = this.auditors;
 
         if (['all', 'seo'].includes(currentTool) && seo) {
+            addAudit(seo.checkTitle, 'SEO');
+            addAudit(seo.checkDescription, 'SEO');
             addAudit(seo.checkHeadings, 'SEO');
             addAudit(seo.checkHeadingStructure, 'SEO');
             addAudit(seo.checkKeywordGap, 'SEO');
@@ -80,13 +85,16 @@ export default class AnalyzerCore {
         }
 
         if (['all', 'trust'].includes(currentTool) && sec) {
+            addAudit(sec.checkSecurity, 'Security');
             addAudit(sec.checkSecHeaders, 'Security');
             addAudit(sec.checkRedirectionRules, 'Security');
+            addAudit(sec.checkPagePrivacy, 'Policy');
         }
 
         if (tech) {
             addAudit(tech.checkSemanticHTML, 'Technical');
             addAudit(tech.checkLinkHealth, 'Technical');
+            addAudit(tech.checkTechStack, 'Technical');
             audits.push({ ...tech.checkSocialPresence(doc), category: 'Social' });
             audits.push({ ...tech.checkOpenGraph(doc), category: 'Social' });
         }

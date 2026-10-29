@@ -198,6 +198,10 @@ class SiteCheckerApp {
             this.core.auditors.seo.updateSocialPreview(doc, url);
             this.core.auditors.seo.analyzeKeywords(doc);
             this.core.auditors.seo.exploreLinks(doc, url);
+        } else {
+            const words = (doc.body?.innerText.toLowerCase().match(/[\u0600-\u06FF\w]{4,}/g) || []);
+            const statWords = document.getElementById('stat-words');
+            if (statWords) statWords.innerText = words.length;
         }
         if (this.core.auditors.content) {
             this.core.auditors.content.updateContentDashboard(doc);
@@ -363,7 +367,7 @@ class SiteCheckerApp {
 
         const privacyAudit = audits.find(a => a.title === 'سياسة الخصوصية');
         if (privacyAudit && privacyAudit.status === 'fail') {
-            recBox.innerHTML = `<div class="smart-rec-text"><h5 class="fw-bold mb-1"><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> نصيحة ذكية: موقعك يفتقر لسياسة الخصوصية</h5><p class="small text-muted mb-0">جوجل تعطي أولوية للمواقع التي تحترم خصوصية المستخدم. استخدم أداتنا لتوليد واحدة مجاناً.</p></div><a href="../privacy-generator/" class="smart-rec-btn">توليد الآن</a>`;
+            recBox.innerHTML = `<div class="smart-rec-text"><h5 class="fw-bold mb-1"><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> نصيحة ذكية: موقعك يفتقر لسياسة الخصوصية</h5><p class="small text-muted mb-0">جوجل تعطي أولوية للمواقع التي تحترم خصوصية المستخدم. استخدم أداتنا لتوليد واحدة مجاناً.</p></div><a href="../../security/privacy-generator/" class="smart-rec-btn">توليد الآن</a>`;
             recBox.style.display = 'flex';
         } else {
             recBox.style.display = 'none';

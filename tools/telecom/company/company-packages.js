@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
+    function setNoIndex() {
+        if (!document.querySelector('meta[name="robots"]')) {
+            const m = document.createElement('meta');
+            m.name = 'robots';
+            m.content = 'noindex';
+            document.head.appendChild(m);
+        }
+    }
+
+    function loadAdSenseOnce() {
+        if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357';
+            s.crossOrigin = 'anonymous';
+            document.head.appendChild(s);
+        }
+    }
+
     const params = CompanyApp.getQueryParams();
     const queryCompanyId = params.get('companyId') || params.get('id');
     const querySlug = params.get('slug');
@@ -11,8 +30,25 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSearch = '';
 
     if (!queryCompanyId && !querySlug) {
+        setNoIndex();
         window.location.href = './';
         return;
+    }
+
+    let rendered = false;
+    const cachedData = CompanyApp.loadFromCache();
+    if (cachedData && Array.isArray(cachedData.companies)) {
+        const matched = cachedData.companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
+        if (matched) {
+            currentCompany = matched;
+            setupCompanyHeader(currentCompany);
+            const allPackages = cachedData.packages || [];
+            allCompanyPackages = allPackages.filter(p => String(p.companyId) === String(currentCompany.id));
+            updateSEOAndSchema(currentCompany, allCompanyPackages);
+            applyFilter();
+            loadAdSenseOnce();
+            rendered = true;
+        }
     }
 
     CompanyApp.fetchData(data => {
@@ -20,8 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         currentCompany = companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
 
         if (!currentCompany) {
-            CompanyApp.showToast('عذراً، الشركة غير موجودة');
-            setTimeout(() => { window.location.href = './'; }, 1500);
+            if (!rendered) {
+                setNoIndex();
+                CompanyApp.showToast('عذراً، الشركة غير موجودة');
+                setTimeout(() => { window.location.href = './'; }, 1500);
+            }
             return;
         }
 
@@ -31,23 +70,51 @@ document.addEventListener('DOMContentLoaded', function() {
         allCompanyPackages = allPackages.filter(p => String(p.companyId) === String(currentCompany.id));
 
         updateSEOAndSchema(currentCompany, allCompanyPackages);
-        renderPackages(allCompanyPackages);
-    }, msg => showError(msg));
+        applyFilter();
+        loadAdSenseOnce();
+    }, msg => {
+        if (!rendered) showError(msg);
+    }, rendered);
 
     function setupCompanyHeader(comp) {
         const compName = comp.arName || comp.name || 'الشركة';
         const backUrl = comp.slug ? `details?slug=${encodeURIComponent(comp.slug)}` : `details?id=${encodeURIComponent(comp.id)}`;
+        const fullBackUrl = `https://connecttag.org/tools/telecom/company/${backUrl}`;
+        const canonicalUrl = comp.slug
+            ? `https://connecttag.org/tools/telecom/company/packages?slug=${encodeURIComponent(comp.slug)}`
+            : `https://connecttag.org/tools/telecom/company/packages?companyId=${encodeURIComponent(comp.id)}`;
 
-        document.getElementById('page-heading').textContent = `باقات وعروض ${compName}`;
-        document.getElementById('breadcrumb-company-link').textContent = compName;
-        document.getElementById('breadcrumb-company-link').href = backUrl;
-        document.getElementById('btn-back-company').href = backUrl;
+        const headingEl = document.getElementById('page-heading');
+        if (headingEl) headingEl.textContent = `باقات وعروض ${compName}`;
+
+        const breadcrumbEl = document.querySelector('site-breadcrumb');
+        if (breadcrumbEl) {
+            breadcrumbEl.setAttribute('items', JSON.stringify([
+                { title: 'الرئيسية', url: 'https://connecttag.org/' },
+                { title: 'الأدوات', url: 'https://connecttag.org/tools/' },
+                { title: 'الاتصالات والإنترنت', url: 'https://connecttag.org/tools/telecom/' },
+                { title: 'دليل شركات الاتصالات', url: 'https://connecttag.org/tools/telecom/company/' },
+                { title: compName, url: fullBackUrl, id: 'breadcrumb-company-link' },
+                { title: 'باقات وعروض الإنترنت', url: canonicalUrl }
+            ]));
+        }
+
+        const crumbLink = document.getElementById('breadcrumb-company-link');
+        if (crumbLink) {
+            crumbLink.textContent = compName;
+            crumbLink.href = backUrl;
+        }
+
+        const backBtn = document.getElementById('btn-back-company');
+        if (backBtn) backBtn.href = backUrl;
 
         if (comp.logo) {
             const logoEl = document.getElementById('comp-badge-logo');
-            logoEl.src = comp.logo;
-            logoEl.alt = compName;
-            logoEl.style.display = 'inline-block';
+            if (logoEl) {
+                logoEl.src = comp.logo;
+                logoEl.alt = compName;
+                logoEl.style.display = 'inline-block';
+            }
         }
     }
 
@@ -131,7 +198,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const compName = comp.arName || comp.name || 'الشركة';
         const pageTitle = `باقات وعروض ${compName} - الأسعار وأكواد التفعيل | كونكت تاق`;
         const pageDesc = `دليل كافة باقات الإنترنت والمكالمات لشركة ${compName}. الأسعار، الصلاحية، وأكواد التفعيل المباشرة.`;
-        const currentUrl = window.location.href;
+        const currentUrl = comp.slug
+            ? `https://connecttag.org/tools/telecom/company/packages?slug=${encodeURIComponent(comp.slug)}`
+            : `https://connecttag.org/tools/telecom/company/packages?companyId=${encodeURIComponent(comp.id)}`;
         const logoUrl = comp.logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
 
         document.title = pageTitle;

@@ -65,9 +65,11 @@ const CompanyApp = (function() {
                 toast.textContent = message;
                 toast.className = 'toast-msg show';
                 setTimeout(() => {
-                    toast.className = toast.className.replace('show', '');
+                    toast.className = toast.className.replace('show', '').trim();
                 }, duration);
-            } else if (window.toast) {
+            } else if (typeof window.showToast === 'function') {
+                window.showToast(message, 'info');
+            } else if (window.toast && typeof window.toast.show === 'function') {
                 window.toast.show(message, 'info');
             }
         }

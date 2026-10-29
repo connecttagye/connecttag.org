@@ -80,14 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
@@ -122,6 +123,7 @@
        crossorigin="anonymous"></script>
 </head>
 <body>
+<site-toast></site-toast>
 <site-header></site-header>
 
 <main id="main-content">
@@ -219,8 +221,8 @@
     });
 
     function generateLinks() {
-        const scheme = document.getElementById('scheme').value.trim();
-        const host = document.getElementById('host').value.trim();
+        const scheme = document.getElementById('scheme').value.trim().replace(/:\/+$/, '');
+        const host = document.getElementById('host').value.trim().replace(/\/+$/, '');
         const path = document.getElementById('path').value.trim();
         const pkg = document.getElementById('package').value.trim();
 
@@ -230,10 +232,11 @@
             return;
         }
 
-        const fullUri = `${scheme}://${host}${path}`;
+        const normalizedPath = path ? (path.startsWith('/') ? path : '/' + path) : '';
+        const fullUri = `${scheme}://${host}${normalizedPath}`;
         document.getElementById('uri-result').textContent = fullUri;
 
-        let intentUri = `intent://${host}${path}#Intent;scheme=${scheme};`;
+        let intentUri = `intent://${host}${normalizedPath}#Intent;scheme=${scheme};`;
         if (pkg) intentUri += `package=${pkg};`;
         intentUri += `end`;
         document.getElementById('intent-result').textContent = intentUri;
@@ -244,7 +247,10 @@
 
     function copyText(id) {
         const text = document.getElementById(id).textContent;
-        if (text === "-") return;
+        if (text === "-") {
+            if(window.showToast) window.showToast('يرجى إدخال البروتوكول والمضيف لتوليد الرابط أولاً', 'warn');
+            return;
+        }
         navigator.clipboard.writeText(text).then(() => {
             if(window.showToast) window.showToast('تم نسخ الرابط بنجاح!', 'success');
         });

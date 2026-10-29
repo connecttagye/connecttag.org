@@ -80,15 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
@@ -108,6 +108,9 @@
         padding: 80px 0 60px;
         color: white;
         text-align: center;
+    }
+    .page-header-unified h1 {
+        color: #ffffff !important;
     }
 
     .converter-container { padding: 40px 0; }
@@ -244,6 +247,7 @@
 <div id="home-content">
 <site-toast></site-toast>
 <site-header></site-header>
+<main id="main-content">
 
 <div class="page-header-unified">
     <div class="container">
@@ -283,15 +287,15 @@
                             <div class="controls">
                                 <div class="quality-box mb-3">
                                     <span class="quality-label">الجودة: <span id="q-val">90%</span></span>
-                                    <input type="range" id="qualityRange" min="10" max="100" value="90" oninput="updateQuality(this.value)">
+                                    <input type="range" id="qualityRange" min="10" max="100" value="90" oninput="updateQuality(this.value)" aria-label="qualityRange">
                                 </div>
                                 <div class="row g-2">
-                                    <div class="col-6"><input type="number" id="resizeWidth" class="form-control form-control-sm" placeholder="العرض" oninput="liveUpdate()"></div>
-                                    <div class="col-6"><input type="number" id="resizeHeight" class="form-control form-control-sm" placeholder="الارتفاع" oninput="liveUpdate()"></div>
+                                    <div class="col-6"><input type="number" id="resizeWidth" class="form-control form-control-sm" placeholder="العرض" oninput="liveUpdate()" aria-label="العرض"></div>
+                                    <div class="col-6"><input type="number" id="resizeHeight" class="form-control form-control-sm" placeholder="الارتفاع" oninput="liveUpdate()" aria-label="الارتفاع"></div>
                                 </div>
                                 <div class="mt-2">
                                     <label class="small fw-bold" style="font-size:10px; cursor:pointer;">
-                                        <input type="checkbox" id="maintainAspect" checked onchange="liveUpdate()"> الحفاظ على التناسب الذكي
+                                        <input type="checkbox" id="maintainAspect" checked onchange="liveUpdate()" aria-label="maintainAspect"> الحفاظ على التناسب الذكي
                                     </label>
                                 </div>
                             </div>
@@ -303,14 +307,14 @@
                             <div class="controls">
                                 <div class="d-flex gap-2 mb-3">
                                     <label class="effect-pill" id="bw-pill">
-                                        <input type="checkbox" id="grayscaleCheck" onchange="toggleBW()"> أبيض وأسود
+                                        <input type="checkbox" id="grayscaleCheck" onchange="toggleBW()" aria-label="grayscaleCheck"> أبيض وأسود
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" id="watermarkText" class="form-control form-control-sm mb-2" placeholder="نص العلامة المائية..." oninput="liveUpdate()">
+                                    <input type="text" id="watermarkText" class="form-control form-control-sm mb-2" placeholder="نص العلامة المائية..." oninput="liveUpdate()" aria-label="نص العلامة المائية...">
                                     <div class="d-flex align-items:center gap-2">
                                         <span class="small text-muted">اللون:</span>
-                                        <input type="color" id="watermarkColor" value="#ffffff" oninput="liveUpdate()" style="width:30px;height:20px;padding:0;border:none;">
+                                        <input type="color" id="watermarkColor" value="#ffffff" oninput="liveUpdate()" style="width:30px;height:20px;padding:0;border:none;" aria-label="watermarkColor">
                                     </div>
                                 </div>
                             </div>
@@ -321,7 +325,7 @@
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <h4>اسحب وأفلت الصور هنا</h4>
                         <p class="text-muted" id="acceptText">أو اضغط Ctrl+V للصق من الحافظة</p>
-                        <input type="file" id="fileInput" multiple accept="image/*">
+                        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" aria-label="fileInput">
                     </div>
 
                     <div id="fileList" class="image-list"></div>
@@ -344,6 +348,7 @@
     </div>
 </div>
 
+</main>
 <site-footer></site-footer>
 </div>
 
@@ -353,6 +358,8 @@ let sourceFilter = 'all';
 let quality = 0.9;
 let filesToProcess = [];
 let processedResults = [];
+let currentRunId = 0;
+let liveUpdateTimer = null;
 
 function setSourceFilter(el, type) {
     sourceFilter = type;
@@ -376,7 +383,7 @@ function setFormat(el, f) {
 function updateQuality(v) {
     quality = v / 100;
     document.getElementById('q-val').innerText = v + '%';
-    if (filesToProcess.length > 0) processAll();
+    if (filesToProcess.length > 0) liveUpdate();
 }
 
 function toggleBW() {
@@ -384,7 +391,13 @@ function toggleBW() {
     liveUpdate();
 }
 
-function liveUpdate() { if (filesToProcess.length > 0) processAll(); }
+function liveUpdate() {
+    if (filesToProcess.length === 0) return;
+    clearTimeout(liveUpdateTimer);
+    liveUpdateTimer = setTimeout(() => {
+        processAll();
+    }, 150);
+}
 
 window.addEventListener('paste', e => {
     const items = e.clipboardData.items;
@@ -398,7 +411,7 @@ window.addEventListener('paste', e => {
 
 const fileInput = document.getElementById('fileInput');
 const dropZone = document.getElementById('dropZone');
-fileInput.onchange = e => handleFiles(e.target.files);
+fileInput.onchange = e => { handleFiles(e.target.files); fileInput.value = ''; };
 dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('dragover'); };
 dropZone.ondragleave = () => dropZone.classList.remove('dragover');
 dropZone.ondrop = e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); };
@@ -409,6 +422,7 @@ function handleFiles(files) {
 }
 
 async function processAll() {
+    const runId = ++currentRunId;
     const list = document.getElementById('fileList');
     list.innerHTML = '';
     processedResults = [];
@@ -419,15 +433,23 @@ async function processAll() {
         const file = filtered[i];
         const item = document.createElement('div');
         item.className = 'image-item';
-        item.innerHTML = `<img class="thumb" src="${URL.createObjectURL(file)}" alt="${file.name}" loading="lazy"><div class="info"><span class="name">${file.name}</span><div class="sizes"><span>${(file.size/1024).toFixed(1)} KB</span> <span id="new-size-${i}">...</span></div></div><div class="actions"><button class="btn-action btn-dl" id="dl-${i}" aria-label="تحميل الصورة المحولة" disabled><i class="fa-solid fa-download"></i></button><button class="btn-action btn-rm" aria-label="حذف الصورة من القائمة" onclick="removeFile('${file.name}')"><i class="fa-solid fa-xmark"></i></button></div>`;
+        item.innerHTML = `<img class="thumb" src="${URL.createObjectURL(file)}" alt="${file.name}" loading="lazy"><div class="info"><span class="name">${file.name}</span><div class="sizes"><span>${(file.size/1024).toFixed(1)} KB</span> <span id="new-size-${i}">...</span></div></div><div class="actions"><button class="btn-action btn-dl" id="dl-${i}" aria-label="تحميل الصورة المحولة" disabled><i class="fa-solid fa-download"></i></button><button class="btn-action btn-rm" aria-label="حذف الصورة من القائمة" onclick="removeFile(${i})"><i class="fa-solid fa-xmark"></i></button></div>`;
         list.appendChild(item);
 
         try {
             const result = await convertImage(file, targetFormat);
+            if (runId !== currentRunId) return;
             processedResults.push(result);
             const reduction = ((1 - result.blob.size / file.size) * 100).toFixed(0);
-            document.getElementById(`new-size-${i}`).innerHTML = `➜ ${(result.blob.size/1024).toFixed(1)} KB <span class="size-reduction">(${reduction > 0 ? '-' : '+'}${Math.abs(reduction)}%)</span>`;
-            const dl = document.getElementById(`dl-${i}`); dl.disabled = false; dl.onclick = () => downloadOne(result);
+            const sizeEl = document.getElementById(`new-size-${i}`);
+            if (sizeEl) {
+                sizeEl.innerHTML = `➜ ${(result.blob.size/1024).toFixed(1)} KB <span class="size-reduction">(${reduction > 0 ? '-' : '+'}${Math.abs(reduction)}%)</span>`;
+            }
+            const dl = document.getElementById(`dl-${i}`);
+            if (dl) {
+                dl.disabled = false;
+                dl.onclick = () => downloadOne(result);
+            }
         } catch (err) { }
     }
 }
@@ -441,16 +463,6 @@ function convertImage(file, format) {
     const wmColor = document.getElementById('watermarkColor').value;
 
     return new Promise((resolve, reject) => {
-        if (format === 'svg') {
-            const reader = new FileReader();
-            reader.onload = e => {
-                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><image href="${e.target.result}" width="100%" height="100%"/></svg>`;
-                resolve({ blob: new Blob([svg], {type: 'image/svg+xml'}), name: file.name.replace(/\.[^/.]+$/, "") + '.svg' });
-            };
-            reader.readAsDataURL(file);
-            return;
-        }
-
         const img = new Image();
         img.src = URL.createObjectURL(file);
         img.onload = () => {
@@ -470,18 +482,34 @@ function convertImage(file, format) {
             else if (rWidth) { h = (img.height / img.width) * parseInt(rWidth); w = parseInt(rWidth); }
             else if (rHeight) { w = (img.width / img.height) * parseInt(rHeight); h = parseInt(rHeight); }
 
-            canvas.width = w; canvas.height = h;
+            const targetW = Math.max(1, Math.round(w));
+            const targetH = Math.max(1, Math.round(h));
+            canvas.width = targetW;
+            canvas.height = targetH;
             const ctx = canvas.getContext('2d');
+
+            if (format === 'jpeg') {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, targetW, targetH);
+            }
+
             if (isBW) ctx.filter = 'grayscale(100%)';
-            ctx.drawImage(img, 0, 0, w, h);
+            ctx.drawImage(img, 0, 0, targetW, targetH);
 
             if (wmText) {
                 ctx.filter = 'none';
-                ctx.font = `${Math.max(w,h) * 0.03}px Cairo`;
+                ctx.font = `${Math.max(targetW, targetH) * 0.03}px Cairo`;
                 ctx.fillStyle = wmColor;
                 ctx.globalAlpha = 0.5;
                 ctx.textAlign = "right";
-                ctx.fillText(wmText, w - 20, h - 20);
+                ctx.fillText(wmText, targetW - 20, targetH - 20);
+            }
+
+            if (format === 'svg') {
+                const dataUrl = canvas.toDataURL('image/png');
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${targetW}" height="${targetH}" viewBox="0 0 ${targetW} ${targetH}"><image href="${dataUrl}" width="${targetW}" height="${targetH}"/></svg>`;
+                resolve({ blob: new Blob([svg], {type: 'image/svg+xml'}), name: file.name.replace(/\.[^/.]+$/, "") + '.svg' });
+                return;
             }
 
             canvas.toBlob(blob => {
@@ -511,12 +539,23 @@ async function downloadAllZip() {
     window.showToast("تم تحميل جميع الصور في ملف ZIP", "success");
 }
 
-function removeFile(n) { filesToProcess = filesToProcess.filter(f => f.name !== n); processAll(); }
-function clearAll() { filesToProcess = []; processAll(); }
+function removeFile(i) {
+    const filtered = filesToProcess.filter(f => sourceFilter === 'all' || f.type.includes(sourceFilter));
+    const target = filtered[i];
+    if (target) {
+        const realIdx = filesToProcess.indexOf(target);
+        if (realIdx !== -1) filesToProcess.splice(realIdx, 1);
+    }
+    fileInput.value = '';
+    processAll();
+}
+function clearAll() {
+    filesToProcess = [];
+    fileInput.value = '';
+    processAll();
+}
 window.onload = () => AOS.init({ duration: 800, once: true });
 </script>
 
 </body>
 </html>
-
-

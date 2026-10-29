@@ -80,19 +80,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" crossorigin="anonymous">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.26" defer></script>
+<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.27" defer></script>
 
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -114,6 +114,7 @@
 
 <div id="home-content">
 <site-header></site-header>
+<main id="main-content">
 
 <div class="page-header-unified">
     <div class="container" data-aos="fade-down">
@@ -148,7 +149,7 @@
                 <div class="search-card" data-aos="fade-up">
                     <div id="url-mode">
                         <div class="input-group-custom">
-                            <input type="url" id="siteUrl" class="url-input" placeholder="https://example.com">
+                            <input type="url" id="siteUrl" class="url-input" placeholder="https://example.com" aria-label="https://example.com">
                             <button class="btn-analyze" onclick="startAnalysis()">تحليل الآن</button>
                         </div>
                         <div class="text-center mt-4">
@@ -158,7 +159,7 @@
                         </div>
                     </div>
                     <div id="code-mode" style="display:none">
-                        <textarea id="htmlCode" class="code-editor" placeholder="ألصق كود الـ HTML هنا..."></textarea>
+                        <textarea id="htmlCode" class="code-editor" placeholder="ألصق كود الـ HTML هنا..." aria-label="ألصق كود الـ HTML هنا..."></textarea>
                         <button class="btn-analyze w-100 mt-4 h-50px" onclick="startAnalysis()">تحليل الكود المكتوب</button>
                     </div>
                 </div>
@@ -261,6 +262,7 @@
 
 </div>
 
+</main>
 <site-footer></site-footer>
 
 </body>

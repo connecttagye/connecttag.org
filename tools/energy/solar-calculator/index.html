@@ -80,14 +80,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; transition: 0.3s; }
@@ -164,8 +164,6 @@
 </head>
 <body>
 
-<site-preloader></site-preloader>
-
 <div id="home-content">
 <site-header></site-header>
 
@@ -218,7 +216,7 @@
                         <div class="suggestion-card" id="solar-results">
                             <h5 class="fw-bold mb-3 border-bottom pb-2 text-primary">النظام الشمسي المقترح:</h5>
                             <div class="suggest-item"><span class="suggest-label">حجم الإنفيرتر:</span><span class="suggest-val" id="resInverter">-</span></div>
-                            <div class="suggest-item"><span class="suggest-label">سعة البطاريات:</span><span class="suggest-val" id="resBattery">-</span></div>
+                            <div class="suggest-item"><span class="suggest-label">سعة البطاريات (12V):</span><span class="suggest-val" id="resBattery">-</span></div>
                             <div class="suggest-item"><span class="suggest-label">قدرة الألواح:</span><span class="suggest-val" id="resPanels">-</span></div>
                         </div>
 
@@ -261,7 +259,7 @@ let currentMode = 'solar';
 const appliancesData = [
     { id: 'led', name: 'إضاءة LED', icon: 'lightbulb', watt: 12, hours: 6 },
     { id: 'tv', name: 'تلفزيون LED', icon: 'tv', watt: 80, hours: 5 },
-    { id: 'fridge', name: 'ثلاجة إنفيرتر', icon: 'snowflake', watt: 150, hours: 24 },
+    { id: 'fridge', name: 'ثلاجة إنفيرتر', icon: 'snowflake', watt: 150, hours: 10 },
     { id: 'fan', name: 'مروحة سقف', icon: 'wind', watt: 60, hours: 8 },
     { id: 'laptop', name: 'لابتوب', icon: 'laptop', watt: 65, hours: 4 },
     { id: 'phone', name: 'شاحن جوال', icon: 'mobile-screen', watt: 15, hours: 3 },
@@ -300,7 +298,17 @@ function addAppliance(id) {
 }
 
 function updateItem(index, field, value) {
-    selectedAppliance[index][field] = parseFloat(value) || 0;
+    let num = parseFloat(value);
+    if (field === 'qty') {
+        if (isNaN(num) || num < 1) num = 1;
+        else num = Math.round(num);
+    } else if (field === 'watt') {
+        if (isNaN(num) || num < 1) num = 1;
+    } else if (field === 'hours') {
+        if (isNaN(num) || num < 0.5) num = 0.5;
+        if (num > 24) num = 24;
+    }
+    selectedAppliance[index][field] = num;
     calculate();
 }
 
@@ -320,10 +328,10 @@ function renderSelected() {
             <div class="icon"><i class="fa-solid fa-${app.icon}"></i></div>
             <div class="info">
                 <span class="name">${app.name}</span>
-                <div class="d-flex gap-2 mt-2">
-                    <div class="qty-ctrl"><button class="btn-qty" aria-label="تقليل الكمية" onclick="updateItem(${i}, 'qty', ${app.qty - 1}); renderSelected();">-</button><span class="qty-val">${app.qty}</span><button class="btn-qty" aria-label="زيادة الكمية" onclick="updateItem(${i}, 'qty', ${app.qty + 1}); renderSelected();">+</button></div>
-                    <input type="number" class="watt-input" aria-label="واط الجهاز" value="${app.watt}" oninput="updateItem(${i}, 'watt', this.value)">
-                    <input type="number" class="hours-input" aria-label="ساعات التشغيل اليومية" value="${app.hours}" oninput="updateItem(${i}, 'hours', this.value)">
+                <div class="d-flex align-items-center gap-2 mt-2 flex-wrap">
+                    <div class="qty-ctrl" title="الكمية"><button class="btn-qty" aria-label="تقليل الكمية" onclick="${app.qty > 1 ? `updateItem(${i}, 'qty', ${app.qty - 1}); renderSelected();` : `removeItem(${i});`}">-</button><span class="qty-val">${app.qty}</span><button class="btn-qty" aria-label="زيادة الكمية" onclick="updateItem(${i}, 'qty', ${app.qty + 1}); renderSelected();">+</button></div>
+                    <label class="d-flex align-items-center gap-1 mb-0 small text-muted" title="قدرة الجهاز بالواط"><input type="number" min="1" class="watt-input" aria-label="واط الجهاز" title="قدرة الجهاز (واط)" value="${app.watt}" oninput="updateItem(${i}, 'watt', this.value)"> <span>واط</span></label>
+                    <label class="d-flex align-items-center gap-1 mb-0 small text-muted" title="ساعات التشغيل اليومية"><input type="number" min="0.5" max="24" step="0.5" class="hours-input" aria-label="ساعات التشغيل اليومية" title="ساعات التشغيل اليومية" value="${app.hours}" oninput="updateItem(${i}, 'hours', this.value)"> <span>ساعة</span></label>
                 </div>
             </div>
             <button class="btn btn-sm text-danger" aria-label="حذف الجهاز" onclick="removeItem(${i})"><i class="fa-solid fa-trash-can"></i></button>
@@ -343,7 +351,7 @@ function calculate() {
         const dod = parseFloat(document.getElementById('batteryType').value);
         const invSize = Math.ceil((maxInstantWatt * 1.25) / 500) * 500;
         document.getElementById('resInverter').innerText = invSize + ' Watt';
-        document.getElementById('resBattery').innerText = Math.ceil(totalWh / (12 * dod)) + ' Ah';
+        document.getElementById('resBattery').innerText = Math.ceil(totalWh / (12 * dod)) + ' Ah (12V)';
         document.getElementById('resPanels').innerText = Math.ceil(totalWh / (sunHours * 0.8)) + ' Watt';
     } else {
         const kwhMonth = (totalWh / 1000) * 30;
@@ -353,7 +361,12 @@ function calculate() {
     }
 }
 
-window.onload = () => { initGrid(); AOS.init({duration: 800, once: true}); };
+window.onload = () => {
+    initGrid();
+    renderSelected();
+    if (typeof AOS !== 'undefined') AOS.init({duration: 800, once: true});
+};
 </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@ class SiteAppHeader extends HTMLElement {
     this.innerHTML = `
       <div class="ct-app-header">
         <div class="container text-center">
-          ${logo ? `<img src="${logo}" class="ct-app-logo" alt="${title}" loading="lazy">` : ''}
+          ${logo ? `<img src="${logo}" class="ct-app-logo" alt="${title}" width="120" height="120" fetchpriority="high">` : ''}
           <h1 class="ct-app-title">${title}</h1>
           <p class="ct-app-subtitle">${subtitle}</p>
         </div>
@@ -19,4 +19,8 @@ class SiteAppHeader extends HTMLElement {
   }
 }
 
-customElements.define('site-app-header', SiteAppHeader);
+if (!customElements.get('site-app-header')) {
+if (!customElements.get('site-app-header')) {
+  customElements.define('site-app-header', SiteAppHeader);
+}
+}

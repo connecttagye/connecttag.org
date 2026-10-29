@@ -38,10 +38,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -75,8 +75,8 @@
         }
         .color-item:hover .copy-hint { opacity: 1; }
     </style>
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
@@ -98,7 +98,7 @@
     <div class="tool-main-wrapper">
         <div class="container text-center">
             <div class="tool-card-base text-right" data-aos="zoom-in" style="display: inline-block; text-align: right;">
-                <input type="file" id="file-input" hidden accept="image/*">
+                <input type="file" id="file-input" hidden accept="image/*" aria-label="file-input">
                 <div class="upload-area" id="drop-zone" onclick="document.getElementById('file-input').click()">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
                     <h3>اسحب الصورة هنا أو اضغط للاختيار</h3>
@@ -160,6 +160,7 @@
     fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) handleFile(file);
+        fileInput.value = '';
     });
 
     function handleFile(file) {
@@ -176,6 +177,7 @@
             }, 100);
         };
         reader.readAsDataURL(file);
+        fileInput.value = '';
     }
 
     function extractColors(src) {
@@ -189,6 +191,8 @@
             let w = img.width, h = img.height;
             if (w > h) { if (w > maxDim) { h *= maxDim / w; w = maxDim; } }
             else { if (h > maxDim) { w *= maxDim / h; h = maxDim; } }
+            w = Math.max(1, Math.round(w));
+            h = Math.max(1, Math.round(h));
 
             canvas.width = w;
             canvas.height = h;
@@ -208,9 +212,9 @@
 
                 // Quantize to reduce number of unique colors
                 const q = 10;
-                const qr = Math.round(r / q) * q;
-                const qg = Math.round(g / q) * q;
-                const qb = Math.round(b / q) * q;
+                const qr = Math.min(255, Math.round(r / q) * q);
+                const qg = Math.min(255, Math.round(g / q) * q);
+                const qb = Math.min(255, Math.round(b / q) * q);
                 const key = `${qr},${qg},${qb}`;
 
                 colorMap[key] = (colorMap[key] || 0) + 1;
@@ -262,7 +266,8 @@
     }
 
     function rgbToHex(r, g, b) {
-        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        const clamp = (v) => Math.max(0, Math.min(255, Math.round(v)));
+        return "#" + ((1 << 24) + (clamp(r) << 16) + (clamp(g) << 8) + clamp(b)).toString(16).slice(1);
     }
 
     function copyToClipboard(text) {

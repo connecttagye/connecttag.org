@@ -80,15 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 
 <style>
     :root {
@@ -158,7 +158,7 @@
     .lang-tab { padding: 5px 15px; cursor: pointer; border-radius: 8px; font-weight: 700; font-size: 13px; }
     .lang-tab.active { background: #fff; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 
-    .code-output { background: #1e293b; color: #f8fafc; padding: 20px; border-radius: 15px; font-family: monospace; font-size: 12px; overflow-x: auto; white-space: pre; margin-top: 20px; text-align: left; direction: ltr; }
+    .code-output { background: #1e293b; color: #f8fafc; padding: 20px; border-radius: 15px; font-family: monospace; font-size: 12px; overflow-x: auto; white-space: pre; margin-top: 10px; text-align: left; direction: ltr; }
 
     @media print {
         body * { visibility: hidden; }
@@ -215,8 +215,8 @@
                         <!-- Step 1 -->
                         <div class="form-card" data-aos="fade-left">
                             <div class="lang-tabs">
-                                <div class="lang-tab active" onclick="setLang('ar')">العربية</div>
-                                <div class="lang-tab" onclick="setLang('en')">English</div>
+                                <div class="lang-tab active" onclick="setLang('ar', this)">العربية</div>
+                                <div class="lang-tab" onclick="setLang('en', this)">English</div>
                             </div>
                             <h2><span>1</span> المعلومات الأساسية</h2>
                             <div class="row">
@@ -248,12 +248,12 @@
                         <div class="form-card" data-aos="fade-left" data-aos-delay="100">
                             <h2><span>2</span> الخدمات المرتبطة</h2>
                             <div class="services-grid">
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-gplay" aria-label="Google Play" value="Google Play"><i class="fa-brands fa-google"></i><span>Google Play</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-appstore" aria-label="App Store" value="App Store"><i class="fa-brands fa-apple"></i><span>App Store</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-admob" aria-label="AdMob" value="AdMob"><i class="fa-brands fa-adn"></i><span>AdMob</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-firebase" aria-label="Firebase" value="Firebase"><i class="fa-solid fa-fire"></i><span>Firebase</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-onesignal" aria-label="OneSignal" value="OneSignal"><i class="fa-solid fa-bell"></i><span>OneSignal</span></label>
-                                <label class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-sentry" aria-label="Sentry" value="Sentry"><i class="fa-solid fa-bug"></i><span>Sentry</span></label>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-gplay" aria-label="Google Play" value="Google Play"><i class="fa-brands fa-google"></i><span>Google Play</span></div>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-appstore" aria-label="App Store" value="App Store"><i class="fa-brands fa-apple"></i><span>App Store</span></div>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-admob" aria-label="AdMob" value="AdMob"><i class="fa-brands fa-adn"></i><span>AdMob</span></div>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-firebase" aria-label="Firebase" value="Firebase"><i class="fa-solid fa-fire"></i><span>Firebase</span></div>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-onesignal" aria-label="OneSignal" value="OneSignal"><i class="fa-solid fa-bell"></i><span>OneSignal</span></div>
+                                <div class="service-chip" onclick="toggleSelection(this)"><input type="checkbox" class="srv" id="srv-sentry" aria-label="Sentry" value="Sentry"><i class="fa-solid fa-bug"></i><span>Sentry</span></div>
                             </div>
                         </div>
                     </div>
@@ -291,6 +291,10 @@
                         <div id="policyPreview" class="paper-document"></div>
 
                         <div id="cookieCodeArea" style="display:none">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold small">كود شريط الموافقة (HTML):</span>
+                                <button class="btn-custom btn-copy" onclick="copyCookieCode()"><i class="fa-solid fa-copy"></i> نسخ الكود</button>
+                            </div>
                             <div class="code-output" id="cookieCode"></div>
                         </div>
                     </div>
@@ -306,24 +310,35 @@
 let lang = 'ar';
 let docType = 'policy';
 
+const jurisdictionMapEn = {
+    "المملكة العربية السعودية": "the Kingdom of Saudi Arabia",
+    "الإمارات العربية المتحدة": "the United Arab Emirates",
+    "مصر": "the Arab Republic of Egypt",
+    "اليمن": "the Republic of Yemen",
+    "الأردن": "the Hashemite Kingdom of Jordan",
+    "الولايات المتحدة": "the United States"
+};
+
 const templates = {
     policy: {
         ar: {
             t: "سياسة الخصوصية لـ {n}",
             up: "آخر تحديث: {d}",
-            in: "نحن في <strong>{c}</strong> نولي أهمية قصوى لخصوصية مستخدمينا. تم بناء تطبيق <strong>{n}</strong> لتقديم خدمات متميزة. تهدف هذه السياسة لإطلاعكم على كيفية جمع بياناتكم واستخدامها وحمايتها.",
-            c1: "<h2>1. المعلومات التي نجمعها</h2><p>نقوم بجمع معلومات مثل البريد الإلكتروني الذي تقدمه لنا طواعية، ومعلومات تقنية مثل نوع الجهاز ونظام التشغيل لتحسين الخدمة.</p>",
-            c2: "<h2>2. الغرض من جمع البيانات</h2><p>تُستخدم البيانات لتشغيل وصيانة وتطوير الخدمة، وتحسين تجربة المستخدم، والتواصل معك بشأن التحديثات.</p>",
+            in: "نحن في <strong>{c}</strong> نولي أهمية قصوى لخصوصية مستخدمينا. تم بناء {p} <strong>{n}</strong> لتقديم خدمات متميزة وآمنة. تهدف هذه السياسة لإطلاعكم على كيفية جمع بياناتكم واستخدامها وحمايتها.",
+            c1_app: "<h2>1. المعلومات التي نجمعها</h2><p>نقوم بجمع المعلومات التي تقدمها لنا طواعية مثل البريد الإلكتروني، بالإضافة إلى بيانات تشخيصية أساسية مثل نوع الجهاز وإصدار نظام التشغيل لضمان استقرار التطبيق وتحسين جودته.</p>",
+            c1_web: "<h2>1. المعلومات التي نجمعها</h2><p>نقوم بجمع المعلومات التي تقدمها لنا طواعية مثل البريد الإلكتروني، بالإضافة إلى بيانات التصفح الأساسية وملفات تعريف الارتباط لتحسين أداء الموقع وتجربة الاستخدام.</p>",
+            c2: "<h2>2. الغرض من جمع البيانات وحمايتها</h2><p>تُستخدم البيانات لتشغيل وصيانة وتطوير {p}، وتحسين تجربة المستخدم، والتواصل معك بشأن التحديثات، مع الالتزام بتطبيق معايير التشفير والحماية القياسية لحفظ بياناتك.</p>",
             law: "<h2>3. القانون المعمول به</h2><p>تخضع هذه السياسة وتفسر وفقاً لقوانين <strong>{j}</strong>.</p>",
             mail: "<h2>4. التواصل معنا</h2><p>إذا كان لديك أي استفسارات، يمكنك التواصل معنا عبر البريد الإلكتروني: <a href='mailto:{m}'>{m}</a></p>",
-            srv: "<h3>خدمات الطرف الثالث المستخدمة</h3><ul>"
+            srv: "<h3>خدمات الأطراف الثالثة المعتمدة</h3><ul>"
         },
         en: {
             t: "Privacy Policy for {n}",
             up: "Last Updated: {d}",
-            in: "At <strong>{c}</strong>, your privacy is our top priority. The <strong>{n}</strong> application was built to provide excellent services. This policy informs you of our practices regarding data collection.",
-            c1: "<h2>1. Information Collection</h2><p>We collect personal information like email addresses and technical data such as device type and OS version to improve our services.</p>",
-            c2: "<h2>2. Purpose of Processing</h2><p>Your data is used to maintain, improve, and personalize the service, and to communicate updates.</p>",
+            in: "At <strong>{c}</strong>, your privacy is our top priority. The <strong>{n}</strong> {p} was built to provide reliable and secure services. This policy informs you of our practices regarding data collection, usage, and protection.",
+            c1_app: "<h2>1. Information Collection</h2><p>We collect personal information you voluntarily provide, such as email addresses, along with basic diagnostic data such as device type and operating system version to ensure application stability and improve our services.</p>",
+            c1_web: "<h2>1. Information Collection</h2><p>We collect personal information you voluntarily provide, such as email addresses, along with standard browser data and cookies to enhance website performance and user experience.</p>",
+            c2: "<h2>2. Purpose of Processing & Security</h2><p>Your data is used to operate, maintain, improve, and personalize the {p}, and to communicate updates, protected by industry-standard security and encryption protocols.</p>",
             law: "<h2>3. Governing Law</h2><p>This policy is governed by the laws of <strong>{j}</strong>.</p>",
             mail: "<h2>4. Contact Us</h2><p>If you have any questions, please contact us at: <a href='mailto:{m}'>{m}</a></p>",
             srv: "<h3>Third-Party Services</h3><ul>"
@@ -333,16 +348,16 @@ const templates = {
         ar: {
             t: "الشروط والأحكام لـ {n}",
             up: "آخر تحديث: {d}",
-            in: "مرحباً بكم في <strong>{n}</strong>. باستخدامك لهذه الخدمة، فإنك توافق على الالتزام بالشروط والأحكام التالية.",
-            c1: "<h2>1. قبول الشروط</h2><p>من خلال الوصول إلى {n}، فإنك تقر بأنك قرأت وفهمت وتوافق على الالتزام بهذه الشروط.</p>",
+            in: "مرحباً بكم في {p} <strong>{n}</strong> المملوك لـ <strong>{c}</strong>. باستخدامك لهذا الـ{p}، فإنك توافق على الالتزام بالشروط والأحكام التالية.",
+            c1: "<h2>1. قبول الشروط والاستخدام المشروع</h2><p>من خلال الوصول إلى {p} {n} واستخدامه، فإنك تقر بأنك قرأت وفهمت وتوافق على الالتزام بهذه الشروط، وتتعهد بعدم إساءة استخدام الخدمة.</p>",
             law: "<h2>2. القانون المعمول به</h2><p>تخضع هذه الشروط وتفسر وفقاً لقوانين <strong>{j}</strong>.</p>",
             mail: "<h2>3. اتصل بنا</h2><p>لأي استفسارات، يمكنك التواصل معنا عبر: <a href='mailto:{m}'>{m}</a></p>"
         },
         en: {
             t: "Terms and Conditions for {n}",
             up: "Last Updated: {d}",
-            in: "Welcome to <strong>{n}</strong>. By using this service, you agree to comply with and be bound by the following terms.",
-            c1: "<h2>1. Acceptance of Terms</h2><p>By accessing {n}, you acknowledge that you have read and agree to these terms.</p>",
+            in: "Welcome to the <strong>{n}</strong> {p}, operated by <strong>{c}</strong>. By accessing or using this {p}, you agree to comply with and be bound by the following terms.",
+            c1: "<h2>1. Acceptance of Terms</h2><p>By accessing and using the {n} {p}, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>",
             law: "<h2>2. Governing Law</h2><p>These terms are governed by the laws of <strong>{j}</strong>.</p>",
             mail: "<h2>3. Contact Us</h2><p>For any questions, please contact us at: <a href='mailto:{m}'>{m}</a></p>"
         }
@@ -356,10 +371,11 @@ function toggleSelection(el) {
     liveUpdate();
 }
 
-function setLang(l) {
+function setLang(l, el) {
     lang = l;
     document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
+    const targetEl = el || (typeof event !== 'undefined' && event ? (event.currentTarget || event.target) : null);
+    if (targetEl) targetEl.classList.add('active');
     document.getElementById('policyPreview').classList.toggle('en', l === 'en');
     liveUpdate();
 }
@@ -387,31 +403,43 @@ function setDocType(t) {
 }
 
 function liveUpdate() {
-    const n = document.getElementById('appName').value;
-    const c = document.getElementById('company').value || "[اسم الشركة]";
-    const m = document.getElementById('email').value || "[البريد الإلكتروني]";
-    const j = document.getElementById('jurisdiction').value;
+    const nInput = document.getElementById('appName').value.trim();
+    const cInput = document.getElementById('company').value.trim();
+    const mInput = document.getElementById('email').value.trim();
+    const jRaw = document.getElementById('jurisdiction').value;
+    const pTypeEl = document.querySelector('input[name="pType"]:checked');
+    const pType = pTypeEl ? pTypeEl.value : 'app';
+
+    const n = nInput || (lang === 'ar' ? "[اسم المشروع]" : "[Project Name]");
+    const c = cInput || (lang === 'ar' ? "[اسم الشركة]" : "[Company Name]");
+    const m = mInput || (lang === 'ar' ? "[البريد الإلكتروني]" : "[Email Address]");
+    const j = lang === 'en' ? (jurisdictionMapEn[jRaw] || jRaw) : jRaw;
+    const p = lang === 'ar' ? (pType === 'web' ? 'موقع' : 'تطبيق') : (pType === 'web' ? 'website' : 'application');
 
     let score = 0;
-    if(n) score += 50;
-    if(document.getElementById('email').value) score += 50;
+    if(nInput) score += 50;
+    if(mInput) score += 50;
     document.getElementById('prog-fill').style.width = score + '%';
     document.getElementById('prog-val').innerText = score + '%';
 
     const ctx = templates[docType][lang];
     const date = new Date().toLocaleDateString(lang === 'ar' ? 'ar-YE' : 'en-US', {year:'numeric', month:'long', day:'numeric'});
 
-    let html = `<h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;">${ctx.t.replace('{n}', n || '[...]')}</h2><p><strong>${ctx.up.replace('{d}', date)}</strong></p>`;
-    html += ctx.in.replace(/{c}/g, c).replace(/{n}/g, n || '[...]') + "<br>";
-    html += ctx.c1 + (ctx.c2 || "");
+    let html = `<h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;">${ctx.t.replace('{n}', n)}</h2><p><strong>${ctx.up.replace('{d}', date)}</strong></p>`;
+    html += ctx.in.replace(/{c}/g, c).replace(/{n}/g, n).replace(/{p}/g, p) + "<br>";
 
-    if(docType === 'policy') {
+    if (docType === 'policy') {
+        const c1Section = pType === 'web' ? ctx.c1_web : ctx.c1_app;
+        html += c1Section + ctx.c2.replace(/{p}/g, p);
+
         const srvs = document.querySelectorAll('.srv:checked');
         if(srvs.length > 0) {
             html += ctx.srv;
             srvs.forEach(s => html += `<li>${s.value}</li>`);
             html += "</ul>";
         }
+    } else {
+        html += ctx.c1.replace(/{n}/g, n).replace(/{p}/g, p);
     }
 
     html += ctx.law.replace('{j}', j);
@@ -433,6 +461,13 @@ function updateCookiePreview() {
     document.getElementById('cookieCode').innerText = code;
 }
 
+function copyCookieCode() {
+    const code = document.getElementById('cookieCode').innerText;
+    navigator.clipboard.writeText(code.trim()).then(() => {
+        if(window.showToast) window.showToast('تم نسخ كود الكوكيز بنجاح!', 'success');
+    });
+}
+
 function copyText(mode) {
     let content = document.getElementById('policyPreview').innerHTML;
     let textToCopy = (mode === 'plain') ? document.getElementById('policyPreview').innerText : content;
@@ -452,6 +487,6 @@ function downloadDoc() {
 
 window.onload = () => { if(typeof AOS !== 'undefined') AOS.init({duration: 800, once: true}); liveUpdate(); };
 </script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

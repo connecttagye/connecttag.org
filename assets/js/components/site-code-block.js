@@ -18,8 +18,8 @@ class SiteCodeBlock extends HTMLElement {
             <span class="dot green"></span>
           </div>
           <div class="ct-code-title">${title || language}</div>
-          <button class="ct-copy-btn" title="نسخ الكود">
-            <i class="fa-regular fa-copy"></i>
+          <button type="button" class="ct-copy-btn" title="نسخ الكود" aria-label="نسخ الكود">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i>
             <span class="copy-text">نسخ</span>
           </button>
         </div>
@@ -60,5 +60,6 @@ class SiteCodeBlock extends HTMLElement {
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
   }
 }
-
-customElements.define('site-code-block', SiteCodeBlock);
+if (!customElements.get('site-code-block')) {
+  customElements.define('site-code-block', SiteCodeBlock);
+}

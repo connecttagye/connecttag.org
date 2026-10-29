@@ -80,11 +80,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
 <style>
     :root {
@@ -142,6 +142,13 @@
         font-weight: 700; color: var(--primary-color); width: 100%; cursor: pointer;
     }
 
+    .btn-swap-dir {
+        background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+        color: #fff; border-radius: 10px; padding: 4px 10px; font-size: 12px; font-weight: 700;
+        cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-swap-dir:hover { background: rgba(255,255,255,0.25); }
+
     .result-display {
         text-align: center; margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05);
         border-radius: 15px; border: 1px dashed rgba(255,255,255,0.2);
@@ -152,7 +159,7 @@
     .disclaimer { font-size: 12px; color: #64748b; line-height: 1.7; margin-top: 30px; text-align: center; background: #fff; padding: 18px 24px; border-radius: 16px; border: 1px solid #e2e8f0; }
 </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -287,19 +294,32 @@
         <h3 class="text-center mb-4" style="font-weight: 900;"><i class="fa-solid fa-calculator"></i> حاسبة الصرف الذكية</h3>
         <div class="row align-items-center">
             <div class="col-md-4 mb-3 mb-md-0">
-                <label class="small mb-2 d-block opacity-75">المبلغ المراد تحويله:</label>
+                <label class="small mb-2 d-block opacity-75" id="amount-label">المبلغ المراد تحويله:</label>
                 <input type="number" id="calc-amount" class="calc-input" placeholder="0.00" oninput="calculate()">
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-                <label class="small mb-2 d-block opacity-75">العملة والمدينة:</label>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="small opacity-75 mb-0">العملة والاتجاه:</label>
+                    <button type="button" class="btn-swap-dir" onclick="reverseDirection()" title="عكس اتجاه التحويل">
+                        <i class="fa-solid fa-right-left"></i> عكس الاتجاه
+                    </button>
+                </div>
                 <select id="calc-type" class="calc-select" onchange="onPairChange()">
-                    <optgroup label="صنعاء (متوسط مرجعي)">
+                    <optgroup label="صنعاء (أجنبي ← ريال يمني)">
                         <option value="sanaa-usd">دولار ← ريال (صنعاء)</option>
                         <option value="sanaa-sar">سعودي ← ريال (صنعاء)</option>
                     </optgroup>
-                    <optgroup label="عدن (متوسط مرجعي)">
+                    <optgroup label="صنعاء (ريال يمني ← أجنبي)">
+                        <option value="sanaa-usd-rev">ريال (صنعاء) ← دولار</option>
+                        <option value="sanaa-sar-rev">ريال (صنعاء) ← سعودي</option>
+                    </optgroup>
+                    <optgroup label="عدن (أجنبي ← ريال يمني)">
                         <option value="aden-usd">دولار ← ريال (عدن)</option>
                         <option value="aden-sar">سعودي ← ريال (عدن)</option>
+                    </optgroup>
+                    <optgroup label="عدن (ريال يمني ← أجنبي)">
+                        <option value="aden-usd-rev">ريال (عدن) ← دولار</option>
+                        <option value="aden-sar-rev">ريال (عدن) ← سعودي</option>
                     </optgroup>
                 </select>
             </div>
@@ -329,8 +349,12 @@
     const currentRates = {
         'sanaa-usd': 535,
         'sanaa-sar': 140,
+        'sanaa-usd-rev': 538,
+        'sanaa-sar-rev': 141,
         'aden-usd': 1902,
-        'aden-sar': 498
+        'aden-sar': 498,
+        'aden-usd-rev': 1915,
+        'aden-sar-rev': 501
     };
 
     function onPairChange() {
@@ -342,13 +366,32 @@
         calculate();
     }
 
+    function reverseDirection() {
+        const select = document.getElementById('calc-type');
+        const val = select.value;
+        if (val.endsWith('-rev')) {
+            select.value = val.replace('-rev', '');
+        } else {
+            select.value = val + '-rev';
+        }
+        onPairChange();
+    }
+
     function calculate() {
         const amount = parseFloat(document.getElementById('calc-amount').value) || 0;
         const rate = parseFloat(document.getElementById('calc-custom-rate').value) || 0;
+        const type = document.getElementById('calc-type').value;
         const resultEl = document.getElementById('calc-result');
 
-        const result = amount * rate;
-        resultEl.textContent = result.toLocaleString('ar-YE') + " ريال يمني";
+        const isReverse = type.endsWith('-rev');
+        if (isReverse) {
+            const result = rate > 0 ? (amount / rate) : 0;
+            const currencyLabel = type.includes('usd') ? 'دولار أمريكي' : 'ريال سعودي';
+            resultEl.textContent = result.toLocaleString('ar-YE', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' ' + currencyLabel;
+        } else {
+            const result = amount * rate;
+            resultEl.textContent = result.toLocaleString('ar-YE', { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + ' ريال يمني';
+        }
     }
 </script>
 </body>

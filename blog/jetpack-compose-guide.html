@@ -14,6 +14,10 @@
 <meta property="og:title" content="Jetpack Compose: الدليل الشامل والمبسط للمطورين - كونكت تاق">
 <meta property="og:description" content="انتقل من XML إلى Jetpack Compose واختصر وقت التطوير بنسبة 50%. دليل شامل للمميزات والتطبيق." />
 <meta property="og:image" content="https://connecttag.org/upload/jetpack-compose.webp">
+  <meta property="og:image:alt" content="تطوير تطبيقات الأندرويد باستخدام Jetpack Compose">
+  <meta property="article:published_time" content="2026-08-16T18:00:00+03:00">
+  <meta property="article:modified_time" content="2026-08-16T18:00:00+03:00">
+  <meta property="article:section" content="برمجة وتطوير">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -21,24 +25,25 @@
 <meta name="twitter:title" content="مستقبل الأندرويد: Jetpack Compose - كونكت تاق">
 <meta name="twitter:description" content="انتقل من XML إلى Jetpack Compose واختصر وقت التطوير بنسبة 50%. دليل شامل للمميزات والتطبيق." />
 <meta name="twitter:image" content="https://connecttag.org/upload/jetpack-compose.webp" />
-<meta name="twitter:site" content="@connecttag_org" />
+  <meta name="twitter:image:alt" content="تطوير تطبيقات الأندرويد باستخدام Jetpack Compose" />
+<meta name="twitter:site" content="@connecttagye" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.27" defer></script>
 
 <script type="application/ld+json">
 [
@@ -66,7 +71,9 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/jetpack-compose-guide"
-    }
+    },
+    "articleSection": "برمجة وتطوير",
+    "inLanguage": "ar"
   },
   {
     "@context": "https://schema.org",
@@ -141,29 +148,7 @@
 ]
 </script>
 
-<style>
-    .security-card { background: #fcfcfc; border-right: 5px solid #0077b6; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-    .security-card h3 { margin-top: 0; color: #0077b6; }
-    .highlight-box { border-right: 5px solid #25d366; background: #f0fff4; padding: 20px; border-radius: 10px; margin: 25px 0; }
-
-    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
-    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
-    .toc-list { list-style: none; padding: 0; margin: 0; }
-    .toc-list li { margin-bottom: 8px; }
-    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
-
-    .summary-box { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; }
-    .summary-box h3 { color: white; margin-top: 0; font-size: 18px; margin-bottom: 15px; }
-    .summary-list { padding-right: 20px; margin: 0; }
-    .summary-list li { color: rgba(255,255,255,0.95) !important; font-size: 15px !important; margin-bottom: 5px !important; }
-
-    .faq-section { margin-top: 60px; border-top: 2px solid #eee; padding-top: 40px; }
-    .faq-item { margin-bottom: 30px; }
-    .faq-question { font-weight: 700; color: #333; font-size: 18px; margin-bottom: 10px; display: flex; gap: 10px; }
-    .faq-answer { color: #666; line-height: 1.7; padding-right: 28px; }
-</style>
-
-  <!-- PWA & Mobile Optimization Tags -->
+<!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
@@ -194,12 +179,12 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" alt="تطوير تطبيقات الأندرويد باستخدام Jetpack Compose" fetchpriority="high">
+                <img src="https://connecttag.org/upload/jetpack-compose.webp" class="img-responsive" alt="تطوير تطبيقات الأندرويد باستخدام Jetpack Compose" fetchpriority="high" width="2816" height="1536">
 
                 <p>شهد عالم الأندرويد تحولاً جذرياً في السنوات الأخيرة مع إطلاق <strong>Jetpack Compose</strong>. هذا المحرك الحديث ليس مجرد تحديث للمكتبات القديمة، بل هو إعادة تصور كاملة لكيفية بناء واجهات المستخدم (UI) باستخدام لغة Kotlin البرمجية، مما يجعل العملية أسرع، أسهل، وأكثر متعة للمطورين.</p>
 
                 <div class="summary-box">
-                    <h3><i class="fa-solid fa-rocket"></i> أهم ما ستجده في هذا الدليل:</h3>
+                    <div class="summary-title"><i class="fa-solid fa-rocket"></i> أهم ما ستجده في هذا الدليل:</div>
                     <ul class="summary-list">
                         <li>مفهوم البرمجة التعريفية (Declarative UI) وفوائدها.</li>
                         <li>المقارنة التقنية الكاملة بين Jetpack Compose و XML التقليدي.</li>

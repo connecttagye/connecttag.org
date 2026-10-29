@@ -25,6 +25,7 @@ class SiteHeader extends HTMLElement {
 
     this.innerHTML = `
       <header class="ct-header-navbar">
+        <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
             <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
@@ -33,35 +34,43 @@ class SiteHeader extends HTMLElement {
           <nav aria-label="التنقل الرئيسي">
             <ul class="ct-nav-menu" id="ct-nav-menu">
               <li class="ct-nav-item ${isHome ? 'active' : ''}">
-                <a href="${baseUrl}/" class="ct-nav-link">الرئيسية</a>
+                <a href="${baseUrl}/" class="ct-nav-link" ${isHome ? 'aria-current="page"' : ''}>الرئيسية</a>
               </li>
               <li class="ct-nav-item ${isCompanyPage ? 'active' : ''}">
-                <a href="${baseUrl}/company/" class="ct-nav-link">من نحن</a>
+                <a href="${baseUrl}/company/" class="ct-nav-link" ${isCompanyPage ? 'aria-current="page"' : ''}>من نحن</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}">
-                <a href="${baseUrl}/company/projects/" class="ct-nav-link">أعمالنا</a>
+                <a href="${baseUrl}/company/projects/" class="ct-nav-link" ${isActive(baseUrl + '/company/projects/') ? 'aria-current="page"' : ''}>أعمالنا</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}">
-                <a href="${baseUrl}/company/services/" class="ct-nav-link">الخدمات</a>
+                <a href="${baseUrl}/company/services/" class="ct-nav-link" ${isActive(baseUrl + '/company/services/') ? 'aria-current="page"' : ''}>الخدمات</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}">
-                <a href="${baseUrl}/blog/" class="ct-nav-link">المدونة</a>
+                <a href="${baseUrl}/blog/" class="ct-nav-link" ${isActive(baseUrl + '/blog/') ? 'aria-current="page"' : ''}>المدونة</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}">
-                <a href="${baseUrl}/store/" class="ct-nav-link">المتجر</a>
+                <a href="${baseUrl}/store/" class="ct-nav-link" ${isActive(baseUrl + '/store/') ? 'aria-current="page"' : ''}>المتجر</a>
               </li>
               <li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}">
-                <a href="${baseUrl}/tools/" class="ct-nav-link">الأدوات</a>
+                <a href="${baseUrl}/tools/" class="ct-nav-link" ${isActive(baseUrl + '/tools/') ? 'aria-current="page"' : ''}>الأدوات</a>
               </li>
             </ul>
           </nav>
 
-          <button class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" id="ct-menu-btn">
-            <i class="fa-solid fa-bars"></i>
+          <button type="button" class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" aria-controls="ct-nav-menu" id="ct-menu-btn">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
           </button>
         </div>
       </header>
     `;
+
+    // Ensure #main-content target exists for skip link
+    if (!document.getElementById('main-content')) {
+      const mainEl = document.querySelector('main') || this.nextElementSibling;
+      if (mainEl && !mainEl.id) {
+        mainEl.id = 'main-content';
+      }
+    }
 
     // Mobile Toggle Logic
     const toggleBtn = this.querySelector('#ct-menu-btn');
@@ -72,6 +81,16 @@ class SiteHeader extends HTMLElement {
         const isOpen = menu.classList.toggle('open');
         toggleBtn.setAttribute('aria-expanded', isOpen);
         toggleBtn.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+      });
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('open')) {
+          menu.classList.remove('open');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+          toggleBtn.focus();
+        }
       });
 
       // Close menu on link click
@@ -86,4 +105,8 @@ class SiteHeader extends HTMLElement {
   }
 }
 
-customElements.define('site-header', SiteHeader);
+if (!customElements.get('site-header')) {
+if (!customElements.get('site-header')) {
+  customElements.define('site-header', SiteHeader);
+}
+}

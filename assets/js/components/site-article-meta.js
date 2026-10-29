@@ -41,6 +41,6 @@ class SiteArticleMeta extends HTMLElement {
       </div>
     `;
   }
+}if (!customElements.get('site-article-meta')) {
+  customElements.define('site-article-meta', SiteArticleMeta);
 }
-
-customElements.define('site-article-meta', SiteArticleMeta);

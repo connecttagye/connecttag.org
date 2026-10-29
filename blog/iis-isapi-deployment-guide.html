@@ -14,6 +14,10 @@
 <meta property="og:title" content="نشر وتصحيح أخطاء وحدات ISAPI DLL على IIS - كونكت تاق">
 <meta property="og:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
 <meta property="og:image" content="https://connecttag.org/upload/iis-isapi-guide.webp">
+  <meta property="og:image:alt" content="نشر ISAPI DLL على IIS">
+  <meta property="article:published_time" content="2026-08-17T18:40:00+03:00">
+  <meta property="article:modified_time" content="2026-08-17T18:40:00+03:00">
+  <meta property="article:section" content="استضافة وسحابيات">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -21,24 +25,25 @@
 <meta name="twitter:title" content="دليل نشر وتصحيح ISAPI DLL على خادم IIS - كونكت تاق">
 <meta name="twitter:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
 <meta name="twitter:image" content="https://connecttag.org/upload/iis-isapi-guide.webp" />
-<meta name="twitter:site" content="@connecttag_org" />
+  <meta name="twitter:image:alt" content="نشر ISAPI DLL على IIS" />
+<meta name="twitter:site" content="@connecttagye" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.27" defer></script>
 
 <script type="application/ld+json">
 [
@@ -66,7 +71,9 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/iis-isapi-deployment-guide"
-    }
+    },
+    "articleSection": "استضافة وسحابيات",
+    "inLanguage": "ar"
   },
   {
     "@context": "https://schema.org",
@@ -130,20 +137,11 @@
     .tech-card h3 { margin-top: 0; color: #0077b6; font-size: 18px; }
     .step-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin-bottom: 20px; position: relative; }
     .step-number { position: absolute; top: -10px; right: 20px; background: #0077b6; color: #fff; padding: 2px 12px; border-radius: 20px; font-weight: 800; font-size: 12px; }
-
-    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
-    .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
-    .toc-list { list-style: none; padding: 0; margin: 0; }
-    .toc-list li { margin-bottom: 8px; }
-    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
-
     .warning-box { border-right: 5px solid #ef4444; background: #fff5f5; padding: 20px; border-radius: 10px; margin: 25px 0; }
     .info-box { border-right: 5px solid #3b82f6; background: #eff6ff; padding: 20px; border-radius: 10px; margin: 25px 0; }
-
     code { background: #f1f5f9; color: #e11d48; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
 </style>
-
-  <!-- PWA & Mobile Optimization Tags -->
+<!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
@@ -174,11 +172,21 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high">
+                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high" width="2816" height="1536">
 
                 <p class="lead">إذا كنت تعمل على تطوير تطبيقات الويب أو واجهات برمجة التطبيقات (APIs) المعتمدة على مكتبات الربط الديناميكي (ISAPI DLL)، فإن استضافتها على خادم Microsoft IIS يتطلب إعدادات دقيقة لضمان الأداء العالي والاستقرار.</p>
 
                 <p>في هذا المقال، سنستعرض دليلاً عملياً وخطوة بخطوة لنشر تطبيقك بنجاح، بالإضافة إلى كيفية إعداد بيئة تصحيح الأخطاء (Debugging) وأهم النصائح لتجاوز المشاكل الشائعة. وبعد إتمام النشر، ننصحك بمراجعة <a href="https://connecttag.org/blog/iis-hardening-guide">دليل تأمين وتحصين خادم Microsoft IIS</a> و<a href="https://connecttag.org/blog/api-security-guide">دليل حماية واجهات برمجة التطبيقات (API Security)</a>.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-gears"></i> ملخص خطوات نشر وحدات ISAPI DLL على IIS:</div>
+                    <ul class="summary-list">
+                        <li>تثبيت مكونات ISAPI Extensions و ISAPI Filters من إعدادات Windows Features.</li>
+                        <li>إنشاء Application Pool مخصص وضبط توافقية معمارية المعالج (32-Bit / 64-Bit).</li>
+                        <li>تفعيل صلاحية Execute في Handler Mappings واعتماد المسار في ISAPI Restrictions.</li>
+                        <li>إعداد صلاحيات حساب الخدمة (IIS_IUSRS) وتصحيح الأخطاء عبر Attach to Process (w3wp.exe).</li>
+                    </ul>
+                </div>
 
                 <div class="toc-container">
                     <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>

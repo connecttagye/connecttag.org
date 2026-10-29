@@ -80,18 +80,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css?v=1.1.26" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css?v=1.1.27" />
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js?v=1.1.26"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js?v=1.1.27"></script>
 
     <style>
         body {
@@ -101,6 +101,55 @@
             background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
             background-size: 24px 24px;
         }
+
+        /* Bootstrap 3.1.0 compatibility utilities */
+        .btn-check {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+        }
+        @keyframes spinner-border {
+            to { transform: rotate(360deg); }
+        }
+        .spinner-border {
+            display: inline-block;
+            width: 3rem;
+            height: 3rem;
+            vertical-align: -0.125em;
+            border: 0.3em solid #006b98;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: 0.75s linear infinite spinner-border;
+        }
+        .justify-content-center {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .d-flex { display: flex !important; }
+        .align-items-center { align-items: center !important; }
+        .align-items-end { align-items: flex-end !important; }
+        .gap-3 { gap: 12px !important; }
+        .w-100 { width: 100% !important; }
+        .fw-bold { font-weight: 800 !important; }
+        .m-0 { margin: 0 !important; }
+        .mb-3 { margin-bottom: 15px !important; }
+        .mb-4 { margin-bottom: 20px !important; }
+        .mt-4 { margin-top: 20px !important; }
+        .mt-5 { margin-top: 40px !important; }
+        .p-4 { padding: 24px !important; }
+        .p-5 { padding: 40px !important; }
+        .pb-5 { padding-bottom: 50px !important; }
+        .py-5 { padding-top: 50px !important; padding-bottom: 50px !important; }
+        .px-3 { padding-left: 14px !important; padding-right: 14px !important; }
+        .rounded-4 { border-radius: 20px !important; }
+        .rounded-pill { border-radius: 50px !important; }
+        .bg-white { background-color: #ffffff !important; }
+        .bg-primary { background-color: #006b98 !important; color: #ffffff !important; }
+        .border { border: 1px solid #edf2f7 !important; }
+        .fs-2 { font-size: 28px !important; }
+        .me-2 { margin-left: 8px !important; }
+        .input-label { display: block; font-weight: 700; font-size: 14px; color: #334155; margin-bottom: 8px; }
 
         .tool-header {
             background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
@@ -180,6 +229,8 @@
             padding: 10px 25px;
             color: #64748b;
             transition: 0.3s;
+            cursor: pointer;
+            margin: 0;
         }
 
         .btn-lookup {
@@ -195,6 +246,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-top: 28px;
         }
         .btn-lookup:hover {
             background: #00567a;
@@ -314,6 +366,7 @@
             border: 1px solid #e2e8f0;
             color: #64748b;
             transition: 0.3s;
+            cursor: pointer;
         }
         .btn-action-round:hover {
             background: #006b98;
@@ -339,6 +392,7 @@
             .prefixes-list { justify-content: center; }
             .op-actions { flex-direction: row; margin-top: 10px; }
             .card-accent-line { height: 6px; width: 100%; bottom: auto; }
+            .btn-lookup { margin-top: 15px; }
         }
 
         /* Choices.js Customization */
@@ -356,12 +410,13 @@
         .choices__item--choice { display: flex; align-items: center; gap: 10px; }
         .choice-flag { width: 20px; border-radius: 2px; }
     </style>
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
 </head>
 <body>
-
+<site-toast></site-toast>
 <site-header></site-header>
 
 <main>
@@ -563,7 +618,7 @@
 
         async function performSearch(type) {
             if (!cfToken) {
-                if (window.showToast) window.showToast('يرجى إكمال التحقق الأمني أولاً', 'warning');
+                if (window.showToast) window.showToast('يرجى إكمال التحقق الأمني أولاً', 'warn');
                 return;
             }
 
@@ -593,6 +648,8 @@
                     resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass-chart"></i><h4>لا توجد نتائج</h4><p>لم نجد مشغلين مطابقين لبحثك. تأكد من صحة الأكواد المدخلة.</p></div>';
                 }
             } catch(err) {
+                if (window.turnstile) turnstile.reset();
+                cfToken = '';
                 resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h4>خطأ في الاتصال</h4><p>فشل الوصول للخادم. يرجى المحاولة لاحقاً.</p></div>';
             }
         }
@@ -601,7 +658,7 @@
             resultsContent.innerHTML = `<div class="d-flex align-items-center gap-3 mb-4"><span class="badge bg-primary rounded-pill px-3">${operators.length}</span> <h5 class="fw-bold m-0">مشغلين تم العثور عليهم:</h5></div>`;
 
             operators.forEach((op, index) => {
-                const prefixes = op.prefixes ? op.prefixes.split(',').map(p => p.trim()) : [];
+                const prefixes = op.prefixes ? op.prefixes.split(',').map(p => p.trim()).filter(Boolean) : [];
                 const mainColor = op.color || '#006b98';
                 const delay = index * 100;
 
@@ -640,9 +697,11 @@
                                 <button class="btn-action-round" onclick="copyJson(${JSON.stringify(op).replace(/"/g, '&quot;')})" title="نسخ JSON">
                                     <i class="fa-solid fa-code"></i>
                                 </button>
+                                ${prefixes.length > 0 ? `
                                 <button class="btn-action-round" onclick="copyRegex('${prefixes.join('|')}')" title="نسخ Regex">
                                     <i class="fa-solid fa-terminal"></i>
                                 </button>
+                                ` : ''}
                             </div>
                         </div>
                     </div>
@@ -659,6 +718,10 @@
         };
 
         window.copyRegex = (pattern) => {
+            if (!pattern) {
+                if (window.showToast) window.showToast('لا تتوفر بادئات أرقام لهذا المشغل', 'warn');
+                return;
+            }
             const regex = `^(${pattern})\\d+`;
             navigator.clipboard.writeText(regex).then(() => {
                 if (window.showToast) window.showToast('تم نسخ نمط Regex للبادئات', 'success');

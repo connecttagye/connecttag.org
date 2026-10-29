@@ -1,9 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
+    function setNoIndex() {
+        if (!document.querySelector('meta[name="robots"]')) {
+            const m = document.createElement('meta');
+            m.name = 'robots';
+            m.content = 'noindex';
+            document.head.appendChild(m);
+        }
+    }
+
+    function loadAdSenseOnce() {
+        if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+            const s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357';
+            s.crossOrigin = 'anonymous';
+            document.head.appendChild(s);
+        }
+    }
+
     const params = CompanyApp.getQueryParams();
     const querySlug = params.get('slug');
     const queryId = params.get('id');
 
     if (!querySlug && !queryId) {
+        setNoIndex();
         window.location.href = './';
         return;
     }
@@ -32,9 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderDetails(c) {
         const displayName = c.arName || c.name || 'تفاصيل الشركة';
         const displayDesc = c.arDescription || c.description || `استعرض كافة خدمات وأكواد وباقات شركة ${displayName} في اليمن.`;
+        const canonicalHref = c.slug
+            ? `https://connecttag.org/tools/telecom/company/details?slug=${encodeURIComponent(c.slug)}`
+            : (c.id ? `https://connecttag.org/tools/telecom/company/details?id=${encodeURIComponent(c.id)}` : window.location.href);
 
         document.title = `${displayName} - الخدمات والأكواد والباقات | كونكت تاق`;
-        document.getElementById('breadcrumb-company-name').textContent = displayName;
+
+        const breadcrumbEl = document.querySelector('site-breadcrumb');
+        if (breadcrumbEl) {
+            breadcrumbEl.setAttribute('items', JSON.stringify([
+                { title: 'الرئيسية', url: 'https://connecttag.org/' },
+                { title: 'الأدوات', url: 'https://connecttag.org/tools/' },
+                { title: 'الاتصالات والإنترنت', url: 'https://connecttag.org/tools/telecom/' },
+                { title: 'دليل شركات الاتصالات', url: 'https://connecttag.org/tools/telecom/company/' },
+                { title: displayName, url: canonicalHref, id: 'breadcrumb-company-name' }
+            ]));
+        }
+        const breadcrumbNameEl = document.getElementById('breadcrumb-company-name');
+        if (breadcrumbNameEl) {
+            breadcrumbNameEl.textContent = displayName;
+        }
 
         const logoEl = document.getElementById('comp-logo');
         logoEl.src = c.logo;
@@ -107,14 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        updateSEO(displayName, displayDesc, c.logo);
+        updateSEO(displayName, displayDesc, c.logo, c);
         document.getElementById('loading-screen').style.display = 'none';
         document.getElementById('company-content').style.display = 'block';
+        loadAdSenseOnce();
     }
 
-    function updateSEO(name, desc, logo) {
+    function updateSEO(name, desc, logo, c) {
         const pageTitle = `${name} - الخدمات والأكواد والباقات | كونكت تاق`;
-        const currentUrl = window.location.href;
+        const currentUrl = c && c.slug
+            ? `https://connecttag.org/tools/telecom/company/details?slug=${encodeURIComponent(c.slug)}`
+            : (c && c.id ? `https://connecttag.org/tools/telecom/company/details?id=${encodeURIComponent(c.id)}` : window.location.href);
         const logoUrl = logo || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';
 
         document.getElementById('meta-description')?.setAttribute('content', desc);
@@ -143,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleNotFound() {
+        setNoIndex();
         document.getElementById('loading-screen').style.display = 'none';
         CompanyApp.showToast('عذراً، الشركة غير موجودة أو تعذر تحميل البيانات.', 1500);
         setTimeout(() => {

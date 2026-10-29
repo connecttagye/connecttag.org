@@ -80,10 +80,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -160,8 +160,8 @@
     }
 </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
@@ -210,7 +210,7 @@
                                 <span>HEADER: <small>ALGORITHM & TOKEN TYPE</small></span>
                                 <button class="copy-btn" aria-label="نسخ الترويسة Header" onclick="copyText('header-editor')"><i class="fa-solid fa-copy"></i></button>
                             </div>
-                            <textarea id="header-editor" class="json-editor color-header" spellcheck="false"></textarea>
+                            <textarea id="header-editor" class="json-editor color-header" spellcheck="false" aria-label="header-editor"></textarea>
                         </div>
 
                         <!-- Payload -->
@@ -219,16 +219,17 @@
                                 <span>PAYLOAD: <small>DATA</small></span>
                                 <button class="copy-btn" aria-label="نسخ البيانات Payload" onclick="copyText('payload-editor')"><i class="fa-solid fa-copy"></i></button>
                             </div>
-                            <textarea id="payload-editor" class="json-editor color-payload" spellcheck="false" style="min-height: 200px;"></textarea>
+                            <textarea id="payload-editor" class="json-editor color-payload" spellcheck="false" style="min-height: 200px;" aria-label="payload-editor"></textarea>
                         </div>
 
                         <!-- Signature -->
                         <div class="decoded-block">
                             <div class="block-header color-signature">VERIFY SIGNATURE / SECRET KEY</div>
                             <div class="secret-input-wrapper">
-                                <input type="text" id="secret-key" class="secret-input" placeholder="أدخل المفتاح السري (Secret Key) للتوقيع بـ HS256">
+                                <input type="text" id="secret-key" class="secret-input" placeholder="أدخل المفتاح السري (Secret Key) للتحقق أو التوقيع بـ HS256" aria-label="أدخل المفتاح السري (Secret Key) للتحقق أو التوقيع بـ HS256">
+                                <button type="button" onclick="updateFromDecoded()" class="btn btn-sm" style="background: var(--jwt-blue); color: #0f172a; font-weight: 700; border-radius: 8px; font-size: 12px; white-space: nowrap;">إعادة التوقيع</button>
                             </div>
-                            <div id="signature-status" class="mt-2" style="font-size: 11px; color: var(--jwt-blue);">التوقيع يتم تلقائياً عند تغيير البيانات</div>
+                            <div id="signature-status" class="mt-2" style="font-size: 12px; font-weight: 700; color: var(--jwt-blue);">أدخل المفتاح السري للتحقق من التوقيع أو لتوقيع البيانات</div>
                         </div>
                     </div>
                 </div>
@@ -265,6 +266,7 @@
     const payloadEditor = document.getElementById('payload-editor');
     const secretKeyInput = document.getElementById('secret-key');
     const statusArea = document.getElementById('status-area');
+    const signatureStatus = document.getElementById('signature-status');
     const dateList = document.getElementById('date-list');
 
     let isInternalUpdate = false;
@@ -284,7 +286,7 @@
     }
 
     async function createSignature(headerBase64, payloadBase64, secret) {
-        if (!secret) return "signature_placeholder";
+        if (!secret) return "unsigned";
         try {
             const encoder = new TextEncoder();
             const data = encoder.encode(`${headerBase64}.${payloadBase64}`);
@@ -296,6 +298,31 @@
             return btoa(String.fromCharCode(...new Uint8Array(signature)))
                 .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
         } catch (e) { return "error_signing"; }
+    }
+
+    async function verifySignature() {
+        const token = jwtInput.value.trim();
+        const secret = secretKeyInput.value;
+        if (!token) {
+            signatureStatus.style.color = 'var(--jwt-blue)';
+            signatureStatus.textContent = 'أدخل المفتاح السري للتحقق من التوقيع أو لتوقيع البيانات';
+            return;
+        }
+        const parts = token.split('.');
+        if (parts.length !== 3) return;
+        if (!secret) {
+            signatureStatus.style.color = '#fbbf24';
+            signatureStatus.textContent = '⚠️ أدخل المفتاح السري للتحقق من صحة التوقيع (HS256)';
+            return;
+        }
+        const expectedSig = await createSignature(parts[0], parts[1], secret);
+        if (parts[2] === expectedSig) {
+            signatureStatus.style.color = '#4ade80';
+            signatureStatus.textContent = '✅ التوقيع صحيح ومطابق للمفتاح السري (Signature Verified)';
+        } else {
+            signatureStatus.style.color = '#fb7185';
+            signatureStatus.textContent = '❌ التوقيع غير مطابق للمفتاح السري (Invalid Signature) — اضغط "إعادة التوقيع" لتوليد توقيع جديد';
+        }
     }
 
     function formatDate(unix) {
@@ -318,13 +345,14 @@
             JSON.parse(header);
             JSON.parse(payload);
 
-            const hBase64 = base64UrlEncode(header);
-            const pBase64 = base64UrlEncode(payload);
+            const hBase64 = base64UrlEncode(JSON.stringify(JSON.parse(header)));
+            const pBase64 = base64UrlEncode(JSON.stringify(JSON.parse(payload)));
             const signature = await createSignature(hBase64, pBase64, secret);
 
             jwtInput.value = `${hBase64}.${pBase64}.${signature}`;
-            statusArea.innerHTML = '<span class="status-badge status-valid">تم توليد التوكن بنجاح</span>';
+            statusArea.innerHTML = '<span class="status-badge status-valid">تم توليد وتوقيع التوكن بنجاح</span>';
             analyzeDates(JSON.parse(payload));
+            await verifySignature();
         } catch (e) {
             statusArea.innerHTML = '<span class="status-badge status-invalid">خطأ في تنسيق JSON</span>';
         }
@@ -332,7 +360,7 @@
         isInternalUpdate = false;
     }
 
-    function updateFromEncoded() {
+    async function updateFromEncoded() {
         if (isInternalUpdate) return;
         isInternalUpdate = true;
 
@@ -355,6 +383,7 @@
                 payloadEditor.value = JSON.stringify(JSON.parse(payload), null, 4);
                 statusArea.innerHTML = '<span class="status-badge status-valid">تم فك تشفير التوكن بنجاح</span>';
                 analyzeDates(JSON.parse(payload));
+                await verifySignature();
             } catch (e) {
                 statusArea.innerHTML = '<span class="status-badge status-invalid">محتوى التوكن ليس JSON صالحاً</span>';
             }
@@ -382,15 +411,19 @@
     }
 
     function resetFields() {
+        const now = Math.floor(Date.now() / 1000);
         headerEditor.value = JSON.stringify({ "alg": "HS256", "typ": "JWT" }, null, 4);
-        payloadEditor.value = JSON.stringify({ "sub": "1234567890", "name": "Connect Tag", "iat": 1516239022 }, null, 4);
+        payloadEditor.value = JSON.stringify({ "sub": "1234567890", "name": "Connect Tag", "iat": now, "exp": now + 3600 }, null, 4);
         statusArea.innerHTML = '';
         dateList.innerHTML = '<div class="text-center text-muted py-3">أدخل توكن يحتوي على exp لرؤية التحليل</div>';
     }
 
-    window.resetToSample = () => {
-        jwtInput.value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNvbm5lY3QgVGFnIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-        updateFromEncoded();
+    window.resetToSample = async () => {
+        const now = Math.floor(Date.now() / 1000);
+        headerEditor.value = JSON.stringify({ "alg": "HS256", "typ": "JWT" }, null, 4);
+        payloadEditor.value = JSON.stringify({ "sub": "1234567890", "name": "Connect Tag", "iat": now, "exp": now + 3600 }, null, 4);
+        secretKeyInput.value = "connecttag-secret-key";
+        await updateFromDecoded();
     }
 
     window.copyText = (id) => {
@@ -404,7 +437,13 @@
     jwtInput.addEventListener('input', updateFromEncoded);
     headerEditor.addEventListener('input', updateFromDecoded);
     payloadEditor.addEventListener('input', updateFromDecoded);
-    secretKeyInput.addEventListener('input', updateFromDecoded);
+    secretKeyInput.addEventListener('input', () => {
+        if (jwtInput.value.trim()) {
+            verifySignature();
+        } else {
+            updateFromDecoded();
+        }
+    });
 
     // Init
     resetFields();

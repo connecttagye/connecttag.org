@@ -193,5 +193,6 @@ class SiteRelatedPosts extends HTMLElement {
     `;
   }
 }
-
-customElements.define('site-related-posts', SiteRelatedPosts);
+if (!customElements.get('site-related-posts')) {
+  customElements.define('site-related-posts', SiteRelatedPosts);
+}

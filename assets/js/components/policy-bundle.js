@@ -1,22 +1,38 @@
+// --- site-policy-header.js ---
 /**
- * Connect Tag - Policy & Legal Specific Components Bundle
+ * Connect Tag - Web Component: <site-policy-header>
  */
-(function() {
-  'use strict';
+class SitePolicyHeader extends HTMLElement {
+  connectedCallback() {
+    const titleAr = this.getAttribute('title-ar') || 'سياسة الخصوصية';
+    const titleEn = this.getAttribute('title-en') || 'Privacy Policy';
+    const backLink = this.getAttribute('back-link') || './';
 
-  const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
-
-  function loadScript(src) {
-    const fullSrc = src.startsWith('http') ? src : baseUrl + src;
-    if (document.querySelector(`script[src="${fullSrc}"]`)) return;
-
-    const s = document.createElement('script');
-    s.src = fullSrc;
-    s.async = false;
-    document.head.appendChild(s);
+    this.innerHTML = `
+      <div class="ct-policy-header">
+        <div class="container text-center">
+          <div class="ct-policy-titles">
+            <h1>${titleAr}</h1>
+            <h2 class="subtitle-en">${titleEn}</h2>
+          </div>
+        </div>
+      </div>
+    `;
   }
+}if (!customElements.get('site-policy-header')) {
+  customElements.define('site-policy-header', SitePolicyHeader);
+}
 
-  loadScript('assets/js/components/site-policy-header.js');
-  loadScript('assets/js/components/site-policy-section.js');
 
-})();
+// --- site-policy-section.js ---
+/**
+ * Connect Tag - Web Component: <site-policy-section>
+ */
+class SitePolicySection extends HTMLElement {
+  connectedCallback() {
+    this.classList.add('ct-policy-content');
+    // We don't modify innerHTML, just act as a styled container
+  }
+}if (!customElements.get('site-policy-section')) {
+  customElements.define('site-policy-section', SitePolicySection);
+}

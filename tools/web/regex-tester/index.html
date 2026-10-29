@@ -80,14 +80,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
 
 <style>
     :root {
@@ -188,26 +188,31 @@
                                 <h5 class="fw-bold mb-3">التعبير النمطي:</h5>
                                 <div class="regex-input-group">
                                     <span class="regex-slash">/</span>
-                                    <input type="text" id="regexInput" class="regex-input" placeholder="([a-z]+)" oninput="runTest()">
+                                    <input type="text" id="regexInput" class="regex-input" placeholder="([a-z]+)" oninput="runTest()" aria-label="([a-z]+)">
                                     <span class="regex-slash">/</span>
-                                    <input type="text" id="flagInput" class="regex-flags" value="g" placeholder="flags" oninput="runTest()">
+                                    <input type="text" id="flagInput" class="regex-flags" value="g" placeholder="flags" oninput="runTest()" aria-label="flags">
                                 </div>
 
                                 <div class="predefined-grid">
-                                    <div class="pattern-btn" onclick="applyPattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g')">البريد الإلكتروني</div>
-                                    <div class="pattern-btn" onclick="applyPattern('^00967[1-7]\\d{7}$', 'g')">رقم يمني (ثابت)</div>
-                                    <div class="pattern-btn" onclick="applyPattern('^7[0-9]{8}$', 'g')">رقم يمني (جوال)</div>
+                                    <div class="pattern-btn" onclick="applyPattern('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}', 'g')">البريد الإلكتروني</div>
+                                    <div class="pattern-btn" onclick="applyPattern('\\b00967[1-7]\\d{7}\\b', 'g')">رقم يمني (ثابت)</div>
+                                    <div class="pattern-btn" onclick="applyPattern('\\b7[0-9]{8}\\b', 'g')">رقم يمني (جوال)</div>
                                     <div class="pattern-btn" onclick="applyPattern('[\\u0600-\\u06FF]+', 'g')">نص عربي فقط</div>
                                     <div class="pattern-btn" onclick="applyPattern('\\d+', 'g')">أرقام فقط</div>
                                     <div class="pattern-btn" onclick="applyPattern('https?:\\/\\/[^\\s]+', 'g')">روابط (URL)</div>
                                 </div>
 
                                 <h5 class="fw-bold mb-3 mt-4">نص الاختبار:</h5>
-                                <div id="testArea" class="test-area" contenteditable="true" placeholder="أدخل النص هنا للاختبار..." oninput="runTest()"></div>
+                                <textarea id="testArea" class="test-area" rows="5" placeholder="أدخل النص هنا للاختبار..." oninput="runTest()" aria-label="أدخل النص هنا للاختبار..."></textarea>
 
                                 <div class="status-bar">
                                     <span id="errorMsg" class="text-danger"></span>
                                     <span class="match-count">تطابقات: <span id="matchCount">0</span></span>
+                                </div>
+
+                                <div id="highlightWrapper" style="display: none; margin-top: 15px;">
+                                    <h6 class="fw-bold mb-2 text-success"><i class="fa-solid fa-highlighter"></i> معاينة التطابقات:</h6>
+                                    <div id="highlightBox" class="test-area" style="min-height: auto; margin-top: 0; background: #fff;"></div>
                                 </div>
                             </div>
 
@@ -260,7 +265,12 @@
 
 <site-footer></site-footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function applyPattern(pattern, flags) {
     document.getElementById('regexInput').value = pattern;
     document.getElementById('flagInput').value = flags;
@@ -274,40 +284,64 @@ function runTest() {
     const errorMsg = document.getElementById('errorMsg');
     const matchCount = document.getElementById('matchCount');
     const explanationArea = document.getElementById('explanationArea');
+    const highlightWrapper = document.getElementById('highlightWrapper');
+    const highlightBox = document.getElementById('highlightBox');
 
     if (!regexStr) {
-        testArea.innerHTML = testArea.innerText;
         matchCount.innerText = "0";
         errorMsg.innerText = "";
+        highlightWrapper.style.display = "none";
         explanationArea.innerHTML = '<p class="small text-muted">أدخل تعبيراً نمطياً صالحاً لرؤية الشرح هنا.</p>';
         return;
     }
 
     try {
         const regex = new RegExp(regexStr, flags);
-        const text = testArea.innerText;
+        const text = testArea.value || "";
         errorMsg.innerText = "";
 
         let count = 0;
-        let highlighted = text;
+        let highlightedHtml = "";
 
         if (flags.includes('g')) {
-            const allMatches = Array.from(text.matchAll(regex));
-            count = allMatches.length;
-            highlighted = text.replace(regex, match => `<span class="match-highlight">${match}</span>`);
+            let lastIndex = 0;
+            let match;
+            const safeRegex = new RegExp(regexStr, flags);
+            while ((match = safeRegex.exec(text)) !== null) {
+                if (match[0].length === 0) {
+                    safeRegex.lastIndex++;
+                    continue;
+                }
+                count++;
+                highlightedHtml += escapeHtml(text.slice(lastIndex, match.index));
+                highlightedHtml += `<span class="match-highlight">${escapeHtml(match[0])}</span>`;
+                lastIndex = match.index + match[0].length;
+            }
+            highlightedHtml += escapeHtml(text.slice(lastIndex));
         } else {
-            const match = text.match(regex);
-            if (match) {
+            const match = regex.exec(text);
+            if (match && match[0].length > 0) {
                 count = 1;
-                highlighted = text.replace(regex, `<span class="match-highlight">${match[0]}</span>`);
+                highlightedHtml = escapeHtml(text.slice(0, match.index)) +
+                    `<span class="match-highlight">${escapeHtml(match[0])}</span>` +
+                    escapeHtml(text.slice(match.index + match[0].length));
+            } else {
+                highlightedHtml = escapeHtml(text);
             }
         }
 
         matchCount.innerText = count;
+        if (text.length > 0) {
+            highlightBox.innerHTML = highlightedHtml;
+            highlightWrapper.style.display = "block";
+        } else {
+            highlightWrapper.style.display = "none";
+        }
         generateExplanation(regexStr);
 
     } catch (e) {
         errorMsg.innerText = "تعبير غير صالح: " + e.message;
+        highlightWrapper.style.display = "none";
         explanationArea.innerHTML = '<p class="small text-danger">خطأ في الصيغة البرمجية.</p>';
     }
 }
@@ -318,13 +352,18 @@ function generateExplanation(pattern) {
 
     const tokens = [
         { regex: /\\d/, desc: "يطابق أي رقم من 0 إلى 9" },
-        { regex: /\\w/, desc: "يطابق أي حرف أبجدي أو رقمي" },
+        { regex: /\\w/, desc: "يطابق أي حرف أبجدي أو رقمي أو شرطة سفلية" },
         { regex: /\\s/, desc: "يطابق أي مسافة بيضاء" },
+        { regex: /\\b/, desc: "يطابق حدود الكلمة (بداية أو نهاية الكلمة)" },
+        { regex: /\^/, desc: "يطابق بداية النص أو السطر (أو النفي داخل الأقواس)" },
+        { regex: /\$/, desc: "يطابق نهاية النص أو السطر" },
         { regex: /\+/, desc: "تكرار العنصر السابق مرة واحدة أو أكثر" },
         { regex: /\*/, desc: "تكرار العنصر السابق صفر أو أكثر" },
+        { regex: /\?/, desc: "يجعل العنصر السابق اختيارياً (صفر أو مرة)" },
+        { regex: /\{\d+(,\d*)?\}/, desc: "يحدد عدد مرات تكرار العنصر السابق بدقة" },
         { regex: /\[.*?\]/, desc: "مجموعة أحرف: يطابق أي حرف موجود داخل الأقواس" },
         { regex: /\(.*?\)/, desc: "مجموعة التقاط: يحفظ الجزء المطابق لاستخدامه لاحقاً" },
-        { regex: /[\u0600-\u06FF]/, desc: "نطاق الحروف العربية" }
+        { regex: /\\u0600-\\u06FF|[\u0600-\u06FF]/i, desc: "نطاق الحروف العربية" }
     ];
 
     let found = false;
@@ -340,7 +379,7 @@ function generateExplanation(pattern) {
 
 window.onload = () => {
     if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
-    document.getElementById('testArea').innerText = "تواصل معنا عبر support@connecttag.org لتعلم البرمجة باللغة العربية.";
+    document.getElementById('testArea').value = "تواصل معنا عبر support@connecttag.org أو الرقم 771234567 لتعلم البرمجة باللغة العربية.";
     runTest();
 };
 </script>

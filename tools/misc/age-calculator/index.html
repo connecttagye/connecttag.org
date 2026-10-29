@@ -38,10 +38,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -58,6 +58,11 @@
             margin-top: 20px; text-align: center; color: #166534; font-weight: 700;
         }
 
+        .age-error-box {
+            background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 12px 15px;
+            margin-top: 15px; text-align: center; color: #dc2626; font-weight: 700; display: none;
+        }
+
         .tabs-container { display: flex; gap: 10px; margin-bottom: 25px; }
         .tab-btn {
             flex: 1; padding: 12px; border-radius: 12px; border: 2px solid #f1f5f9;
@@ -69,7 +74,7 @@
             .age-result-grid { grid-template-columns: 1fr; }
         }
     </style>
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
@@ -99,6 +104,8 @@
                     <label class="form-label">اختر تاريخ ميلادك:</label>
                     <input type="date" id="birth-date" class="form-control-custom" oninput="calculateAge()">
 
+                    <div class="age-error-box" id="age-error"></div>
+
                     <div class="age-result-grid" id="age-results" style="display: none;">
                         <div class="result-item">
                             <span class="result-val" id="res-years">0</span>
@@ -121,12 +128,47 @@
 
                 <div id="convert-mode" style="display: none;">
                     <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">حول من ميلادي إلى هجري:</label>
+                        <div class="col-md-12 mb-4 pb-3 border-bottom">
+                            <label class="form-label"><i class="fa-solid fa-calendar-day text-primary"></i> تحويل من ميلادي إلى هجري:</label>
                             <input type="date" id="g-to-h-input" class="form-control-custom" oninput="convertToHijri()">
                             <div class="result-box mt-3" style="background:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:12px; text-align:center;">
                                 <span style="font-weight:700; color:#64748b; display:block; margin-bottom:5px;">التاريخ بالهجري:</span>
                                 <span id="h-result" style="font-weight:900; color: #0052cc; font-size:20px;">-</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label"><i class="fa-solid fa-moon text-primary"></i> تحويل من هجري إلى ميلادي:</label>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <label class="small text-muted mb-1">اليوم</label>
+                                    <input type="number" id="h-day" class="form-control-custom" min="1" max="30" placeholder="اليوم (1-30)" value="1" oninput="convertToGregorian()">
+                                </div>
+                                <div class="col-4">
+                                    <label class="small text-muted mb-1">الشهر الهجري</label>
+                                    <select id="h-month" class="form-control-custom" onchange="convertToGregorian()">
+                                        <option value="1">1 - محرم</option>
+                                        <option value="2">2 - صفر</option>
+                                        <option value="3">3 - ربيع الأول</option>
+                                        <option value="4">4 - ربيع الآخر</option>
+                                        <option value="5">5 - جمادى الأولى</option>
+                                        <option value="6">6 - جمادى الآخرة</option>
+                                        <option value="7">7 - رجب</option>
+                                        <option value="8">8 - شعبان</option>
+                                        <option value="9">9 - رمضان</option>
+                                        <option value="10">10 - شوال</option>
+                                        <option value="11">11 - ذو القعدة</option>
+                                        <option value="12">12 - ذو الحجة</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label class="small text-muted mb-1">السنة الهجرية</label>
+                                    <input type="number" id="h-year" class="form-control-custom" min="1300" max="1600" placeholder="مثلاً: 1447" value="1447" oninput="convertToGregorian()">
+                                </div>
+                            </div>
+                            <div class="result-box mt-3" style="background:#f8fafc; border:1px solid #e2e8f0; padding:15px; border-radius:12px; text-align:center;">
+                                <span style="font-weight:700; color:#64748b; display:block; margin-bottom:5px;">التاريخ بالميلادي:</span>
+                                <span id="g-result" style="font-weight:900; color: #0052cc; font-size:20px;">-</span>
                             </div>
                         </div>
                     </div>
@@ -163,20 +205,47 @@
 
         document.getElementById('tab-age').classList.toggle('active', mode === 'age');
         document.getElementById('tab-convert').classList.toggle('active', mode === 'convert');
+
+        if (mode === 'convert' && document.getElementById('g-result').innerText === '-') {
+            convertToGregorian();
+        }
     }
 
     function calculateAge() {
-        const birth = new Date(document.getElementById('birth-date').value);
+        const val = document.getElementById('birth-date').value;
+        const errorBox = document.getElementById('age-error');
+        if (!val) {
+            document.getElementById('age-results').style.display = 'none';
+            document.getElementById('next-birthday').style.display = 'none';
+            if (errorBox) errorBox.style.display = 'none';
+            return;
+        }
+
+        const [bYear, bMonth, bDay] = val.split('-').map(Number);
+        const birth = new Date(bYear, bMonth - 1, bDay, 0, 0, 0, 0);
         if (isNaN(birth)) return;
 
         const now = new Date();
-        let years = now.getFullYear() - birth.getFullYear();
-        let months = now.getMonth() - birth.getMonth();
-        let days = now.getDate() - birth.getDate();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+
+        if (birth > today) {
+            document.getElementById('age-results').style.display = 'none';
+            document.getElementById('next-birthday').style.display = 'none';
+            if (errorBox) {
+                errorBox.innerText = 'تنبيه: لا يمكن أن يكون تاريخ الميلاد في المستقبل! يرجى اختيار تاريخ صحيح.';
+                errorBox.style.display = 'block';
+            }
+            return;
+        }
+        if (errorBox) errorBox.style.display = 'none';
+
+        let years = today.getFullYear() - birth.getFullYear();
+        let months = today.getMonth() - birth.getMonth();
+        let days = today.getDate() - birth.getDate();
 
         if (days < 0) {
             months--;
-            const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+            const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
             days += lastMonth.getDate();
         }
         if (months < 0) {
@@ -189,12 +258,14 @@
         document.getElementById('res-days').innerText = days;
         document.getElementById('age-results').style.display = 'grid';
 
-        // Next Birthday
-        const nextBday = new Date(now.getFullYear(), birth.getMonth(), birth.getDate());
-        if (nextBday < now) nextBday.setFullYear(now.getFullYear() + 1);
-        const diff = Math.ceil((nextBday - now) / (1000 * 60 * 60 * 24));
+        // Next Birthday (with zeroed hours on today and nextBday)
+        const nextBday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate(), 0, 0, 0, 0);
+        if (nextBday < today) {
+            nextBday.setFullYear(today.getFullYear() + 1);
+        }
+        const diff = Math.round((nextBday - today) / (1000 * 60 * 60 * 24));
 
-        document.getElementById('days-to-bday').innerText = (diff === 365 || diff === 366) ? 0 : diff;
+        document.getElementById('days-to-bday').innerText = diff;
         document.getElementById('next-birthday').style.display = 'block';
     }
 
@@ -213,6 +284,73 @@
             document.getElementById('h-result').innerText = "غير مدعوم في متصفحك";
         }
     }
+
+    function getHijriParts(date) {
+        const calendars = ['ar-SA-u-ca-islamic-uma-nu-latn', 'en-u-ca-islamic-umalqura-nu-latn', 'en-u-ca-islamic-nu-latn'];
+        for (const loc of calendars) {
+            try {
+                const parts = new Intl.DateTimeFormat(loc, {
+                    day: 'numeric', month: 'numeric', year: 'numeric', timeZone: 'UTC'
+                }).formatToParts(date);
+                const y = parseInt(parts.find(p => p.type === 'year')?.value, 10);
+                const m = parseInt(parts.find(p => p.type === 'month')?.value, 10);
+                const d = parseInt(parts.find(p => p.type === 'day')?.value, 10);
+                if (!isNaN(y) && !isNaN(m) && !isNaN(d)) return { y, m, d };
+            } catch (e) {}
+        }
+        return null;
+    }
+
+    function convertToGregorian() {
+        const hDay = parseInt(document.getElementById('h-day').value, 10);
+        const hMonth = parseInt(document.getElementById('h-month').value, 10);
+        const hYear = parseInt(document.getElementById('h-year').value, 10);
+        const gResultEl = document.getElementById('g-result');
+
+        if (isNaN(hDay) || isNaN(hMonth) || isNaN(hYear) || hDay < 1 || hDay > 30 || hMonth < 1 || hMonth > 12 || hYear < 1000 || hYear > 2000) {
+            gResultEl.innerText = 'يرجى إدخال تاريخ هجري صحيح';
+            return;
+        }
+
+        const approxDays = (hYear - 1) * 354.36707 + (hMonth - 1) * 29.53059 + (hDay - 1);
+        let currentMs = Date.UTC(622, 6, 19) + Math.round(approxDays) * 86400000;
+
+        for (let iter = 0; iter < 15; iter++) {
+            const parts = getHijriParts(new Date(currentMs));
+            if (!parts) break;
+            const diffDays = Math.round((hYear - parts.y) * 354.36707 + (hMonth - parts.m) * 29.53059 + (hDay - parts.d));
+            if (diffDays === 0) {
+                for (let delta = -3; delta <= 3; delta++) {
+                    const testMs = currentMs + delta * 86400000;
+                    const tp = getHijriParts(new Date(testMs));
+                    if (tp && tp.y === hYear && tp.m === hMonth && tp.d === hDay) {
+                        currentMs = testMs;
+                        break;
+                    }
+                }
+                break;
+            }
+            currentMs += diffDays * 86400000;
+        }
+
+        const gDate = new Date(currentMs);
+        try {
+            const formatted = new Intl.DateTimeFormat('ar-EG', {
+                weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+            }).format(gDate);
+            const iso = gDate.toISOString().split('T')[0];
+            gResultEl.innerText = `${formatted} (${iso})`;
+        } catch (e) {
+            gResultEl.innerText = gDate.toISOString().split('T')[0];
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const birthInput = document.getElementById('birth-date');
+        if (birthInput) {
+            birthInput.max = new Date().toISOString().split('T')[0];
+        }
+    });
 </script>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

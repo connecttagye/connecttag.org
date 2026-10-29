@@ -38,10 +38,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -64,7 +64,7 @@
         .conversion-type-btn.active { border-color: #0052cc; background: #006b98; color: #fff; }
         .conversion-type-btn i { font-size: 20px; width: 30px; text-align: center; }
     </style>
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
@@ -112,7 +112,7 @@
                                 <label class="form-label" id="input-label">القيمة بالوات (W):</label>
                                 <input type="number" id="main-input" class="form-control-custom" placeholder="مثلاً: 1000" oninput="calculate()">
                             </div>
-                            <div class="col-sm-12 mb-3 text-right">
+                            <div class="col-sm-12 mb-3 text-right" id="voltage-wrapper">
                                 <label class="form-label">الجهد (الفولت):</label>
                                 <select id="voltage-input" class="form-control-custom" onchange="calculate()">
                                     <option value="220">220 فولت (كهرباء عامة)</option>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-sm-12 mb-3 text-right" id="pf-wrapper" style="display:none;">
                                 <label class="form-label">معامل القدرة (Power Factor):</label>
-                                <input type="number" id="pf-input" class="form-control-custom" value="0.8" step="0.1" min="0" max="1" oninput="calculate()">
+                                <input type="number" id="pf-input" class="form-control-custom" value="0.8" step="0.05" min="0.01" max="1" oninput="calculate()">
                                 <small class="text-muted">لأنظمة التيار المتردد (AC)، القيمة الافتراضية 0.8</small>
                             </div>
                         </div>
@@ -179,9 +179,11 @@
         const inputLabel = document.getElementById('input-label');
         const resTextLabel = document.getElementById('result-text-label');
         const resUnitLabel = document.getElementById('result-unit-label');
+        const voltageWrapper = document.getElementById('voltage-wrapper');
         const pfWrapper = document.getElementById('pf-wrapper');
 
-        pfWrapper.style.display = 'none';
+        voltageWrapper.style.display = (mode === 'w-to-hp' || mode === 'va-to-w') ? 'none' : 'block';
+        pfWrapper.style.display = (mode === 'va-to-w') ? 'block' : 'none';
 
         switch(mode) {
             case 'w-to-a':
@@ -206,9 +208,7 @@
                 break;
             case 'va-to-w':
                 inputLabel.innerText = 'القيمة بـ (VA):';
-                resTextLabel.innerText = 'النتيجة بالوات (عند معامل 0.8):';
                 resUnitLabel.innerText = 'وات (W)';
-                pfWrapper.style.display = 'block';
                 break;
         }
         calculate();
@@ -217,9 +217,15 @@
     function calculate() {
         const val = parseFloat(document.getElementById('main-input').value) || 0;
         const volt = parseFloat(document.getElementById('voltage-input').value) || 220;
-        const pf = parseFloat(document.getElementById('pf-input').value) || 0.8;
+        const rawPf = parseFloat(document.getElementById('pf-input').value);
+        const pf = isNaN(rawPf) ? 0.8 : Math.min(1, Math.max(0.01, rawPf));
         const display = document.getElementById('result-display');
+        const resTextLabel = document.getElementById('result-text-label');
         let result = 0;
+
+        if (currentMode === 'va-to-w') {
+            resTextLabel.innerText = `النتيجة بالوات (عند معامل ${pf}):`;
+        }
 
         if (val <= 0) {
             display.innerText = '0.00';

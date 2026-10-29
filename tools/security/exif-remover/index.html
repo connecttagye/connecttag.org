@@ -80,14 +80,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 
 <style>
     :root {
@@ -173,7 +174,7 @@
        crossorigin="anonymous"></script>
 </head>
 <body>
-
+<site-toast></site-toast>
 <site-preloader></site-preloader>
 
 <div id="home-content">
@@ -259,8 +260,13 @@ dropZone.ondrop = e => {
 };
 
 function handleFiles(files) {
-    const newFiles = Array.from(files);
-    filesToProcess = [...filesToProcess, ...newFiles];
+    const allFiles = Array.from(files);
+    const validFiles = allFiles.filter(file => file.type && file.type.startsWith('image/'));
+    if (validFiles.length < allFiles.length) {
+        if (window.showToast) window.showToast('يرجى اختيار ملفات صور صالحة فقط (JPG, PNG, WebP)', 'warn');
+    }
+    if (validFiles.length === 0) return;
+    filesToProcess = [...filesToProcess, ...validFiles];
     renderList();
 }
 
@@ -278,10 +284,11 @@ async function renderList() {
         item.className = 'image-item';
 
         const hasExif = file.type === 'image/jpeg' ? 'محتمل ⚠️' : 'منخفض 🛡️';
+        const thumbUrl = URL.createObjectURL(file);
 
         item.innerHTML = `
             <div class="thumb-wrapper">
-                <img class="thumb" src="${URL.createObjectURL(file)}" alt="${file.name}" loading="lazy">
+                <img class="thumb" src="${thumbUrl}" alt="${file.name}" loading="lazy" onload="URL.revokeObjectURL(this.src)">
             </div>
             <div style="flex:1">
                 <div class="d-flex justify-content-between">
@@ -301,6 +308,7 @@ async function renderList() {
 
 function removeFile(index) {
     filesToProcess.splice(index, 1);
+    fileInput.value = '';
     renderList();
 }
 
@@ -310,52 +318,79 @@ async function cleanAll() {
     btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري تنظيف البصمة الرقمية...';
     btn.disabled = true;
 
-    for (let file of filesToProcess) {
-        try {
-            const cleanedBlob = await stripMetadata(file);
-            downloadFile(cleanedBlob, `cleaned_${file.name}`);
-        } catch (err) {
-            console.error(err);
+    let successCount = 0;
+    try {
+        for (let file of filesToProcess) {
+            try {
+                const cleanedBlob = await stripMetadata(file);
+                downloadFile(cleanedBlob, `cleaned_${file.name}`);
+                successCount++;
+            } catch (err) {
+                console.error(err);
+                if (window.showToast) window.showToast(`تعذرت معالجة الصورة: ${file.name}`, 'error');
+            }
         }
+        if (successCount > 0) {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التنظيف والتحميل بنجاح!';
+            if (window.showToast) window.showToast('تم تنظيف وتحميل الصور بنجاح!', 'success');
+        } else {
+            btn.innerHTML = originalText;
+        }
+    } finally {
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            filesToProcess = [];
+            fileInput.value = '';
+            renderList();
+        }, 3000);
     }
-
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> تم التنظيف والتحميل بنجاح!';
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-        filesToProcess = [];
-        renderList();
-    }, 3000);
 }
 
 function stripMetadata(file) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = URL.createObjectURL(file);
+        const objectUrl = URL.createObjectURL(file);
         img.onload = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            canvas.toBlob((blob) => {
-                resolve(blob);
-            }, file.type, 0.95);
+            URL.revokeObjectURL(objectUrl);
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        resolve(blob);
+                    } else {
+                        reject(new Error('فشل في تحويل الصورة'));
+                    }
+                }, file.type || 'image/jpeg', 0.95);
+            } catch (err) {
+                reject(err);
+            }
         };
+        img.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            reject(new Error(`صورة تالفة أو غير مدعومة: ${file.name}`));
+        };
+        img.src = objectUrl;
     });
 }
 
 function downloadFile(blob, name) {
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    a.href = url;
     a.download = name;
     a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 window.onload = () => {
     if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
 };
 </script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

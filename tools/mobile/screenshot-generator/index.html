@@ -80,11 +80,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Almarai:wght@300;400;700;800&family=Tajawal:wght@300;400;700;800&family=Montserrat:wght@300;400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
 <style>
     :root {
@@ -238,6 +238,20 @@
     .layout-top .screenshot-wrapper { top: 250px; left: 50%; transform: translateX(-50%); }
     .layout-bottom .typography-layer { bottom: 100px; }
     .layout-bottom .screenshot-wrapper { top: 80px; left: 50%; transform: translateX(-50%); }
+    .layout-dual .typography-layer { top: 60px; }
+    .layout-dual #view-screenshot { top: 240px; left: 50%; transform: translateX(-65%) scale(0.82) rotateY(15deg); z-index: 2; }
+    .layout-dual #view-screenshot-2 { top: 270px; left: 50%; transform: translateX(-25%) scale(0.82) rotateY(-15deg); z-index: 3; }
+
+    /* Zoom Controls */
+    .zoom-controls {
+        position: absolute; bottom: 25px; left: 25px; display: flex; flex-direction: column; gap: 8px; z-index: 20;
+    }
+    .zoom-btn {
+        width: 40px; height: 40px; border-radius: 12px; border: 1px solid #e2e8f0;
+        background: #ffffff; color: #1e293b; display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; transition: 0.2s; font-size: 14px;
+    }
+    .zoom-btn:hover { background: var(--primary-color); color: #ffffff; border-color: var(--primary-color); transform: translateY(-2px); }
 
     .sidebar-footer { padding: 20px; border-top: 1px solid #f1f5f9; background: #fff; }
     .btn-export-main {
@@ -254,8 +268,8 @@
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.27" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -273,6 +287,7 @@
 <body>
 <site-toast></site-toast>
 <site-header></site-header>
+<main id="main-content">
 
 <div class="editor-wrapper">
     <div class="sidebar-editor">
@@ -284,11 +299,11 @@
 
         <!-- Tabs Navigation -->
         <div class="sidebar-tabs">
-            <button class="tab-btn active" onclick="switchTab('assets')"><i class="fa-solid fa-folder-open"></i><span>الصور</span></button>
-            <button class="tab-btn" onclick="switchTab('text')"><i class="fa-solid fa-text-height"></i><span>النصوص</span></button>
-            <button class="tab-btn" onclick="switchTab('device')"><i class="fa-solid fa-mobile"></i><span>الهاتف</span></button>
-            <button class="tab-btn" onclick="switchTab('style')"><i class="fa-solid fa-paint-brush"></i><span>التصميم</span></button>
-            <button class="tab-btn" onclick="switchTab('fx')"><i class="fa-solid fa-magic"></i><span>إضافات</span></button>
+            <button class="tab-btn active" onclick="switchTab('assets', this)"><i class="fa-solid fa-folder-open"></i><span>الصور</span></button>
+            <button class="tab-btn" onclick="switchTab('text', this)"><i class="fa-solid fa-text-height"></i><span>النصوص</span></button>
+            <button class="tab-btn" onclick="switchTab('device', this)"><i class="fa-solid fa-mobile"></i><span>الهاتف</span></button>
+            <button class="tab-btn" onclick="switchTab('style', this)"><i class="fa-solid fa-paint-brush"></i><span>التصميم</span></button>
+            <button class="tab-btn" onclick="switchTab('fx', this)"><i class="fa-solid fa-magic"></i><span>إضافات</span></button>
         </div>
 
         <div class="sidebar-content">
@@ -297,19 +312,19 @@
                 <div class="section-header">لقطات الشاشة والشعار</div>
                 <div class="control-item">
                     <label class="control-label">لقطة الشاشة الرئيسية</label>
-                    <input type="file" id="imageInput" class="custom-input" accept="image/*">
+                    <input type="file" id="imageInput" class="custom-input" accept="image/*" aria-label="imageInput">
                 </div>
                 <div id="dual-image-control" class="control-item" style="display: none;">
                     <label class="control-label">لقطة الشاشة الثانية (للوضع المزدوج)</label>
-                    <input type="file" id="imageInput2" class="custom-input" accept="image/*">
+                    <input type="file" id="imageInput2" class="custom-input" accept="image/*" aria-label="imageInput2">
                 </div>
                 <div class="control-item">
                     <label class="control-label" for="logoInput">شعار التطبيق (اختياري)</label>
                     <input type="file" id="logoInput" class="custom-input" accept="image/*">
                     <div id="logo-controls" style="display: none;" class="mt-3">
                         <label class="control-label" style="font-size: 11px;">حجم الشعار</label>
-                        <input type="range" id="logoScale" min="0.2" max="2" step="0.1" value="1" class="form-range" oninput="updateLogoTransform()">
-                        <input type="range" id="logoMoveY" min="-600" max="600" value="0" class="form-range mt-2" oninput="updateLogoTransform()">
+                        <input type="range" id="logoScale" min="0.2" max="2" step="0.1" value="1" class="form-range" oninput="updateLogoTransform()" aria-label="logoScale">
+                        <input type="range" id="logoMoveY" min="-600" max="600" value="0" class="form-range mt-2" oninput="updateLogoTransform()" aria-label="logoMoveY">
                         <small class="text-muted" style="font-size: 10px;">تحريك الشعار رأسياً</small>
                     </div>
                 </div>
@@ -320,23 +335,23 @@
                 <div class="section-header">المحتوى التسويقي</div>
                 <div class="control-item">
                     <label class="control-label">العنوان الرئيسي</label>
-                    <input type="text" id="titleInput" class="custom-input" placeholder="اكتب عنواناً جذاباً..." maxlength="50">
+                    <input type="text" id="titleInput" class="custom-input" placeholder="اكتب عنواناً جذاباً..." maxlength="50" aria-label="اكتب عنواناً جذاباً...">
                 </div>
                 <div class="control-item">
                     <label class="control-label">تمييز كلمة (Highlight)</label>
                     <div class="d-flex gap-2">
-                        <input type="text" id="highlightWord" class="custom-input" placeholder="الكلمة..." oninput="updateTextStyles()">
-                        <input type="color" id="highlightColor" value="#006b98" class="form-control" style="width: 50px; height: 38px; padding: 2px;" oninput="updateTextStyles()">
+                        <input type="text" id="highlightWord" class="custom-input" placeholder="الكلمة..." oninput="updateTextStyles()" aria-label="الكلمة...">
+                        <input type="color" id="highlightColor" value="#006b98" class="form-control" style="width: 50px; height: 38px; padding: 2px;" oninput="updateTextStyles()" aria-label="highlightColor">
                     </div>
                 </div>
                 <div class="control-item">
                     <label class="control-label">الوصف الفرعي</label>
-                    <textarea id="descInput" class="custom-input" rows="2" placeholder="اشرح ميزة تطبيقك..." maxlength="100"></textarea>
+                    <textarea id="descInput" class="custom-input" rows="2" placeholder="اشرح ميزة تطبيقك..." maxlength="100" aria-label="اشرح ميزة تطبيقك..."></textarea>
                 </div>
                 <div class="section-header">تنسيق الخطوط</div>
                 <div class="control-item">
                     <label class="control-label">نوع الخط</label>
-                    <select id="fontSelect" class="custom-input" onchange="updateTextStyles()">
+                    <select id="fontSelect" class="custom-input" onchange="updateTextStyles()" aria-label="fontSelect">
                         <option value="'Cairo', sans-serif">Cairo</option>
                         <option value="'Almarai', sans-serif">Almarai</option>
                         <option value="'Tajawal', sans-serif">Tajawal</option>
@@ -345,14 +360,14 @@
                 </div>
                 <div class="control-item">
                     <label class="control-label">حجم العنوان ومكانه</label>
-                    <input type="range" id="titleSize" min="20" max="60" value="34" class="form-range" oninput="updateTextStyles()">
-                    <input type="range" id="textY" min="-300" max="600" value="0" class="form-range mt-2" oninput="updateTextStyles()">
+                    <input type="range" id="titleSize" min="20" max="60" value="34" class="form-range" oninput="updateTextStyles()" aria-label="titleSize">
+                    <input type="range" id="textY" min="-300" max="600" value="0" class="form-range mt-2" oninput="updateTextStyles()" aria-label="textY">
                 </div>
                 <div class="control-item">
                     <label class="control-label">ألوان النصوص</label>
                     <div class="d-flex gap-3">
-                        <div><small>العنوان</small><input type="color" id="titleColor" value="#1e293b" class="form-control mt-1" oninput="updateTextStyles()"></div>
-                        <div><small>الوصف</small><input type="color" id="descColor" value="#64748b" class="form-control mt-1" oninput="updateTextStyles()"></div>
+                        <div><small>العنوان</small><input type="color" id="titleColor" value="#1e293b" class="form-control mt-1" oninput="updateTextStyles()" aria-label="titleColor"></div>
+                        <div><small>الوصف</small><input type="color" id="descColor" value="#64748b" class="form-control mt-1" oninput="updateTextStyles()" aria-label="descColor"></div>
                     </div>
                 </div>
             </div>
@@ -363,39 +378,39 @@
                 <div class="control-item">
                     <label class="control-label">نوع الجهاز المختار</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setDevice('iphone')"><i class="fa-brands fa-apple"></i><small>iPhone Pro</small></div>
-                        <div class="visual-item" onclick="setDevice('pixel')"><i class="fa-brands fa-android"></i><small>Android Flat</small></div>
+                        <div class="visual-item active" onclick="setDevice('iphone', this)"><i class="fa-brands fa-apple"></i><small>iPhone Pro</small></div>
+                        <div class="visual-item" onclick="setDevice('pixel', this)"><i class="fa-brands fa-android"></i><small>Android Flat</small></div>
                     </div>
                 </div>
                 <div class="control-item">
                     <label class="control-label">حجم التصميم (Target Size)</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setCanvasSize('phone')"><i class="fa-solid fa-mobile"></i><small>هاتف</small></div>
-                        <div class="visual-item" onclick="setCanvasSize('tablet')"><i class="fa-solid fa-tablet"></i><small>آيباد</small></div>
+                        <div class="visual-item active" onclick="setCanvasSize('phone', this)"><i class="fa-solid fa-mobile"></i><small>هاتف</small></div>
+                        <div class="visual-item" onclick="setCanvasSize('tablet', this)"><i class="fa-solid fa-tablet"></i><small>آيباد</small></div>
                     </div>
                 </div>
                 <div class="control-item">
                     <label class="control-label">قالب التخطيط</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setLayout('top')"><small>نص علوي</small></div>
-                        <div class="visual-item" onclick="setLayout('bottom')"><small>نص سفلي</small></div>
-                        <div class="visual-item" onclick="setLayout('dual')"><small>مزدوج</small></div>
+                        <div class="visual-item active" onclick="setLayout('top', this)"><small>نص علوي</small></div>
+                        <div class="visual-item" onclick="setLayout('bottom', this)"><small>نص سفلي</small></div>
+                        <div class="visual-item" onclick="setLayout('dual', this)"><small>مزدوج</small></div>
                     </div>
                 </div>
                 <div class="section-header">تحريك وتدوير (3D)</div>
                 <div class="control-item">
                     <label class="control-label">الحجم (Scale)</label>
-                    <input type="range" id="phoneScale" min="0.5" max="1.5" step="0.05" value="1" class="form-range" oninput="updatePhoneTransform()">
+                    <input type="range" id="phoneScale" min="0.5" max="1.5" step="0.05" value="1" class="form-range" oninput="updatePhoneTransform()" aria-label="phoneScale">
                 </div>
                 <div class="control-item">
                     <label class="control-label">التدوير والميلان</label>
-                    <input type="range" id="phoneRotate" min="-45" max="45" value="0" class="form-range" oninput="updatePhoneTransform()">
-                    <input type="range" id="phoneTilt" min="-180" max="180" value="0" class="form-range mt-2" oninput="updatePhoneTransform()">
+                    <input type="range" id="phoneRotate" min="-45" max="45" value="0" class="form-range" oninput="updatePhoneTransform()" aria-label="phoneRotate">
+                    <input type="range" id="phoneTilt" min="-180" max="180" value="0" class="form-range mt-2" oninput="updatePhoneTransform()" aria-label="phoneTilt">
                 </div>
                 <div class="control-item">
                     <label class="control-label">الموضع الدقيق (X & Y)</label>
-                    <input type="range" id="moveX" min="-250" max="250" value="0" class="form-range" oninput="updatePhoneTransform()">
-                    <input type="range" id="moveY" min="-400" max="400" value="0" class="form-range mt-2" oninput="updatePhoneTransform()">
+                    <input type="range" id="moveX" min="-250" max="250" value="0" class="form-range" oninput="updatePhoneTransform()" aria-label="moveX">
+                    <input type="range" id="moveY" min="-400" max="400" value="0" class="form-range mt-2" oninput="updatePhoneTransform()" aria-label="moveY">
                 </div>
                 <button class="btn btn-sm btn-outline-secondary w-100" onclick="resetPhone()">إعادة ضبط الوضع الافتراضي</button>
             </div>
@@ -415,20 +430,20 @@
                 <div class="control-item">
                     <label class="control-label">تدرج لوني مخصص</label>
                     <div class="d-flex gap-2">
-                        <input type="color" id="customColor1" value="#006b98" class="form-control" oninput="updateCustomGradient()">
-                        <input type="color" id="customColor2" value="#003d5c" class="form-control" oninput="updateCustomGradient()">
+                        <input type="color" id="customColor1" value="#006b98" class="form-control" oninput="updateCustomGradient()" aria-label="customColor1">
+                        <input type="color" id="customColor2" value="#003d5c" class="form-control" oninput="updateCustomGradient()" aria-label="customColor2">
                     </div>
                 </div>
                 <div class="control-item">
                     <label class="control-label">صورة خلفية مخصصة</label>
-                    <input type="file" id="bgImageInput" class="custom-input" accept="image/*" onchange="setCustomBgImage(this)">
+                    <input type="file" id="bgImageInput" class="custom-input" accept="image/*" onchange="setCustomBgImage(this)" aria-label="bgImageInput">
                 </div>
                 <div class="control-item">
                     <label class="control-label">نمط الخلفية (Texture)</label>
                     <div class="visual-grid">
-                        <div class="visual-item active" onclick="setPattern('none')"><small>بدون</small></div>
-                        <div class="visual-item" onclick="setPattern('dots')"><small>نقاط</small></div>
-                        <div class="visual-item" onclick="setPattern('grid')"><small>شبكة</small></div>
+                        <div class="visual-item active" onclick="setPattern('none', this)"><small>بدون</small></div>
+                        <div class="visual-item" onclick="setPattern('dots', this)"><small>نقاط</small></div>
+                        <div class="visual-item" onclick="setPattern('grid', this)"><small>شبكة</small></div>
                     </div>
                 </div>
             </div>
@@ -438,15 +453,15 @@
                 <div class="section-header">مؤثرات بصرية إضافية</div>
                 <div class="control-item">
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="showReflection" onchange="toggleFX('reflection')">
+                        <input class="form-check-input" type="checkbox" id="showReflection" onchange="toggleFX('reflection')" aria-label="showReflection">
                         <label class="form-check-label">انعكاس سفلي (Reflection)</label>
                     </div>
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="showGlare" onchange="toggleFX('glare')">
+                        <input class="form-check-input" type="checkbox" id="showGlare" onchange="toggleFX('glare')" aria-label="showGlare">
                         <label class="form-check-label">بريق الشاشة (Screen Glare)</label>
                     </div>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="showBlobs" checked onchange="toggleFX('blobs')">
+                        <input class="form-check-input" type="checkbox" id="showBlobs" checked onchange="toggleFX('blobs')" aria-label="showBlobs">
                         <label class="form-check-label">فقاعات الخلفية (Blobs)</label>
                     </div>
                 </div>
@@ -510,19 +525,22 @@
     const viewScreenshot2 = document.getElementById('view-screenshot-2');
     const viewIsland = document.getElementById('view-island');
     const viewIsland2 = document.getElementById('view-island-2');
+    const viewReflection = document.getElementById('view-reflection');
+    const viewGlare = document.getElementById('view-glare');
     const viewBranding = document.getElementById('view-branding');
     const logoPreview = document.getElementById('logo-preview');
     const designCanvas = document.getElementById('design-canvas');
 
-    let currentZoom = 0.85;
+    let currentZoom = 1;
     let currentAlign = 'center';
     let currentLayout = 'top';
 
-    function switchTab(tabId) {
+    function switchTab(tabId, el) {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
 
-        event.currentTarget.classList.add('active');
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) targetEl.classList.add('active');
         document.getElementById(`tab-${tabId}`).classList.add('active');
     }
 
@@ -566,11 +584,12 @@
         }
     }
 
-    function setPattern(type) {
+    function setPattern(type, el) {
         const p = document.getElementById('canvas-pattern');
         p.className = 'bg-pattern';
         if(type !== 'none') p.classList.add(`pattern-${type}`);
-        updateVisualSelection(event.currentTarget);
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) updateVisualSelection(targetEl);
     }
 
     function updateLogoTransform() {
@@ -584,7 +603,7 @@
         'pixel': { border: '8px solid #334155', radius: '20px', width: '82%', height: '78%', island: 'none' }
     };
 
-    function setDevice(type) {
+    function setDevice(type, el) {
         const config = deviceConfigs[type];
         [viewScreenshot, viewScreenshot2].forEach(v => {
             v.style.border = config.border;
@@ -594,10 +613,11 @@
         });
         viewIsland.style.display = config.island;
         viewIsland2.style.display = config.island;
-        updateVisualSelection(event.currentTarget);
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) updateVisualSelection(targetEl);
     }
 
-    function setLayout(type) {
+    function setLayout(type, el) {
         currentLayout = type;
         designCanvas.className = `layout-${type}`;
         const isDual = type === 'dual';
@@ -605,25 +625,37 @@
         document.getElementById('dual-image-control').style.display = isDual ? 'block' : 'none';
 
         if (isDual) {
-            viewScreenshot.style.transform = 'translateX(-70%) scale(0.85) rotateY(15deg)';
-            viewScreenshot2.style.transform = 'translateX(-20%) scale(0.85) rotateY(-15deg)';
-            viewScreenshot2.style.top = '280px';
+            viewScreenshot.style.top = '240px';
+            viewScreenshot.style.left = '50%';
+            viewScreenshot.style.transform = 'translateX(-65%) scale(0.82) rotateY(15deg)';
+            viewScreenshot2.style.top = '270px';
             viewScreenshot2.style.left = '50%';
+            viewScreenshot2.style.transform = 'translateX(-25%) scale(0.82) rotateY(-15deg)';
         } else {
+            viewScreenshot.style.top = '';
+            viewScreenshot.style.left = '';
             updatePhoneTransform();
         }
-        updateVisualSelection(event.currentTarget);
-        setCanvasBg(designCanvas.style.background);
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) updateVisualSelection(targetEl);
+        setCanvasBg(designCanvas.style.background || '#ffffff');
     }
 
     function setCanvasBg(bg, el) {
-        designCanvas.style.background = bg;
+        const effectiveBg = (bg && bg.trim()) ? bg : '#ffffff';
+        designCanvas.style.background = effectiveBg;
         if(el) {
             document.querySelectorAll('#tab-style .palette-item').forEach(p => p.classList.remove('active'));
             el.classList.add('active');
         }
-        const isWhite = bg.includes('#ffffff') || bg.includes('255, 255, 255');
-        document.getElementById('view-text-layer').style.color = isWhite ? '#1e293b' : '#ffffff';
+        const isWhite = !bg || bg.trim() === '' || effectiveBg.includes('#ffffff') || effectiveBg.includes('255, 255, 255');
+        const textColor = isWhite ? '#1e293b' : '#ffffff';
+        document.getElementById('view-text-layer').style.color = textColor;
+        if (el) {
+            document.getElementById('titleColor').value = textColor;
+            document.getElementById('descColor').value = isWhite ? '#64748b' : '#e2e8f0';
+            updateTextStyles();
+        }
     }
 
     function updateVisualSelection(el) {
@@ -632,12 +664,13 @@
         el.classList.add('active');
     }
 
-    function setAlign(type) {
+    function setAlign(type, el) {
         currentAlign = type;
         designCanvas.classList.remove('pos-center', 'pos-left', 'pos-right');
         designCanvas.classList.add(`pos-${type}`);
         updatePhoneTransform();
-        updateVisualSelection(event.currentTarget);
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) updateVisualSelection(targetEl);
     }
 
     function updatePhoneTransform() {
@@ -679,7 +712,8 @@
             viewTitle.style.color = document.getElementById('titleColor').value;
 
             if (highlight && titleText.includes(highlight)) {
-                const regex = new RegExp(`(${highlight})`, 'gi');
+                const escapedHighlight = highlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`(${escapedHighlight})`, 'gi');
                 viewTitle.innerHTML = titleText.replace(regex, `<span style="color: ${hColor}">$1</span>`);
             } else {
                 viewTitle.textContent = titleText;
@@ -699,10 +733,11 @@
         }
     }
 
-    function setCanvasSize(type) {
+    function setCanvasSize(type, el) {
         designCanvas.style.width = type === 'tablet' ? '640px' : '400px';
         designCanvas.style.height = type === 'tablet' ? '850px' : '860px';
-        updateVisualSelection(event.currentTarget);
+        const targetEl = el || (typeof event !== 'undefined' && event && event.currentTarget ? event.currentTarget : null);
+        if (targetEl) updateVisualSelection(targetEl);
     }
 
     function updateCustomGradient() {
@@ -754,8 +789,7 @@
 </script>
 
 
+</main>
 <site-footer></site-footer>
 </body>
 </html>
-
-

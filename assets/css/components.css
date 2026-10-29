@@ -64,6 +64,40 @@ body {
   font-family: 'Cairo', 'Cairo-Fallback', system-ui, sans-serif;
 }
 
+/* Skip to Main Content Link & Keyboard Focus Indicators (WCAG 2.4.1 & 2.4.7) */
+.ct-skip-link {
+  position: absolute;
+  top: -100px;
+  right: 20px;
+  background: var(--ct-primary);
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 0 0 10px 10px;
+  font-weight: 800;
+  font-size: 14px;
+  z-index: 100001;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: top 0.2s ease;
+}
+.ct-skip-link:focus,
+.ct-skip-link:focus-visible {
+  top: 0;
+  outline: 3px solid #00b4d8 !important;
+  outline-offset: 2px !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #00b4d8 !important;
+  outline-offset: 3px !important;
+}
+
+
 /* --------------------------------------------------------------------------
    1. Header Component Styles (<site-header>)
    -------------------------------------------------------------------------- */
@@ -206,14 +240,15 @@ site-breadcrumb {
   margin: 0;
   padding: 0;
   gap: 8px;
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .ct-breadcrumb-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #666666;
+  color: #555555;
+  font-size: 14px !important;
 }
 
 .ct-breadcrumb-item a {
@@ -229,7 +264,7 @@ site-breadcrumb {
 }
 
 .ct-breadcrumb-separator {
-  color: #999999;
+  color: #64748b;
   font-size: 11px;
 }
 
@@ -264,28 +299,33 @@ site-footer {
   padding: 0 20px;
 }
 
-.ct-footer-col h4 {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.ct-footer-col h4,
+.ct-footer-col .ct-footer-heading {
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 10px !important;
 }
 
-.ct-footer-col h4::after {
+.ct-footer-col h4::after,
+.ct-footer-col .ct-footer-heading::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--ct-primary);
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: none !important;
+  width: 40px !important;
+  height: 2px !important;
+  background: var(--ct-primary) !important;
   border-radius: 2px;
 }
 
 .ct-footer-col p {
-  color: var(--ct-text-muted);
+  color: #94a3b8 !important;
   font-size: 14px;
   line-height: 1.7;
 }
@@ -301,7 +341,7 @@ site-footer {
 }
 
 .ct-footer-links a {
-  color: var(--ct-text-muted);
+  color: #94a3b8 !important;
   text-decoration: none;
   font-size: 14px;
   transition: var(--ct-transition);
@@ -323,8 +363,8 @@ site-footer {
 }
 
 .ct-social-btn {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
@@ -385,7 +425,7 @@ site-footer {
 }
 
 .ct-footer-legal-links a {
-  color: var(--ct-text-muted);
+  color: #94a3b8 !important;
   font-size: 13px;
   text-decoration: none;
   transition: var(--ct-transition);
@@ -511,6 +551,7 @@ cookie-consent {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  border: none;
   background: var(--ct-primary);
   color: #fff;
   display: flex;
@@ -581,9 +622,10 @@ cookie-consent {
     align-items: center;
   }
 
-  .ct-footer-col h4::after {
-    right: 50%;
-    margin-right: -20px;
+  .ct-footer-col h4::after,
+  .ct-footer-col .ct-footer-heading::after {
+    right: 50% !important;
+    margin-right: -20px !important;
   }
 
   .ct-footer-links a {

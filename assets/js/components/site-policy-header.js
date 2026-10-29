@@ -18,6 +18,6 @@ class SitePolicyHeader extends HTMLElement {
       </div>
     `;
   }
+}if (!customElements.get('site-policy-header')) {
+  customElements.define('site-policy-header', SitePolicyHeader);
 }
-
-customElements.define('site-policy-header', SitePolicyHeader);

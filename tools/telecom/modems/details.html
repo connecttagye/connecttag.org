@@ -36,12 +36,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
 
     <style>
         @font-face {
@@ -184,6 +184,310 @@
         .btn-copy-sm:hover { background: #006b98; color: #fff; border-color: #0052cc; }
         .config-link { color: #0052cc; text-decoration: underline; font-weight: 800; }
 
+        /* Gallery Thumbnails */
+        .gallery-caption {
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            margin-top: 14px;
+            min-height: 20px;
+        }
+        .gallery-thumbs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+        .gallery-thumb-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
+            padding: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .gallery-thumb-btn img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: none;
+        }
+        .gallery-thumb-btn:hover,
+        .gallery-thumb-btn.active {
+            border-color: #0052cc;
+            background: #eff6ff;
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.12);
+        }
+
+        /* Tags Bar */
+        .modem-tags-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .modem-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+        }
+        .modem-tag-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Enriched Sections (Full Specs, Resources, Providers) */
+        .enriched-section {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .enriched-section-title {
+            font-weight: 800;
+            color: #1e293b;
+            font-size: 20px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .enriched-section-title i {
+            color: #0052cc;
+        }
+
+        /* Full Technical Specs Groups */
+        .specs-groups-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .spec-group-card {
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .spec-group-header {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0052cc;
+            margin: 0 0 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .spec-row-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .spec-row-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 0;
+            border-bottom: 1px dashed #f1f5f9;
+            font-size: 13.5px;
+        }
+        .spec-row-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .spec-row-name {
+            color: #64748b;
+            font-weight: 700;
+        }
+        .spec-row-val {
+            color: #1e293b;
+            font-weight: 800;
+            text-align: left;
+        }
+
+        /* Resources & Management Apps */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .resource-card {
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 16px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            text-decoration: none;
+            color: #1e293b;
+            transition: 0.25s;
+        }
+        .resource-card:hover {
+            border-color: #0052cc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.06);
+            text-decoration: none;
+            color: #0052cc;
+        }
+        .resource-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .resource-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: #0052cc;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .resource-meta h4 {
+            font-size: 14px;
+            font-weight: 800;
+            margin: 0 0 4px;
+            color: inherit;
+        }
+        .resource-meta p {
+            font-size: 12px;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Provider / Organization Card */
+        .providers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .provider-card {
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+        }
+        .provider-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .provider-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            padding: 6px;
+            object-fit: contain;
+            background: #fff;
+            flex-shrink: 0;
+        }
+        .provider-title-wrap h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #1e293b;
+            margin: 0 0 5px;
+        }
+        .provider-role-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+        .provider-desc {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+        .provider-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .provider-contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 13px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .provider-contact-pill:hover {
+            border-color: #0052cc;
+            color: #0052cc;
+            background: #eff6ff;
+            text-decoration: none;
+        }
+        .provider-meta-line {
+            font-size: 12.5px;
+            color: #64748b;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .provider-socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+        .provider-social-link {
+            padding: 5px 11px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .provider-social-link:hover {
+            background: #0052cc;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
         /* Related Modems Section */
         .related-section { margin-top: 50px; padding-top: 35px; border-top: 1px solid #e2e8f0; }
         .related-title { font-weight: 800; color: #1e293b; font-size: 20px; margin-bottom: 25px; }
@@ -253,12 +557,14 @@
 <!-- Compact Breadcrumb Bar -->
 <site-breadcrumb items='[{"title":"الرئيسية","url":"https://connecttag.org/"},{"title":"الأدوات","url":"https://connecttag.org/tools/"},{"title":"الاتصالات والإنترنت","url":"https://connecttag.org/tools/telecom/"},{"title":"دليل مودمات يمن فورجي 4G","url":"https://connecttag.org/tools/telecom/modems/"},{"title":"مواصفات مودم يمن فورجي","url":"https://connecttag.org/tools/telecom/modems/details","id":"breadcrumb-active"}]'></site-breadcrumb>
 
-<main class="modem-details-container">
+<main id="main-content" class="modem-details-container">
     <div class="container">
         <div class="row">
             <div class="col-md-5">
                 <div class="product-showcase">
-                    <img id="modem-image" src="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" alt="صورة مودم يمن فورجي" width="380" height="285">
+                    <img id="modem-image" src="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" alt="صورة مودم يمن فورجي" fetchpriority="high" width="380" height="285">
+                    <div id="modem-gallery-caption" class="gallery-caption" style="display:none;"></div>
+                    <div id="modem-gallery-thumbs" class="gallery-thumbs" style="display:none;"></div>
                 </div>
             </div>
 
@@ -268,6 +574,8 @@
 
                     <!-- Single Canonical H1 -->
                     <h1 id="modem-title">مواصفات وإعدادات مودم يمن فورجي 4G</h1>
+
+                    <div id="modem-tags-bar" class="modem-tags-bar" style="display:none;"></div>
 
                     <div id="modem-description" class="description-text"></div>
 
@@ -286,11 +594,6 @@
                             <i class="fa-solid fa-calendar"></i>
                             <span class="label">سنة الإصدار</span>
                             <span class="value" id="spec-year">-</span>
-                        </div>
-                        <div class="spec-card">
-                            <i id="spec-condition-icon" class="fa-solid fa-circle-info"></i>
-                            <span class="label" id="spec-condition-label">الحالة</span>
-                            <span class="value" id="spec-condition">-</span>
                         </div>
                     </div>
 
@@ -327,6 +630,24 @@
             </div>
         </div>
 
+        <!-- Full Technical Specifications -->
+        <section id="full-specs-section" class="enriched-section" style="display:none;">
+            <h2 class="enriched-section-title"><i class="fa-solid fa-microchip"></i> المواصفات الفنية الكاملة</h2>
+            <div id="full-specs-container" class="specs-groups-wrapper"></div>
+        </section>
+
+        <!-- Management Apps & Guides -->
+        <section id="resources-section" class="enriched-section" style="display:none;">
+            <h2 class="enriched-section-title"><i class="fa-solid fa-sliders"></i> تطبيقات وشروحات إدارة المودم</h2>
+            <div id="resources-container" class="resources-grid"></div>
+        </section>
+
+        <!-- Authorized Provider / Organization -->
+        <section id="provider-section" class="enriched-section" style="display:none;">
+            <h2 class="enriched-section-title"><i class="fa-solid fa-building-shield"></i> الوكيل والجهة المزودة المعتمدة</h2>
+            <div id="provider-container" class="providers-grid"></div>
+        </section>
+
         <!-- Related Modems -->
         <div class="related-section">
             <h3 class="related-title"><i class="fa-solid fa-layer-group"></i> مودمات يمن فورجي مشابهة قد تهمك</h3>
@@ -345,8 +666,8 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.26" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.27" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.27" defer></script>
 </body>
 </html>

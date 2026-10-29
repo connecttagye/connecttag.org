@@ -19,11 +19,11 @@
             "inLanguage": "ar",
             "publisher": {
                 "@type": "Organization",
-                "name": "ConnectTag",
+                "name": "كونكت تاق",
                 "url": "https://connecttag.org",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://connecttag.org/logo.png"
+                    "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
                 }
             }
         },
@@ -47,6 +47,7 @@
     ]
 }
   </script>
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
     <link rel="manifest" href="https://connecttag.org/manifest.json">
     <meta name="theme-color" content="#0052cc">
     <meta name="mobile-web-app-capable" content="yes">
@@ -59,7 +60,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="المدونة - كونكت تاق">
     <meta property="og:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
-    <meta property="og:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp">
+    <meta property="og:image" content="https://connecttag.org/assets/img/connect-tag-main-banner.webp">
 
     <!-- twitter OpenGraph meta -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -67,24 +68,24 @@
     <meta name="twitter:url" content="https://connecttag.org/blog/" />
     <meta name="twitter:title" content="المدونة - كونكت تاق">
     <meta name="twitter:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
-    <meta name="twitter:image" content="https://connecttag.org/upload/yemen-internet-comparison.webp" />
+    <meta name="twitter:image" content="https://connecttag.org/assets/img/connect-tag-main-banner.webp" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-    <link rel="preload" href="https://connecttag.org/assets/img/connect-tag-main-banner.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
+    <link rel="preload" href="https://connecttag.org/assets/img/blog-cover.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.27"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.27" defer></script>
 
     <!-- CSS المخصص لتحسين تصميم المدونة -->
     <style>
@@ -94,7 +95,7 @@
 
         /* تحسين الهيدر */
         .page-header-unified {
-            background-image: linear-gradient(rgba(13, 0, 26, 0.75), rgba(0, 119, 182, 0.85)), url('https://connecttag.org/assets/img/blog-cover.jpg') !important;
+            background-image: linear-gradient(rgba(13, 0, 26, 0.75), rgba(0, 119, 182, 0.85)), url('https://connecttag.org/assets/img/blog-cover.webp') !important;
             background-size: cover !important;
             background-position: center !important;
             padding: 160px 0 100px !important;
@@ -130,7 +131,7 @@
 
         .page-header-unified .ct-breadcrumb-item {
             color: rgba(255, 255, 255, 0.7) !important;
-            font-size: 0.95rem !important;
+            font-size: 14px !important;
         }
 
         .page-header-unified .ct-breadcrumb-item a {
@@ -279,7 +280,7 @@
             gap: 15px;
             margin-bottom: 15px;
             font-size: 0.8rem;
-            color: #888;
+            color: #555;
         }
 
         .post-meta-v2 span {
@@ -312,7 +313,7 @@
         }
 
         .card-text {
-            color: #666;
+            color: #555;
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 25px;
@@ -351,6 +352,49 @@
 
         .read-more-btn:hover i {
             transform: translateX(-5px); /* حركة للسهم في RTL */
+        }
+
+        
+        .blog-cat-btn {
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+        .blog-cat-btn:hover {
+            background: #e0f2fe;
+            color: #0052cc;
+            border-color: #bae6fd;
+        }
+        .blog-cat-btn.active,
+        .blog-cat-btn[aria-pressed="true"] {
+            background: #0052cc;
+            color: #ffffff;
+            border-color: #0052cc;
+        }
+        .authors-hub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #0052cc;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            transition: all 0.25s ease;
+        }
+        .authors-hub-link:hover {
+            background: #0052cc;
+            color: #ffffff !important;
         }
 
         /* تجاوب الشاشات */
@@ -409,14 +453,14 @@
                                 <label for="blog-search" class="sr-only">ابحث عن مقال</label>
                                 <input type="text" id="blog-search" placeholder="ابحث عن مقال معين...">
                             </div>
-                            <div class="categories-tabs d-none d-md-flex" style="gap: 15px;">
+                            <div class="categories-tabs" role="tablist" aria-label="تصنيفات المدونة" style="display: flex; gap: 15px; overflow-x: auto; white-space: nowrap; max-width: 100%; padding-bottom: 4px; scrollbar-width: none; align-items: center;">
                                 <span style="font-weight: 700; color: #0077b6;">التصنيفات:</span>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">الكل</a>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">الأمن السيبراني</a>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">برمجة وتطوير</a>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">استضافة وسحابيات</a>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">تسويق وأعمال</a>
-                                <a href="#" style="color: #666; text-decoration: none; font-size: 0.9rem;">اتصالات وإنترنت</a>
+                                <button type="button" class="blog-cat-btn active" data-cat="الكل" aria-pressed="true" style="background: none; border: none; padding: 0; cursor: pointer; color: #0077b6; font-weight: bold; font-size: 0.9rem; font-family: inherit;">الكل</button>
+                                <button type="button" class="blog-cat-btn" data-cat="الأمن السيبراني" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">الأمن السيبراني</button>
+                                <button type="button" class="blog-cat-btn" data-cat="برمجة وتطوير" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">برمجة وتطوير</button>
+                                <button type="button" class="blog-cat-btn" data-cat="استضافة وسحابيات" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">استضافة وسحابيات</button>
+                                <button type="button" class="blog-cat-btn" data-cat="تسويق وأعمال" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">تسويق وأعمال</button>
+                                <button type="button" class="blog-cat-btn" data-cat="اتصالات وإنترنت" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">اتصالات وإنترنت</button>
                             </div>
                         </div>
                     </div>
@@ -430,7 +474,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/technical-seo-audit-guide">
-                                    <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp" alt="الفحص التقني الشامل للمواقع Technical SEO Audit">
+                                    <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp" alt="الفحص التقني الشامل للمواقع Technical SEO Audit" fetchpriority="high" width="1376" height="768">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -451,7 +495,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/kmp-data-management-room-datastore">
-                                    <img src="https://connecttag.org/upload/kmp-data-encryption.webp" alt="إدارة وتشفير البيانات في KMP">
+                                    <img src="https://connecttag.org/upload/kmp-data-encryption.webp" alt="إدارة وتشفير البيانات في KMP" fetchpriority="high" width="1027" height="579">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -472,7 +516,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison">
-                                    <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" alt="مقارنة KMP و Flutter">
+                                    <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" alt="مقارنة KMP و Flutter" width="1051" height="498">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -493,7 +537,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/iis-hardening-guide">
-                                    <img src="https://connecttag.org/upload/iis-hardening-guide.webp" alt="تأمين خادم IIS">
+                                    <img src="https://connecttag.org/upload/iis-hardening-guide.webp" alt="تأمين خادم IIS" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -514,7 +558,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/iis-isapi-deployment-guide">
-                                    <img src="https://connecttag.org/upload/iis-isapi-guide.webp" alt="نشر ISAPI DLL على IIS">
+                                    <img src="https://connecttag.org/upload/iis-isapi-guide.webp" alt="نشر ISAPI DLL على IIS" loading="lazy" width="2816" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -535,7 +579,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">
-                                    <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" alt="تحسين إعدادات كلاود فلير">
+                                    <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" alt="تحسين إعدادات كلاود فلير" loading="lazy" width="2816" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -557,7 +601,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/jetpack-compose-guide">
-                                    <img src="https://connecttag.org/upload/jetpack-compose.webp" alt="تطوير أندرويد Jetpack Compose">
+                                    <img src="https://connecttag.org/upload/jetpack-compose.webp" alt="تطوير أندرويد Jetpack Compose" loading="lazy" width="2816" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -579,7 +623,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">
-                                    <img src="https://connecttag.org/upload/android-reverse-engineering.webp" alt="أمن تطبيقات الأندرويد">
+                                    <img src="https://connecttag.org/upload/android-reverse-engineering.webp" alt="أمن تطبيقات الأندرويد" loading="lazy" width="2816" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -601,7 +645,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/api-security-guide">
-                                    <img src="https://connecttag.org/upload/api-security.webp" alt="أمن واجهات برمجة التطبيقات">
+                                    <img src="https://connecttag.org/upload/api-security.webp" alt="أمن واجهات برمجة التطبيقات" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -623,7 +667,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/advanced-database-security-architecture">
-                                    <img src="https://connecttag.org/upload/database-architecture.webp" alt="هندسة قواعد البيانات">
+                                    <img src="https://connecttag.org/upload/database-architecture.webp" alt="هندسة قواعد البيانات" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -645,7 +689,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">
-                                    <img src="https://connecttag.org/upload/cloudflare-page-hosting.webp" alt="استضافة Cloudflare Pages">
+                                    <img src="https://connecttag.org/upload/cloudflare-page-hosting.webp" alt="استضافة Cloudflare Pages" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -667,7 +711,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">
-                                    <img src="https://connecttag.org/upload/waf-cloudflare.webp" alt="جدار حماية كلاود فلير WAF">
+                                    <img src="https://connecttag.org/upload/waf-cloudflare.webp" alt="جدار حماية كلاود فلير WAF" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -689,7 +733,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">
-                                    <img src="https://connecttag.org/upload/telecom-yemen.webp" alt="وزارة الاتصالات اليمنية">
+                                    <img src="https://connecttag.org/upload/telecom-yemen.webp" alt="وزارة الاتصالات اليمنية" loading="lazy" width="2752" height="1536">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -711,7 +755,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/website-security-simple-steps">
-                                    <img src="https://connecttag.org/upload/security-steps.webp" alt="أمن المواقع الإلكترونية">
+                                    <img src="https://connecttag.org/upload/security-steps.webp" alt="أمن المواقع الإلكترونية" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -733,7 +777,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/google-business-profile-guide">
-                                    <img src="https://connecttag.org/upload/google-business-guide.webp" alt="جوجل بيزنس وخرائط جوجل">
+                                    <img src="https://connecttag.org/upload/google-business-guide.webp" alt="جوجل بيزنس وخرائط جوجل" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -755,7 +799,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
-                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp" alt="مقارنة إنترنت اليمن 4G ADSL Fiber">
+                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -777,7 +821,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وإنترنت</span>
                                 <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
-                                    <img src="https://connecttag.org/upload/yemen-4g.webp" alt="استعلام رصيد يمن فورجي">
+                                    <img src="https://connecttag.org/upload/yemen-4g.webp" alt="استعلام رصيد يمن فورجي" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -799,7 +843,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/choosing-web-hosting">
-                                    <img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" alt="كيف تختار استضافة موقعك" loading="lazy">
+                                    <img src="https://connecttag.org/upload/how-chose-yout-hosting.webp" alt="كيف تختار استضافة موقعك" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -821,7 +865,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/digital-marketing-importance">
-                                    <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" alt="أهمية التسويق الرقمي" loading="lazy">
+                                    <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" alt="أهمية التسويق الرقمي" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -843,7 +887,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">تسويق وأعمال</span>
                                 <a href="https://connecttag.org/blog/why-your-business-needs-app">
-                                    <img src="https://connecttag.org/upload/why-you-need-apps.webp" alt="تطبيقات الهواتف الذكية" loading="lazy">
+                                    <img src="https://connecttag.org/upload/why-you-need-apps.webp" alt="تطبيقات الهواتف الذكية" loading="lazy" width="1536" height="1024">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -899,15 +943,21 @@
         }
 
         // فلترة التصنيفات
-        const categoryLinks = document.querySelectorAll('.categories-tabs a');
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                categoryLinks.forEach(l => l.style.fontWeight = 'normal');
+        const categoryBtns = document.querySelectorAll('.blog-cat-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.fontWeight = 'normal';
+                    b.style.color = '#666';
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
                 this.style.fontWeight = 'bold';
                 this.style.color = '#0077b6';
+                this.setAttribute('aria-pressed', 'true');
 
-                const categoryFilter = this.textContent.trim().toLowerCase();
+                const categoryFilter = (this.getAttribute('data-cat') || this.textContent).trim().toLowerCase();
 
                 blogCards.forEach(card => {
                     const category = card.querySelector('.category-badge').textContent.toLowerCase();

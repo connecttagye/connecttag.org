@@ -146,6 +146,11 @@ class SiteBreadcrumb extends HTMLElement {
     const existingScript = document.getElementById('ds-breadcrumb-schema');
     if (existingScript) existingScript.remove();
 
+    // Skip injection if a static BreadcrumbList JSON-LD already exists in the document
+    const hasStaticBreadcrumb = Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
+      .some(script => script.textContent && script.textContent.includes('"BreadcrumbList"'));
+    if (hasStaticBreadcrumb) return;
+
     const baseUrl = window.CT_BASE_URL || 'https://connecttag.org/';
     const canonicalEl = document.querySelector('link[rel="canonical"]');
     const pageUrl = canonicalEl ? canonicalEl.href : window.location.href;
@@ -193,5 +198,6 @@ class SiteBreadcrumb extends HTMLElement {
     document.head.appendChild(script);
   }
 }
-
-customElements.define('site-breadcrumb', SiteBreadcrumb);
+if (!customElements.get('site-breadcrumb')) {
+  customElements.define('site-breadcrumb', SiteBreadcrumb);
+}

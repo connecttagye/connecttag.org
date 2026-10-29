@@ -25,30 +25,30 @@
     if (type === 'ios') {
       bodyContent = `
         <div class="pwa-prompt-icon">
-          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo">
+          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40">
         </div>
         <div class="pwa-prompt-text">
           <h3>تثبيت تطبيق كونكت تاق</h3>
-          <p>اضغط على أيقونة <i class="fa-regular fa-share-from-square"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p>
+          <p>اضغط على أيقونة <i class="fa-regular fa-share-from-square" aria-hidden="true"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p>
         </div>
       `;
     } else {
       bodyContent = `
         <div class="pwa-prompt-icon">
-          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo">
+          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40">
         </div>
         <div class="pwa-prompt-text">
           <h3>تثبيت تطبيق كونكت تاق</h3>
           <p>احصل على وصول أسرع وتجربة أفضل على هاتفك</p>
         </div>
-        <button id="pwa-install-btn" class="pwa-install-button">تثبيت</button>
+        <button type="button" id="pwa-install-btn" class="pwa-install-button">تثبيت</button>
       `;
     }
 
     const promptHtml = `
       <div id="pwa-install-prompt" class="pwa-prompt-container ${type === 'ios' ? 'is-ios' : ''}">
         <div class="pwa-prompt-content">
-          <button class="pwa-prompt-close" aria-label="إغلاق">&times;</button>
+          <button type="button" class="pwa-prompt-close" aria-label="إغلاق">&times;</button>
           <div class="pwa-prompt-body">
             ${bodyContent}
           </div>
