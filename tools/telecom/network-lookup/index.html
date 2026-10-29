@@ -84,14 +84,14 @@
   </script>
     <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.38" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
 
@@ -385,7 +385,7 @@
             border: 2px dashed #e2e8f0;
         }
         .empty-state i { font-size: 80px; color: #cbd5e1; margin-bottom: 25px; }
-        .empty-state h4 { font-weight: 800; color: #475569; }
+        .empty-state h4, .empty-state h3 { font-weight: 800; color: #475569; }
 
         @media (max-width: 991px) {
             .operator-content { flex-direction: column; align-items: center; text-align: center; }
@@ -536,7 +536,7 @@
                     <div id="resultsContent">
                         <div class="empty-state">
                             <i class="fa-solid fa-tower-broadcast animate__animated animate__pulse animate__infinite"></i>
-                            <h4>جاهز للاستكشاف</h4>
+                            <h2 class="sr-only">????? ?????</h2><h3>جاهز للاستكشاف</h3>
                             <p>أدخل بيانات MCC/MNC أو اختر دولة من القائمة لعرض تفاصيل المشغلين والبادئات المخصصة.</p>
                         </div>
                     </div>
@@ -552,7 +552,7 @@
             <div class="col-md-4" data-aos="fade-up">
                 <div class="p-4 bg-white rounded-4 border">
                     <i class="fa-solid fa-circle-info text-primary mb-3 fs-2"></i>
-                    <h5 class="fw-bold">ما هو الـ MCC؟</h5>
+                    <h4 class="fw-bold" style="font-size:14px;">ما هو الـ MCC؟</h4>
                     <p class="small text-muted">رمز مكون من 3 أرقام يحدد الدولة عالمياً (مثلاً: 421 لليمن، 420 للسعودية).</p>
                 </div>
             </div>

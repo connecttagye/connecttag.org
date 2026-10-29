@@ -1,4 +1,6 @@
 {
-  "version": "1.1.38",
-  "cache_version": "v92"
+  "version": "1.1.39",
+  "cache_version": "v93",
+  "last_updated": "2026-10-29",
+  "description": "Font Awesome WOFF2 subsetting (~246KB saved), app hero WebP optimization, CSS grid CLS prevention & deduplication, WCAG AA contrast & heading hierarchy compliance"
 }

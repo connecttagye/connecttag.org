@@ -30,15 +30,15 @@
     <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
     <link rel="preload" href="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.38">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.39">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.38" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.39" defer></script>
 
     <script type="application/ld+json">
 [
@@ -169,8 +169,8 @@
         .router-ui-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #34d399; font-weight: 700; }
         .router-ui-body { padding: 24px 22px; background: linear-gradient(145deg, #0f172a 0%, #172554 100%); }
         .router-ui-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px dashed rgba(148, 163, 184, 0.25); }
-        .router-ui-header h4 { color: #ffffff; font-size: 17px; font-weight: 800; margin: 0; display: inline-flex; align-items: center; gap: 8px; }
-        .router-ui-header h4 i { color: #38bdf8; }
+        .router-ui-header h4, .router-ui-header h3 { color: #ffffff; font-size: 17px; font-weight: 800; margin: 0; display: inline-flex; align-items: center; gap: 8px; }
+        .router-ui-header h4, .router-ui-header h3 i { color: #38bdf8; }
         .router-ui-header span { font-size: 12px; background: rgba(56, 189, 248, 0.16); color: #7dd3fc; padding: 4px 10px; border-radius: 20px; font-weight: 700; }
         .router-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
         .router-field-box { background: rgba(30, 41, 59, 0.78); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 12px; padding: 14px 16px; }
@@ -188,7 +188,7 @@
         .bgc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
         .bgc-icon { width: 40px; height: 40px; border-radius: 10px; background: #eff6ff; color: #0052cc; display: flex; align-items: center; justify-content: center; font-size: 18px; }
         .bgc-num { font-size: 12px; font-weight: 800; color: #0052cc; background: #f1f5f9; padding: 3px 10px; border-radius: 20px; }
-        .balance-guard-card h4 { font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0; }
+        .balance-guard-card h4, .balance-guard-card h3 { font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0; }
         .balance-guard-card p { font-size: 13.5px; color: #475569; line-height: 1.65; margin: 0; }
     </style>
     <!-- PWA & Mobile Optimization Tags -->
@@ -456,7 +456,7 @@
                             </div>
                             <div class="router-ui-body">
                                 <div class="router-ui-header">
-                                    <h4><i class="fa-solid fa-sliders"></i> نموذج الإعدادات الآمنة الموصى بها داخل لوحة تحكم المودم (WLAN / Wi-Fi Settings)</h4>
+                                    <h3><i class="fa-solid fa-sliders"></i> نموذج الإعدادات الآمنة الموصى بها داخل لوحة تحكم المودم (WLAN / Wi-Fi Settings)</h3>
                                     <span>إعدادات الحماية القصوى</span>
                                 </div>
                                 <div class="router-form-grid">
@@ -562,7 +562,7 @@
                                     <div class="bgc-icon"><i class="fa-solid fa-gauge-simple-high"></i></div>
                                     <span class="bgc-num">الخطوة 01</span>
                                 </div>
-                                <h4>تحديد السرعة (Speed Limit / QoS)</h4>
+                                <h3>تحديد السرعة (Speed Limit / QoS)</h3>
                                 <p>تخصيص سقف سرعة محدد (مثل 2 إلى 4Mbps) لكل متصل لمنع سحب الباقة بالكامل في الفيديوهات عالية الدقة.</p>
                             </div>
 

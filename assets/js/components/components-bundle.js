@@ -92,7 +92,7 @@ const isCompanyPage = [
 '/company/our-company.html'
 ].includes(currentPath);
 this.innerHTML = `
-<header class="ct-header-navbar"><a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a><div class="ct-header-container"><a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية"><img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.38" alt="كونكت تاق - Connect Tag" width="105" height="42" /></a><nav aria-label="التنقل الرئيسي"><ul class="ct-nav-menu" id="ct-nav-menu"><li class="ct-nav-item ${isHome ? 'active' : ''}"><a href="${baseUrl}/" class="ct-nav-link" ${isHome ? 'aria-current="page"' : ''}>الرئيسية</a></li><li class="ct-nav-item ${isCompanyPage ? 'active' : ''}"><a href="${baseUrl}/company/" class="ct-nav-link" ${isCompanyPage ? 'aria-current="page"' : ''}>من نحن</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}"><a href="${baseUrl}/company/projects/" class="ct-nav-link" ${isActive(baseUrl + '/company/projects/') ? 'aria-current="page"' : ''}>أعمالنا</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}"><a href="${baseUrl}/company/services/" class="ct-nav-link" ${isActive(baseUrl + '/company/services/') ? 'aria-current="page"' : ''}>الخدمات</a></li><li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}"><a href="${baseUrl}/blog/" class="ct-nav-link" ${isActive(baseUrl + '/blog/') ? 'aria-current="page"' : ''}>المدونة</a></li><li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}"><a href="${baseUrl}/store/" class="ct-nav-link" ${isActive(baseUrl + '/store/') ? 'aria-current="page"' : ''}>المتجر</a></li><li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}"><a href="${baseUrl}/tools/" class="ct-nav-link" ${isActive(baseUrl + '/tools/') ? 'aria-current="page"' : ''}>الأدوات</a></li></ul></nav><button type="button" class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" aria-controls="ct-nav-menu" id="ct-menu-btn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></header>
+<header class="ct-header-navbar"><a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a><div class="ct-header-container"><a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية"><img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.39" alt="كونكت تاق - Connect Tag" width="105" height="42" /></a><nav aria-label="التنقل الرئيسي"><ul class="ct-nav-menu" id="ct-nav-menu"><li class="ct-nav-item ${isHome ? 'active' : ''}"><a href="${baseUrl}/" class="ct-nav-link" ${isHome ? 'aria-current="page"' : ''}>الرئيسية</a></li><li class="ct-nav-item ${isCompanyPage ? 'active' : ''}"><a href="${baseUrl}/company/" class="ct-nav-link" ${isCompanyPage ? 'aria-current="page"' : ''}>من نحن</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}"><a href="${baseUrl}/company/projects/" class="ct-nav-link" ${isActive(baseUrl + '/company/projects/') ? 'aria-current="page"' : ''}>أعمالنا</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}"><a href="${baseUrl}/company/services/" class="ct-nav-link" ${isActive(baseUrl + '/company/services/') ? 'aria-current="page"' : ''}>الخدمات</a></li><li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}"><a href="${baseUrl}/blog/" class="ct-nav-link" ${isActive(baseUrl + '/blog/') ? 'aria-current="page"' : ''}>المدونة</a></li><li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}"><a href="${baseUrl}/store/" class="ct-nav-link" ${isActive(baseUrl + '/store/') ? 'aria-current="page"' : ''}>المتجر</a></li><li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}"><a href="${baseUrl}/tools/" class="ct-nav-link" ${isActive(baseUrl + '/tools/') ? 'aria-current="page"' : ''}>الأدوات</a></li></ul></nav><button type="button" class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" aria-controls="ct-nav-menu" id="ct-menu-btn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></header>
 `;
 if (!document.getElementById('main-content')) {
 const mainEl = document.querySelector('main') || this.nextElementSibling;
@@ -103,16 +103,22 @@ mainEl.id = 'main-content';
 const toggleBtn = this.querySelector('#ct-menu-btn');
 const menu = this.querySelector('#ct-nav-menu');
 if (toggleBtn && menu) {
+const hideOverlay = () => {
+const ov = document.querySelector('.nav-overlay');
+if (ov) { ov.style.opacity = '0'; ov.style.display = 'none'; }
+};
 toggleBtn.addEventListener('click', () => {
 const isOpen = menu.classList.toggle('open');
 toggleBtn.setAttribute('aria-expanded', isOpen);
 toggleBtn.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+if (!isOpen) hideOverlay();
 });
 document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape' && menu.classList.contains('open')) {
 menu.classList.remove('open');
 toggleBtn.setAttribute('aria-expanded', 'false');
 toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+hideOverlay();
 toggleBtn.focus();
 }
 });
@@ -121,6 +127,7 @@ link.addEventListener('click', () => {
 menu.classList.remove('open');
 toggleBtn.setAttribute('aria-expanded', 'false');
 toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+hideOverlay();
 });
 });
 }
@@ -435,11 +442,11 @@ const createPrompt = (type = 'android') => {
 let bodyContent = '';
 if (type === 'ios') {
 bodyContent = `
-<div class="pwa-prompt-icon"><img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40"></div><div class="pwa-prompt-text"><h3>تثبيت تطبيق كونكت تاق</h3><p>اضغط على أيقونة <i class="fa-regular fa-share-from-square" aria-hidden="true"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p></div>
+<div class="pwa-prompt-icon"><img src="${window.CT_BASE_URL}icon-192.webp" alt="Connect Tag Logo" width="40" height="40" loading="lazy" decoding="async"></div><div class="pwa-prompt-text"><h3>تثبيت تطبيق كونكت تاق</h3><p>اضغط على أيقونة <i class="fa-regular fa-share-from-square" aria-hidden="true"></i> ثم <strong>"Add to Home Screen"</strong> لتثبيت التطبيق على جهازك.</p></div>
 `;
 } else {
 bodyContent = `
-<div class="pwa-prompt-icon"><img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40"></div><div class="pwa-prompt-text"><h3>تثبيت تطبيق كونكت تاق</h3><p>احصل على وصول أسرع وتجربة أفضل على هاتفك</p></div><button type="button" id="pwa-install-btn" class="pwa-install-button">تثبيت</button>
+<div class="pwa-prompt-icon"><img src="${window.CT_BASE_URL}icon-192.webp" alt="Connect Tag Logo" width="40" height="40" loading="lazy" decoding="async"></div><div class="pwa-prompt-text"><h3>تثبيت تطبيق كونكت تاق</h3><p>احصل على وصول أسرع وتجربة أفضل على هاتفك</p></div><button type="button" id="pwa-install-btn" class="pwa-install-button">تثبيت</button>
 `;
 }
 const promptHtml = `
@@ -584,20 +591,16 @@ el.removeAttribute('data-aos');
 }
 triggerAOS();
 const backToTop = document.getElementById('back-to-top');
-const homeSection = document.getElementById('home');
-if (backToTop && homeSection) {
-const bttObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-backToTop.style.opacity = "0";
-setTimeout(() => { if(!backToTop.matches(':hover')) backToTop.style.display = "none"; }, 300);
+if (backToTop) {
+const updateBtt = () => {
+if (window.scrollY > 300) {
+backToTop.classList.add('visible');
 } else {
-backToTop.style.display = "flex";
-setTimeout(() => { backToTop.style.opacity = "1"; }, 10);
+backToTop.classList.remove('visible');
 }
-});
-}, { threshold: 0.1 });
-bttObserver.observe(homeSection);
+};
+window.addEventListener('scroll', updateBtt, { passive: true });
+updateBtt();
 backToTop.addEventListener('click', function(e) {
 e.preventDefault();
 window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -28,7 +28,7 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.38" alt="كونكت تاق - Connect Tag" width="105" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.39" alt="كونكت تاق - Connect Tag" width="105" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
@@ -77,10 +77,15 @@ class SiteHeader extends HTMLElement {
     const menu = this.querySelector('#ct-nav-menu');
 
     if (toggleBtn && menu) {
+      const hideOverlay = () => {
+        const ov = document.querySelector('.nav-overlay');
+        if (ov) { ov.style.opacity = '0'; ov.style.display = 'none'; }
+      };
       toggleBtn.addEventListener('click', () => {
         const isOpen = menu.classList.toggle('open');
         toggleBtn.setAttribute('aria-expanded', isOpen);
         toggleBtn.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        if (!isOpen) hideOverlay();
       });
 
       // Close menu on Escape key
@@ -89,6 +94,7 @@ class SiteHeader extends HTMLElement {
           menu.classList.remove('open');
           toggleBtn.setAttribute('aria-expanded', 'false');
           toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+          hideOverlay();
           toggleBtn.focus();
         }
       });
@@ -99,6 +105,7 @@ class SiteHeader extends HTMLElement {
           menu.classList.remove('open');
           toggleBtn.setAttribute('aria-expanded', 'false');
           toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+          hideOverlay();
         });
       });
     }

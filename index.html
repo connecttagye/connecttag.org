@@ -133,7 +133,7 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cairo-latin.woff2" crossorigin>
 
   <!-- Preload Critical Hero Image -->
-  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp?v=1.1.38" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp?v=1.1.39" as="image" type="image/webp" fetchpriority="high">
 
   <style>
     /* Base Box Model & Typography Reset to prevent CLS when Bootstrap/Styles load */
@@ -280,6 +280,19 @@
     }
     @media (min-width: 1200px) {
       .container { width: 1170px; }
+    }
+    .row { margin-right: -15px; margin-left: -15px; }
+    .container::before, .container::after, .row::before, .row::after { display: table; content: " "; }
+    .container::after, .row::after { clear: both; }
+    .img-responsive { display: block; max-width: 100%; height: auto; }
+    .col-md-3, .col-md-4, .col-md-6, .col-md-8, .col-md-12 { position: relative; min-height: 1px; padding-right: 15px; padding-left: 15px; }
+    @media (min-width: 992px) {
+      .col-md-3, .col-md-4, .col-md-6, .col-md-8, .col-md-12 { float: left; }
+      .col-md-12 { width: 100%; }
+      .col-md-8 { width: 66.66666667%; }
+      .col-md-6 { width: 50%; }
+      .col-md-4 { width: 33.33333333%; }
+      .col-md-3 { width: 25%; }
     }
     .fa-solid, .fa-regular, .fa-brands {
       display: inline-block;
@@ -538,7 +551,7 @@
 
     /* Critical Hero & Above-the-Fold Styles (matches styles.min.css & shared-styles.css) */
     #headerwrap {
-      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp?v=1.1.38') no-repeat center center;
+      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp?v=1.1.39') no-repeat center center;
       margin-top: -50px;
       padding-top: 180px;
       padding-bottom: 140px;
@@ -921,22 +934,22 @@
   </style>
 
   <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
-  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.38"></noscript>
+  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.39"></noscript>
 
-  <link rel="preload" href="assets/css/styles.min.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.38"></noscript>
+  <link rel="preload" href="assets/css/styles.min.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.39"></noscript>
 
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.38"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.39"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.38"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.39"></noscript>
 
-  <link rel="preload" href="assets/css/fontawesome.min.css?v=1.1.38" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/fontawesome.min.css?v=1.1.38"></noscript>
+  <link rel="preload" href="assets/css/fontawesome.min.css?v=1.1.39" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/fontawesome.min.css?v=1.1.39"></noscript>
 
-  <script src="assets/js/components/components-bundle.js?v=1.1.38" data-cfasync="false" defer></script>
+  <script src="assets/js/components/components-bundle.js?v=1.1.39" data-cfasync="false" defer></script>
 
   <!-- Google Consent Mode v2 (Default State before AdSense) -->
   <script>
@@ -1068,7 +1081,7 @@
     <div class="row white">
       <h2 class="centered">من نحن</h2>
       <hr>
-      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp?v=1.1.38" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
+      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp?v=1.1.39" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
       <div class="col-md-6" data-aos="fade-left">
         <h3>شركة كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي</h3>
         <p>كونكت تاق هي شركة رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية المتكاملة. نحن نجمع بين الخبرة التقنية والإبداع الفني لنقدم خدمات تصميم وتسويق رقمي تلبي تطلعات عملائنا في اليمن والمنطقة العربية بكفاءة واحترافية عالية.</p>
@@ -1299,7 +1312,7 @@
     <div class="row services-flex-row">
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp?v=1.1.38" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp?v=1.1.39" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الفحص التقني الشامل للمواقع (Technical SEO)</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج بحث جوجل...</p>
@@ -1310,7 +1323,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-data-encryption.webp?v=1.1.38" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/kmp-data-encryption.webp?v=1.1.39" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل Room KMP و DataStore: تأمين البيانات</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إتقان تخزين وتشفير البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية...</p>
@@ -1321,7 +1334,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp?v=1.1.38" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp?v=1.1.39" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">KMP vs Flutter: أيهما تختار؟</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء KMP الأصيل وسرعة تطوير Flutter المذهلة...</p>
@@ -1332,7 +1345,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/iis-hardening-guide.webp?v=1.1.38" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/iis-hardening-guide.webp?v=1.1.39" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل تأمين خادم IIS ضد الهجمات السيبرانية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر...</p>
@@ -1343,7 +1356,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/jetpack-compose.webp?v=1.1.38" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/jetpack-compose.webp?v=1.1.39" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الدليل الشامل لـ Jetpack Compose</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعرف على الأداة الثورية لبناء واجهات تطبيقات الأندرويد العصرية...</p>
@@ -1354,7 +1367,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/android-reverse-engineering.webp?v=1.1.38" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/android-reverse-engineering.webp?v=1.1.39" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">حماية تطبيقات الأندرويد من الهندسة العكسية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية تأمين تطبيقك وحماية الكود المصدري من التلاعب والاختراق...</p>

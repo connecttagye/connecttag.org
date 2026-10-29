@@ -23,7 +23,7 @@
     if (type === 'ios') {
       bodyContent = `
         <div class="pwa-prompt-icon">
-          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40">
+          <img src="${window.CT_BASE_URL}icon-192.webp" alt="Connect Tag Logo" width="40" height="40" loading="lazy" decoding="async">
         </div>
         <div class="pwa-prompt-text">
           <h3>تثبيت تطبيق كونكت تاق</h3>
@@ -33,7 +33,7 @@
     } else {
       bodyContent = `
         <div class="pwa-prompt-icon">
-          <img src="${window.CT_BASE_URL}icon-192.png" alt="Connect Tag Logo" width="40" height="40">
+          <img src="${window.CT_BASE_URL}icon-192.webp" alt="Connect Tag Logo" width="40" height="40" loading="lazy" decoding="async">
         </div>
         <div class="pwa-prompt-text">
           <h3>تثبيت تطبيق كونكت تاق</h3>

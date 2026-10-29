@@ -84,14 +84,14 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.38" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
@@ -250,14 +250,20 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <script>
-    let qrcode = new QRCode(document.getElementById("qrcode"), {
-        width: 160,
-        height: 160,
-        colorDark : "#006b98",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+    let qrcode;
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof QRCode !== 'undefined') {
+            qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 160,
+                height: 160,
+                colorDark : "#006b98",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+            qrcode.makeCode("https://connecttag.org");
+        }
     });
 
     function generateLinks() {
@@ -281,8 +287,10 @@
         intentUri += `end`;
         document.getElementById('intent-result').textContent = intentUri;
 
-        qrcode.clear();
-        qrcode.makeCode(fullUri);
+        if (qrcode) {
+            qrcode.clear();
+            qrcode.makeCode(fullUri);
+        }
     }
 
     function copyText(id) {
@@ -295,8 +303,6 @@
             if(window.showToast) window.showToast('تم نسخ الرابط بنجاح!', 'success');
         });
     }
-
-    qrcode.makeCode("https://connecttag.org");
 </script>
 </body>
 </html>

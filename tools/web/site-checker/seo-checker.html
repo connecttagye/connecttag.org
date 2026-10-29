@@ -84,17 +84,17 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.38">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.38" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.38" defer></script>
+<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.39" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -203,7 +203,7 @@
 
                 <div id="loader" class="loader-wrapper">
                     <div class="spinner"></div>
-                    <h4 id="loader-text" class="fw-bold">جاري تحليل البيانات…</h4>
+                    <h2 class="sr-only">????? ?????</h2><h3 id="loader-text" class="fw-bold" style="font-size:18px;">جاري تحليل البيانات…</h3>
                 </div>
 
                 <div id="results-dashboard" class="results-dashboard">
@@ -236,9 +236,9 @@
                         </div>
 
                         <h2 class="section-title"><i class="fa-solid fa-tags"></i> تحليل الكلمات والعبارات الدلالية</h2>
-                        <h6 class="fw-bold text-muted small mb-2">أبرز الكلمات المفتاحية المفردة (مع نسبة الكثافة):</h6>
+                        <h3 class="fw-bold text-muted small mb-2" style="font-size:12px;">أبرز الكلمات المفتاحية المفردة (مع نسبة الكثافة):</h3>
                         <div id="keyword-results" class="mb-3"></div>
-                        <h6 class="fw-bold text-muted small mb-2">أبرز العبارات المركبة (ثنائية الكلمات):</h6>
+                        <h4 class="fw-bold text-muted small mb-2" style="font-size:12px;">أبرز العبارات المركبة (ثنائية الكلمات):</h4>
                         <div id="phrase-results" class="mb-4"></div>
 
                         <h2 class="section-title"><i class="fa-solid fa-link"></i> مستكشف الروابط</h2>
@@ -270,7 +270,7 @@
             <div class="col-lg-4">
                 <div class="results-dashboard">
                     <div class="score-card mb-4" data-aos="zoom-in">
-                        <h5 class="fw-bold mb-4">النتيجة النهائية</h5>
+                        <h3 class="fw-bold mb-4" style="font-size:14px;">النتيجة النهائية</h3>
                         <div class="score-circle">
                             <span id="total-score">0</span>
                             <svg width="140" height="140">
@@ -301,7 +301,7 @@
                 </div>
                 <div class="history-card no-print">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="fw-bold mb-0"><i class="fa-regular fa-clock"></i> السجل الأخير</h5>
+                        <h4 class="fw-bold mb-0" style="font-size:14px;"><i class="fa-regular fa-clock"></i> السجل الأخير</h4>
                         <button type="button" class="btn btn-sm btn-link text-danger text-decoration-none p-0 fw-bold" onclick="window.clearHistory()">مسح</button>
                     </div>
                     <div id="history-list"></div>

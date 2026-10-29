@@ -1,16 +1,17 @@
 class SiteArticleCard extends HTMLElement {
 connectedCallback() {
 const title = this.getAttribute('title') || '';
+const safeTitle = title.replace(/"/g, '&quot;');
 const link = this.getAttribute('link') || '#';
 const image = this.getAttribute('image') || '';
 const excerpt = this.getAttribute('excerpt') || '';
 const date = this.getAttribute('date') || '';
 this.innerHTML = `
 <div class="ct-article-card">
-${image ? `<div class="ct-card-img"><img src="${image}" alt="${title}" width="400" height="250" loading="lazy" decoding="async"></div>` : ''}
+${image ? `<div class="ct-card-img"><img src="${image}" alt="${safeTitle}" width="400" height="250" loading="lazy" decoding="async"></div>` : ''}
 <div class="ct-card-body">
 ${date ? `<span class="ct-card-date">${date}</span>` : ''}
-<h3 class="ct-card-title"><a href="${link}">${title}</a></h3><p class="ct-card-excerpt">${excerpt}</p><a href="${link}" class="ct-card-link">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a></div></div>
+<h3 class="ct-card-title"><a href="${link}">${title}</a></h3><p class="ct-card-excerpt">${excerpt}</p><a href="${link}" class="ct-card-link" aria-label="اقرأ المزيد - ${safeTitle}">اقرأ المزيد <i class="fa-solid fa-angle-left" aria-hidden="true"></i></a></div></div>
 `;
 }
 }
@@ -33,9 +34,9 @@ return { dm: d, y: '' };
 const pub = parseDate(date);
 const upd = parseDate(updated);
 this.innerHTML = `
-<div class="ct-modern-meta"><div class="meta-col"><div class="meta-label"><i class="fa-regular fa-calendar-check"></i> تاريخ النشر</div><div class="meta-value"><span class="meta-dm">${pub.dm}</span><span class="meta-y">${pub.y}</span></div></div>
+<div class="ct-modern-meta"><div class="meta-col"><div class="meta-label"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i> تاريخ النشر</div><div class="meta-value"><span class="meta-dm">${pub.dm}</span><span class="meta-y">${pub.y}</span></div></div>
 ${updated ? `
-<div class="meta-sep"></div><div class="meta-col"><div class="meta-label"><i class="fa-solid fa-arrows-rotate"></i> تاريخ التحديث</div><div class="meta-value"><span class="meta-dm">${upd.dm}</span><span class="meta-y">${upd.y}</span></div></div>` : ''}
+<div class="meta-sep"></div><div class="meta-col"><div class="meta-label"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> تاريخ التحديث</div><div class="meta-value"><span class="meta-dm">${upd.dm}</span><span class="meta-y">${upd.y}</span></div></div>` : ''}
 </div>
 `;
 }
