@@ -2,7 +2,6 @@
 /about/our-company /company/our-company 301
 /about/about-site /about 301
 /company/about-site /about 301
-/services/* /company/services/:splat 301
 /company/services/drone-solutions /company/services/ 301
 /company/services/autonomous-drone-systems /company/services/ 301
 /company/services/drone-surveillance /company/services/ 301
@@ -217,18 +216,24 @@
 # Other Project Sections
 /projects/bots /company/projects/bots/ 301
 /projects/bots/ /company/projects/bots/ 301
+/projects/codes /company/projects/codes/ 301
+/projects/codes/ /company/projects/codes/ 301
 /projects/design /company/projects/design/ 301
 /projects/design/ /company/projects/design/ 301
 /projects/desktop /company/projects/apps/ 301
 /projects/desktop/ /company/projects/apps/ 301
-/projects/desktop/* /company/projects/apps/ 301
 /company/projects/desktop /company/projects/apps/ 301
 /company/projects/desktop/ /company/projects/apps/ 301
-/company/projects/desktop/* /company/projects/apps/ 301
 /projects/libraries /company/projects/libraries/ 301
 /projects/libraries/ /company/projects/libraries/ 301
 /projects/sites /company/projects/sites/ 301
 /projects/sites/ /company/projects/sites/ 301
+/projects/apps/sabr /company/projects/apps/sabr/ 301
+/projects/apps/sabr/ /company/projects/apps/sabr/ 301
+/projects/apps/sabr/privacy-policy /company/projects/apps/sabr/privacy-policy 301
+/projects/apps/sabr/privacy-policy.html /company/projects/apps/sabr/privacy-policy 301
+/projects/apps/sabr/terms-of-use /company/projects/apps/sabr/terms-of-use 301
+/projects/apps/sabr/terms-of-use.html /company/projects/apps/sabr/terms-of-use 301
 
 # Company & Support Redirects
 /order /company/support/order 301
@@ -240,12 +245,103 @@
 /support/ /company/support/ 301
 /support/faq /company/support/faq 301
 /support/order /company/support/order 301
-/support/* /company/support/:splat 301
 
 # Blog & Authors
 /author /blog/authors/ 301
 /author/ /blog/authors/ 301
-/author/* /blog/authors/:splat 301
+/author/aqeldev /blog/authors/aqeldev 301
+/author/aqeldev/ /blog/authors/aqeldev 301
+/author/basma /blog/authors/basma 301
+/author/basma/ /blog/authors/basma 301
+/author/ali /blog/authors/ali 301
+/author/ali/ /blog/authors/ali 301
+/author/official /blog/authors/official 301
+/author/official/ /blog/authors/official 301
+
+# Legacy Tools Paths Redirects
+/tools/yemen-4g-modems /tools/telecom/modems/ 301
+/tools/yemen-4g-modems/ /tools/telecom/modems/ 301
+/tools/yemen-4g-modems/index.html /tools/telecom/modems/ 301
+/tools/yemen-4g-modems/details /tools/telecom/modems/details 301
+/tools/yemen-4g-modems/details.html /tools/telecom/modems/details 301
+/tools/modems /tools/telecom/modems/ 301
+/tools/modems/ /tools/telecom/modems/ 301
+/tools/modems/index.html /tools/telecom/modems/ 301
+/tools/telecom-companies /tools/telecom/company/ 301
+/tools/telecom-companies/ /tools/telecom/company/ 301
+/tools/telecom-companies/index.html /tools/telecom/company/ 301
+/tools/speed-test /tools/telecom/speed-test/ 301
+/tools/speed-test/ /tools/telecom/speed-test/ 301
+/tools/speed-test/index.html /tools/telecom/speed-test/ 301
+/tools/network-lookup /tools/telecom/network-lookup/ 301
+/tools/network-lookup/ /tools/telecom/network-lookup/ 301
+/tools/network-lookup/index.html /tools/telecom/network-lookup/ 301
+/tools/imei-checker /tools/telecom/imei-checker/ 301
+/tools/imei-checker/ /tools/telecom/imei-checker/ 301
+/tools/imei-checker/index.html /tools/telecom/imei-checker/ 301
+/tools/emergency-numbers /tools/telecom/emergency-numbers/ 301
+/tools/emergency-numbers/ /tools/telecom/emergency-numbers/ 301
+/tools/emergency-numbers/index.html /tools/telecom/emergency-numbers/ 301
+/tools/yemen-exchange /tools/finance/yemen-exchange/ 301
+/tools/yemen-exchange/ /tools/finance/yemen-exchange/ 301
+/tools/yemen-exchange/index.html /tools/finance/yemen-exchange/ 301
+/tools/zakat-calculator /tools/finance/zakat-calculator/ 301
+/tools/zakat-calculator/ /tools/finance/zakat-calculator/ 301
+/tools/zakat-calculator/index.html /tools/finance/zakat-calculator/ 301
+/tools/solar-calculator /tools/energy/solar-calculator/ 301
+/tools/solar-calculator/ /tools/energy/solar-calculator/ 301
+/tools/solar-calculator/index.html /tools/energy/solar-calculator/ 301
+/tools/unit-converter /tools/energy/unit-converter/ 301
+/tools/unit-converter/ /tools/energy/unit-converter/ 301
+/tools/unit-converter/index.html /tools/energy/unit-converter/ 301
+/tools/color-extractor /tools/design/color-extractor/ 301
+/tools/color-extractor/ /tools/design/color-extractor/ 301
+/tools/color-extractor/index.html /tools/design/color-extractor/ 301
+/tools/image-converter /tools/design/image-converter/ 301
+/tools/image-converter/ /tools/design/image-converter/ 301
+/tools/image-converter/index.html /tools/design/image-converter/ 301
+/tools/password-generator /tools/security/password-generator/ 301
+/tools/password-generator/ /tools/security/password-generator/ 301
+/tools/password-generator/index.html /tools/security/password-generator/ 301
+/tools/crypto-toolbox /tools/security/crypto-toolbox/ 301
+/tools/crypto-toolbox/ /tools/security/crypto-toolbox/ 301
+/tools/crypto-toolbox/index.html /tools/security/crypto-toolbox/ 301
+/tools/exif-remover /tools/security/exif-remover/ 301
+/tools/exif-remover/ /tools/security/exif-remover/ 301
+/tools/exif-remover/index.html /tools/security/exif-remover/ 301
+/tools/privacy-generator /tools/security/privacy-generator/ 301
+/tools/privacy-generator/ /tools/security/privacy-generator/ 301
+/tools/privacy-generator/index.html /tools/security/privacy-generator/ 301
+/tools/android-permissions /tools/mobile/android-permissions/ 301
+/tools/android-permissions/ /tools/mobile/android-permissions/ 301
+/tools/android-permissions/index.html /tools/mobile/android-permissions/ 301
+/tools/deep-link-generator /tools/mobile/deep-link-generator/ 301
+/tools/deep-link-generator/ /tools/mobile/deep-link-generator/ 301
+/tools/deep-link-generator/index.html /tools/mobile/deep-link-generator/ 301
+/tools/manifest-analyzer /tools/mobile/manifest-analyzer/ 301
+/tools/manifest-analyzer/ /tools/mobile/manifest-analyzer/ 301
+/tools/manifest-analyzer/index.html /tools/mobile/manifest-analyzer/ 301
+/tools/screenshot-generator /tools/mobile/screenshot-generator/ 301
+/tools/screenshot-generator/ /tools/mobile/screenshot-generator/ 301
+/tools/screenshot-generator/index.html /tools/mobile/screenshot-generator/ 301
+/tools/json-formatter /tools/web/json-formatter/ 301
+/tools/json-formatter/ /tools/web/json-formatter/ 301
+/tools/json-formatter/index.html /tools/web/json-formatter/ 301
+/tools/jwt-debugger /tools/web/jwt-debugger/ 301
+/tools/jwt-debugger/ /tools/web/jwt-debugger/ 301
+/tools/jwt-debugger/index.html /tools/web/jwt-debugger/ 301
+/tools/regex-tester /tools/web/regex-tester/ 301
+/tools/regex-tester/ /tools/web/regex-tester/ 301
+/tools/regex-tester/index.html /tools/web/regex-tester/ 301
+/tools/site-checker /tools/web/site-checker/ 301
+/tools/site-checker/ /tools/web/site-checker/ 301
+/tools/site-checker/index.html /tools/web/site-checker/ 301
+/tools/age-calculator /tools/misc/age-calculator/ 301
+/tools/age-calculator/ /tools/misc/age-calculator/ 301
+/tools/age-calculator/index.html /tools/misc/age-calculator/ 301
+/tools/word-counter /tools/misc/word-counter/ 301
+/tools/word-counter/ /tools/misc/word-counter/ 301
+/tools/word-counter/index.html /tools/misc/word-counter/ 301
 
 # Store & Digital Assets
 /store/products.html /store/products 301
@@ -272,5 +368,19 @@
 /google-maps /company/services/local-seo 301
 /services/local-seo /company/services/local-seo 301
 /company/services/local-seo.html /company/services/local-seo 301
+
+# Assets & Well-Known Redirects
+/upload/cloudflare-optimization.webp /upload/cloudflare-settings-optimization.webp 301
+/apple-app-site-association /.well-known/apple-app-site-association 301
+
+# Dynamic Wildcard Redirects (Must remain at the bottom so static rules are not counted against the 100 dynamic limit)
+/services/* /company/services/:splat 301
+/projects/desktop/* /company/projects/apps/ 301
+/company/projects/desktop/* /company/projects/apps/ 301
+/projects/apps/* /company/projects/apps/:splat 301
+/projects/* /company/projects/:splat 301
+/support/* /company/support/:splat 301
+/author/* /blog/authors/:splat 301
+
 
 
