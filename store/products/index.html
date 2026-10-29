@@ -79,15 +79,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.35" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.35"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.35">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.35">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.35" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.35"></noscript>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.35" defer></script>
 
 <style>
     :root {
@@ -182,19 +182,30 @@
     .search-input:focus { border-color: var(--store-primary); outline: none; box-shadow: 0 15px 35px rgba(0, 119, 182, 0.1); }
     .search-icon { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: var(--store-primary); font-size: 18px; }
 
-    /* Product Cards */
-    .section-title { font-size: 26px; font-weight: 800; color: var(--store-dark); margin-bottom: 30px; position: relative; display: inline-block; }
-    .section-title::after { content: ''; position: absolute; bottom: -8px; right: 0; width: 45px; height: 4px; background: var(--store-primary); border-radius: 2px; }
+    /* Product Cards & Equal-Height Grid Fix */
+    #products-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #products-container::before,
+    #products-container::after {
+        display: none;
+    }
+    .product-item {
+        display: flex;
+        margin-bottom: 30px;
+    }
 
     .product-card {
         background: #fff;
         border-radius: 24px;
         overflow: hidden;
-        margin-bottom: 30px;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
         box-shadow: var(--card-shadow);
         transition: 0.35s ease;
         border: 1px solid #e2e8f0;
-        height: 100%;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -214,25 +225,12 @@
     .product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s ease; }
     .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
 
-    .badge-status {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        background: rgba(37, 211, 102, 0.12);
-        color: #16a34a;
-        padding: 4px 12px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 800;
-        z-index: 2;
-    }
-
     .product-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
     .product-cat { font-size: 12px; font-weight: 700; color: var(--store-primary); text-transform: uppercase; margin-bottom: 8px; }
     .product-title { font-size: 19px; font-weight: 800; color: var(--store-dark); margin-bottom: 10px; line-height: 1.4; }
     .product-desc { font-size: 13.5px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
 
-    .price-tag { font-size: 22px; font-weight: 800; color: var(--store-dark); margin-bottom: 20px; display: flex; align-items: baseline; gap: 5px; }
+    .price-tag { font-size: 22px; font-weight: 800; color: var(--store-dark); margin-top: auto; margin-bottom: 20px; display: flex; align-items: baseline; gap: 5px; }
     .price-tag span { font-size: 14px; color: #94a3b8; font-weight: 600; }
 
     .btn-buy {
@@ -248,7 +246,6 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        margin-top: auto;
         box-shadow: 0 6px 16px rgba(0, 119, 182, 0.15);
     }
     .btn-buy:hover { background: var(--store-dark); transform: translateY(-2px); }
@@ -297,18 +294,11 @@
 <!-- Products Grid -->
 <section style="padding: 60px 0;">
     <div class="container">
-        <div class="row align-items-center mb-20" style="margin-bottom: 25px;">
-            <div class="col-md-12 text-right">
-                <h2 class="section-title" data-aos="fade-left">قائمة الأجهزة والعتاد المتوفر</h2>
-            </div>
-        </div>
-
         <div class="row" id="products-container">
 
             <!-- Product 1 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-door-lock-5x1.webp" alt="مغلقة أبواب ذكية 5 في 1" loading="lazy" width="550" height="550">
                     </div>
@@ -327,7 +317,6 @@
             <!-- Product 2 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/biometric-attendance-terminal.webp" alt="جهاز بصمة حضور وانصراف احترافي ZKTeco" loading="lazy" width="800" height="800">
                     </div>
@@ -346,7 +335,6 @@
             <!-- Product 3 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/solar-4g-ptz-camera.webp" alt="كاميرا مراقبة ذكية 4G بالطاقة الشمسية" loading="lazy" width="800" height="800">
                     </div>
@@ -365,7 +353,6 @@
             <!-- Product 4 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/ip-poe-cctv-kit.webp" alt="منظومة كاميرات مراقبة شبكية IP PoE مع جهاز تسجيل" loading="lazy" width="800" height="800">
                     </div>
@@ -384,7 +371,6 @@
             <!-- Product 5: Smart GSM/WiFi Burglar Alarm Kit -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-gsm-alarm-kit.webp" alt="منظومة إنذار لاسلكي ذكي ضد السرقة والاقتحام GSM Wi-Fi" loading="lazy" width="800" height="800">
                     </div>
@@ -403,7 +389,6 @@
             <!-- Product 6: Handheld Security Metal Detector -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/handheld-metal-detector.webp" alt="جهاز تفتيش أمني يدوي لكشف المعادن Garrett Super Scanner V" loading="lazy" width="800" height="800">
                     </div>
@@ -422,7 +407,6 @@
             <!-- Product 7: Biometric Smart Safe Box -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/biometric-smart-safe-box.webp" alt="خزنة حديدية ذكية بالبصمة والرمز السري" loading="lazy" width="800" height="800">
                     </div>
@@ -441,7 +425,6 @@
             <!-- Product 8: USB Fingerprint Scanner ZK9500 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/usb-fingerprint-scanner-zk9500.webp" alt="قارئ بصمة مكتبي USB للأنظمة والبنوك ZKTeco ZK9500" loading="lazy" width="800" height="800">
                     </div>
@@ -460,7 +443,6 @@
             <!-- Product 8B: Smart IP Video Intercom System 7-inch -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-ip-video-intercom.webp" alt="نظام انتركوم فيديو ذكي بشاشة لمس 7 بوصة وفتح القفل بالبطاقة" loading="lazy" width="800" height="800">
                     </div>
@@ -479,7 +461,6 @@
             <!-- Product 8C: Body-Worn Security Camera -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/body-worn-security-camera.webp" alt="كاميرا أمنية محمولة لتوثيق المهام الميدانية والحراسات" loading="lazy" width="800" height="800">
                     </div>
@@ -498,7 +479,6 @@
             <!-- Product 8D: Smart Wi-Fi Smoke & Fire Detector -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-wifi-smoke-detector.webp" alt="حساس كشف الدخان والحريق الذكي المرتبط بالهاتف عبر الواي فاي" loading="lazy" width="800" height="800">
                     </div>
@@ -517,7 +497,6 @@
             <!-- Product 8E: Dahua PTZ Speed Dome Camera -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أنظمة الحماية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/dahua-ptz-security-camera.webp" alt="كاميرا مراقبة احترافية متحركة داهوا Dahua PTZ" loading="lazy" width="800" height="800">
                     </div>
@@ -536,7 +515,6 @@
             <!-- Product 9 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="تخزين البيانات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/samsung-ssd-t7-touch.webp" alt="هارد سامسونج SSD T7 Touch" loading="lazy" width="800" height="800">
                     </div>
@@ -555,7 +533,6 @@
             <!-- Product 10 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="تخزين البيانات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/keypad-encrypted-ssd-1tb.webp" alt="قرص تخزين مشفر بلوحة مفاتيح عتادية Apricorn Aegis" loading="lazy" width="800" height="800">
                     </div>
@@ -574,7 +551,6 @@
             <!-- Product 11 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="تخزين البيانات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/fingerprint-flash-drive-1tb.webp" alt="فلاش بصمة معدني 1 تيرا" loading="lazy" width="905" height="905">
                     </div>
@@ -593,7 +569,6 @@
             <!-- Product 12: Smart Video Doorbell / Intercom -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-video-doorbell.webp" alt="إنتركوم وجرس باب ذكي بالكاميرا والواي فاي" loading="lazy" width="800" height="800">
                     </div>
@@ -612,7 +587,6 @@
             <!-- Product 13: Smart 4K Dual Dash Cam -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-4k-dual-dashcam.webp" alt="كاميرا داش كام ذكية للسيارات 4K أمامية وخلفية مع GPS" loading="lazy" width="800" height="800">
                     </div>
@@ -631,7 +605,6 @@
             <!-- Product 14 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/fido2-nfc-security-key.webp" alt="مفتاح أمان عتادي للمصادقة الثنائية YubiKey 5C NFC" loading="lazy" width="800" height="800">
                     </div>
@@ -650,7 +623,6 @@
             <!-- Product 15: 4G GPS Vehicle Tracker -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/gps-vehicle-tracker-4g.webp" alt="جهاز تتبع المركبات والأصول الذكي 4G GPS Tracker" loading="lazy" width="800" height="800">
                     </div>
@@ -669,7 +641,6 @@
             <!-- Product 16: Wireless 2D Barcode & QR Scanner -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/wireless-2d-barcode-scanner.webp" alt="قارئ باركود و QR لاسلكي ثنائي الأبعاد مع قاعدة" loading="lazy" width="800" height="800">
                     </div>
@@ -688,7 +659,6 @@
             <!-- Product 17 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/smart-nfc-business-card.webp" alt="بطاقة أعمال ذكية بتقنية NFC و QR" loading="lazy" width="800" height="800">
                     </div>
@@ -707,7 +677,6 @@
             <!-- Product 18 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/fingerprint-padlock.webp" alt="قفل ذكي ببصمة الأصبع" loading="lazy" width="1125" height="1125">
                     </div>
@@ -726,7 +695,6 @@
             <!-- Product 18B: USB NFC Smart Card Reader/Writer -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/usb-nfc-card-reader.webp" alt="قارئ وكاتب البطاقات الذكية وتقنية NFC المكتبي USB" loading="lazy" width="800" height="800">
                     </div>
@@ -745,7 +713,6 @@
             <!-- Product 18C: Thermal Barcode & Label Printer -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/thermal-barcode-label-printer.webp" alt="طابعة ملصقات باركود ورموز QR حرارية مكتبية" loading="lazy" width="800" height="800">
                     </div>
@@ -764,7 +731,6 @@
             <!-- Product 18D: Raspberry Pi 5 (8GB RAM) Single-Board Computer -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="أجهزة ذكية">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/raspberry-pi-5-board.webp" alt="حاسوب مصغر للبرمجة والأنظمة الذكية Raspberry Pi 5 8GB" loading="lazy" width="800" height="800">
                     </div>
@@ -783,7 +749,6 @@
             <!-- Product 19 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/enterprise-5g-cpe-router.webp" alt="راوتر ومقوي إشارة شبكات 4G+ ثنائي النطاق TP-Link Archer" loading="lazy" width="800" height="800">
                     </div>
@@ -802,7 +767,6 @@
             <!-- Product 20: MikroTik hAP ax3 Enterprise Router -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/mikrotik-hap-ax3-router.webp" alt="راوتر وجدار حماية للشركات MikroTik hAP ax3" loading="lazy" width="800" height="800">
                     </div>
@@ -821,7 +785,6 @@
             <!-- Product 21: Ceiling Mount WiFi 6 Access Point -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/ceiling-wifi6-access-point.webp" alt="نقطة وصول ومقوي واي فاي 6 سقفي للمؤسسات TP-Link Omada EAP610" loading="lazy" width="800" height="800">
                     </div>
@@ -840,7 +803,6 @@
             <!-- Product 22: 8-Port Gigabit PoE+ Switch -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/gigabit-poe-switch-8p.webp" alt="سويتش شبكات 8 منافذ داعم للطاقة TP-Link Gigabit PoE+" loading="lazy" width="800" height="800">
                     </div>
@@ -859,7 +821,6 @@
             <!-- Product 23: Mini DC UPS for Router & CCTV -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/mini-dc-ups-router.webp" alt="مزود طاقة احتياطي للراوتر والكاميرات Mini DC UPS 10400mAh" loading="lazy" width="800" height="800">
                     </div>
@@ -878,7 +839,6 @@
             <!-- Product 23B: Outdoor Long-Range CPE Wi-Fi Bridge -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="شبكات واتصالات">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/outdoor-cpe-wifi-bridge.webp" alt="نقطة ربط لاسلكية خارجية بعيدة المدى Outdoor CPE Wi-Fi Bridge" loading="lazy" width="800" height="800">
                     </div>
@@ -897,7 +857,6 @@
             <!-- Product 24A: Professional 4K Camera Drone -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="ترفيه">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/pro-4k-camera-drone.webp" alt="طائرة درون للتصوير الجوي الاحترافي 4K مع وحدة تحكم" loading="lazy" width="800" height="800">
                     </div>
@@ -916,7 +875,6 @@
             <!-- Product 24B: Smart Drone Remote Controller with Screen -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="100" data-category="ترفيه">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/drone-smart-remote-controller.webp" alt="يد تحكم خارجية ذكية لطائرات الدرون بشاشة لمس مدمجة" loading="lazy" width="800" height="800">
                     </div>
@@ -935,7 +893,6 @@
             <!-- Product 24C: External Drone Gimbal Camera -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-aos-delay="200" data-category="ترفيه">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/external-drone-gimbal-camera.webp" alt="كاميرا درون خارجية احترافية بمانع اهتزاز ثلاثي المحاور Gimbal" loading="lazy" width="800" height="800">
                     </div>
@@ -954,7 +911,6 @@
             <!-- Product 24 -->
             <div class="col-lg-4 col-md-6 product-item" data-aos="fade-up" data-category="ترفيه">
                 <div class="product-card">
-                    <span class="badge-status">متوفر</span>
                     <div class="product-img-wrapper">
                         <img src="https://connecttag.org/upload/store/product/sup-atari-box-400.webp" alt="أتاري SUP بوكس 400 في 1" loading="lazy" width="480" height="640">
                     </div>
@@ -998,7 +954,7 @@
                 const matchesSearch = title.includes(term) || desc.includes(term);
                 const matchesFilter = activeFilter === 'all' || category === activeFilter;
 
-                item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+                item.style.display = (matchesSearch && matchesFilter) ? 'flex' : 'none';
             });
         }
 
