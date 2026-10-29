@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/api-security.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -144,6 +144,51 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <style>
+    .api-pipeline-card { background: linear-gradient(145deg, #0a1128 0%, #131e3a 100%); color: #fff; border-radius: 16px; padding: 28px 22px; margin: 35px 0; border: 1px solid rgba(0, 180, 216, 0.25); box-shadow: 0 12px 30px rgba(10, 17, 40, 0.18); }
+    .api-pipeline-header { text-align: center; margin-bottom: 24px; }
+    .api-pipeline-header h3 { color: #fff; font-size: 19px; font-weight: 800; margin: 0 0 8px 0; display: inline-flex; align-items: center; gap: 10px; }
+    .api-pipeline-header h3 i { color: #00b4d8; }
+    .api-pipeline-header p { color: #94a3b8 !important; font-size: 13.5px !important; margin: 0 !important; }
+    .api-pipeline-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; position: relative; }
+    .api-stage-node { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 180, 216, 0.22); border-radius: 12px; padding: 16px 14px; text-align: center; position: relative; transition: transform 0.25s ease, border-color 0.25s ease; }
+    .api-stage-node:hover { transform: translateY(-3px); border-color: #00b4d8; }
+    .api-stage-badge { display: inline-block; background: rgba(0, 180, 216, 0.15); color: #38bdf8; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; font-family: monospace; }
+    .api-stage-icon { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 18px; box-shadow: 0 4px 12px rgba(0, 82, 204, 0.35); }
+    .api-stage-title { font-weight: 700; font-size: 14px; color: #f8fafc; margin-bottom: 4px; direction: ltr; }
+    .api-stage-desc { font-size: 12px; color: #cbd5e1; line-height: 1.5; }
+    .api-pipeline-connector { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 20px; padding-top: 16px; border-top: 1px dashed rgba(148, 163, 184, 0.25); direction: ltr; font-size: 12px; color: #38bdf8; font-family: monospace; }
+    .api-pipeline-connector span.pill { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 10px; border-radius: 6px; color: #e2e8f0; }
+    .api-vuln-table-wrap { margin: 30px 0; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); background: #fff; }
+    .api-vuln-table-title { background: #f8fafc; padding: 16px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; color: #0f172a; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .api-vuln-table-title i { color: #0052cc; }
+    .api-vuln-table { width: 100%; border-collapse: collapse; margin: 0; font-size: 14.5px; }
+    .api-vuln-table th { background: #0f172a; color: #fff; padding: 13px 15px; text-align: right; font-weight: 700; }
+    .api-vuln-table td { padding: 14px 15px; border-bottom: 1px solid #f1f5f9; vertical-align: top; color: #334155; line-height: 1.7; }
+    .api-vuln-table tr:last-child td { border-bottom: none; }
+    .api-vuln-table tr:nth-child(even) { background: #f8fafc; }
+    .vuln-badge { display: inline-block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; font-weight: 700; font-size: 12.5px; padding: 3px 9px; border-radius: 6px; direction: ltr; }
+    .fix-badge { display: inline-block; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; margin-bottom: 4px; }
+    @media (max-width: 768px) { .api-pipeline-flow { grid-template-columns: 1fr; } .api-vuln-table th, .api-vuln-table td { padding: 10px 12px; font-size: 13px; } }
+  </style>
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -193,6 +238,59 @@
                         <li><a href="#traffic-control">4. التخفي، الحد من الطلبات، والتقييد الجغرافي</a></li>
                         <li><a href="#faq">5. الأسئلة الشائعة</a></li>
                     </ul>
+                </div>
+
+                <div class="api-pipeline-card" role="region" aria-label="مخطط معمارية بوابة أمن الـ API">
+                    <div class="api-pipeline-header">
+                        <h3><i class="fa-solid fa-diagram-project"></i> مخطط معمارية بوابة أمن الـ API (API Security Gateway Pipeline)</h3>
+                        <p>مسار فحص وتأمين الطلب من لحظة انطلاقه من العميل وحتى وصوله للخدمات الخلفية المصغرة</p>
+                    </div>
+                    <div class="api-pipeline-flow">
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 01</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div class="api-stage-title">Client Request</div>
+                            <div class="api-stage-desc">انطلاق الطلب من تطبيق الجوال أو الويب مع ترويسات المصادقة المبدئية</div>
+                        </div>
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 02</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-lock"></i></div>
+                            <div class="api-stage-title">TLS 1.3 Encryption</div>
+                            <div class="api-stage-desc">تشفير قناة النقل بالكامل عبر HTTPS/HSTS ومنع التنصت أو التلاعب بالبيانات</div>
+                        </div>
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 03</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="api-stage-title">WAF &amp; Rate Limiting</div>
+                            <div class="api-stage-desc">تصفية الهجمات، التقييد الجغرافي (Geo-Blocking)، وتحديد سقف الطلبات</div>
+                        </div>
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 04</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-key"></i></div>
+                            <div class="api-stage-title">OAuth 2.0 / JWT Verification</div>
+                            <div class="api-stage-desc">التحقق من التوقيع الرقمي (RS256)، مصدر الرمز (iss)، وصلاحية الوقت (exp)</div>
+                        </div>
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 05</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-user-check"></i></div>
+                            <div class="api-stage-title">RBAC &amp; Schema Validation</div>
+                            <div class="api-stage-desc">فحص صلاحيات الدور وملكية المورد (BOLA Check) ومطابقة هيكلية JSON</div>
+                        </div>
+                        <div class="api-stage-node">
+                            <span class="api-stage-badge">STAGE 06</span>
+                            <div class="api-stage-icon"><i class="fa-solid fa-server"></i></div>
+                            <div class="api-stage-title">Backend Microservice</div>
+                            <div class="api-stage-desc">تنفيذ المنطق البرمجي بأمان وإرجاع البيانات المفلترة فقط (DTOs)</div>
+                        </div>
+                    </div>
+                    <div class="api-pipeline-connector">
+                        <span class="pill">Client Request</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="pill">TLS 1.3 Encryption</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="pill">WAF &amp; Rate Limiting</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="pill">OAuth 2.0 / JWT Verification</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="pill">RBAC &amp; Schema Validation</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="pill">Backend Microservice</span>
+                    </div>
                 </div>
 
                 <h2 id="encryption-transit">1. التشفير، النقل الآمن، والتعامل مع بيانات الاعتماد</h2>
@@ -275,6 +373,45 @@ server {
                 <ul>
                     <li><strong>التقييد الجغرافي:</strong> حجب الطلبات القادمة من خارج نطاق خدمتك الجغرافي يقلص عدد المحاولات الخبيثة بنسبة هائلة.</li>
                 </ul>
+
+                <div class="api-vuln-table-wrap">
+                    <div class="api-vuln-table-title">
+                        <i class="fa-solid fa-table-list"></i> مصفوفة أخطر ثغرات الـ API (OWASP Top Risks) والحلول المعمارية المعتمدة
+                    </div>
+                    <div class="table-responsive">
+                        <table class="api-vuln-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 24%;">الثغرة الأمنية (Vulnerability)</th>
+                                    <th style="width: 34%;">آلية الاستغلال والخطر</th>
+                                    <th style="width: 42%;">الحل المعماري والوقائي (Architectural Fix)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="vuln-badge">BOLA / IDOR</span><br><small>تجاوز صلاحيات الوصول للكائنات</small></td>
+                                    <td>تلاعب المهاجم بمعرف السجل في الرابط (مثل تغيير <code>/orders/105</code> إلى <code>/orders/106</code>) للوصول لبيانات مستخدم آخر.</td>
+                                    <td><span class="fix-badge"><i class="fa-solid fa-check"></i> التحقق من الملكية + UUIDs</span><br>فحص ملكية السجل برمجياً في كل استعلام (ربط المورد بـ <code>user_id</code> المستخرج من JWT) مع استبدال الأرقام المتسلسلة بمعرفات <code>UUID v4</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="vuln-badge">Broken Authentication</span><br><small>ضعف آليات المصادقة والجلسات</small></td>
+                                    <td>استخدام رموز JWT بدون توقيع قوي، أو ترك صلاحيتها مفتوحة لأيام، أو تخزينها في مكان مكشوف لهجمات XSS.</td>
+                                    <td><span class="fix-badge"><i class="fa-solid fa-check"></i> RS256 + Short-Lived Tokens</span><br>اعتماد مفاتيح غير متماثلة (RS256)، تقليص عمر <code>Access Token</code> إلى 15 دقيقة، وتخزين <code>Refresh Token</code> داخل <code>HttpOnly Secure Cookie</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="vuln-badge">Excessive Data Exposure</span><br><small>الإفراط في كشف البيانات</small></td>
+                                    <td>إرجاع كائن قاعدة البيانات كاملاً في استجابة الـ API (بما في ذلك حقول حساسة مثل <code>password_hash</code> أو <code>role</code>) والاعتماد على الواجهة لإخفائها.</td>
+                                    <td><span class="fix-badge"><i class="fa-solid fa-check"></i> DTOs &amp; Schema Serialization</span><br>تطبيق كائنات نقل البيانات (Data Transfer Objects) لتحديد الحقول المسموح إرسالها صراحةً، وعدم تمرير كائنات الـ ORM مباشرةً للعميل.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="vuln-badge">Lack of Rate Limiting</span><br><small>غياب تحديد معدل الطلبات</small></td>
+                                    <td>إغراق نقاط النهاية (Endpoints) بآلاف الطلبات المؤتمتة لتخمين كلمات المرور (Brute Force) أو سحب البيانات (Scraping) وإسقاط الخادم.</td>
+                                    <td><span class="fix-badge"><i class="fa-solid fa-check"></i> Gateway Throttling &amp; WAF</span><br>تطبيق سياسات <code>Rate Limiting</code> صارمة على مستوى Nginx أو بوابة الـ API لكل عنوان IP ولكل مستخدم، مع تفعيل الحظر التدريجي.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <div class="highlight-box" style="background: #eef2ff; border-right-color: #4f46e5;">
                     <strong>الجسر الهندسي:</strong> بناء جدار قوي حول الـ API هو الباب الخارجي فقط. لضمان أمان البيانات المطلق، يجب أن تكون قاعدة البيانات خلفه "خزنة فولاذية". تعلم الآن كيفية تصميم <a href="https://connecttag.org/blog/advanced-database-security-architecture" style="font-weight: bold; color: #4f46e5;">معمارية قواعد البيانات المتطورة</a>.

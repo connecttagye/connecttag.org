@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/how-chose-yout-hosting.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -131,6 +131,27 @@
 ]
 </script>
 
+<style>
+    .hosting-infographic-box { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 18px; padding: 26px 22px; margin: 30px 0; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); }
+    .hosting-infographic-box h3 { margin: 0 0 8px; color: #0f172a; font-weight: 800; font-size: 1.2rem; text-align: center; }
+    .hosting-infographic-box p.sub { margin: 0 0 22px; color: #475569; font-size: 13.5px; text-align: center; }
+    .hosting-meters-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+    .hosting-meter-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.02); }
+    .hosting-meter-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .hosting-meter-title { font-weight: 800; font-size: 15px; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+    .hosting-meter-tag { font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: #e0f2fe; color: #0369a1; }
+    .meter-row { margin-bottom: 8px; }
+    .meter-label { display: flex; justify-content: space-between; font-size: 12px; color: #475569; font-weight: 600; margin-bottom: 4px; }
+    .meter-bar-bg { width: 100%; height: 7px; background: #e2e8f0; border-radius: 10px; overflow: hidden; }
+    .meter-bar-fill { height: 100%; border-radius: 10px; background: #0052cc; }
+    .hosting-comp-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .hosting-comp-table th { background: #0052cc; color: #fff; padding: 13px 14px; text-align: right; font-size: 13.5px; font-weight: 700; }
+    .hosting-comp-table td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; font-size: 13.5px; color: #334155; }
+    .hosting-comp-table tr:last-child td { border-bottom: none; }
+    @media (max-width: 768px) {
+        .hosting-meters-grid { grid-template-columns: 1fr; }
+    }
+</style>
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
@@ -139,6 +160,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -201,6 +240,120 @@
                     <li><strong>الاستضافة السحابية (Cloud Hosting):</strong> تعتمد على شبكة من الخوادم المتصلة، مما يضمن استقراراً فائقاً وسهولة في زيادة الموارد لحظياً (وللمواقع الساكنة وتطبيقات Jamstack يمكنك أيضاً مراجعة <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">دليل استضافة المواقع عبر Cloudflare Pages</a>).</li>
                     <li><strong>الخوادم الكاملة (Dedicated Servers):</strong> خادم كامل مخصص لموقعك فقط، وهو للمشاريع الضخمة ذات الزيارات المليونية.</li>
                 </ul>
+
+                <div class="hosting-infographic-box">
+                    <h3><i class="fa-solid fa-gauge-high" style="color: #0052cc;"></i> مؤشر الموارد والمقارنة الشاملة لأنواع الاستضافات الأربع</h3>
+                    <p class="sub">قارن بين الأداء، العزل الأمني، القابلية للتوسع، وحجم المشروع المثالي لكل فئة استضافة</p>
+                    <div class="hosting-meters-grid">
+                        <div class="hosting-meter-card">
+                            <div class="hosting-meter-header">
+                                <span class="hosting-meter-title"><i class="fa-solid fa-users-rectangle" style="color:#64748b;"></i> الاستضافة المشتركة (Shared)</span>
+                                <span class="hosting-meter-tag">اقتصادية للمبتدئين</span>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>السرعة والأداء</span><span>40%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 40%; background: #64748b;"></div></div>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>عزل الموارد والأمان</span><span>35%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 35%; background: #94a3b8;"></div></div>
+                            </div>
+                        </div>
+                        <div class="hosting-meter-card">
+                            <div class="hosting-meter-header">
+                                <span class="hosting-meter-title"><i class="fa-solid fa-cubes" style="color:#0284c7;"></i> الخادم الافتراضي (VPS)</span>
+                                <span class="hosting-meter-tag">توازن القوة والتكلفة</span>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>السرعة والأداء</span><span>75%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 75%; background: #0284c7;"></div></div>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>عزل الموارد والأمان</span><span>80%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 80%; background: #0284c7;"></div></div>
+                            </div>
+                        </div>
+                        <div class="hosting-meter-card">
+                            <div class="hosting-meter-header">
+                                <span class="hosting-meter-title"><i class="fa-solid fa-cloud-bolt" style="color:#0d9488;"></i> الاستضافة السحابية (Cloud)</span>
+                                <span class="hosting-meter-tag" style="background:#ccfbf1;color:#0f766e;">الأعلى مرونة واستقراراً</span>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>السرعة والأداء</span><span>92%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 92%; background: #0d9488;"></div></div>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>القابلية للتوسع اللحظي</span><span>98%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 98%; background: #0d9488;"></div></div>
+                            </div>
+                        </div>
+                        <div class="hosting-meter-card">
+                            <div class="hosting-meter-header">
+                                <span class="hosting-meter-title"><i class="fa-solid fa-server" style="color:#0052cc;"></i> الخادم الكامل (Dedicated)</span>
+                                <span class="hosting-meter-tag" style="background:#dbeafe;color:#1d4ed8;">قوة قصوى للمؤسسات</span>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>السرعة والأداء</span><span>100%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 100%; background: #0052cc;"></div></div>
+                            </div>
+                            <div class="meter-row">
+                                <div class="meter-label"><span>عزل الموارد والتحكم الكامل</span><span>100%</span></div>
+                                <div class="meter-bar-bg"><div class="meter-bar-fill" style="width: 100%; background: #0052cc;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="hosting-comp-table">
+                            <thead>
+                                <tr>
+                                    <th>معيار المقارنة</th>
+                                    <th>الاستضافة المشتركة (Shared)</th>
+                                    <th>الخادم الافتراضي (VPS)</th>
+                                    <th>الاستضافة السحابية (Cloud)</th>
+                                    <th>الخادم الكامل (Dedicated)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>السرعة والأداء</strong></td>
+                                    <td>متوسطة (تتأثر بالمواقع المجاورة)</td>
+                                    <td>عالية ومستقرة</td>
+                                    <td>فائقة مع توزيع الأحمال</td>
+                                    <td>قصوى بدون أي مشاركة</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>عزل الموارد (Isolation)</strong></td>
+                                    <td>موارد مشتركة بالكامل</td>
+                                    <td>عزل افتراضي مخصص (KVM)</td>
+                                    <td>عزل سحابي مرن وموزع</td>
+                                    <td>عزل فيزيائي كامل 100%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>القابلية للتوسع (Scalability)</strong></td>
+                                    <td>محدودة (تتطلب ترقية الخطة)</td>
+                                    <td>متوسطة (ضمن سعة الخادم الأم)</td>
+                                    <td>فورية ولحظية بلا توقف</td>
+                                    <td>تتطلب ترقية العتاد الصلب</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>صعوبة الإدارة</strong></td>
+                                    <td>سهلة جداً (لوحة cPanel جاهزة)</td>
+                                    <td>متوسطة إلى متقدمة (تتطلب خبرة)</td>
+                                    <td>مرنة (تتوفر بإدارة كاملة أو ذاتية)</td>
+                                    <td>متقدمة جداً (إدارة أنظمة SysAdmin)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>حجم المشروع المثالي</strong></td>
+                                    <td>المدونات الشخصية والمواقع التعريفية الناشئة</td>
+                                    <td>المتاجر المتوسطة والشركات النامية</td>
+                                    <td>المنصات التفاعلية والتطبيقات عالية النمو</td>
+                                    <td>البوابات الحكومية والمشاريع الضخمة</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <h2 id="speed-performance">2. السرعة والأداء (التخزين والرام)</h2>
                 <p>سرعة الموقع لم تعد رفاهية، بل هي عامل أساسي في ترتيبك في محرك بحث جوجل (SEO) وفي بقاء الزائر داخل موقعك. تأكد من أن شركة الاستضافة تستخدم أقراص تخزين من نوع <strong>SSD</strong> أو الأحدث <strong>NVMe</strong>، التي توفر سرعة قراءة وكتابة بيانات تفوق الأقراص التقليدية بـ 10 أضعاف، كما أن موقع الخادم الجغرافي القريب من جمهورك المستهدف يقلل من وقت الاستجابة (Latency). ويمكنك قياس سرعة استجابة خادمك الحالي عبر <a href="https://connecttag.org/tools/web/site-checker/">أداة فاحص الموقع الشامل</a>.</p>

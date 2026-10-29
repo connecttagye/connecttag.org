@@ -32,19 +32,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
     <link rel="preload" href="https://connecttag.org/upload/android-manifest-security-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
     <script type="application/ld+json">
 [
@@ -165,6 +163,24 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
          crossorigin="anonymous"></script>
@@ -205,6 +221,106 @@
             background: #f8fafc;
             color: #0f172a;
             font-weight: 700;
+        }
+        .arch-flow-wrapper {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 28px 0;
+        }
+        .arch-flow-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .arch-flow-title h3 {
+            margin: 0 0 6px;
+            font-size: 1.22rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .arch-flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 18px;
+        }
+        .arch-flow-lane {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 18px;
+            border: 2px solid transparent;
+        }
+        .arch-lane-attack {
+            border-color: #fca5a5;
+            background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+        }
+        .arch-lane-secure {
+            border-color: #86efac;
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        .arch-lane-header {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .arch-step-node {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 0.88rem;
+            color: #1e293b;
+        }
+        .arch-step-node code {
+            font-size: 0.8rem;
+        }
+        .arch-step-arrow {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 6px 0;
+        }
+        .manifest-visual-callout {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            border-radius: 14px;
+            padding: 20px 22px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .manifest-visual-callout h4 {
+            color: #38bdf8;
+            margin: 0 0 6px;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+        .manifest-visual-callout p {
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .manifest-callout-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #38bdf8;
+            color: #0f172a !important;
+            font-weight: 800;
+            padding: 11px 20px;
+            border-radius: 10px;
+            text-decoration: none !important;
+            transition: transform 0.15s ease, background 0.2s ease;
+        }
+        .manifest-callout-btn:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -333,6 +449,65 @@ if (targetComponent != null &amp;&amp;
     startActivity(nextIntent)
 }
                 </site-code-block>
+
+                <div class="arch-flow-wrapper" aria-label="مخطط مسار الاختراق مقابل المعمارية المحصنة في AndroidManifest.xml">
+                    <div class="arch-flow-title">
+                        <h3><i class="fa-solid fa-diagram-project" style="color: #0284c7;"></i> مخطط معماري: مسار الهجوم (Attack Flow) مقابل المعمارية المحصنة</h3>
+                        <p style="margin: 0; color: #64748b; font-size: 0.9rem;">كيف يستغل التطبيق الخبيث ثغرات <code>android:exported="true"</code> وروابط المخطط التقليدي مقارنةً بالتحصين القياسي؟</p>
+                    </div>
+
+                    <div class="arch-flow-grid">
+                        <div class="arch-flow-lane arch-lane-attack">
+                            <div class="arch-lane-header" style="color: #b91c1c;">
+                                <i class="fa-solid fa-skull-crossbones"></i> مسار الهجوم (Vulnerable Flow)
+                            </div>
+                            <div class="arch-step-node">
+                                <strong>1. تطبيق خبيث مثبت على الجهاز</strong><br>
+                                يرسل <code>Intent</code> مفخخ أو يسجل مخطط <code>myapp://</code> مماثل.
+                            </div>
+                            <div class="arch-step-arrow"><i class="fa-solid fa-arrow-down" style="color: #dc2626;"></i></div>
+                            <div class="arch-step-node">
+                                <strong>2. نقطة الدخول المكشوفة (<code>android:exported="true"</code>)</strong><br>
+                                استغلال <strong>Intent Redirection</strong> أو <strong>Deep Link Hijacking</strong> بدون تحقق.
+                            </div>
+                            <div class="arch-step-arrow"><i class="fa-solid fa-arrow-down" style="color: #dc2626;"></i></div>
+                            <div class="arch-step-node" style="border-color: #fca5a5; background: #fef2f2;">
+                                <strong style="color: #991b1b;">3. نتيجة الاختراق:</strong><br>
+                                فتح شاشات داخلية غير مصدّرة، سرقة رموز OAuth، أو قراءة ملفات <code>FileProvider</code> الخاصة!
+                            </div>
+                        </div>
+
+                        <div class="arch-flow-lane arch-lane-secure">
+                            <div class="arch-lane-header" style="color: #15803d;">
+                                <i class="fa-solid fa-shield-check"></i> المعمارية المحصنة (Hardened Architecture)
+                            </div>
+                            <div class="arch-step-node">
+                                <strong>1. طلب خارجي أو رابط <code>https://</code></strong><br>
+                                يمر عبر نظام التحقق في أندرويد قبل الوصول للتطبيق.
+                            </div>
+                            <div class="arch-step-arrow"><i class="fa-solid fa-arrow-down" style="color: #16a34a;"></i></div>
+                            <div class="arch-step-node">
+                                <strong>2. بوابة التحقق المزدوجة:</strong><br>
+                                <strong>Android App Links</strong> (<code>Digital Asset Links</code>) + صلاحية <code>signature permission</code> وعزل <code>exported="false"</code>.
+                            </div>
+                            <div class="arch-step-arrow"><i class="fa-solid fa-arrow-down" style="color: #16a34a;"></i></div>
+                            <div class="arch-step-node" style="border-color: #86efac; background: #f0fdf4;">
+                                <strong style="color: #166534;">3. تنفيذ آمن ومعزول:</strong><br>
+                                التحقق من القائمة البيضاء للوجهات وحذف أعلام <code>FLAG_GRANT_*_URI_PERMISSION</code>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manifest-visual-callout">
+                        <div>
+                            <h4><i class="fa-solid fa-radar"></i> هل يحتوي ملف AndroidManifest.xml في مشروعك على مكونات مكشوفة؟</h4>
+                            <p>افحص ملف المانيفست محلياً لاكتشاف المكونات المصدّرة والصلاحيات الحساسة قبل رفع التطبيق إلى Google Play.</p>
+                        </div>
+                        <a href="https://connecttag.org/tools/mobile/manifest-analyzer/" class="manifest-callout-btn">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i> فحص ملف المانيفست الآن
+                        </a>
+                    </div>
+                </div>
 
                 <hr>
 

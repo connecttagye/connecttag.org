@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/cloudflare-settings-optimization.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -144,6 +144,53 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <style>
+    .ssl-compare-card { background: #0f172a; color: #fff; border-radius: 16px; padding: 26px 22px; margin: 30px 0; border: 1px solid #334155; box-shadow: 0 12px 28px rgba(15,23,42,0.18); }
+    .ssl-compare-title { text-align: center; margin-bottom: 20px; }
+    .ssl-compare-title h3 { color: #fff; font-size: 18.5px; font-weight: 800; margin: 0 0 6px 0; display: inline-flex; align-items: center; gap: 8px; }
+    .ssl-compare-title h3 i { color: #38bdf8; }
+    .ssl-compare-title p { color: #94a3b8 !important; font-size: 13px !important; margin: 0 !important; }
+    .ssl-mode-row { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.08); }
+    .ssl-mode-row.mode-bad { border-right: 4px solid #ef4444; }
+    .ssl-mode-row.mode-good { border-right: 4px solid #10b981; background: rgba(16, 185, 129, 0.06); margin-bottom: 0; }
+    .ssl-mode-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .ssl-mode-header strong { font-size: 15px; color: #f8fafc; }
+    .ssl-badge-danger { background: rgba(239,68,68,0.18); color: #fca5a5; border: 1px solid rgba(239,68,68,0.4); font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .ssl-badge-safe { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.4); font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .ssl-flow-track { display: grid; grid-template-columns: 1fr 1.2fr 1fr 1.2fr 1fr; align-items: center; gap: 8px; text-align: center; direction: ltr; }
+    .ssl-node { background: #1e293b; border: 1px solid #475569; border-radius: 8px; padding: 10px 8px; font-size: 12.5px; font-weight: 700; color: #f1f5f9; }
+    .ssl-node i { display: block; font-size: 16px; margin-bottom: 4px; color: #38bdf8; }
+    .ssl-link-seg { font-size: 11.5px; font-family: monospace; padding: 6px 8px; border-radius: 6px; font-weight: 700; }
+    .ssl-link-enc { background: rgba(16,185,129,0.15); color: #4ade80; border: 1px dashed rgba(16,185,129,0.45); }
+    .ssl-link-plain { background: rgba(239,68,68,0.15); color: #f87171; border: 1px dashed rgba(239,68,68,0.45); }
+    .cf-matrix-wrap { margin: 35px 0; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.04); background: #fff; }
+    .cf-matrix-header { background: #f8fafc; padding: 16px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; color: #0f172a; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .cf-matrix-header i { color: #0052cc; }
+    .cf-matrix-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .cf-matrix-table th { background: #0f172a; color: #fff; padding: 12px 14px; text-align: right; font-weight: 700; }
+    .cf-matrix-table td { padding: 13px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: middle; line-height: 1.6; }
+    .cf-matrix-table tr:nth-child(even) { background: #f8fafc; }
+    .cf-val-pill { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; font-weight: 700; font-size: 12px; padding: 3px 9px; border-radius: 6px; font-family: monospace; direction: ltr; display: inline-block; }
+    @media (max-width: 768px) { .ssl-flow-track { grid-template-columns: 1fr; } }
+  </style>
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -207,6 +254,41 @@
                     <li><strong>Automatic HTTPS Rewrites:</strong> فعّله لمنع أخطاء "المحتوى المختلط" (Mixed Content) التي تظهر عند تحميل صور أو ملفات عبر روابط غير مشفرة.</li>
                 </ul>
 
+                <div class="ssl-compare-card" role="region" aria-label="مقارنة أوضاع التشفير Flexible مقابل Full Strict في كلاود فلير">
+                    <div class="ssl-compare-title">
+                        <h3><i class="fa-solid fa-lock"></i> مقارنة معمارية التشفير: Flexible SSL مقابل Full (Strict) SSL</h3>
+                        <p>لماذا يشكل وضع Flexible ثغرة أمنية خطيرة بينما يضمن وضع Full (Strict) التشفير الكامل من الطرف للطرف؟</p>
+                    </div>
+
+                    <div class="ssl-mode-row mode-bad">
+                        <div class="ssl-mode-header">
+                            <strong><i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;"></i> وضع Flexible SSL (غير آمن بين Cloudflare والسيرفر)</strong>
+                            <span class="ssl-badge-danger">غير موصى به - عرضة للتنصت وحلقات التوجيه</span>
+                        </div>
+                        <div class="ssl-flow-track">
+                            <div class="ssl-node"><i class="fa-solid fa-user"></i>Visitor Browser</div>
+                            <div class="ssl-link-seg ssl-link-enc"><i class="fa-solid fa-lock"></i> HTTPS (Encrypted)</div>
+                            <div class="ssl-node"><i class="fa-solid fa-cloud"></i>Cloudflare Edge</div>
+                            <div class="ssl-link-seg ssl-link-plain"><i class="fa-solid fa-lock-open"></i> HTTP Port 80 (Unencrypted!)</div>
+                            <div class="ssl-node"><i class="fa-solid fa-server"></i>Origin Server</div>
+                        </div>
+                    </div>
+
+                    <div class="ssl-mode-row mode-good">
+                        <div class="ssl-mode-header">
+                            <strong><i class="fa-solid fa-shield-check" style="color:#10b981;"></i> وضع Full (Strict) SSL (تشفير كامل وموثق من الطرف للطرف)</strong>
+                            <span class="ssl-badge-safe">المعيار الذهبي الموصى به (Recommended)</span>
+                        </div>
+                        <div class="ssl-flow-track">
+                            <div class="ssl-node"><i class="fa-solid fa-user-shield"></i>Visitor Browser</div>
+                            <div class="ssl-link-seg ssl-link-enc"><i class="fa-solid fa-lock"></i> HTTPS (TLS 1.3)</div>
+                            <div class="ssl-node"><i class="fa-solid fa-cloud"></i>Cloudflare Edge</div>
+                            <div class="ssl-link-seg ssl-link-enc"><i class="fa-solid fa-certificate"></i> HTTPS Port 443 (Verified Origin Cert)</div>
+                            <div class="ssl-node"><i class="fa-solid fa-server"></i>Origin Server</div>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 id="speed-network">2. إعدادات الشبكة والسرعة (Speed &amp; Network)</h2>
                 <p>سرعة تحميل الموقع هي أحد أهم عوامل الـ Core Web Vitals التي تركز عليها جوجل ضمن <a href="https://connecttag.org/blog/technical-seo-audit-guide">الفحص التقني الشامل للمواقع (Technical SEO Audit)</a>.</p>
                 <ul>
@@ -240,6 +322,62 @@
                 </ul>
 
                 <p><strong>خلاصة القول:</strong> استخدام كلاود فلير بإعداداته الافتراضية جيد، لكن ضبطه بهذه الطريقة الاحترافية يضمن لموقعك التفوق في الأداء والأمان. إذا كنت تستخدم <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">استضافة Cloudflare Pages</a> أو ترغب في إدارة نطاقاتك وخوادمك باحترافية، يمكنك الاستفادة من <a href="https://connecttag.org/company/services/hosting-services">خدمات الاستضافة السحابية وإدارة النطاقات</a> في <strong>كونكت تاق</strong>.</p>
+
+                <div class="cf-matrix-wrap">
+                    <div class="cf-matrix-header">
+                        <i class="fa-solid fa-table-cells-large"></i> مصفوفة إعدادات Cloudflare الموصى بها للأداء الفائق والأمان وتوافق الـ SEO
+                    </div>
+                    <div class="table-responsive">
+                        <table class="cf-matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>القسم التقني</th>
+                                    <th>الإعداد (Setting Name)</th>
+                                    <th>القيمة الموصى بها</th>
+                                    <th>الأثر على الأداء، الأمان، ومحركات البحث (SEO)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>SSL/TLS</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>Encryption Mode</code></td>
+                                    <td><span class="cf-val-pill">Full (Strict)</span></td>
+                                    <td>تشفير كامل للبيانات من المتصفح وحتى الخادم الأصلي بشهادة موثقة ومنع حلقات التوجيه.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SSL/TLS</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>Minimum TLS Version</code></td>
+                                    <td><span class="cf-val-pill">TLS 1.2</span></td>
+                                    <td>إيقاف البروتوكولات القديمة الضعيفة (TLS 1.0/1.1) والاعتماد على TLS 1.2 و TLS 1.3.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Speed</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>Brotli &amp; Early Hints</code></td>
+                                    <td><span class="cf-val-pill">ON (Enabled)</span></td>
+                                    <td>ضغط الملفات بكفاءة أعلى بـ 20% من Gzip وتحميل ملفات CSS/Fonts مسبقاً لتسريع LCP.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Network</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>HTTP/3 (with QUIC) &amp; 0-RTT</code></td>
+                                    <td><span class="cf-val-pill">ON (Enabled)</span></td>
+                                    <td>تقليل زمن تأسيس الاتصال (Latency) وتسريع التصفح على شبكات الجوال المتقلبة.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Caching</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>Browser Cache TTL + Crawler Hints</code></td>
+                                    <td><span class="cf-val-pill">Respect Existing Headers</span></td>
+                                    <td>احترام سياسات الكاش المحددة من السيرفر وإشعار محركات البحث فور تحديث المحتوى.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Security</strong></td>
+                                    <td style="direction:ltr; text-align:left;"><code>Security Level &amp; BIC</code></td>
+                                    <td><span class="cf-val-pill">Medium + BIC ON</span></td>
+                                    <td>توازن مثالي يصد البوتات الخبيثة دون إزعاج الزوار أو حجب زواحف أرشفة Googlebot.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>6. الأسئلة الشائعة</h2>

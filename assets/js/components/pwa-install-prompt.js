@@ -15,11 +15,9 @@
   // Clear cache/dismiss state if requested via URL
   if (window.location.search.includes('reset_pwa=true')) {
     localStorage.removeItem(STORAGE_KEY);
-    console.log('PWA: Dismiss state cleared via reset_pwa flag');
   }
 
   const createPrompt = (type = 'android') => {
-    console.log(`PWA: Creating ${type} prompt UI`);
     let bodyContent = '';
 
     if (type === 'ios') {
@@ -68,7 +66,6 @@
         if (promptToUse) {
           promptToUse.prompt();
           const { outcome } = await promptToUse.userChoice;
-          console.log(`PWA Install Choice: ${outcome}`);
           deferredPrompt = null;
           window.CT_DEFERRED_PROMPT = null;
           hidePrompt();
@@ -94,7 +91,6 @@
     }
     const prompt = document.getElementById('pwa-install-prompt');
     if (prompt) {
-      console.log('PWA: Making prompt visible');
       prompt.classList.add('is-visible');
     } else {
       console.error('PWA: Prompt element not found when trying to show');
@@ -104,7 +100,6 @@
   const hidePrompt = () => {
     const prompt = document.getElementById('pwa-install-prompt');
     if (prompt) {
-      console.log('PWA: Hiding prompt');
       prompt.classList.remove('is-visible');
     }
   };
@@ -118,14 +113,10 @@
   };
 
   const init = () => {
-    console.log('PWA: Initialization started');
     const deferredPromptToUse = window.CT_DEFERRED_PROMPT;
-    console.log('PWA: Standalone mode:', isStandalone);
-    console.log('PWA: Global prompt available:', !!deferredPromptToUse);
 
     // Logic for iOS
     if (isIOS && !isStandalone && !isDismissed()) {
-      console.log('PWA: Initializing iOS prompt');
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('ios');
       }
@@ -134,7 +125,6 @@
 
     // Debugging: Force show for UI testing
     if (window.location.search.includes('debug_pwa=true')) {
-      console.log('PWA: Debug mode active - forcing UI');
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('android');
       }
@@ -144,7 +134,6 @@
 
     // Logic for Android/Chrome/Windows (Global captured event)
     if (deferredPromptToUse && !isStandalone && !isDismissed()) {
-      console.log('PWA: Showing prompt from global capture');
       if (!document.getElementById('pwa-install-prompt')) {
         createPrompt('android');
       }
@@ -176,7 +165,6 @@
 
   // Hide prompt if app is installed
   window.addEventListener('appinstalled', (evt) => {
-    console.log('Connect Tag PWA was installed');
     hidePrompt();
     deferredPrompt = null;
   });

@@ -3,6 +3,8 @@
  * GDPR, Google Consent Mode v2 & Google AdSense Privacy Policy Compliant Cookie Banner.
  */
 (function initGoogleConsentModeDefault() {
+  if (window.__CT_CONSENT_INITIALIZED__) return;
+  window.__CT_CONSENT_INITIALIZED__ = true;
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
 

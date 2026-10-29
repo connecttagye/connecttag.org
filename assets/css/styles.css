@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #typed-text {
   display: inline-block;
-  min-width: 185px; /* Reserved space for the longest word */
+  min-width: 280px; /* Reserved space for the longest word */
   text-align: right;
 }
 h2 {
@@ -297,7 +297,7 @@ a:hover, a:focus {
    ========================================================================== */
 
 #headerwrap {
-	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp?v=1.1.32') no-repeat center center;
+	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp?v=1.1.33') no-repeat center center;
 	margin-top: -50px;
 	padding-top: 180px;
 	min-height: 750px;
@@ -359,6 +359,8 @@ a:hover, a:focus {
 .hero-btn-primary {
 	font-weight: 700;
 	font-size: 18px;
+	line-height: 1.42857143;
+	min-width: 235px;
 	background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%);
 	color: #fff !important;
 	border-radius: 30px;
@@ -368,8 +370,13 @@ a:hover, a:focus {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 	gap: 12px;
 	margin: 0;
+}
+.hero-btn-primary i {
+	width: 18px;
+	text-align: center;
 }
 .hero-btn-primary:hover {
 	transform: translateY(-3px) scale(1.03);
@@ -404,6 +411,7 @@ a:hover, a:focus {
 	}
 	#typed-text {
 		text-align: center;
+		min-width: 225px;
 	}
 	.hero-lead-p {
 		text-align: center !important;
@@ -901,25 +909,34 @@ a:hover, a:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 40px;
+    justify-content: center;
+    width: 100px;
+    height: 76px;
+    margin: 0 30px;
     flex-shrink: 0;
 }
 .tech-slider i {
-    min-width: 45px;
-    height: 45px;
+    width: 60px !important;
+    min-width: 60px !important;
+    height: 45px !important;
     font-size: 45px;
-    line-height: 45px;
+    line-height: 45px !important;
     color: #94a3b8;
     margin-bottom: 10px;
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 .tech-item span {
+    width: 100%;
+    text-align: center;
     font-size: 13px;
+    line-height: 21px;
+    height: 21px;
     color: #cbd5e1;
     font-weight: 600;
+    display: block;
 }
 .tech-slider i:hover {
     color: #00b4d8;

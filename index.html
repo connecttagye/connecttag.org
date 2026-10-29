@@ -129,14 +129,12 @@
 
 
   <!-- Optimized Google Fonts & Font Optimization -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"></noscript>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cairo-arabic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cairo-latin.woff2" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
   <!-- Preload Critical Hero Image -->
-  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp?v=1.1.32" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preload" href="assets/img/connect-tag-globe-offset.webp?v=1.1.33" as="image" type="image/webp" fetchpriority="high">
 
   <style>
     /* Base Box Model & Typography Reset to prevent CLS when Bootstrap/Styles load */
@@ -161,12 +159,50 @@
       --ct-transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 300 800;
+      font-display: swap;
+      src: url('assets/fonts/cairo-arabic.woff2') format('woff2');
+      unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+    }
+    @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 300 800;
+      font-display: swap;
+      src: url('assets/fonts/cairo-latin-ext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 300 800;
+      font-display: swap;
+      src: url('assets/fonts/cairo-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
       font-family: 'Cairo-Fallback';
+      font-style: normal;
+      font-weight: 100 900;
       src: local('Arial');
+      unicode-range: U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
       ascent-override: 105%;
-      descent-override: 35%;
+      descent-override: 46%;
       line-gap-override: 0%;
-      size-adjust: 106%;
+      size-adjust: 124%;
+    }
+    @font-face {
+      font-family: 'Cairo-Fallback';
+      font-style: normal;
+      font-weight: 100 900;
+      src: local('Arial');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      ascent-override: 141.6%;
+      descent-override: 62%;
+      line-gap-override: 0%;
+      size-adjust: 92%;
     }
     @font-face {
       font-family: 'Font Awesome 6 Free';
@@ -214,6 +250,11 @@
       color: #444;
       text-align: right;
       -webkit-font-smoothing: antialiased;
+    }
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
     }
     #home-content {
       min-height: 100vh;
@@ -403,7 +444,11 @@
       color: #fff;
       border: none;
       padding: 10px 36px;
+      height: 48px;
       min-height: 48px;
+      min-width: 185px;
+      line-height: 1.2;
+      font-family: inherit;
       border-radius: 30px;
       font-weight: 700;
       font-size: 15px;
@@ -466,7 +511,7 @@
 
     /* Critical Hero & Above-the-Fold Styles (matches styles.min.css & shared-styles.css) */
     #headerwrap {
-      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp?v=1.1.32') no-repeat center center;
+      background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('assets/img/connect-tag-globe-offset.webp?v=1.1.33') no-repeat center center;
       margin-top: -50px;
       padding-top: 180px;
       padding-bottom: 140px;
@@ -514,7 +559,7 @@
     }
     #typed-text {
       display: inline-block;
-      min-width: 185px;
+      min-width: 280px;
       text-align: right;
     }
     #typed-text:empty::before {
@@ -539,6 +584,8 @@
     .hero-btn-primary {
       font-weight: 700;
       font-size: 18px;
+      line-height: 1.42857143;
+      min-width: 235px;
       background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%) !important;
       color: #fff !important;
       border-radius: 30px;
@@ -548,9 +595,14 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       margin: 0;
       text-decoration: none;
+    }
+    .hero-btn-primary i {
+      width: 18px;
+      text-align: center;
     }
     .hero-btn-primary:hover {
       transform: translateY(-3px) scale(1.03);
@@ -585,6 +637,7 @@
       }
       #typed-text {
         text-align: center;
+        min-width: 225px;
       }
       .hero-lead-p {
         text-align: center !important;
@@ -625,30 +678,55 @@
     .tech-slide-track {
       display: flex;
       width: max-content;
+      animation: scroll-infinite 30s linear infinite;
     }
     .tech-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 0 40px;
+      justify-content: center;
+      width: 100px;
+      height: 76px;
+      margin: 0 30px;
       flex-shrink: 0;
     }
     .tech-slider i {
-      min-width: 45px;
-      height: 45px;
+      width: 60px !important;
+      min-width: 60px !important;
+      height: 45px !important;
       font-size: 45px;
-      line-height: 45px;
+      line-height: 45px !important;
       color: #94a3b8;
       margin-bottom: 10px;
-      display: inline-flex;
+      display: inline-flex !important;
       align-items: center;
       justify-content: center;
       transition: color 0.3s ease, transform 0.3s ease;
     }
     .tech-item span {
+      width: 100%;
+      text-align: center;
       font-size: 13px;
+      line-height: 21px;
+      height: 21px;
       color: #cbd5e1;
       font-weight: 600;
+      display: block;
+    }
+    @keyframes scroll-infinite {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    [dir="rtl"] .tech-slide-track {
+      animation: scroll-infinite-rtl 30s linear infinite;
+    }
+    @keyframes scroll-infinite-rtl {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+    #about {
+      background: #fff;
+      padding: 100px 0;
     }
 
     /* Layout & Section Helpers */
@@ -816,23 +894,41 @@
   </style>
 
   <!-- Non-blocking CSS (Deferred to reduce unused CSS impact on FCP/LCP) -->
-  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.32"></noscript>
+  <link rel="preload" href="assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/bootstrap.min.css?v=1.1.33"></noscript>
 
-  <link rel="preload" href="assets/css/styles.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.32"></noscript>
+  <link rel="preload" href="assets/css/styles.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.min.css?v=1.1.33"></noscript>
 
-  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.32"></noscript>
+  <link rel="preload" href="assets/css/shared-styles.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/shared-styles.css?v=1.1.33"></noscript>
 
-  <link rel="preload" href="assets/css/components.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.32"></noscript>
+  <link rel="preload" href="assets/css/components.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/components.min.css?v=1.1.33"></noscript>
 
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
 
-  <script src="assets/js/components/components-bundle.js?v=1.1.32" data-cfasync="false" defer></script>
+  <script src="assets/js/components/components-bundle.js?v=1.1.33" data-cfasync="false" defer></script>
 
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense (Deferred until user interaction or idle after load to protect LCP/TBT) -->
   <script>
     (function() {
@@ -871,7 +967,7 @@
     <div class="row">
       <div class="col-md-7 col-lg-6 col-md-offset-5 col-lg-offset-6 hero-content-box">
         <h1 class="hero-main-h1" aria-label="Connect Tag - كونكت تاق">
-          Connect Tag - <span id="typed-text" aria-hidden="true" style="color: #00b4d8; display: inline-block; min-width: 185px; vertical-align: bottom;">كونكت تاق</span>
+          Connect Tag - <span id="typed-text" aria-hidden="true" style="color: #00b4d8; display: inline-block; vertical-align: bottom;">كونكت تاق</span>
         </h1>
         <p class="hero-lead-p">
           منصتك الشاملة للحلول البرمجية، الأدوات الذكية، وتطبيقات الويب والموبايل والخدمات التقنية المتكاملة.
@@ -897,7 +993,7 @@
         <div class="tech-item"><i class="fa-solid fa-plug" aria-hidden="true"></i><span>Rest API</span></div>
         <div class="tech-item"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div>
         <div class="tech-item"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span>Laravel</span></div>
-        <div class="tech-item"><i class="fa-brands fa-firebase" aria-hidden="true"></i><span>Firebase</span></div>
+        <div class="tech-item"><i class="fa-solid fa-fire" aria-hidden="true"></i><span>Firebase</span></div>
         <div class="tech-item"><i class="fa-solid fa-database" aria-hidden="true"></i><span>Databases</span></div>
         <div class="tech-item"><i class="fa-brands fa-cloudflare" aria-hidden="true"></i><span>Cloudflare</span></div>
         <div class="tech-item"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>iOS Apps</span></div>
@@ -920,7 +1016,7 @@
         <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-plug" aria-hidden="true"></i><span>Rest API</span></div>
         <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div>
         <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-cubes" aria-hidden="true"></i><span>Laravel</span></div>
-        <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-firebase" aria-hidden="true"></i><span>Firebase</span></div>
+        <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-fire" aria-hidden="true"></i><span>Firebase</span></div>
         <div class="tech-item" aria-hidden="true"><i class="fa-solid fa-database" aria-hidden="true"></i><span>Databases</span></div>
         <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-cloudflare" aria-hidden="true"></i><span>Cloudflare</span></div>
         <div class="tech-item" aria-hidden="true"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>iOS Apps</span></div>
@@ -945,7 +1041,7 @@
     <div class="row white">
       <h2 class="centered">من نحن</h2>
       <hr>
-      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp?v=1.1.32" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
+      <div class="col-md-6" data-aos="fade-right"> <img class="img-responsive" src="https://connecttag.org/assets/img/about/connect-tag-team.webp?v=1.1.33" alt="شركة كونكت تاق للخدمات التقنية" loading="lazy" width="600" height="341"> </div>
       <div class="col-md-6" data-aos="fade-left">
         <h3>شركة كونكت تاق للخدمات والمستلزمات التقنية والتسويق الرقمي</h3>
         <p>كونكت تاق هي شركة رائدة في تقديم الحلول البرمجية والأنظمة المحاسبية المتكاملة. نحن نجمع بين الخبرة التقنية والإبداع الفني لنقدم خدمات تصميم وتسويق رقمي تلبي تطلعات عملائنا في اليمن والمنطقة العربية بكفاءة واحترافية عالية.</p>
@@ -1176,7 +1272,7 @@
     <div class="row services-flex-row">
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp?v=1.1.32" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp?v=1.1.33" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الفحص التقني الشامل للمواقع (Technical SEO)</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج بحث جوجل...</p>
@@ -1187,7 +1283,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/kmp-data-encryption.webp?v=1.1.33" class="img-responsive" alt="إدارة البيانات في KMP" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل Room KMP و DataStore: تأمين البيانات</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إتقان تخزين وتشفير البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية...</p>
@@ -1198,7 +1294,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/kmp-vs-flutter.webp?v=1.1.33" class="img-responsive" alt="KMP vs Flutter" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">KMP vs Flutter: أيهما تختار؟</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء KMP الأصيل وسرعة تطوير Flutter المذهلة...</p>
@@ -1209,7 +1305,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/iis-hardening-guide.webp?v=1.1.32" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/iis-hardening-guide.webp?v=1.1.33" class="img-responsive" alt="تأمين خادم IIS" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">دليل تأمين خادم IIS ضد الهجمات السيبرانية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر...</p>
@@ -1220,7 +1316,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/jetpack-compose.webp?v=1.1.32" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/jetpack-compose.webp?v=1.1.33" class="img-responsive" alt="تطوير أندرويد Jetpack Compose" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">الدليل الشامل لـ Jetpack Compose</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعرف على الأداة الثورية لبناء واجهات تطبيقات الأندرويد العصرية...</p>
@@ -1231,7 +1327,7 @@
 
       <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:30px;">
         <div class="blog-card" style="background:#fff; border-radius:15px; overflow:hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: flex; flex-direction: column;">
-          <img src="https://connecttag.org/upload/android-reverse-engineering.webp?v=1.1.32" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
+          <img src="https://connecttag.org/upload/android-reverse-engineering.webp?v=1.1.33" class="img-responsive" alt="أمن تطبيقات الأندرويد" width="400" height="250" loading="lazy" style="width: 100%; height: 220px; object-fit: cover;">
           <div style="padding:20px; flex-grow: 1; display: flex; flex-direction: column;">
             <h3 style="font-weight:bold; color:#0052cc; font-size: 18px; margin-top: 0; min-height: 48px;">حماية تطبيقات الأندرويد من الهندسة العكسية</h3>
             <p style="font-size:14px; color:#666; flex-grow: 1; line-height: 1.6; margin-bottom: 15px;">تعلم كيفية تأمين تطبيقك وحماية الكود المصدري من التلاعب والاختراق...</p>

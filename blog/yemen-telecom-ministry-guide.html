@@ -32,20 +32,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/telecom-yemen.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <style>
     .method-box { background: #f8f9fa; border-right: 5px solid #0077b6; padding: 20px; border-radius: 10px; margin: 30px 0; }
+    /* Visual Organizational Hierarchy Flowchart */
+    .telecom-org-chart { background: linear-gradient(145deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid #cbd5e1; border-radius: 18px; padding: 26px 20px; margin: 26px 0 32px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); text-align: center; }
+    .toc-chart-header { margin-bottom: 20px; }
+    .toc-chart-header h3 { font-size: 18.5px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0; display: inline-flex; align-items: center; gap: 8px; }
+    .toc-chart-header h3 i { color: #0052cc; }
+    .toc-chart-header p { font-size: 13.5px; color: #475569; margin: 0; }
+    .org-root-node { background: linear-gradient(135deg, #0052cc 0%, #0284c7 100%); color: #ffffff; border-radius: 14px; padding: 14px 24px; max-width: 440px; margin: 0 auto; box-shadow: 0 6px 18px rgba(0, 82, 204, 0.25); }
+    .org-root-node h4 { color: #ffffff; font-size: 17px; font-weight: 800; margin: 0 0 4px 0; }
+    .org-root-node span { font-size: 12.5px; color: #e0f2fe; font-weight: 600; }
+    .org-connector-v { width: 3px; height: 22px; background: #94a3b8; margin: 0 auto; }
+    .org-tier-label { display: inline-block; background: #e2e8f0; color: #1e293b; font-size: 11.5px; font-weight: 800; padding: 3px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .org-mid-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 6px; }
+    .org-leaf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px; }
+    .org-node-card { background: #ffffff; border: 1px solid #cbd5e1; border-top: 4px solid #0052cc; border-radius: 14px; padding: 15px 14px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04); transition: transform 0.2s ease, border-color 0.2s ease; }
+    .org-node-card:hover { transform: translateY(-3px); border-color: #0284c7; }
+    .org-node-logo { height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+    .org-node-logo img { max-height: 44px; max-width: 90px; width: auto; height: auto; object-fit: contain; }
+    .org-node-icon { width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; color: #0052cc; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 10px; }
+    .org-node-card h5 { font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 5px 0; }
+    .org-node-card p { font-size: 12.5px; color: #475569; line-height: 1.55; margin: 0 0 8px 0; }
+    .org-node-tag { margin-top: auto; font-size: 11px; font-weight: 700; background: #f1f5f9; color: #0052cc; padding: 3px 10px; border-radius: 12px; border: 1px solid #e2e8f0; }
 </style>
 <script type="application/ld+json">
 [
@@ -142,6 +163,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -195,6 +234,84 @@
 
 
                 <h2 id="telecom-entities">أولاً: أقسام ومؤسسات قطاع الاتصالات في اليمن</h2>
+
+                <!-- Visual Organizational Hierarchy Flowchart of the Yemeni Telecom Sector -->
+                <div class="telecom-org-chart" role="region" aria-label="الهيكل التنظيمي لقطاع الاتصالات وتقنية المعلومات في اليمن">
+                    <div class="toc-chart-header">
+                        <h3><i class="fa-solid fa-sitemap"></i> المخطط الهيكلي لمنظومة الاتصالات وتقنية المعلومات في اليمن</h3>
+                        <p>تسلسل الإشراف السيادي والمؤسسات التشغيلية ومزودي خدمات الإنترنت والهاتف النقال</p>
+                    </div>
+
+                    <!-- Tier 1: Ministry -->
+                    <div class="org-root-node">
+                        <h4><i class="fa-solid fa-landmark"></i> وزارة الاتصالات وتقنية المعلومات</h4>
+                        <span>الجهة السيادية والتنظيمية العليا لقطاع الاتصالات والبريد في الجمهورية اليمنية</span>
+                    </div>
+
+                    <div class="org-connector-v" aria-hidden="true"></div>
+                    <span class="org-tier-label">المؤسسات التشغيلية والدولية التابعة</span>
+
+                    <!-- Tier 2: PTC & TeleYemen & Yemen Post -->
+                    <div class="org-mid-grid">
+                        <div class="org-node-card">
+                            <div class="org-node-logo">
+                                <img src="https://connecttag.org/upload/telecom/yemen-telecom.webp" alt="شعار المؤسسة العامة للاتصالات PTC" loading="lazy" decoding="async" width="80" height="44">
+                            </div>
+                            <h5>المؤسسة العامة للاتصالات (PTC)</h5>
+                            <p>المشغل الوطني للبنية التحتية، الهاتف الثابت، وشبكات الألياف الضوئية والمحافظات.</p>
+                            <span class="org-node-tag">البنية التحتية الوطنية</span>
+                        </div>
+
+                        <div class="org-node-card">
+                            <div class="org-node-icon"><i class="fa-solid fa-globe"></i></div>
+                            <h5>شركة تيليمن (TeleYemen)</h5>
+                            <p>البوابة الدولية للاتصالات والإنترنت والربط عبر الكابلات البحرية والأقمار الصناعية.</p>
+                            <span class="org-node-tag">الاتصالات الدولية</span>
+                        </div>
+
+                        <div class="org-node-card">
+                            <div class="org-node-logo">
+                                <img src="https://connecttag.org/upload/telecom/yemen-post.png" alt="شعار الهيئة العامة للبريد والتوفير البريدي" loading="lazy" decoding="async" width="80" height="44">
+                            </div>
+                            <h5>الهيئة العامة للبريد</h5>
+                            <p>الذراع المالي واللوجستي للحوالات، التوفير البريدي، وخدمات الدفع الإلكتروني.</p>
+                            <span class="org-node-tag">الخدمات البريدية والمالية</span>
+                        </div>
+                    </div>
+
+                    <div class="org-connector-v" aria-hidden="true"></div>
+                    <span class="org-tier-label">شركات وقطاعات خدمات الإنترنت والهاتف النقال</span>
+
+                    <!-- Tier 3: YemenNet, Yemen 4G, Yemen Mobile -->
+                    <div class="org-leaf-grid">
+                        <div class="org-node-card">
+                            <div class="org-node-logo">
+                                <img src="https://connecttag.org/upload/telecom/yemen-net.webp" alt="شعار يمن نت YemenNet" loading="lazy" decoding="async" width="80" height="44">
+                            </div>
+                            <h5>يمن نت (YemenNet)</h5>
+                            <p>مزود الإنترنت السلكي المنزلي والتجاري (ADSL و Fiber FTTH).</p>
+                            <span class="org-node-tag">الإنترنت السلكي والألياف</span>
+                        </div>
+
+                        <div class="org-node-card">
+                            <div class="org-node-logo">
+                                <img src="https://connecttag.org/upload/telecom/yemen-4g.webp" alt="شعار يمن فورجي Yemen 4G" loading="lazy" decoding="async" width="80" height="44">
+                            </div>
+                            <h5>يمن فورجي (Yemen 4G)</h5>
+                            <p>خدمة الإنترنت اللاسلكي عالي السرعة والاتصال الصوتي عبر تقنية 4G LTE.</p>
+                            <span class="org-node-tag">الإنترنت اللاسلكي الثابت والمتنقل</span>
+                        </div>
+
+                        <div class="org-node-card">
+                            <div class="org-node-logo">
+                                <img src="https://connecttag.org/upload/telecom/yemen-mobile.webp" alt="شعار شركة يمن موبايل Yemen Mobile" loading="lazy" decoding="async" width="80" height="44">
+                            </div>
+                            <h5>يمن موبايل (Yemen Mobile)</h5>
+                            <p>المشغل الوطني للهاتف النقال وخدمات الجيل الرابع (4G VoLTE) بالمفاتيح 77 و 78.</p>
+                            <span class="org-node-tag">الهاتف النقال والبيانات</span>
+                        </div>
+                    </div>
+                </div>
                 <p>يتكون قطاع الاتصالات في اليمن من عدة مؤسسات وهيئات تابعة تشكل المنظومة المتكاملة للاتصالات:</p>
                 <ul>
                     <li><strong>المؤسسة العامة للاتصالات (PTC):</strong> المشغل الوطني الأساسي للبنية التحتية، والمسؤولة عن الهاتف الثابت وشبكات الألياف الضوئية.</li>

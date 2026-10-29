@@ -32,17 +32,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
     <link rel="preload" href="https://connecttag.org/upload/yemen-telecom-codes-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
     <script type="application/ld+json">
 [
@@ -163,6 +163,24 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
          crossorigin="anonymous"></script>
@@ -253,6 +271,72 @@
             text-align: right;
             font-weight: 700;
         }
+        /* Branded Visual Header Cards for Telecom Companies */
+        .telecom-brand-header-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-right: 5px solid #0052cc;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 18px 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+        }
+        .telecom-brand-header-card.ym-theme { border-right-color: #b91c1c; }
+        .telecom-brand-header-card.you-theme { border-right-color: #eab308; }
+        .telecom-brand-header-card.sabafon-theme { border-right-color: #0284c7; }
+        .telecom-brand-header-card.y-theme { border-right-color: #7c3aed; }
+        .telecom-brand-header-card.ptc-theme { border-right-color: #0052cc; }
+        .tbh-main { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 240px; }
+        .tbh-logo-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 8px 12px;
+            min-width: 78px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            flex-shrink: 0;
+        }
+        .tbh-logo-box img { max-height: 48px; max-width: 68px; width: auto; height: auto; object-fit: contain; }
+        .tbh-info h3 { margin: 0 0 6px 0; font-size: 18px; font-weight: 800; color: #0f172a; }
+        .tbh-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tbh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eff6ff;
+            color: #1e3a8a;
+            border: 1px solid #bfdbfe;
+            border-radius: 20px;
+            padding: 3px 11px;
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+        .tbh-badge code { background: transparent; color: #0052cc; font-weight: 800; padding: 0; direction: ltr; font-size: 12.5px; }
+        .tbh-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #0052cc;
+            color: #ffffff !important;
+            border-radius: 10px;
+            padding: 9px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none !important;
+            transition: background 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+        .tbh-cta:hover { background: #003d99; transform: translateY(-2px); color: #ffffff !important; }
     </style>
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
@@ -386,6 +470,22 @@
                 <hr>
 
                 <h2 id="yemen-mobile-codes">ثانياً: دليل أكواد وخدمات شركة يمن موبايل (Yemen Mobile - 77 / 78)</h2>
+                <div class="telecom-brand-header-card ym-theme">
+                    <div class="tbh-main">
+                        <div class="tbh-logo-box">
+                            <img src="https://connecttag.org/upload/telecom/yemen-mobile.webp" alt="شعار شركة يمن موبايل Yemen Mobile" loading="lazy" decoding="async" width="64" height="48">
+                        </div>
+                        <div class="tbh-info">
+                            <h3>شركة يمن موبايل للهاتف النقال (Yemen Mobile)</h3>
+                            <div class="tbh-badges">
+                                <span class="tbh-badge"><i class="fa-solid fa-sim-card"></i> مفتاح الأرقام: <code>77</code> / <code>78</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-headset"></i> خدمة العملاء: <code>121</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-signal"></i> رصيد 4G: <code>*181#</code></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/company/" class="tbh-cta"><i class="fa-solid fa-compass"></i> دليل شركات الاتصالات</a>
+                </div>
                 <p>تُعد شركة <strong>يمن موبايل</strong> المشغل الوطني الأكبر للهاتف النقال في اليمن (تبدأ أرقامها بـ <code>77</code> و<code>78</code>)، وتوفر خدمات الجيل الرابع (4G VoLTE) والجيل الثالث (3G) بتغطية واسعة في مختلف المحافظات. إليك أهم الأكواد التي تحتاجها يومياً:</p>
 
                 <div class="company-section-card">
@@ -469,6 +569,22 @@
                 <hr>
 
                 <h2 id="you-telecom-codes">ثالثاً: دليل أكواد وخدمات شركة يو (YOU - 73)</h2>
+                <div class="telecom-brand-header-card you-theme">
+                    <div class="tbh-main">
+                        <div class="tbh-logo-box">
+                            <img src="https://connecttag.org/upload/telecom/you.webp" alt="شعار شركة يو للاتصالات YOU Telecom" loading="lazy" decoding="async" width="64" height="48">
+                        </div>
+                        <div class="tbh-info">
+                            <h3>الشركة اليمنية العمانية المتحدة للاتصالات (YOU)</h3>
+                            <div class="tbh-badges">
+                                <span class="tbh-badge"><i class="fa-solid fa-sim-card"></i> مفتاح الأرقام: <code>73</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-headset"></i> خدمة العملاء: <code>111</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-signal"></i> الرصيد والباقات: <code>*444#</code></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/company/" class="tbh-cta"><i class="fa-solid fa-compass"></i> دليل شركات الاتصالات</a>
+                </div>
                 <p>تقدم <strong>شركة يو (YOU)</strong> — الشركة اليمنية العمانية المتحدة للاتصالات (MTN سابقاً، وتبدأ أرقامها بـ <code>73</code>) — منظومة متكاملة من الأكواد المختصرة لإدارة باقات الإنترنت الموحدة وباقات الجيل الرابع (4G LTE) والخدمات المضافة:</p>
 
                 <div class="company-section-card">
@@ -552,6 +668,22 @@
                 <hr>
 
                 <h2 id="sabafon-codes">رابعاً: دليل أكواد وخدمات شركة سبأفون (Sabafon - 71)</h2>
+                <div class="telecom-brand-header-card sabafon-theme">
+                    <div class="tbh-main">
+                        <div class="tbh-logo-box">
+                            <img src="https://connecttag.org/upload/telecom/sabafon.webp" alt="شعار شركة سبأفون للاتصالات Sabafon" loading="lazy" decoding="async" width="64" height="48">
+                        </div>
+                        <div class="tbh-info">
+                            <h3>شركة سبأفون للاتصالات (Sabafon)</h3>
+                            <div class="tbh-badges">
+                                <span class="tbh-badge"><i class="fa-solid fa-sim-card"></i> مفتاح الأرقام: <code>71</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-headset"></i> خدمة العملاء: <code>211</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-signal"></i> رصيد 4G: <code>*456*15#</code></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/company/" class="tbh-cta"><i class="fa-solid fa-compass"></i> دليل شركات الاتصالات</a>
+                </div>
                 <p>تُعد شركة <strong>سبأفون (Sabafon)</strong> من أقدم شركات الاتصالات بنظام GSM في اليمن (تبدأ أرقامها بـ <code>71</code>)، وقد أطلقت مؤخراً خدمات الجيل الرابع (Sabafon 4G) إلى جانب خدماتها الصوتية المعتادة. إليك أهم أكواد سبأفون الرسمية:</p>
 
                 <div class="company-section-card">
@@ -630,6 +762,22 @@
                 <hr>
 
                 <h2 id="y-telecom-codes">خامساً: دليل أكواد وخدمات شركة واي تيليكوم (Y Telecom - 70)</h2>
+                <div class="telecom-brand-header-card y-theme">
+                    <div class="tbh-main">
+                        <div class="tbh-logo-box">
+                            <img src="https://connecttag.org/upload/telecom/y-telecom.webp" alt="شعار شركة واي تيليكوم Y Telecom" loading="lazy" decoding="async" width="64" height="48">
+                        </div>
+                        <div class="tbh-info">
+                            <h3>شركة واي تيليكوم للاتصالات (Y Telecom)</h3>
+                            <div class="tbh-badges">
+                                <span class="tbh-badge"><i class="fa-solid fa-sim-card"></i> مفتاح الأرقام: <code>70</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-headset"></i> خدمة العملاء: <code>102</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-wallet"></i> استعلام الرصيد: <code>*222#</code></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/company/" class="tbh-cta"><i class="fa-solid fa-compass"></i> دليل شركات الاتصالات</a>
+                </div>
                 <p>تعمل <strong>شركة واي تيليكوم (Y Telecom)</strong> بالبادئة المميزة (<code>70</code>)، وتوفر لمشتركيها مجموعة من الأكواد المختصرة للاستعلام عن الرصيد، شحن الخط، وخدمات الطوارئ الصوتية:</p>
 
                 <div class="company-section-card">
@@ -688,6 +836,23 @@
                 <hr>
 
                 <h2 id="yemen-telecom-ptc">سادساً: خدمات وبوابات المؤسسة العامة للاتصالات (يمن نت ويمن فورجي)</h2>
+                <div class="telecom-brand-header-card ptc-theme">
+                    <div class="tbh-main">
+                        <div class="tbh-logo-box" style="min-width: 132px;">
+                            <img src="https://connecttag.org/upload/telecom/yemen-net.webp" alt="شعار يمن نت YemenNet" loading="lazy" decoding="async" width="56" height="44">
+                            <img src="https://connecttag.org/upload/telecom/yemen-4g.webp" alt="شعار يمن فورجي Yemen 4G" loading="lazy" decoding="async" width="56" height="44">
+                        </div>
+                        <div class="tbh-info">
+                            <h3>المؤسسة العامة للاتصالات (يمن نت &amp; يمن فورجي)</h3>
+                            <div class="tbh-badges">
+                                <span class="tbh-badge"><i class="fa-solid fa-phone-volume"></i> بادئة يمن فورجي: <code>10</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-headset"></i> الدعم المجاني الموحد: <code>8000000</code></span>
+                                <span class="tbh-badge"><i class="fa-solid fa-network-wired"></i> ADSL / Fiber / 4G</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://connecttag.org/tools/telecom/company/" class="tbh-cta"><i class="fa-solid fa-compass"></i> دليل شركات الاتصالات</a>
+                </div>
                 <p>إلى جانب شركات الهاتف النقال الأربع، تُشرف <strong>المؤسسة العامة للاتصالات (PTC)</strong> وذراعها الرقمي <strong>يمن نت (YemenNet)</strong> على خدمات الإنترنت المنزلي السلكي (ADSL / Fiber) واللاسلكي (<strong>Yemen 4G</strong>) وخطوط الهاتف الثابت. وبخلاف الشرائح الخلوية التي تعتمد على أكواد USSD، تُدار خدمات المؤسسة عبر البوابات الإلكترونية الرسمية وأرقام الدعم المجانية:</p>
 
                 <ul>

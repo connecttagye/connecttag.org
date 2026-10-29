@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/yemen-internet-comparison.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -135,6 +135,38 @@
     .comp-table th, .comp-table td { border: 1px solid #ddd; padding: 15px; text-align: center; }
     .comp-table th { background-color: #0052cc; color: white; }
     .comp-table tr:nth-child(even) { background-color: #f2f2f2; }
+    /* Visual Speed, Latency & Stability Bar-Chart Infographic */
+    .isp-chart-card { background: linear-gradient(145deg, #0a1128 0%, #132247 100%); color: #ffffff; border-radius: 18px; padding: 26px 22px; margin: 30px 0; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 12px 30px rgba(10, 17, 40, 0.16); }
+    .isp-chart-header { text-align: center; margin-bottom: 22px; }
+    .isp-chart-header h3 { color: #ffffff; font-size: 19px; font-weight: 800; margin: 0 0 6px 0; display: inline-flex; align-items: center; gap: 10px; }
+    .isp-chart-header h3 i { color: #38bdf8; }
+    .isp-chart-header p { color: #cbd5e1 !important; font-size: 13.5px !important; margin: 0 !important; }
+    .isp-bar-rows { display: flex; flex-direction: column; gap: 18px; }
+    .isp-bar-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; padding: 15px 18px; }
+    .isp-bar-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .isp-bar-title { font-weight: 800; font-size: 15.5px; color: #f8fafc; display: inline-flex; align-items: center; gap: 8px; }
+    .isp-bar-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .isp-metric-pill { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(148, 163, 184, 0.3); color: #e2e8f0; direction: ltr; }
+    .isp-metric-pill.ping-good { border-color: #10b981; color: #34d399; }
+    .isp-metric-pill.ping-mid { border-color: #38bdf8; color: #7dd3fc; }
+    .isp-metric-pill.ping-warn { border-color: #f59e0b; color: #fcd34d; }
+    .isp-progress-track { width: 100%; height: 12px; background: rgba(15, 23, 42, 0.85); border-radius: 20px; overflow: hidden; margin-bottom: 6px; }
+    .isp-progress-fill { height: 100%; border-radius: 20px; }
+    .fill-fiber { width: 96%; background: linear-gradient(90deg, #10b981, #34d399); }
+    .fill-starlink { width: 85%; background: linear-gradient(90deg, #6366f1, #38bdf8); }
+    .fill-4g { width: 55%; background: linear-gradient(90deg, #0052cc, #38bdf8); }
+    .fill-adsl { width: 22%; background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .isp-bar-note { font-size: 12.5px; color: #94a3b8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    /* Decision Guide Cards: أي خدمة تناسبك؟ */
+    .decision-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 16px; margin: 24px 0 28px; }
+    .decision-card { background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #0052cc; border-radius: 14px; padding: 18px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04); }
+    .decision-card.fiber-card { border-top-color: #10b981; }
+    .decision-card.fourg-card { border-top-color: #0052cc; }
+    .decision-card.adsl-card { border-top-color: #f59e0b; }
+    .decision-card.starlink-card { border-top-color: #6366f1; }
+    .decision-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; padding: 4px 11px; border-radius: 20px; background: #eff6ff; color: #0052cc; margin-bottom: 10px; }
+    .decision-card h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin: 0 0 8px 0; }
+    .decision-card p { font-size: 13.5px; color: #475569; line-height: 1.65; margin: 0; }
 </style>
 <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -144,6 +176,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -227,6 +277,79 @@
                 <p>بدأ الاهتمام يتزايد بالحلول الفضائية. يوفر ستارلينك تغطية شاملة في أبعد المناطق الريفية في اليمن بسرعات عالية جداً، ولكنه يتطلب معدات خاصة وتكلفة اشتراك شهرية مرتفعة نسبياً مقارنة بالخيارات المحلية.</p>
 
                 <h2 id="comparison-table">جدول المقارنة السريع</h2>
+
+                <!-- Visual Speed, Latency (Ping), and Stability Bar-Chart Infographic Card -->
+                <div class="isp-chart-card" role="region" aria-label="مخطط مقارنة السرعة والبنق والاستقرار لخدمات الإنترنت في اليمن">
+                    <div class="isp-chart-header">
+                        <h3><i class="fa-solid fa-chart-bar"></i> مؤشر الأداء البصري: السرعة، زمن الاستجابة (Ping)، والاستقرار</h3>
+                        <p>مقارنة هندسية مباشرة بين التقنيات الأربع المتاحة في اليمن (الألياف الضوئية، ستارلينك، يمن فورجي، و ADSL)</p>
+                    </div>
+                    <div class="isp-bar-rows">
+                        <div class="isp-bar-item">
+                            <div class="isp-bar-top">
+                                <span class="isp-bar-title"><i class="fa-solid fa-bolt" style="color:#34d399;"></i> الألياف الضوئية (Fiber / FTTH)</span>
+                                <div class="isp-bar-badges">
+                                    <span class="isp-metric-pill">50 - 100+ Mbps</span>
+                                    <span class="isp-metric-pill ping-good">Ping: 10ms - 30ms</span>
+                                    <span class="isp-metric-pill ping-good">الاستقرار: 99%</span>
+                                </div>
+                            </div>
+                            <div class="isp-progress-track"><div class="isp-progress-fill fill-fiber"></div></div>
+                            <div class="isp-bar-note">
+                                <span>الأعلى سرعة والأقل تأخيراً (ممتاز للألعاب والشركات)</span>
+                                <span>تغطية محدودة في المدن الرئيسية</span>
+                            </div>
+                        </div>
+
+                        <div class="isp-bar-item">
+                            <div class="isp-bar-top">
+                                <span class="isp-bar-title"><i class="fa-solid fa-satellite" style="color:#818cf8;"></i> الإنترنت الفضائي (Starlink)</span>
+                                <div class="isp-bar-badges">
+                                    <span class="isp-metric-pill">50 - 150 Mbps</span>
+                                    <span class="isp-metric-pill ping-mid">Ping: 45ms - 75ms</span>
+                                    <span class="isp-metric-pill ping-mid">الاستقرار: 90%</span>
+                                </div>
+                            </div>
+                            <div class="isp-progress-track"><div class="isp-progress-fill fill-starlink"></div></div>
+                            <div class="isp-bar-note">
+                                <span>تغطية شاملة للمناطق النائية والريفية بدون تمديدات</span>
+                                <span>تكلفة أجهزة واشتراك شهري مرتفعة</span>
+                            </div>
+                        </div>
+
+                        <div class="isp-bar-item">
+                            <div class="isp-bar-top">
+                                <span class="isp-bar-title"><i class="fa-solid fa-tower-cell" style="color:#38bdf8;"></i> يمن فورجي (Yemen 4G LTE)</span>
+                                <div class="isp-bar-badges">
+                                    <span class="isp-metric-pill">20 - 50+ Mbps</span>
+                                    <span class="isp-metric-pill ping-warn">Ping: 60ms - 120ms</span>
+                                    <span class="isp-metric-pill ping-mid">الاستقرار: 78%</span>
+                                </div>
+                            </div>
+                            <div class="isp-progress-track"><div class="isp-progress-fill fill-4g"></div></div>
+                            <div class="isp-bar-note">
+                                <span>تركيب فوري وسهولة تنقل عبر مودمات Cat4/Cat6</span>
+                                <span>الباقات محدودة بالجيجابايت وتتأثر بضغط البرج</span>
+                            </div>
+                        </div>
+
+                        <div class="isp-bar-item">
+                            <div class="isp-bar-top">
+                                <span class="isp-bar-title"><i class="fa-solid fa-phone-volume" style="color:#fbbf24;"></i> الإنترنت الأرضي النحاسي (ADSL)</span>
+                                <div class="isp-bar-badges">
+                                    <span class="isp-metric-pill">4 - 12 Mbps</span>
+                                    <span class="isp-metric-pill ping-mid">Ping: 40ms - 80ms</span>
+                                    <span class="isp-metric-pill ping-warn">الاستقرار: 68%</span>
+                                </div>
+                            </div>
+                            <div class="isp-progress-track"><div class="isp-progress-fill fill-adsl"></div></div>
+                            <div class="isp-bar-note">
+                                <span>أرصدة بيانات كبيرة واقتصادية للاستخدام المنزلي اليومي</span>
+                                <span>سرعة محدودة وتتأثر بجودة الكابل النحاسي</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="table-responsive">
                 <table class="comp-table">
                     <thead>
@@ -272,7 +395,31 @@
                 </table>
                 </div>
 
-                <h2 id="which-one">أيهما تختار؟</h2>
+                <h2 id="which-one">أيهما تختار؟ (أي خدمة تناسبك؟)</h2>
+
+                <!-- Visual Decision Guide Card: أي خدمة تناسبك؟ -->
+                <div class="decision-guide-grid" role="region" aria-label="دليل القرار السريع: أي خدمة إنترنت تناسبك؟">
+                    <div class="decision-card fiber-card">
+                        <span class="decision-badge"><i class="fa-solid fa-building"></i> الشركات والألعاب (Gaming)</span>
+                        <h4>اختر الألياف الضوئية (Fiber)</h4>
+                        <p>إذا كان موقعك مخدوماً بكابلات FTTH وتحتاج إلى سرعة رفع وتحميل عالية وبنق منخفض جداً (10–30ms) واستقرار تام للاجتماعات والأعمال السحابية.</p>
+                    </div>
+                    <div class="decision-card fourg-card">
+                        <span class="decision-badge"><i class="fa-solid fa-laptop-house"></i> العمل عن بُعد والتنقل السريع</span>
+                        <h4>اختر يمن فورجي (Yemen 4G)</h4>
+                        <p>إذا لم يتوفر خط أرضي أو كنت تحتاج سرعة تحميل عالية (20–50Mbps) مع إمكانية اصطحاب المودم معك وتشغيله وقت انقطاع الكهرباء.</p>
+                    </div>
+                    <div class="decision-card adsl-card">
+                        <span class="decision-badge"><i class="fa-solid fa-house-user"></i> العائلات والاستهلاك الكثيف</span>
+                        <h4>اختر الإنترنت الأرضي (ADSL)</h4>
+                        <p>إذا كان عدد أفراد الأسرة كبيراً وتبحث عن باقات شهرية اقتصادية ذات سعة جيجابايت كبيرة لتشغيل الفيديو والتصفح اليومي بتكلفة منخفضة.</p>
+                    </div>
+                    <div class="decision-card starlink-card">
+                        <span class="decision-badge"><i class="fa-solid fa-mountain-sun"></i> المناطق النائية والمشاريع الميدانية</span>
+                        <h4>اختر ستارلينك (Starlink)</h4>
+                        <p>إذا كان موقع مشروعك أو سكنك خارج تغطية الأبراج والخطوط الأرضية وتحتاج اتصالاً فضائياً عالي السرعة بغض النظر عن التكلفة.</p>
+                    </div>
+                </div>
                 <p><strong>للمنازل والمشاريع الناشئة:</strong> ننصح بـ <strong>ADSL</strong> كخيار أساسي للبيانات غير المحدودة، مع وجود مودم <strong>Yemen 4G</strong> كخيار احتياطي عند تعطل الخط الأرضي (تعرف على <a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">كيف تختار أفضل مودم يمن فورجي يناسب منطقتك</a>).</p>
                 <p><strong>للشركات ومراكز الاتصال:</strong> يعد <strong>Fiber</strong> هو الخيار الوحيد الذي يضمن جودة الخدمة، وفي حال عدم توفر التغطية، يكون دمج خطين <strong>Yemen 4G</strong> هو البديل الأفضل.</p>
 

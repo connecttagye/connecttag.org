@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/waf-cloudflare.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -136,9 +136,55 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <style>
+    .cf-waf-mockup { background: #0f172a; color: #f8fafc; border-radius: 14px; border: 1px solid #334155; overflow: hidden; margin: 30px 0; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22); font-size: 13.5px; }
+    .cf-waf-topbar { background: #1e293b; padding: 12px 18px; border-bottom: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .cf-waf-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; direction: ltr; }
+    .cf-waf-brand i { color: #f38020; font-size: 18px; }
+    .cf-waf-status { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.35); padding: 3px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 700; }
+    .cf-waf-body { padding: 20px; direction: ltr; text-align: left; }
+    .cf-waf-caption-ar { background: rgba(243, 128, 32, 0.1); border-right: 4px solid #f38020; padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; direction: rtl; text-align: right; color: #e2e8f0; font-size: 13px; }
+    .cf-waf-field-label { color: #94a3b8; font-size: 12px; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .cf-waf-input-box { background: #1e293b; border: 1px solid #475569; border-radius: 7px; padding: 8px 12px; color: #f8fafc; font-family: monospace; margin-bottom: 16px; }
+    .cf-waf-builder-row { display: grid; grid-template-columns: 1.2fr 1fr 1.4fr auto; gap: 10px; align-items: center; margin-bottom: 10px; }
+    .cf-waf-select { background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 7px 10px; color: #e2e8f0; font-size: 12.5px; }
+    .cf-waf-select span.lbl { display: block; font-size: 10px; color: #64748b; }
+    .cf-waf-and-badge { background: #334155; color: #38bdf8; font-weight: 800; font-size: 11px; padding: 5px 10px; border-radius: 6px; font-family: monospace; }
+    .cf-waf-expr-preview { background: #090d16; border: 1px solid #f38020; border-radius: 8px; padding: 12px 14px; font-family: monospace; color: #fb923c; font-size: 13px; margin: 14px 0; overflow-x: auto; }
+    .cf-waf-action-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid #334155; border-radius: 8px; padding: 12px 15px; margin-top: 12px; }
+    .cf-waf-action-pill { background: #f38020; color: #fff; font-weight: 700; padding: 6px 14px; border-radius: 6px; font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
+    .cf-waf-table-wrap { margin: 30px 0; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.04); background: #fff; }
+    .cf-waf-table-header { background: #f8fafc; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; color: #0f172a; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .cf-waf-table-header i { color: #f38020; }
+    .cf-waf-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .cf-waf-table th { background: #0f172a; color: #fff; padding: 12px 14px; text-align: right; font-weight: 700; }
+    .cf-waf-table td { padding: 13px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: middle; line-height: 1.65; }
+    .cf-waf-table tr:nth-child(even) { background: #f8fafc; }
+    .action-tag-block { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 2px 8px; border-radius: 5px; font-weight: 700; font-size: 12px; font-family: monospace; }
+    .action-tag-challenge { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; padding: 2px 8px; border-radius: 5px; font-weight: 700; font-size: 12px; font-family: monospace; }
+    @media (max-width: 768px) { .cf-waf-builder-row { grid-template-columns: 1fr; } }
+  </style>
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -208,6 +254,50 @@
                 <h2 id="top-rules">2. أهم 3 قواعد جدار حماية يجب على كل موقع تفعيلها (How-to)</h2>
                 <p>إليك كيفية تطبيق الحماية العملية باستخدام "محرر القواعد" (Expression Editor) في كلاود فلير:</p>
 
+                <div class="cf-waf-mockup" role="region" aria-label="محاكاة واجهة بناء قواعد جدار الحماية في كلاود فلير">
+                    <div class="cf-waf-topbar">
+                        <div class="cf-waf-brand">
+                            <i class="fa-solid fa-cloud-bolt"></i>
+                            <span>Security &gt; WAF &gt; Custom rules &gt; Create rule</span>
+                        </div>
+                        <span class="cf-waf-status"><i class="fa-solid fa-circle-check"></i> Rule Builder Mockup</span>
+                    </div>
+                    <div class="cf-waf-body">
+                        <div class="cf-waf-caption-ar">
+                            <strong><i class="fa-solid fa-sliders"></i> نموذج تطبيقي من لوحة تحكم Cloudflare WAF:</strong> قاعدة مركبة تحمي مسار لوحة التحكم (<code>/admin</code>) وتفرض تحدياً أمنياً أو حظراً على أي طلب قادم من خارج الدولة المحددة (اليمن <code>YE</code>).
+                        </div>
+                        <div class="cf-waf-field-label">Rule name</div>
+                        <div class="cf-waf-input-box">Protect Admin Dashboard - Geo &amp; URI Path Filter</div>
+
+                        <div class="cf-waf-field-label">If incoming requests match...</div>
+                        <div class="cf-waf-builder-row">
+                            <div class="cf-waf-select"><span class="lbl">Field</span>URI Path</div>
+                            <div class="cf-waf-select"><span class="lbl">Operator</span>contains</div>
+                            <div class="cf-waf-select"><span class="lbl">Value</span>/admin</div>
+                            <div class="cf-waf-and-badge">AND</div>
+                        </div>
+                        <div class="cf-waf-builder-row">
+                            <div class="cf-waf-select"><span class="lbl">Field</span>Country</div>
+                            <div class="cf-waf-select"><span class="lbl">Operator</span>does not equal</div>
+                            <div class="cf-waf-select"><span class="lbl">Value</span>Yemen (YE)</div>
+                            <div class="cf-waf-and-badge" style="opacity:0.4;">END</div>
+                        </div>
+
+                        <div class="cf-waf-field-label" style="margin-top: 14px;">Expression Preview</div>
+                        <div class="cf-waf-expr-preview">
+                            (http.request.uri.path contains "/admin") and (ip.geoip.country ne "YE")
+                        </div>
+
+                        <div class="cf-waf-action-bar">
+                            <div>
+                                <div class="cf-waf-field-label" style="margin-bottom: 2px;">Then take action...</div>
+                                <strong style="color: #f8fafc;">Choose action: <span style="color: #fb923c;">Managed Challenge / Block</span></strong>
+                            </div>
+                            <span class="cf-waf-action-pill"><i class="fa-solid fa-shield-halved"></i> Action: Managed Challenge / Block</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="security-card">
                     <h3>أ. حماية لوحة تحكم ووردبريس (/wp-admin)</h3>
                     <p>منع الغرباء من الوصول لصفحة الدخول. يمكنك السماح فقط لعنوان IP الخاص بك أو بلدك.</p>
@@ -236,6 +326,56 @@
                 <div class="danger-zone" style="border-right: 5px solid #d9534f; background: #fff5f5; padding: 20px; border-radius: 10px; margin: 25px 0;">
                     <i class="fa-solid fa-triangle-exclamation"></i> <strong>تنبيه تقني هام:</strong>
                     قبل تفعيل أي قاعدة بصيغة <strong>Block</strong>، ننصح دائماً باستخدام وضع <strong>Log</strong> أو <strong>Managed Challenge</strong> لمدة 24 ساعة للتأكد من أنك لا تحظر زواراً حقيقيين أو خدمات ضرورية لموقعك.
+                </div>
+
+                <div class="cf-waf-table-wrap">
+                    <div class="cf-waf-table-header">
+                        <i class="fa-solid fa-table"></i> جدول ملخص: أهم 5 قواعد WAF أساسية يجب تفعيلها في كل موقع
+                    </div>
+                    <div class="table-responsive">
+                        <table class="cf-waf-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>اسم القاعدة والهدف الأمني</th>
+                                    <th>الشرط البرمجي المختصر (WAF Condition)</th>
+                                    <th>الإجراء الموصى به</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1</strong></td>
+                                    <td><strong>تأمين لوحة التحكم والإدارة</strong><br><small>منع الوصول غير المصرح به لصفحات الإدارة</small></td>
+                                    <td style="direction:ltr; text-align:left;"><code>(http.request.uri.path contains "/admin") and (ip.geoip.country ne "YE")</code></td>
+                                    <td><span class="action-tag-challenge">Managed Challenge</span> / <span class="action-tag-block">Block</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2</strong></td>
+                                    <td><strong>حماية الملفات البيئية والتكوينية</strong><br><small>منع تسريب مفاتيح الربط وإعدادات السيرفر</small></td>
+                                    <td style="direction:ltr; text-align:left;"><code>uri.path contains ".env" or "web.config" or ".git"</code></td>
+                                    <td><span class="action-tag-block">Block</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3</strong></td>
+                                    <td><strong>حظر أدوات الفحص والاختراق الآلية</strong><br><small>إسقاط طلبات ماسحات الثغرات والسكربتات</small></td>
+                                    <td style="direction:ltr; text-align:left;"><code>http.user_agent contains "sqlmap" or "nikto" or "curl"</code></td>
+                                    <td><span class="action-tag-block">Block</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4</strong></td>
+                                    <td><strong>حماية بوابات الدخول والـ API من التخمين</strong><br><small>تصفية البوتات المشبوهة مع استثناء محركات البحث</small></td>
+                                    <td style="direction:ltr; text-align:left;"><code>(uri.path contains "/login") and (not cf.client.bot)</code></td>
+                                    <td><span class="action-tag-challenge">Managed Challenge</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5</strong></td>
+                                    <td><strong>تقييد الطرق البرمجية الخطرة (HTTP Methods)</strong><br><small>منع أوامر التعديل أو الحذف غير المعتادة</small></td>
+                                    <td style="direction:ltr; text-align:left;"><code>not http.request.method in {"GET" "POST" "HEAD"}</code></td>
+                                    <td><span class="action-tag-block">Block</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <h2 id="under-attack">3. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>

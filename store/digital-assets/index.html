@@ -79,15 +79,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
 
 <style>
     :root {
@@ -281,186 +281,33 @@
         flex-grow: 1;
     }
 
-    .license-specs-grid {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 14px 16px;
-        margin-bottom: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        font-size: 12.5px;
-    }
-    .spec-entry {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: #475569;
-    }
-    .spec-entry strong {
-        color: #0f172a;
-    }
-
-    .license-features-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 20px 0;
-    }
-    .license-features-list li {
-        font-size: 13px;
-        color: #334155;
-        margin-bottom: 7px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .license-features-list li i {
-        color: #10b981;
-        font-size: 12px;
-    }
-
     .card-footer-action {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         margin-top: auto;
         padding-top: 15px;
         border-top: 1px solid #f1f5f9;
     }
-    .pricing-type {
-        display: flex;
-        flex-direction: column;
-    }
-    .pricing-label {
-        font-size: 11.5px;
-        font-weight: 700;
-        color: #64748b;
-    }
-    .pricing-text {
-        font-size: 16px;
-        font-weight: 900;
-        color: #0f172a;
-    }
-
-    .action-btns {
-        display: flex;
-        gap: 8px;
-    }
-    .btn-details-modal {
-        background: #f1f5f9;
-        color: #334155;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
-        padding: 8px 14px;
-        font-size: 12.5px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .btn-details-modal:hover {
-        background: #e2e8f0;
-        color: #0f172a;
-    }
     .btn-order-license {
         background: #0284c7;
         color: #ffffff !important;
-        border-radius: 10px;
-        padding: 8px 18px;
-        font-size: 13px;
+        border-radius: 12px;
+        padding: 12px 18px;
+        width: 100%;
+        font-size: 14px;
         font-weight: 800;
         text-decoration: none !important;
         transition: 0.2s;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
+        gap: 8px;
     }
     .btn-order-license:hover {
         background: #0369a1;
         transform: translateY(-2px);
     }
-
-    /* Modal for License Details */
-    .license-modal {
-        display: none;
-        position: fixed;
-        z-index: 1050;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(4px);
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    .license-modal.show { display: flex; }
-    .modal-box {
-        background: #ffffff;
-        color: #1e293b;
-        border-radius: 24px;
-        max-width: 650px;
-        width: 100%;
-        overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-        border: 1px solid #e2e8f0;
-    }
-    .modal-box-header {
-        padding: 20px 24px;
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .modal-box-header h4 { margin: 0; font-size: 17px; font-weight: 800; color: #0f172a; }
-    .btn-close-modal {
-        background: transparent;
-        border: none;
-        color: #64748b;
-        font-size: 22px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .btn-close-modal:hover { color: #0f172a; }
-    .modal-box-body {
-        padding: 24px;
-        max-height: 440px;
-        overflow-y: auto;
-        font-size: 14px;
-        line-height: 1.8;
-    }
-    .modal-info-block {
-        background: #f1f5f9;
-        border-radius: 12px;
-        padding: 14px 18px;
-        margin-top: 15px;
-    }
-
-    /* Enterprise Licensing Banner */
-    .licensing-inquiry-banner {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        color: #fff;
-        border-radius: 24px;
-        padding: 40px;
-        margin-top: 40px;
-        text-align: center;
-        border: 1px solid #334155;
-        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
-    }
-    .licensing-inquiry-banner h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; color: #fff; }
-    .licensing-inquiry-banner p { font-size: 15px; color: #94a3b8; max-width: 720px; margin: 0 auto 25px; line-height: 1.7; }
-    .btn-enterprise-rfq {
-        background: #0284c7;
-        color: #ffffff !important;
-        font-weight: 800;
-        padding: 12px 28px;
-        border-radius: 12px;
-        text-decoration: none !important;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.3s;
-    }
-    .btn-enterprise-rfq:hover { background: #0369a1; transform: translateY(-2px); }
 </style>
 
 <!-- PWA & Mobile Optimization Tags -->
@@ -468,9 +315,6 @@
 <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
 <link rel="manifest" href="https://connecttag.org/manifest.json">
 <meta name="theme-color" content="#0284c7">
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
-       crossorigin="anonymous"></script>
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
@@ -487,16 +331,8 @@
 
         <h1 data-aos="fade-up">التراخيص البرمجية <span>والاشتراكات الرقمية</span></h1>
         <p data-aos="fade-up" data-aos-delay="100">
-            البوابة المعتمدة لتوريد وتفعيل تراخيص أنظمة التحقيق الجنائي الرقمي (DFIR)، برمجيات حماية النقاط الطرفية EDR/XDR، أدوات تدقيق الثغرات، واشتراكات الأمان السحابية للمؤسسات والشركات.
+            توريد وتفعيل تراخيص أنظمة الذكاء الاصطناعي، التحقيق الجنائي الرقمي، حماية النقاط الطرفية، وأدوات الأمان للمؤسسات والشركات.
         </p>
-
-        <!-- Multi-Hub Switcher -->
-        <div class="switch-store-banner" data-aos="zoom-in" data-aos-delay="150">
-            <span style="color: #94a3b8; font-size: 13.5px;"><i class="fa-solid fa-layer-group"></i> أقسام المتجر الأخرى:</span>
-            <a href="https://connecttag.org/store/products"><i class="fa-solid fa-boxes-stacked"></i> متجر الأجهزة والمنتجات</a>
-            <span style="color: #475569;">|</span>
-            <a href="https://connecttag.org/store/databases"><i class="fa-solid fa-database"></i> بنك قواعد البيانات والجداول</a>
-        </div>
 
         <!-- Search Bar -->
         <div class="search-container" data-aos="fade-up" data-aos-delay="200">
@@ -523,11 +359,8 @@
     <div class="container">
         
         <div class="row align-items-center mb-30" style="margin-bottom: 30px;">
-            <div class="col-md-6 text-right">
+            <div class="col-md-12 text-right">
                 <h2 class="section-title">التراخيص والاشتراكات البرمجية المتاحة</h2>
-            </div>
-            <div class="col-md-6 text-left">
-                <span class="text-muted" style="font-weight: 700;" id="license-count">عرض 8 فئات تراخيص واشتراكات</span>
             </div>
         </div>
 
@@ -544,33 +377,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        توريد وتفعيل تراخيص منصات ونماذج الذكاء الاصطناعي الرائدة عالمياً لفرق العمل والشركات والأفراد مع استشارات التكامل والدعم الفني المستمر والتفعيل الرسمي المعتمد.
+                        توريد وتفعيل تراخيص منصات ونماذج الذكاء الاصطناعي لفرق العمل والشركات والأفراد مع التفعيل الرسمي والدعم الفني.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> اشتراك شهري / سنوي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-envelope"></i> <strong>التفعيل:</strong> رسمي على حساب المنشأة</div>
-                        <div class="spec-entry"><i class="fa-solid fa-microchip"></i> <strong>النماذج:</strong> أحدث النماذج السحابية</div>
-                        <div class="spec-entry"><i class="fa-solid fa-headset"></i> <strong>الدعم:</strong> ضمان كامل فترة الاشتراك</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> وصول كامل لأحدث النماذج الذكية التوليدية لفرق العمل</li>
-                        <li><i class="fa-solid fa-check"></i> تحليل الملفات والبيانات البرمجية وتوليد المستندات</li>
-                        <li><i class="fa-solid fa-check"></i> تفعيل رسمي بطرق دفع محلية ومؤسسية معتمدة</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط الاشتراك</span>
-                            <span class="pricing-text">شهري / سنوي منافس</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="ai_pro"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D9%86%D9%85%D8%A7%D8%B0%D8%AC%20%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D8%A7%D9%84%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب اشتراك
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D9%86%D9%85%D8%A7%D8%B0%D8%AC%20%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D8%A7%D9%84%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب اشتراك
+                        </a>
                     </div>
                 </div>
             </div>
@@ -586,33 +398,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        تراخيص أدوات التصميم التوليدي ومساعدات البرمجة الذكية لفرق التطوير، مع خدمات الربط البرمجي وتوفير أرصدة واجهات البرمجة السحابية (API Credits) للمطورين والشركات.
+                        تراخيص أدوات التصميم التوليدي ومساعدات البرمجة الذكية، مع توفير أرصدة واجهات البرمجة السحابية (API Credits) للمطورين والشركات.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> ترخيص أو رصيد سحابي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-code"></i> <strong>الخدمة:</strong> أدوات التطوير والـ APIs</div>
-                        <div class="spec-entry"><i class="fa-solid fa-bolt"></i> <strong>التسليم:</strong> تفعيل رسمي لحسابك المعتمد</div>
-                        <div class="spec-entry"><i class="fa-solid fa-shield-halved"></i> <strong>الموثوقية:</strong> مفاتيح وتراخيص رسمية 100%</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> تراخيص أدوات التصميم التوليدي لإنتاج التصاميم الاحترافية</li>
-                        <li><i class="fa-solid fa-check"></i> تفعيل مساعدات البرمجة الذكية لرفع إنتاجية فرق التطوير</li>
-                        <li><i class="fa-solid fa-check"></i> توفير وربط واجهات البرمجة السحابية للمشاريع والتطبيقات</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">حسب الباقة أو الرصيد</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="ai_creative"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A3%D8%AF%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AA%D9%88%D9%84%D9%8A%D8%AF%D9%8A%20%D9%88%D8%A3%D8%B1%D8%B5%D8%AF%D8%A9%20%D8%A7%D9%84%D9%80%20API" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب رصيد/اشتراك
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A3%D8%AF%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AA%D9%88%D9%84%D9%8A%D8%AF%D9%8A%20%D9%88%D8%A3%D8%B1%D8%B5%D8%AF%D8%A9%20%D8%A7%D9%84%D9%80%20API" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب رصيد / اشتراك
+                        </a>
                     </div>
                 </div>
             </div>
@@ -628,33 +419,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        تراخيص رسمية لحزم التحقيق الجنائي المتقدم والاستجابة للحوادث: استخلاص الأدلة الرقمية وتحليل الهواتف والحواسيب، استعادة البيانات المفقودة، وتحليل سجلات النظام والذاكرة العشوائية للمؤسسات المعتمدة.
+                        تراخيص رسمية لحزم التحقيق الجنائي والاستجابة للحوادث، استخلاص الأدلة الرقمية، وتحليل الهواتف والحواسيب وسجلات النظام.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> ترخيص سنوي / دائم</div>
-                        <div class="spec-entry"><i class="fa-solid fa-desktop"></i> <strong>البيئة:</strong> محطات فحص جنائي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-key"></i> <strong>التفعيل:</strong> دونجل أو كود إلكتروني</div>
-                        <div class="spec-entry"><i class="fa-solid fa-headset"></i> <strong>الدعم:</strong> تحديثات فنية سنوية</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> استخلاص الأدلة الرقمية من الأجهزة والحواسيب بشكل قانوني</li>
-                        <li><i class="fa-solid fa-check"></i> تحليل الحوادث السيبرانية وفحص سلامة قواعد البيانات والتطبيقات</li>
-                        <li><i class="fa-solid fa-check"></i> توليد تقارير إثبات جنائي معتمدة قانونياً</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">عرض سعر مؤسسي (RFQ)</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="forensics"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D9%85%D9%86%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D8%AC%D9%86%D8%A7%D8%A6%D9%8A%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D9%85%D9%86%D8%B5%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%AD%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D8%AC%D9%86%D8%A7%D8%A6%D9%8A%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
@@ -670,33 +440,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        اشتراكات حماية متقدمة للنقاط الطرفية وسيرفرات المؤسسات ضد برمجيات الفدية (Ransomware)، هجمات يوم الصفر (Zero-day)، ومسارات التسلل في الوقت الحقيقي مع لوحة تحكم سحابية موحدة واستجابة مؤتمتة.
+                        اشتراكات حماية متقدمة للنقاط الطرفية وسيرفرات المؤسسات ضد برمجيات الفدية والتهديدات السيبرانية مع لوحة تحكم موحدة.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> اشتراك سنوي (1 - 3 سنوات)</div>
-                        <div class="spec-entry"><i class="fa-solid fa-users"></i> <strong>السعة:</strong> من 10 إلى 1,000+ نقطة</div>
-                        <div class="spec-entry"><i class="fa-solid fa-cloud"></i> <strong>الإدارة:</strong> سحابية أو On-Premise</div>
-                        <div class="spec-entry"><i class="fa-solid fa-bolt"></i> <strong>الحماية:</strong> ذكاء اصطناعي سلوكي</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> عزل الأجهزة المصابة تلقائياً فور اكتشاف التهديد</li>
-                        <li><i class="fa-solid fa-check"></i> تحصين أجهزة الموظفين ضد الفدية والتصيد الاحتيالي</li>
-                        <li><i class="fa-solid fa-check"></i> تقارير امتثال أمني لمراجعي الحسابات والأنظمة</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">بحسب عدد النقاط</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="edr"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%A3%D9%86%D8%B8%D9%85%D8%A9%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D9%8A%D8%A9%20EDR" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%A3%D9%86%D8%B8%D9%85%D8%A9%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D9%8A%D8%A9%20EDR" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
@@ -712,33 +461,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        تراخيص احترافية لأشهر أدوات فحص الثغرات الأمنية للشبكات والمواقع وتطبيقات الويب وواجهات API؛ تتيح للفرق التقنية ومستشاري الأمان اكتشاف الثغرات وتوليد تقارير علاجية طبقاً لمعيار OWASP.
+                        تراخيص احترافية لأدوات فحص الثغرات الأمنية للشبكات والمواقع وتطبيقات الويب وواجهات API وتوليد التقارير العلاجية.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> ترخيص استشاري سنوي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-bullseye"></i> <strong>النطاق:</strong> مسح عناوين IP غير محدود</div>
-                        <div class="spec-entry"><i class="fa-solid fa-file-shield"></i> <strong>التقارير:</strong> تقارير امتثال وشيفرات علاج</div>
-                        <div class="spec-entry"><i class="fa-solid fa-arrows-rotate"></i> <strong>التحديث:</strong> تحديث يومي للثغرات (CVE)</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> فحص أمني شامل لمنافذ الشبكات والتطبيقات السحابية</li>
-                        <li><i class="fa-solid fa-check"></i> دعم فحص ثغرات الـ API وبروتوكولات الويب الحديثة</li>
-                        <li><i class="fa-solid fa-check"></i> تقارير مطابقة معايير ISO 27001 و PCI-DSS</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">ترخيص مهني / سنوي</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="vuln"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%A3%D8%AF%D9%88%D8%A7%D8%AA%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%AF%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D8%AB%D8%BA%D8%B1%D8%A7%D8%AA" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%A3%D8%AF%D9%88%D8%A7%D8%AA%20%D9%81%D8%AD%D8%B5%20%D9%88%D8%AA%D8%AF%D9%82%D9%8A%D9%82%20%D8%A7%D9%84%D8%AB%D8%BA%D8%B1%D8%A7%D8%AA" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
@@ -754,33 +482,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        تجديد وتوريد تراخيص الاشتراكات الأمنية لجدران الحماية العالمية: تصفية الويب والتطبيقات (Web & App Filtering)، منع التسلل (IPS/IDS)، فحص الحزم المعمق (DPI)، وفحص الاتصالات المشفرة SSL Inspection.
+                        تجديد وتوريد تراخيص الاشتراكات الأمنية لجدران الحماية: تصفية الويب والتطبيقات، منع التسلل، وفحص الاتصالات المشفرة.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> اشتراك تجديد سنوي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-microchip"></i> <strong>التوافق:</strong> عتادي وسحابي (Appliance / VM)</div>
-                        <div class="spec-entry"><i class="fa-solid fa-shield-cat"></i> <strong>الخدمة:</strong> تصفية هجمات DdoS والتصيد</div>
-                        <div class="spec-entry"><i class="fa-solid fa-certificate"></i> <strong>الترخيص:</strong> شريك وموزع معتمد</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> تحديثات قواعد التهديدات السيبرانية على مدار الساعة</li>
-                        <li><i class="fa-solid fa-check"></i> ربط وتأمين الفروع عبر شبكات VPN مشفرة ومعتمدة</li>
-                        <li><i class="fa-solid fa-check"></i> إدارة سياسات النطاق الترددي واستخدام الإنترنت</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">بحسب موديل الجهاز</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="ngfw"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D9%88%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%AC%D8%AF%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D9%88%D8%AA%D8%B1%D8%A7%D8%AE%D9%8A%D8%B5%20%D8%AC%D8%AF%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
@@ -796,33 +503,12 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        تغذية برمجية حية لمؤشرات الاختراق (IoC) وعناوين IP الخبيثة والنطاقات المشبوهة، مهيأة للدمج الفوري عبر واجهات برمجية API في أنظمة إدارة الأحداث الأمنية (SIEM) ومراكز العمليات السيبرانية (SOC).
+                        تغذية برمجية حية لمؤشرات الاختراق وعناوين IP الخبيثة والنطاقات المشبوهة، مهيأة للدمج في أنظمة SIEM ومراكز SOC.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>النوع:</strong> اشتراك سنوي سحابي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-bolt"></i> <strong>التحديث:</strong> كل 15 دقيقة بشكل آلي</div>
-                        <div class="spec-entry"><i class="fa-solid fa-code"></i> <strong>الصيغ:</strong> STIX / TAXII / JSON / CSV</div>
-                        <div class="spec-entry"><i class="fa-solid fa-server"></i> <strong>التوافق:</strong> كبرى منصات SIEM و SOC</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> رصد استباقي ومسبق لحملات الهجمات الموجهة للمنطقة</li>
-                        <li><i class="fa-solid fa-check"></i> تغذية جدران الحماية بالقوائم السوداء آلياً بدون تدخل</li>
-                        <li><i class="fa-solid fa-check"></i> تقليل الإنذارات الكاذبة وتسريع زمن الاستجابة للحوادث</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">اشتراك سنوي مؤسسي</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="threat"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D8%AE%D9%84%D8%A7%D8%B5%D8%A7%D8%AA%20%D8%A7%D8%B3%D8%AA%D8%AE%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D9%87%D8%AF%D9%8A%D8%AF%D8%A7%D8%AA" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%D8%A7%D8%AA%20%D8%AE%D9%84%D8%A7%D8%B5%D8%A7%D8%AA%20%D8%A7%D8%B3%D8%AA%D8%AE%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D9%87%D8%AF%D9%8A%D8%AF%D8%A7%D8%AA" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
@@ -838,65 +524,20 @@
                         </div>
                     </div>
                     <p class="license-desc">
-                        إصدار وتوثيق شهادات توقيع البرمجيات (Code Signing Certificates) لتطبيقات Windows و Android لمنع ظهور تحذيرات الأمان من SmartScreen، مع شهادات التحقق الممتد (EV SSL) للبنوك والمؤسسات المالية.
+                        إصدار وتوثيق شهادات توقيع البرمجيات لتطبيقات Windows و Android لمنع تحذيرات الأمان، مع شهادات التحقق الممتد EV SSL.
                     </p>
-
-                    <div class="license-specs-grid">
-                        <div class="spec-entry"><i class="fa-solid fa-tag"></i> <strong>الصلاحية:</strong> من 1 إلى 3 سنوات</div>
-                        <div class="spec-entry"><i class="fa-solid fa-id-card"></i> <strong>التحقق:</strong> تدقيق هوية المنشأة والسجل</div>
-                        <div class="spec-entry"><i class="fa-solid fa-key"></i> <strong>التخزين:</strong> توكن عتادي آمن FIPS 140-2</div>
-                        <div class="spec-entry"><i class="fa-solid fa-circle-check"></i> <strong>الاعتراف:</strong> معترف به من Microsoft & Apple</div>
-                    </div>
-
-                    <ul class="license-features-list">
-                        <li><i class="fa-solid fa-check"></i> إزالة فورية لتحذيرات "ناشر غير معروف" عند تثبيت البرامج</li>
-                        <li><i class="fa-solid fa-check"></i> حماية البرمجيات والتطبيقات من التعديل أو التلاعب بالكود</li>
-                        <li><i class="fa-solid fa-check"></i> تشفير عالي الكفاءة لاتصالات النطاقات والمواقع الحساسة</li>
-                    </ul>
-
                     <div class="card-footer-action">
-                        <div class="pricing-type">
-                            <span class="pricing-label">نمط التسعير</span>
-                            <span class="pricing-text">ترخيص معتمد وموثق</span>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn-details-modal" data-modal="cert"><i class="fa-solid fa-circle-info"></i> المواصفات</button>
-                            <a href="https://connecttag.org/company/support/order?type=license&item=%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA%20%D8%AA%D9%88%D9%82%D9%8A%D8%B9%20%D8%A7%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86" class="btn-order-license">
-                                <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
-                            </a>
-                        </div>
+                        <a href="https://connecttag.org/company/support/order?type=license&item=%D8%B4%D9%87%D8%A7%D8%AF%D8%A7%D8%AA%20%D8%AA%D9%88%D9%82%D9%8A%D8%B9%20%D8%A7%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%86" class="btn-order-license">
+                            <i class="fa-solid fa-file-invoice"></i> طلب ترخيص
+                        </a>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Enterprise Licensing Inquiries Banner -->
-        <div class="licensing-inquiry-banner" data-aos="fade-up">
-            <h3>هل تبحث عن ترخيص برنامج مخصص أو استشارة لامتثال منظومتك؟</h3>
-            <p>
-                فريق كونكت تاق يوفر التنسيق والوساطة الرسمية مع كبرى الشركات العالمية لترخيص الحلول الأمنية النادرة والمقاعد المتعددة، مع تقديم الدعم الفني وضبط إعدادات التفعيل محلياً.
-            </p>
-            <a href="https://connecttag.org/company/support/order?type=enterprise-license" class="btn-enterprise-rfq">
-                <i class="fa-solid fa-file-signature"></i> تقديم طلب ترخيص مؤسسي مخصص
-            </a>
-        </div>
-
     </div>
 </section>
-
-<!-- Specifications Details Modal -->
-<div class="license-modal" id="license-modal">
-    <div class="modal-box">
-        <div class="modal-box-header">
-            <h4 id="lic-modal-title">تفاصيل الترخيص والاشتراك</h4>
-            <button class="btn-close-modal" id="btn-lic-close">&times;</button>
-        </div>
-        <div class="modal-box-body">
-            <div id="lic-modal-content"></div>
-        </div>
-    </div>
-</div>
 
 </main>
 <site-footer></site-footer>
@@ -909,12 +550,10 @@
         const searchInput = document.getElementById('license-search');
         const catButtons = document.querySelectorAll('.cat-btn');
         const items = document.querySelectorAll('.license-item');
-        const countDisplay = document.getElementById('license-count');
 
         function filterLicenses() {
             const query = searchInput.value.toLowerCase().trim();
             const activeFilter = document.querySelector('.cat-btn.active').getAttribute('data-filter');
-            let visibleCount = 0;
 
             items.forEach(item => {
                 const text = item.innerText.toLowerCase();
@@ -923,15 +562,8 @@
                 const matchesQuery = text.includes(query);
                 const matchesCategory = activeFilter === 'all' || category.includes(activeFilter);
 
-                if (matchesQuery && matchesCategory) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
+                item.style.display = (matchesQuery && matchesCategory) ? 'block' : 'none';
             });
-
-            countDisplay.innerText = `عرض ${visibleCount} فئات تراخيص`;
         }
 
         searchInput.addEventListener('input', filterLicenses);
@@ -942,147 +574,6 @@
                 this.classList.add('active');
                 filterLicenses();
             });
-        });
-
-        // Modal Data
-        const licenseDetails = {
-            ai_pro: {
-                title: "تراخيص نماذج الذكاء الاصطناعي للمؤسسات والأفراد (AI Pro)",
-                html: `
-                    <p><strong>طبيعة الخدمة:</strong> توريد وتفعيل تراخيص رسمية مدفوعة (شهرية أو سنوية) في أحدث منصات الذكاء الاصطناعي السحابية لفرق العمل والشركات والأفراد.</p>
-                    <div class="modal-info-block">
-                        <strong>أبرز المميزات:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>استخدام أحدث النماذج الذكية التوليدية مع وصول لأعلى سرعات المعالجة السحابية.</li>
-                            <li>معالجة وتحليل الملفات والمستندات الضخمة وتوليد الأكواد البرمجية والتصاميم بدقة فائقة.</li>
-                            <li>تفعيل رسمي مباشر على البريد المؤسسي أو الشخصي المعتمد مع ضمان كامل فترة الاشتراك.</li>
-                        </ul>
-                    </div>
-                    <p style="margin-top: 15px;"><strong>طرق الدفع:</strong> سداد محلي ومؤسسي مباشر، وتفعيل رسمي مع فواتير ودعم فني متكامل.</p>
-                `
-            },
-            ai_creative: {
-                title: "أدوات الذكاء التوليدي وتكامل واجهات API للمطورين",
-                html: `
-                    <p><strong>طبيعة الخدمة:</strong> تفعيل تراخيص منصات التصميم التوليدي ومساعدات البرمجة الذكية وتوفير أرصدة واجهات البرمجة السحابية (API) للمطورين والشركات.</p>
-                    <div class="modal-info-block">
-                        <strong>الخدمات المتاحة:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>تراخيص منصات التصميم التوليدي لإنتاج صور ومواد إعلانية وتصاميم احترافية عالية الدقة.</li>
-                            <li>تراخيص مساعدات البرمجة الذكية لمضاعفة سرعة كتابة وتدقيق الأكواد البرمجية لفرق التطوير.</li>
-                            <li>توفير وربط أرصدة واجهات البرمجة السحابية (API Credits) لتشغيل التطبيقات والأنظمة الذكية.</li>
-                        </ul>
-                    </div>
-                    <p style="margin-top: 15px;"><strong>التسليم:</strong> تفعيل رسمي مباشر لحساب المنشأة أو المطور المعتمد مع الدعم الفني الكامل.</p>
-                `
-            },
-            forensics: {
-                title: "منظومات التحقيق والتحليل الجنائي الرقمي (DFIR)",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> ترخيص برمجيات احترافي موجه لأقسام التحقيق الرقمي، الأمن الداخلي، وإدارات الامتثال في البنوك والشركات الكبرى.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>استخلاص متعمق لبيانات أنظمة التشغيل (Windows, macOS, Linux, iOS, Android).</li>
-                            <li>تتبع الهجمات السيبرانية واكتشاف نقاط التسلل الأولى (Patient Zero).</li>
-                            <li>توليد تقارير وسلاسل حيازة الأدلة (Chain of Custody) المتوافقة مع الإجراءات القضائية.</li>
-                        </ul>
-                    </div>
-                    <p style="margin-top: 15px;"><strong>متطلبات التوريد:</strong> إثبات الهوية المؤسسية أو تبعية الجهة الرسمية/المؤسسية قبل إتمام التفعيل للامتثال للمعايير القانونية.</p>
-                `
-            },
-            edr: {
-                title: "أنظمة حماية النقاط الطرفية المتقدمة EDR / XDR",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> اشتراك سنوي مرن يتم احتسابه بناءً على عدد الحواسيب والسيرفرات المستهدفة بالحماية.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>وكيل حماية خفيف الوزن (Lightweight Agent) لا يستهلك موارد الجهاز.</li>
-                            <li>لوحة تحكم إدارية سحابية تتيح المراقبة وحظر البرمجيات المشبوهة فوراً.</li>
-                            <li>استرجاع تلقائي للملفات المشفرة عبر تقنية الحماية من برمجيات الفدية.</li>
-                        </ul>
-                    </div>
-                    <p style="margin-top: 15px;"><strong>التثبيت والدعم:</strong> يتضمن الترخيص توجيهات التثبيت وإعداد السياسات الأمنية بالتعاون مع فريق كونكت تاق التقني.</p>
-                `
-            },
-            vuln: {
-                title: "أدوات فحص الثغرات والتدقيق الأمني المعتمد",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> ترخيص مخصص لمدققي الأمان والمطورين لاختبار جاهزية المواقع والشبكات ضد الهجمات.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>قاعدة بيانات يومية للثغرات المكتشفة حديثاً (CVE Feeds).</li>
-                            <li>مسح واجهات برمجة التطبيقات (APIs) وثغرات حقن SQL والـ XSS وتزوير الطلبات.</li>
-                            <li>إصدار تقارير مخصصة للإدارة العليا وأخرى تقنية مفصلة للمطورين.</li>
-                        </ul>
-                    </div>
-                `
-            },
-            ngfw: {
-                title: "تراخيص واشتراكات جدران الحماية المتقدمة (NGFW)",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> تجديد أو ترخيص حزم الحماية الشاملة (UTM Bundle) لأجهزة وسيرفرات الشبكات.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>منع التسلل اللحظي (Intrusion Prevention System - IPS).</li>
-                            <li>تصفية المحتوى ومواقع الاحتيال وتصنيف عناوين الويب سحابياً.</li>
-                            <li>تحديث فوري لشهادات فحص الـ SSL والتطبيقات المحظورة.</li>
-                        </ul>
-                    </div>
-                `
-            },
-            threat: {
-                title: "اشتراكات استخبارات التهديدات الرقمية (Threat Intelligence)",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> اشتراك API سحابي يزود مركز العمليات السيبرانية (SOC) ببيانات التهديدات العالمية في الوقت الحقيقي.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>مؤشرات اختراق موثوقة ومفحوصة بنسب إنذار كاذب شبه معدومة.</li>
-                            <li>تغذية أنظمة SIEM ببيانات الجهات المهاجمة وأساليب الهجوم التكتيكية.</li>
-                            <li>مزامنة سريعة وسهلة عبر بروتوكولات STIX و TAXII المعيارية.</li>
-                        </ul>
-                    </div>
-                `
-            },
-            cert: {
-                title: "شهادات توقيع البرمجيات والأمان المؤسسي (Code Signing & SSL)",
-                html: `
-                    <p><strong>طبيعة الترخيص:</strong> إصدار شهادات رقمية مشفرة وموثقة للمؤسسات والشركات البرمجية المعتمدة.</p>
-                    <div class="modal-info-block">
-                        <strong>المميزات التشغيلية:</strong>
-                        <ul style="margin: 8px 0 0 15px; padding: 0;">
-                            <li>تأكيد هوية المطور وتوقيع ملفات exe و msi و dll و apk.</li>
-                            <li>اكتساب فوري لسمعة Windows Defender SmartScreen.</li>
-                            <li>تخزين المفتاح الخاص على مفتاح تشفير عتادي آمن (Hardware Security Token).</li>
-                        </ul>
-                    </div>
-                `
-            }
-        };
-
-        const modal = document.getElementById('license-modal');
-        const modalTitle = document.getElementById('lic-modal-title');
-        const modalContent = document.getElementById('lic-modal-content');
-        const btnClose = document.getElementById('btn-lic-close');
-
-        document.querySelectorAll('.btn-details-modal').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const modalKey = this.getAttribute('data-modal');
-                if (licenseDetails[modalKey]) {
-                    modalTitle.innerText = licenseDetails[modalKey].title;
-                    modalContent.innerHTML = licenseDetails[modalKey].html;
-                    modal.classList.add('show');
-                }
-            });
-        });
-
-        btnClose.addEventListener('click', () => modal.classList.remove('show'));
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('show');
         });
     });
 </script>

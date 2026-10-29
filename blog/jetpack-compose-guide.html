@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/jetpack-compose.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -152,9 +152,92 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
+  <style>
+      .udf-diagram-box {
+          background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+          border: 1px solid #cbd5e1;
+          border-radius: 16px;
+          padding: 24px;
+          margin: 28px 0;
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      }
+      .udf-node-parent {
+          background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+          color: #ffffff;
+          border-radius: 14px;
+          padding: 18px 20px;
+          text-align: center;
+      }
+      .udf-node-parent h4 {
+          color: #38bdf8;
+          margin: 0 0 6px;
+          font-size: 1.08rem;
+          font-weight: 800;
+      }
+      .udf-channels-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+          gap: 14px;
+          margin: 14px 0;
+      }
+      .udf-channel-down {
+          background: #eff6ff;
+          border: 2px dashed #3b82f6;
+          border-radius: 12px;
+          padding: 12px 14px;
+          text-align: center;
+          color: #1d4ed8;
+          font-weight: 700;
+      }
+      .udf-channel-up {
+          background: #f0fdf4;
+          border: 2px dashed #16a34a;
+          border-radius: 12px;
+          padding: 12px 14px;
+          text-align: center;
+          color: #15803d;
+          font-weight: 700;
+      }
+      .udf-node-child {
+          background: #ffffff;
+          border: 2px solid #93c5fd;
+          border-radius: 14px;
+          padding: 18px 20px;
+          text-align: center;
+      }
+      .udf-recomp-pill {
+          display: inline-block;
+          margin-top: 12px;
+          background: #fef3c7;
+          color: #92400e;
+          border: 1px solid #fcd34d;
+          padding: 6px 14px;
+          border-radius: 999px;
+          font-size: 0.85rem;
+          font-weight: 700;
+      }
+  </style>
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
@@ -272,6 +355,47 @@ fun MyCounter() {
     }
 }
                 </site-code-block>
+
+                <div class="udf-diagram-box" aria-label="مخطط التدفق أحادي الاتجاه UDF ورفع الحالة State Hoisting في Jetpack Compose">
+                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 16px; color: #0f172a; font-size: 1.2rem; font-weight: 800;">
+                        <i class="fa-solid fa-arrows-rotate" style="color: #0052cc;"></i> معمارية التدفق أحادي الاتجاه (Unidirectional Data Flow - UDF) ورفع الحالة (State Hoisting)
+                    </h3>
+
+                    <div class="udf-node-parent">
+                        <h4><i class="fa-solid fa-cubes"></i> ViewModel / Stateful Parent</h4>
+                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9);">
+                            المصدر الوحيد للحقيقة (Single Source of Truth) · يحتفظ بالحالة <code>StateFlow / mutableStateOf</code> ويعالج منطق الأعمال
+                        </div>
+                    </div>
+
+                    <div class="udf-channels-grid">
+                        <div class="udf-channel-down">
+                            <div style="font-size: 1.05rem; margin-bottom: 4px;"><i class="fa-solid fa-arrow-down"></i> State (الحالة) ↓</div>
+                            <span style="font-size: 0.84rem; font-weight: 400; color: #1e40af;">
+                                تتدفق البيانات لأسفل كمعاملات غير قابلة للتعديل (مثل <code>count: Int</code>)
+                            </span>
+                        </div>
+
+                        <div class="udf-channel-up">
+                            <div style="font-size: 1.05rem; margin-bottom: 4px;"><i class="fa-solid fa-arrow-up"></i> Events (الأحداث) ↑</div>
+                            <span style="font-size: 0.84rem; font-weight: 400; color: #166534;">
+                                تصعد أفعال المستخدم لأعلى عبر دوال Lambda (مثل <code>onIncrement: () -&gt; Unit</code>)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="udf-node-child">
+                        <strong style="color: #0f172a; font-size: 1.05rem; display: block; margin-bottom: 4px;">
+                            <i class="fa-solid fa-mobile-screen-button" style="color: #0052cc;"></i> Stateless Composable (واجهة العرض النقية)
+                        </strong>
+                        <span style="font-size: 0.88rem; color: #475569; display: block;">
+                            يرسم عناصر الواجهة بناءً على <code>State</code> المستلمة فقط، ويُرسل تفاعلات المستخدم عبر <code>Events</code>، مما يجعله قابلاً لإعادة الاستخدام والاختبار بسهولة.
+                        </span>
+                        <span class="udf-recomp-pill">
+                            <i class="fa-solid fa-bolt"></i> Smart Recomposition: إعادة رسم الأجزاء التي تغيرت حالتها فقط بذكاء!
+                        </span>
+                    </div>
+                </div>
 
                 <div class="security-card">
                     <h3>لماذا نحب الـ Modifiers؟</h3>

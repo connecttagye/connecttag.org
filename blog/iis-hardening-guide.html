@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/iis-hardening-guide.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -143,6 +143,48 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <style>
+    .iis-isolation-diagram { background: linear-gradient(145deg, #0a1128 0%, #131e3a 100%); color: #fff; border-radius: 16px; padding: 26px 22px; margin: 30px 0; border: 1px solid rgba(0, 180, 216, 0.28); box-shadow: 0 12px 28px rgba(10, 17, 40, 0.2); }
+    .iis-isolation-header { text-align: center; margin-bottom: 20px; }
+    .iis-isolation-header h3 { color: #fff; font-size: 18.5px; font-weight: 800; margin: 0 0 6px 0; display: inline-flex; align-items: center; gap: 8px; }
+    .iis-isolation-header h3 i { color: #38bdf8; }
+    .iis-isolation-header p { color: #94a3b8 !important; font-size: 13px !important; margin: 0 !important; }
+    .iis-layer-banner { background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 10px; padding: 12px 16px; text-align: center; margin-bottom: 16px; font-size: 13.5px; color: #e0f2fe; }
+    .iis-layer-banner strong { color: #38bdf8; display: block; margin-bottom: 3px; direction: ltr; }
+    .iis-pools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .iis-pool-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(16, 185, 129, 0.35); border-top: 4px solid #10b981; border-radius: 12px; padding: 15px 13px; text-align: center; }
+    .iis-pool-card h4 { color: #f8fafc; font-size: 14.5px; font-weight: 800; margin: 0 0 6px 0; direction: ltr; }
+    .iis-pool-identity { display: inline-block; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; font-family: monospace; font-size: 11px; padding: 3px 8px; border-radius: 5px; margin-bottom: 10px; direction: ltr; }
+    .iis-pool-ntfs { background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(148, 163, 184, 0.3); border-radius: 8px; padding: 8px; font-size: 12px; color: #cbd5e1; line-height: 1.5; }
+    .iis-headers-table-wrap { margin: 30px 0; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.04); background: #fff; }
+    .iis-headers-table-title { background: #f8fafc; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; color: #0f172a; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .iis-headers-table-title i { color: #0077b6; }
+    .iis-headers-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .iis-headers-table th { background: #0f172a; color: #fff; padding: 12px 14px; text-align: right; font-weight: 700; }
+    .iis-headers-table td { padding: 13px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: top; line-height: 1.65; }
+    .iis-headers-table tr:nth-child(even) { background: #f8fafc; }
+    .header-name-badge { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; font-family: monospace; font-weight: 700; font-size: 12.5px; padding: 3px 8px; border-radius: 5px; direction: ltr; display: inline-block; }
+    .header-val-code { background: #eff6ff; color: #1d4ed8; font-family: monospace; font-size: 12px; padding: 3px 7px; border-radius: 4px; direction: ltr; display: inline-block; }
+    @media (max-width: 768px) { .iis-pools-grid { grid-template-columns: 1fr; } }
+  </style>
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -241,6 +283,43 @@
                     عند تفعيل صلاحية <strong>ISAPI and CGI Restrictions</strong>، لا تقم أبداً بتفعيل خيار "Allow unspecified ISAPI modules". بدلاً من ذلك، أضف المسار الكامل لملف الـ <code>.dll</code> الخاص بك حصراً في القائمة البيضاء (Whitelist).
                 </div>
 
+                <div class="iis-isolation-diagram" role="region" aria-label="مخطط الدفاع في العمق وعزل أحواض التطبيقات في IIS">
+                    <div class="iis-isolation-header">
+                        <h3><i class="fa-solid fa-shield-cat"></i> مخطط الدفاع في العمق وعزل أحواض التطبيقات (IIS Defense-in-Depth &amp; AppPool Isolation)</h3>
+                        <p>كيف يمنع العزل الهيكلي انتقال أي اختراق بين المواقع المستضافة على نفس خادم Windows Server</p>
+                    </div>
+                    <div class="iis-layer-banner">
+                        <strong>Layer 1: TLS 1.3 + Request Filtering + Dynamic IP Restrictions + Server Header Removal</strong>
+                        تصفية الطلبات الخبيثة، حجب أوامر HTTP غير المصرحة، وإخفاء بصمة الخادم قبل وصول الطلب لعملية التطبيق
+                    </div>
+                    <div class="iis-pools-grid">
+                        <div class="iis-pool-card">
+                            <h4><i class="fa-solid fa-cube" style="color:#10b981;"></i> Site A (Portal)</h4>
+                            <span class="iis-pool-identity">IIS AppPool\PortalPool (w3wp.exe #1)</span>
+                            <div class="iis-pool-ntfs">
+                                <strong>صلاحيات NTFS المعزولة:</strong><br>
+                                وصول حصري لمجلد <code>D:\Sites\Portal</code> فقط (Read/Execute) ولا يرى بقية المواقع.
+                            </div>
+                        </div>
+                        <div class="iis-pool-card">
+                            <h4><i class="fa-solid fa-cube" style="color:#38bdf8;"></i> Site B (Core API)</h4>
+                            <span class="iis-pool-identity">IIS AppPool\ApiPool (w3wp.exe #2)</span>
+                            <div class="iis-pool-ntfs">
+                                <strong>صلاحيات NTFS المعزولة:</strong><br>
+                                وصول حصري لمجلد <code>D:\Sites\Api</code> فقط مع تقييد صارم لملفات <code>ISAPI Whitelist</code>.
+                            </div>
+                        </div>
+                        <div class="iis-pool-card">
+                            <h4><i class="fa-solid fa-cube" style="color:#f59e0b;"></i> Site C (Admin App)</h4>
+                            <span class="iis-pool-identity">IIS AppPool\AdminPool (w3wp.exe #3)</span>
+                            <div class="iis-pool-ntfs">
+                                <strong>صلاحيات NTFS المعزولة:</strong><br>
+                                وصول حصري لمجلد <code>D:\Sites\Admin</code> مع عزل كامل للذاكرة والعمليات عن المواقع الأخرى.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 id="request-filtering">3. تصفية الطلبات وحماية المدخلات (Request Filtering)</h2>
                 <p>تُعد ميزة <strong>Request Filtering</strong> المدمجة في IIS بمثابة جدار حماية مصغر للتطبيقات:</p>
                 <div class="security-pillar">
@@ -264,6 +343,50 @@
                         </ul>
                     </li>
                 </ul>
+
+                <div class="iis-headers-table-wrap">
+                    <div class="iis-headers-table-title">
+                        <i class="fa-solid fa-file-shield"></i> جدول مرجعي: ترويسات استجابة الأمان الأساسية في IIS (HTTP Security Response Headers)
+                    </div>
+                    <div class="table-responsive">
+                        <table class="iis-headers-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 26%;">اسم الترويسة (Header)</th>
+                                    <th style="width: 34%;">القيمة القياسية الموصى بها (Recommended Value)</th>
+                                    <th style="width: 40%;">الوظيفة الأمنية والهجمات التي تمنعها</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="header-name-badge">Strict-Transport-Security</span></td>
+                                    <td><span class="header-val-code">max-age=31536000; includeSubDomains</span></td>
+                                    <td>تفعيل سياسة HSTS لإجبار المتصفح على الاتصال عبر HTTPS حصراً ومنع هجمات خفض التشفير (SSL Stripping).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-name-badge">Content-Security-Policy</span></td>
+                                    <td><span class="header-val-code">default-src 'self'; frame-ancestors 'self'</span></td>
+                                    <td>تقييد مصادر تحميل السكربتات والملفات لمنع هجمات حقن الأكواد الخبيثة عبر المتصفح (Cross-Site Scripting - XSS).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-name-badge">X-Frame-Options</span></td>
+                                    <td><span class="header-val-code">SAMEORIGIN</span></td>
+                                    <td>منع المواقع الخارجية من تضمين صفحات موقعك داخل إطار <code>&lt;iframe&gt;</code> للحماية من هجمات اختطاف النقرات (Clickjacking).</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-name-badge">X-Content-Type-Options</span></td>
+                                    <td><span class="header-val-code">nosniff</span></td>
+                                    <td>منع المتصفح من تخمين نوع الملف (MIME Sniffing) وإجباره على الالتزام بنوع المحتوى المحدد من الخادم لمنع تشغيل ملفات مرفوعة كأكواد.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-name-badge">Referrer-Policy</span></td>
+                                    <td><span class="header-val-code">strict-origin-when-cross-origin</span></td>
+                                    <td>حماية خصوصية روابط ومعاملات موقعك الداخلية عند انتقال المستخدم إلى روابط خارجية.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <h2 id="monitoring">5. الحماية من هجمات الإغراق والمراقبة الدورية</h2>
                 <p>الأمن عملية مستمرة تتطلب يقظة دائمة:</p>

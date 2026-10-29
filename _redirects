@@ -344,17 +344,17 @@
 /tools/word-counter/index.html /tools/misc/word-counter/ 301
 
 # Store & Digital Assets
-/store/products.html /store/products 301
-/store/digital-assets.html /store/digital-assets 301
-/store/databases.html /store/databases 301
-/store/database /store/databases 301
-/store/database/ /store/databases 301
-/databases /store/databases 301
-/database /store/databases 301
-/products /store/products 301
-/digital-assets /store/digital-assets 301
-/licenses /store/digital-assets 301
-/store/licenses /store/digital-assets 301
+/store/products.html /store/products/ 301
+/store/digital-assets.html /store/digital-assets/ 301
+/store/databases.html /store/databases/ 301
+/store/database /store/databases/ 301
+/store/database/ /store/databases/ 301
+/databases /store/databases/ 301
+/database /store/databases/ 301
+/products /store/products/ 301
+/digital-assets /store/digital-assets/ 301
+/licenses /store/digital-assets/ 301
+/store/licenses /store/digital-assets/ 301
 
 # Crypto Exchange Redirects
 /crypto /company/services/crypto-exchange 301

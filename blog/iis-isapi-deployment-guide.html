@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/iis-isapi-guide.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -145,6 +145,48 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <style>
+    .isapi-flow-card { background: linear-gradient(145deg, #0a1128 0%, #131e3a 100%); color: #fff; border-radius: 16px; padding: 26px 22px; margin: 30px 0; border: 1px solid rgba(0, 180, 216, 0.28); box-shadow: 0 12px 28px rgba(10, 17, 40, 0.2); }
+    .isapi-flow-header { text-align: center; margin-bottom: 22px; }
+    .isapi-flow-header h3 { color: #fff; font-size: 18.5px; font-weight: 800; margin: 0 0 6px 0; display: inline-flex; align-items: center; gap: 8px; }
+    .isapi-flow-header h3 i { color: #38bdf8; }
+    .isapi-flow-header p { color: #94a3b8 !important; font-size: 13px !important; margin: 0 !important; }
+    .isapi-flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .isapi-step-box { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 15px 12px; text-align: center; position: relative; }
+    .isapi-step-tag { display: inline-block; background: rgba(0, 180, 216, 0.16); color: #38bdf8; font-size: 10.5px; font-weight: 700; font-family: monospace; padding: 2px 8px; border-radius: 12px; margin-bottom: 8px; direction: ltr; }
+    .isapi-step-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #0052cc 0%, #00b4d8 100%); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 17px; }
+    .isapi-step-title { font-weight: 800; font-size: 13.5px; color: #f8fafc; margin-bottom: 5px; direction: ltr; }
+    .isapi-step-desc { font-size: 12px; color: #cbd5e1; line-height: 1.5; }
+    .isapi-flow-ribbon { margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(148, 163, 184, 0.25); display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; direction: ltr; font-family: monospace; font-size: 12px; color: #38bdf8; }
+    .isapi-flow-ribbon span { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.3); color: #e2e8f0; padding: 4px 10px; border-radius: 6px; }
+    .isapi-diag-wrap { margin: 30px 0; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 6px 20px rgba(0,0,0,0.04); background: #fff; }
+    .isapi-diag-header { background: #f8fafc; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; color: #0f172a; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .isapi-diag-header i { color: #dc2626; }
+    .isapi-diag-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .isapi-diag-table th { background: #0f172a; color: #fff; padding: 12px 14px; text-align: right; font-weight: 700; }
+    .isapi-diag-table td { padding: 13px 14px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: top; line-height: 1.65; }
+    .isapi-diag-table tr:nth-child(even) { background: #f8fafc; }
+    .err-code-badge { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; font-family: monospace; font-weight: 700; font-size: 12.5px; padding: 3px 8px; border-radius: 5px; direction: ltr; display: inline-block; }
+    @media (max-width: 768px) { .isapi-flow-steps { grid-template-columns: 1fr; } }
+  </style>
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -227,6 +269,45 @@
                     <li><strong>توافق المعمارية:</strong> إذا كان ملف الـ DLL لديك بـ 32 بت والخادم 64 بت، يجب تفعيل خيار <strong>Enable 32-Bit Applications</strong> من الإعدادات المتقدمة (Advanced Settings) لحوض التطبيقات.</li>
                 </ul>
 
+                <div class="isapi-flow-card" role="region" aria-label="مخطط دورة حياة طلب ISAPI DLL ومعمارية حوض التطبيقات في IIS">
+                    <div class="isapi-flow-header">
+                        <h3><i class="fa-solid fa-microchip"></i> دورة حياة طلب ISAPI DLL ومعمارية حوض التطبيقات (Request Lifecycle)</h3>
+                        <p>كيف ينتقل الطلب من نواة النظام (Kernel Mode) إلى عملية الخادم المضيفة <code>w3wp.exe</code> لتشغيل مكتبة الـ DLL</p>
+                    </div>
+                    <div class="isapi-flow-steps">
+                        <div class="isapi-step-box">
+                            <span class="isapi-step-tag">KERNEL MODE</span>
+                            <div class="isapi-step-icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <div class="isapi-step-title">1. HTTP.sys</div>
+                            <div class="isapi-step-desc">استقبال طلب HTTP/HTTPS على مستوى نواة ويندوز وتوجيهه لطابور التطبيق الصحيح.</div>
+                        </div>
+                        <div class="isapi-step-box">
+                            <span class="isapi-step-tag">IIS SERVICE</span>
+                            <div class="isapi-step-icon"><i class="fa-solid fa-gears"></i></div>
+                            <div class="isapi-step-title">2. W3SVC &amp; WAS</div>
+                            <div class="isapi-step-desc">خدمة النشر تتحقق من إعدادات الموقع وتوقظ حوض التطبيقات المخصص (Application Pool).</div>
+                        </div>
+                        <div class="isapi-step-box">
+                            <span class="isapi-step-tag">USER MODE</span>
+                            <div class="isapi-step-icon"><i class="fa-solid fa-memory"></i></div>
+                            <div class="isapi-step-title">3. Worker Process (w3wp.exe)</div>
+                            <div class="isapi-step-desc">عملية الاستضافة المعزولة (32-Bit SysWOW64 أو 64-Bit System32) مع وضع <code>No Managed Code</code>.</div>
+                        </div>
+                        <div class="isapi-step-box">
+                            <span class="isapi-step-tag">NATIVE EXECUTION</span>
+                            <div class="isapi-step-icon"><i class="fa-solid fa-file-code"></i></div>
+                            <div class="isapi-step-title">4. ISAPI Extension DLL</div>
+                            <div class="isapi-step-desc">تحميل مكتبة <code>.dll</code> في الذاكرة وتنفيذ الدالة البرمجية وإرجاع الاستجابة للعميل.</div>
+                        </div>
+                    </div>
+                    <div class="isapi-flow-ribbon">
+                        <span>HTTP.sys</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span>W3SVC</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span>Worker Process w3wp.exe [32-bit/64-bit Pool]</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span>ISAPI Extension DLL</span>
+                    </div>
+                </div>
+
                 <h2 id="app-config">3. إعداد التطبيق وصلاحيات التنفيذ</h2>
                 <p>الآن، يجب ربط الملفات بالموقع الإلكتروني وتفعيل إذن التشغيل:</p>
                 <div class="tech-card">
@@ -269,6 +350,45 @@
                         <li>تحقق من كافة التبعيات (Dependencies) والمكتبات الخارجية (مثل OpenSSL).</li>
                         <li><strong>فخ مسار التطبيق:</strong> تذكر أن دوال مسار التطبيق الافتراضية قد تعيد مسار <code>w3wp.exe</code> وليس مجلد الـ DLL الخاص بك. استخدم الدوال المخصصة لجلب (Current Module Path).</li>
                     </ul>
+                </div>
+
+                <div class="isapi-diag-wrap">
+                    <div class="isapi-diag-header">
+                        <i class="fa-solid fa-stethoscope"></i> جدول التشخيص السريع لأشهر أخطاء تشغيل ISAPI DLL على خادم IIS وحلولها الجذرية
+                    </div>
+                    <div class="table-responsive">
+                        <table class="isapi-diag-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">رمز الخطأ (Error Code)</th>
+                                    <th style="width: 35%;">السبب الجذري (Root Cause)</th>
+                                    <th style="width: 40%;">الحل التقني المباشر (Exact Solution)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="err-code-badge">HTTP Error 500.0</span><br><small>Internal Server Error</small></td>
+                                    <td>فشل تهيئة مكتبة الـ DLL بسبب نقص ملفات تبعيات خارجية (مثل <code>libeay32.dll</code> / <code>ssleay32.dll</code>) أو قراءة مسار خاطئ يشير لـ <code>inetsrv</code>.</td>
+                                    <td>نسخ كافة مكتبات الربط المساعدة إلى جانب ملف الـ DLL أو مجلد النظام المناسب، واستخدام دالة جلب مسار الوحدة الحالية (Module Path) بدلاً من مسار العملية المضيفة.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="err-code-badge">HTTP Error 404.2</span><br><small>ISAPI / CGI Restriction</small></td>
+                                    <td>ملف الـ <code>.dll</code> غير مدرج أو غير مفعل في قائمة الامتدادات المسموح بتشغيلها على مستوى الخادم الرئيسي.</td>
+                                    <td>الانتقال إلى عقدة السيرفر في IIS Manager ثم <strong>ISAPI and CGI Restrictions</strong> وإضافة مسار الـ DLL مع تفعيل خيار <code>Allow extension path to execute</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="err-code-badge">HTTP Error 503 / 500.19</span><br><small>Bad Image Format (32-bit vs 64-bit)</small></td>
+                                    <td>تعارض معمارية المعالج عند محاولة تحميل ملف DLL مبني بـ 32-bit داخل حوض تطبيقات يعمل بوضع 64-bit الافتراضي، مما يوقف الـ AppPool.</td>
+                                    <td>فتح <strong>Advanced Settings</strong> لحوض التطبيقات (Application Pool) وتغيير خاصية <code>Enable 32-Bit Applications</code> إلى <strong>True</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="err-code-badge">HTTP Error 401.3 / Access Denied</span><br><small>IUSR / IIS_IUSRS Permission</small></td>
+                                    <td>عدم امتلاك هوية حوض التطبيقات أو حساب <code>IUSR</code> لصلاحية القراءة والتنفيذ أو إنشاء ملفات السجلات داخل مجلد التطبيق.</td>
+                                    <td>منح حساب <code>IIS_IUSRS</code> و <code>IUSR</code> صلاحيات <strong>Read &amp; Execute</strong> على مجلد التطبيق، وصلاحية <strong>Write</strong> على مجلد السجلات والملفات المؤقتة.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS. كما نقدم في <strong>كونكت تاق</strong> <a href="https://connecttag.org/company/services/hosting-services">خدمات الاستضافة السحابية وإدارة الخوادم</a> لتجهيز بيئات التشغيل المؤسسية.</p>

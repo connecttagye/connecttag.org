@@ -130,14 +130,11 @@
             const erasingSpeed = 100;
             const newTextDelay = 2000;
             let textArrayIndex = 0;
-            let charIndex = 0;
+            let charIndex = textArray[0].length;
 
             function type() {
-                if (charIndex === 0) {
-                    typedTextSpan.textContent = "";
-                }
                 if (charIndex < textArray[textArrayIndex].length) {
-                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex + 1);
                     charIndex++;
                     setTimeout(type, typingSpeed);
                 } else {
@@ -153,11 +150,11 @@
                 } else {
                     textArrayIndex++;
                     if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                    setTimeout(type, typingSpeed + 1100);
+                    setTimeout(type, typingSpeed + 500);
                 }
             }
 
-            if (textArray.length) setTimeout(type, newTextDelay + 250);
+            if (textArray.length) setTimeout(erase, newTextDelay + 2500);
         }
 
         // --- Smooth Page Scroll & Active Link highlighting ---

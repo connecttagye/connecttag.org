@@ -31,14 +31,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
@@ -353,6 +353,8 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
+        width: 100%;
+        justify-content: center;
     }
     .btn-github:hover { background: #000; transform: translateY(-2px); }
 
@@ -444,6 +446,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -488,16 +508,16 @@
                     <span class="filter-label"><i class="fa-solid fa-code"></i> لغة البرمجة:</span>
                     <div class="filter-pills">
                         <button type="button" class="filter-pill-btn lang-pill active" data-lang="all">
-                            الكل <span class="badge-count" id="lang-count-all">73</span>
+                            الكل
                         </button>
                         <button type="button" class="filter-pill-btn lang-pill" data-lang="kotlin">
-                            <i class="fa-brands fa-android"></i> Kotlin <span class="badge-count" id="lang-count-kotlin">71</span>
+                            <i class="fa-brands fa-android"></i> Kotlin
                         </button>
                         <button type="button" class="filter-pill-btn lang-pill" data-lang="python">
-                            <i class="fa-brands fa-python"></i> Python <span class="badge-count" id="lang-count-python">1</span>
+                            <i class="fa-brands fa-python"></i> Python
                         </button>
-                        <button type="button" class="filter-pill-btn lang-pill" data-lang="javascript">
-                            <i class="fa-brands fa-js"></i> JavaScript <span class="badge-count" id="lang-count-javascript">0</span>
+                        <button type="button" class="filter-pill-btn lang-pill" data-lang="php">
+                            <i class="fa-brands fa-php"></i> PHP
                         </button>
                     </div>
                 </div>
@@ -508,30 +528,29 @@
                 <span class="filter-label"><i class="fa-solid fa-layer-group"></i> التصنيف:</span>
                 <div class="filter-pills">
                     <button type="button" class="filter-pill-btn cat-pill active" data-category="all">
-                        <i class="fa-solid fa-border-all"></i> كافة المكاتب <span class="badge-count" id="count-all">73</span>
+                        <i class="fa-solid fa-border-all"></i> كافة المكاتب
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="ui">
-                        <i class="fa-solid fa-paintbrush"></i> واجهات وتفاعلات (UI) <span class="badge-count" id="count-ui">12</span>
+                        <i class="fa-solid fa-paintbrush"></i> واجهات وتفاعلات (UI)
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="network">
-                        <i class="fa-solid fa-wifi"></i> الشبكات والاتصال <span class="badge-count" id="count-network">9</span>
+                        <i class="fa-solid fa-wifi"></i> الشبكات والاتصال
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="storage">
-                        <i class="fa-solid fa-database"></i> التخزين والبيانات <span class="badge-count" id="count-storage">4</span>
+                        <i class="fa-solid fa-database"></i> التخزين والبيانات
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="security">
-                        <i class="fa-solid fa-shield-halved"></i> الأمان والتشفير <span class="badge-count" id="count-security">12</span>
+                        <i class="fa-solid fa-shield-halved"></i> الأمان والتشفير
                     </button>
                     <button type="button" class="filter-pill-btn cat-pill" data-category="core">
-                        <i class="fa-solid fa-gears"></i> المعمارية والأدوات الأساسية <span class="badge-count" id="count-core">36</span>
+                        <i class="fa-solid fa-gears"></i> المعمارية والأدوات الأساسية
                     </button>
                 </div>
             </div>
 
             <!-- Filter Status Strip -->
-            <div class="filter-results-status">
-                <span id="results-count-text">يتم عرض <strong>73</strong> مكتبة برمجية</span>
-                <button type="button" id="reset-all-filters-btn" class="reset-filter-btn" style="display: none;">
+            <div class="filter-results-status" id="filter-status-bar" style="display: none; justify-content: flex-end;">
+                <button type="button" id="reset-all-filters-btn" class="reset-filter-btn">
                     <i class="fa-solid fa-rotate-left"></i> إعادة ضبط الفلاتر
                 </button>
             </div>
@@ -552,20 +571,8 @@
                     </div>
                     <h3>map-lib-kmp</h3>
                     <p>محرك خرائط تفاعلي (Interactive Slippy Map Engine) مبني باستخدام Compose Multiplatform مع تجربة تصفح سلسة للبلاطات والطبقات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Kotlin</span>
-                        <span>Compose</span>
-                        <span>Multiplatform</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/map-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:map-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -582,20 +589,8 @@
                     </div>
                     <h3>phone-lib-kmp</h3>
                     <p>مكتبة لمعالجة أرقام الهواتف (التحليل Parsing، التنسيق Formatting، التحقق Validation، وكشف شركة الاتصالات) مع واجهات Compose UI جاهزة.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Phone Parsing</span>
-                        <span>Compose UI</span>
-                        <span>Carrier</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/phone-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:phone-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -612,19 +607,8 @@
                     </div>
                     <h3>interactions-compose-lib-kmp</h3>
                     <p>مكتبة تفاعلية لواجهات Compose عبر المنصات: اختيار الملفات (File Picker)، تصدير المستندات العادية والمشفرة، ومنسق الموقع الجغرافي.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>File Picker</span>
-                        <span>Exporter</span>
-                        <span>Permissions</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/interactions-compose-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.interactions-compose-lib-kmp:interactions-compose-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -641,20 +625,8 @@
                     </div>
                     <h3>connectivity-lib-kmp</h3>
                     <p>مكتبة تفاعلية متطورة لمراقبة حالة الاتصال بالشبكة والإنترنت (Network Monitoring & State Machine) مع واجهات جاهزة مبنية بـ Compose Multiplatform.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Network State</span>
-                        <span>Compose</span>
-                        <span>Reactive</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/connectivity-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.connectivity-lib-kmp:connectivity-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -671,19 +643,8 @@
                     </div>
                     <h3>network-lib-kmp</h3>
                     <p>عميل شبكات متطور مبني على Ktor، يدعم تجديد الرموز تلقائياً (Token Refresh)، القياس عن بعد (Telemetry)، وإعادة المحاولة الذكية (Exponential Backoff).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Ktor Client</span>
-                        <span>Token Refresh</span>
-                        <span>Telemetry</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/network-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.network-lib-kmp:network-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -700,19 +661,8 @@
                     </div>
                     <h3>datastore-lib-kmp</h3>
                     <p>مكتبة لتخزين التفضيلات والإعدادات المحلية بطريقة آمنة نوعياً (Type-safe Preferences) مبنية على AndroidX DataStore ومحرك Okio.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>DataStore</span>
-                        <span>Preferences</span>
-                        <span>Okio</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/datastore-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.datastore-lib-kmp:datastore-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -729,19 +679,8 @@
                     </div>
                     <h3>file-storage-lib-kmp</h3>
                     <p>مكتبة موحدة لإدارة وقراءة وتخزين الملفات، التخزين المؤقت (Caching)، وحفظ البيانات والوسائط عبر المنصات باستخدام Okio.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>File System</span>
-                        <span>Cache</span>
-                        <span>Okio</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/file-storage-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.file-storage-lib-kmp:file-storage-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -758,19 +697,8 @@
                     </div>
                     <h3>secure-storage-lib-kmp</h3>
                     <p>مكتبة لتخزين بيانات الاعتماد والمفاتيح والرموز السرية بأمان عبر المنصات (Secure Vault) مع دعم التشفير العتادي عبر Android Keystore و AES/GCM.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Keystore</span>
-                        <span>AES/GCM</span>
-                        <span>Vault</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/secure-storage-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.secure-storage-lib-kmp:secure-storage-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -787,19 +715,8 @@
                     </div>
                     <h3>crypto-lib-kmp</h3>
                     <p>حزمة تشفير وأمن سيبراني متقدمة عبر المنصات، تشمل خوارزميات AES-CBC، والتجزئة Hashing (SHA-256/MD5)، وتوقيع HMAC والتشفير غير المتماثل.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>AES-CBC</span>
-                        <span>HMAC</span>
-                        <span>SHA-256</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/crypto-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.crypto-lib-kmp:crypto-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -816,19 +733,8 @@
                     </div>
                     <h3>permissions-lib-kmp</h3>
                     <p>مكتبة متكاملة لإدارة وتنسيق طلب الصلاحيات والأذونات وقت التشغيل (Runtime Permissions)، سياسات الإشعارات، وإدارة التبريرات (Rationale).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Permissions</span>
-                        <span>Rationale</span>
-                        <span>Policies</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/permissions-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.permissions-lib-kmp:permissions-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -845,19 +751,8 @@
                     </div>
                     <h3>mvi-lib-kmp</h3>
                     <p>مكتبة المعمارية الأساسية ونمط MVI (Model-View-Intent) وإدارة الحالة، تدعم Base ViewModel و UseCases و Coroutine Pipelines لتطبيقات KMP.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>MVI Pattern</span>
-                        <span>State Flow</span>
-                        <span>ViewModel</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/mvi-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.mvi-lib-kmp:mvi-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -874,19 +769,8 @@
                     </div>
                     <h3>logging-lib-kmp</h3>
                     <p>واجهة تسجيل سجلات موحدة (Logging Facade & AppLog) تتكامل تلقائياً مع Timber على أندرويد، و SLF4J على الديسكتوب، و Apple NSLog على iOS.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Timber</span>
-                        <span>SLF4J</span>
-                        <span>NSLog</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/logging-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.logging-lib-kmp:logging-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -903,19 +787,8 @@
                     </div>
                     <h3>validator-lib-kmp</h3>
                     <p>محرك مرن للتحقق من صحة المدخلات والبيانات (Validation Engine & DSL)، يدعم البريد الإلكتروني، كلمات المرور، الروابط، والتعبيرات النمطية (Regex).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Validation</span>
-                        <span>Form DSL</span>
-                        <span>Regex</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/validator-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.validator-lib-kmp:validator-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -932,19 +805,8 @@
                     </div>
                     <h3>formatter-lib-kmp</h3>
                     <p>مكتبة لتنسيق البيانات الشاملة: المبالغ المالية والعملات، المسافات، الأرقام، النسب المئوية، التواريخ، وأرقام الهواتف بدقة حسب اللغة والموقع.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Currencies</span>
-                        <span>Distance</span>
-                        <span>Formatting</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/formatter-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.formatter-lib-kmp:formatter-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -961,20 +823,8 @@
                     </div>
                     <h3>datetime-lib-kmp</h3>
                     <p>مكتبة للتعامل الدقيق مع التواريخ، الأوقات، الفترات الزمنية، وحساب وتنسيق المناطق الزمنية لمختلف المنصات العالمية.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>DateTime</span>
-                        <span>Timezones</span>
-                        <span>Epoch</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/datetime-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.datetime-lib-kmp:datetime-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -991,20 +841,8 @@
                     </div>
                     <h3>country-lib-kmp</h3>
                     <p>مكتبة دليل وبيانات الدول والبيانات الوصفية الخاصة بها (Country catalog and metadata utilities)، توفر معلومات دقيقة ورموز الدول والأعلام.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Country Data</span>
-                        <span>Flags</span>
-                        <span>Metadata</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/country-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:country-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1021,20 +859,8 @@
                     </div>
                     <h3>text-lib-kmp</h3>
                     <p>أدوات لتسوية النصوص وتنسيقها (Text normalization)، الترجمة والمحاذاة المحلية (Localization)، ورسائل واجهات المستخدم (UI message utilities).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Localization</span>
-                        <span>Normalization</span>
-                        <span>Strings</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/text-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:text-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1051,19 +877,8 @@
                     </div>
                     <h3>location-lib-kmp</h3>
                     <p>مكتبة متكاملة للتعامل مع الموقع الجغرافي وتتبع الـ GPS، حساب المسافات والإحداثيات بدقة، ودعم السياج الجغرافي (Geofencing).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> WasmJs</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Geolocation</span>
-                        <span>GPS</span>
-                        <span>Geofencing</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/location-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag.location-lib-kmp:location-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1080,19 +895,8 @@
                     </div>
                     <h3>deeplink-lib-kmp</h3>
                     <p>توجيه الروابط العميقة (Deep Links) وتحليل مخططات URL Scheme ومسارات التنقل واستخراج المعاملات بنمط آمن عبر المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Deep Links</span>
-                        <span>URL Routing</span>
-                        <span>Multiplatform</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/deeplink-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:deeplink-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1109,19 +913,8 @@
                     </div>
                     <h3>actions-lib-kmp</h3>
                     <p>ناقل إجراءات وأحداث عام وشامل (Universal Action Bus)، إرسال الأحداث وتنسيق تدفقات التفاعل المفككة عبر المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Action Bus</span>
-                        <span>Event Dispatcher</span>
-                        <span>Decoupled</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/actions-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:actions-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1138,19 +931,8 @@
                     </div>
                     <h3>result-lib-kmp</h3>
                     <p>مغلف آمن للنتائج البرمجية (Type-safe Result & API Response)، تنسيق استجابات الواجهات ومعالجة أخطاء النطاق باحترافية.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Result Monad</span>
-                        <span>Domain Error</span>
-                        <span>API Response</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/result-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:result-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1167,19 +949,8 @@
                     </div>
                     <h3>network-policy-lib-kmp</h3>
                     <p>سياسات أمان الشبكات وعناوين URL، حماية عناوين IP الخاصة ومنع ثغرات SSRF، حجب الترويسات الحساسة وسياسات فحص الروابط.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Network Security</span>
-                        <span>SSRF Protection</span>
-                        <span>Header Redaction</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/network-policy-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:network-policy-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1196,19 +967,8 @@
                     </div>
                     <h3>json-lib-kmp</h3>
                     <p>امتدادات متينة للتعامل مع JSON، التنقل في العناصر بأمان نوعي، معالجة النصوص متعددة اللغات واستخراج الحقول دون انهيارات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Safe JSON</span>
-                        <span>Serialization</span>
-                        <span>Resilient Parsing</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/json-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:json-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1225,19 +985,8 @@
                     </div>
                     <h3>payment-lib-kmp</h3>
                     <p>تحديد وسائل الدفع الإلكترونية، مطابقة أدلة بوابات الدفع وتعيين أسماء ورموز بوابات الدفع المتعددة عبر المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Payment Methods</span>
-                        <span>Catalog Matching</span>
-                        <span>Multiplatform</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/payment-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:payment-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1254,19 +1003,8 @@
                     </div>
                     <h3>device-lib-kmp</h3>
                     <p>توفير بيانات عتاد الجهاز، نظام التشغيل، معلومات التطبيق، الفحص الأمني والحالة التشغيلية عبر مختلف المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Device Info</span>
-                        <span>OS Metadata</span>
-                        <span>Hardware</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/device-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:device-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1283,19 +1021,8 @@
                     </div>
                     <h3>shortcut-lib-kmp</h3>
                     <p>نماذج الاختصارات الشاملة للنظام، التحقق من الروابط، توليد نوايا المشغل وإدارة الاختصارات الديناميكية عبر المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Shortcuts</span>
-                        <span>Launcher Intent</span>
-                        <span>Multiplatform</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/shortcut-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:shortcut-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1312,19 +1039,8 @@
                     </div>
                     <h3>webview-lib-kmp</h3>
                     <p>عقود متطورة لـ WebView، سياسات الأمان، إدارة التخزين المؤقت، دعم تبويبات Chrome المخصصة واعتراض الروابط الخارجية.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>WebView</span>
-                        <span>Custom Tabs</span>
-                        <span>URL Interception</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/webview-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:webview-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1341,17 +1057,8 @@
                     </div>
                     <h3>country-picker-compose</h3>
                     <p>منتقي دول تفاعلي مبني بـ Jetpack Compose مع دعم أعلام الإيموجي والبحث السريع ومربعات الحوار وقوائم السحب السفلي.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Country Picker</span>
-                        <span>Compose UI</span>
-                        <span>Emoji Flags</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/country-picker-compose" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:country-picker-compose:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1368,17 +1075,8 @@
                     </div>
                     <h3>app-lock-android</h3>
                     <p>قفل التطبيقات لنظام أندرويد مع دعم المصادقة الحيوية (البصمة والوجه)، رمز PIN، وإدارة القفل الذكي مع دورة حياة التطبيق.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>App Lock</span>
-                        <span>Biometrics</span>
-                        <span>PIN Protection</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/app-lock-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:app-lock-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1395,17 +1093,8 @@
                     </div>
                     <h3>wifi-kit</h3>
                     <p>مكتبة شاملة لعمليات Wi-Fi على أندرويد، تدعم Wi-Fi Suggestions الحديثة، طلبات الشبكة، ومراقبة حالة الاتصال.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Wi-Fi Operations</span>
-                        <span>Network Request</span>
-                        <span>Android Kit</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/wifi-kit" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:wifi-kit:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1422,17 +1111,8 @@
                     </div>
                     <h3>file-picker-android</h3>
                     <p>واجهات ومتحكمات اختيار الملفات (File Picker) لنظام أندرويد وJetpack Compose مع دعم تصفية الأنواع وعقود التخزين الآمن.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>File Picker</span>
-                        <span>Jetpack Compose</span>
-                        <span>SAF Storage</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/file-picker-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:file-picker-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1449,17 +1129,8 @@
                     </div>
                     <h3>battery-monitor</h3>
                     <p>مراقبة حالة البطارية ومستوى الشحن ووضع توفير الطاقة لنظام أندرويد بشكل تفاعلي عبر تدفقات Kotlin Flow.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Battery Monitor</span>
-                        <span>Power Save</span>
-                        <span>Kotlin Flow</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/battery-monitor" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:battery-monitor:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1476,17 +1147,8 @@
                     </div>
                     <h3>network-monitor-android</h3>
                     <p>مراقبة تفاعلية للاتصال بالشبكة والإنترنت لنظام أندرويد باستخدام كولباك ConnectivityManager وتدفقات Kotlin Flow.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Network Monitor</span>
-                        <span>ConnectivityManager</span>
-                        <span>Flow</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/network-monitor-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:network-monitor-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1503,17 +1165,8 @@
                     </div>
                     <h3>integrity-guard</h3>
                     <p>فحص سلامة وأمان تطبيقات أندرويد (كشف الروت، التحقق من جهة التثبيت الرسمية، كشف المحاكيات، وكشف مصححات الأخطاء).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Root Detection</span>
-                        <span>Integrity Check</span>
-                        <span>Emulator Detect</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/integrity-guard" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:integrity-guard:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1530,17 +1183,8 @@
                     </div>
                     <h3>downloader</h3>
                     <p>مدير تنزيل الملفات وقوائم الانتظار لنظام أندرويد مبني على OkHttp وتطويع Kotlin Coroutines مع متابعة فورية للتقدم.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Download Manager</span>
-                        <span>OkHttp</span>
-                        <span>Coroutines</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/downloader" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:downloader:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1557,17 +1201,8 @@
                     </div>
                     <h3>interaction-feedback</h3>
                     <p>مساعد الاستجابة اللمسية والاهتزازات (Haptic Feedback) لنظام أندرويد متوافق مع كافة الإصدارات الحديثة والقديمة.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Haptic Feedback</span>
-                        <span>Vibration</span>
-                        <span>Tactile UI</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/interaction-feedback" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:interaction-feedback:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1584,18 +1219,8 @@
                     </div>
                     <h3>crypto-suite</h3>
                     <p>أدوات التشفير الأساسية تشمل تشفير AES، أزواج مفاتيح RSA، توقيع HMAC، ودوال ترميز Base64 وتجزئة التدفقات لـ Android و JVM.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>AES / RSA</span>
-                        <span>HMAC</span>
-                        <span>Cryptography</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/crypto-suite" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:crypto-suite:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1612,17 +1237,8 @@
                     </div>
                     <h3>security-kit</h3>
                     <p>أمان أندرويد المتقدم عبر Android Keystore، تشفير AES-GCM مدعوم بالعتاد، مساعدات المصادقة الحيوية والتجزئة المشفرة.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Android Keystore</span>
-                        <span>AES-GCM</span>
-                        <span>Biometrics</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/security-kit" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:security-kit:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1639,17 +1255,8 @@
                     </div>
                     <h3>local-web-server</h3>
                     <p>خادم ويب HTTP محلي ومدمج وخفيف الوزن لنظام أندرويد مدعوم بـ NanoHTTPD لخدمة الملفات والأصول والواجهات محلياً.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>HTTP Server</span>
-                        <span>NanoHTTPD</span>
-                        <span>Embedded Server</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/local-web-server" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:local-web-server:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1666,19 +1273,8 @@
                     </div>
                     <h3>common-models</h3>
                     <p>نماذج ومحددات النطاق الأساسية لـ KMP تشمل Result، CollectionResult، DomainError، و UiState مع دعم Serialization.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Domain Primitives</span>
-                        <span>UiState</span>
-                        <span>KMP Models</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/common-models" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:common-models:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1695,17 +1291,8 @@
                     </div>
                     <h3>database-kit</h3>
                     <p>أدوات وقواعد بيانات Room قابلة لإعادة الاستخدام لنظام أندرويد تشمل BaseDao ومواصفات قواعد البيانات وسياسات الترحيل.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Room DB</span>
-                        <span>BaseDao</span>
-                        <span>DB Migrations</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/database-kit" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:database-kit:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1722,17 +1309,8 @@
                     </div>
                     <h3>task-scheduler</h3>
                     <p>مساعد جدولة المهام في الخلفية لنظام أندرويد وتجريدات WorkManager المتقدمة لإدارة العمليات المجدولة والدورية.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Task Scheduling</span>
-                        <span>WorkManager</span>
-                        <span>Background Jobs</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/task-scheduler" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:task-scheduler:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1749,17 +1327,8 @@
                     </div>
                     <h3>clipboard-android</h3>
                     <p>أداة الحافظة الذكية لنظام أندرويد مع حماية النصوص الحساسة (إخفاء المعاينة على أندرويد 13+) وعقود KMP قابلة للاستبدال.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Clipboard Manager</span>
-                        <span>Sensitive Data</span>
-                        <span>Android 13+</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/clipboard-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:clipboard-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1776,17 +1345,8 @@
                     </div>
                     <h3>android-settings-opener</h3>
                     <p>مشغلات آمنة لنوايا إعدادات النظام بمختلف واجهات ومصنعي أجهزة أندرويد (OEM-safe Intent Launchers) لتفادي الانهيارات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>OEM Safe</span>
-                        <span>System Settings</span>
-                        <span>Intent Launcher</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/android-settings-opener" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:android-settings-opener:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1803,17 +1363,8 @@
                     </div>
                     <h3>media-transformer</h3>
                     <p>معالجة وضغط الصور لنظام أندرويد، تغيير أبعاد الـ Bitmap، تصحيح اتجاه EXIF، وتحويل معرّفات URI إلى مسارات ملفات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Image Compression</span>
-                        <span>Bitmap Resize</span>
-                        <span>EXIF Fix</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/media-transformer" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:media-transformer:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1830,17 +1381,8 @@
                     </div>
                     <h3>notifications-android</h3>
                     <p>نظام متكامل لإدارة الإشعارات لنظام أندرويد يضم NotificationCenter، تسجيل القنوات، قوالب شريط التقدم، وتوجيه النقر.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>NotificationCenter</span>
-                        <span>Channels</span>
-                        <span>Progress Bar</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/notifications-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:notifications-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1857,17 +1399,8 @@
                     </div>
                     <h3>call-blocking-android</h3>
                     <p>حظر المكالمات لنظام أندرويد، مطابقة أنماط الأرقام، والتكامل مع نظام الأدوار Telecom RoleManager الحديث.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Call Screening</span>
-                        <span>RoleManager</span>
-                        <span>Pattern Matching</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/call-blocking-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:call-blocking-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1884,17 +1417,8 @@
                     </div>
                     <h3>installed-apps-android</h3>
                     <p>استعلام وتصفية وفحص التطبيقات المثبتة على نظام أندرويد مع دعم كامل لقواعد Package Visibility لنظام أندرويد 11+.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Installed Apps</span>
-                        <span>Package Visibility</span>
-                        <span>App Metadata</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/installed-apps-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:installed-apps-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1911,19 +1435,8 @@
                     </div>
                     <h3>dns-policy-kmp</h3>
                     <p>سياسات DNS أثناء التشغيل، مزودي DNS-over-HTTPS (Cloudflare, Google, Quad9)، واستراتيجيات تسريع واستجابة DNS متعددة المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>DoH / DNS</span>
-                        <span>Cloudflare</span>
-                        <span>Racing Strategy</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/dns-policy-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:dns-policy-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1940,19 +1453,8 @@
                     </div>
                     <h3>coroutine-dispatchers-kmp</h3>
                     <p>عقود DispatcherProvider قابلة للحقن (Injectable) وتطبيقات مخصصة لموزعات Coroutines في مشاريع KMP وتسهيل الاختبار.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Coroutines</span>
-                        <span>Dispatchers</span>
-                        <span>Unit Testing</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/coroutine-dispatchers-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:coroutine-dispatchers-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1969,17 +1471,8 @@
                     </div>
                     <h3>permission-risk-analyzer</h3>
                     <p>فحص وتحليل وتقييم مخاطر أذونات التطبيقات المثبتة بنظام أندرويد، وتصنيف مستويات الحماية واحتساب درجات الخطورة عبر Coroutines.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Permission Risks</span>
-                        <span>Security Audit</span>
-                        <span>Android Security</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/permission-risk-analyzer" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:permission-risk-analyzer:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -1996,17 +1489,8 @@
                     </div>
                     <h3>logcatter</h3>
                     <p>قارئ سجلات Logcat مدمج داخل تطبيقات أندرويد وتدفقات تفاعلية حية بـ Kotlin Flow مع إدارة وتدوير ملفات السجلات على وحدة التخزين.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Logcat Reader</span>
-                        <span>Log Streaming</span>
-                        <span>File Rotation</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/logcatter" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:logcatter:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2023,17 +1507,8 @@
                     </div>
                     <h3>theme-effects-compose</h3>
                     <p>محرك مؤثرات بصرية وخلفيات تفاعلية لـ Jetpack Compose: تدرجات لونية متحركة (Mesh Gradients)، جزيئات فيزيائية، وتوهج زجاجي (Glassmorphism).</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Compose Effects</span>
-                        <span>Mesh Gradients</span>
-                        <span>Particle Systems</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/theme-effects-compose" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:theme-effects-compose:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2050,17 +1525,8 @@
                     </div>
                     <h3>telephony-collector</h3>
                     <p>جمع وفحص بيانات شرائح الاتصال (SIM)، والاشتراكات المتعددة (Multi-SIM)، وحالة الهاتف ومقاييس إشارة الشبكة بدقة وأمان.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>SIM Cards</span>
-                        <span>Telephony State</span>
-                        <span>Signal Metrics</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/telephony-collector" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:telephony-collector:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2077,17 +1543,8 @@
                     </div>
                     <h3>file-manager-android</h3>
                     <p>إدارة وتفقد وحدات التخزين لنظام أندرويد، إحصائيات المساحة، مسح الذاكرة المؤقتة، والعمليات اللاتزامية الآمنة مع تتبع التقدم وحساب SHA-256.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>File Manager</span>
-                        <span>Storage Stats</span>
-                        <span>Cache Cleaner</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/file-manager-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:file-manager-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2104,17 +1561,8 @@
                     </div>
                     <h3>contacts-accounts-android</h3>
                     <p>استعلام وإدارة ومزامنة جهات الاتصال وحسابات النظام (AccountManager) لنظام أندرويد مع دعم النسخ الاحتياطي وحذف التكرارات والتصفح المقسم.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Contacts API</span>
-                        <span>AccountManager</span>
-                        <span>Sync & Backup</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/contacts-accounts-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:contacts-accounts-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2131,17 +1579,8 @@
                     </div>
                     <h3>billing-play-lib</h3>
                     <p>تجريد متطور لـ Google Play Billing Client بتدفقات Kotlin Coroutines التفاعلية، دعم الاشتراكات، ومحرك اختبارات وهمي.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Play Billing</span>
-                        <span>In-App Purchases</span>
-                        <span>Subscriptions</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/billing-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:billing-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2158,17 +1597,8 @@
                     </div>
                     <h3>update-play-lib</h3>
                     <p>إدارة وتسهيل تحديثات التطبيقات عبر Google Play In-App Updates بأنماط التحديث الفوري والمرن مع مستمعات حالة تفاعلية ومحاكي اختبارات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>In-App Updates</span>
-                        <span>Immediate Flow</span>
-                        <span>Flexible Flow</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/update-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:update-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2185,17 +1615,8 @@
                     </div>
                     <h3>review-play-lib</h3>
                     <p>مدير طلب تقييم التطبيق داخل التطبيق (Google Play In-App Review) بفترات قابلة للتكوين، وتتبع الجلسات، وتقييم المعايير الذكية.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>In-App Review</span>
-                        <span>Session Tracking</span>
-                        <span>Rating Prompt</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/review-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:review-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2212,17 +1633,8 @@
                     </div>
                     <h3>integrity-play-lib</h3>
                     <p>التكامل مع Google Play Integrity API لطلب والتحقق من رموز السلامة المشفرة وفحص بيئة تشغيل الجهاز وموثوقية التطبيق.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Play Integrity</span>
-                        <span>Token Verdict</span>
-                        <span>Device Health</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/integrity-play-lib" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:integrity-play-lib:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2239,19 +1651,8 @@
                     </div>
                     <h3>threat-engine-lib-kmp</h3>
                     <p>محرك موحد لكشف التهديدات الأمنية ومطابقة مؤشرات الاختراق (IOC) عبر خوارزميات DomainSuffixTrie و IpRadixTree واحتساب درجات الخطر.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Threat Engine</span>
-                        <span>IOC Matching</span>
-                        <span>RadixTree / Trie</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/threat-engine-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:threat-engine-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2268,19 +1669,8 @@
                     </div>
                     <h3>packet-dissector-lib-kmp</h3>
                     <p>تشريح حزم الشبكة وتحليل البروتوكولات (DNS Wire, TLS Client/Server Hello, QUIC, WebSocket) وتصدير سجلات HAR عبر المنصات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Packet Dissector</span>
-                        <span>DNS / TLS / QUIC</span>
-                        <span>HAR Exporter</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/packet-dissector-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:packet-dissector-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2297,19 +1687,8 @@
                     </div>
                     <h3>automation-core-lib-kmp</h3>
                     <p>محرك أتمتة وقواعد مبني على الأحداث (Event-driven Rules Engine)، ومحددات معدل الطلب (Rate Limiters)، وتقييم المشغلات ونماذج الجدولة.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Rules Engine</span>
-                        <span>Rate Limiting</span>
-                        <span>Event Triggers</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/automation-core-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:automation-core-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2326,17 +1705,8 @@
                     </div>
                     <h3>system-bridge-android</h3>
                     <p>جسر التفاعل مع نظام أندرويد: الحافظة، مستمعات إخفاء لوحة المفاتيح، موجه النوايا، المشاركة، والتكامل مع حقن التبعيات Hilt.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>System Bridge</span>
-                        <span>Hilt DI</span>
-                        <span>Keyboard Listener</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/system-bridge-android" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:system-bridge-android:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2353,18 +1723,8 @@
                     </div>
                     <h3>serial-lib-kmp</h3>
                     <p>حزمة SDK شاملة لاتصالات المنافذ التسلسلية Serial و USB-OTG لنظامي Android و Desktop JVM بتدفقات تفاعلية ومراقبة Watchdog.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Serial Port</span>
-                        <span>USB-OTG</span>
-                        <span>Watchdog Flow</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/serial-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:serial-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2381,19 +1741,8 @@
                     </div>
                     <h3>video-streaming-lib-kmp</h3>
                     <p>حزمة بث وفك تشفير الفيديو فائق الانخفاض في زمن الوصول (RTSP Server, RTP H.264, MJPEG) ومفكوكات Media3 و FFmpeg.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>RTSP / RTP</span>
-                        <span>H.264 Streaming</span>
-                        <span>Media3 / FFmpeg</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/video-streaming-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:video-streaming-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2410,19 +1759,8 @@
                     </div>
                     <h3>vision-lib-kmp</h3>
                     <p>الرؤية الحاسوبية فائقة السرعة، وتتبع الأهداف البصرية (ByteTrack, Kalman Filter)، والاستدلال العصبي على الأجهزة بـ YOLOv8 LiteRT.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Computer Vision</span>
-                        <span>Object Tracking</span>
-                        <span>YOLOv8 LiteRT</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/vision-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:vision-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2439,19 +1777,8 @@
                     </div>
                     <h3>wireguard-lib-kmp</h3>
                     <p>حزمة SDK لمشروع WireGuard VPN متعددة المنصات (KMP Core)، تحليل ملفات wg0.conf، إدارة دورة حياة النفق، والتخزين المشفر للمفاتيح.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>WireGuard VPN</span>
-                        <span>wg0.conf Parser</span>
-                        <span>Tunnel Lifecycle</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/wireguard-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:wireguard-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2468,17 +1795,8 @@
                     </div>
                     <h3>permissions-ui-compose</h3>
                     <p>مكونات واجهات Jetpack Compose عصرية لطلب وإدارة وعرض أذونات أندرويد مع مربعات حوار التبرير وشاشات التوجيه للإعدادات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Compose Permissions</span>
-                        <span>Rationale Dialog</span>
-                        <span>Permission UI</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/permissions-ui-compose" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:permissions-ui-compose:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2495,18 +1813,8 @@
                     </div>
                     <h3>app-metadata-lib-kmp</h3>
                     <p>تصنيف ذكي للتطبيقات، واستخراج البيانات الوصفية، وتقييم موثوقية التطبيقات ومصادر التثبيت لمنصتي Android و JVM.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>App Metadata</span>
-                        <span>Trust Evaluation</span>
-                        <span>Install Source</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/app-metadata-lib-kmp" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:app-metadata-lib-kmp:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2523,19 +1831,8 @@
                     </div>
                     <h3>formatter-kit</h3>
                     <p>أدوات تنسيق خفيفة ومتعددة المنصات لأحجام الملفات، سرعات الشبكة (Bps/Mbps)، معدلات البت، الحزم والتواريخ.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-brands fa-android"></i> Android</span>
-                        <span class="platform-pill"><i class="fa-brands fa-apple"></i> iOS</span>
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>File Sizes</span>
-                        <span>Network Speeds</span>
-                        <span>Formatters</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/formatter-kit" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='implementation("com.github.connecttag:formatter-kit:1.0.0")' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2552,17 +1849,8 @@
                     </div>
                     <h3>apk-security-analyzer</h3>
                     <p>جناح اختبارات أمان تطبيقات أندرويد الثابتة (SAST)، وتدقيق معايير OWASP MASVS، وكشف المفاتيح والرموز المسربة وإصلاح الثغرات.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>Python SAST</span>
-                        <span>OWASP MASVS</span>
-                        <span>Secret Hunting</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/apk-security-analyzer" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='pip install -r requirements.txt' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2579,18 +1867,8 @@
                     </div>
                     <h3>php-mvc-api-template</h3>
                     <p>إطار عمل وقالب بادئ عصري وخفيف لـ PHP MVC و REST API، موجه بالكامل بدون مكتبات ثقيلة ويدعم Docker وتوجيه Regex.</p>
-                    <div class="platform-pills">
-                        <span class="platform-pill"><i class="fa-solid fa-desktop"></i> Desktop</span>
-                        <span class="platform-pill"><i class="fa-solid fa-globe"></i> Web</span>
-                    </div>
-                    <div class="lib-tech">
-                        <span>PHP MVC</span>
-                        <span>REST API</span>
-                        <span>PSR Standards</span>
-                    </div>
                     <div class="lib-actions">
                         <a href="https://github.com/connecttag/php-mvc-api-template" target="_blank" rel="noopener" class="btn-github"><i class="fa-brands fa-github"></i> عرض على GitHub</a>
-                        <button type="button" class="btn-copy-dep" data-dep='composer create-project connecttag/php-mvc-api-template' title="نسخ سطر التثبيت"><i class="fa-regular fa-copy"></i> نسخ التبعية</button>
                     </div>
                 </div>
             </div>
@@ -2608,12 +1886,6 @@
         </div>
 
     </div>
-</div>
-
-<!-- Floating Copy Notification Toast -->
-<div id="copy-toast" class="copy-toast">
-    <i class="fa-solid fa-circle-check"></i>
-    <span>تم نسخ كود التثبيت إلى الحافظة بنجاح!</span>
 </div>
 
 <!-- Modular Web Component: Footer -->
@@ -2703,14 +1975,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Update feedback counter
-        if (countText) {
-            countText.innerHTML = 'يتم عرض <strong>' + visibleCount + '</strong> من أصل ' + items.length + ' مكتبة برمجية';
-        }
-
-        // Handle empty state & clear/reset button visibility
+        const statusBar = document.getElementById('filter-status-bar');
         const isFiltered = (currentLang !== 'all' || currentCategory !== 'all' || q.length > 0);
-        if (resetBtn) resetBtn.style.display = isFiltered ? 'inline-flex' : 'none';
+        if (statusBar) statusBar.style.display = isFiltered ? 'flex' : 'none';
         if (emptyState) emptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
         if (clearSearchBtn) clearSearchBtn.style.display = (q.length > 0) ? 'flex' : 'none';
 

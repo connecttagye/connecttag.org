@@ -32,17 +32,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
     <link rel="preload" href="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
     <script type="application/ld+json">
 [
@@ -161,6 +161,39 @@
         .step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #0052cc; color: #fff; font-weight: 800; font-size: 15px; margin-bottom: 12px; }
         .step-card h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 10px; }
         .step-card p { font-size: 14.5px; color: #475569; line-height: 1.7; margin-bottom: 0; }
+        /* Router Admin UI Mockup Card */
+        .router-ui-mockup { background: #0f172a; border-radius: 18px; overflow: hidden; border: 1px solid #334155; box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22); margin: 28px 0; color: #f8fafc; }
+        .router-ui-topbar { background: #1e293b; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #334155; flex-wrap: wrap; gap: 10px; }
+        .router-ui-dots { display: flex; gap: 7px; align-items: center; }
+        .router-ui-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+        .router-ui-dot.red { background: #ef4444; }
+        .router-ui-dot.amber { background: #f59e0b; }
+        .router-ui-dot.green { background: #10b981; }
+        .router-ui-urlbar { background: #0f172a; border: 1px solid #475569; border-radius: 8px; padding: 5px 14px; font-family: 'Courier New', monospace; font-size: 13px; color: #38bdf8; direction: ltr; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+        .router-ui-status { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #34d399; font-weight: 700; }
+        .router-ui-body { padding: 24px 22px; background: linear-gradient(145deg, #0f172a 0%, #172554 100%); }
+        .router-ui-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px dashed rgba(148, 163, 184, 0.25); }
+        .router-ui-header h4 { color: #ffffff; font-size: 17px; font-weight: 800; margin: 0; display: inline-flex; align-items: center; gap: 8px; }
+        .router-ui-header h4 i { color: #38bdf8; }
+        .router-ui-header span { font-size: 12px; background: rgba(56, 189, 248, 0.16); color: #7dd3fc; padding: 4px 10px; border-radius: 20px; font-weight: 700; }
+        .router-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .router-field-box { background: rgba(30, 41, 59, 0.78); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 12px; padding: 14px 16px; }
+        .router-field-label { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700; color: #cbd5e1; margin-bottom: 8px; }
+        .router-field-label code { background: rgba(15, 23, 42, 0.7); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 7px; border-radius: 5px; font-size: 11.5px; direction: ltr; }
+        .router-field-input { background: #0f172a; border: 1px solid #3b82f6; border-radius: 8px; padding: 9px 12px; font-family: 'Courier New', monospace; font-size: 13.5px; font-weight: 700; color: #f8fafc; direction: ltr; display: flex; align-items: center; justify-content: space-between; }
+        .router-field-input .badge-rec { background: #059669; color: #ffffff; font-family: 'Cairo', sans-serif; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 700; }
+        .router-field-hint { font-size: 12px; color: #94a3b8; margin-top: 7px; line-height: 1.5; }
+        .router-ui-footer { margin-top: 18px; padding-top: 14px; border-top: 1px dashed rgba(148, 163, 184, 0.25); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .router-save-mock { background: linear-gradient(135deg, #0052cc, #0284c7); color: #fff; font-weight: 800; font-size: 13.5px; padding: 8px 20px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4); }
+        /* 6-Card Balance Protection Grid */
+        .balance-guard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0 28px; }
+        .balance-guard-card { background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #0052cc; border-radius: 14px; padding: 18px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04); transition: transform 0.2s ease, border-color 0.2s ease; }
+        .balance-guard-card:hover { transform: translateY(-3px); border-color: #0284c7; }
+        .bgc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .bgc-icon { width: 40px; height: 40px; border-radius: 10px; background: #eff6ff; color: #0052cc; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .bgc-num { font-size: 12px; font-weight: 800; color: #0052cc; background: #f1f5f9; padding: 3px 10px; border-radius: 20px; }
+        .balance-guard-card h4 { font-size: 15.5px; font-weight: 800; color: #0f172a; margin: 0 0 6px 0; }
+        .balance-guard-card p { font-size: 13.5px; color: #475569; line-height: 1.65; margin: 0; }
     </style>
     <!-- PWA & Mobile Optimization Tags -->
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -170,6 +203,24 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
          crossorigin="anonymous"></script>
@@ -373,6 +424,83 @@
                             </ol>
                         </div>
 
+                        <!-- Visual Router Admin UI Mockup Card -->
+                        <div class="router-ui-mockup" role="region" aria-label="محاكاة مرئية لواجهة إعدادات مودم يمن فورجي">
+                            <div class="router-ui-topbar">
+                                <div class="router-ui-dots" aria-hidden="true">
+                                    <span class="router-ui-dot red"></span>
+                                    <span class="router-ui-dot amber"></span>
+                                    <span class="router-ui-dot green"></span>
+                                </div>
+                                <div class="router-ui-urlbar">
+                                    <i class="fa-solid fa-lock" style="color:#10b981;"></i>
+                                    <span>http://192.168.0.1 / 192.168.1.1 / 192.168.8.1</span>
+                                </div>
+                                <div class="router-ui-status">
+                                    <i class="fa-solid fa-signal"></i> <span>Yemen 4G LTE Connected</span>
+                                </div>
+                            </div>
+                            <div class="router-ui-body">
+                                <div class="router-ui-header">
+                                    <h4><i class="fa-solid fa-sliders"></i> نموذج الإعدادات الآمنة الموصى بها داخل لوحة تحكم المودم (WLAN / Wi-Fi Settings)</h4>
+                                    <span>إعدادات الحماية القصوى</span>
+                                </div>
+                                <div class="router-form-grid">
+                                    <div class="router-field-box">
+                                        <div class="router-field-label">
+                                            <span>اسم شبكة الواي فاي</span>
+                                            <code>SSID Name</code>
+                                        </div>
+                                        <div class="router-field-input">
+                                            <span>ConnectHome_5G</span>
+                                            <span class="badge-rec">اسم محايد</span>
+                                        </div>
+                                        <div class="router-field-hint">تجنب كتابة اسمك الكامل أو رقم الشقة أو نوع المودم في اسم الشبكة.</div>
+                                    </div>
+
+                                    <div class="router-field-box">
+                                        <div class="router-field-label">
+                                            <span>تشفير ونوع الحماية</span>
+                                            <code>Security Mode</code>
+                                        </div>
+                                        <div class="router-field-input">
+                                            <span>WPA2-PSK (AES) / WPA3-SAE</span>
+                                            <span class="badge-rec">موصى به</span>
+                                        </div>
+                                        <div class="router-field-hint">يمنع اختراق الشبكة ببرامج التخمين التقليدية أو ثغرات WPS.</div>
+                                    </div>
+
+                                    <div class="router-field-box">
+                                        <div class="router-field-label">
+                                            <span>كلمة سر الواي فاي</span>
+                                            <code>Wi-Fi Password</code>
+                                        </div>
+                                        <div class="router-field-input">
+                                            <span>Ym4G#98!kL2@pQ</span>
+                                            <span class="badge-rec">قوية (14 خانة)</span>
+                                        </div>
+                                        <div class="router-field-hint">استخدم مزيجاً من الحروف الكبيرة والصغيرة والأرقام والرموز الخاصة.</div>
+                                    </div>
+
+                                    <div class="router-field-box">
+                                        <div class="router-field-label">
+                                            <span>بث اسم الشبكة والباركود</span>
+                                            <code>SSID Broadcast</code>
+                                        </div>
+                                        <div class="router-field-input">
+                                            <span>Disabled (إخفاء الشبكة)</span>
+                                            <span class="badge-rec">مخفية + بدون QR</span>
+                                        </div>
+                                        <div class="router-field-hint">إخفاء اسم الشبكة من البحث وتعطيل عرض رمز QR على شاشة المودم المحمول.</div>
+                                    </div>
+                                </div>
+                                <div class="router-ui-footer">
+                                    <span style="font-size:12.5px; color:#cbd5e1;"><i class="fa-solid fa-key" style="color:#fbbf24;"></i> تذكّر أيضاً تغيير كلمة مرور الإدارة الافتراضية (<code>admin</code>) من قسم <strong>System / Management</strong>.</span>
+                                    <span class="router-save-mock"><i class="fa-solid fa-floppy-disk"></i> Apply / حفظ الإعدادات</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="alert alert-info" style="border-right: 5px solid #e89a2f; background: #fffbeb; padding: 15px 18px; border-radius: 10px; margin-bottom: 25px; color: #92400e;">
                             <strong><i class="fa-solid fa-triangle-exclamation"></i> تنبيه لمودمات التردد المزدوج (Dual Band 2.4GHz &amp; 5GHz):</strong>
                             في المودمات التي تدعم الترددين مثل <a href="https://connecttag.org/tools/telecom/modems/details?slug=zlt-s25">ZLT S25</a> و<a href="https://connecttag.org/tools/telecom/modems/details?slug=zle-s90-cat6">ZLE S90-CAT6</a> و<a href="https://connecttag.org/tools/telecom/modems/details?slug=vortex-4g-cat6">Vortex Cat6</a>، تأكد من تغيير كلمة المرور <strong>لكلا الترددين (2.4GHz و 5GHz)</strong> حتى لا تبقى إحدى الشبكتين مفتوحة بالرمز القديم.
@@ -412,6 +540,63 @@
 
                         <h2 id="save-balance">6. ست طرق عملية لحماية رصيد يمن فورجي من النفاد السريع</h2>
                         <p>نظراً للسرعة العالية لخدمة الجيل الرابع 4G، يمكن لهاتف واحد يقوم بتحديث التطبيقات أو تشغيل الفيديو بدقة 1080p/4K أن يستهلك عدة جيجابايتات في ساعة واحدة. لحماية باقتك اتبع هذه الإجراءات:</p>
+
+                        <!-- 6-Card Visual Infographic Grid: Protecting Yemen 4G Balance -->
+                        <div class="balance-guard-grid" role="region" aria-label="إنفوجرافيك الطرق الست لحماية رصيد يمن فورجي من النفاد">
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-gauge-simple-high"></i></div>
+                                    <span class="bgc-num">الخطوة 01</span>
+                                </div>
+                                <h4>تحديد السرعة (Speed Limit / QoS)</h4>
+                                <p>تخصيص سقف سرعة محدد (مثل 2 إلى 4Mbps) لكل متصل لمنع سحب الباقة بالكامل في الفيديوهات عالية الدقة.</p>
+                            </div>
+
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                                    <span class="bgc-num">الخطوة 02</span>
+                                </div>
+                                <h4>ضبط حصة البيانات (Data Plan)</h4>
+                                <p>إدخال حجم باقتك الشهرية (15GB / 25GB / 60GB) وتفعيل تنبيه تلقائي عند الوصول إلى 80% من الاستهلاك.</p>
+                            </div>
+
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-users-slash"></i></div>
+                                    <span class="bgc-num">الخطوة 03</span>
+                                </div>
+                                <h4>تقييد عدد المتصلين (Max Users)</h4>
+                                <p>تقليص العدد الأقصى للأجهزة المسموح باتصالها بالمودم من 32 جهازاً إلى عدد أجهزتك الفعلية فقط.</p>
+                            </div>
+
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-ban"></i></div>
+                                    <span class="bgc-num">الخطوة 04</span>
+                                </div>
+                                <h4>فلترة وحظر الـ MAC (Blacklist)</h4>
+                                <p>مراقبة قائمة الأجهزة المتصلة وحظر أي جهاز غريب فوراً عبر عنوان MAC لمنعه حتى لو امتلك كلمة السر.</p>
+                            </div>
+
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-user-clock"></i></div>
+                                    <span class="bgc-num">الخطوة 05</span>
+                                </div>
+                                <h4>عزل شبكة الضيوف (Guest Wi-Fi)</h4>
+                                <p>تفعيل شبكة ضيوف مؤقتة بسرعة منخفضة ومؤقت إغلاق تلقائي بدلاً من مشاركة كلمة سر الشبكة الأساسية.</p>
+                            </div>
+
+                            <div class="balance-guard-card">
+                                <div class="bgc-top">
+                                    <div class="bgc-icon"><i class="fa-solid fa-mobile-retro"></i></div>
+                                    <span class="bgc-num">الخطوة 06</span>
+                                </div>
+                                <h4>وضع الاتصال المحدود (Metered)</h4>
+                                <p>تحويل الشبكة إلى <code>Metered Connection</code> في الهواتف والكمبيوتر لإيقاف تحديثات الأنظمة والتطبيقات بالخلفية.</p>
+                            </div>
+                        </div>
 
                         <ol>
                             <li><strong>تفعيل ميزة تحديد السرعة (Speed Limit / QoS):</strong> توفر معظم مودمات يمن فورجي الحديثة (مثل <a href="https://connecttag.org/tools/telecom/modems/details?slug=zlt-s25">ZLT S25</a>، <a href="https://connecttag.org/tools/telecom/modems/details?slug=sam-4g-m50-pro">SAM M50 Pro</a>، <a href="https://connecttag.org/tools/telecom/modems/details?slug=opera-4g">Opera 4G</a>، <a href="https://connecttag.org/tools/telecom/modems/details?slug=wego-4g-l825a">Wego L825A</a>، و<a href="https://connecttag.org/tools/telecom/modems/details?slug=vortex-4g-cat6">Vortex Cat6</a>) خيار تحديد سرعة التحميل والرفع الكلية أو تحديد سرعة مخصصة لكل جهاز متصل (مثلاً تحديد 2Mbps إلى 4Mbps للتصفح العادي).</li>

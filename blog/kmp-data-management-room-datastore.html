@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/kmp-data-encryption.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -131,12 +131,83 @@
     .security-highlight { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: #fff; padding: 25px; border-radius: 16px; margin: 35px 0; }
     .security-highlight h3 { color: #818cf8; margin-top: 0; }
     .security-highlight p, .security-highlight li { color: rgba(255,255,255,0.9) !important; }
+    .kmp-storage-diagram {
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border: 1px solid #cbd5e1;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 26px 0;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+    .kmp-node-common {
+        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        color: #ffffff;
+        border-radius: 12px;
+        padding: 16px 20px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+    .kmp-node-common h4 {
+        color: #a5b4fc;
+        margin: 0 0 6px;
+        font-size: 1.05rem;
+        font-weight: 800;
+    }
+    .kmp-engine-grid, .kmp-platform-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+    }
+    .kmp-engine-card {
+        background: #ffffff;
+        border: 2px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 14px 16px;
+        text-align: center;
+    }
+    .kmp-platform-card {
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 14px 16px;
+        text-align: center;
+    }
+    .kmp-arrow-divider {
+        text-align: center;
+        color: #475569;
+        font-size: 0.9rem;
+        margin: 8px 0;
+        font-weight: 700;
+    }
+    .kmp-compare-table th {
+        background: #f8fafc;
+        color: #0f172a;
+        font-weight: 800;
+    }
 </style>
 <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -203,6 +274,40 @@
                     <p>البديل العصري والآمن لـ SharedPreferences و NSUserDefaults. تُستخدم لحفظ البيانات البسيطة مثل حالة الوضع الليلي، لغة التطبيق، أو رموز الجلسة (Tokens). تعتمد كلياً على <strong>Kotlin Coroutines & Flow</strong>، مما يضمن عدم تجميد واجهة المستخدم (UI Thread) أبداً.</p>
                 </div>
 
+                <div class="table-responsive" style="margin: 22px 0;">
+                    <table class="table table-bordered kmp-compare-table">
+                        <thead>
+                            <tr>
+                                <th>معيار المقارنة</th>
+                                <th>Room SQLite</th>
+                                <th>Jetpack DataStore</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>بنية البيانات (Data Structure)</strong></td>
+                                <td>جداول علائقية مهيكلة (Relational Tables &amp; SQL Queries) مع علاقات وفهارس معقدة.</td>
+                                <td>أزواج مفتاح-قيمة (<code>Preferences DataStore</code>) أو كائنات مهيكلة خفيفة (<code>Proto DataStore</code>).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>التزامن والخيوط (Threading / Coroutines)</strong></td>
+                                <td>عمليات غير متزامنة بالكامل عبر <code>suspend</code> وتدفقات تفاعلية <code>Flow&lt;T&gt;</code> على خيوط الخلفية.</td>
+                                <td>مبنية أصلياً على <code>Kotlin Coroutines &amp; Flow</code> على <code>Dispatchers.IO</code> دون تجميد خيط الواجهة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>أمان الأنواع (Type Safety)</strong></td>
+                                <td>تحقق صارم وقت الترجمة (Compile-time SQL &amp; Schema Verification) عبر معالج KSP.</td>
+                                <td>عالي عبر مفاتيح محددة النوع <code>Preferences.Key&lt;T&gt;</code> أو كامل عبر مخططات Protocol Buffers.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>أفضل حالة استخدام (Best Use Case)</strong></td>
+                                <td>البيانات الضخمة، التخزين المؤقت دون اتصال (Offline Caching)، الفلترة، والبحث المحلي السريع.</td>
+                                <td>إعدادات المستخدم، حالة الجلسة (Auth Tokens)، الوضع الليلي، والأعلام المنطقية السريعة.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <h2 id="shared-code">2. توحيد الكود عبر <code>commonMain</code></h2>
                 <p>تكمن عبقرية KMP في قدرتها على عزل تفاصيل النظام التشغيلي؛ حيث نكتب 95% من كود البيانات في <code>commonMain</code>، ونترك فقط تحديد مسار الملف (File Path) لكل نظام على حدة عبر آلية <code>expect / actual</code>.</p>
 
@@ -220,6 +325,65 @@ interface ProjectDao {
                 <div class="architecture-box">
                     <strong><i class="fa-solid fa-microchip"></i> سر التوافقية (BundledSQLiteDriver):</strong>
                     عند إعداد Room في KMP، ننصح دائماً باستخدام محرك <code>BundledSQLiteDriver</code>؛ لأنه يوفر نفس إصدار SQLite المترجم مسبقاً لكل من Android و iOS، مما يقضي تماماً على مشكلة اختلاف سلوك الاستعلامات بين الأجهزة المختلفة.
+                </div>
+
+                <div class="kmp-storage-diagram" aria-label="مخطط معمارية التخزين المشترك في Kotlin Multiplatform">
+                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 16px; color: #0f172a; font-size: 1.2rem; font-weight: 800;">
+                        <i class="fa-solid fa-sitemap" style="color: #0052cc;"></i> معمارية التخزين الموحدة في Kotlin Multiplatform (KMP)
+                    </h3>
+
+                    <div class="kmp-node-common">
+                        <h4><i class="fa-solid fa-layer-group"></i> commonMain (Shared Repository &amp; Encryption)</h4>
+                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.9);">
+                            مستودع البيانات المشترك (Single Source of Truth) · <code>Kotlin Coroutines &amp; StateFlow</code> · طبقة التشفير الموحدة
+                        </div>
+                    </div>
+
+                    <div class="kmp-arrow-divider">
+                        <i class="fa-solid fa-arrows-split-up-and-left fa-rotate-180"></i> توجيه البيانات حسب طبيعتها داخل <code>commonMain</code>
+                    </div>
+
+                    <div class="kmp-engine-grid">
+                        <div class="kmp-engine-card">
+                            <strong style="color: #1d4ed8; font-size: 1rem; display: block; margin-bottom: 4px;">
+                                <i class="fa-solid fa-database"></i> Room SQLite Database
+                            </strong>
+                            <span style="font-size: 0.85rem; color: #475569;">
+                                <code>@Entity</code> · <code>@Dao</code> · <code>BundledSQLiteDriver</code>
+                            </span>
+                        </div>
+                        <div class="kmp-engine-card">
+                            <strong style="color: #0284c7; font-size: 1rem; display: block; margin-bottom: 4px;">
+                                <i class="fa-solid fa-sliders"></i> Preferences DataStore
+                            </strong>
+                            <span style="font-size: 0.85rem; color: #475569;">
+                                <code>DataStore&lt;Preferences&gt;</code> · <code>Okio Path</code>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="kmp-arrow-divider">
+                        <i class="fa-solid fa-arrow-down"></i> تخصيص مسارات النظام والحماية العتادية عبر <code>expect / actual</code>
+                    </div>
+
+                    <div class="kmp-platform-grid">
+                        <div class="kmp-platform-card" style="border-right: 4px solid #16a34a;">
+                            <strong style="color: #15803d; display: block; margin-bottom: 4px;">
+                                <i class="fa-brands fa-android"></i> androidMain (Android)
+                            </strong>
+                            <span style="font-size: 0.84rem; color: #334155;">
+                                <code>Context.getDatabasePath()</code> · <code>SQLCipher</code> · <strong>Android Keystore</strong>
+                            </span>
+                        </div>
+                        <div class="kmp-platform-card" style="border-right: 4px solid #0f172a;">
+                            <strong style="color: #0f172a; display: block; margin-bottom: 4px;">
+                                <i class="fa-brands fa-apple"></i> iosMain (iOS)
+                            </strong>
+                            <span style="font-size: 0.84rem; color: #334155;">
+                                <code>NSDocumentDirectory</code> · <code>SQLCipher</code> · <strong>iOS Keychain</strong>
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
                 <h2 id="security-encryption">3. الأمان وتشفير البيانات الحساسة</h2>

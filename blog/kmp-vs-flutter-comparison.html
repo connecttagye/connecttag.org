@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/kmp-vs-flutter.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -133,12 +133,70 @@
     .feature-badge { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
     .badge-kmp { background: #f3e8ff; color: #7e22ce; }
     .badge-flutter { background: #e0f2fe; color: #0369a1; }
+    .pipeline-compare-box {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 28px 0;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+    .pipeline-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+        gap: 18px;
+    }
+    .pipeline-col {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 18px;
+        border: 2px solid #e2e8f0;
+    }
+    .pipeline-col-kmp {
+        border-top: 5px solid #7f52ff;
+    }
+    .pipeline-col-flutter {
+        border-top: 5px solid #02569b;
+    }
+    .pipeline-stage {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 11px 14px;
+        text-align: center;
+        font-size: 0.88rem;
+        color: #1e293b;
+    }
+    .pipeline-arrow {
+        text-align: center;
+        color: #64748b;
+        margin: 7px 0;
+        font-size: 0.9rem;
+    }
 </style>
 <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -206,6 +264,54 @@
                     <span class="feature-badge badge-flutter">Flutter</span>
                     <h3>فلسفة المحرك الشامل (UI & Logic)</h3>
                     <p>تعتمد Flutter على لغة <strong>Dart</strong> وتستخدم محرك رسوميات خاص بها (Skia أو Impeller) لرسم كل بكسل على الشاشة. هي لا تستخدم مكونات النظام الأصلية، بل تحاكيها بدقة متناهية، مما يضمن تطابق الواجهة بنسبة 100% بين جميع الأجهزة.</p>
+                </div>
+
+                <div class="pipeline-compare-box" aria-label="مخطط مقارنة مسار التنفيذ المعماري بين KMP و Flutter">
+                    <h3 style="text-align: center; margin-top: 0; margin-bottom: 18px; color: #0f172a; font-size: 1.2rem; font-weight: 800;">
+                        <i class="fa-solid fa-diagram-project" style="color: #0052cc;"></i> مقارنة مسار التنفيذ المعماري (Architectural Pipeline): KMP مقابل Flutter
+                    </h3>
+
+                    <div class="pipeline-grid">
+                        <div class="pipeline-col pipeline-col-kmp">
+                            <div style="text-align: center; margin-bottom: 12px;">
+                                <span class="feature-badge badge-kmp" style="font-size: 0.85rem;">مسار Kotlin Multiplatform (KMP)</span>
+                            </div>
+                            <div class="pipeline-stage" style="border-color: #d8b4fe; background: #faf5ff;">
+                                <strong style="color: #6b21a8;">1. المنطق البرمجي المشترك (Shared Business Logic)</strong><br>
+                                الشبكة (Ktor) · البيانات (Room / DataStore) · ViewModels في <code>commonMain</code>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-down" style="color: #7f52ff;"></i> ترجمة مباشرة إلى كود النظام (JVM Bytecode / Kotlin Native LLVM)</div>
+                            <div class="pipeline-stage">
+                                <strong style="color: #0f172a;">2. واجهات مستخدم أصلية 100% (Native UI)</strong><br>
+                                <strong>Jetpack Compose</strong> (أندرويد) &amp; <strong>SwiftUI</strong> (آيفون) أو Compose Multiplatform
+                            </div>
+                            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-down" style="color: #7f52ff;"></i> بدون جسر وسيط (Zero Bridge Overhead)</div>
+                            <div class="pipeline-stage" style="background: #f0fdf4; border-color: #86efac;">
+                                <strong style="color: #166534;">3. تواصل مباشر مع مكونات النظام والعتاد (OEM SDKs)</strong><br>
+                                تكامل فوري مع خدمات النظام، البلوتوث، الكاميرا، والواجهات الأصلية.
+                            </div>
+                        </div>
+
+                        <div class="pipeline-col pipeline-col-flutter">
+                            <div style="text-align: center; margin-bottom: 12px;">
+                                <span class="feature-badge badge-flutter" style="font-size: 0.85rem;">مسار إطار عمل Flutter</span>
+                            </div>
+                            <div class="pipeline-stage" style="border-color: #bae6fd; background: #f0f9ff;">
+                                <strong style="color: #0369a1;">1. كود موحد للواجهة والمنطق (Dart UI &amp; Logic)</strong><br>
+                                شجرة الـ Widgets التفاعلية + حالة التطبيق وإدارة البيانات بلغة <code>Dart</code>
+                            </div>
+                            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-down" style="color: #02569b;"></i> يمر عبر محرك الرسوميات المدمج داخل التطبيق</div>
+                            <div class="pipeline-stage">
+                                <strong style="color: #0f172a;">2. محرك رسم مستقل (Impeller / Skia Canvas)</strong><br>
+                                يرسم كل بكسل ومكون بصري مباشرة على لوحة GPU الخاصة به بمعزل عن عناصر النظام
+                            </div>
+                            <div class="pipeline-arrow"><i class="fa-solid fa-arrow-down" style="color: #02569b;"></i> تواصل عبر قنوات غير متزامنة (Platform Channels)</div>
+                            <div class="pipeline-stage" style="background: #f8fafc; border-color: #cbd5e1;">
+                                <strong style="color: #334155;">3. التواصل مع النظام عبر Platform Channels</strong><br>
+                                تطابق بصري 100% عبر جميع الشاشات مع استدعاء خدمات النظام عبر رسائل القناة.
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <h2 id="comparison-matrix">2. جدول المقارنة المباشرة (وجهاً لوجه)</h2>

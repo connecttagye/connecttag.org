@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/security-steps.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -136,12 +136,55 @@
     .tip-box { border-right: 5px solid #25d366; background: #f0fff4; padding: 20px; border-radius: 10px; margin: 25px 0; }
     .step-header { display: flex; align-items: center; gap: 15px; margin-top: 40px; }
     .step-number-circle { background: #0077b6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+    .backup-infographic { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 18px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.15); }
+    .backup-infographic-title { text-align: center; margin-bottom: 22px; }
+    .backup-infographic-title h3 { color: #38bdf8; font-weight: 800; font-size: 1.25rem; margin: 0 0 6px; }
+    .backup-infographic-title p { color: #cbd5e1; font-size: 13.5px; margin: 0; }
+    .backup-321-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .backup-321-item { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; padding: 20px 16px; text-align: center; transition: transform 0.25s ease; }
+    .backup-321-item:hover { transform: translateY(-3px); border-color: #38bdf8; }
+    .backup-big-num { font-size: 42px; font-weight: 800; color: #38bdf8; line-height: 1; margin-bottom: 10px; display: block; }
+    .backup-321-item:nth-child(2) .backup-big-num { color: #34d399; }
+    .backup-321-item:nth-child(3) .backup-big-num { color: #fbbf24; }
+    .backup-321-label { font-weight: 800; font-size: 15.5px; color: #ffffff; margin-bottom: 8px; display: block; }
+    .backup-321-desc { font-size: 13px; color: #cbd5e1; line-height: 1.6; margin: 0; }
+    .sec-audit-table-wrap { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 32px 0; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); }
+    .sec-audit-table-wrap h3 { margin-top: 0; color: #0f172a; font-weight: 800; font-size: 1.2rem; margin-bottom: 16px; }
+    .sec-audit-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .sec-audit-table th { background: #0052cc; color: #fff; padding: 12px 15px; text-align: right; font-size: 14px; font-weight: 700; }
+    .sec-audit-table td { padding: 12px 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155; }
+    .sec-badge-critical { background: #fee2e2; color: #b91c1c; padding: 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .sec-badge-high { background: #fef3c7; color: #b45309; padding: 3px 10px; border-radius: 50px; font-size: 12px; font-weight: 700; display: inline-block; }
+    .sec-checker-cta-bar { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .sec-checker-btn { background: #0052cc; color: #fff !important; font-weight: 700; padding: 10px 22px; border-radius: 30px; text-decoration: none !important; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; transition: all 0.25s ease; }
+    .sec-checker-btn:hover { background: #003d99; transform: translateY(-2px); }
+    @media (max-width: 768px) {
+        .backup-321-grid { grid-template-columns: 1fr; }
+    }
 </style>
 <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -251,6 +294,30 @@
                     </ul>
                 </div>
 
+                <div class="backup-infographic">
+                    <div class="backup-infographic-title">
+                        <h3><i class="fa-solid fa-cloud-arrow-up"></i> إنفوجرافيك: قاعدة النسخ الاحتياطي الذهبية (3-2-1 Backup Rule)</h3>
+                        <p>المعيار العالمي المعتمد لحماية بيانات المواقع والشركات من الفقدان الكلي وهجمات الفدية</p>
+                    </div>
+                    <div class="backup-321-grid">
+                        <div class="backup-321-item">
+                            <span class="backup-big-num">3</span>
+                            <span class="backup-321-label"><i class="fa-solid fa-copy"></i> 3 نسخ من البيانات</span>
+                            <p class="backup-321-desc">النسخة الإنتاجية العاملة على الموقع + نسختان احتياطيتان كاملتان لملفات النظام وقاعدة البيانات.</p>
+                        </div>
+                        <div class="backup-321-item">
+                            <span class="backup-big-num">2</span>
+                            <span class="backup-321-label"><i class="fa-solid fa-hard-drive"></i> 2 وسيطي تخزين مختلفين</span>
+                            <p class="backup-321-desc">عدم وضع جميع النسخ على نفس القرص؛ مثلاً: قرص NVMe محلي في الخادم + مساحة تخزين شبكية منفصلة.</p>
+                        </div>
+                        <div class="backup-321-item">
+                            <span class="backup-big-num">1</span>
+                            <span class="backup-321-label"><i class="fa-solid fa-cloud-lock"></i> 1 نسخة سحابية معزولة خارجياً</span>
+                            <p class="backup-321-desc">نسخة مشفرة ومحفوظة في سحابة خارجية (Off-site Cloud مثل AWS S3 أو Cloudflare R2) بمعزل تام عن خادم الموقع.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="step-header" id="step-5">
                     <div class="step-number-circle">5</div>
                     <h2>جدار حماية التطبيقات (WAF) والحماية من DDoS</h2>
@@ -267,6 +334,63 @@
                     <li><strong>تأمين قاعدة البيانات:</strong> تغيير البادئة الافتراضية للجداول (Prefix) واستخدام استعلامات مجهزة (Prepared Statements) لمنع الحقن.</li>
                     <li><strong>مراقبة السجلات (Logging):</strong> تفعيل سجلات الدخول لمراجعة أي محاولات مشبوهة فور حدوثها.</li>
                 </ul>
+
+                <div class="sec-audit-table-wrap">
+                    <h3><i class="fa-solid fa-shield-halved" style="color: #0052cc;"></i> جدول التدقيق الأمني الشامل للمواقع (Security Audit Checklist)</h3>
+                    <div class="table-responsive">
+                        <table class="sec-audit-table">
+                            <thead>
+                                <tr>
+                                    <th>طبقة الحماية</th>
+                                    <th>الإجراء التقني المطلوب</th>
+                                    <th>مستوى الأولوية</th>
+                                    <th>المخاطر التي يمنعها</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>تشفير الاتصال</strong></td>
+                                    <td>تفعيل شهادة <code>SSL/TLS 1.3</code> وإجبار التحويل لـ <code>HTTPS</code></td>
+                                    <td><span class="sec-badge-critical">حرج جداً</span></td>
+                                    <td>اعتراض البيانات وسرقة جلسات الدخول (MITM)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>رؤوس الحماية (Headers)</strong></td>
+                                    <td>ضبط <code>HSTS</code> و<code>CSP</code> و<code>X-Frame-Options</code></td>
+                                    <td><span class="sec-badge-critical">حرج جداً</span></td>
+                                    <td>حقن الأكواد الخبيثة (XSS) والاختطاف البصري (Clickjacking)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>جدار التطبيقات (WAF)</strong></td>
+                                    <td>تفعيل قواعد الحماية السحابية وتقييد معدل الطلبات (Rate Limiting)</td>
+                                    <td><span class="sec-badge-critical">حرج جداً</span></td>
+                                    <td>هجمات حجب الخدمة (DDoS) وحقن قواعد البيانات (SQLi)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>إدارة الهوية والوصول</strong></td>
+                                    <td>تفعيل المصادقة الثنائية (2FA) وتغيير مسار لوحة التحكم الافتراضي</td>
+                                    <td><span class="sec-badge-high">مرتفع</span></td>
+                                    <td>تخمين كلمات المرور (Brute Force) والوصول غير المصرح</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>التعافي من الكوارث</strong></td>
+                                    <td>جدولة نسخ احتياطي آلي يومي وفق قاعدة (3-2-1)</td>
+                                    <td><span class="sec-badge-high">مرتفع</span></td>
+                                    <td>فقدان البيانات الدائم أو الابتزاز ببرمجيات الفدية</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="sec-checker-cta-bar">
+                        <div>
+                            <strong style="color: #0f172a; display: block; margin-bottom: 3px;"><i class="fa-solid fa-radar" style="color: #0052cc;"></i> هل ترغب في فحص رؤوس الحماية وشهادة الأمان لموقعك الآن؟</strong>
+                            <span style="font-size: 13.5px; color: #475569;">اكشف الثغرات الأمنية وترويسات HTTP المفقودة في موقعك مجاناً وبضغطة زر.</span>
+                        </div>
+                        <a href="https://connecttag.org/tools/web/site-checker/security-checker" class="sec-checker-btn">
+                            <i class="fa-solid fa-shield-check"></i> فحص أمان موقعك مجاناً
+                        </a>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>الأسئلة الشائعة حول أمن المواقع</h2>

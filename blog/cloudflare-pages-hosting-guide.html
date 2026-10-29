@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/cloudflare-page-hosting.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -136,6 +136,23 @@
     .features-list h3 { margin-top: 0; color: #0077b6; }
     .workflow-step { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; }
     .step-number { background: #0077b6; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+    .cicd-pipeline-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 18px; padding: 28px 22px; margin: 30px 0; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16); }
+    .cicd-pipeline-title { text-align: center; margin-bottom: 24px; }
+    .cicd-pipeline-title h3 { color: #f59e0b; font-size: 1.25rem; font-weight: 800; margin: 0 0 6px; }
+    .cicd-pipeline-title p { color: #cbd5e1; font-size: 13.5px; margin: 0; }
+    .cicd-stages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; position: relative; }
+    .cicd-node { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); border-top: 4px solid #38bdf8; border-radius: 14px; padding: 20px 16px; text-align: center; position: relative; }
+    .cicd-node:nth-child(2) { border-top-color: #f59e0b; }
+    .cicd-node:nth-child(3) { border-top-color: #10b981; }
+    .cicd-icon-box { width: 48px; height: 48px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; }
+    .cicd-node:nth-child(2) .cicd-icon-box { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .cicd-node:nth-child(3) .cicd-icon-box { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .cicd-node-title { font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 8px; display: block; }
+    .cicd-node-desc { font-size: 13px; color: #cbd5e1; line-height: 1.6; margin: 0 0 10px; }
+    .cicd-cmd-pill { display: inline-block; background: rgba(0, 0, 0, 0.35); color: #38bdf8; font-family: monospace; font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); }
+    @media (max-width: 768px) {
+        .cicd-stages-grid { grid-template-columns: 1fr; }
+    }
 </style>
 <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -145,6 +162,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -238,6 +273,33 @@
                     <div class="step-number">3</div>
                     <div>
                         <strong>النشر العالمي:</strong> سيتم نشر موقعك على مئات السيرفرات حول العالم في لحظات.
+                    </div>
+                </div>
+
+                <div class="cicd-pipeline-card">
+                    <div class="cicd-pipeline-title">
+                        <h3><i class="fa-solid fa-code-branch"></i> مخطط النشر السحابي التلقائي (Automated Git-to-Edge CI/CD Workflow)</h3>
+                        <p>رحلة الكود البرمجي من جهاز المطور إلى أكثر من 300 مدينة حول العالم في أقل من 60 ثانية</p>
+                    </div>
+                    <div class="cicd-stages-grid">
+                        <div class="cicd-node">
+                            <div class="cicd-icon-box"><i class="fa-brands fa-git-alt"></i></div>
+                            <span class="cicd-node-title">1. دفع الكود Git Push (GitHub/GitLab)</span>
+                            <p class="cicd-node-desc">يرفع المطور التعديلات إلى المستودع الرئيسي أو فرع المعاينة، فيلتقط نظام Webhook التحديث تلقائياً.</p>
+                            <span class="cicd-cmd-pill">git push origin main</span>
+                        </div>
+                        <div class="cicd-node">
+                            <div class="cicd-icon-box"><i class="fa-solid fa-gears"></i></div>
+                            <span class="cicd-node-title">2. البناء السحابي التلقائي Automated Build</span>
+                            <p class="cicd-node-desc">تشغل كلاود فلير بيئة بناء معزولة لتجميع ملفات المشروع وضغط الأصول وفحص سلامة الكود.</p>
+                            <span class="cicd-cmd-pill" style="color:#fbbf24;">npm run build &rarr; dist/</span>
+                        </div>
+                        <div class="cicd-node">
+                            <div class="cicd-icon-box"><i class="fa-solid fa-earth-americas"></i></div>
+                            <span class="cicd-node-title">3. النشر الفوري على أكثر من 300 خادم Edge CDN حول العالم مع SSL مجاني</span>
+                            <p class="cicd-node-desc">تُنسخ الملفات النهائية فوراً إلى عقد الحافة العالمية مع تفعيل شهادة HTTPS وحماية DDoS تلقائياً.</p>
+                            <span class="cicd-cmd-pill" style="color:#34d399;">Edge Live + Auto SSL/TLS</span>
+                        </div>
                     </div>
                 </div>
 

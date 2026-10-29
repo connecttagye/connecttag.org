@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/why-you-need-apps.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -131,6 +131,34 @@
 ]
 </script>
 
+<style>
+    .app-loop-card { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 18px; padding: 28px 22px; margin: 30px 0; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.15); }
+    .app-loop-card h3 { margin: 0 0 6px; color: #38bdf8; font-weight: 800; font-size: 1.2rem; text-align: center; }
+    .app-loop-card p.sub { margin: 0 0 22px; color: #cbd5e1; font-size: 13.5px; text-align: center; }
+    .app-loop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .app-loop-step { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-top: 4px solid #38bdf8; border-radius: 14px; padding: 18px 14px; text-align: center; }
+    .app-loop-step:nth-child(2) { border-top-color: #34d399; }
+    .app-loop-step:nth-child(3) { border-top-color: #fbbf24; }
+    .app-loop-step:nth-child(4) { border-top-color: #a78bfa; }
+    .app-loop-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); color: #38bdf8; display: inline-flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 10px; }
+    .app-loop-step:nth-child(2) .app-loop-icon { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .app-loop-step:nth-child(3) .app-loop-icon { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+    .app-loop-step:nth-child(4) .app-loop-icon { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+    .app-loop-title { font-weight: 800; font-size: 14.5px; color: #fff; display: block; margin-bottom: 6px; }
+    .app-loop-desc { font-size: 12.5px; color: #cbd5e1; line-height: 1.55; margin: 0; }
+    .app-vs-web-wrap { margin: 30px 0; }
+    .app-vs-web-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+    .app-vs-web-table th { background: #0f172a; color: #fff; padding: 14px 16px; text-align: right; font-size: 14px; font-weight: 700; }
+    .app-vs-web-table th.app-col { background: #0052cc; }
+    .app-vs-web-table td { padding: 13px 16px; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155; }
+    .app-vs-web-table td.app-col { background: #f0f9ff; font-weight: 600; color: #0f172a; }
+    @media (max-width: 768px) {
+        .app-loop-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+        .app-loop-grid { grid-template-columns: 1fr; }
+    }
+</style>
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
@@ -139,6 +167,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -205,6 +251,33 @@
                 <h2 id="data-analysis">4. جمع وتحليل البيانات لاتخاذ قرارات أذكى</h2>
                 <p>يوفر تطبيق الهاتف كنزاً من البيانات حول سلوك عملائك. يمكنك معرفة المنتجات الأكثر بحثاً، الأوقات المفضلة للتسوق، وحتى المناطق الجغرافية الأكثر نشاطاً. هذه البيانات ليست مجرد أرقام، بل هي خارطة طريق تساعدك على تطوير منتجاتك وتحسين استراتيجياتك التسويقية بناءً على حقائق واقعية وليس مجرد توقعات.</p>
 
+                <div class="app-loop-card">
+                    <h3><i class="fa-solid fa-arrows-spin"></i> حلقة النمو والاحتفاظ بالعملاء في تطبيقات الهواتف (Growth &amp; Retention Loop)</h3>
+                    <p class="sub">الدورة المستمرة التي تحول مستخدم التطبيق من مشتري لمرة واحدة إلى عميل دائم</p>
+                    <div class="app-loop-grid">
+                        <div class="app-loop-step">
+                            <div class="app-loop-icon"><i class="fa-solid fa-bell"></i></div>
+                            <span class="app-loop-title">1. إشعارات ذكية Push Notifications</span>
+                            <p class="app-loop-desc">تنبيهات فورية مخصصة بالعروض والتحديثات تصل مباشرة لشاشة قفل الهاتف.</p>
+                        </div>
+                        <div class="app-loop-step">
+                            <div class="app-loop-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <span class="app-loop-title">2. تجربة استخدام سريعة وبدون إنترنت</span>
+                            <p class="app-loop-desc">تصفح فائق السرعة مع تخزين مؤقت للبيانات ودفع بنقرة واحدة بدون تعقيد.</p>
+                        </div>
+                        <div class="app-loop-step">
+                            <div class="app-loop-icon"><i class="fa-solid fa-award"></i></div>
+                            <span class="app-loop-title">3. ولاء العملاء وتكرار الطلب</span>
+                            <p class="app-loop-desc">نقاط مكافآت رقمية وسجل طلبات محفوظ يحفز العميل على الشراء المتكرر.</p>
+                        </div>
+                        <div class="app-loop-step">
+                            <div class="app-loop-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                            <span class="app-loop-title">4. تحليل البيانات ونمو المبيعات</span>
+                            <p class="app-loop-desc">تحليل سلوك المستخدم داخل التطبيق لتخصيص العروض القادمة ومضاعفة العائد.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 id="brand-presence">5. حضور دائم وبناء الهوية البصرية</h2>
                 <p>بمجرد أن يقوم العميل بتحميل تطبيقك، يصبح شعار شركتك موجوداً دائماً على شاشة هاتفه. هذا الحضور الدائم يعزز من "الوعي بالعلامة التجارية" (Brand Awareness). حتى لو لم يفتح العميل التطبيق يومياً، فإن رؤية الشعار بشكل متكرر تبني نوعاً من الثقة والألفة، مما يجعل مشروعك الخيار الأول في ذهنه عندما يحتاج للخدمة التي تقدمها.</p>
 
@@ -212,6 +285,48 @@
                 <p>في الأسواق المتطورة مثل اليمن والشرق الأوسط، لا تزال العديد من الشركات تعتمد على الطرق التقليدية. امتلاكك لتطبيق احترافي يضعك في مرتبة متقدمة عن منافسيك، ويظهر مشروعك بمظهر الشركة العصرية والمواكبة للتكنولوجيا، مما يجذب العملاء الذين يبحثون عن الاحترافية والسهولة.</p>
 
                 <p><strong>الخلاصة:</strong> الاستثمار في تطبيق هاتف ذكي هو استثمار في مستقبل مشروعك. إنه ليس مجرد واجهة برمجية، بل هو جسر يربطك بعملائك، وأداة لتحويل الزوار العابرين إلى شركاء نجاح دائمين. في "كونكت تاق"، يمكنك الاطلاع على <a href="https://connecttag.org/company/projects/apps/">نماذج تطبيقاتنا المنشورة</a> أو التواصل معنا عبر <a href="https://connecttag.org/company/services/web-app-development">خدمة تطوير المواقع وتطبيقات الهواتف الذكية</a> لتحويل رؤيتك إلى واقع رقمي ملموس.</p>
+
+                <div class="app-vs-web-wrap">
+                    <h2 id="app-vs-website">مقارنة شاملة: تطبيق الهاتف المخصص مقابل الموقع الإلكتروني المتجاوب</h2>
+                    <div class="table-responsive">
+                        <table class="app-vs-web-table">
+                            <thead>
+                                <tr>
+                                    <th>معيار المقارنة</th>
+                                    <th class="app-col"><i class="fa-solid fa-mobile-screen-button"></i> تطبيق الهاتف المخصص (Mobile App)</th>
+                                    <th><i class="fa-solid fa-globe"></i> الموقع الإلكتروني المتجاوب (Mobile Website)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>السرعة وسلاسة الأداء</strong></td>
+                                    <td class="app-col">فائقة؛ يخزن عناصر الواجهة والبيانات محلياً على الجهاز</td>
+                                    <td>متوسطة؛ يعتمد كلياً على سرعة المتصفح وإعادة تحميل الصفحات</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>الوصول لخصائص الهاتف</strong></td>
+                                    <td class="app-col">تكامل عميق مع الكاميرا، الـ GPS، البصمة (Biometrics)، والبلوتوث</td>
+                                    <td>محدود بصلاحيات المتصفح القياسية</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>الإشعارات الفورية (Push Notifications)</strong></td>
+                                    <td class="app-col">إشعارات أصلية مباشرة على شاشة الهاتف حتى عند إغلاق التطبيق</td>
+                                    <td>محدودة الدقة (لا تدعم جميع المتصفحات والأجهزة بنفس الكفاءة)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>العمل بدون إنترنت (Offline Access)</strong></td>
+                                    <td class="app-col">يدعم تصفح الكتالوج والبيانات المحفوظة بدون اتصال بالإنترنت</td>
+                                    <td>يتطلب اتصالاً دائماً بالإنترنت في أغلب الحالات</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>الولاء وتكرار الشراء</strong></td>
+                                    <td class="app-col">أيقونة دائمة على شاشة العميل ترفع معدل الاحتفاظ بالعملاء والطلبات المتكررة</td>
+                                    <td>ممتاز لجذب الزوار الجدد عبر محركات البحث (SEO)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>الأسئلة الشائعة</h2>

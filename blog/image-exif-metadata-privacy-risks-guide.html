@@ -32,19 +32,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
     <link rel="preload" href="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+    <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
     <script type="application/ld+json">
 [
@@ -157,6 +155,24 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
          crossorigin="anonymous"></script>
@@ -190,6 +206,126 @@
         .status-exposed {
             color: #b91c1c;
             font-weight: 700;
+        }
+        .exif-compare-wrapper {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 28px 0;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+        }
+        .exif-compare-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .exif-compare-header h3 {
+            margin: 0 0 6px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+        .exif-compare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+        .exif-diag-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 20px;
+            border: 2px solid transparent;
+        }
+        .exif-diag-before {
+            border-color: #fca5a5;
+            background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+        }
+        .exif-diag-after {
+            border-color: #86efac;
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        .exif-diag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .badge-danger-soft {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .badge-success-soft {
+            background: #dcfce7;
+            color: #15803d;
+        }
+        .exif-meta-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .exif-meta-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 10px;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 0.9rem;
+            gap: 8px;
+        }
+        .exif-meta-list li:last-child {
+            border-bottom: none;
+        }
+        .exif-meta-key {
+            font-weight: 700;
+            color: #334155;
+        }
+        .exif-meta-val-bad {
+            font-family: monospace;
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            direction: ltr;
+        }
+        .exif-meta-val-good {
+            font-family: monospace;
+            background: #f0fdf4;
+            color: #15803d;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+        .exif-cta-banner {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+        .exif-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0052cc;
+            color: #ffffff !important;
+            font-weight: 700;
+            padding: 11px 22px;
+            border-radius: 10px;
+            text-decoration: none !important;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+        .exif-cta-btn:hover {
+            background: #003d99;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -352,6 +488,67 @@
 
                 <h2 id="how-to-remove-exif">رابعاً: طريقة حذف بيانات EXIF من الصور محلياً وبدون برامج</h2>
                 <p>لتنظيف صورك بسهولة مع الحفاظ على جودتها وأبعادها الكاملة ودون الحاجة لتثبيت أي تطبيقات خارجية، وفرنا في موقع كونكت تاق <a href="https://connecttag.org/tools/security/exif-remover/"><strong>أداة منظف بصمة الصور والخصوصية (EXIF Remover)</strong></a> التي تعمل بمعالجة محلية 100% داخل متصفحك:</p>
+
+                <div class="exif-compare-wrapper" aria-label="مقارنة تشخيصية للصورة قبل وبعد إزالة بيانات EXIF">
+                    <div class="exif-compare-header">
+                        <h3><i class="fa-solid fa-microscope" style="color: #0052cc;"></i> مقارنة تشخيصية: ملف الصورة قبل وبعد تجريد بيانات EXIF</h3>
+                        <p style="margin: 0; color: #64748b; font-size: 0.92rem;">ماذا يرى الفاحص التقني داخل ملف صورتك الخام مقارنةً بالصورة المنظفة محلياً؟</p>
+                    </div>
+                    <div class="exif-compare-grid">
+                        <div class="exif-diag-card exif-diag-before">
+                            <span class="exif-diag-badge badge-danger-soft"><i class="fa-solid fa-triangle-exclamation"></i> قبل التنظيف (صورة خام من الهاتف)</span>
+                            <ul class="exif-meta-list">
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-location-crosshairs" style="color:#dc2626;"></i> GPS Latitude/Longitude</span>
+                                    <span class="exif-meta-val-bad">24°42'48.9"N 46°40'31.2"E</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-mobile-screen" style="color:#dc2626;"></i> Device Model &amp; Serial</span>
+                                    <span class="exif-meta-val-bad">iPhone 16 Pro · SN:8F92A4</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-clock" style="color:#dc2626;"></i> Exact Timestamp</span>
+                                    <span class="exif-meta-val-bad">2026:10:29 21:14:08 +03:00</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-camera" style="color:#dc2626;"></i> Camera Aperture/ISO</span>
+                                    <span class="exif-meta-val-bad">f/1.78 · ISO 64 · 24mm</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="exif-diag-card exif-diag-after">
+                            <span class="exif-diag-badge badge-success-soft"><i class="fa-solid fa-shield-halved"></i> بعد التنظيف (صورة آمنة للخصوصية)</span>
+                            <ul class="exif-meta-list">
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-location-dot" style="color:#15803d;"></i> GPS Latitude/Longitude</span>
+                                    <span class="exif-meta-val-good">محذوف بالكامل (Stripped)</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-mobile-screen" style="color:#15803d;"></i> Device Model &amp; Serial</span>
+                                    <span class="exif-meta-val-good">محذوف بالكامل (Stripped)</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-clock" style="color:#15803d;"></i> Exact Timestamp</span>
+                                    <span class="exif-meta-val-good">محذوف بالكامل (Stripped)</span>
+                                </li>
+                                <li>
+                                    <span class="exif-meta-key"><i class="fa-solid fa-camera" style="color:#15803d;"></i> Camera Aperture/ISO</span>
+                                    <span class="exif-meta-val-good">بكسلات صافية فقط (Clean Pixels)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="exif-cta-banner">
+                        <div>
+                            <strong style="color: #0f172a; display: block;">احمِ خصوصيتك قبل نشر أو إرسال أي صورة كمستند!</strong>
+                            <span style="color: #475569; font-size: 0.9rem;">تنظيف فوري داخل متصفحك بنسبة 100% دون رفع صورك لأي خادم.</span>
+                        </div>
+                        <a href="https://connecttag.org/tools/security/exif-remover/" class="exif-cta-btn">
+                            <i class="fa-solid fa-eraser"></i> فحص ومسح بيانات EXIF الآن
+                        </a>
+                    </div>
+                </div>
 
                 <ol>
                     <li>ادخل إلى صفحة <a href="https://connecttag.org/tools/security/exif-remover/">منظف بصمة الصور والخصوصية (EXIF Remover)</a> من هاتفك أو حاسوبك.</li>

@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/android-reverse-engineering.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -160,9 +160,85 @@
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
   <link rel="manifest" href="https://connecttag.org/manifest.json">
   <meta name="theme-color" content="#0052cc">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
+  <style>
+      .defense-depth-box {
+          background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+          border: 1px solid #cbd5e1;
+          border-radius: 16px;
+          padding: 24px;
+          margin: 28px 0;
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      }
+      .defense-depth-header {
+          text-align: center;
+          margin-bottom: 18px;
+      }
+      .defense-depth-header h3 {
+          margin: 0 0 6px;
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #0f172a;
+      }
+      .defense-layer {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-right: 6px solid #0052cc;
+          border-radius: 12px;
+          padding: 14px 18px;
+      }
+      .defense-layer-l1 { border-right-color: #3b82f6; }
+      .defense-layer-l2 { border-right-color: #6366f1; }
+      .defense-layer-l3 { border-right-color: #8b5cf6; }
+      .defense-layer-l4 { border-right-color: #059669; }
+      .defense-layer-badge {
+          min-width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          background: #eff6ff;
+          color: #1d4ed8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.15rem;
+          font-weight: 800;
+          flex-shrink: 0;
+      }
+      .defense-layer-arrow {
+          text-align: center;
+          color: #64748b;
+          margin: 6px 0;
+          font-size: 0.95rem;
+      }
+      .re-matrix-table th {
+          background: #f1f5f9;
+          color: #0f172a;
+          font-weight: 800;
+      }
+  </style>
 </head>
 <body data-target="#navbar-main" class="preloader-visible">
 
@@ -215,6 +291,48 @@
                 </div>
 
                 <p>تطبيقات الأندرويد تُكتب عادةً بلغات مثل Java و Kotlin، والتي يتم تجميعها إلى رمز بايتي (DEX Bytecode). هذا الرمز يسهل جداً تفكيكه (Decompilation) باستخدام أدوات مجانية مثل JADX أو Apktool للحصول على كود مصدري يكاد يكون مطابقاً للأصلي. لحماية حقوق الملكية الفكرية، ومفاتيح الواجهات البرمجية (API Keys)، يجب تطبيق استراتيجية "الدفاع في العمق". كما يمكنك فحص بنية حزمة تطبيقك وصلاحياته عبر <a href="https://connecttag.org/company/projects/apps/sabr/">تطبيق سَبْر (Sabr) للتدقيق الأمني وفحص حزم APK</a> أو باستخدام <a href="https://connecttag.org/tools/mobile/manifest-analyzer/">أداة فاحص ملف AndroidManifest.xml</a> ومراجعة دليلنا الشامل حول <a href="https://connecttag.org/blog/android-manifest-security-exported-components-guide">ثغرات ملف AndroidManifest.xml وأمن المكونات والـ Deep Links</a>.</p>
+
+                <div class="defense-depth-box" aria-label="مخطط معمارية الدفاع المتعمق Defense-in-Depth لتأمين تطبيقات أندرويد">
+                    <div class="defense-depth-header">
+                        <h3><i class="fa-solid fa-layer-group" style="color: #0052cc;"></i> معمارية الدفاع المتعمق (Defense-in-Depth) ذات الطبقات الأربع</h3>
+                        <p style="margin: 0; color: #64748b; font-size: 0.9rem;">تتكامل طبقات الحماية بحيث إذا نجح المهاجم في تجاوز طبقة، اصطدم بالطبقة التالية الأعلى تكلفة:</p>
+                    </div>
+
+                    <div class="defense-layer defense-layer-l1">
+                        <div class="defense-layer-badge">1</div>
+                        <div>
+                            <strong style="color: #0f172a; font-size: 1rem;">الطبقة 1: تشويش الكود R8/ProGuard</strong><br>
+                            <span style="color: #475569; font-size: 0.88rem;">إعادة تسمية الحزم والفئات والدوال، تقليص الكود (Shrinking)، وتشفير السلاسل النصية لإحباط التحليل الساكن.</span>
+                        </div>
+                    </div>
+                    <div class="defense-layer-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="defense-layer defense-layer-l2">
+                        <div class="defense-layer-badge" style="background:#eef2ff;color:#4338ca;">2</div>
+                        <div>
+                            <strong style="color: #0f172a; font-size: 1rem;">الطبقة 2: العزل في طبقة C/C++ NDK</strong><br>
+                            <span style="color: #475569; font-size: 0.88rem;">نقل الخوارزميات الحساسة إلى كود أصيل (Native <code>.so</code>) عبر JNI مع تجريد الرموز (<code>strip</code>) وتسطيح تدفق التحكم.</span>
+                        </div>
+                    </div>
+                    <div class="defense-layer-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="defense-layer defense-layer-l3">
+                        <div class="defense-layer-badge" style="background:#f5f3ff;color:#6d28d9;">3</div>
+                        <div>
+                            <strong style="color: #0f172a; font-size: 1rem;">الطبقة 3: الحماية الذاتية وقت التشغيل RASP</strong><br>
+                            <span style="color: #475569; font-size: 0.88rem;">كشف الروت والمحاكيات، التحقق من بصمة التوقيع الرقمي (Signature Check)، ومنع حقن الذاكرة (Anti-Frida / Anti-Debugging).</span>
+                        </div>
+                    </div>
+                    <div class="defense-layer-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+                    <div class="defense-layer defense-layer-l4">
+                        <div class="defense-layer-badge" style="background:#ecfdf5;color:#047857;">4</div>
+                        <div>
+                            <strong style="color: #0f172a; font-size: 1rem;">الطبقة 4: التشفير العتادي Keystore &amp; SQLCipher</strong><br>
+                            <span style="color: #475569; font-size: 0.88rem;">عزل المفاتيح داخل شريحة الأمان العتادية (TEE / StrongBox)، تشفير قواعد البيانات عبر SQLCipher، وتثبيت الشهادات (SSL Pinning).</span>
+                        </div>
+                    </div>
+                </div>
 
                 <h2 id="code-obfuscation">1. التشويش وتعمية الكود (Code Obfuscation)</h2>
                 <p>التشويش هو خط الدفاع الأول الذي يهدف إلى جعل الكود غير مقروء ومربكاً للمهاجم البشري ولأدوات التحليل.</p>
@@ -357,6 +475,43 @@ window.setFlags(
     WindowManager.LayoutParams.FLAG_SECURE
 )
                 </site-code-block>
+
+                <h2>مصفوفة أدوات الهندسة العكسية وآليات المضادة التقنية</h2>
+                <p>يلخص الجدول المرجعي التالي أشهر الأدوات التي يستخدمها المهاجمون لاختبار أو تفكيك تطبيقات أندرويد، والآلية الدفاعية المقابلة لكل أداة:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered re-matrix-table">
+                        <thead>
+                            <tr>
+                                <th>أداة الهجوم والهندسة العكسية</th>
+                                <th>نوع التهديد وما تفعله الأداة</th>
+                                <th>الآلية الدفاعية التقنية المضادة (Countermeasure)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>JADX / Decompilers</strong></td>
+                                <td>تحويل ملفات <code>classes.dex</code> إلى كود Java/Kotlin مقروء لاستخراج الخوارزميات ومفاتيح API الثابتة.</td>
+                                <td>تفعيل <strong>R8 Full Mode</strong>، تشفير السلاسل النصية (String Encryption)، ونقل المنطق الحساس إلى <strong>C/C++ NDK</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>APKTool / Repackaging</strong></td>
+                                <td>فك موارد التطبيق وملف <code>AndroidManifest.xml</code> وتعديل كود Smali ثم إعادة توقيع التطبيق ونشره كنسخة معدلة.</td>
+                                <td>التحقق من بصمة شهادة التوقيع (<strong>Signature Verification SHA-256</strong>) عبر C++/JNI وتفعيل <strong>Play Integrity API</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Frida / Dynamic Hooking</strong></td>
+                                <td>حقن كود JavaScript أثناء تشغيل التطبيق (Runtime) لتعديل قيم الدوال أو تعطيل فحص الروت والشهادات في الذاكرة.</td>
+                                <td>تقنيات <strong>RASP</strong> لفحص منافذ Frida وخرائط الذاكرة (<code>/proc/self/maps</code>)، كشف الروت، وفحص سلامة الذاكرة في طبقة Native.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mitmproxy / SSL Interception</strong></td>
+                                <td>اعتراض حركة مرور الشبكة (HTTPS) عبر زرع شهادة CA مزيفة في الجهاز لقراءة وتعديل طلبات الـ API.</td>
+                                <td>تطبيق <strong>SSL Certificate Pinning</strong> عبر <code>network_security_config.xml</code> أو <code>CertificatePinner</code> مع تعطيل <code>cleartextTraffic</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <p><strong>خلاصة القول:</strong> تطبيق معايير الحماية المتعددة يرفع مستوى أمان تطبيقك ويحمي بيانات مستخدميك. إذا كنت بحاجة إلى مراجعة أمنية شاملة لتطبيقاتك أو بناء حلول محمية من الصفر، يمكنك الاستفادة من <a href="https://connecttag.org/company/services/cybersecurity-solutions">خدمات الحلول الأمنية والأمن السيبراني</a> لدى <strong>كونكت تاق</strong>.</p>
 

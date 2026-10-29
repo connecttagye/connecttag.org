@@ -32,17 +32,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
   <link rel="preload" href="https://connecttag.org/upload/marketing-in-yout-company.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.32">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.33">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.33">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.32"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.32">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.33"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.33">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.32" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.33" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.33" defer></script>
 
 <script type="application/ld+json">
 [
@@ -131,6 +131,30 @@
 ]
 </script>
 
+<style>
+    .dm-funnel-card { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 18px; padding: 28px 22px; margin: 30px 0; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); }
+    .dm-funnel-card h3 { margin: 0 0 6px; color: #0f172a; font-weight: 800; font-size: 1.2rem; text-align: center; }
+    .dm-funnel-card p.sub { margin: 0 0 22px; color: #475569; font-size: 13.5px; text-align: center; }
+    .dm-funnel-steps { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .dm-funnel-layer { color: #fff; border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: transform 0.2s ease; }
+    .dm-funnel-layer:hover { transform: scale(1.01); }
+    .dm-funnel-layer.f-1 { width: 100%; background: linear-gradient(90deg, #0052cc, #0284c7); }
+    .dm-funnel-layer.f-2 { width: 90%; background: linear-gradient(90deg, #0284c7, #0d9488); }
+    .dm-funnel-layer.f-3 { width: 80%; background: linear-gradient(90deg, #0d9488, #16a34a); }
+    .dm-funnel-layer.f-4 { width: 70%; background: linear-gradient(90deg, #d97706, #f59e0b); }
+    .dm-funnel-title { font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+    .dm-funnel-desc { font-size: 13px; color: rgba(255, 255, 255, 0.92); text-align: left; }
+    .dm-comp-wrap { margin: 30px 0; }
+    .dm-comp-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+    .dm-comp-table th { background: #0f172a; color: #fff; padding: 14px 16px; text-align: right; font-size: 14px; font-weight: 700; }
+    .dm-comp-table th.highlight-col { background: #0052cc; }
+    .dm-comp-table td { padding: 13px 16px; border-bottom: 1px solid #f1f5f9; font-size: 14px; color: #334155; }
+    .dm-comp-table td.highlight-col { background: #f0f9ff; font-weight: 600; color: #0f172a; }
+    @media (max-width: 768px) {
+        .dm-funnel-layer.f-1, .dm-funnel-layer.f-2, .dm-funnel-layer.f-3, .dm-funnel-layer.f-4 { width: 100%; flex-direction: column; align-items: flex-start; gap: 6px; }
+        .dm-funnel-desc { text-align: right; }
+    }
+</style>
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
@@ -139,6 +163,24 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -203,6 +245,29 @@
                 <h2 id="measurability">3. القابلية للقياس والتحليل اللحظي</h2>
                 <p>ما لا يمكن قياسه، لا يمكن تحسينه. في التسويق الرقمي، كل نقرة، وكل مشاهدة، وكل عملية شراء موثقة بالأرقام. يمكنك معرفة من أين أتى عملاؤك، وما هي الرسالة التسويقية التي جذبتهم، ومتى غادروا موقعك. هذه البيانات تمنحك القدرة على تعديل استراتيجيتك فوراً بناءً على الأداء الواقعي وليس على التخمينات.</p>
 
+                <div class="dm-funnel-card">
+                    <h3><i class="fa-solid fa-filter-circle-dollar" style="color: #0052cc;"></i> مخطط قمع التسويق الرقمي (4-Stage Digital Marketing Funnel)</h3>
+                    <p class="sub">كيف تحول الاستراتيجية الرقمية الزائر الغريب إلى عميل دائم وسفير لعلامتك التجارية</p>
+                    <div class="dm-funnel-steps">
+                        <div class="dm-funnel-layer f-1">
+                            <span class="dm-funnel-title"><i class="fa-solid fa-bullhorn"></i> 1. الوعي بالعلامة (Awareness)</span>
+                            <span class="dm-funnel-desc">جذب الانتباه عبر محركات البحث (SEO)، المحتوى القيم، والإعلانات الممولة</span>
+                        </div>
+                        <div class="dm-funnel-layer f-2">
+                            <span class="dm-funnel-title"><i class="fa-solid fa-comments"></i> 2. الاهتمام والتفاعل (Interest)</span>
+                            <span class="dm-funnel-desc">بناء الثقة عبر صفحات الهبوط، دراسات الحالة، والتفاعل على منصات التواصل</span>
+                        </div>
+                        <div class="dm-funnel-layer f-3">
+                            <span class="dm-funnel-title"><i class="fa-solid fa-cart-check"></i> 3. اتخاذ قرار الشراء (Decision)</span>
+                            <span class="dm-funnel-desc">تحويل الزائر إلى عميل عبر العروض المخصصة، التقييمات الموثقة، وسهولة الطلب</span>
+                        </div>
+                        <div class="dm-funnel-layer f-4">
+                            <span class="dm-funnel-title"><i class="fa-solid fa-heart-circle-check"></i> 4. الولاء والتكرار (Retention)</span>
+                            <span class="dm-funnel-desc">إعادة الاستهداف، دعم ما بعد البيع، وبرامج الولاء لمضاعفة القيمة الدائمة للعميل</span>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 id="credibility">4. بناء المصداقية والوعي بالعلامة التجارية</h2>
                 <p>في السوق الرقمي، المحتوى هو الملك. من خلال تقديم محتوى تعليمي وقيم عبر مدونتك أو حساباتك وتوثيق حضورك عبر <a href="https://connecttag.org/blog/google-business-profile-guide">ملف نشاطك التجاري على خرائط جوجل (Google Business Profile)</a>، تبني شركتك الناشئة سلطة معرفية في مجالها. عندما يجد العميل إجابات لتساؤلاته عندك، فإنه يبني ثقة عميقة بعلامتك التجارية، مما يجعل عملية اتخاذ قرار الشراء أسرع وأسهل.</p>
 
@@ -216,6 +281,43 @@
                 <p>التسويق الرقمي لا يعترف بالحدود الجغرافية. يمكنك وأنت في مكتبك الصغير في صنعاء أو عدن أن تستهدف عملاء في الخليج أو حتى في أوروبا بضغطة زر. هذا يفتح أمام الشركات الناشئة آفاقاً للتوسع كانت تتطلب سابقاً سنوات من العمل الميداني والشركاء الدوليين.</p>
 
                 <p><strong>الخلاصة:</strong> التسويق الرقمي ليس مجرد أداة إضافية، بل هو الركيزة الأساسية التي يبنى عليها نجاح الشركات في العصر الحديث. الاستثمار فيه ليس رفاهية، بل هو تأمين لمستقبل مشروعك وضمان لوصوله إلى الجمهور الذي يستحقه. ولتحقيق أقصى استفادة من حملاتك، ننصحك بمراجعة <a href="https://connecttag.org/blog/technical-seo-audit-guide">دليل الفحص التقني الشامل للمواقع (Technical SEO Audit)</a> أو طلب <a href="https://connecttag.org/company/services/digital-marketing">خدمة التسويق الرقمي وإدارة الحملات</a> من فريق "كونكت تاق".</p>
+
+                <div class="dm-comp-wrap">
+                    <h2 id="digital-vs-traditional">مقارنة استراتيجية: التسويق الرقمي الحديث مقابل التسويق التقليدي</h2>
+                    <div class="table-responsive">
+                        <table class="dm-comp-table">
+                            <thead>
+                                <tr>
+                                    <th>وجه المقارنة</th>
+                                    <th class="highlight-col"><i class="fa-solid fa-circle-check"></i> التسويق الرقمي الحديث</th>
+                                    <th><i class="fa-solid fa-newspaper"></i> التسويق التقليدي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>دقة الاستهداف (Targeting Accuracy)</strong></td>
+                                    <td class="highlight-col">دقة جراحية حسب العمر، المدينة، الاهتمامات، والنية الشرائية الفورية</td>
+                                    <td>عشوائي وعام (يعرض الإعلان للجميع دون فرز للمهتمين)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>كفاءة التكلفة (Cost Efficiency)</strong></td>
+                                    <td class="highlight-col">مرنة جداً؛ تبدأ بميزانيات صغيرة مع الدفع مقابل النقرة أو النتيجة الفعلية</td>
+                                    <td>مرتفعة وثابتة (طباعة، لوحات طرقية، إعلانات تلفزيونية مكلفة)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>التحليل اللحظي (Real-Time Analytics)</strong></td>
+                                    <td class="highlight-col">قياس فوري ودقيق لكل مشاهدة، نقرة، ومعدل تحويل مع إمكانية التعديل اللحظي</td>
+                                    <td>صعب القياس للغاية ولا يمكن تعديل الحملة بعد طباعتها أو بثها</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>العائد على الاستثمار (ROI)</strong></td>
+                                    <td class="highlight-col">مرتفع وقابل للتتبع بدقة لكل ريال أُنفق في الحملة</td>
+                                    <td>غير واضح ويصعب ربط المبيعات بمصدر الإعلان المباشر</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>الأسئلة الشائعة</h2>

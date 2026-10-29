@@ -186,6 +186,13 @@ class SiteRelatedPosts extends HTMLElement {
 
     // 2. Global Articles Registry
     const allPosts = [
+            {
+        id: "e-wallet-impersonation-loan-gift-card-scam-guide",
+        title: "احذر فخ «تفعيل القرض والسلفة»: كشف انتحال المحافظ الإلكترونية وخدعة بطاقات الهدايا",
+        link: "blog/e-wallet-impersonation-loan-gift-card-scam-guide",
+        image: "upload/e-wallet-impersonation-scam-guide.webp",
+        excerpt: "لماذا يطلب المحتالون شراء بطاقات هدايا أو إصدار أكواد شراء أونلاين بحجة تفعيل قرض أو سلفة؟ الدليل الأمني الشامل."
+      },
       {
         id: "image-exif-metadata-privacy-risks-guide",
         title: "مخاطر البيانات المخفية في الصور (EXIF Metadata) وطريقة حذفها",
