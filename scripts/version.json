@@ -1,6 +1,6 @@
 {
-  "version": "1.1.39",
-  "cache_version": "v93",
+  "version": "1.1.40",
+  "cache_version": "v94",
   "last_updated": "2026-10-29",
-  "description": "Font Awesome WOFF2 subsetting (~246KB saved), app hero WebP optimization, CSS grid CLS prevention & deduplication, WCAG AA contrast & heading hierarchy compliance"
+  "description": "Fix UTF-8 heading/label encoding, site-checker header contrast, live DOM heading hierarchy, empty img src attributes, WCAG AA contrast, and fake-WebP image re-encoding (~1.37MB saved)"
 }

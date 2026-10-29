@@ -84,14 +84,14 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.40">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.40" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.40" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
 
 <style>
@@ -169,7 +169,7 @@
     }
     .upload-zone:hover, .upload-zone.dragover { border-color: var(--primary-color); background: #f0f7fa; }
     .upload-zone i { font-size: 40px; color: var(--primary-color); margin-bottom: 15px; }
-    .upload-zone h4 { font-weight: 800; }
+    .upload-zone h4, .upload-zone h3 { font-size: 18px; font-weight: 800; }
 
     .image-list { margin-top: 30px; }
     .image-item {
@@ -303,14 +303,14 @@
                     <div class="row">
                         <!-- 1. Formats -->
                         <div class="col-md-4">
-                            <h2 class="sr-only">????? ?????</h2><h3 class="fw-bold mb-2" style="font-size:12px;">نوع المصدر:</h3>
+                            <h2 class="sr-only">إعدادات وأداة تحويل صيغ الصور</h2><h3 class="fw-bold mb-2" style="font-size:12px;">نوع المصدر:</h3>
                             <div class="format-grid" id="sourceGrid">
                                 <div class="format-tile active" onclick="setSourceFilter(this, 'all')">الكل</div>
                                 <div class="format-tile" onclick="setSourceFilter(this, 'png')">PNG</div>
                                 <div class="format-tile" onclick="setSourceFilter(this, 'jpeg')">JPG</div>
                                 <div class="format-tile" onclick="setSourceFilter(this, 'webp')">WebP</div>
                             </div>
-                            <h4 class="fw-bold mb-2" style="font-size:12px;">تنسيق الإخراج:</h4>
+                            <h3 class="fw-bold mb-2" style="font-size:12px;">تنسيق الإخراج:</h3>
                             <div class="format-grid" id="targetGrid">
                                 <div class="format-tile active" onclick="setFormat(this, 'webp')">WebP</div>
                                 <div class="format-tile" onclick="setFormat(this, 'png')">PNG</div>
@@ -321,7 +321,7 @@
 
                         <!-- 2. Resize & Quality -->
                         <div class="col-md-4">
-                            <h5 class="fw-bold mb-2" style="font-size:12px;">الإعدادات الفنية:</h5>
+                            <h3 class="fw-bold mb-2" style="font-size:12px;">الإعدادات الفنية:</h3>
                             <div class="controls">
                                 <div class="quality-box mb-3">
                                     <span class="quality-label">الجودة: <span id="q-val">90%</span></span>
@@ -341,7 +341,7 @@
 
                         <!-- 3. Effects & Watermark -->
                         <div class="col-md-4">
-                            <h6 class="fw-bold mb-2">الفلاتر والعلامة المائية:</h6>
+                            <h3 class="fw-bold mb-2" style="font-size:12px;">الفلاتر والعلامة المائية:</h3>
                             <div class="controls">
                                 <div class="d-flex gap-2 mb-3">
                                     <label class="effect-pill" id="bw-pill">
@@ -361,7 +361,7 @@
 
                     <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
-                        <h4>اسحب وأفلت الصور هنا</h4>
+                        <h3>اسحب وأفلت الصور هنا</h3>
                         <p class="text-muted" id="acceptText">أو اضغط Ctrl+V للصق من الحافظة</p>
                         <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" aria-label="fileInput">
                     </div>

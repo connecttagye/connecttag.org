@@ -622,7 +622,7 @@ class SiteCheckerApp {
 
         const privacyAudit = audits.find(a => a.title === 'سياسة الخصوصية');
         if (privacyAudit && privacyAudit.status === 'fail') {
-            recBox.innerHTML = `<div class="smart-rec-text"><h5 class="fw-bold mb-1"><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> نصيحة ذكية: موقعك يفتقر لسياسة الخصوصية</h5><p class="small text-muted mb-0">محركات البحث وشبكات الإعلانات تعطي أولوية للمواقع التي تحترم خصوصية المستخدم. استخدم أداتنا لتوليد سياسة احترافية مجاناً.</p></div><a href="https://connecttag.org/tools/security/privacy-generator/" class="smart-rec-btn">توليد الآن</a>`;
+            recBox.innerHTML = `<div class="smart-rec-text"><h3 class="h5 fw-bold mb-1"><i class="fa-solid fa-wand-magic-sparkles text-primary"></i> نصيحة ذكية: موقعك يفتقر لسياسة الخصوصية</h3><p class="small text-muted mb-0">محركات البحث وشبكات الإعلانات تعطي أولوية للمواقع التي تحترم خصوصية المستخدم. استخدم أداتنا لتوليد سياسة احترافية مجاناً.</p></div><a href="https://connecttag.org/tools/security/privacy-generator/" class="smart-rec-btn">توليد الآن</a>`;
             recBox.style.display = 'flex';
         } else {
             recBox.style.display = 'none';

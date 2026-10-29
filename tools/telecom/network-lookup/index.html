@@ -84,14 +84,15 @@
   </script>
     <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.40">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.40">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.40">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.40">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"></noscript>
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.40" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.40" defer></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
 
@@ -533,10 +534,11 @@
 
                 <!-- Results Area -->
                 <div id="resultsWrapper" class="mt-5">
+                    <h2 class="sr-only">نتائج البحث عن مشغلي الشبكات</h2>
                     <div id="resultsContent">
                         <div class="empty-state">
                             <i class="fa-solid fa-tower-broadcast animate__animated animate__pulse animate__infinite"></i>
-                            <h2 class="sr-only">????? ?????</h2><h3>جاهز للاستكشاف</h3>
+                            <h3>جاهز للاستكشاف</h3>
                             <p>أدخل بيانات MCC/MNC أو اختر دولة من القائمة لعرض تفاصيل المشغلين والبادئات المخصصة.</p>
                         </div>
                     </div>
@@ -548,25 +550,26 @@
 
     <!-- Info Section -->
     <div class="container py-5">
+        <h2 class="sr-only">معلومات تقنية حول أكواد الشبكات</h2>
         <div class="row g-4 text-center">
             <div class="col-md-4" data-aos="fade-up">
                 <div class="p-4 bg-white rounded-4 border">
                     <i class="fa-solid fa-circle-info text-primary mb-3 fs-2"></i>
-                    <h4 class="fw-bold" style="font-size:14px;">ما هو الـ MCC؟</h4>
+                    <h3 class="fw-bold" style="font-size:14px;">ما هو الـ MCC؟</h3>
                     <p class="small text-muted">رمز مكون من 3 أرقام يحدد الدولة عالمياً (مثلاً: 421 لليمن، 420 للسعودية).</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="p-4 bg-white rounded-4 border">
                     <i class="fa-solid fa-network-wired text-success mb-3 fs-2"></i>
-                    <h5 class="fw-bold">ما هو الـ MNC؟</h5>
+                    <h3 class="fw-bold" style="font-size:14px;">ما هو الـ MNC؟</h3>
                     <p class="small text-muted">رمز يحدد شركة الاتصالات داخل الدولة (مثلاً: 01 ليمن موبايل).</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="p-4 bg-white rounded-4 border">
                     <i class="fa-solid fa-shield-halved text-info mb-3 fs-2"></i>
-                    <h5 class="fw-bold">دقة البيانات</h5>
+                    <h3 class="fw-bold" style="font-size:14px;">دقة البيانات</h3>
                     <p class="small text-muted">يتم تحديث قاعدة البيانات دورياً لضمان شمولية المشغلين والبادئات الهاتفية.</p>
                 </div>
             </div>
@@ -684,17 +687,17 @@
                 if (data.success && data.result && data.result.length > 0) {
                     renderResults(data.result);
                 } else {
-                    resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass-chart"></i><h4>لا توجد نتائج</h4><p>لم نجد مشغلين مطابقين لبحثك. تأكد من صحة الأكواد المدخلة.</p></div>';
+                    resultsContent.innerHTML = '<div class="empty-state"><i class="fa-solid fa-magnifying-glass-chart"></i><h3>لا توجد نتائج</h3><p>لم نجد مشغلين مطابقين لبحثك. تأكد من صحة الأكواد المدخلة.</p></div>';
                 }
             } catch(err) {
                 if (window.turnstile) turnstile.reset();
                 cfToken = '';
-                resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h4>خطأ في الاتصال</h4><p>فشل الوصول للخادم. يرجى المحاولة لاحقاً.</p></div>';
+                resultsContent.innerHTML = '<div class="empty-state text-danger"><i class="fa-solid fa-triangle-exclamation"></i><h3>خطأ في الاتصال</h3><p>فشل الوصول للخادم. يرجى المحاولة لاحقاً.</p></div>';
             }
         }
 
         function renderResults(operators) {
-            resultsContent.innerHTML = `<div class="d-flex align-items-center gap-3 mb-4"><span class="badge bg-primary rounded-pill px-3">${operators.length}</span> <h5 class="fw-bold m-0">مشغلين تم العثور عليهم:</h5></div>`;
+            resultsContent.innerHTML = `<div class="d-flex align-items-center gap-3 mb-4"><span class="badge bg-primary rounded-pill px-3">${operators.length}</span> <h3 class="fw-bold m-0" style="font-size:14px;">مشغلين تم العثور عليهم:</h3></div>`;
 
             operators.forEach((op, index) => {
                 const prefixes = op.prefixes ? op.prefixes.split(',').map(p => p.trim()).filter(Boolean) : [];

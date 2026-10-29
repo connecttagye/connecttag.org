@@ -84,17 +84,17 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/tools/web/site-checker/site-checker.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.40">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.40" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.40" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.39" defer></script>
+<script type="module" src="https://connecttag.org/tools/web/site-checker/site-checker.js?v=1.1.40" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -123,6 +123,7 @@
 </div>
 
 <div class="checker-container">
+    <h2 class="sr-only">أداة فحص وتحليل الموقع</h2>
     <div class="container">
         <!-- Tool Selector -->
         <div class="tool-selector" data-aos="fade-up">
@@ -164,7 +165,7 @@
 
                 <div id="loader" class="loader-wrapper">
                     <div class="spinner"></div>
-                    <h2 class="sr-only">????? ?????</h2><h3 id="loader-text" class="fw-bold" style="font-size:18px;">جاري تحليل البيانات…</h3>
+                    <h3 id="loader-text" class="fw-bold" style="font-size:18px;">جاري تحليل البيانات…</h3>
                 </div>
 
                 <div id="results-dashboard" class="results-dashboard">
@@ -199,7 +200,7 @@
                         <h2 class="section-title"><i class="fa-solid fa-tags"></i> تحليل الكلمات والعبارات الدلالية</h2>
                         <h3 class="fw-bold text-muted small mb-2" style="font-size:12px;">أبرز الكلمات المفتاحية المفردة (مع نسبة الكثافة):</h3>
                         <div id="keyword-results" class="mb-3"></div>
-                        <h4 class="fw-bold text-muted small mb-2" style="font-size:12px;">أبرز العبارات المركبة (ثنائية الكلمات):</h4>
+                        <h3 class="fw-bold text-muted small mb-2" style="font-size:12px;">أبرز العبارات المركبة (ثنائية الكلمات):</h3>
                         <div id="phrase-results" class="mb-4"></div>
 
                         <h2 class="section-title"><i class="fa-solid fa-link"></i> مستكشف الروابط</h2>
@@ -262,7 +263,7 @@
                 </div>
                 <div class="history-card no-print">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4 class="fw-bold mb-0" style="font-size:14px;"><i class="fa-regular fa-clock"></i> السجل الأخير</h4>
+                        <h3 class="fw-bold mb-0" style="font-size:14px;"><i class="fa-regular fa-clock"></i> السجل الأخير</h3>
                         <button type="button" class="btn btn-sm btn-link text-danger text-decoration-none p-0 fw-bold" onclick="window.clearHistory()">مسح</button>
                     </div>
                     <div id="history-list"></div>
@@ -275,7 +276,7 @@
 <div id="fixModal" class="fix-modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h4 id="modalTitle" class="fw-bold mb-3 text-primary">دليل الإصلاح السريع</h4>
+        <h2 id="modalTitle" class="h4 fw-bold mb-3 text-primary">دليل الإصلاح السريع</h2>
         <p id="modalDesc" class="text-muted mb-3"></p>
         <div class="snippet-box" id="modalSnippet"></div>
         <button type="button" class="btn-analyze w-100 mt-4 h-50px" onclick="copySnippet()"><i class="fa-regular fa-copy"></i> نسخ الكود البرمجي</button>

@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="resource-info">
                             <span class="resource-icon"><i class="${getResourceIcon(res)}"></i></span>
                             <div class="resource-meta">
-                                <h4>${esc(res.title)}</h4>
+                                <h3>${esc(res.title)}</h3>
                                 <p>${esc(subText)}</p>
                             </div>
                         </div>
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                      height="60"
                                      onerror="this.onerror=null;this.src='${esc(logoBackup)}';">
                                 <div class="provider-title-wrap">
-                                    <h4>${esc(org.name)}${verifiedIcon}</h4>
+                                    <h3>${esc(org.name)}${verifiedIcon}</h3>
                                     <span class="provider-role-badge">${esc(roleBadge)}</span>
                                 </div>
                             </div>
@@ -716,7 +716,7 @@ document.addEventListener('DOMContentLoaded', function() {
                              width="160"
                              height="110"
                              onerror="this.onerror=null;this.src='${esc(backupImg)}';">
-                        <h5>${esc(name)}</h5>
+                        <h3>${esc(name)}</h3>
                         <small class="text-muted">${esc(relLabel)}</small>
                     </a>
                 </div>

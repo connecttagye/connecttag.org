@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="col-12" style="grid-column: 1 / -1;">
                     <div class="empty-state">
                         <i class="fa-solid fa-box-open fa-3x"></i>
-                        <h4>لا توجد باقات متوفرة حالياً</h4>
+                        <h3>لا توجد باقات متوفرة حالياً</h3>
                         <p class="text-muted">لم يتم العثور على أي باقات مطابقة لعملية البحث.</p>
                     </div>
                 </div>

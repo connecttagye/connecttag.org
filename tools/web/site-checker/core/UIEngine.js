@@ -98,12 +98,12 @@ export default class UIEngine {
                     ${meta.favicon ? `<img src="${escapeHtml(meta.favicon)}" width="32" height="32" alt="favicon">` : '<i class="fa-solid fa-globe text-primary"></i>'}
                 </div>
                 <div class="flex-grow-1">
-                    <h4 class="mb-1 fw-900 text-dark d-flex align-items-center flex-wrap gap-2">
+                    <h2 class="h4 mb-1 fw-900 text-dark d-flex align-items-center flex-wrap gap-2">
                         <span>${safeTitle}</span>
                         <span class="badge badge-primary-soft px-3 py-2" style="font-size: 11px; border-radius: 8px;">
                             <i class="fa-solid fa-layer-group"></i> ${safeCms}
                         </span>
-                    </h4>
+                    </h2>
                     <span class="text-muted small ltr-text">${safeUrl}</span>
                 </div>
                 <div class="d-flex align-items-center gap-2 flex-wrap">
@@ -194,7 +194,7 @@ export default class UIEngine {
         `;
 
         card.innerHTML = `
-            <h5 class="fw-900 text-dark mb-4 px-2"><i class="fa-regular fa-file-lines text-primary"></i> الصفحات الأساسية للموثوقية</h5>
+            <h3 class="h5 fw-900 text-dark mb-4 px-2"><i class="fa-regular fa-file-lines text-primary"></i> الصفحات الأساسية للموثوقية</h3>
             <div class="d-grid gap-2" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
                 ${renderItem(pages.privacy, 'سياسة الخصوصية', 'fa-shield-halved')}
                 ${renderItem(pages.about, 'حول الموقع / من نحن', 'fa-circle-info')}
@@ -234,7 +234,7 @@ export default class UIEngine {
             <h2 class="section-title"><i class="fa-solid fa-share-nodes"></i> محاكي المعاينة الاجتماعية</h2>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <h6 class="fw-bold mb-3"><i class="fa-brands fa-facebook text-primary"></i> فيسبوك</h6>
+                    <h3 class="h6 fw-bold mb-3"><i class="fa-brands fa-facebook text-primary"></i> فيسبوك</h3>
                     <div class="social-card-fb">
                         <div class="fb-img-box" style="${safeImg ? `background-image: url('${safeImg}')` : ''}">
                             ${!safeImg ? '<i class="fa-regular fa-image text-muted fa-2x"></i>' : ''}
@@ -247,7 +247,7 @@ export default class UIEngine {
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h6 class="fw-bold mb-3"><i class="fa-brands fa-x-twitter text-dark"></i> منصة X (تويتر)</h6>
+                    <h3 class="h6 fw-bold mb-3"><i class="fa-brands fa-x-twitter text-dark"></i> منصة X (تويتر)</h3>
                     <div class="social-card-tw">
                         <div class="tw-img-box" style="${safeImg ? `background-image: url('${safeImg}')` : ''}">
                             ${!safeImg ? '<i class="fa-regular fa-image text-muted fa-2x"></i>' : ''}

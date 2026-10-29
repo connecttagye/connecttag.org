@@ -298,7 +298,7 @@ a:hover, a:focus {
    ========================================================================== */
 
 #headerwrap {
-	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp?v=1.1.39') no-repeat center center;
+	background: linear-gradient(135deg, rgba(10, 17, 40, 0.35) 0%, rgba(10, 17, 40, 0.6) 100%), url('../img/connect-tag-globe-offset.webp?v=1.1.40') no-repeat center center;
 	margin-top: -50px;
 	padding-top: 180px;
 	min-height: 750px;
@@ -984,4 +984,4 @@ a:hover, a:focus {
 #headerwrap .animated {
   animation-name: fadeIn !important; /* Force fade only, no slide */
 }
-
+.text-muted{color:#475569 !important}.btn-link{color:#0052cc}

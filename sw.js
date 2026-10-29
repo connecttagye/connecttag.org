@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v93';
+const CACHE_NAME = 'connecttag-cache-v94';
 const OFFLINE_URL = 'https://connecttag.org/offline';
 
 const ASSETS_TO_CACHE = [
@@ -9,12 +9,12 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.webp',
   'https://connecttag.org/icon-512.webp',
-  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.39',
-  'https://connecttag.org/assets/css/components.min.css?v=1.1.39',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.39',
-  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39',
+  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.40',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.40',
+  'https://connecttag.org/assets/css/components.min.css?v=1.1.40',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.40',
+  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.40',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.40',
   'https://connecttag.org/assets/fonts/cairo-arabic.woff2',
   'https://connecttag.org/assets/fonts/cairo-latin.woff2',
   'https://connecttag.org/assets/fonts/fa-solid-900.woff2',

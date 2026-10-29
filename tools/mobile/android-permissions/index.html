@@ -84,11 +84,11 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.39">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.39">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.40">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.40">
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
@@ -130,8 +130,8 @@
     }
 </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.39" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.39" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.40" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.40" defer></script>
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <!-- Google Consent Mode v2 (Default State before AdSense) -->
   <script>
@@ -191,6 +191,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="tool-card-base" style="max-width: 100%;">
+                        <h2 class="sr-only">فئات صلاحيات أندرويد والكود المولد</h2>
                         <div id="permissions-container">
                             <!-- Categories will be injected here -->
                         </div>
@@ -199,7 +200,7 @@
                 <div class="col-lg-5">
                     <div class="sticky-box">
                         <div class="tool-card-base text-right" style="max-width: 100%;">
-                            <h2 class="sr-only">????? ?????</h2><h3 style="font-size:18px;font-weight: 800; margin-bottom: 20px;">الكود المولد:</h3>
+                            <h3 style="font-size:18px;font-weight: 800; margin-bottom: 20px;">الكود المولد:</h3>
                             <div class="code-box" id="result-code">
                                 <button class="btn-copy" onclick="copyCode()"><i class="fa-solid fa-copy"></i> نسخ الكود</button>
                                 <pre id="xml-output"><!-- اختر الصلاحيات ليظهر الكود هنا --></pre>
@@ -313,7 +314,7 @@
         const container = document.getElementById('permissions-container');
         permissionsData.forEach(cat => {
             const catDiv = document.createElement('div');
-            catDiv.innerHTML = `<h5 class="category-title">${cat.category}</h5>`;
+            catDiv.innerHTML = `<h3 class="category-title">${cat.category}</h3>`;
             const grid = document.createElement('div');
             grid.className = 'row';
 
