@@ -50,7 +50,9 @@ class SiteShareButtons extends HTMLElement {
 if (!customElements.get('site-share-buttons')) {
 if (!customElements.get('site-share-buttons')) {if (!customElements.get('site-share-buttons')) {
 if (!customElements.get('site-share-buttons')) {
+if (!customElements.get('site-share-buttons')) {
   customElements.define('site-share-buttons', SiteShareButtons);
+}
 }
 }
 }

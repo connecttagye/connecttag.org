@@ -28,7 +28,9 @@ class SiteArticleCard extends HTMLElement {
 if (!customElements.get('site-article-card')) {
 if (!customElements.get('site-article-card')) {if (!customElements.get('site-article-card')) {
 if (!customElements.get('site-article-card')) {
+if (!customElements.get('site-article-card')) {
   customElements.define('site-article-card', SiteArticleCard);
+}
 }
 }
 }
@@ -82,7 +84,9 @@ class SiteArticleMeta extends HTMLElement {
 }if (!customElements.get('site-article-meta')) {
 if (!customElements.get('site-article-meta')) {
 if (!customElements.get('site-article-meta')) {
+if (!customElements.get('site-article-meta')) {
   customElements.define('site-article-meta', SiteArticleMeta);
+}
 }
 }
 }
@@ -121,7 +125,9 @@ if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
+if (!customElements.get('site-author-box')) {
   customElements.define('site-author-box', SiteAuthorBox);
+}
 }
 }
 }
@@ -181,7 +187,9 @@ class SiteShareButtons extends HTMLElement {
 if (!customElements.get('site-share-buttons')) {
 if (!customElements.get('site-share-buttons')) {if (!customElements.get('site-share-buttons')) {
 if (!customElements.get('site-share-buttons')) {
+if (!customElements.get('site-share-buttons')) {
   customElements.define('site-share-buttons', SiteShareButtons);
+}
 }
 }
 }
@@ -387,7 +395,9 @@ class SiteRelatedPosts extends HTMLElement {
 if (!customElements.get('site-related-posts')) {
 if (!customElements.get('site-related-posts')) {
 if (!customElements.get('site-related-posts')) {
+if (!customElements.get('site-related-posts')) {
   customElements.define('site-related-posts', SiteRelatedPosts);
+}
 }
 }
 }

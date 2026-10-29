@@ -62,7 +62,9 @@ class SiteCodeBlock extends HTMLElement {
 }
 if (!customElements.get('site-code-block')) {if (!customElements.get('site-code-block')) {
 if (!customElements.get('site-code-block')) {
+if (!customElements.get('site-code-block')) {
   customElements.define('site-code-block', SiteCodeBlock);
+}
 }
 }
 }

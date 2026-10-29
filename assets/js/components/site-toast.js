@@ -99,7 +99,9 @@ class SiteToast extends HTMLElement {
 }if (!customElements.get('site-toast')) {
 if (!customElements.get('site-toast')) {
 if (!customElements.get('site-toast')) {
+if (!customElements.get('site-toast')) {
   customElements.define('site-toast', SiteToast);
+}
 }
 }
 }

@@ -407,6 +407,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function getRelatedModems(catalog, currentModem) {
+        if (!Array.isArray(catalog) || !currentModem) return [];
+        const linkedIds = new Set(
+            (currentModem.relatedLinks || []).map(l => String(l.targetId))
+        );
+        const currentOrgIds = new Set(
+            (currentModem.providers || []).map(p => String(p.orgId))
+        );
+
+        const others = catalog.filter(item => item.slug !== currentModem.slug && String(item.id) !== String(currentModem.id));
+        const scored = others.map(item => {
+            let score = 0;
+            if (linkedIds.has(String(item.id))) score += 100;
+            if (Array.isArray(item.providers) && item.providers.some(p => currentOrgIds.has(String(p.orgId)))) score += 4;
+            if (item.brand && item.brand === currentModem.brand) score += 3;
+            if (item.category === currentModem.category) score += 2;
+            if (item.isNew) score += 1;
+            return { item, score };
+        }).sort((a, b) => b.score - a.score);
+
+        return scored.slice(0, 4).map(entry => entry.item);
+    }
+
     function updateSEOAndMeta(m, catalog) {
         const displayName = ModemApp.formatDisplayName(m);
         const pageTitle = `${displayName} - المواصفات وإعدادات الدخول | كونكت تاق`;
@@ -449,19 +472,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }))
             : [];
 
-        const isSimilarTo = [];
-        if (Array.isArray(m.relatedLinks) && Array.isArray(catalog)) {
-            m.relatedLinks.forEach(link => {
-                const target = catalog.find(it => String(it.id) === String(link.targetId));
-                if (target) {
-                    isSimilarTo.push({
-                        "@type": "Product",
-                        "name": ModemApp.formatDisplayName(target),
-                        "url": `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(target.slug)}`
-                    });
-                }
-            });
-        }
+        const relatedModems = getRelatedModems(catalog, m);
+        const isSimilarTo = relatedModems.map(target => ({
+            "@type": "Product",
+            "name": ModemApp.formatDisplayName(target),
+            "url": `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(target.slug)}`
+        }));
 
         const schemaData = {
             "@context": "https://schema.org/",
@@ -516,21 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('related-items-container');
         if (!container) return;
 
-        const linkedIds = new Set(
-            (currentModem.relatedLinks || []).map(l => String(l.targetId))
-        );
-
-        const others = catalog.filter(item => item.slug !== currentModem.slug && String(item.id) !== String(currentModem.id));
-        const scored = others.map(item => {
-            let score = 0;
-            if (linkedIds.has(String(item.id))) score += 100;
-            if (item.category === currentModem.category) score += 2;
-            if (item.brand && item.brand === currentModem.brand) score += 3;
-            if (item.isNew) score += 1;
-            return { item, score };
-        }).sort((a, b) => b.score - a.score);
-
-        const sample = scored.slice(0, 4).map(entry => entry.item);
+        const sample = getRelatedModems(catalog, currentModem);
         container.innerHTML = sample.map(item => {
             const name = ModemApp.formatDisplayName(item);
             const primaryImg = item.image?.content || 'https://connecttag.org/assets/img/about/connect-tag-it-company.webp';

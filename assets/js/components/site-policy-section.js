@@ -9,7 +9,9 @@ class SitePolicySection extends HTMLElement {
 }if (!customElements.get('site-policy-section')) {
 if (!customElements.get('site-policy-section')) {
 if (!customElements.get('site-policy-section')) {
+if (!customElements.get('site-policy-section')) {
   customElements.define('site-policy-section', SitePolicySection);
+}
 }
 }
 }

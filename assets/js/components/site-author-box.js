@@ -30,7 +30,9 @@ if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
 if (!customElements.get('site-author-box')) {
+if (!customElements.get('site-author-box')) {
   customElements.define('site-author-box', SiteAuthorBox);
+}
 }
 }
 }
