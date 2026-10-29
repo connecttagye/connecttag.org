@@ -14,7 +14,14 @@ class SiteRelatedPosts extends HTMLElement {
 
     // 2. Global Articles Registry
     const allPosts = [
-            {
+                  {
+        id: "caller-id-apps-privacy-risks-security-guide",
+        title: "كيف تعرف كواشف الأرقام اسمك حتى لو لم تثبّتها؟ الدليل الأمني الشامل",
+        link: "blog/caller-id-apps-privacy-risks-security-guide",
+        image: "upload/caller-id-privacy-risks-guide.webp",
+        excerpt: "التشريح التقني لآلية الحصاد الجماعي لجهات الاتصال في كواشف الأرقام وبوتات تيليجرام، ومخاطر النسخ المعدلة، وخطوات حماية خصوصيتك."
+      },
+      {
         id: "e-wallet-impersonation-loan-gift-card-scam-guide",
         title: "احذر فخ «تفعيل القرض والسلفة»: كشف انتحال المحافظ الإلكترونية وخدعة بطاقات الهدايا",
         link: "blog/e-wallet-impersonation-loan-gift-card-scam-guide",
