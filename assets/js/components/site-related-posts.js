@@ -15,6 +15,34 @@ class SiteRelatedPosts extends HTMLElement {
     // 2. Global Articles Registry
     const allPosts = [
       {
+        id: "technical-seo-audit-guide",
+        title: "الفحص التقني الشامل للمواقع (Technical SEO Audit)",
+        link: "blog/technical-seo-audit-guide",
+        image: "upload/technical-seo-audit-guide.webp",
+        excerpt: "اكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج بحث جوجل."
+      },
+      {
+        id: "kmp-data-management-room-datastore",
+        title: "إتقان إدارة البيانات في KMP: Room و DataStore",
+        link: "blog/kmp-data-management-room-datastore",
+        image: "upload/kmp-data-encryption.webp",
+        excerpt: "دليل تطبيقي شامل لاستخدام مكتبات Room KMP و DataStore الرسمية لتخزين البيانات وتأمينها."
+      },
+      {
+        id: "kmp-vs-flutter-comparison",
+        title: "KMP vs Flutter: أيهما تختار لمشروعك القادم؟",
+        link: "blog/kmp-vs-flutter-comparison",
+        image: "upload/kmp-vs-flutter.webp",
+        excerpt: "مقارنة تقنية شاملة تساعدك على الاختيار بين أداء Kotlin Multiplatform الأصيل وسرعة تطوير Flutter."
+      },
+      {
+        id: "iis-hardening-guide",
+        title: "دليل تأمين خادم IIS ضد الهجمات السيبرانية",
+        link: "blog/iis-hardening-guide",
+        image: "upload/iis-hardening-guide.webp",
+        excerpt: "تعلم كيفية إغلاق الثغرات الأمنية في IIS وتعطيل بروتوكولات التشفير القديمة ومنع التجسس."
+      },
+      {
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الفحص التقني الشامل للمواقع (Technical SEO Audit): دليلك لتصدر نتائج البحث - كونكت تاق</title>
+<meta name="description" content="دليل عملي شامل لإجراء الفحص التقني للمواقع (Technical SEO Audit): اكتشف الأخطاء البرمجية، مشاكل الأداء، وهيكلية الأكواد التي تمنع موقعك من تصدر نتائج بحث جوجل.">
+<link rel="canonical" href="https://connecttag.org/blog/technical-seo-audit-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:url" content="https://connecttag.org/blog/technical-seo-audit-guide" />
+<meta property="og:type" content="article">
+<meta property="og:title" content="الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء التي تمنع تصدرك؟">
+<meta property="og:description" content="تعرف على خطوات التدقيق التقني لموقعك، من فحص وسوم الميتا وهيكلية العناوين إلى تحسين الأداء والأمان باستخدام أداة فاحص الموقع." />
+<meta property="og:image" content="https://connecttag.org/upload/technical-seo-audit-guide.webp">
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:url" content="https://connecttag.org/blog/technical-seo-audit-guide" />
+<meta name="twitter:title" content="الفحص التقني الشامل للمواقع (Technical SEO Audit) - كونكت تاق">
+<meta name="twitter:description" content="دليل عملي لاكتشاف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج البحث." />
+<meta name="twitter:image" content="https://connecttag.org/upload/technical-seo-audit-guide.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج البحث؟",
+    "description": "دليل عملي شامل لإجراء الفحص التقني للمواقع (Technical SEO Audit) واكتشاف الأخطاء البرمجية ومشاكل الأداء وهيكلية الأكواد التي تعيق الأرشفة وتصدر نتائج البحث.",
+    "image": "https://connecttag.org/upload/technical-seo-audit-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-10-29T15:00:00+03:00",
+    "dateModified": "2026-10-29T15:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/technical-seo-audit-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين السيو التقني (Technical SEO) والسيو الداخلي (On-Page SEO)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يركز السيو الداخلي على جودة المحتوى وتوزيع الكلمات المفتاحية وعناوين المقالات، بينما يركز السيو التقني على البنية التحتية للموقع، سرعة التحميل، سلامة كود HTML الدلالي، الأمان HTTPS، وقابلية زحف وفهرسة الصفحات بواسطة عناكب محركات البحث."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كم مرة يجب إجراء فحص تقني شامل (Technical SEO Audit) للموقع؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يُنصح بإجراء فحص تقني دوري مرة واحدة شهرياً على الأقل، بالإضافة إلى فحص فوري بعد أي تحديث برمجي كبير أو تغيير في تصميم القالب أو نقل الاستضافة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أختبر كود صفحة جديدة قبل نشرها على الموقع؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمكنك استخدام وضع فحص الكود (HTML Mode) في منصة تحليل المواقع من كونكت تاق، حيث تتيح لك لصق كود HTML مباشرة لتحليل وسوم الميتا، تسلسل العناوين، والروابط قبل رفع الصفحة على الخادم."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<style>
+    .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 22px 25px; border-radius: 14px; margin: 30px 0; }
+    .toc-title { font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #0f172a; font-size: 17px; }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 10px; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; font-weight: 600; transition: color 0.2s; }
+    .toc-list a:hover { color: #0052cc; text-decoration: underline; }
+
+    .audit-step { border-right: 5px solid #0077b6; background: #ffffff; padding: 25px; border-radius: 12px; margin: 25px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border-top: 1px solid #f1f5f9; border-left: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; }
+    .audit-step h3 { margin-top: 0; color: #0052cc; font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+
+    .tech-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 5px 14px; border-radius: 50px; font-size: 12.5px; font-weight: 700; margin-bottom: 15px; }
+
+    .info-box { border-right: 5px solid #0284c7; background: #f0f9ff; padding: 20px; border-radius: 10px; margin: 25px 0; font-size: 14.5px; color: #0f172a; }
+    .warning-box { border-right: 5px solid #f59e0b; background: #fffbeb; padding: 20px; border-radius: 10px; margin: 25px 0; font-size: 14.5px; color: #78350f; }
+    .security-card { background: #f8fafc; border-right: 5px solid #10b981; padding: 25px; margin: 30px 0; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+    .security-card h3 { margin-top: 0; color: #047857; font-size: 19px; font-weight: 800; }
+
+    .tool-cta-box {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        color: #ffffff;
+        padding: 35px 30px;
+        border-radius: 20px;
+        margin: 40px 0;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 82, 204, 0.2);
+    }
+    .tool-cta-box h3 { color: #ffffff; font-weight: 800; margin-top: 0; margin-bottom: 12px; font-size: 22px; }
+    .tool-cta-box p { color: #e2e8f0; font-size: 15.5px; margin-bottom: 22px; line-height: 1.7; }
+    .tool-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #00b4d8;
+        color: #ffffff !important;
+        font-weight: 800;
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+        margin: 5px;
+    }
+    .tool-cta-btn:hover { background: #0096c7; transform: translateY(-2px); }
+    .tool-cta-btn.secondary { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); }
+    .tool-cta-btn.secondary:hover { background: rgba(255,255,255,0.22); }
+
+    .metrics-table { width: 100%; border-collapse: collapse; margin: 25px 0; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+    .metrics-table th { background: #0052cc; color: #fff; padding: 14px 16px; text-align: right; font-weight: 700; }
+    .metrics-table td { padding: 13px 16px; border-bottom: 1px solid #f1f5f9; font-size: 14.5px; }
+    .metrics-table tr:last-child td { border-bottom: none; }
+
+    code { background: #f1f5f9; color: #e11d48; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+</style>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#0052cc">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
+     crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<div class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"الفحص التقني الشامل للمواقع", "url":"https://connecttag.org/blog/technical-seo-audit-guide"}]'></site-breadcrumb>
+
+                <div class="tech-badge"><i class="fa-solid fa-magnifying-glass-chart"></i> تسويق وأعمال · Technical SEO</div>
+                <h1>الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج البحث؟</h1>
+
+                <site-article-meta
+                  date="29 أكتوبر 2026"
+                  updated="29 أكتوبر 2026"
+                  hide-author="true"
+                ></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp" class="img-responsive" alt="الفحص التقني الشامل للمواقع Technical SEO Audit" loading="lazy" style="border-radius: 15px;">
+
+                <p class="lead mt-4">قد تنفق الكثير من الوقت والمال في كتابة مقالات احترافية وتصميم واجهات جذابة، لكنك تتفاجأ بأن موقعك لا يظهر في الصفحات الأولى لمحرك البحث جوجل. السبب في أغلب الأحيان لا يكمن في جودة المحتوى نفسه، بل في <strong>أخطاء تقنية صامتة</strong> داخل الكود المصدري أو إعدادات الخادم تمنع عناكب البحث (Search Crawlers) من فهم صفحاتك أو أرشفتها بكفاءة. هنا تبرز أهمية <strong>الفحص التقني الشامل للموقع (Technical SEO Audit)</strong>.</p>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محاور الدليل التطبيقي:</div>
+                    <ul class="toc-list">
+                        <li><a href="#what-is-technical-seo">1. لماذا يُعد السيو التقني حجر الأساس لتصدر نتائج البحث؟</a></li>
+                        <li><a href="#meta-and-headings">2. تدقيق وسوم الميتا وهيكلية العناوين (Title, Meta & Headings)</a></li>
+                        <li><a href="#semantic-html-schema">3. بنية HTML الدلالية والبيانات المنظمة (Semantic HTML & Schema)</a></li>
+                        <li><a href="#performance-resources">4. هندسة الأداء واستهلاك الموارد والصور</a></li>
+                        <li><a href="#links-and-security">5. صحة الروابط وبروتوكولات الأمان والتحويل (HTTPS & Security Headers)</a></li>
+                        <li><a href="#site-checker-guide">6. تطبيق عملي: كيف تفحص موقعك مجاناً عبر منصة تحليل المواقع؟</a></li>
+                        <li><a href="#audit-checklist">7. قائمة التدقيق النهائية والأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+
+                <h2 id="what-is-technical-seo">1. لماذا يُعد السيو التقني حجر الأساس لتصدر نتائج البحث؟</h2>
+                <p>إذا شبهنا موقعك الإلكتروني بمبنى تجاري فاخر، فإن المحتوى والتصميم هما الديكور الداخلي والمنتجات المعروضة، بينما <strong>السيو التقني (Technical SEO)</strong> هو الأساسات الهندسية والمصاعد والمداخل. إذا كانت الأبواب مغلقة أو المصاعد معطلة، فلن يتمكن الزوار — ولا عناكب محركات البحث مثل <code>Googlebot</code> — من الوصول إلى قاعات العرض مهما كانت بضاعتك ممتازة.</p>
+                <p>تعتمد خوارزميات البحث الحديثة على 3 مراحل متتالية للتعامل مع أي صفحة ويب:</p>
+                <ul>
+                    <li><strong>الزحف (Crawling):</strong> اكتشاف الروابط والوصول إلى ملفات HTML و CSS و JavaScript دون عوائق أو روابط ميتة.</li>
+                    <li><strong>الفهرسة والتصيير (Rendering & Indexing):</strong> قراءة الوسوم الدلالية، تحليل هيكلية العناوين، وفهم موضوع الصفحة عبر البيانات المنظمة.</li>
+                    <li><strong>الترتيب والتصنيف (Ranking):</strong> مفاضلة موقعك مقارنةً بالمنافسين بناءً على سرعة الاستجابة، التشفير الأمني، وتجربة المستخدم على الجوال.</li>
+                </ul>
+
+                <h2 id="meta-and-headings">2. تدقيق وسوم الميتا وهيكلية العناوين (Title, Meta & Headings)</h2>
+                <p>أول ما تقرؤه عناكب البحث عند دخول أي صفحة هو منطقة الترويسة <code>&lt;head&gt;</code> يليه التسلسل الهرمي للعناوين داخل <code>&lt;body&gt;</code>. أي خلل في هذه العناصر ينعكس فوراً على نسبة النقر إلى الظهور (CTR) في نتائج البحث:</p>
+
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>العنصر التقني</th>
+                            <th>المعيار المثالي</th>
+                            <th>الأثر عند الإهمال أو الخطأ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>عنوان الصفحة <code>&lt;title&gt;</code></strong></td>
+                            <td>بين <strong>30 إلى 60 حرفاً</strong></td>
+                            <td>إذا تجاوز 60 حرفاً يتم بتره في نتائج جوجل، وإذا كان مفقوداً تفقد الصفحة أهم إشارة ترتيب.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>الوصف التعريفي <code>meta description</code></strong></td>
+                            <td>بين <strong>120 إلى 160 حرفاً</strong></td>
+                            <td>عند غيابه يقتطع جوجل نصاً عشوائياً من الصفحة قد لا يجذب القارئ للنقر.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>العنوان الرئيسي <code>&lt;h1&gt;</code></strong></td>
+                            <td>وسم <strong>واحد فقط</strong> في كل صفحة</td>
+                            <td>تعدد وسوم H1 أو غيابها يشتت محرك البحث حول الموضوع الأساسي للصفحة.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>تسلسل العناوين الفرعية</strong></td>
+                            <td>تدرج منطقي (<code>H1 → H2 → H3</code>)</td>
+                            <td>القفز المباشر من <code>H1</code> إلى <code>H4</code> يكسر الهيكل الدلالي للمستند.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="warning-box">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>انتبه لفجوة الكلمات المفتاحية (Keyword Gap):</strong> من الأخطاء الشائعة كتابة كلمات مفتاحية قوية في وسم <code>&lt;title&gt;</code> والوصف التعريفي، ثم إهمال ذكرها داخل متن المقال وعناوينه الفرعية. تحرص أدوات التدقيق المتقدمة على مطابقة كلمات الميتا مع محتوى الصفحة الفعلي لضمان التوافق الدلالي.
+                </div>
+
+                <h2 id="semantic-html-schema">3. بنية HTML الدلالية والبيانات المنظمة (Semantic HTML & Schema)</h2>
+                <p>في المواقع القديمة، كان المبرمجون يبنون كامل الصفحة باستخدام وسوم <code>&lt;div&gt;</code> فقط. أما اليوم، فإن معايير الويب الحديثة تشترط استخدام <strong>الوسوم الدلالية (Semantic HTML5)</strong> مثل <code>&lt;header&gt;</code>، <code>&lt;nav&gt;</code>، <code>&lt;main&gt;</code>، <code>&lt;article&gt;</code>، <code>&lt;section&gt;</code>، و<code>&lt;footer&gt;</code>. هذه الوسوم تخبر محرك البحث بدقة أين يبدأ المحتوى الرئيسي وأين تقع القوائم الجانبية أو التذييل.</p>
+
+                <div class="audit-step">
+                    <h3>الربط المرجعي (Canonical) ووسوم المشاركة الاجتماعية (OpenGraph):</h3>
+                    <p>لتجنب مشكلة <strong>المحتوى المكرر (Duplicate Content)</strong> عندما يكون الموقع متاحاً عبر أكثر من صيغة رابط (مثل وجود معاملات تتبع <code>?ref=</code>)، يجب تضمين وسم <code>rel="canonical"</code> مع وسوم <code>OpenGraph</code> في ترويسة كل صفحة:</p>
+                    <site-code-block language="html" title="النموذج القياسي لترويسة الصفحة (SEO Head Template)">
+&lt;!-- تحديد الرابط الأصلي المعتمد لمنع تكرار المحتوى --&gt;
+&lt;link rel="canonical" href="https://example.com/blog/technical-seo-guide" /&gt;
+
+&lt;!-- وسوم OpenGraph لضمان ظهور احترافي عند المشاركة في المنصات الاجتماعية --&gt;
+&lt;meta property="og:type" content="article" /&gt;
+&lt;meta property="og:title" content="عنوان المقال المتوافق مع محركات البحث" /&gt;
+&lt;meta property="og:description" content="وصف جذاب ومختصر يتراوح بين 120 و 160 حرفاً." /&gt;
+&lt;meta property="og:image" content="https://example.com/upload/cover.webp" /&gt;
+                    </site-code-block>
+                </div>
+
+                <h2 id="performance-resources">4. هندسة الأداء واستهلاك الموارد والصور</h2>
+                <p>سرعة الموقع لم تعد مجرد ميزة إضافية، بل هي عامل تصنيف مباشر في جوجل عبر مؤشرات <strong>Core Web Vitals</strong>. خلال الفحص التقني، يجب التركيز على ثلاثة محاور رئيسية للأداء:</p>
+                <ol>
+                    <li><strong>خريطة استهلاك الموارد (Resource Map):</strong> كثرة استدعاء ملفات JavaScript و CSS من خوادم خارجية متعددة تؤدي إلى تأخير عرض الصفحة (Render-Blocking). احرص على تقليل عدد الملفات، واستخدام خاصية <code>defer</code> مع ملفات السكربت غير الحرجة.</li>
+                    <li><strong>تحسين الصور والوسائط:</strong> الصور غير المضغوطة بصيغ تقليدية مثل PNG و JPG تبطئ تحميل الصفحة بشكل كبير. الحل الأمثل هو تحويلها إلى صيغة <strong>WebP</strong> الحديثة (يمكنك استخدام <a href="https://connecttag.org/tools/design/image-converter/">أداة محول صيغ الصور وضغطها</a> مجاناً)، مع تفعيل التحميل الكسول <code>loading="lazy"</code>.</li>
+                    <li><strong>النصوص البديلة للصور (Image Alt Attributes):</strong> محركات البحث لا "ترى" الصور كما نراها، بل تعتمد على خاصية <code>alt</code> لفهم محتوى الصورة وأرشفتها في بحث الصور، فضلاً عن أهميتها الجوهرية لمعايير سهولة الوصول (Accessibility).</li>
+                </ol>
+
+                <h2 id="links-and-security">5. صحة الروابط وبروتوكولات الأمان والتحويل (HTTPS & Security Headers)</h2>
+                <p>لا يكتمل الفحص التقني للـ SEO دون فحص البنية الأمنية وسلامة الروابط؛ فالمواقع غير الآمنة أو المليئة بالروابط المعطوبة تتراجع تلقائياً في نتائج البحث:</p>
+                <ul>
+                    <li><strong>تجنب الروابط الوهمية والمكسورة:</strong> ترك روابط فارغة مثل <code>href="#"</code> أو <code>href="javascript:void(0)"</code> بدلاً من الأزرار الحقيقية <code>&lt;button&gt;</code> يربك عناكب الزحف ويستنزف ميزانية الزحف (Crawl Budget) الخاصة بموقعك.</li>
+                    <li><strong>إجبار التشفير وتوحيد التحويل (HTTPS & WWW Consistency):</strong> يجب أن يعمل الموقع بالكامل عبر شهادة <code>SSL/HTTPS</code>، مع إعداد تحويل دائم (<code>301 Redirect</code>) من HTTP إلى HTTPS، وتوحيد عمل النطاق إما بوجود <code>www</code> أو بدونها لمنع انقسام قوة الأرشفة بين نسختين.</li>
+                    <li><strong>رؤوس الحماية الأمنية (HTTP Security Headers):</strong> تفعيل رؤوس مثل <code>Content-Security-Policy</code> و<code>X-Frame-Options</code> و<code>Strict-Transport-Security</code> يحمي زوارك من هجمات حقن الأكواد (XSS) والاختطاف البصري (Clickjacking)، ويعزز درجة الموثوقية الرقمية للموقع.</li>
+                    <li><strong>صفحة سياسة الخصوصية:</strong> وجود رابط واضح لصفحة سياسة الخصوصية وشروط الاستخدام يُعد متطلباً أساسياً للثقة والامتثال في محركات البحث والشبكات الإعلانية مثل Google AdSense.</li>
+                </ul>
+
+                <h2 id="site-checker-guide">6. تطبيق عملي: كيف تفحص موقعك مجاناً عبر منصة تحليل المواقع؟</h2>
+                <p>بدلاً من فحص الكود المصدري يدوياً سطراً بسطر، طورنا في <strong>كونكت تاق</strong> أداة متكاملة تجمع بين تدقيق السيو، تحليل جودة المحتوى، وفحص الموثوقية والأمان في لوحة تحكم واحدة.</p>
+
+                <div class="audit-step">
+                    <h3>مميزات منصة تحليل المواقع الاحترافية (Site Checker):</h3>
+                    <ul>
+                        <li><strong>وضعان مرنان للفحص:</strong> يمكنك إدخال <strong>رابط الموقع (URL)</strong> لفحص أي صفحة منشورة، أو التبديل إلى <strong>وضع فحص الكود (HTML)</strong> للصق كود صفحتك واختبارها قبل رفعها على الخادم.</li>
+                        <li><strong>محاكي نتائج بحث جوجل (Google SERP Simulator):</strong> يعرض لك معاينة حية لشكل عنوانك ووصفك ورابطك كما سيظهر تماماً للمستخدمين في صفحة نتائج جوجل، مع عداد دقيق للأحرف.</li>
+                        <li><strong>تحليل الكلمات المفتاحية وفجوة المحتوى:</strong> يستخرج الكلمات المفردة والعبارات المركبة الأكثر تكراراً ويكشف الكلمات الموجودة في العنوان والغائبة عن المتن.</li>
+                        <li><strong>مستكشف الروابط وتوزيع الموارد:</strong> يصنف جميع الروابط في الصفحة إلى (داخلية، خارجية، أو وهمية معطلة) مع رسم بياني لتوزيع الموارد التقنية.</li>
+                        <li><strong>تصدير التقارير الفورية:</strong> إمكانية طباعة تقرير الفحص الشامل بصيغة <strong>PDF</strong> أو نسخ الملخص التنفيذي بضغطة زر لمشاركته مع فريق التطوير.</li>
+                    </ul>
+                </div>
+
+                <div class="tool-cta-box">
+                    <h3><i class="fa-solid fa-rocket"></i> اختبر جاهزية موقعك الآن مجاناً!</h3>
+                    <p>اكشف الأخطاء البرمجية، مشاكل وسوم الميتا، وثغرات رؤوس الحماية في موقعك خلال ثوانٍ معدودة واحصل على توصيات إصلاح ذكية.</p>
+                    <div>
+                        <a href="https://connecttag.org/tools/web/site-checker/" class="tool-cta-btn">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i> تشغيل الفاحص الشامل للموقع
+                        </a>
+                        <a href="https://connecttag.org/tools/web/site-checker/seo-checker" class="tool-cta-btn secondary">
+                            <i class="fa-solid fa-chart-line"></i> محلل الـ SEO المتخصص
+                        </a>
+                        <a href="https://connecttag.org/tools/web/site-checker/security-checker" class="tool-cta-btn secondary">
+                            <i class="fa-solid fa-shield-halved"></i> فاحص أمان وموثوقية الموقع
+                        </a>
+                    </div>
+                </div>
+
+                <h2 id="audit-checklist">7. قائمة التدقيق النهائية (Technical SEO Checklist)</h2>
+                <div class="security-card">
+                    <h3><i class="fa-solid fa-clipboard-check"></i> راجع هذه النقاط قبل نشر أي صفحة جديدة:</h3>
+                    <ul>
+                        <li>عنوان الصفحة <code>&lt;title&gt;</code> فريد ويتراوح طوله بين 30 و60 حرفاً ويتضمن الكلمة المفتاحية الرئيسية.</li>
+                        <li>وصف الميتا <code>description</code> مكتوب بلغة تسويقية محفزة للنقر بطول 120 إلى 160 حرفاً.</li>
+                        <li>الصفحة تحتوي على وسم <code>&lt;h1&gt;</code> واحد فقط، والعناوين الفرعية متدرجة منطقياً (<code>H2</code> ثم <code>H3</code>).</li>
+                        <li>جميع الصور مضغوطة بصيغة <code>WebP</code> وتحتوي على نص بديل <code>alt</code> يصف محتواها بدقة.</li>
+                        <li>استخدام وسوم HTML5 الدلالية (<code>main</code>, <code>article</code>, <code>nav</code>, <code>footer</code>) مع بيانات <code>JSON-LD</code> المنظمة.</li>
+                        <li>خلو الصفحة من الروابط الوهمية (<code>#</code>) ووجود رابط الـ <code>canonical</code> الصحيح.</li>
+                        <li>تفعيل شهادة <code>HTTPS</code> ورؤوس الحماية الأساسية لرفع موثوقية الموقع أمام محركات البحث.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <i class="fa-solid fa-bullhorn"></i> <strong>هل تبحث عن إدارة احترافية لظهورك الرقمي؟</strong> إذا كنت ترغب في تدقيق شامل لموقع شركتك، بناء استراتيجية محتوى متصدرة، أو توثيق نشاطك التجاري على خرائط جوجل، استكشف باقاتنا في <a href="https://connecttag.org/company/services/digital-marketing"><strong>خدمة التسويق الرقمي وتحسين محركات البحث (SEO)</strong></a> و<a href="https://connecttag.org/company/services/local-seo"><strong>خدمة توثيق خرائط Google والسيو المحلي</strong></a>.
+                </div>
+
+                <div class="faq-section" id="faq">
+                    <h2>الأسئلة الشائعة حول السيو التقني</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين السيو التقني (Technical SEO) والسيو الداخلي (On-Page SEO)؟</div>
+                        <div class="faq-answer">يركز السيو الداخلي على جودة المحتوى وتوزيع الكلمات المفتاحية وعناوين المقالات، بينما يركز السيو التقني على البنية التحتية للموقع، سرعة التحميل، سلامة كود HTML الدلالي، الأمان HTTPS، وقابلية زحف وفهرسة الصفحات بواسطة عناكب محركات البحث.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كم مرة يجب إجراء فحص تقني شامل (Technical SEO Audit) للموقع؟</div>
+                        <div class="faq-answer">يُنصح بإجراء فحص تقني دوري مرة واحدة شهرياً على الأقل، بالإضافة إلى فحص فوري بعد أي تحديث برمجي كبير أو تغيير في تصميم القالب أو نقل الاستضافة.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أختبر كود صفحة جديدة قبل نشرها على الموقع؟</div>
+                        <div class="faq-answer">يمكنك استخدام وضع فحص الكود (HTML Mode) في <a href="https://connecttag.org/tools/web/site-checker/">منصة تحليل المواقع من كونكت تاق</a>، حيث تتيح لك لصق كود HTML مباشرة لتحليل وسوم الميتا، تسلسل العناوين، والروابط قبل رفع الصفحة على الخادم.</div>
+                    </div>
+                </div>
+
+                <site-author-box name="علي الرحبي" avatar="https://connecttag.org/assets/img/connect-tag-official-logo.webp" link="https://connecttag.org/blog/authors/ali"></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="google-business-profile-guide, digital-marketing-importance"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
