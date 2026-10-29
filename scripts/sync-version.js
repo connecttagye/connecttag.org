@@ -39,10 +39,12 @@ const htmlFiles = allFiles.filter(f => f.endsWith('.html'));
 htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
 
-    // Improved Regex: Target .css and .js files inside assets/ or tools/
-    const updatedContent = content.replace(/(href|src)="([^"]*(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
-        return `${attr}="${pathStr}?v=${VERSION}"`;
-    });
+    // Improved Regex: Target .css and .js files inside assets/ or tools/, plus versioned .webp URLs
+    const updatedContent = content
+        .replace(/(href|src)="([^"]*(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
+            return `${attr}="${pathStr}?v=${VERSION}"`;
+        })
+        .replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
 
     if (content !== updatedContent) {
         fs.writeFileSync(file, updatedContent);

@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v85';
+const CACHE_NAME = 'connecttag-cache-v86';
 const OFFLINE_URL = 'https://connecttag.org/offline';
 
 const ASSETS_TO_CACHE = [
@@ -9,11 +9,11 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.png',
   'https://connecttag.org/icon-512.png',
-  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.31',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.31',
-  'https://connecttag.org/assets/css/components.min.css?v=1.1.31',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.31',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.31'
+  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.32',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.32',
+  'https://connecttag.org/assets/css/components.min.css?v=1.1.32',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.32',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.32'
 ];
 
 // Install Event
