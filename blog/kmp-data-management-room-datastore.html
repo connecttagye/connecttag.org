@@ -13,32 +13,32 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="إدارة البيانات في KMP: Room و DataStore - كونكت تاق">
 <meta property="og:description" content="دليل هندسي لبناء طبقة بيانات مشتركة (Shared Data Layer) بين أندرويد و iOS بأعلى معايير الأداء والأمان." />
-<meta property="og:image" content="https://connecttag.org/upload/kmp-data-layer.webp">
+<meta property="og:image" content="https://connecttag.org/upload/kmp-data-encryption.webp">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/kmp-data-management-room-datastore" />
 <meta name="twitter:title" content="مستقبل تخزين البيانات في KMP: Room + DataStore">
 <meta name="twitter:description" content="دليل هندسي لبناء طبقة بيانات مشتركة (Shared Data Layer) بين أندرويد و iOS بأعلى معايير الأداء والأمان." />
-<meta name="twitter:image" content="https://connecttag.org/upload/kmp-data-layer.webp" />
+<meta name="twitter:image" content="https://connecttag.org/upload/kmp-data-encryption.webp" />
 <meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.26"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.26">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.26" defer></script>
 
 <script type="application/ld+json">
 [
@@ -47,7 +47,7 @@
     "@type": "Article",
     "headline": "إدارة البيانات في KMP: التكامل الهندسي بين Room و DataStore",
     "description": "استعراض تقني لكيفية توحيد منطق تخزين البيانات بين Android و iOS باستخدام مكتبات Jetpack الرسمية المدعومة في Kotlin Multiplatform.",
-    "image": "https://connecttag.org/upload/kmp-data-layer.webp",
+    "image": "https://connecttag.org/upload/kmp-data-encryption.webp",
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
@@ -159,7 +159,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/kmp-data-layer.webp" class="img-responsive" alt="معمارية البيانات في Kotlin Multiplatform" fetchpriority="high">
+                <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="معمارية البيانات في Kotlin Multiplatform" fetchpriority="high">
 
                 <p class="lead">الواجهات الجميلة قد تجذب المستخدمين للتطبيق، لكنها لا تكتمل إلا عندما تكون <strong>البيانات مستقرة، سريعة، ومحمية</strong>. بينما يوفر إطار <strong>Compose Multiplatform</strong> الأدوات اللازمة لرسم الشاشات، يبرز السؤال الأهم للمطورين: كيف ندير البيانات محلياً بكفاءة عبر مختلف الأنظمة؟</p>
 

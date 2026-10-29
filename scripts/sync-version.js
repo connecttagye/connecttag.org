@@ -32,16 +32,16 @@ function getAllFiles(dirPath, arrayOfFiles) {
     return arrayOfFiles;
 }
 
-// 1. Update HTML files (Target only CSS and JS in assets/)
+// 1. Update HTML files (Target only CSS and JS in assets/ or tools/)
 const allFiles = getAllFiles(ROOT_DIR);
 const htmlFiles = allFiles.filter(f => f.endsWith('.html'));
 
 htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
 
-    // Improved Regex: Target only .css and .js files inside assets/
-    const updatedContent = content.replace(/(href|src)="([^"]*assets\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, path, oldV) => {
-        return `${attr}="${path}?v=${VERSION}"`;
+    // Improved Regex: Target .css and .js files inside assets/ or tools/
+    const updatedContent = content.replace(/(href|src)="([^"]*(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
+        return `${attr}="${pathStr}?v=${VERSION}"`;
     });
 
     if (content !== updatedContent) {
@@ -59,8 +59,8 @@ if (fs.existsSync(swPath)) {
     swContent = swContent.replace(/const CACHE_NAME = 'connecttag-cache-v\d+';/, `const CACHE_NAME = 'connecttag-cache-${CACHE_NAME}';`);
 
     // Update asset versions ONLY in the ASSETS_TO_CACHE array or specific assets/ paths
-    swContent = swContent.replace(/'([^']*assets\/[^']*\.(?:css|js))(\?v=[^']*)?'/g, (match, path) => {
-        return `'${path}?v=${VERSION}'`;
+    swContent = swContent.replace(/'([^']*assets\/[^']*\.(?:css|js))(\?v=[^']*)?'/g, (match, pathStr) => {
+        return `'${pathStr}?v=${VERSION}'`;
     });
 
     fs.writeFileSync(swPath, swContent);

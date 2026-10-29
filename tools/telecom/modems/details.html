@@ -36,14 +36,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
 
     <style>
         @font-face {
@@ -61,34 +59,7 @@
             color: #1e293b;
         }
 
-        /* Compact Breadcrumb Bar */
-        .breadcrumb-wrapper {
-            background: #ffffff;
-            padding: 16px 0;
-            border-bottom: 1px solid #edf2f7;
-            margin-bottom: 35px;
-        }
-        .breadcrumb-tools {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0;
-            margin: 0;
-            flex-wrap: wrap;
-        }
-        .breadcrumb-tools li { color: #64748b; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
-        .breadcrumb-tools li a:hover { color: #e89a2f; }
-        .breadcrumb-tools li:not(:last-child)::after {
-            content: '\f104';
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            margin-right: 10px;
-            font-size: 11px;
-            color: #cbd5e1;
-        }
-        .breadcrumb-tools li.active { color: #e89a2f; font-weight: 700; }
+        .modem-details-container { padding-top: 25px; }
 
         /* Product Showcase */
         .product-showcase {
@@ -128,6 +99,26 @@
             text-transform: uppercase;
         }
         .description-text { font-size: 15px; line-height: 1.85; color: #475569; margin-bottom: 30px; }
+        .description-text .desc-lead { font-weight: 700; color: #1e293b; margin-bottom: 14px; }
+        .description-text .desc-section {
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+        }
+        .description-text .desc-section-title {
+            font-weight: 800;
+            color: #0052cc;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .description-text .desc-section-list {
+            margin: 0;
+            padding-right: 18px;
+            font-size: 14px;
+            color: #475569;
+        }
 
         /* Specs Grid */
         .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 35px; }
@@ -249,7 +240,7 @@
 </head>
 <body>
 
-<div id="loading-screen" class="loading-overlay">
+<div id="loading-screen" class="loading-overlay" style="display: none;">
     <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #0052cc;"></i>
     <p style="margin-top: 20px; font-weight: 700;">جاري تحميل تفاصيل مودم يمن فورجي...</p>
 </div>
@@ -267,18 +258,18 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="product-showcase">
-                    <img id="modem-image" src="" alt="صورة مودم يمن فورجي">
+                    <img id="modem-image" src="https://connecttag.org/assets/img/about/connect-tag-it-company.webp" alt="صورة مودم يمن فورجي" width="380" height="285">
                 </div>
             </div>
 
             <div class="col-md-7">
                 <div class="modem-info-panel">
-                    <span id="modem-brand" class="brand-tag"></span>
+                    <span id="modem-brand" class="brand-tag">Yemen 4G</span>
 
                     <!-- Single Canonical H1 -->
-                    <h1 id="modem-title"></h1>
+                    <h1 id="modem-title">مواصفات وإعدادات مودم يمن فورجي 4G</h1>
 
-                    <p id="modem-description" class="description-text"></p>
+                    <div id="modem-description" class="description-text"></div>
 
                     <div class="specs-grid">
                         <div class="spec-card">
@@ -297,8 +288,8 @@
                             <span class="value" id="spec-year">-</span>
                         </div>
                         <div class="spec-card">
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span class="label">الحالة</span>
+                            <i id="spec-condition-icon" class="fa-solid fa-circle-info"></i>
+                            <span class="label" id="spec-condition-label">الحالة</span>
                             <span class="value" id="spec-condition">-</span>
                         </div>
                     </div>
@@ -309,11 +300,14 @@
                         <div class="config-item">
                             <span class="config-label">رابط الإعدادات المباشر</span>
                             <div class="config-value-wrapper">
-                                <a id="conf-link" href="#" target="_blank" class="config-value config-link">-</a>
-                                <button class="btn-copy-sm" onclick="copyText('conf-link')"><i class="fa-regular fa-copy"></i> نسخ</button>
+                                <a id="conf-link" href="http://192.168.0.1" target="_blank" rel="noopener noreferrer" class="config-value config-link">http://192.168.0.1</a>
+                                <div style="display: inline-flex; gap: 6px;">
+                                    <a id="btn-open-panel" href="http://192.168.0.1" target="_blank" rel="noopener noreferrer" class="btn-copy-sm" style="text-decoration: none;"><i class="fa-solid fa-arrow-up-right-from-square"></i> فتح</a>
+                                    <button class="btn-copy-sm" onclick="copyText('conf-link')"><i class="fa-regular fa-copy"></i> نسخ</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="config-item">
+                        <div class="config-item" id="conf-user-row">
                             <span class="config-label">اسم المستخدم الافتراضي</span>
                             <div class="config-value-wrapper">
                                 <span class="config-value" id="conf-user">-</span>
@@ -335,7 +329,7 @@
 
         <!-- Related Modems -->
         <div class="related-section">
-            <h3 class="related-title"><i class="fa-solid fa-layer-group"></i> مودمات يمن فورجي أخرى قد تهمك</h3>
+            <h3 class="related-title"><i class="fa-solid fa-layer-group"></i> مودمات يمن فورجي مشابهة قد تهمك</h3>
             <div class="row" id="related-items-container"></div>
         </div>
     </div>
@@ -351,7 +345,8 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.7" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.8" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-details.min.js?v=1.1.26" defer></script>
 </body>
 </html>

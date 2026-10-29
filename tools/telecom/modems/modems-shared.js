@@ -1,14 +1,33 @@
 /**
- * Shared logic for Connect Tag Modems Directory
+ * Shared logic for Connect Tag Modems Directory (Local-First Architecture)
  */
 const ModemApp = (function() {
     const API_URL = 'https://api.connecttag.app/v5/yemen4g/lists?X-Api-Key=ktmo5flizpu';
     const CACHE_KEY = 'modems_list_cache';
     const CACHE_TIME = 12 * 60 * 60 * 1000; // 12 Hours
 
+    function escapeHtml(str) {
+        return String(str || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
     return {
         apiUrl: API_URL,
         cacheKey: CACHE_KEY,
+
+        /**
+         * Returns local pre-bundled modems data immediately if available.
+         */
+        getData: function() {
+            if (Array.isArray(window.MODEMS_DATA) && window.MODEMS_DATA.length > 0) {
+                return window.MODEMS_DATA;
+            }
+            return this.loadFromCache();
+        },
 
         loadFromCache: function() {
             try {
@@ -31,7 +50,16 @@ const ModemApp = (function() {
             }
         },
 
+        /**
+         * Resolves modems data from local bundle first (zero server load).
+         * Only falls back to network fetch if local bundle is absent.
+         */
         fetchData: function(callback, errorCallback, isBackground = false) {
+            if (Array.isArray(window.MODEMS_DATA) && window.MODEMS_DATA.length > 0) {
+                if (callback) callback(window.MODEMS_DATA);
+                return;
+            }
+
             fetch(API_URL)
             .then(res => res.json())
             .then(data => {
@@ -50,6 +78,61 @@ const ModemApp = (function() {
             });
         },
 
+        /**
+         * Combines arabicName + modelOrVersion without duplicating the model string
+         * (e.g. avoids "مودم ذا فيوتشر M90 M90").
+         */
+        formatDisplayName: function(item) {
+            if (!item) return '';
+            const name = (item.arabicName || '').trim();
+            const model = (item.modelOrVersion || item.model || '').trim();
+            if (!model) return name;
+            const normName = name.toLowerCase();
+            const normModel = model.toLowerCase();
+            if (normName.includes(normModel)) return name;
+            if (normModel === '4g' && normName.includes('فورجي')) return name;
+            if (normModel === 'cat6' && normName.includes('كات 6')) return name;
+            // If arabicName ends with base model token (e.g. "M90" in "M90 pro"), replace suffix cleanly
+            const firstToken = normModel.split(/\s+/)[0];
+            if (firstToken && normName.endsWith(' ' + firstToken)) {
+                return name.slice(0, name.length - firstToken.length).trim() + ' ' + model;
+            }
+            return `${name} ${model}`.trim();
+        },
+
+        /**
+         * Cleans multi-line/markdown descriptions for meta tags and short summaries.
+         */
+        cleanMetaText: function(text) {
+            return String(text || '')
+                .replace(/---+/g, ' - ')
+                .replace(/\r?\n+/g, ' ')
+                .replace(/\s{2,}/g, ' ')
+                .trim();
+        },
+
+        /**
+         * Formats multi-line descriptions (with --- dividers and newlines) into clean HTML.
+         */
+        formatDescriptionHtml: function(text) {
+            const raw = String(text || '').trim();
+            if (!raw) return '';
+            if (!raw.includes('\n') && !raw.includes('---')) {
+                return `<p class="mb-0">${escapeHtml(raw)}</p>`;
+            }
+            const sections = raw.split(/\r?\n\s*---+\s*\r?\n/);
+            return sections.map(section => {
+                const lines = section.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+                if (lines.length === 0) return '';
+                if (lines.length === 1) {
+                    return `<p class="desc-lead">${escapeHtml(lines[0])}</p>`;
+                }
+                const heading = escapeHtml(lines[0]);
+                const items = lines.slice(1).map(l => `<li>${escapeHtml(l)}</li>`).join('');
+                return `<div class="desc-section"><div class="desc-section-title">${heading}</div><ul class="desc-section-list">${items}</ul></div>`;
+            }).filter(Boolean).join('');
+        },
+
         getQueryParams: function() {
             return new URLSearchParams(window.location.search);
         },
@@ -60,9 +143,11 @@ const ModemApp = (function() {
                 toast.textContent = message;
                 toast.className = 'toast-msg show';
                 setTimeout(() => {
-                    toast.className = toast.className.replace('show', '');
+                    toast.className = toast.className.replace('show', '').trim();
                 }, duration);
-            } else if (window.toast) {
+            } else if (typeof window.showToast === 'function') {
+                window.showToast(message, 'info');
+            } else if (window.toast && typeof window.toast.show === 'function') {
                 window.toast.show(message, 'info');
             }
         }

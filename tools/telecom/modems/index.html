@@ -23,34 +23,11 @@
     <meta name="twitter:description" content="استعرض المواصفات الفنية وإعدادات أجهزة مودم Yemen 4G المنزلية والمحمولة.">
     <meta name="twitter:image" content="https://connecttag.org/assets/img/about/connect-tag-it-company.webp">
 
-    <!-- Schema.org JSON-LD (Breadcrumb + Collection/ItemList) -->
+    <!-- Schema.org JSON-LD (CollectionPage + Dynamic ItemList) -->
     <script type="application/ld+json" id="schema-data">
         {
             "@context": "https://schema.org",
             "@graph": [
-                {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "الرئيسية",
-                            "item": "https://connecttag.org/"
-                        },
-                        {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "الأدوات",
-                            "item": "https://connecttag.org/tools/"
-                        },
-                        {
-                            "@type": "ListItem",
-                            "position": 3,
-                            "name": "دليل مودمات يمن فورجي",
-                            "item": "https://connecttag.org/tools/telecom/modems/"
-                        }
-                    ]
-                },
                 {
                     "@type": "CollectionPage",
                     "@id": "https://connecttag.org/tools/telecom/modems/",
@@ -65,15 +42,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.26">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.26">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
-    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.25" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.26" defer></script>
+    <script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.26" defer></script>
 
     <style>
         @font-face {
@@ -111,27 +86,6 @@
             margin: 0 auto;
             line-height: 1.7;
         }
-
-        .breadcrumb-tools {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 0;
-            margin: 20px 0 0;
-        }
-        .breadcrumb-tools li { color: #888; font-weight: 600; font-size: 13px; }
-        .breadcrumb-tools li a { color: #0052cc; text-decoration: none; transition: 0.2s; }
-        .breadcrumb-tools li a:hover { color: #e89a2f; }
-        .breadcrumb-tools li:not(:last-child)::after {
-            content: '\f104';
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            margin-right: 10px;
-            font-size: 11px;
-            color: #cbd5e1;
-        }
-        .breadcrumb-tools li.active { color: #e89a2f; font-weight: 700; }
 
         .modem-list-container { padding: 40px 0 80px; }
 
@@ -353,7 +307,7 @@
                     <div class="col-md-6">
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" id="modem-search" placeholder="ابحث باسم المودم، الموديل، أو الماركة (مثال: ZTE, L818A)...">
+                            <input type="text" id="modem-search" placeholder="ابحث باسم المودم، الموديل، الشركة، أو عنوان IP (مثال: ZTE, M90, 192.168.8.1)...">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -391,7 +345,8 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
-<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.7" defer></script>
-<script src="https://connecttag.org/tools/telecom/modems/modems-index.min.js?v=1.1.7" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/data.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-shared.min.js?v=1.1.26" defer></script>
+<script src="https://connecttag.org/tools/telecom/modems/modems-index.min.js?v=1.1.26" defer></script>
 </body>
 </html>
