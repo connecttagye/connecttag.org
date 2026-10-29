@@ -41,5 +41,9 @@ class SitePreloader extends HTMLElement {
     }
   }
 }if (!customElements.get('site-preloader')) {
+if (!customElements.get('site-preloader')) {
+if (!customElements.get('site-preloader')) {
   customElements.define('site-preloader', SitePreloader);
+}
+}
 }

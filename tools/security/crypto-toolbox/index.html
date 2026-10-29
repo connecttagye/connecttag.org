@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -178,11 +178,11 @@
                     <div class="tab-pane active" id="content-aes">
                         <div class="input-group-custom">
                             <label class="form-label">النص المراد معالجته:</label>
-                            <textarea id="aes-input" class="form-control" rows="5" placeholder="أدخل النص هنا..."></textarea>
+                            <textarea id="aes-input" class="form-control" rows="5" placeholder="أدخل النص هنا..." aria-label="أدخل النص هنا..."></textarea>
                         </div>
                         <div class="input-group-custom">
                             <label class="form-label">كلمة السر (Secret Key):</label>
-                            <input type="text" id="aes-key" class="secret-input" placeholder="أدخل مفتاح التشفير السري...">
+                            <input type="text" id="aes-key" class="secret-input" placeholder="أدخل مفتاح التشفير السري..." aria-label="أدخل مفتاح التشفير السري...">
                         </div>
                         <div class="action-row">
                             <button class="btn-crypto btn-encrypt" onclick="processAES('encrypt')"><i class="fa-solid fa-lock"></i> تشفير النص</button>
@@ -201,7 +201,7 @@
                     <div class="tab-pane" id="content-encode">
                         <div class="input-group-custom">
                             <label class="form-label">النص الأساسي:</label>
-                            <textarea id="encode-input" class="form-control" rows="5" placeholder="أدخل النص للتحويل..."></textarea>
+                            <textarea id="encode-input" class="form-control" rows="5" placeholder="أدخل النص للتحويل..." aria-label="أدخل النص للتحويل..."></textarea>
                         </div>
                         <div class="action-row">
                             <button class="btn-crypto btn-encrypt" onclick="processEncode('base64', true)">Base64 Encode</button>
@@ -224,7 +224,7 @@
                     <div class="tab-pane" id="content-hash">
                         <div class="input-group-custom">
                             <label class="form-label">النص لتوليد الهاش:</label>
-                            <textarea id="hash-input" class="form-control" rows="4" placeholder="أدخل النص هنا..." oninput="generateHashes()"></textarea>
+                            <textarea id="hash-input" class="form-control" rows="4" placeholder="أدخل النص هنا..." oninput="generateHashes()" aria-label="أدخل النص هنا..."></textarea>
                         </div>
                         <div class="hash-grid">
                             <div class="hash-item">

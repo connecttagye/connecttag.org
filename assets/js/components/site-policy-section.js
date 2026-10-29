@@ -7,5 +7,9 @@ class SitePolicySection extends HTMLElement {
     // We don't modify innerHTML, just act as a styled container
   }
 }if (!customElements.get('site-policy-section')) {
+if (!customElements.get('site-policy-section')) {
+if (!customElements.get('site-policy-section')) {
   customElements.define('site-policy-section', SitePolicySection);
+}
+}
 }

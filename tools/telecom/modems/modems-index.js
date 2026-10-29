@@ -47,6 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (currentSearch) {
             filtered = filtered.filter(item => {
+                const tagTerms = Array.isArray(item.tags)
+                    ? item.tags.map(t => `${t.name || ''} ${t.nameEn || ''}`).join(' ')
+                    : '';
+                const attrTerms = Array.isArray(item.attributes)
+                    ? item.attributes.map(a => `${a.name || ''} ${a.displayValue || a.value || ''}`).join(' ')
+                    : '';
+                const providerTerms = Array.isArray(item.providers) && ModemApp.getOrganizationById
+                    ? item.providers.map(p => {
+                        const org = ModemApp.getOrganizationById(p.orgId);
+                        return org ? `${org.name || ''} ${org.nameEn || ''}` : '';
+                    }).join(' ')
+                    : '';
                 const haystack = [
                     item.arabicName,
                     item.englishName,
@@ -57,7 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     item.shortDescription,
                     item.keyWords,
                     item.keyWordsEnglish,
-                    item.additional?.modemSettings?.loginLink
+                    item.additional?.modemSettings?.loginLink,
+                    tagTerms,
+                    attrTerms,
+                    providerTerms
                 ].filter(Boolean).join(' ').toLowerCase();
                 return haystack.includes(currentSearch);
             });

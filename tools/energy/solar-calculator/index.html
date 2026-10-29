@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -189,11 +189,11 @@
                         <h2 class="section-title"><i class="fa-solid fa-gear"></i> إعدادات الحساب</h2>
                         <div id="solar-settings">
                             <div class="row">
-                                <div class="col-md-6 mb-3"><label class="form-label">المدينة (ساعات الشمس):</label><select id="location" class="form-control-custom" onchange="calculate()"><option value="5.5">صنعاء (5.5 ساعة)</option><option value="5.2">عدن (5.2 ساعة)</option><option value="5.4">تعز (5.4 ساعة)</option><option value="5.8">حضرموت (5.8 ساعة)</option><option value="5.0">أخرى</option></select></div>
-                                <div class="col-md-6 mb-3"><label class="form-label">نوع البطاريات:</label><select id="batteryType" class="form-control-custom" onchange="calculate()"><option value="0.5">Gel (تفريغ 50%)</option><option value="0.8">Lithium (تفريغ 80%)</option><option value="0.4">سائلة (تفريغ 40%)</option></select></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">المدينة (ساعات الشمس):</label><select id="location" class="form-control-custom" onchange="calculate()" aria-label="location"><option value="5.5">صنعاء (5.5 ساعة)</option><option value="5.2">عدن (5.2 ساعة)</option><option value="5.4">تعز (5.4 ساعة)</option><option value="5.8">حضرموت (5.8 ساعة)</option><option value="5.0">أخرى</option></select></div>
+                                <div class="col-md-6 mb-3"><label class="form-label">نوع البطاريات:</label><select id="batteryType" class="form-control-custom" onchange="calculate()" aria-label="batteryType"><option value="0.5">Gel (تفريغ 50%)</option><option value="0.8">Lithium (تفريغ 80%)</option><option value="0.4">سائلة (تفريغ 40%)</option></select></div>
                             </div>
                         </div>
-                        <div id="grid-settings" style="display: none;"><label class="form-label">سعر الكيلو واط (ريال):</label><input type="number" id="kwhPrice" class="form-control-custom" placeholder="مثال: 300" oninput="calculate()"></div>
+                        <div id="grid-settings" style="display: none;"><label class="form-label">سعر الكيلو واط (ريال):</label><input type="number" id="kwhPrice" class="form-control-custom" placeholder="مثال: 300" oninput="calculate()" aria-label="مثال: 300"></div>
                     </div>
 
                     <div class="tool-card-base text-right" style="max-width: 100%; margin: 0;">

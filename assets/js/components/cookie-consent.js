@@ -86,7 +86,11 @@ class CookieConsent extends HTMLElement {
 
 if (!customElements.get('cookie-consent')) {
 if (!customElements.get('cookie-consent')) {
+if (!customElements.get('cookie-consent')) {
+if (!customElements.get('cookie-consent')) {
   customElements.define('cookie-consent', CookieConsent);
+}
+}
 }
 }
 

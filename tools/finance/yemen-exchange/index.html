@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.27">
 
@@ -175,6 +175,7 @@
 </head>
 <body>
 <site-header></site-header>
+<main id="main-content">
 
 <div class="exchange-container container">
     <div class="text-center mb-5">
@@ -295,7 +296,7 @@
         <div class="row align-items-center">
             <div class="col-md-4 mb-3 mb-md-0">
                 <label class="small mb-2 d-block opacity-75" id="amount-label">المبلغ المراد تحويله:</label>
-                <input type="number" id="calc-amount" class="calc-input" placeholder="0.00" oninput="calculate()">
+                <input type="number" id="calc-amount" class="calc-input" placeholder="0.00" oninput="calculate()" aria-label="0.00">
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -304,7 +305,7 @@
                         <i class="fa-solid fa-right-left"></i> عكس الاتجاه
                     </button>
                 </div>
-                <select id="calc-type" class="calc-select" onchange="onPairChange()">
+                <select id="calc-type" class="calc-select" onchange="onPairChange()" aria-label="calc-type">
                     <optgroup label="صنعاء (أجنبي ← ريال يمني)">
                         <option value="sanaa-usd">دولار ← ريال (صنعاء)</option>
                         <option value="sanaa-sar">سعودي ← ريال (صنعاء)</option>
@@ -325,7 +326,7 @@
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <label class="small mb-2 d-block opacity-75">سعر الصرف المحتسب (قابل للتعديل يدوياً):</label>
-                <input type="number" id="calc-custom-rate" class="calc-input" value="535" step="any" oninput="calculate()">
+                <input type="number" id="calc-custom-rate" class="calc-input" value="535" step="any" oninput="calculate()" aria-label="calc-custom-rate">
             </div>
             <div class="col-12 mt-3">
                 <div class="result-display">
@@ -341,6 +342,7 @@
     </div>
 </div>
 
+</main>
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 

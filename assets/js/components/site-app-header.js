@@ -21,6 +21,10 @@ class SiteAppHeader extends HTMLElement {
 
 if (!customElements.get('site-app-header')) {
 if (!customElements.get('site-app-header')) {
+if (!customElements.get('site-app-header')) {
+if (!customElements.get('site-app-header')) {
   customElements.define('site-app-header', SiteAppHeader);
+}
+}
 }
 }

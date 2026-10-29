@@ -22,7 +22,11 @@ class SiteAppHeader extends HTMLElement {
 
 if (!customElements.get('site-app-header')) {
 if (!customElements.get('site-app-header')) {
+if (!customElements.get('site-app-header')) {
+if (!customElements.get('site-app-header')) {
   customElements.define('site-app-header', SiteAppHeader);
+}
+}
 }
 }
 
@@ -69,7 +73,11 @@ class SiteAppDownloads extends HTMLElement {
     `;
   }
 }if (!customElements.get('site-app-downloads')) {
+if (!customElements.get('site-app-downloads')) {
+if (!customElements.get('site-app-downloads')) {
   customElements.define('site-app-downloads', SiteAppDownloads);
+}
+}
 }
 
 
@@ -103,9 +111,17 @@ class SiteAppFeatureItem extends HTMLElement {
     `;
   }
 }if (!customElements.get('site-app-features')) {
+if (!customElements.get('site-app-features')) {
+if (!customElements.get('site-app-features')) {
   customElements.define('site-app-features', SiteAppFeatures);
+}
+}
 }if (!customElements.get('site-app-feature-item')) {
+if (!customElements.get('site-app-feature-item')) {
+if (!customElements.get('site-app-feature-item')) {
   customElements.define('site-app-feature-item', SiteAppFeatureItem);
+}
+}
 }
 
 
@@ -160,7 +176,10 @@ class SiteShareButtons extends HTMLElement {
 }
 
 if (!customElements.get('site-share-buttons')) {
+if (!customElements.get('site-share-buttons')) {if (!customElements.get('site-share-buttons')) {
 if (!customElements.get('site-share-buttons')) {
   customElements.define('site-share-buttons', SiteShareButtons);
+}
+}
 }
 }

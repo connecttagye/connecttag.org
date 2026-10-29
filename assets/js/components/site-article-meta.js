@@ -42,5 +42,9 @@ class SiteArticleMeta extends HTMLElement {
     `;
   }
 }if (!customElements.get('site-article-meta')) {
+if (!customElements.get('site-article-meta')) {
+if (!customElements.get('site-article-meta')) {
   customElements.define('site-article-meta', SiteArticleMeta);
+}
+}
 }

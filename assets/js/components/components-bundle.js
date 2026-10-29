@@ -129,7 +129,11 @@ class SitePreloader extends HTMLElement {
     }
   }
 }if (!customElements.get('site-preloader')) {
+if (!customElements.get('site-preloader')) {
+if (!customElements.get('site-preloader')) {
   customElements.define('site-preloader', SitePreloader);
+}
+}
 }
 
 
@@ -164,7 +168,7 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.27" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
@@ -243,7 +247,11 @@ class SiteHeader extends HTMLElement {
 
 if (!customElements.get('site-header')) {
 if (!customElements.get('site-header')) {
+if (!customElements.get('site-header')) {
+if (!customElements.get('site-header')) {
   customElements.define('site-header', SiteHeader);
+}
+}
 }
 }
 
@@ -347,7 +355,11 @@ class SiteFooter extends HTMLElement {
 
 if (!customElements.get('site-footer')) {
 if (!customElements.get('site-footer')) {
+if (!customElements.get('site-footer')) {
+if (!customElements.get('site-footer')) {
   customElements.define('site-footer', SiteFooter);
+}
+}
 }
 }
 
@@ -554,7 +566,11 @@ class SiteBreadcrumb extends HTMLElement {
   }
 }
 if (!customElements.get('site-breadcrumb')) {
+if (!customElements.get('site-breadcrumb')) {
+if (!customElements.get('site-breadcrumb')) {
   customElements.define('site-breadcrumb', SiteBreadcrumb);
+}
+}
 }
 
 
@@ -579,8 +595,8 @@ class SiteCodeBlock extends HTMLElement {
             <span class="dot green"></span>
           </div>
           <div class="ct-code-title">${title || language}</div>
-          <button class="ct-copy-btn" title="نسخ الكود">
-            <i class="fa-regular fa-copy"></i>
+          <button type="button" class="ct-copy-btn" title="نسخ الكود" aria-label="نسخ الكود">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i>
             <span class="copy-text">نسخ</span>
           </button>
         </div>
@@ -620,8 +636,12 @@ class SiteCodeBlock extends HTMLElement {
     };
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
   }
-}if (!customElements.get('site-code-block')) {
+}
+if (!customElements.get('site-code-block')) {if (!customElements.get('site-code-block')) {
+if (!customElements.get('site-code-block')) {
   customElements.define('site-code-block', SiteCodeBlock);
+}
+}
 }
 
 
@@ -714,7 +734,11 @@ class CookieConsent extends HTMLElement {
 
 if (!customElements.get('cookie-consent')) {
 if (!customElements.get('cookie-consent')) {
+if (!customElements.get('cookie-consent')) {
+if (!customElements.get('cookie-consent')) {
   customElements.define('cookie-consent', CookieConsent);
+}
+}
 }
 }
 

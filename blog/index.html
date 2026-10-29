@@ -453,14 +453,15 @@
                                 <label for="blog-search" class="sr-only">ابحث عن مقال</label>
                                 <input type="text" id="blog-search" placeholder="ابحث عن مقال معين...">
                             </div>
-                            <div class="categories-tabs" role="tablist" aria-label="تصنيفات المدونة" style="display: flex; gap: 15px; overflow-x: auto; white-space: nowrap; max-width: 100%; padding-bottom: 4px; scrollbar-width: none; align-items: center;">
-                                <span style="font-weight: 700; color: #0077b6;">التصنيفات:</span>
-                                <button type="button" class="blog-cat-btn active" data-cat="الكل" aria-pressed="true" style="background: none; border: none; padding: 0; cursor: pointer; color: #0077b6; font-weight: bold; font-size: 0.9rem; font-family: inherit;">الكل</button>
-                                <button type="button" class="blog-cat-btn" data-cat="الأمن السيبراني" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">الأمن السيبراني</button>
-                                <button type="button" class="blog-cat-btn" data-cat="برمجة وتطوير" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">برمجة وتطوير</button>
-                                <button type="button" class="blog-cat-btn" data-cat="استضافة وسحابيات" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">استضافة وسحابيات</button>
-                                <button type="button" class="blog-cat-btn" data-cat="تسويق وأعمال" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">تسويق وأعمال</button>
-                                <button type="button" class="blog-cat-btn" data-cat="اتصالات وإنترنت" aria-pressed="false" style="background: none; border: none; padding: 0; cursor: pointer; color: #666; font-weight: normal; font-size: 0.9rem; font-family: inherit;">اتصالات وإنترنت</button>
+                            <div class="categories-tabs" role="group" aria-label="تصفية المقالات حسب التصنيف" style="display: flex; align-items: center; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%; padding-bottom: 4px; scrollbar-width: none;">
+                                <span style="font-weight: 700; color: #0052cc; font-size: 14px;">التصنيفات:</span>
+                                <button type="button" class="blog-cat-btn active" aria-pressed="true" data-cat="الكل">الكل</button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="الأمن السيبراني">الأمن السيبراني</button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="برمجة وتطوير">برمجة وتطوير</button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="استضافة وسحابيات">استضافة وسحابيات</button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="تسويق وأعمال">تسويق وأعمال</button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="اتصالات وإنترنت">اتصالات وإنترنت</button>
+                                <a href="https://connecttag.org/blog/authors/" class="authors-hub-link"><i class="fa-solid fa-users" aria-hidden="true"></i> كتّاب المدونة</a>
                             </div>
                         </div>
                     </div>
@@ -948,13 +949,9 @@
             btn.addEventListener('click', function() {
                 categoryBtns.forEach(b => {
                     b.classList.remove('active');
-                    b.style.fontWeight = 'normal';
-                    b.style.color = '#666';
                     b.setAttribute('aria-pressed', 'false');
                 });
                 this.classList.add('active');
-                this.style.fontWeight = 'bold';
-                this.style.color = '#0077b6';
                 this.setAttribute('aria-pressed', 'true');
 
                 const categoryFilter = (this.getAttribute('data-cat') || this.textContent).trim().toLowerCase();

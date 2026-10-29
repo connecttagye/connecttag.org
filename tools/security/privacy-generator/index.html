@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -263,16 +263,16 @@
                             <h2><span>1</span> تخصيص شريط الكوكيز</h2>
                             <div class="form-group mb-3">
                                 <label class="form-label">نص الرسالة</label>
-                                <input type="text" id="cookieMsg" class="form-control-custom" value="نحن نستخدم ملفات تعريف الارتباط لضمان حصولك على أفضل تجربة." oninput="updateCookiePreview()">
+                                <input type="text" id="cookieMsg" class="form-control-custom" value="نحن نستخدم ملفات تعريف الارتباط لضمان حصولك على أفضل تجربة." oninput="updateCookiePreview()" aria-label="cookieMsg">
                             </div>
                             <div class="row">
                                 <div class="col-sm-6 mb-3">
                                     <label class="form-label">لون الخلفية</label>
-                                    <input type="color" id="cookieBg" class="form-control-custom" value="#006b98" style="height:50px" oninput="updateCookiePreview()">
+                                    <input type="color" id="cookieBg" class="form-control-custom" value="#006b98" style="height:50px" oninput="updateCookiePreview()" aria-label="cookieBg">
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <label class="form-label">لون الزر</label>
-                                    <input type="color" id="cookieBtnBg" class="form-control-custom" value="#25d366" style="height:50px" oninput="updateCookiePreview()">
+                                    <input type="color" id="cookieBtnBg" class="form-control-custom" value="#25d366" style="height:50px" oninput="updateCookiePreview()" aria-label="cookieBtnBg">
                                 </div>
                             </div>
                         </div>

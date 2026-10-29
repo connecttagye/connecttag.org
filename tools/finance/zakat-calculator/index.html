@@ -38,9 +38,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
     <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -109,19 +109,19 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">إجمالي المبالغ النقدية والمدخرات:</label>
-                        <input type="number" id="cash-amount" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                        <input type="number" id="cash-amount" class="form-control-custom" placeholder="0.00" oninput="calculate()" aria-label="0.00">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">وزن الذهب المدخر (بالجرام):</label>
-                        <input type="number" id="gold-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                        <input type="number" id="gold-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()" aria-label="0.00">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">وزن الفضة المدخرة (بالجرام):</label>
-                        <input type="number" id="silver-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                        <input type="number" id="silver-weight" class="form-control-custom" placeholder="0.00" oninput="calculate()" aria-label="0.00">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">أموال مستحقة لك عند الآخرين:</label>
-                        <input type="number" id="debts-to-you" class="form-control-custom" placeholder="0.00" oninput="calculate()">
+                        <input type="number" id="debts-to-you" class="form-control-custom" placeholder="0.00" oninput="calculate()" aria-label="0.00">
                     </div>
                 </div>
 

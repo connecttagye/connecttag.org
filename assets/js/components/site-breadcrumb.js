@@ -199,5 +199,9 @@ class SiteBreadcrumb extends HTMLElement {
   }
 }
 if (!customElements.get('site-breadcrumb')) {
+if (!customElements.get('site-breadcrumb')) {
+if (!customElements.get('site-breadcrumb')) {
   customElements.define('site-breadcrumb', SiteBreadcrumb);
+}
+}
 }

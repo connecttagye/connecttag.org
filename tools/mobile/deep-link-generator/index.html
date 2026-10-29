@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -144,16 +144,16 @@
                             <div class="col-lg-6">
                                 <div class="input-section">
                                     <label class="form-label">البروتوكول (Scheme):</label>
-                                    <input type="text" id="scheme" class="form-control-custom" placeholder="مثال: myapp" oninput="generateLinks()">
+                                    <input type="text" id="scheme" class="form-control-custom" placeholder="مثال: myapp" oninput="generateLinks()" aria-label="مثال: myapp">
 
                                     <label class="form-label mt-3">المضيف (Host / Domain):</label>
-                                    <input type="text" id="host" class="form-control-custom" placeholder="مثال: profile" oninput="generateLinks()">
+                                    <input type="text" id="host" class="form-control-custom" placeholder="مثال: profile" oninput="generateLinks()" aria-label="مثال: profile">
 
                                     <label class="form-label mt-3">المسار (Path - اختياري):</label>
-                                    <input type="text" id="path" class="form-control-custom" placeholder="مثال: /settings" oninput="generateLinks()">
+                                    <input type="text" id="path" class="form-control-custom" placeholder="مثال: /settings" oninput="generateLinks()" aria-label="مثال: /settings">
 
                                     <label class="form-label mt-3">اسم الحزمة (Package Name):</label>
-                                    <input type="text" id="package" class="form-control-custom" placeholder="مثال: com.example.app" oninput="generateLinks()">
+                                    <input type="text" id="package" class="form-control-custom" placeholder="مثال: com.example.app" oninput="generateLinks()" aria-label="مثال: com.example.app">
                                 </div>
 
                                 <div class="info-alert">

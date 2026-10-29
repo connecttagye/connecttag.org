@@ -96,6 +96,10 @@ class SiteFooter extends HTMLElement {
 
 if (!customElements.get('site-footer')) {
 if (!customElements.get('site-footer')) {
+if (!customElements.get('site-footer')) {
+if (!customElements.get('site-footer')) {
   customElements.define('site-footer', SiteFooter);
+}
+}
 }
 }

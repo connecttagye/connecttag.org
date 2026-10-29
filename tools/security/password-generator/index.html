@@ -80,9 +80,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.27">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.27">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.27">
 <link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.27">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -225,14 +225,14 @@
                         <span>طول الكلمة</span>
                         <span class="text-primary" id="lengthVal">16</span>
                     </div>
-                    <input type="range" class="range-slider" id="lengthSlider" min="8" max="50" value="16" oninput="updateUI()">
+                    <input type="range" class="range-slider" id="lengthSlider" min="8" max="50" value="16" oninput="updateUI()" aria-label="lengthSlider">
                 </div>
 
                 <div class="check-grid">
-                    <label class="check-item"><input type="checkbox" id="checkUpper" checked onchange="generate()"> أحرف كبيرة</label>
-                    <label class="check-item"><input type="checkbox" id="checkLower" checked onchange="generate()"> أحرف صغيرة</label>
-                    <label class="check-item"><input type="checkbox" id="checkNumbers" checked onchange="generate()"> أرقام (0-9)</label>
-                    <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()"> رموز خاصّة</label>
+                    <label class="check-item"><input type="checkbox" id="checkUpper" checked onchange="generate()" aria-label="checkUpper"> أحرف كبيرة</label>
+                    <label class="check-item"><input type="checkbox" id="checkLower" checked onchange="generate()" aria-label="checkLower"> أحرف صغيرة</label>
+                    <label class="check-item"><input type="checkbox" id="checkNumbers" checked onchange="generate()" aria-label="checkNumbers"> أرقام (0-9)</label>
+                    <label class="check-item"><input type="checkbox" id="checkSymbols" checked onchange="generate()" aria-label="checkSymbols"> رموز خاصّة</label>
                 </div>
 
                 <button class="btn-generate" onclick="generate()"><i class="fa-solid fa-shield"></i> توليد كلمة مرور جديدة</button>
