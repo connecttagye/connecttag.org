@@ -40,12 +40,7 @@ class SitePreloader extends HTMLElement {
       home.classList.add('visible');
     }
   }
-}if (!customElements.get('site-preloader')) {
-if (!customElements.get('site-preloader')) {
-if (!customElements.get('site-preloader')) {
+}
 if (!customElements.get('site-preloader')) {
   customElements.define('site-preloader', SitePreloader);
-}
-}
-}
 }

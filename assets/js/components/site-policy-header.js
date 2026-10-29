@@ -18,12 +18,7 @@ class SitePolicyHeader extends HTMLElement {
       </div>
     `;
   }
-}if (!customElements.get('site-policy-header')) {
-if (!customElements.get('site-policy-header')) {
-if (!customElements.get('site-policy-header')) {
+}
 if (!customElements.get('site-policy-header')) {
   customElements.define('site-policy-header', SitePolicyHeader);
-}
-}
-}
 }

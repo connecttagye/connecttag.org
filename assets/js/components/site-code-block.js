@@ -60,11 +60,6 @@ class SiteCodeBlock extends HTMLElement {
     return text.replace(/[&<>"']/g, function(m) { return map[m]; });
   }
 }
-if (!customElements.get('site-code-block')) {if (!customElements.get('site-code-block')) {
-if (!customElements.get('site-code-block')) {
 if (!customElements.get('site-code-block')) {
   customElements.define('site-code-block', SiteCodeBlock);
-}
-}
-}
 }

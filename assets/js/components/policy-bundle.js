@@ -19,14 +19,9 @@ class SitePolicyHeader extends HTMLElement {
       </div>
     `;
   }
-}if (!customElements.get('site-policy-header')) {
-if (!customElements.get('site-policy-header')) {
-if (!customElements.get('site-policy-header')) {
+}
 if (!customElements.get('site-policy-header')) {
   customElements.define('site-policy-header', SitePolicyHeader);
-}
-}
-}
 }
 
 
@@ -39,12 +34,7 @@ class SitePolicySection extends HTMLElement {
     this.classList.add('ct-policy-content');
     // We don't modify innerHTML, just act as a styled container
   }
-}if (!customElements.get('site-policy-section')) {
-if (!customElements.get('site-policy-section')) {
-if (!customElements.get('site-policy-section')) {
+}
 if (!customElements.get('site-policy-section')) {
   customElements.define('site-policy-section', SitePolicySection);
-}
-}
-}
 }

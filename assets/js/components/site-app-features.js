@@ -26,20 +26,10 @@ class SiteAppFeatureItem extends HTMLElement {
       </div>
     `;
   }
-}if (!customElements.get('site-app-features')) {
-if (!customElements.get('site-app-features')) {
-if (!customElements.get('site-app-features')) {
+}
 if (!customElements.get('site-app-features')) {
   customElements.define('site-app-features', SiteAppFeatures);
 }
-}
-}
-}if (!customElements.get('site-app-feature-item')) {
-if (!customElements.get('site-app-feature-item')) {
-if (!customElements.get('site-app-feature-item')) {
 if (!customElements.get('site-app-feature-item')) {
   customElements.define('site-app-feature-item', SiteAppFeatureItem);
-}
-}
-}
 }

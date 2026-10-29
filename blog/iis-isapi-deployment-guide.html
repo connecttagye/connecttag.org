@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://connecttag.org/blog/iis-isapi-deployment-guide" />
 <meta property="og:type" content="article">
 <meta property="og:title" content="نشر وتصحيح أخطاء وحدات ISAPI DLL على IIS - كونكت تاق">
-<meta property="og:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
+<meta property="og:description" content="دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً باستخدام w3wp.exe." />
 <meta property="og:image" content="https://connecttag.org/upload/iis-isapi-guide.webp">
   <meta property="og:image:alt" content="نشر ISAPI DLL على IIS">
   <meta property="article:published_time" content="2026-08-17T18:40:00+03:00">
@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/iis-isapi-deployment-guide" />
 <meta name="twitter:title" content="دليل نشر وتصحيح ISAPI DLL على خادم IIS - كونكت تاق">
-<meta name="twitter:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
+<meta name="twitter:description" content="دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً باستخدام w3wp.exe." />
 <meta name="twitter:image" content="https://connecttag.org/upload/iis-isapi-guide.webp" />
   <meta name="twitter:image:alt" content="نشر ISAPI DLL على IIS" />
 <meta name="twitter:site" content="@connecttagye" />
@@ -31,19 +31,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.28" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.28"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.28">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.28">
+  <link rel="preload" href="https://connecttag.org/upload/iis-isapi-guide.webp" as="image" fetchpriority="high">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.29">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.29">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.28" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.28"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.28">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.29">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.28" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.28" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.29" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.29" defer></script>
 
 <script type="application/ld+json">
 [
@@ -158,7 +159,7 @@
 
 <main id="main-content">
 
-<div class="post-content">
+<article class="post-content">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -172,7 +173,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high" width="2816" height="1536">
+                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high" width="2816" height="1536" decoding="async">
 
                 <p class="lead">إذا كنت تعمل على تطوير تطبيقات الويب أو واجهات برمجة التطبيقات (APIs) المعتمدة على مكتبات الربط الديناميكي (ISAPI DLL)، فإن استضافتها على خادم Microsoft IIS يتطلب إعدادات دقيقة لضمان الأداء العالي والاستقرار.</p>
 
@@ -274,7 +275,7 @@
 
                 <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS. كما نقدم في <strong>كونكت تاق</strong> <a href="https://connecttag.org/company/services/hosting-services">خدمات الاستضافة السحابية وإدارة الخوادم</a> لتجهيز بيئات التشغيل المؤسسية.</p>
 
-                <div class="faq-section" id="faq">
+                <section class="faq-section" id="faq">
                     <h2>7. الأسئلة الشائعة</h2>
                     <div class="faq-item">
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يظهر خطأ 500 عند تشغيل ملف ISAPI DLL بـ 32 بت على خادم 64 بت؟</div>
@@ -288,7 +289,7 @@
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو الإعداد الصحيح لـ .NET CLR Version لتطبيقات ISAPI الأصلية؟</div>
                         <div class="faq-answer">يُفضل ضبط حوض التطبيقات على No Managed Code لأن مكتبات ISAPI DLL الأصلية تُترجم مباشرة إلى لغة الآلة ولا تعتمد على وقت تشغيل .NET.</div>
                     </div>
-                </div>
+                </section>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
@@ -296,7 +297,7 @@
             </div>
         </div>
     </div>
-</div>
+</article>
 
 </main>
 

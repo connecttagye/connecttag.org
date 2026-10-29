@@ -38,12 +38,7 @@ class SiteAppDownloads extends HTMLElement {
       </div>
     `;
   }
-}if (!customElements.get('site-app-downloads')) {
-if (!customElements.get('site-app-downloads')) {
-if (!customElements.get('site-app-downloads')) {
+}
 if (!customElements.get('site-app-downloads')) {
   customElements.define('site-app-downloads', SiteAppDownloads);
-}
-}
-}
 }

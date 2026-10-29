@@ -13,7 +13,7 @@ class SiteArticleCard extends HTMLElement {
 
     this.innerHTML = `
       <div class="ct-article-card">
-        ${image ? `<div class="ct-card-img"><img src="${image}" alt="${title}" width="400" height="200" loading="lazy"></div>` : ''}
+        ${image ? `<div class="ct-card-img"><img src="${image}" alt="${title}" width="400" height="250" loading="lazy" decoding="async"></div>` : ''}
         <div class="ct-card-body">
           ${date ? `<span class="ct-card-date">${date}</span>` : ''}
           <h3 class="ct-card-title"><a href="${link}">${title}</a></h3>
@@ -26,14 +26,7 @@ class SiteArticleCard extends HTMLElement {
 }
 
 if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {
   customElements.define('site-article-card', SiteArticleCard);
-}
-}
-}
-}
 }
 
 
@@ -81,14 +74,9 @@ class SiteArticleMeta extends HTMLElement {
       </div>
     `;
   }
-}if (!customElements.get('site-article-meta')) {
-if (!customElements.get('site-article-meta')) {
-if (!customElements.get('site-article-meta')) {
+}
 if (!customElements.get('site-article-meta')) {
   customElements.define('site-article-meta', SiteArticleMeta);
-}
-}
-}
 }
 
 
@@ -122,15 +110,7 @@ class SiteAuthorBox extends HTMLElement {
 }
 
 if (!customElements.get('site-author-box')) {
-if (!customElements.get('site-author-box')) {
-if (!customElements.get('site-author-box')) {
-if (!customElements.get('site-author-box')) {
-if (!customElements.get('site-author-box')) {
   customElements.define('site-author-box', SiteAuthorBox);
-}
-}
-}
-}
 }
 
 
@@ -152,17 +132,17 @@ class SiteShareButtons extends HTMLElement {
         <h3 class="ct-share-title" style="margin-top:0;">شارك :</h3>
         <div class="ct-share-grid">
           ${isShareSupported ? `
-            <a href="#" class="ct-share-btn native-share" title="مشاركة عبر الهاتف" aria-label="مشاركة عبر الهاتف">
+            <button type="button" class="ct-share-btn native-share" title="مشاركة عبر الهاتف" aria-label="مشاركة عبر الهاتف" style="border: none; cursor: pointer;">
               <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
-            </a>
+            </button>
           ` : ''}
-          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب" aria-label="مشاركة عبر واتساب">
+          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title)}%20${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="ct-share-btn whatsapp" title="مشاركة عبر واتساب" aria-label="مشاركة عبر واتساب">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
           </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener" class="ct-share-btn facebook" title="مشاركة عبر فيسبوك" aria-label="مشاركة عبر فيسبوك">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener noreferrer" class="ct-share-btn facebook" title="مشاركة عبر فيسبوك" aria-label="مشاركة عبر فيسبوك">
             <i class="fa-brands fa-facebook" aria-hidden="true"></i>
           </a>
-          <a href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}" target="_blank" rel="noopener" class="ct-share-btn telegram" title="مشاركة عبر تليجرام" aria-label="مشاركة عبر تليجرام">
+          <a href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}" target="_blank" rel="noopener noreferrer" class="ct-share-btn telegram" title="مشاركة عبر تليجرام" aria-label="مشاركة عبر تليجرام">
             <i class="fa-brands fa-telegram" aria-hidden="true"></i>
           </a>
         </div>
@@ -185,14 +165,7 @@ class SiteShareButtons extends HTMLElement {
 }
 
 if (!customElements.get('site-share-buttons')) {
-if (!customElements.get('site-share-buttons')) {if (!customElements.get('site-share-buttons')) {
-if (!customElements.get('site-share-buttons')) {
-if (!customElements.get('site-share-buttons')) {
   customElements.define('site-share-buttons', SiteShareButtons);
-}
-}
-}
-}
 }
 
 
@@ -393,11 +366,5 @@ class SiteRelatedPosts extends HTMLElement {
   }
 }
 if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
   customElements.define('site-related-posts', SiteRelatedPosts);
-}
-}
-}
 }

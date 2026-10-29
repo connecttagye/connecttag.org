@@ -28,7 +28,7 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.28" alt="كونكت تاق - Connect Tag" width="140" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.29" alt="كونكت تاق - Connect Tag" width="140" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
@@ -106,13 +106,5 @@ class SiteHeader extends HTMLElement {
 }
 
 if (!customElements.get('site-header')) {
-if (!customElements.get('site-header')) {
-if (!customElements.get('site-header')) {
-if (!customElements.get('site-header')) {
-if (!customElements.get('site-header')) {
   customElements.define('site-header', SiteHeader);
-}
-}
-}
-}
 }

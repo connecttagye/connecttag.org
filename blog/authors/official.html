@@ -14,15 +14,19 @@
   <meta property="og:title" content="فريق الموقع - كونكت تاق">
   <meta property="og:description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين." />
   <meta property="og:image" content="https://connecttag.org/assets/img/connect-tag-official-logo.webp">
+  <meta property="og:image:alt" content="فريق كونكت تاق - الناشر الرسمي">
 
   <!-- twitter OpenGraph meta -->
   <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/authors/official" />
   <meta name="twitter:site" content="@connecttagye" />
   <meta name="twitter:title" content="فريق الموقع - كونكت تاق">
   <meta name="twitter:description" content="تعرف على فريق محتوى كونكت تاق، نخبة من الخبراء والمحررين التقنيين." />
   <meta name="twitter:image" content="https://connecttag.org/assets/img/connect-tag-official-logo.webp" />
+  <meta name="twitter:image:alt" content="فريق كونكت تاق - الناشر الرسمي" />
 
   <script type="application/ld+json">
+  [
   {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
@@ -37,29 +41,60 @@
         "https://facebook.com/connecttagye"
       ]
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الكُتّاب",
+        "item": "https://connecttag.org/blog/authors/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "فريق الموقع",
+        "item": "https://connecttag.org/blog/authors/official"
+      }
+    ]
   }
+]
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.28" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.28"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.28">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.28">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.29">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.29">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.28" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.28"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.28">
+  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.29">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.28" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.29" defer></script>
 
 <style>
     .author-profile { padding: 120px 0 80px; background: #fff; }
     .author-card { background: #f9f9f9; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .author-card img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #006b98; margin-bottom: 20px; }
+    .author-card img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #006b98; margin-bottom: 20px; object-fit: cover; }
     .author-card h1 { color: #0052cc; font-weight: bold; margin-bottom: 10px; }
     .author-card p { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; margin: 0 auto 30px; }
     .latest-posts { margin-top: 60px; }
@@ -87,7 +122,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"الكُتّاب", "url":"https://connecttag.org/blog/authors/"}, {"title":"فريق الموقع", "url":"https://connecttag.org/blog/authors/official"}]'></site-breadcrumb>
                 <div class="author-card">
-                    <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="فريق الموقع" width="512" height="512">
+                    <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="فريق الموقع" width="512" height="512" decoding="async">
                     <h1>فريق الموقع (Connect Tag Team)</h1>
                     <p>نحن فريق من المطورين، المصممين، والمحررين التقنيين في شركة كونكت تاق. نعمل معاً على تقديم محتوى تقني دقيق ومحدث لمساعدة المستخدمين والشركات في اليمن والوطن العربي على فهم واستخدام أحدث الحلول البرمجية والتقنية.</p>
                     <div class="social-links">

@@ -85,15 +85,7 @@ class CookieConsent extends HTMLElement {
 }
 
 if (!customElements.get('cookie-consent')) {
-if (!customElements.get('cookie-consent')) {
-if (!customElements.get('cookie-consent')) {
-if (!customElements.get('cookie-consent')) {
-if (!customElements.get('cookie-consent')) {
   customElements.define('cookie-consent', CookieConsent);
-}
-}
-}
-}
 }
 
 // Auto-mount <cookie-consent> on any page where the HTML tag was omitted

@@ -25,12 +25,5 @@ class SiteArticleCard extends HTMLElement {
 }
 
 if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {
-if (!customElements.get('site-article-card')) {
   customElements.define('site-article-card', SiteArticleCard);
-}
-}
-}
-}
 }

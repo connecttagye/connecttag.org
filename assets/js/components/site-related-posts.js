@@ -194,11 +194,5 @@ class SiteRelatedPosts extends HTMLElement {
   }
 }
 if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
-if (!customElements.get('site-related-posts')) {
   customElements.define('site-related-posts', SiteRelatedPosts);
-}
-}
-}
 }
