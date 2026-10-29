@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let allCompanies = [];
     let currentSearch = '';
 
-    const cachedData = CompanyApp.loadFromCache();
-    if (cachedData && Array.isArray(cachedData.companies)) {
-        allCompanies = cachedData.companies;
+    allCompanies = CompanyApp.getInitialCompanies ? CompanyApp.getInitialCompanies() : [];
+    if (allCompanies.length > 0) {
         renderCompanies(allCompanies);
         CompanyApp.fetchData(data => {
             allCompanies = data.companies;
@@ -68,8 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="company-logo-wrapper">
                         <img src="${c.logo}"
                              alt="شعار شركة ${c.arName || c.name}"
-                             class="company-logo"
-                             loading="lazy"
+                             class="company-logo" width="80" height="80" loading="lazy"
                              onerror="this.src='https://connecttag.org/assets/img/connect-tag-official-logo.webp';">
                     </div>
                     <h2 class="company-name">${c.arName || c.name}</h2>

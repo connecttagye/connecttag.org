@@ -29,17 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let rendered = false;
-    const cachedData = CompanyApp.loadFromCache();
-    if (cachedData && Array.isArray(cachedData.companies)) {
-        const matched = cachedData.companies.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
-        if (matched) {
-            renderDetails(matched);
-            rendered = true;
-        }
+    const initialCompanies = CompanyApp.getInitialCompanies ? CompanyApp.getInitialCompanies() : (CompanyApp.loadFromCache()?.companies || []);
+    const matched = CompanyApp.findCompany ? CompanyApp.findCompany(initialCompanies, params) : initialCompanies.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
+    if (matched) {
+        renderDetails(matched);
+        rendered = true;
     }
 
     CompanyApp.fetchData(data => {
-        const company = data.companies.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
+        const company = CompanyApp.findCompany ? CompanyApp.findCompany(data.companies, params) : data.companies.find(c => (querySlug && c.slug === querySlug) || (queryId && String(c.id) === String(queryId)));
         if (company) {
             renderDetails(company);
         } else if (!rendered) {

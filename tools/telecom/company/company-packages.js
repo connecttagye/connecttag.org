@@ -36,9 +36,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let rendered = false;
+    const initialCompanies = CompanyApp.getInitialCompanies ? CompanyApp.getInitialCompanies() : [];
+    const instantComp = CompanyApp.findCompany ? CompanyApp.findCompany(initialCompanies, params) : null;
+    if (instantComp) {
+        currentCompany = instantComp;
+        setupCompanyHeader(currentCompany);
+        updateSEOAndSchema(currentCompany, []);
+    }
     const cachedData = CompanyApp.loadFromCache();
     if (cachedData && Array.isArray(cachedData.companies)) {
-        const matched = cachedData.companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
+        const matched = CompanyApp.findCompany ? CompanyApp.findCompany(cachedData.companies, params) : cachedData.companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
         if (matched) {
             currentCompany = matched;
             setupCompanyHeader(currentCompany);
@@ -53,10 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     CompanyApp.fetchData(data => {
         const companies = data.companies || [];
-        currentCompany = companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
+        currentCompany = CompanyApp.findCompany ? CompanyApp.findCompany(companies, params) : companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
 
         if (!currentCompany) {
-            if (!rendered) {
+            if (!rendered && !instantComp) {
                 setNoIndex();
                 CompanyApp.showToast('عذراً، الشركة غير موجودة');
                 setTimeout(() => { window.location.href = './'; }, 1500);

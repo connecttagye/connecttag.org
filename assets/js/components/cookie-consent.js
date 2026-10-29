@@ -43,8 +43,8 @@ class CookieConsent extends HTMLElement {
         <div class="ct-cookie-content">
           <div class="ct-cookie-text">
             <p>
-              نحن وشركاؤنا (بما في ذلك Google) نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة التصفح وتحليل الزيارات وتخصيص الإعلانات وفقاً لـ
-              <a href="${baseUrl}privacy-policy">سياسة الخصوصية</a>. يمكنك قبول جميع الملفات أو الاكتفاء بالملفات الضرورية فقط.
+              نستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح وتحليل الزيارات وعرض الإعلانات وفقاً لـ
+              <a href="${baseUrl}privacy-policy">سياسة الخصوصية</a>.
             </p>
           </div>
           <div class="ct-cookie-actions" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; width:100%;">

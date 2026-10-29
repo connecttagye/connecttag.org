@@ -63,18 +63,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.29"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.29">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.29">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.30"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.30">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.30">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.29"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.29">
+  <link rel="preload" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.30" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.min.css?v=1.1.30"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.30">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.29" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.30" defer></script>
 
 <style>
     .authors-directory { padding: 120px 0 80px; background: #fff; }
@@ -110,7 +110,9 @@
         margin-bottom: 20px;
         object-fit: cover;
     }
-    .author-grid-card h3 { color: #333; font-weight: 800; margin-bottom: 10px; font-size: 20px; }
+    .authors-directory .row { display: flex; flex-wrap: wrap; }
+    .authors-directory .row > [class*='col-'] { display: flex; flex-direction: column; }
+    .author-grid-card h2, .author-grid-card h3 { color: #333; font-weight: 800; margin-top: 0; margin-bottom: 10px; font-size: 20px; }
     .author-grid-card .author-tag {
         font-size: 12px;
         color: #0052cc;
@@ -150,7 +152,7 @@
                 <a href="https://connecttag.org/blog/authors/official" class="author-grid-card">
                     <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="فريق الموقع" width="512" height="512" decoding="async">
                     <span class="author-tag">الناشر الرسمي</span>
-                    <h3>فريق الموقع</h3>
+                    <h2>فريق الموقع</h2>
                     <p>المصدر المعتمد للشروحات التقنية الرسمية ودليل الخدمات في شركة كونكت تاق.</p>
                 </a>
             </div>
@@ -160,7 +162,7 @@
                 <a href="https://connecttag.org/blog/authors/aqeldev" class="author-grid-card">
                     <img src="https://connecttag.org/upload/author/aqeldev.webp" alt="عقيل محمد" width="640" height="640" decoding="async">
                     <span class="author-tag">مطور وكاتب تقني</span>
-                    <h3>عقيل محمد (aqeldev)</h3>
+                    <h2>عقيل محمد (aqeldev)</h2>
                     <p>خبير في تطوير الويب والأمن السيبراني، يشارككم أسرار البرمجة وحماية المواقع.</p>
                 </a>
             </div>
@@ -170,7 +172,7 @@
                 <a href="https://connecttag.org/blog/authors/basma" class="author-grid-card">
                     <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="بسمة شرف" width="512" height="512" decoding="async">
                     <span class="author-tag">كاتبة محتوى</span>
-                    <h3>بسمة شرف</h3>
+                    <h2>بسمة شرف</h2>
                     <p>متخصصة في شروحات خدمات الاتصالات والإنترنت، تساعدكم على فهم الحلول الرقمية بيسر.</p>
                 </a>
             </div>
@@ -180,7 +182,7 @@
                 <a href="https://connecttag.org/blog/authors/ali" class="author-grid-card">
                     <img src="https://connecttag.org/assets/img/connect-tag-official-logo.webp" alt="علي الرحبي" width="512" height="512" decoding="async">
                     <span class="author-tag">محرر تقني</span>
-                    <h3>علي الرحبي</h3>
+                    <h2>علي الرحبي</h2>
                     <p>شغوف بمتابعة أحدث التطورات في عالم التكنولوجيا والتحول الرقمي وإثراء المحتوى العربي.</p>
                 </a>
             </div>

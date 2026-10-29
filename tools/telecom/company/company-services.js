@@ -36,9 +36,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let rendered = false;
+    const initialCompanies = CompanyApp.getInitialCompanies ? CompanyApp.getInitialCompanies() : [];
+    const instantComp = CompanyApp.findCompany ? CompanyApp.findCompany(initialCompanies, params) : null;
+    if (instantComp) {
+        currentCompany = instantComp;
+        setupCompanyHeader(currentCompany);
+        updateSEOAndSchema(currentCompany, []);
+    }
     const cachedData = CompanyApp.loadFromCache();
     if (cachedData && Array.isArray(cachedData.companies)) {
-        const matched = cachedData.companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
+        const matched = CompanyApp.findCompany ? CompanyApp.findCompany(cachedData.companies, params) : cachedData.companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
         if (matched) {
             currentCompany = matched;
             setupCompanyHeader(currentCompany);
@@ -53,10 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     CompanyApp.fetchData(data => {
         const companies = data.companies || [];
-        currentCompany = companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
+        currentCompany = CompanyApp.findCompany ? CompanyApp.findCompany(companies, params) : companies.find(c => (queryCompanyId && String(c.id) === String(queryCompanyId)) || (querySlug && c.slug === querySlug));
 
         if (!currentCompany) {
-            if (!rendered) {
+            if (!rendered && !instantComp) {
                 setNoIndex();
                 CompanyApp.showToast('عذراً، الشركة غير موجودة');
                 setTimeout(() => { window.location.href = './'; }, 1500);
@@ -180,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input type="tel"
                                id="inline-input-${idx}"
                                class="inline-input-tag"
-                               placeholder="رقم الهاتف"
+                               placeholder="رقم الهاتف" aria-label="رقم الهاتف"
                                inputmode="numeric"
                                oninput="this.classList.toggle('has-val', this.value.trim().length > 0);">
                       `)
@@ -190,10 +197,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="code-action-box">
                         <span class="code-text">${formattedCode || '-'}</span>
                         <div class="actions-btn-group">
-                            <button class="btn-act" onclick="executeServiceAction('copy', ${idx}, '${action}', ${hasInput})" title="نسخ الكود">
+                            <button class="btn-act" onclick="executeServiceAction('copy', ${idx}, '${action}', ${hasInput})" title="نسخ الكود" aria-label="نسخ الكود">
                                 <i class="fa-regular fa-copy"></i>
                             </button>
-                            <button class="btn-act" onclick="executeServiceAction('dial', ${idx}, '${action}', ${hasInput})" title="اتصال بالكود">
+                            <button class="btn-act" onclick="executeServiceAction('dial', ${idx}, '${action}', ${hasInput})" title="اتصال بالكود" aria-label="اتصال بالكود">
                                 <i class="fa-solid fa-phone"></i>
                             </button>
                         </div>
