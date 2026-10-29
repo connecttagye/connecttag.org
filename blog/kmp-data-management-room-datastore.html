@@ -4,46 +4,50 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دليل Room KMP و DataStore: تخزين وتشفير البيانات في Kotlin Multiplatform</title>
-<meta name="description" content="تعلم كيفية إتقان تخزين البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية. دليل شامل للتنفيذ العملي مع تأمين البيانات وتشفيرها لـ Android و iOS.">
+<title>إدارة البيانات في KMP: التكامل بين Room و DataStore - كونكت تاق</title>
+<meta name="description" content="تعلم كيفية بناء طبقة بيانات موحدة وآمنة في تطبيقات Kotlin Multiplatform باستخدام Room KMP و Jetpack DataStore مع SQLCipher.">
 <link rel="canonical" href="https://connecttag.org/blog/kmp-data-management-room-datastore" />
 
 <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/blog/kmp-data-management-room-datastore" />
 <meta property="og:type" content="article">
-<meta property="og:title" content="تخزين وتشفير البيانات في KMP: شرح Room و DataStore العملي">
-<meta property="og:description" content="دليل المطورين المحترفين للتعامل مع قواعد البيانات والإعدادات في Kotlin Multiplatform مع أعلى معايير الأمان والتشفير." />
-<meta property="og:image" content="https://connecttag.org/upload/kmp-data-encryption.webp">
+<meta property="og:title" content="إدارة البيانات في KMP: Room و DataStore - كونكت تاق">
+<meta property="og:description" content="دليل هندسي لبناء طبقة بيانات مشتركة (Shared Data Layer) بين أندرويد و iOS بأعلى معايير الأداء والأمان." />
+<meta property="og:image" content="https://connecttag.org/upload/kmp-data-layer.webp">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/kmp-data-management-room-datastore" />
-<meta name="twitter:title" content="دليل Room KMP و DataStore: تأمين البيانات في تطبيقات KMP">
-<meta name="twitter:image" content="https://connecttag.org/upload/kmp-data-encryption.webp" />
+<meta name="twitter:title" content="مستقبل تخزين البيانات في KMP: Room + DataStore">
+<meta name="twitter:description" content="دليل هندسي لبناء طبقة بيانات مشتركة (Shared Data Layer) بين أندرويد و iOS بأعلى معايير الأداء والأمان." />
+<meta name="twitter:image" content="https://connecttag.org/upload/kmp-data-layer.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "دليل Room KMP و DataStore: تخزين وتشفير البيانات في Kotlin Multiplatform",
-    "description": "تعلم كيفية إتقان تخزين البيانات في تطبيقات KMP باستخدام مكتبات Room و DataStore الرسمية مع تأمين البيانات وتشفيرها لـ Android و iOS.",
-    "image": "https://connecttag.org/upload/kmp-data-encryption.webp",
+    "headline": "إدارة البيانات في KMP: التكامل الهندسي بين Room و DataStore",
+    "description": "استعراض تقني لكيفية توحيد منطق تخزين البيانات بين Android و iOS باستخدام مكتبات Jetpack الرسمية المدعومة في Kotlin Multiplatform.",
+    "image": "https://connecttag.org/upload/kmp-data-layer.webp",
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
@@ -57,26 +61,77 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-17T21:00:00+03:00",
-    "dateModified": "2026-08-17T21:00:00+03:00",
+    "datePublished": "2026-08-18T11:30:00+03:00",
+    "dateModified": "2026-08-18T11:30:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/kmp-data-management-room-datastore"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين وظيفة Room و DataStore في مشاريع KMP؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "مكتبة Room مخصصة لقواعد البيانات العلائقية المعقدة والضخمة (SQLite) التي تتطلب استعلامات وعلاقات بين الجداول، بينما تُستخدم DataStore لحفظ الإعدادات وتفضيلات المستخدم الخفيفة بشكل غير متزامن."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يعمل محرك SQLite بشكل موحد بين أندرويد و iOS في Room KMP؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يتم ذلك عبر استخدام BundledSQLiteDriver الذي يضمن تشغيل نفس إصدار SQLite على كلا النظامين، مما يمنع اختلاف سلوك الاستعلامات بين Android و iOS."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "إدارة البيانات في KMP: التكامل بين Room و DataStore",
+        "item": "https://connecttag.org/blog/kmp-data-management-room-datastore"
+      }
+    ]
   }
 ]
 </script>
 
 <style>
-    .security-alert { background: #fff5f5; border-right: 5px solid #f56565; padding: 20px; border-radius: 8px; margin: 30px 0; }
-    .security-alert h3 { color: #c53030; margin-top: 0; font-size: 18px; }
-    .step-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 25px; border-radius: 12px; margin: 25px 0; }
-    .step-number { background: #0077b6; color: white; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; margin-left: 10px; }
-
-    .tech-badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-bottom: 15px; }
-    .code-label { font-size: 12px; color: #64748b; margin-bottom: 5px; display: block; font-weight: 700; }
+    .architecture-box { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 25px; margin: 30px 0; }
+    .tech-pill-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; transition: transform 0.2s; }
+    .tech-pill-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+    .tech-pill-card h3 { color: #0052cc; margin-top: 0; font-size: 19px; display: flex; align-items: center; gap: 10px; }
+    .security-highlight { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: #fff; padding: 25px; border-radius: 16px; margin: 35px 0; }
+    .security-highlight h3 { color: #818cf8; margin-top: 0; }
+    .security-highlight p, .security-highlight li { color: rgba(255,255,255,0.9) !important; }
 </style>
 
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
        crossorigin="anonymous"></script>
@@ -93,79 +148,93 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تطوير KMP", "url":"https://connecttag.org/blog/kmp-data-management-room-datastore"}]'></site-breadcrumb>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"إدارة البيانات في KMP", "url":"https://connecttag.org/blog/kmp-data-management-room-datastore"}]'></site-breadcrumb>
 
-                <div class="tech-badge"> Kotlin Multiplatform (KMP)</div>
-                <h1>إتقان إدارة البيانات في KMP: استخدام Room و DataStore وتشفيرهما</h1>
+                <h1>إدارة البيانات في KMP: التكامل الهندسي بين Room و DataStore</h1>
 
                 <site-article-meta
-                  date="17 أغسطس 2026"
-                  updated="17 أغسطس 2026"
+                  date="18 أغسطس 2026"
+                  updated="18 أغسطس 2026"
                   hide-author="true"
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/kmp-data-encryption.webp" class="img-responsive" alt="تخزين وتأمين البيانات في Kotlin Multiplatform" loading="lazy" style="border-radius: 15px;">
+                <img src="https://connecttag.org/upload/kmp-data-layer.webp" class="img-responsive" alt="معمارية البيانات في Kotlin Multiplatform" fetchpriority="high">
 
-                <p class="lead mt-4">في عالم التطبيقات الاحترافية، لا يكفي أن يعمل الكود على منصات متعددة، بل يجب أن تكون **البيانات مستقرة، سريعة، ومحمية**. مع وصول دعم جوجل الرسمي لمكتبات Room و DataStore إلى Kotlin Multiplatform (KMP)، أصبح لدينا الآن الأدوات المعيارية لبناء قاعدة بيانات مشتركة تتسم بالكفاءة والأمان.</p>
+                <p class="lead">الواجهات الجميلة قد تجذب المستخدمين للتطبيق، لكنها لا تكتمل إلا عندما تكون <strong>البيانات مستقرة، سريعة، ومحمية</strong>. بينما يوفر إطار <strong>Compose Multiplatform</strong> الأدوات اللازمة لرسم الشاشات، يبرز السؤال الأهم للمطورين: كيف ندير البيانات محلياً بكفاءة عبر مختلف الأنظمة؟</p>
 
-                <h2 id="room-kmp">1. الثورة الجديدة: Room KMP</h2>
-                <p>لم يعد Room مقتصرًا على الأندرويد؛ الآن يمكنك تعريف الجداول (Entities) وعمليات الوصول (DAOs) مرة واحدة في مجلد <code>commonMain</code> واستخدامها في iOS و Android وحتى Desktop.</p>
-
-                <div class="step-box">
-                    <span class="step-number">1</span>
-                    <strong>تعريف الكيان (Entity):</strong> نكتب الكود مرة واحدة للجميع.
-                    <site-code-block language="Kotlin" title="CommonMain / UserEntity.kt">
-@Entity
-data class UserEntity(
-    @PrimaryKey val id: Int,
-    val name: String,
-    val email: String
-)
-                    </site-code-block>
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                    <ul class="toc-list">
+                        <li><a href="#storage-twins">1. ثنائي التخزين المحلي: متى نستخدم كلاً منهما؟</a></li>
+                        <li><a href="#shared-code">2. توحيد الكود عبر <code>commonMain</code></a></li>
+                        <li><a href="#security-encryption">3. الأمان وتشفير البيانات الحساسة</a></li>
+                        <li><a href="#faq">4. الأسئلة الشائعة</a></li>
+                    </ul>
                 </div>
 
-                <h2 id="datastore">2. الإعدادات البسيطة مع Jetpack DataStore</h2>
-                <p>للمعلومات البسيطة مثل "هل المستخدم مسجل دخول؟" أو "الوضع الداكن"، نستخدم DataStore. هي بديل حديث وآمن لـ SharedPreferences وتدعم الـ Coroutines بشكل كامل.</p>
-                <site-code-block language="Kotlin" title="CommonMain / SettingsStore.kt">
-val Context.dataStore: DataStore&lt;Preferences&gt; by preferencesDataStore(name = "settings")
-// في KMP نستخدم محرك مشترك لإنشاء الملف في كل منصة
+                <p>مع التحديثات الرسمية الأخيرة من جوجل و JetBrains، أصبح بإمكاننا استخدام مكتبات الأندرويد القياسية التي نحبها مباشرة داخل مشاريع <strong>Kotlin Multiplatform (KMP)</strong> (راجع أيضاً <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison">مقارنتنا الشاملة بين KMP و Flutter</a>). إليك كيف تتكامل هذه المنظومة هندسياً.</p>
+
+                <h2 id="storage-twins">1. ثنائي التخزين المحلي: متى نستخدم كلاً منهما؟</h2>
+                <p>لبناء معمارية بيانات نظيفة (Clean Data Layer)، يجب الفصل بين نوعين من البيانات المحلية:</p>
+
+                <div class="tech-pill-card">
+                    <h3><i class="fa-solid fa-database"></i> أ. مكتبة Room (لقواعد البيانات العلائقية)</h3>
+                    <p>تُستخدم للبيانات الضخمة والمعقدة التي تتطلب علاقات بين الجداول، بحثاً متقدماً، وتخزيناً مؤقتاً للعمل بدون إنترنت (Offline Caching). بفضل دعم KMP الرسمي (بدءاً من الإصدار 2.7.0)، يمكنك الآن كتابة الـ <code>@Entity</code> والـ <code>@Dao</code> مرة واحدة في المجلد المشترك ليعمل على أندرويد و iOS وسطح المكتب بنفس الكفاءة.</p>
+                </div>
+
+                <div class="tech-pill-card">
+                    <h3><i class="fa-solid fa-sliders"></i> ب. مكتبة Jetpack DataStore (للإعدادات والتفضيلات)</h3>
+                    <p>البديل العصري والآمن لـ SharedPreferences و NSUserDefaults. تُستخدم لحفظ البيانات البسيطة مثل حالة الوضع الليلي، لغة التطبيق، أو رموز الجلسة (Tokens). تعتمد كلياً على <strong>Kotlin Coroutines & Flow</strong>، مما يضمن عدم تجميد واجهة المستخدم (UI Thread) أبداً.</p>
+                </div>
+
+                <h2 id="shared-code">2. توحيد الكود عبر <code>commonMain</code></h2>
+                <p>تكمن عبقرية KMP في قدرتها على عزل تفاصيل النظام التشغيلي؛ حيث نكتب 95% من كود البيانات في <code>commonMain</code>، ونترك فقط تحديد مسار الملف (File Path) لكل نظام على حدة عبر آلية <code>expect / actual</code>.</p>
+
+                <site-code-block language="Kotlin" title="تعريف الـ DAO المشترك في commonMain">
+@Dao
+interface ProjectDao {
+    @Query("SELECT * FROM projects ORDER BY updatedAt DESC")
+    fun observeAllProjects(): Flow&lt;List&lt;ProjectEntity&gt;&gt;
+
+    @Upsert
+    suspend fun saveProject(project: ProjectEntity)
+}
                 </site-code-block>
 
-                <div class="security-alert">
-                    <h3><i class="fa-solid fa-user-secret"></i> الجانب الأمني: التشفير هو الأولوية</h3>
-                    <p>تخزين البيانات دون تشفير هو مخاطرة كبرى. إليك كيف نؤمن البيانات في KMP:</p>
+                <div class="architecture-box">
+                    <strong><i class="fa-solid fa-microchip"></i> سر التوافقية (BundledSQLiteDriver):</strong>
+                    عند إعداد Room في KMP، ننصح دائماً باستخدام محرك <code>BundledSQLiteDriver</code>؛ لأنه يوفر نفس إصدار SQLite المترجم مسبقاً لكل من Android و iOS، مما يقضي تماماً على مشكلة اختلاف سلوك الاستعلامات بين الأجهزة المختلفة.
                 </div>
 
-                <h2 id="encryption">3. تشفير قواعد البيانات والإعدادات</h2>
+                <h2 id="security-encryption">3. الأمان وتشفير البيانات الحساسة</h2>
+                <p>توحيد البيانات لا يعني التهاون في حمايتها. البيانات المخزنة محلياً قد تكون عرضة للاختراق في الأجهزة المكسورة الحماية (Rooted / Jailbroken)، وهو ما فصلناه في <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">دليل حماية تطبيقات الأندرويد من الهندسة العكسية</a>.</p>
 
-                <h4>أ. تشفير قاعدة بيانات Room</h4>
-                <p>نستخدم مكتبة <strong>SQLCipher</strong>. عند بناء الـ Database في كل منصة، نقوم بتمرير مفتاح تشفير (Passphrase):</p>
-                <site-code-block language="Kotlin" title="تشفير Room Database">
-val factory = SupportFactory(SQLiteDatabase.getBytes("مفتاح-سري-قوي".toCharArray()))
-builder.openHelperFactory(factory)
-                </site-code-block>
-
-                <h4>ب. تأمين DataStore (Encryption at Rest)</h4>
-                <p>في الأندرويد نستخدم <strong>AES-GCM</strong> مع <code>Android Keystore</code>، وفي iOS نستخدم الـ <strong>Keychain</strong>. الهدف هو تشفير القيمة قبل حفظها في ملف الـ Preferences بحيث لا يمكن قراءتها حتى لو تم الوصول للملف.</p>
-
-                <h2 id="best-practices">4. أفضل الممارسات لإدارة البيانات</h2>
-                <ul>
-                    <li><strong>الترحيل التدريجي (Migration):</strong> دائماً استخدم نسخة لقاعدة البيانات وقم بإدارة عمليات الترحيل بعناية لتجنب فقدان بيانات المستخدمين.</li>
-                    <li><strong>العمليات الخلفية:</strong> تأكد أن جميع عمليات Room و DataStore تتم في <code>Dispatchers.IO</code> لتجنب تجميد واجهة المستخدم.</li>
-                    <li><strong>حقن التبعيات:</strong> استخدم <strong>Koin</strong> أو <strong>Dagger Hilt</strong> لتوفير نسخة واحدة (Singleton) من قاعدة البيانات لكامل التطبيق.</li>
-                </ul>
-
-                <div class="decision-box" style="background: #eef2f6; border-right: 5px solid #0077b6; padding: 25px; border-radius: 8px; margin: 40px 0;">
-                    <h3>خلاصة القول</h3>
-                    <p>استخدام **Room KMP** و **DataStore** ليس مجرد اتباع للموضة التقنية، بل هو استثمار في استقرار وأمان تطبيقك. البدء بهما الآن يعني تقليل الأكواد المكررة وضمان حماية بيانات عملائك عبر جميع المنصات.</p>
+                <div class="security-highlight">
+                    <h3><i class="fa-solid fa-shield-halved"></i> كيف نؤمن طبقة البيانات في KMP؟</h3>
+                    <ul>
+                        <li><strong>تشفير قواعد البيانات:</strong> دمج مكتبة <strong>SQLCipher</strong> لتشفير ملفات قاعدة بيانات Room بالكامل بتشفير AES-256.</li>
+                        <li><strong>حماية المفاتيح:</strong> عدم تخزين مفاتيح التشفير في الكود، بل حفظها في الحاويات الآمنة للنظام (<strong>Android Keystore</strong> على أندرويد و <strong>Keychain</strong> على iOS).</li>
+                    </ul>
                 </div>
 
-                <p><strong>هل تواجه تحديات في إعداد Room لمشروعك الـ KMP؟</strong> في <strong>كونكت تاق</strong>، نساعد الشركات على بناء معباريات بيانات متينة وآمنة. تواصل معنا لاستشارة تقنية متخصصة.</p>
+                <p><strong>الخلاصة:</strong> سواء كنت تطور للأندرويد فقط أو تبني نظاماً متعدداً عبر KMP، فإن الجمع بين <strong>Jetpack Compose</strong> في الواجهة، و <strong>Room + DataStore</strong> في الخلفية، يمنحك المعادلة الذهبية لبناء تطبيقات حديثة، سريعة، وقابلة للتوسع، وهو النهج الهندسي الذي نتبعه في <a href="https://connecttag.org/company/services/web-app-development">خدمة تطوير التطبيقات لدى كونكت تاق</a>.</p>
+
+                <div class="faq-section" id="faq">
+                    <h2>4. الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين وظيفة Room و DataStore في مشاريع KMP؟</div>
+                        <div class="faq-answer">مكتبة Room مخصصة لقواعد البيانات العلائقية المعقدة والضخمة (SQLite) التي تتطلب استعلامات وعلاقات بين الجداول، بينما تُستخدم DataStore لحفظ الإعدادات وتفضيلات المستخدم الخفيفة بشكل غير متزامن.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يعمل محرك SQLite بشكل موحد بين أندرويد و iOS في Room KMP؟</div>
+                        <div class="faq-answer">يتم ذلك عبر استخدام BundledSQLiteDriver الذي يضمن تشغيل نفس إصدار SQLite على كلا النظامين، مما يمنع اختلاف سلوك الاستعلامات بين Android و iOS.</div>
+                    </div>
+                </div>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts ids="kmp-vs-flutter-comparison, jetpack-compose-guide, android-app-security-reverse-engineering"></site-related-posts>
+                <site-related-posts ids="kmp-vs-flutter-comparison, android-app-security-reverse-engineering"></site-related-posts>
             </div>
         </div>
     </div>
@@ -176,7 +245,5 @@ builder.openHelperFactory(factory)
 <site-footer></site-footer>
 </div>
 <cookie-consent></cookie-consent>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>

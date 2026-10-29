@@ -4,48 +4,50 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>دليل تأمين خادم IIS ضد الهجمات السيبرانية (IIS Hardening Guide) - كونكت تاق</title>
-<meta name="description" content="تعلم كيفية تأمين خادم Microsoft IIS وحمايته من الاختراق. دليل شامل لإغلاق الثغرات، تعطيل البروتوكولات القديمة، ومنع التجسس على السيرفر.">
+<title>دليل تأمين وتحصين خادم Microsoft IIS: حماية شاملة لتطبيقات الويب - كونكت تاق</title>
+<meta name="description" content="دليل تقني متقدم لتأمين خادم الويب Microsoft IIS. تعلم كيفية إخفاء هوية السيرفر، عزل Application Pools، تفعيل ترويسات الأمان، وحماية التطبيقات من الاختراق.">
 <link rel="canonical" href="https://connecttag.org/blog/iis-hardening-guide" />
 
 <!-- OpenGraph meta -->
 <meta property="og:url" content="https://connecttag.org/blog/iis-hardening-guide" />
 <meta property="og:type" content="article">
-<meta property="og:title" content="دليل تأمين خادم IIS ضد الهجمات السيبرانية - كونكت تاق">
-<meta property="og:description" content="خطوات عملية لتأمين خادم الويب IIS ضد التهديدات الأمنية الحديثة." />
-<meta property="og:image" content="https://connecttag.org/upload/iis-hardening-guide.webp">
+<meta property="og:title" content="دليل تأمين وتحصين خادم Microsoft IIS (IIS Hardening) - كونكت تاق">
+<meta property="og:description" content="الإعدادات الافتراضية لخادم IIS غير كافية لبيئة الإنتاج. اكتشف خطوات التحصين الاحترافية لحماية خادمك." />
+<meta property="og:image" content="https://connecttag.org/upload/iis-security-hardening.webp">
 
 <!-- twitter OpenGraph meta -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/iis-hardening-guide" />
-<meta name="twitter:title" content="تأمين خادم IIS: الدليل الشامل للمسؤولين - كونكت تاق">
-<meta name="twitter:image" content="https://connecttag.org/upload/iis-hardening-guide.webp" />
+<meta name="twitter:title" content="تحصين خادم الويب Microsoft IIS ضد الهجمات - كونكت تاق">
+<meta name="twitter:description" content="الإعدادات الافتراضية لخادم IIS غير كافية لبيئة الإنتاج. اكتشف خطوات التحصين الاحترافية لحماية خادمك." />
+<meta name="twitter:image" content="https://connecttag.org/upload/iis-security-hardening.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "دليل تأمين خادم IIS ضد الهجمات السيبرانية (IIS Hardening Guide)",
-    "description": "دليل شامل لتأمين خادم Microsoft IIS، يشمل تعطيل بروتوكولات التشفير القديمة، منع Server Fingerprinting، وتقييد الوصول.",
-    "image": "https://connecttag.org/upload/iis-hardening-guide.webp",
+    "headline": "دليل تأمين وتحصين خادم Microsoft IIS (IIS Hardening)",
+    "description": "دليل تقني متقدم لتأمين خادم الويب Microsoft IIS وتطبيقات الويب المستضافة عليه ضد الهجمات السيبرانية.",
+    "image": "https://connecttag.org/upload/iis-security-hardening.webp",
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
@@ -59,37 +61,83 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-17T21:00:00+03:00",
-    "dateModified": "2026-08-17T21:00:00+03:00",
+    "datePublished": "2026-08-17T20:15:00+03:00",
+    "dateModified": "2026-08-17T20:15:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/iis-hardening-guide"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يجب عزل كل موقع في Application Pool مستقل على IIS؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لضمان عدم انتقال أي اختراق أو استهلاك مفرط للموارد من موقع إلى آخر على نفس الخادم، حيث يعمل كل حوض تطبيقات بهوية صلاحيات معزولة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أخفي إصدار خادم IIS من ترويسات الاستجابة (HTTP Headers)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عبر تفعيل خاصية removeServerHeader في قسم requestFiltering داخل ملف web.config وحذف ترويسة X-Powered-By من HTTP Response Headers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي وظيفة ميزة Dynamic IP Restrictions في IIS؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تقوم برصد وحظر عناوين IP التي ترسل عدداً كبيراً من الطلبات المتزامنة أو المتتالية خلال فترة قصيرة، مما يحمي الخادم من هجمات Brute Force و DDoS."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل تأمين وتحصين خادم Microsoft IIS: حماية شاملة لتطبيقات الويب",
+        "item": "https://connecttag.org/blog/iis-hardening-guide"
+      }
+    ]
   }
 ]
 </script>
 
 <style>
-    .security-card { background: #fcfcfc; border-right: 5px solid #ef4444; padding: 25px; margin: 30px 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-    .security-card h3 { margin-top: 0; color: #ef4444; font-size: 18px; }
+    .security-pillar { background: #fff; border: 1px solid #e2e8f0; border-right: 5px solid #0f172a; padding: 25px; margin: 25px 0; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .security-pillar h3 { margin-top: 0; color: #0f172a; font-size: 19px; display: flex; align-items: center; gap: 10px; }
+    .security-pillar h3 i { color: #0077b6; }
 
     .toc-container { background: #f8faff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; margin: 30px 0; }
     .toc-title { font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #334155; }
     .toc-list { list-style: none; padding: 0; margin: 0; }
     .toc-list li { margin-bottom: 8px; }
-    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; transition: color 0.2s; }
+    .toc-list a { color: #0077b6; text-decoration: none; font-size: 15px; }
 
-    .hardening-step { border-right: 5px solid #0077b6; background: #fff; padding: 25px; border-radius: 10px; margin: 25px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-    .hardening-step h3 { margin-top: 0; color: #0052cc; font-size: 1.2rem; font-weight: 800; }
-
-    .code-snippet { background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 8px; direction: ltr; text-align: left; font-family: monospace; font-size: 13px; margin: 15px 0; overflow-x: auto; }
-    .tag-green { color: #10b981; }
-    .tag-blue { color: #3b82f6; }
-
-    .info-box { border-right: 5px solid #3b82f6; background: #eff6ff; padding: 20px; border-radius: 10px; margin: 25px 0; font-size: 14px; }
-    .warning-box { border-right: 5px solid #f59e0b; background: #fffbeb; padding: 20px; border-radius: 10px; margin: 25px 0; font-size: 14px; }
-
-    code { background: #f1f5f9; color: #e11d48; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    .pro-tip { background: #f0fdf4; border-right: 5px solid #22c55e; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .danger-alert { background: #fef2f2; border-right: 5px solid #ef4444; padding: 20px; border-radius: 8px; margin: 20px 0; }
 </style>
 
   <!-- PWA & Mobile Optimization Tags -->
@@ -113,8 +161,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تأمين IIS", "url":"https://connecttag.org/blog/iis-hardening-guide"}]'></site-breadcrumb>
-                <h1>دليل تأمين خادم IIS ضد الهجمات السيبرانية (IIS Hardening)</h1>
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تحصين خادم IIS", "url":"https://connecttag.org/blog/iis-hardening-guide"}]'></site-breadcrumb>
+                <h1>دليل تأمين وتحصين خادم Microsoft IIS (IIS Hardening)</h1>
 
                 <site-article-meta
                   date="17 أغسطس 2026"
@@ -123,108 +171,124 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/iis-hardening-guide.webp" class="img-responsive" alt="تأمين خادم IIS" loading="lazy">
+                <img src="https://connecttag.org/upload/iis-security-hardening.webp" class="img-responsive" alt="تأمين وتحصين خادم Microsoft IIS" fetchpriority="high">
 
-                <p class="lead">يُعد خادم Microsoft IIS أحد أكثر خوادم الويب استقراراً، ولكن تركه بالإعدادات الافتراضية يجعله هدفاً سهلاً للمهاجمين. تأمين الخادم أو ما يعرف بـ (Hardening) هو عملية تقليل مساحة الهجوم عبر إغلاق كافة الأبواب غير الضرورية وتعزيز الدفاعات البرمجية.</p>
+                <p class="lead">بعد الانتهاء من نشر تطبيقك على خادم <strong>Microsoft IIS</strong> (كما شرحنا في <a href="https://connecttag.org/blog/iis-isapi-deployment-guide">دليل نشر وتصحيح وحدات ISAPI DLL على IIS</a>)، تبدأ المرحلة الأهم والأكثر حساسية: <strong>تحصين الخادم (Server Hardening)</strong>. الإعدادات الافتراضية لأي خادم ويب تُصمم لتسهيل عمل المطورين، وليس لمقاومة الهجمات السيبرانية في بيئة الإنتاج.</p>
+
+                <p>إليك الدليل العملي والشامل لأفضل الممارسات الأمنية لحماية خادم IIS وتطبيقات الويب (بما في ذلك تطبيقات ISAPI و ASP.NET) من الاختراق واستغلال الثغرات.</p>
 
                 <div class="toc-container">
-                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل الشامل:</div>
+                    <div class="toc-title"><i class="fa-solid fa-shield-halved"></i> خارطة طريق التحصين الأمني:</div>
                     <ul class="toc-list">
-                        <li><a href="#protocols">1. تأمين بروتوكولات التشفير (TLS/SSL)</a></li>
-                        <li><a href="#fingerprinting">2. منع تسريب معلومات السيرفر</a></li>
-                        <li><a href="#access-control">3. تقييد الوصول وقيود الـ IP</a></li>
-                        <li><a href="#request-filtering">4. فلترة الطلبات و URL Scan</a></li>
-                        <li><a href="#error-handling">5. معالجة الأخطاء وحماية المسارات</a></li>
-                        <li><a href="#headers">6. رؤوس الأمان (HTTP Security Headers)</a></li>
-                        <li><a href="#app-pool">7. أمان حوض التطبيقات وصلاحيات الملفات</a></li>
+                        <li><a href="#surface-reduction">1. تقليص مساحة الهجوم وإخفاء هوية الخادم</a></li>
+                        <li><a href="#isolation">2. العزل وتطبيق مبدأ الصلاحيات الأقل</a></li>
+                        <li><a href="#request-filtering">3. تصفية الطلبات وحماية المدخلات (Request Filtering)</a></li>
+                        <li><a href="#crypto-headers">4. تأمين الاتصالات وترويسات الأمان</a></li>
+                        <li><a href="#monitoring">5. الحماية من هجمات الإغراق والمراقبة الدورية</a></li>
+                        <li><a href="#faq">6. الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
 
-                <h2 id="protocols">1. تأمين بروتوكولات التشفير (TLS 1.2/1.3)</h2>
-                <p>البروتوكولات القديمة مثل SSL 3.0 و TLS 1.0 تعاني من نقاط ضعف هيكلية. يجب إجبار الخادم على استخدام TLS 1.2 كحد أدنى، ويفضل TLS 1.3 للأنظمة الحديثة.</p>
-                <div class="hardening-step">
-                    <h3>أداة IIS Crypto:</h3>
-                    <p>أسرع طريقة هي استخدام أداة <strong>IIS Crypto</strong> وتطبيق زر <strong>Best Practices</strong>. هذا سيقوم آلياً بـ:</p>
+                <h2 id="surface-reduction">1. تقليص مساحة الهجوم وإخفاء هوية الخادم</h2>
+                <p>الخطوة الأولى في أي استراتيجية دفاعية هي حرمان المهاجم من المعلومات المجانية وتقليل المنافذ المتاحة له:</p>
+
+                <div class="security-pillar">
+                    <h3><i class="fa-solid fa-eye-slash"></i> إخفاء بصمة الخادم (Server Banner Hiding)</h3>
+                    <p>افتراضياً، يرسل خادم IIS ترويسات تخبر المتصفح (والمهاجم) بنوع الخادم وإصداره الدقيق (مثل <code>Server: Microsoft-IIS/8.5</code>). لإخفاء هذه المعلومات:</p>
                     <ul>
-                        <li>تعطيل SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1.</li>
-                        <li>تفعيل Cipher Suites القوية مثل (ECDHE).</li>
-                        <li>تعطيل الـ Ciphers الضعيفة مثل DES, MD5, RC4.</li>
+                        <li>استخدم أداة <strong>URL Rewrite</strong> أو ميزة <code>removeServerHeader</code> في IIS 10.0+ لمسح قيمة ترويسة <code>Server</code>.</li>
+                        <li>من داخل <strong>HTTP Response Headers</strong>، قم بحذف الترويسات الكاشفة مثل <code>X-Powered-By</code> و <code>X-AspNet-Version</code>.</li>
                     </ul>
                 </div>
 
-                <h2 id="fingerprinting">2. منع تسريب معلومات السيرفر (Server Fingerprinting)</h2>
-                <p>كشف إصدار IIS يساعد المخترق في البحث عن ثغرات مخصصة. يجب إزالة رأس <code>Server</code> من كافة الاستجابات.</p>
-                <div class="code-snippet">
-<span class="tag-blue">&lt;!-- إضافة هذا الكود في ملف web.config لإزالة X-Powered-By --&gt;</span>
-<span class="tag-green">&lt;system.webServer&gt;</span>
-  <span class="tag-green">&lt;httpProtocol&gt;</span>
-    <span class="tag-green">&lt;customHeaders&gt;</span>
-      <span class="tag-blue">&lt;remove name="X-Powered-By" /&gt;</span>
-    <span class="tag-green">&lt;/customHeaders&gt;</span>
-  <span class="tag-green">&lt;/httpProtocol&gt;</span>
-<span class="tag-green">&lt;/system.webServer&gt;</span>
-                </div>
-                <div class="info-box">
-                    <i class="fa-solid fa-info-circle"></i> لإزالة رأس <code>Server</code>، استخدم وحدة <strong>URL Rewrite</strong> وأنشئ "Outbound Rule" لتعطيل المتغير <code>RESPONSE_SERVER</code>.
+                <site-code-block language="XML" title="إخفاء الترويسات عبر ملف web.config">
+&lt;configuration&gt;
+  &lt;system.webServer&gt;
+    &lt;security&gt;
+      &lt;requestFiltering removeServerHeader="true" /&gt;
+    &lt;/security&gt;
+    &lt;httpProtocol&gt;
+      &lt;customHeaders&gt;
+        &lt;remove name="X-Powered-By" /&gt;
+      &lt;/customHeaders&gt;
+    &lt;/httpProtocol&gt;
+  &lt;/system.webServer&gt;
+&lt;/configuration&gt;
+                </site-code-block>
+
+                <ul>
+                    <li><strong>إزالة المكونات غير الضرورية:</strong> عند تثبيت IIS، لا تقم بتفعيل أي ميزة (Role Service) لا يحتاجها تطبيقك فعلياً (مثل FTP Server أو WebDAV). كل ميزة إضافية غير مستخدمة هي ثغرة محتملة.</li>
+                </ul>
+
+                <h2 id="isolation">2. العزل وتطبيق مبدأ الصلاحيات الأقل (Least Privilege)</h2>
+                <p>إذا تمكن مهاجم من اختراق أحد المواقع على الخادم، فإن هدفك هو منعه من الوصول لبقية المواقع أو نظام التشغيل (بالتكامل مع <a href="https://connecttag.org/blog/advanced-database-security-architecture">عزل وصلاحيات قواعد البيانات RBAC</a>):</p>
+                <ul>
+                    <li><strong>عزل أحواض التطبيقات (Application Pool Isolation):</strong> خصص <strong>Application Pool مستقل</strong> لكل موقع أو تطبيق، ولا تضع عدة تطبيقات في الـ <code>DefaultAppPool</code>.</li>
+                    <li><strong>هوية حوض التطبيقات:</strong> اعتمد دائماً على الحساب الافتراضي المعزول <code>ApplicationPoolIdentity</code>، وإياك وتشغيل التطبيقات تحت حساب <code>LocalSystem</code> أو <code>Administrator</code>.</li>
+                    <li><strong>صلاحيات نظام الملفات (NTFS Permissions):</strong> امنح حساب التطبيق صلاحية القراءة والتنفيذ فقط (Read &amp; Execute) على مجلد الموقع، واحصر صلاحية الكتابة (Write) في مجلد السجلات (Logs) أو المرفقات فقط، مع منع تنفيذ أي سكربتات داخل مجلدات الرفع.</li>
+                </ul>
+
+                <div class="danger-alert">
+                    <i class="fa-solid fa-skull-crossbones"></i> <strong>خطأ قاتل في تطبيقات ISAPI:</strong>
+                    عند تفعيل صلاحية <strong>ISAPI and CGI Restrictions</strong>، لا تقم أبداً بتفعيل خيار "Allow unspecified ISAPI modules". بدلاً من ذلك، أضف المسار الكامل لملف الـ <code>.dll</code> الخاص بك حصراً في القائمة البيضاء (Whitelist).
                 </div>
 
-                <h2 id="access-control">3. تقييد الوصول وقيود الـ IP</h2>
-                <p>يجب حماية مسارات الإدارة (مثل <code>/admin</code>) بحيث لا يمكن الوصول إليها إلا من عناوين IP موثوقة.</p>
-                <div class="hardening-step">
+                <h2 id="request-filtering">3. تصفية الطلبات وحماية المدخلات (Request Filtering)</h2>
+                <p>تُعد ميزة <strong>Request Filtering</strong> المدمجة في IIS بمثابة جدار حماية مصغر للتطبيقات:</p>
+                <div class="security-pillar">
+                    <h3><i class="fa-solid fa-filter"></i> أهم ضوابط التصفية الموصى بها:</h3>
                     <ul>
-                        <li>ثبّت ميزة <strong>IP and Domain Restrictions</strong>.</li>
-                        <li>اضبط <strong>Access for Unspecified Clients</strong> على <strong>Deny</strong>.</li>
-                        <li>أضف استثناءات (Allow) فقط لعنوان الـ IP الخاص بمكتبك أو نظامك الداخلي.</li>
-                        <li><strong>Dynamic IP Restrictions:</strong> فعل هذه الميزة لمنع هجمات Brute Force؛ حيث يقوم IIS بحظر أي IP يقوم بعدد طلبات هائل في ثوانٍ معدودة.</li>
+                        <li><strong>حظر مسارات وأكواد الاستغلال:</strong> تفعيل <strong>Deny Url Sequences</strong> لحظر الرموز المستخدمة في تخطي المجلدات (Path Traversal) مثل <code>..</code>.</li>
+                        <li><strong>تحديد سقف حجم الطلبات:</strong> تقليل قيمة <code>Maximum allowed content length</code> (مثلاً إلى 10 أو 30 ميجابايت حسب حاجة التطبيق) لمنع هجمات استنزاف الذاكرة.</li>
+                        <li><strong>تقييد أوامر HTTP (HTTP Verbs):</strong> اسمح فقط بالأوامر التي يستخدمها تطبيقك (مثل <code>GET</code> و <code>POST</code>)، وقم بحظر الأوامر الخطيرة مثل <code>TRACE</code> و <code>TRACK</code> و <code>OPTIONS</code>.</li>
                     </ul>
                 </div>
 
-                <h2 id="request-filtering">4. فلترة الطلبات واستخدام URL Scan</h2>
-                <p>فلترة الطلبات (Request Filtering) هي خط الدفاع الأول ضد محاولات الاختراق عبر الروابط.</p>
+                <h2 id="crypto-headers">4. تأمين الاتصالات وترويسات الأمان (Security Headers)</h2>
+                <p>حماية الزائر أثناء تصفحه للموقع لا تقل أهمية عن حماية الخادم نفسه:</p>
                 <ul>
-                    <li><strong>منع امتدادات الملفات:</strong> تأكد من منع الوصول لملفات <code>.config</code>, <code>.log</code>, <code>.bak</code>.</li>
-                    <li><strong>تحديد حجم الطلب:</strong> اضبط <code>maxAllowedContentLength</code> لمنع هجمات رفع الملفات الضخمة التي قد تسبب Denial of Service.</li>
-                </ul>
-                <div class="warning-box">
-                    <i class="fa-solid fa-shield"></i> <strong>أداة URL Scan:</strong> إذا كنت تستخدم إصدارات قديمة من IIS، قم بتثبيت URL Scan لرفض الطلبات التي تحتوي على تسلسلات مريبة مثل <code>../</code> أو الرموز البرمجية في الـ URL.
-                </div>
-
-                <h2 id="error-handling">5. معالجة الأخطاء وحماية المسارات الفنية</h2>
-                <p>رسائل الخطأ الافتراضية قد تكشف عن مسارات الملفات البرمجية على السيرفر (مثل <code>C:\inetpub\...</code>).</p>
-                <div class="hardening-step">
-                    <p>قم بإعداد <strong>Custom Error Pages</strong> لكل من أخطاء 404 و 500. تأكد من ضبط الإعداد على <code>ExistingResponse="Replace"</code> لضمان عدم ظهور أي معلومات فنية للمستخدم النهائي.</p>
-                </div>
-
-                <h2 id="headers">6. رؤوس الأمان (HTTP Security Headers)</h2>
-                <p>هذه الرؤوس تخبر المتصفح بكيفية التعامل مع موقعك بأمان:</p>
-                <ul>
-                    <li><strong>Strict-Transport-Security (HSTS):</strong> لإجبار المتصفح على استخدام HTTPS دائماً.</li>
-                    <li><strong>X-Frame-Options:</strong> لمنع وضع موقعك داخل iframe (الحماية من هجمات Clickjacking).</li>
-                    <li><strong>X-Content-Type-Options:</strong> اضبطها على <code>nosniff</code> لمنع المتصفح من محاولة تخمين نوع الملف.</li>
+                    <li><strong>فرض HTTPS وتحديث TLS:</strong> قم بتعطيل البروتوكولات القديمة والضعيفة (SSL 2.0/3.0 و TLS 1.0/1.1) من سجل النظام (Registry) أو باستخدام أداة <strong>IIS Crypto</strong>، مع الإبقاء على <strong>TLS 1.2 و TLS 1.3</strong> فقط.</li>
+                    <li><strong>إضافة ترويسات الأمان القياسية:</strong> من قسم <code>HTTP Response Headers</code> في مدير IIS، أضف الترويسات التالية:
+                        <ul>
+                            <li><code>Strict-Transport-Security</code> (بقيمة <code>max-age=31536000; includeSubDomains</code>) لإجبار المتصفح على الاتصال المشفر دائماً.</li>
+                            <li><code>X-Frame-Options</code> (بقيمة <code>SAMEORIGIN</code>) لمنع هجمات التضمين الخبيث (Clickjacking).</li>
+                            <li><code>X-Content-Type-Options</code> (بقيمة <code>nosniff</code>) لمنع المتصفح من تخمين وتنفيذ الملفات النصية كأكواد.</li>
+                        </ul>
+                    </li>
                 </ul>
 
-                <h2 id="app-pool">7. أمان حوض التطبيقات (Application Pool)</h2>
-                <p>العزل هو مفتاح الأمان في الخوادم المشتركة:</p>
+                <h2 id="monitoring">5. الحماية من هجمات الإغراق والمراقبة الدورية</h2>
+                <p>الأمن عملية مستمرة تتطلب يقظة دائمة:</p>
+                <div class="pro-tip">
+                    <i class="fa-solid fa-bolt"></i> <strong>ميزة ذهبية في IIS:</strong>
+                    قم بتثبيت وتفعيل إضافة <strong>Dynamic IP Restrictions</strong>؛ وهي ميزة رسمية تقوم بحظر أي عنوان IP تلقائياً إذا تجاوز عدداً معيناً من الطلبات المتزامنة أو الطلبات في الثانية، مما يصد هجمات التخمين (Brute Force) وهجمات حجب الخدمة (DoS) بفعالية عالية.
+                </div>
                 <ul>
-                    <li><strong>Identity:</strong> لا تشغل حوض التطبيقات أبداً بحساب <code>Administrator</code>. استخدم حساب <strong>AppPoolIdentity</strong> المحدود.</li>
-                    <li><strong>Recycling:</strong> اضبط فترات إعادة تشغيل الحوض (Recycling) لتنظيف الذاكرة ومنع تسريبات الذاكرة (Memory Leaks) من التأثير على السيرفر.</li>
+                    <li><strong>إخفاء تفاصيل الأخطاء البرمجية:</strong> اضبط إعدادات <strong>Error Pages</strong> على <code>Detailed errors for local requests and custom error pages for remote requests</code>، حتى لا تظهر مسارات الملفات البرمجية وأكواد الاستعلام للزوار عند حدوث خطأ 500.</li>
+                    <li><strong>تأمين ومراقبة السجلات (IIS Logs):</strong> انقل مجلد حفظ السجلات من المسار الافتراضي على قرص النظام (<code>C:\inetpub\logs</code>) إلى قرص مستقل، وفعّل تسجيل الحقول الأمنية مثل <code>X-Forwarded-For</code> لمعرفة الـ IP الحقيقي للزائر في حال استخدام Cloudflare.</li>
                 </ul>
 
-                <div class="security-card">
-                    <h3><i class="fa-solid fa-list-check"></i> قائمة الفحص النهائية (Checklist):</h3>
-                    <ul class="small">
-                        <li>تعطيل خاصية <strong>Directory Browsing</strong> لجميع المواقع.</li>
-                        <li>حذف وسم <code>X-AspNet-Version</code> من الاستجابات.</li>
-                        <li>منع الوصول لملف <code>web.config</code> من المتصفح.</li>
-                        <li>تفعيل <strong>Failed Request Tracing</strong> لتتبع الأخطاء أمنياً دون عرضها للجمهور.</li>
-                    </ul>
-                </div>
+                <p><strong>الخلاصة:</strong> بتطبيق هذه الطبقات الخمس، يتحول خادم Microsoft IIS من بيئة افتراضية مكشوفة إلى قلعة رقمية محصنة تضمن استمرارية أعمالك وحماية بيانات عملائك بأعلى المعايير العالمية. وللحصول على فحص أمني شامل لخوادمك وتطبيقاتك، تواصل مع فريق <a href="https://connecttag.org/company/services/cybersecurity-solutions">الحلول الأمنية والأمن السيبراني في كونكت تاق</a>.</p>
 
-                <p class="lead mt-5">بتباعك لهذا الدليل، ستكون قد وضعت طبقات دفاعية متعددة تجعل من اختراق خادمك مهمة شاقة تتطلب مجهوداً يفوق قدرة المهاجمين التقليديين.</p>
+                <div class="faq-section" id="faq">
+                    <h2>6. الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يجب عزل كل موقع في Application Pool مستقل على IIS؟</div>
+                        <div class="faq-answer">لضمان عدم انتقال أي اختراق أو استهلاك مفرط للموارد من موقع إلى آخر على نفس الخادم، حيث يعمل كل حوض تطبيقات بهوية صلاحيات معزولة.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أخفي إصدار خادم IIS من ترويسات الاستجابة (HTTP Headers)؟</div>
+                        <div class="faq-answer">عبر تفعيل خاصية removeServerHeader في قسم requestFiltering داخل ملف web.config وحذف ترويسة X-Powered-By من HTTP Response Headers.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي وظيفة ميزة Dynamic IP Restrictions في IIS؟</div>
+                        <div class="faq-answer">تقوم برصد وحظر عناوين IP التي ترسل عدداً كبيراً من الطلبات المتزامنة أو المتتالية خلال فترة قصيرة، مما يحمي الخادم من هجمات Brute Force و DDoS.</div>
+                    </div>
+                </div>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts ids="iis-isapi-deployment-guide, advanced-database-security-architecture"></site-related-posts>
+                <site-related-posts ids="iis-isapi-deployment-guide, api-security-guide"></site-related-posts>
             </div>
         </div>
     </div>

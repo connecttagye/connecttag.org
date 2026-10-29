@@ -19,24 +19,26 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/iis-isapi-deployment-guide" />
 <meta name="twitter:title" content="دليل نشر وتصحيح ISAPI DLL على خادم IIS - كونكت تاق">
+<meta name="twitter:description" content="استضافة تطبيقات ISAPI DLL تتطلب إعدادات دقيقة لضمان الأداء والاستقرار. اكتشف الدليل الشامل للإعداد والتصحيح." />
 <meta name="twitter:image" content="https://connecttag.org/upload/iis-isapi-guide.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
@@ -65,6 +67,60 @@
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/iis-isapi-deployment-guide"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يظهر خطأ 500 عند تشغيل ملف ISAPI DLL بـ 32 بت على خادم 64 بت؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن حوض التطبيقات في IIS يعمل افتراضياً بوضع 64 بت؛ ولحل المشكلة يجب تفعيل خيار Enable 32-Bit Applications من الإعدادات المتقدمة (Advanced Settings) الخاصة بـ Application Pool."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أقوم بتصحيح أخطاء (Debugging) ملف ISAPI DLL أثناء التشغيل؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عن طريق تشغيل بيئة التطوير بصلاحيات المسؤول وربط المصحح (Attach to Process) بعملية الخادم المضيفة w3wp.exe."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الإعداد الصحيح لـ .NET CLR Version لتطبيقات ISAPI الأصلية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يُفضل ضبط حوض التطبيقات على No Managed Code لأن مكتبات ISAPI DLL الأصلية تُترجم مباشرة إلى لغة الآلة ولا تعتمد على وقت تشغيل .NET."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS",
+        "item": "https://connecttag.org/blog/iis-isapi-deployment-guide"
+      }
+    ]
   }
 ]
 </script>
@@ -118,11 +174,11 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" loading="lazy">
+                <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high">
 
                 <p class="lead">إذا كنت تعمل على تطوير تطبيقات الويب أو واجهات برمجة التطبيقات (APIs) المعتمدة على مكتبات الربط الديناميكي (ISAPI DLL)، فإن استضافتها على خادم Microsoft IIS يتطلب إعدادات دقيقة لضمان الأداء العالي والاستقرار.</p>
 
-                <p>في هذا المقال، سنستعرض دليلاً عملياً وخطوة بخطوة لنشر تطبيقك بنجاح، بالإضافة إلى كيفية إعداد بيئة تصحيح الأخطاء (Debugging) وأهم النصائح لتجاوز المشاكل الشائعة. (تم اختبار هذه الخطوات وتطبيقها بنجاح على الإصدارين 7.5 و 8.5 من خادم IIS).</p>
+                <p>في هذا المقال، سنستعرض دليلاً عملياً وخطوة بخطوة لنشر تطبيقك بنجاح، بالإضافة إلى كيفية إعداد بيئة تصحيح الأخطاء (Debugging) وأهم النصائح لتجاوز المشاكل الشائعة. وبعد إتمام النشر، ننصحك بمراجعة <a href="https://connecttag.org/blog/iis-hardening-guide">دليل تأمين وتحصين خادم Microsoft IIS</a> و<a href="https://connecttag.org/blog/api-security-guide">دليل حماية واجهات برمجة التطبيقات (API Security)</a>.</p>
 
                 <div class="toc-container">
                     <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
@@ -133,6 +189,7 @@
                         <li><a href="#auth-perms">4. المصادقة وصلاحيات الملفات</a></li>
                         <li><a href="#debugging">5. دليل المطورين لتصحيح الأخطاء</a></li>
                         <li><a href="#troubleshooting">6. حل المشاكل الشائعة</a></li>
+                        <li><a href="#faq">7. الأسئلة الشائعة</a></li>
                     </ul>
                 </div>
 
@@ -207,11 +264,27 @@
                     </ul>
                 </div>
 
-                <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS.</p>
+                <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS. كما نقدم في <strong>كونكت تاق</strong> <a href="https://connecttag.org/company/services/hosting-services">خدمات الاستضافة السحابية وإدارة الخوادم</a> لتجهيز بيئات التشغيل المؤسسية.</p>
+
+                <div class="faq-section" id="faq">
+                    <h2>7. الأسئلة الشائعة</h2>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يظهر خطأ 500 عند تشغيل ملف ISAPI DLL بـ 32 بت على خادم 64 بت؟</div>
+                        <div class="faq-answer">لأن حوض التطبيقات في IIS يعمل افتراضياً بوضع 64 بت؛ ولحل المشكلة يجب تفعيل خيار Enable 32-Bit Applications من الإعدادات المتقدمة (Advanced Settings) الخاصة بـ Application Pool.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أقوم بتصحيح أخطاء (Debugging) ملف ISAPI DLL أثناء التشغيل؟</div>
+                        <div class="faq-answer">عن طريق تشغيل بيئة التطوير بصلاحيات المسؤول وربط المصحح (Attach to Process) بعملية الخادم المضيفة w3wp.exe.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو الإعداد الصحيح لـ .NET CLR Version لتطبيقات ISAPI الأصلية؟</div>
+                        <div class="faq-answer">يُفضل ضبط حوض التطبيقات على No Managed Code لأن مكتبات ISAPI DLL الأصلية تُترجم مباشرة إلى لغة الآلة ولا تعتمد على وقت تشغيل .NET.</div>
+                    </div>
+                </div>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts ids="api-security-guide, advanced-database-security-architecture"></site-related-posts>
+                <site-related-posts ids="iis-hardening-guide, api-security-guide"></site-related-posts>
             </div>
         </div>
     </div>

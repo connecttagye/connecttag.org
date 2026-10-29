@@ -19,24 +19,26 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/advanced-database-security-architecture" />
 <meta name="twitter:title" content="هندسة وأمن قواعد البيانات المتطورة - كونكت تاق">
+<meta name="twitter:description" content="تصميم وتأمين قواعد البيانات يتطلب دمجاً بين الهيكلية الذكية والممارسات البرمجية النظيفة." />
 <meta name="twitter:image" content="https://connecttag.org/upload/database-architecture.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
@@ -49,7 +51,7 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
-    "url": "https://connecttag.org/blog/authors/aqeldev"
+      "url": "https://connecttag.org/blog/authors/aqeldev"
     },
     "publisher": {
       "@type": "Organization",
@@ -93,6 +95,38 @@
           "@type": "Answer",
           "text": "عبر فصل قاعدة بيانات السجلات عن العمليات التشغيلية، واستخدام مستخدم يمتلك صلاحية INSERT فقط دون الحذف أو التعديل."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "هل النسخ الاحتياطي اليومي كافٍ؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يعتمد ذلك على معدل تغير البيانات، ولكن الأهم هو اتباع قاعدة 3-2-1 وضمان وجود نسخة خارج الموقع (Off-site)."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "المعمارية الأمنية والهندسية لقواعد البيانات المتطورة",
+        "item": "https://connecttag.org/blog/advanced-database-security-architecture"
       }
     ]
   }
@@ -152,7 +186,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/database-architecture.webp" class="img-responsive" alt="هندسة وأمن قواعد البيانات" loading="lazy">
+                <img src="https://connecttag.org/upload/database-architecture.webp" class="img-responsive" alt="هندسة وأمن قواعد البيانات" fetchpriority="high">
 
                 <p>تُعد قاعدة البيانات هي القلب النابض لأي نظام تقني، وتأمينها لا يقتصر فقط على وضع كلمة مرور قوية، بل يتطلب دمجاً عميقاً بين التصميم الهيكلي الذكي، وسياسات الصلاحيات الصارمة، والممارسات البرمجية النظيفة لضمان سلامة ونزاهة البيانات.</p>
 
@@ -180,7 +214,7 @@
                 </div>
 
                 <h2 id="injection-prevention">1. التحصين المنيع ضد هجمات الحقن وإدارة المعرفات</h2>
-                <p>الحماية من هجمات حقن قواعد البيانات (SQL Injection) تبدأ من كود التطبيق نفسه:</p>
+                <p>الحماية من هجمات حقن قواعد البيانات (SQL Injection) تبدأ من كود التطبيق نفسه بالتكامل مع <a href="https://connecttag.org/blog/api-security-guide">تأمين واجهات برمجة التطبيقات (API Security)</a>:</p>
                 <ul>
                     <li><strong>الاستعلامات المجهزة مسبقاً (Prepared Statements):</strong> فلترة البيانات وحدها لا تكفي. استخدام (Parameterized Queries) يضمن أن محرك قاعدة البيانات يتعامل مع المدخلات كنصوص فقط.</li>
                 </ul>
@@ -189,9 +223,9 @@
                     <h3>الممارسة الصحيحة (PHP/PDO):</h3>
                     <pre style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; direction: ltr; text-align: left; overflow-x: auto;">
 // استخدام المعاملات بدلاً من دمج النصوص
-$stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email');
-$stmt->execute(['email' => $userEmail]);
-$user = $stmt->fetch();</pre>
+$stmt = $pdo-&gt;prepare('SELECT * FROM users WHERE email = :email');
+$stmt-&gt;execute(['email' =&gt; $userEmail]);
+$user = $stmt-&gt;fetch();</pre>
                 </div>
 
                 <ul>
@@ -259,17 +293,27 @@ GRANT INSERT ON logs_db.app_logs TO 'logger_srv'@'localhost';</pre>
                 </ul>
 
                 <h2 id="data-at-rest">5. التوثيق، الصيانة، وأمن البيانات المخزنة</h2>
-                <p>لا تكتمل المعمارية بدون حماية البيانات الفعلية على القرص:</p>
+                <p>لا تكتمل المعمارية بدون حماية البيانات الفعلية على القرص وتحصين الخادم المستضيف (راجع <a href="https://connecttag.org/blog/iis-hardening-guide">دليل تأمين وتحصين خادم Microsoft IIS</a>):</p>
                 <ul>
                     <li><strong>التشفير في حالة الراحة (TDE):</strong> تفعيل التشفير الشفاف للبيانات لضمان عدم قراءتها حتى في حال سرقة ملفات السيرفر الفيزيائية.</li>
                     <li><strong>استراتيجية النسخ الاحتياطي (3-2-1):</strong> 3 نسخ، على وسيطين مختلفين، مع نسخة واحدة خارج الموقع (Off-site)، مع ضرورة اختبار الاستعادة دورياً.</li>
                 </ul>
 
+                <p><strong>خلاصة القول:</strong> بناء قاعدة بيانات آمنة هو أساس استدامة الأنظمة المؤسسية. في <strong>كونكت تاق</strong>، نقدم <a href="https://connecttag.org/company/services/cybersecurity-solutions">خدمات الحلول الأمنية وهندسة قواعد البيانات</a> لبناء بنية تحتية محصنة ضد المخاطر.</p>
+
                 <div class="faq-section" id="faq">
-                    <h2>الأسئلة الشائعة</h2>
+                    <h2>6. الأسئلة الشائعة</h2>
                     <div class="faq-item">
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يفضل استخدام UUID بدلاً من الأرقام المتسلسلة؟</div>
-                        <div class="faq-answer">يمنع هجمات التخمين ويحمي خصوصية حجم بياناتك، كما يعالج ثغرات الـ IDOR بشكل جذري.</div>
+                        <div class="faq-answer">استخدام UUIDs يمنع هجمات التخمين (Enumeration) ويعالج ثغرة IDOR، كما أنه يحمي خصوصية حجم البيانات الكلي للشركة.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو مبدأ الامتياز الأقل (Least Privilege) في قواعد البيانات؟</div>
+                        <div class="faq-answer">يعني إعطاء مستخدم قاعدة البيانات فقط الصلاحيات التي يحتاجها لأداء مهمته (مثل SELECT فقط للتقارير) لتقليل حجم الضرر في حال الاختراق.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أحمي سجلات النظام (Logs) من التلاعب؟</div>
+                        <div class="faq-answer">عبر فصل قاعدة بيانات السجلات عن العمليات التشغيلية، واستخدام مستخدم يمتلك صلاحية INSERT فقط دون الحذف أو التعديل.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل النسخ الاحتياطي اليومي كافٍ؟</div>
@@ -279,7 +323,7 @@ GRANT INSERT ON logs_db.app_logs TO 'logger_srv'@'localhost';</pre>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts ids="website-security-simple-steps, cloudflare-waf-security-guide"></site-related-posts>
+                <site-related-posts ids="api-security-guide, iis-hardening-guide"></site-related-posts>
             </div>
         </div>
     </div>
@@ -292,4 +336,3 @@ GRANT INSERT ON logs_db.app_logs TO 'logger_srv'@'localhost';</pre>
 <cookie-consent></cookie-consent>
 </body>
 </html>
-

@@ -19,24 +19,26 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://connecttag.org/blog/api-security-guide" />
 <meta name="twitter:title" content="دليل أمن الـ APIs للمطورين - كونكت تاق">
+<meta name="twitter:description" content="تعلم كيفية بناء حصن منيع حول الـ API الخاص بك وحماية بياناتك من الاختراق." />
 <meta name="twitter:image" content="https://connecttag.org/upload/api-security.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
@@ -49,7 +51,7 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
-    "url": "https://connecttag.org/blog/authors/aqeldev"
+      "url": "https://connecttag.org/blog/authors/aqeldev"
     },
     "publisher": {
       "@type": "Organization",
@@ -93,6 +95,38 @@
           "@type": "Answer",
           "text": "عبر تفعيل التقييد الجغرافي (Geo-Blocking) في الجدار الناري، وحصر الوصول لبلدان معينة تستهدفها خدمتك."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يفضل Refresh Tokens؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأنه يسمح لنا بجعل الـ Access Token قصير العمر جداً، مما يقلل مخاطر سرقته، مع الحفاظ على تجربة مستخدم سلسة."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل حماية واجهات برمجة التطبيقات (API Security): تأمين قنوات التواصل الرقمي",
+        "item": "https://connecttag.org/blog/api-security-guide"
       }
     ]
   }
@@ -152,7 +186,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" alt="أمن واجهات برمجة التطبيقات API" loading="lazy">
+                <img src="https://connecttag.org/upload/api-security.webp" class="img-responsive" alt="أمن واجهات برمجة التطبيقات API" fetchpriority="high">
 
                 <p>واجهات برمجة التطبيقات (APIs) هي لغة التخاطب الأساسية بين الأنظمة الحديثة والتطبيقات. وبسبب طبيعتها المنفتحة، أصبحت الهدف الأول والمفضل للمخترقين. لتأمينها بشكل كامل، يجب تطبيق مجموعة صارمة من السياسات التقنية التي تحمي البيانات من لحظة خروجها من جهاز المستخدم وحتى استقرارها في الخادم.</p>
 
@@ -170,7 +204,7 @@
                     <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
                     <ul class="toc-list">
                         <li><a href="#encryption-transit">1. التشفير، النقل الآمن، والتعامل مع بيانات الاعتماد</a></li>
-                        <li><a href="#auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT & OAuth)</a></li>
+                        <li><a href="#auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT &amp; OAuth)</a></li>
                         <li><a href="#attack-surface">3. تضييق مساحة الهجوم (Attack Surface Reduction)</a></li>
                         <li><a href="#traffic-control">4. التخفي، الحد من الطلبات، والتقييد الجغرافي</a></li>
                         <li><a href="#faq">5. الأسئلة الشائعة</a></li>
@@ -199,7 +233,7 @@ const isMatch = await bcrypt.compare(loginPassword, hashedPassword);
                     <li><strong>التشفير الهجين:</strong> للبيانات فائقة الحساسية، نستخدم RSA لتبادل المفاتيح و AES-256-GCM لتشفير المحتوى نفسه.</li>
                 </ul>
 
-                <h2 id="auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT & OAuth)</h2>
+                <h2 id="auth-logic">2. هندسة المصادقة والتحكم بالجلسات (JWT &amp; OAuth)</h2>
                 <p>تأمين الهوية الرقمية هو العمود الفقري للـ API:</p>
                 <ul>
                     <li><strong>هيكلية رموز JWT:</strong> يجب رفض أي رمز يستخدم خوارزمية <code>"alg": "none"</code> صراحة، والتأكد من التوقيع باستخدام مفاتيح قوية (RS256).</li>
@@ -244,7 +278,7 @@ const isMatch = await bcrypt.compare(loginPassword, hashedPassword);
 
                 <site-code-block language="Nginx" title="إعداد Rate Limiting على السيرفر">
 # تعريف منطقة تحديد الطلبات (10 طلبات في الثانية)
-limit_req_zone \$binary_remote_addr zone=api_limit:10m rate=10r/s;
+limit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;
 
 server {
     location /api/ {
@@ -263,10 +297,18 @@ server {
                 </div>
 
                 <div class="faq-section" id="faq">
-                    <h2>الأسئلة الشائعة</h2>
+                    <h2>5. الأسئلة الشائعة</h2>
                     <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل Base64 كافٍ لحماية كلمات المرور؟</div>
-                        <div class="faq-answer">لا، Base64 هو مجرد ترميز لتسهيل نقل البيانات وليس وسيلة حماية. يجب استخدام خوارزميات Hashing مثل Bcrypt.</div>
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل تشفير Base64 كافٍ لحماية البيانات؟</div>
+                        <div class="faq-answer">لا، Base64 هو مجرد ترميز (Encoding) وليس تشفيراً، ويمكن فكه بسهولة. يجب استخدام HTTPS للنقل و Bcrypt/Argon2 للتخزين.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هو الـ Rate Limiting ولماذا هو مهم؟</div>
+                        <div class="faq-answer">هو تحديد عدد الطلبات المسموح بها لكل مستخدم في وقت معين، وهو ضروري لمنع هجمات DDoS وتخمين كلمات المرور.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أحمي الـ API من الوصول الدولي غير المرغوب فيه؟</div>
+                        <div class="faq-answer">عبر تفعيل التقييد الجغرافي (Geo-Blocking) في الجدار الناري، وحصر الوصول لبلدان معينة تستهدفها خدمتك.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يفضل Refresh Tokens؟</div>
@@ -274,7 +316,7 @@ server {
                     </div>
                 </div>
 
-                <p><strong>خلاصة القول:</strong> أمن الـ API ليس إعداداً لمرة واحدة، بل هو ثقافة تطوير مستمرة. في <strong>كونكت تاق</strong>، نطبق هذه المعايير في كافة مشاريعنا لضمان راحة بال شركائنا وسلامة بياناتهم.</p>
+                <p><strong>خلاصة القول:</strong> أمن الـ API ليس إعداداً لمرة واحدة، بل هو ثقافة تطوير مستمرة. في <strong>كونكت تاق</strong>، نطبق هذه المعايير ضمن <a href="https://connecttag.org/company/services/cybersecurity-solutions">خدمات الأمن السيبراني وتأمين الأنظمة</a> في كافة مشاريعنا لضمان راحة بال شركائنا وسلامة بياناتهم.</p>
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
@@ -291,4 +333,3 @@ server {
 <cookie-consent></cookie-consent>
 </body>
 </html>
-

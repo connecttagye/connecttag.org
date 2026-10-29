@@ -285,9 +285,14 @@
   </url>
   <url>
     <loc>https://connecttag.org/blog/</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/technical-seo-audit-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://connecttag.org/blog/kmp-data-management-room-datastore</loc>

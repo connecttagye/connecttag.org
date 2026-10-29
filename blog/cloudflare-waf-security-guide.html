@@ -21,86 +21,109 @@
 <meta name="twitter:title" content="وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟ - كونكت تاق">
 <meta name="twitter:description" content="دليل شامل لاستخدام جدار حماية كلاود فلير لحماية موقعك من الهجمات السيبرانية." />
 <meta name="twitter:image" content="https://connecttag.org/upload/waf-cloudflare.webp" />
+<meta name="twitter:site" content="@connecttag_org" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.24">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.25">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.css?v=1.1.25">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.24"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.24">
+<link rel="preload" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/animate-custom.css?v=1.1.25"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.25">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.24" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.24" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.25" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.25" defer></script>
 
 <script type="application/ld+json">
 [
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟",
-  "description": "دليل شامل لاستخدام جدار حماية كلاود فلير (WAF) لحماية موقعك من الهجمات السيبرانية والبرامج الضارة وحظر الدول المشبوهة.",
-  "image": "https://connecttag.org/upload/waf-cloudflare.webp",
-  "author": {
-    "@type": "Person",
-    "name": "عقيل محمد",
-    "url": "https://connecttag.org/blog/authors/aqeldev"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "كونكت تاق",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟",
+    "description": "دليل شامل لاستخدام جدار حماية كلاود فلير (WAF) لحماية موقعك من الهجمات السيبرانية والبرامج الضارة وحظر الدول المشبوهة.",
+    "image": "https://connecttag.org/upload/waf-cloudflare.webp",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-08-16T11:00:00+03:00",
+    "dateModified": "2026-08-16T11:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/cloudflare-waf-security-guide"
     }
   },
-  "datePublished": "2026-08-16T11:00:00+03:00",
-  "dateModified": "2026-08-16T11:00:00+03:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://connecttag.org/blog/cloudflare-waf-security-guide"
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل خدمة Cloudflare WAF مجانية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "توفر كلاود فلير ميزات أمنية أساسية في الخطة المجانية، ولكن القوانين المتقدمة (WAF Managed Rules) تتطلب خطة مدفوعة (Pro فما فوق)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يساعد وضع 'Under Attack Mode' موقعي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يقوم بفرض تحدي JavaScript على كل زائر للتأكد من أنه إنسان، مما يحمي السيرفر من الانهيار أثناء هجمات DDoS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يؤثر جدار الحماية على سرعة الموقع؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "بالعكس، جدار حماية كلاود فلير يحسن الأداء من خلال تصفية الزيارات الضارة و'البوتات' التي تستهلك موارد السيرفر دون فائدة."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟",
+        "item": "https://connecttag.org/blog/cloudflare-waf-security-guide"
+      }
+    ]
   }
-}
-,
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "هل خدمة Cloudflare WAF مجانية؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "توفر كلاود فلير ميزات أمنية أساسية في الخطة المجانية، ولكن القوانين المتقدمة (WAF Managed Rules) تتطلب خطة مدفوعة (Pro فما فوق)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "كيف يساعد وضع 'Under Attack Mode' موقعي؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "يقوم بفرض تحدي JavaScript على كل زائر للتأكد من أنه إنسان، مما يحمي السيرفر من الانهيار أثناء هجمات DDoS."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "هل يؤثر جدار الحماية على سرعة الموقع؟",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "بالعكس، جدار حماية كلاود فلير يحسن الأداء من خلال تصفية الزيارات الضارة و'البوتات' التي تستهلك موارد السيرفر دون فائدة."
-      }
-    }
-  ]
-}
 ]
 </script>
-
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -136,7 +159,7 @@
                 ></site-article-meta>
 
                 <hr style="margin-top: 0;">
-                <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" loading="lazy">
+                <img src="https://connecttag.org/upload/waf-cloudflare.webp" class="img-responsive" alt="جدار حماية كلاود فلير WAF" fetchpriority="high">
 
                 <div class="summary-box">
                     <h3><i class="fa-solid fa-list-check"></i> خلاصة الدليل:</h3>
@@ -161,18 +184,18 @@
                     </ul>
                 </div>
 
-                <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك. في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
+                <p>في ظل تزايد الهجمات السيبرانية عالمياً، أصبح تأمين المواقع الإلكترونية تحدياً يومياً لأصحاب المشاريع. هنا يأتي دور <strong>كلاود فلير (Cloudflare)</strong> كدرع واقي يوضع أمام سيرفر موقعك ليقوم بتصفية الزيارات ومنع التهديدات قبل وصولها إليك (ويمكنك الاطلاع أيضاً على <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">دليل ضبط إعدادات كلاود فلير بأفضل الممارسات</a>). في هذا الدليل، سنركز على أقوى ميزة أمنية في المنصة: <strong>جدار حماية تطبيقات الويب (WAF)</strong>.</p>
 
                 <h2 id="firewall-rules">1. فهم قوانين جدار الحماية (Firewall Rules)</h2>
                 <p>تسمح لك "قوانين جدار الحماية" في كلاود فلير بالتحكم الكامل في من يمكنه الوصول إلى موقعك وبأي شروط. يمكنك بناء قوانين ذكية بناءً على عدة معايير:</p>
                 <div class="tip-box" style="border-right: 5px solid #0077b6; background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 25px 0;">
                     <i class="fa-solid fa-circle-info"></i> <strong>نصيحة تقنية:</strong>
-                    يمكنك العثور على هذه الإعدادات في لوحة تحكم كلاود فلير تحت قسم <strong>Security -> WAF -> Custom Rules</strong>.
+                    يمكنك العثور على هذه الإعدادات في لوحة تحكم كلاود فلير تحت قسم <strong>Security -&gt; WAF -&gt; Custom Rules</strong>.
                 </div>
                 <ul>
                     <li><strong>حظر دول معينة:</strong> إذا لاحظت هجمات متكررة من دول لا تستهدفها في نشاطك التجاري، يمكنك حظر وصول أي زائر من تلك الدول بضغطة زر.</li>
                     <li><strong>حظر عناوين IP مشبوهة:</strong> يمكنك حظر عناوين معينة تحاول القيام بعمليات فحص (Scanning) لثغرات موقعك.</li>
-                    <li><strong>حماية روابط الإدارة:</strong> يمكنك إنشاء قانون يسمح فقط لعنوان IP الخاص بك بالدخول إلى لوحة تحكم موقعك (مثل `/wp-admin` أو `/admin`).</li>
+                    <li><strong>حماية روابط الإدارة:</strong> يمكنك إنشاء قانون يسمح فقط لعنوان IP الخاص بك بالدخول إلى لوحة تحكم موقعك (مثل <code>/wp-admin</code> أو <code>/admin</code>).</li>
                 </ul>
 
                 <h2 id="top-rules">2. أهم 3 قواعد جدار حماية يجب على كل موقع تفعيلها (How-to)</h2>
@@ -208,7 +231,7 @@
                     قبل تفعيل أي قاعدة بصيغة <strong>Block</strong>، ننصح دائماً باستخدام وضع <strong>Log</strong> أو <strong>Managed Challenge</strong> لمدة 24 ساعة للتأكد من أنك لا تحظر زواراً حقيقيين أو خدمات ضرورية لموقعك.
                 </div>
 
-                <h2 id="under-attack">2. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
+                <h2 id="under-attack">3. تفعيل وضع "تحت الهجوم" (Under Attack Mode)</h2>
                 <p>هل لاحظت بطءً مفاجئاً في موقعك بسبب هجمة DDoS؟ توفر كلاود فلير "زر الطوارئ" المسمى <strong>Under Attack Mode</strong>. عند تفعيله:</p>
                 <ul>
                     <li>يتم إظهار صفحة انتظار قصيرة (JavaScript Challenge) لكل زائر للتأكد من أنه إنسان وليس "بوت" مخرب.</li>
@@ -216,7 +239,7 @@
                     <li>تستمر الخدمة للزوار الحقيقيين مع حماية السيرفر من الانهيار.</li>
                 </ul>
 
-                <h2 id="bot-protection">3. حظر الـ Bots المزعجة والبرمجيات الآلية</h2>
+                <h2 id="bot-protection">4. حظر الـ Bots المزعجة والبرمجيات الآلية</h2>
                 <p>ليست كل الزيارات لموقعك من بشر؛ فهناك "بوتات" تقوم بسحب محتوى موقعك (Scraping) أو محاولة تخمين كلمات المرور (Brute Force). توفر كلاود فلير حماية متقدمة ضد البوتات:</p>
                 <ul>
                     <li><strong>Bot Fight Mode:</strong> تقنية ذكية تكتشف سلوك البرمجيات الآلية وتقوم بتحديها أو حظرها تلقائياً.</li>
@@ -230,24 +253,24 @@
                     <h3>كيف تحمي "قلب" السيرفر؟</h3>
                     <ul>
                         <li><strong>Authenticated Origin Pulls:</strong> ميزة تضمن أن سيرفرك لا يستقبل أي طلبات إلا إذا كانت موقعة بشهادة من كلاود فلير.</li>
-                        <li><strong>إغلاق المنافذ (Firewall):</strong> قم بضبط جدار الحماية الخاص بسيرفرك (مثل UFW أو IPTables) ليسمح فقط بالاتصالات القادمة من <a href="https://www.cloudflare.com/ips/" target="_blank">نطاقات عناوين IP الخاصة بكلاود فلير</a>.</li>
+                        <li><strong>إغلاق المنافذ (Firewall):</strong> قم بضبط جدار الحماية الخاص بسيرفرك (مثل UFW أو IPTables) ليسمح فقط بالاتصالات القادمة من <a href="https://www.cloudflare.com/ips/" target="_blank" rel="noopener">نطاقات عناوين IP الخاصة بكلاود فلير</a>.</li>
                         <li><strong>استخدام Cloudflare Tunnel:</strong> الحل الأكثر أماناً، حيث يقوم بإنشاء نفق مشفر بين سيرفرك وكلاود فلير دون الحاجة لفتح أي منافذ عامة (Public Ports).</li>
                     </ul>
                 </div>
 
                 <h2>نصيحة أمنية من كونكت تاق</h2>
-                <p>استخدام كلاود فلير ليس مجرد "تركيب" وانتهى الأمر، بل يتطلب تهيئة صحيحة للقوانين بناءً على طبيعة جمهورك. ننصح دائماً بمراجعة سجلات الأمان (Security Logs) دورياً في لوحة تحكم كلاود فلير لمعرفة أنواع الهجمات التي يتم صدها وتحديث القوانين وفقاً لذلك.</p>
+                <p>استخدام كلاود فلير ليس مجرد "تركيب" وانتهى الأمر، بل يتطلب تهيئة صحيحة للقوانين بناءً على طبيعة جمهورك، جنباً إلى جنب مع <a href="https://connecttag.org/blog/website-security-simple-steps">الخطوات الأساسية لحماية المواقع من الاختراق</a>. ننصح دائماً بمراجعة سجلات الأمان (Security Logs) دورياً في لوحة تحكم كلاود فلير لمعرفة أنواع الهجمات التي يتم صدها وتحديث القوانين وفقاً لذلك.</p>
 
-                <p><strong>الخلاصة:</strong> جدار حماية كلاود فلير هو استثمار ضروري لأي موقع يهتم بسلامة بياناته واستمرارية خدمته. إذا كنت ترغب في تأمين موقعك بشكل احترافي وربطه بخدمات كلاود فلير، فنحن في <strong>كونكت تاق</strong> نقدم خدمات الإعداد المتقدم والحماية السيبرانية لضمان أعلى مستويات الأمان لمشروعك الرقمي.</p>
+                <p><strong>الخلاصة:</strong> جدار حماية كلاود فلير هو استثمار ضروري لأي موقع يهتم بسلامة بياناته واستمرارية خدمته. إذا كنت ترغب في تأمين موقعك بشكل احترافي وربطه بخدمات كلاود فلير، فنحن في <strong>كونكت تاق</strong> نقدم <a href="https://connecttag.org/company/services/cybersecurity-solutions">خدمات الإعداد المتقدم والحلول الأمنية السيبرانية</a> لضمان أعلى مستويات الأمان لمشروعك الرقمي.</p>
 
                 <div class="faq-section" id="faq">
-                    <h2>الأسئلة الشائعة</h2>
+                    <h2>6. الأسئلة الشائعة</h2>
                     <div class="faq-item">
                         <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل خدمة Cloudflare WAF مجانية؟</div>
                         <div class="faq-answer">توفر كلاود فلير ميزات أمنية أساسية في الخطة المجانية، ولكن القوانين المتقدمة (WAF Managed Rules) تتطلب خطة مدفوعة (Pro فما فوق).</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يساعد وضع "Under Attack Mode" موقعي؟</div>
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يساعد وضع 'Under Attack Mode' موقعي؟</div>
                         <div class="faq-answer">يقوم بفرض تحدي JavaScript على كل زائر للتأكد من أنه إنسان، مما يحمي السيرفر من الانهيار أثناء هجمات DDoS.</div>
                     </div>
                     <div class="faq-item">
@@ -258,7 +281,7 @@
 
                 <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
                 <site-share-buttons></site-share-buttons>
-                <site-related-posts ids="website-security-simple-steps, cloudflare-pages-hosting-guide"></site-related-posts>
+                <site-related-posts ids="cloudflare-settings-optimization-guide, website-security-simple-steps"></site-related-posts>
             </div>
         </div>
     </div>
@@ -271,4 +294,3 @@
 <cookie-consent></cookie-consent>
 </body>
 </html>
-
