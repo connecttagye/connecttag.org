@@ -84,15 +84,14 @@
   </script>
 <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.37">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.37">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.37">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.37">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.37">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.38">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.37" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.37" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.38" defer></script>
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; color: #1e293b; }
@@ -251,6 +250,7 @@
 <site-footer></site-footer>
 <cookie-consent></cookie-consent>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
     let qrcode = new QRCode(document.getElementById("qrcode"), {
         width: 160,
@@ -298,7 +298,5 @@
 
     qrcode.makeCode("https://connecttag.org");
 </script>
-
-<script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>

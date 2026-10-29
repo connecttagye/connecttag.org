@@ -1,5 +1,5 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v91';
+const CACHE_NAME = 'connecttag-cache-v92';
 const OFFLINE_URL = 'https://connecttag.org/offline';
 
 const ASSETS_TO_CACHE = [
@@ -9,16 +9,17 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.png',
   'https://connecttag.org/icon-512.png',
-  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.37',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.37',
-  'https://connecttag.org/assets/css/components.min.css?v=1.1.37',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.37',
-  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.37',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.37',
+  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.38',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.38',
+  'https://connecttag.org/assets/css/components.min.css?v=1.1.38',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.38',
+  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.38',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.38',
   'https://connecttag.org/assets/fonts/cairo-arabic.woff2',
   'https://connecttag.org/assets/fonts/cairo-latin.woff2',
   'https://connecttag.org/assets/fonts/fa-solid-900.woff2',
-  'https://connecttag.org/assets/fonts/fa-brands-400.woff2'
+  'https://connecttag.org/assets/fonts/fa-brands-400.woff2',
+  'https://connecttag.org/assets/fonts/fa-regular-400.woff2'
 ];
 
 // Install Event

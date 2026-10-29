@@ -39,9 +39,9 @@ const htmlFiles = allFiles.filter(f => f.endsWith('.html'));
 htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
 
-    // Improved Regex: Target .css and .js files inside assets/ or tools/, plus versioned .webp URLs
+    // Improved Regex: Target .css and .js files inside local/connecttag.org assets/ or tools/, plus versioned .webp URLs
     const updatedContent = content
-        .replace(/(href|src)="([^"]*(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
+        .replace(/(href|src)="((?:https:\/\/connecttag\.org\/|(?!https?:\/\/)[^"]*)(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
             return `${attr}="${pathStr}?v=${VERSION}"`;
         })
         .replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
