@@ -416,27 +416,26 @@
     </style>
 
 
-  <!-- Google AdSense (Deferred until user interaction or idle after load to protect LCP/TBT) -->
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
   <script>
-    (function() {
-      var loaded = false;
-      function loadAdSense() {
-        if (loaded) return;
-        loaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357';
-        s.crossOrigin = 'anonymous';
-        document.head.appendChild(s);
-      }
-      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(evt) {
-        window.addEventListener(evt, loadAdSense, { once: true, passive: true });
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
       });
-      window.addEventListener('load', function() {
-        setTimeout(loadAdSense, 4000);
-      }, { once: true });
-    })();
+    }
   </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
 </head>
 <body data-target="#navbar-main">
 
