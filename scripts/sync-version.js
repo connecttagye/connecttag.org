@@ -39,12 +39,13 @@ const htmlFiles = allFiles.filter(f => f.endsWith('.html'));
 htmlFiles.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
 
-    // Improved Regex: Target .css and .js files inside local/connecttag.org assets/ or tools/, plus versioned .webp URLs
+    // Improved Regex: Target .css, .js, and .woff2 files inside local/connecttag.org assets/ or tools/, plus versioned .webp URLs
     const updatedContent = content
-        .replace(/(href|src)="((?:https:\/\/connecttag\.org\/|(?!https?:\/\/)[^"]*)(?:assets|tools)\/[^"]*\.(?:css|js))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
+        .replace(/(href|src)="((?:https:\/\/connecttag\.org\/|(?!https?:\/\/)[^"]*)(?:assets|tools)\/[^"]*\.(?:css|js|woff2))(\?v=[^"]*)?"/g, (match, attr, pathStr, oldV) => {
             return `${attr}="${pathStr}?v=${VERSION}"`;
         })
-        .replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
+        .replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`)
+        .replace(/(\.woff2)(?:\?v=[0-9.]+)?(['")])/g, `$1?v=${VERSION}$2`);
 
     if (content !== updatedContent) {
         fs.writeFileSync(file, updatedContent);
@@ -61,7 +62,7 @@ if (fs.existsSync(swPath)) {
     swContent = swContent.replace(/const CACHE_NAME = 'connecttag-cache-v\d+';/, `const CACHE_NAME = 'connecttag-cache-${CACHE_NAME}';`);
 
     // Update asset versions ONLY in the ASSETS_TO_CACHE array or specific assets/ paths
-    swContent = swContent.replace(/'([^']*assets\/[^']*\.(?:css|js))(\?v=[^']*)?'/g, (match, pathStr) => {
+    swContent = swContent.replace(/'([^']*assets\/[^']*\.(?:css|js|woff2))(\?v=[^']*)?'/g, (match, pathStr) => {
         return `'${pathStr}?v=${VERSION}'`;
     });
 
@@ -87,12 +88,14 @@ if (fs.existsSync(headerPath)) {
     console.log(`Updated site-header.js to ${VERSION}`);
 }
 
-// 4. Update CSS files with versioned .webp URLs
-['assets/css/styles.css', 'assets/css/styles.min.css'].forEach(relCss => {
+// 4. Update CSS files with versioned .webp and .woff2 URLs
+['assets/css/styles.css', 'assets/css/styles.min.css', 'assets/css/fontawesome.min.css', 'assets/css/components.css', 'assets/css/components.min.css'].forEach(relCss => {
     const cssPath = path.join(ROOT_DIR, relCss);
     if (fs.existsSync(cssPath)) {
         let cssContent = fs.readFileSync(cssPath, 'utf8');
-        const updatedCss = cssContent.replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
+        const updatedCss = cssContent
+            .replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`)
+            .replace(/(\.woff2)(?:\?v=[0-9.]+)?(['")])/g, `$1?v=${VERSION}$2`);
         if (cssContent !== updatedCss) {
             fs.writeFileSync(cssPath, updatedCss);
             console.log(`Updated ${relCss} to ${VERSION}`);

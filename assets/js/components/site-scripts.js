@@ -49,7 +49,6 @@ backToTop.classList.remove('visible');
 }
 };
 window.addEventListener('scroll', updateBtt, { passive: true });
-updateBtt();
 backToTop.addEventListener('click', function(e) {
 e.preventDefault();
 window.scrollTo({ top: 0, behavior: 'smooth' });
