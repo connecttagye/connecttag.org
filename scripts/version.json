@@ -1,6 +1,6 @@
 {
-  "version": "1.1.44",
-  "cache_version": "v98",
+  "version": "1.1.45",
+  "cache_version": "v99",
   "last_updated": "2026-10-30",
-  "description": "Expand apps catalog to 35 apps and upgrade 7 app icons to vibrant opaque brand palette"
+  "description": "Unify app metrics ribbon and specs table via apps.json and web components"
 }

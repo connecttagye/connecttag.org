@@ -30,15 +30,15 @@
 <meta name="twitter:image:alt" content="أيقونة تطبيق عُمر" />
 
 <!-- Fonts & Stylesheets -->
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.44" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.44" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.44">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.44">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.44">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.44">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.44">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.44"><script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.44" defer></script>
-<script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.44" defer></script>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.45" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.45" crossorigin>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.45">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.45">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.45">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.45">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/app-details.css?v=1.1.45">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.45"><script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.45" defer></script>
+<script src="https://connecttag.org/assets/js/components/apps-bundle.js?v=1.1.45" defer></script>
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -149,7 +149,7 @@
         <!-- App Store Header Section -->
         <div class="as-header" data-aos="fade-down">
             <div class="as-icon-wrap">
-                <img src="assets/img/age-tool-app-logo.webp?v=1.1.44" alt="أيقونة تطبيق عُمر" class="as-icon-img" loading="eager" width="512" height="512" fetchpriority="high">
+                <img src="assets/img/age-tool-app-logo.webp?v=1.1.45" alt="أيقونة تطبيق عُمر" class="as-icon-img" loading="eager" width="512" height="512" fetchpriority="high">
             </div>
             <div class="as-header-content">
                 <h1 class="as-title">تطبيق عُمر</h1>
@@ -165,57 +165,48 @@
             </div>
         </div>
 
-                <!-- App Store Metrics Ribbon (Lazy Row) -->
-        <div class="as-lazy-row-wrapper" data-aos="fade-up">
-            <div class="as-metrics-ribbon as-lazy-row">
-                <!-- 1. السعر -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">السعر</span>
-                    <span class="as-metric-value">مجاني</span>
-                    <span class="as-metric-sub">تطبيق مجاني</span>
-                </div>
-                <div class="as-metric-divider as-lazy-divider"></div>
-
-                <!-- 2. الفئة -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">الفئة</span>
-                    <span class="as-metric-value"><i class="fa-solid fa-calculator" style="color: #0071e3; font-size: 20px;"></i></span>
-                    <span class="as-metric-sub">الأدوات والإنتاجية</span>
-                </div>
-                <div class="as-metric-divider as-lazy-divider"></div>
-
-                <!-- 3. الفئة المستهدفة / العمرية -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">الفئة العمرية</span>
-                    <span class="as-metric-value">+4</span>
-                    <span class="as-metric-sub">مناسب للجميع</span>
-                </div>
-                <div class="as-metric-divider as-lazy-divider"></div>
-
-                <!-- 4. التوافق -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">التوافق</span>
-                    <span class="as-metric-value"><i class="fa-brands fa-android" style="color: #0071e3; font-size: 18px;"></i> Android</span>
-                    <span class="as-metric-sub">8.0+</span>
-                </div>
-                <div class="as-metric-divider as-lazy-divider"></div>
-
-                <!-- 5. اللغات -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">اللغات</span>
-                    <span class="as-metric-value">العربية</span>
-                    <span class="as-metric-sub">مع دعم الإنجليزية</span>
-                </div>
-                <div class="as-metric-divider as-lazy-divider"></div>
-
-                <!-- 6. الحجم -->
-                <div class="as-metric-item as-lazy-card">
-                    <span class="as-metric-label">الحجم</span>
-                    <span class="as-metric-value">4.5</span>
-                    <span class="as-metric-sub">MB</span>
+                <!-- App Store Metrics Ribbon Component -->
+        <app-metrics-ribbon app-id="age-tool">
+            <div class="as-lazy-row-wrapper" data-aos="fade-up">
+                <div class="as-metrics-ribbon as-lazy-row">
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">السعر</span>
+                        <span class="as-metric-value">مجاني</span>
+                        <span class="as-metric-sub">تطبيق مجاني</span>
+                    </div>
+                    <div class="as-metric-divider as-lazy-divider"></div>
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">الفئة</span>
+                        <span class="as-metric-value"><i class="fa-solid fa-calculator" style="color: #0071e3; font-size: 20px;"></i></span>
+                        <span class="as-metric-sub">الأدوات والإنتاجية</span>
+                    </div>
+                    <div class="as-metric-divider as-lazy-divider"></div>
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">الفئة العمرية</span>
+                        <span class="as-metric-value">+4</span>
+                        <span class="as-metric-sub">مناسب للجميع</span>
+                    </div>
+                    <div class="as-metric-divider as-lazy-divider"></div>
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">التوافق</span>
+                        <span class="as-metric-value"><i class="fa-brands fa-android" style="color: #0071e3; font-size: 18px;"></i> Android</span>
+                        <span class="as-metric-sub">8.0+</span>
+                    </div>
+                    <div class="as-metric-divider as-lazy-divider"></div>
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">اللغات</span>
+                        <span class="as-metric-value">العربية</span>
+                        <span class="as-metric-sub">مع دعم الإنجليزية</span>
+                    </div>
+                    <div class="as-metric-divider as-lazy-divider"></div>
+                    <div class="as-metric-item as-lazy-card">
+                        <span class="as-metric-label">الحجم</span>
+                        <span class="as-metric-value">4.5</span>
+                        <span class="as-metric-sub">MB</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </app-metrics-ribbon>
 
         <!-- Screenshots Showcase Section -->
         <div id="screenshots-gallery" class="as-section" data-aos="fade-up">
@@ -250,36 +241,40 @@
             </ul>
         </div>
 
-                <!-- Information & Technical Specs (iOS Grouped List) -->
-        <div class="as-section" data-aos="fade-up">
-            <h2 class="as-section-title" style="margin-bottom: 18px;">تفاصيل إضافية</h2>
-            <div class="as-info-group">
-                <div class="as-info-row">
-                    <span class="as-info-label">المطور</span>
-                    <span class="as-info-val">شركة كونكت تاق</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">المنصة</span>
-                    <span class="as-info-val"><i class="fa-brands fa-android" style="color: #3ddc84; margin-left: 6px;"></i> Android</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">الجهة المستفيدة</span>
-                    <span class="as-info-val">الجمهور العام</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">معرّف التطبيق</span>
-                    <span class="as-info-val" style="font-family: monospace; font-size: 13px;">com.connecttag.agetool</span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">سياسة الخصوصية</span>
-                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/age-tool/privacy-policy">عرض السياسة</a></span>
-                </div>
-                <div class="as-info-row">
-                    <span class="as-info-label">شروط الاستخدام</span>
-                    <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/age-tool/terms-of-use">عرض الشروط</a></span>
+                <!-- Information & Technical Specs Component -->
+        <app-specs-table app-id="age-tool">
+            <div class="as-section" data-aos="fade-up">
+                <h2 class="as-section-title" style="margin-bottom: 18px;">تفاصيل إضافية</h2>
+                <div class="as-info-group">
+                    <div class="as-info-row">
+                        <span class="as-info-label">المطور</span>
+                        <span class="as-info-val">شركة كونكت تاق</span>
+                    </div>
+                    <div class="as-info-row">
+                        <span class="as-info-label">المنصة</span>
+                        <span class="as-info-val"><i class="fa-brands fa-android" style="color: #3ddc84; margin-left: 6px;"></i> Android</span>
+                    </div>
+                    <div class="as-info-row">
+                        <span class="as-info-label">الجهة المستفيدة</span>
+                        <span class="as-info-val">الجمهور العام</span>
+                    </div>
+                    <div class="as-info-row">
+                        <span class="as-info-label">معرّف التطبيق</span>
+                        <span class="as-info-val" style="font-family: monospace; font-size: 13px;">com.connecttag.agetool</span>
+                    </div>
+                    <div class="as-info-row">
+                        <span class="as-info-label">سياسة الخصوصية</span>
+                        <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/age-tool/privacy-policy">عرض السياسة</a></span>
+                    </div>
+                    <div class="as-info-row">
+                        <span class="as-info-label">شروط الاستخدام</span>
+                        <span class="as-info-val"><a href="https://connecttag.org/company/projects/apps/age-tool/terms-of-use">عرض الشروط</a></span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </app-specs-table>
+
+        
 
         <!-- Download Options Section -->
         <div id="download-options" class="as-section text-center" data-aos="fade-up" style="text-align: center;">
