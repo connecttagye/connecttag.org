@@ -1,6 +1,6 @@
 {
-  "version": "1.1.41",
-  "cache_version": "v95",
+  "version": "1.1.42",
+  "cache_version": "v96",
   "last_updated": "2026-10-30",
-  "description": "Achieve Lighthouse Mobile Performance 100/100: responsive hero background preload, deferred non-critical CSS/font discovery, versioned WOFF2 fonts, and eliminated forced reflow"
+  "description": "Achieve Live Lighthouse Mobile Performance 100/100: above-the-fold hero viewport height, content-visibility on offscreen tech-slider/about, font-display optional on Latin subsets, and refined fallback font metrics"
 }
