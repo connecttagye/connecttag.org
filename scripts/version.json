@@ -1,6 +1,6 @@
 {
-  "version": "1.1.45",
-  "cache_version": "v99",
+  "version": "1.1.46",
+  "cache_version": "v100",
   "last_updated": "2026-10-30",
-  "description": "Unify app metrics ribbon and specs table via apps.json and web components"
+  "description": "Verify app pages visual layout, add block display for app custom elements, and fix asmaa div closure"
 }

@@ -120,7 +120,6 @@ function getAppsData() {
 
 class AppMetricsRibbon extends HTMLElement {
   async connectedCallback() {
-    if (this.querySelector('.as-metrics-ribbon')) return;
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     const fallbackId = pathParts[pathParts.length - 1] || '';
     const appId = this.getAttribute('app-id') || fallbackId;
@@ -193,7 +192,6 @@ if (!customElements.get('app-metrics-ribbon')) {
 
 class AppSpecsTable extends HTMLElement {
   async connectedCallback() {
-    if (this.querySelector('.as-info-group')) return;
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     const fallbackId = pathParts[pathParts.length - 1] || '';
     const appId = this.getAttribute('app-id') || fallbackId;
