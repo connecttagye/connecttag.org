@@ -627,24 +627,26 @@ document.addEventListener('DOMContentLoaded', function() {
             ? ModemApp.getOrganizationById(m.providers[0].orgId)
             : null;
 
-        const additionalProperty = Array.isArray(m.attributes)
-            ? m.attributes.map(a => ({
+        const additionalProperty = [
+            {
                 "@type": "PropertyValue",
-                "name": a.name,
-                "value": a.displayValue || a.value
-            }))
-            : [];
-
-        const relatedModems = getRelatedModems(catalog, m);
-        const isSimilarTo = relatedModems.map(target => ({
-            "@type": "Product",
-            "name": ModemApp.formatDisplayName(target),
-            "url": `https://connecttag.org/tools/telecom/modems/details?slug=${encodeURIComponent(target.slug)}`
-        }));
+                "name": "الفئة",
+                "value": m.category || "مودم 4G"
+            },
+            ...(Array.isArray(m.attributes)
+                ? m.attributes.map(a => ({
+                    "@type": "PropertyValue",
+                    "name": a.name,
+                    "value": a.displayValue || a.value
+                }))
+                : [])
+        ];
 
         const schemaColor = Array.isArray(m.colors) && m.colors.length > 0
-            ? m.colors.map(c => (typeof c === 'object' ? c.name : String(c))).filter(Boolean)
-            : [];
+            ? m.colors.map(c => (typeof c === 'object' ? c.name : String(c))).filter(Boolean).join(' / ')
+            : '';
+
+        const priceCurrency = m.price?.currency === 'USD' ? 'USD' : 'YER';
 
         const schemaData = {
             "@context": "https://schema.org/",
@@ -661,20 +663,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 "@type": "Organization",
                 "name": m.manufacturer || m.brand || "Yemen 4G"
             },
-            "countryOfOrigin": m.countryOfOrigin || "الصين",
+            "countryOfOrigin": {
+                "@type": "Country",
+                "name": m.countryOfOrigin || "الصين"
+            },
             "model": m.modelOrVersion || m.model || "",
-            "category": m.category || "مودم 4G",
-            ...(schemaColor.length > 0 ? { "color": schemaColor } : {}),
+            ...(schemaColor ? { "color": schemaColor } : {}),
             ...(additionalProperty.length > 0 ? { "additionalProperty": additionalProperty } : {}),
-            ...(isSimilarTo.length > 0 ? { "isSimilarTo": isSimilarTo } : {}),
             "offers": {
                 "@type": "Offer",
                 "url": canonicalUrl,
-                "priceCurrency": m.price?.currency === 'USD' ? 'USD' : 'YER',
+                "priceCurrency": priceCurrency,
                 "price": String(m.price?.currentValue || 0),
                 "availability": m.availabilityStatus === 'غير متوفر'
                     ? "https://schema.org/OutOfStock"
                     : "https://schema.org/InStock",
+                "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "YE",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 7,
+                    "returnMethod": "https://schema.org/ReturnInStore",
+                    "returnFees": "https://schema.org/FreeReturn"
+                },
+                "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingRate": {
+                        "@type": "MonetaryAmount",
+                        "value": "0",
+                        "currency": priceCurrency
+                    },
+                    "shippingDestination": {
+                        "@type": "DefinedRegion",
+                        "addressCountry": "YE"
+                    },
+                    "deliveryTime": {
+                        "@type": "ShippingDeliveryTime",
+                        "handlingTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 0,
+                            "maxValue": 1,
+                            "unitCode": "DAY"
+                        },
+                        "transitTime": {
+                            "@type": "QuantitativeValue",
+                            "minValue": 1,
+                            "maxValue": 3,
+                            "unitCode": "DAY"
+                        }
+                    }
+                },
                 ...(primaryProvider ? {
                     "seller": {
                         "@type": "Organization",
