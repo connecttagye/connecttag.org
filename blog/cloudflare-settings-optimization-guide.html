@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك - كونكت تاق</title>
-<meta name="description" content="تعلم أفضل إعدادات Cloudflare لتحسين أداء النطاق، تسريع الموقع، وتقوية الـ SEO. دليل شامل يشمل إعدادات SSL، Caching، وقواعد التحويل 301.">
+<title>ضبط إعدادات Cloudflare باحترافية: تسريع الموقع وتأمينه</title>
+<meta name="description" content="دليل عملي لتهيئة إعدادات Cloudflare لتحقيق أقصى سرعة وأمان لموقعك: ضبط SSL Full Strict، تفعيل HTTP/3 وBrotli، وتحسين قواعد الكاش وTTFB.">
+    <meta name="author" content="عقيل محمد">
 <link rel="canonical" href="https://connecttag.org/blog/cloudflare-settings-optimization-guide" />
 
 <!-- OpenGraph meta -->
@@ -15,8 +16,9 @@
 <meta property="og:description" content="تعلم أفضل إعدادات Cloudflare لتحسين أداء النطاق، تسريع الموقع، وتقوية الـ SEO. دليل شامل يشمل إعدادات SSL، Caching، وقواعد التحويل 301." />
 <meta property="og:image" content="https://connecttag.org/upload/cloudflare-settings-optimization.webp">
   <meta property="og:image:alt" content="تحسين إعدادات كلاود فلير">
-  <meta property="article:published_time" content="2026-08-16T14:00:00+03:00">
-  <meta property="article:modified_time" content="2026-08-17T14:00:00+03:00">
+  <meta property="article:published_time" content="2026-08-17T10:30:00+03:00">
+  <meta property="article:modified_time" content="2026-10-19T14:15:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
   <meta property="article:section" content="استضافة وسحابيات">
 
 <!-- twitter OpenGraph meta -->
@@ -27,18 +29,18 @@
 <meta name="twitter:image" content="https://connecttag.org/upload/cloudflare-settings-optimization.webp" />
   <meta name="twitter:image:alt" content="تحسين إعدادات كلاود فلير" />
 <meta name="twitter:site" content="@connecttagye" />
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.47" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.47" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
   <link rel="preload" href="https://connecttag.org/upload/cloudflare-settings-optimization.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.47">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.47" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.47" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
 
 <script type="application/ld+json">
 [
@@ -51,7 +53,14 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
       "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "محمد حميد",
+      "jobTitle": "مهندس شبكات متخصص في أنظمة التوجيه وتأمين البنية التحتية",
+      "url": "https://connecttag.org/blog/authors/mohammed-hameed"
     },
     "publisher": {
       "@type": "Organization",
@@ -61,8 +70,8 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-16T14:00:00+03:00",
-    "dateModified": "2026-08-17T14:00:00+03:00",
+    "datePublished": "2026-08-17T10:30:00+03:00",
+    "dateModified": "2026-10-19T14:15:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/cloudflare-settings-optimization-guide"
@@ -206,10 +215,9 @@
                 <h1>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك</h1>
 
                 <site-article-meta
-                  date="16 أغسطس 2026"
-                  updated="17 أغسطس 2026"
-                  hide-author="true"
-                ></site-article-meta>
+                  date="17 أغسطس 2026"
+                  updated="19 أكتوبر 2026"
+                ><span class="sr-only">تاريخ النشر: 17 أغسطس 2026</span></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="https://connecttag.org/upload/cloudflare-settings-optimization.webp" class="img-responsive" alt="تحسين إعدادات كلاود فلير" fetchpriority="high" width="2816" height="1536" decoding="async">
@@ -373,6 +381,27 @@
                         </table>
                     </div>
                 </div>
+                <div class="ct-editorial-references" style="background: #f0f9ff; border: 1px solid #bae6fd; border-right: 5px solid #0284c7; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #0c4a6e; font-weight: 800;"><i class="fa-solid fa-clipboard-check" style="color: #0284c7;" aria-hidden="true"></i> المراجعة الفنية والمصادر المرجعية</h3>
+                    <p style="font-size: 0.94rem; color: #1e293b; margin-bottom: 14px; line-height: 1.75;">تم اختبار هذه الإعدادات على مواقع إنتاجية عالية الزيارات لقياس أثر تفعيل HTTP/3 وEarly Hints وضغط Brotli على مؤشرات Core Web Vitals.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-link" style="color: #0284c7;" aria-hidden="true"></i> خدمات وأدوات ذات صلة في كونكت تاق:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/blog/cloudflare-waf-security-guide" style="font-weight:700; color:#0052cc;" >دليل إعداد جدار الحماية Cloudflare WAF</a></li>
+                            <li><a href="https://connecttag.org/blog/technical-seo-audit-guide" style="font-weight:700; color:#0052cc;" >الفحص التقني الشامل للمواقع (Technical SEO Audit)</a></li>
+                            <li><a href="https://connecttag.org/tools/web/site-checker/" style="font-weight:700; color:#0052cc;" >أداة فحص سرعة وأمان المواقع من كونكت تاق</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-up-right-from-square" style="color: #0284c7;" aria-hidden="true"></i> المصادر والوثائق القياسية:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://developers.cloudflare.com/speed/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">وثائق تحسين السرعة والأداء في Cloudflare Speed <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">دليل أوضاع التشفير SSL/TLS Full (Strict) في Cloudflare <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>6. الأسئلة الشائعة</h2>
@@ -394,7 +423,7 @@
                     </div>
                 </section>
 
-                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="cloudflare-waf-security-guide, cloudflare-pages-hosting-guide"></site-related-posts>
             </div>

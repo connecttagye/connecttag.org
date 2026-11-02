@@ -88,6 +88,18 @@ if (fs.existsSync(headerPath)) {
     console.log(`Updated site-header.js to ${VERSION}`);
 }
 
+['assets/js/components/blog-bundle.js', 'assets/js/components/site-related-posts.js'].forEach(relJs => {
+    const jsPath = path.join(ROOT_DIR, relJs);
+    if (fs.existsSync(jsPath)) {
+        let jsContent = fs.readFileSync(jsPath, 'utf8');
+        const updatedJs = jsContent.replace(/(\.webp\?v=)[0-9.]+/g, `$1${VERSION}`);
+        if (jsContent !== updatedJs) {
+            fs.writeFileSync(jsPath, updatedJs);
+            console.log(`Updated ${relJs} to ${VERSION}`);
+        }
+    }
+});
+
 // 4. Update CSS files with versioned .webp and .woff2 URLs
 ['assets/css/styles.css', 'assets/css/styles.min.css', 'assets/css/fontawesome.min.css', 'assets/css/components.css', 'assets/css/components.min.css'].forEach(relCss => {
     const cssPath = path.join(ROOT_DIR, relCss);

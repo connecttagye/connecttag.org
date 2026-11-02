@@ -1,6 +1,6 @@
 {
-  "version": "1.1.47",
-  "cache_version": "v101",
-  "last_updated": "2026-10-31",
-  "description": "Fix Product Merchant Listing schema in modem details (hasMerchantReturnPolicy, shippingDetails, color string, category PropertyValue)"
+  "version": "1.1.48",
+  "cache_version": "v102",
+  "last_updated": "2026-11-02",
+  "description": "Add 15 new technical blog articles, 8 new author profiles, updated Yemen 4G covers, and enhanced SEO/JSON-LD"
 }

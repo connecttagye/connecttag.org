@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل Google Play Integrity API وفحص أمان أندرويد | كونكت تاق</title>
+  <meta name="description" content="شرح واجهة Google Play Integrity API ومستويات النزاهة الثلاثة (Basic, Device, Strong)، وكيف تكشف تطبيقات البنوك وواتساب الـ Root والنسخ المعدلة.">
+  <meta name="keywords" content="Play Integrity API, MEETS_STRONG_INTEGRITY, MEETS_DEVICE_INTEGRITY, MEETS_BASIC_INTEGRITY, كيف تكتشف تطبيقات البنوك الروت, فحص نزاهة جهاز أندرويد, بديل SafetyNet أندرويد, حل مشكلة الجهاز غير معتمد Play Protect, حماية تطبيقات الأندرويد من التعديل">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="عقيل محمد">
+  <link rel="canonical" href="https://connecttag.org/blog/google-play-integrity-api-android-security-guide">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://connecttag.org/blog/google-play-integrity-api-android-security-guide">
+  <meta property="og:title" content="دليل Google Play Integrity API الشامل: كيف تكتشف تطبيقات البنوك وواتساب الهواتف المعدّلة والـ Root؟">
+  <meta property="og:description" content="تعرف على آلية التحقق العتادي في Play Integrity API، الفرق بين Basic وDevice وStrong Integrity، خطوات تطبيقها للمطورين، وحلول مشاكل فشل فحص الأمان للمستخدمين.">
+  <meta property="og:image" content="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="669">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="دليل Google Play Integrity API لفحص نزاهة أجهزة وتطبيقات أندرويد وحمايتها من التلاعب">
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق">
+  <meta property="og:locale" content="ar_YE">
+  <meta property="article:published_time" content="2026-11-02T11:20:00+03:00">
+  <meta property="article:modified_time" content="2026-11-02T14:15:00+03:00">
+  <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
+  <meta property="article:section" content="الأمن السيبراني">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="دليل Google Play Integrity API: كيف تكتشف التطبيقات الـ Root والنسخ المعدّلة؟">
+  <meta name="twitter:description" content="شرح هندسي ومبسط لمستويات النزاهة الثلاثة (Basic, Device, Strong Integrity) وكيف تحمي تطبيقات البنوك والمحافظ وواتساب من التزوير.">
+  <meta name="twitter:image" content="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp">
+  <meta name="twitter:image:alt" content="دليل Google Play Integrity API لفحص نزاهة أجهزة وتطبيقات أندرويد وحمايتها من التلاعب">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "دليل Google Play Integrity API الشامل: كيف تكتشف التطبيقات الـ Root والنسخ المعدلة؟",
+    "image": [
+      "https://connecttag.org/upload/google-play-integrity-api-security-guide.webp"
+    ],
+    "datePublished": "2026-11-02T11:20:00+03:00",
+    "dateModified": "2026-11-02T14:15:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
+      "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "description": "دليل مرجعي شامل للمطورين والمستخدمين حول واجهة Google Play Integrity API: شرح مستويات النزاهة الثلاثة، شهادة KeyMint العتادية، التحقق عبر الخادم باستخدام requestHash، وحلول مشاكل عدم اعتماد الأجهزة.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/google-play-integrity-api-android-security-guide"
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين مستويات النزاهة الثلاثة: MEETS_BASIC_INTEGRITY وMEETS_DEVICE_INTEGRITY وMEETS_STRONG_INTEGRITY؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "المستوى الأساسي (MEETS_BASIC_INTEGRITY) يتحقق فقط من أن التطبيق يعمل على جهاز أندرويد حقيقي أو محاكي معترف به دون عبث واضح بالنظام؛ بينما مستوى الجهاز (MEETS_DEVICE_INTEGRITY) يشترط أن يكون الهاتف معتمداً من Google ومحمّل الإقلاع (Bootloader) مقفلاً ونظام التشغيل أصلياً؛ أما المستوى القوي (MEETS_STRONG_INTEGRITY) فيتطلب إثباتاً تشفيرياً من شريحة الأمان العتادية (KeyMint / TEE) مع وجود تحديثات أمنية حديثة، وهو المستوى الذي تطلبه تطبيقات البنوك والمحافظ الإلكترونية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا استبدلت شركة Google واجهة SafetyNet القديمة بواجهة Play Integrity API؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن واجهة SafetyNet القديمة كانت تعتمد بشكل كبير على فحوصات برمجية على مستوى النظام أمكن لأدوات إخفاء الـ Root تجاوزها، كما كانت تفتقر إلى التحقق من سلامة حزمة التطبيق نفسها وترخيص حساب المستخدم في المتجر. لذلك دمجت Google في Play Integrity API شهادة العتاد الموقعة من شريحة الأمان المعزولة (Hardware-backed Key Attestation) مع فحص التوقيع الأصلي للتطبيق وكشف أدوات الوصول عن بُعد وتسجيل الشاشة الخبيث."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا ترفض تطبيقات البنوك والمحافظ الإلكترونية وواتساب العمل على هاتفي رغم أنني لم أقم بعمل Root؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "أشهر الأسباب لرفض العمل بدون وجود Root هي: أن يكون محمّل الإقلاع (Bootloader) مفتوحاً (خاصة في الهواتف المستعملة أو الهواتف الصينية المحولة إلى روم عالمي غير رسمي)، أو أنك ثبّتت التطبيق عبر ملف APK خارجي بدلاً من متجر Google Play الرسمي، أو تفعيل خيارات المطور وأدوات التصحيح اللاسلكي أو وجود تطبيقات تتحكم بالشاشة وتلتقطها."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يُعد استخدام requestHash أقوى أمنياً من استخدام رقم عشوائي (Nonce) تقليدي في Play Integrity API؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن الرقم العشوائي التقليدي يثبت فقط أن الشهادة حديثة، لكن المهاجم قد يعترض الطلب ويغيّر محتوى العملية (مثل تغيير رقم حساب المستفيد أو مبلغ الحوالة) مع الإبقاء على نفس الشهادة؛ بينما يتيح requestHash حساب بصمة تشفيرية (SHA-256) لكامل بيانات العملية المالية نفسها ودمجها داخل شهادة Google، مما يمنع أي تعديل على البيانات أثناء النقل."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين الطلبات القياسية (Standard Requests) والطلبات الكلاسيكية (Classic Requests) في Play Integrity؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الطلبات القياسية (Standard Requests) هي الخيار المعتمد حديثاً؛ حيث يقوم التطبيق بتهيئة مزود التوكن مسبقاً مرة واحدة عند فتح التطبيق، مما يجعل إصدار شهادة النزاهة عند كل عملية حساسة يتم في أجزاء من الثانية (أقل من 100 مللي ثانية) دون انتظار اتصال شبكي طويل، بينما الطلبات الكلاسيكية تتطلب رحلة اتصال كاملة في كل مرة وتُستخدم فقط للعمليات النادرة جداً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أعرف ما إذا كان هاتفي معتمداً ويجتاز فحص Play Integrity من إعدادات الهاتف الرسمية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "افتح تطبيق متجر Google Play، اضغط على صورة ملفك الشخصي في الأعلى، ثم اختر «الإعدادات ← لمحة» (About) وانظر في الأسفل إلى خانة «شهادة Play للحماية» (Play Protect Certification)؛ إذا ظهرت عبارة «الجهاز معتمد» (Device is certified)، فهذا يعني أن هاتفك يجتاز فحص نزاهة الجهاز الرسمي."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل Google Play Integrity API الشامل",
+        "item": "https://connecttag.org/blog/google-play-integrity-api-android-security-guide"
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" href="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+  <style>
+        /* 3 Integrity Tiers Visual Showcase */
+        .integrity-tiers-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 18px;
+            padding: 28px;
+            margin: 32px 0;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
+        }
+        .integrity-tiers-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 16px;
+            margin-bottom: 22px;
+        }
+        .integrity-tiers-header h3 {
+            color: #ffffff !important;
+            margin: 0 0 8px 0 !important;
+            font-size: 1.28rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .integrity-tiers-header p {
+            color: #cbd5e1 !important;
+            margin: 0 !important;
+            font-size: 0.94rem;
+        }
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .tier-box {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+        }
+        .tier-box-basic { border-top: 4px solid #fbbf24; }
+        .tier-box-device { border-top: 4px solid #38bdf8; }
+        .tier-box-strong {
+            border-top: 4px solid #22c55e;
+            background: rgba(6, 78, 59, 0.35);
+            border-color: rgba(34, 197, 94, 0.45);
+        }
+        .tier-pill {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            direction: ltr;
+        }
+        .pill-basic { background: rgba(251, 191, 36, 0.18); color: #fde68a; }
+        .pill-device { background: rgba(56, 189, 248, 0.18); color: #7dd3fc; }
+        .pill-strong { background: rgba(34, 197, 94, 0.22); color: #86efac; }
+        .tier-box h4 {
+            color: #ffffff !important;
+            font-size: 1.04rem;
+            margin: 0 0 8px 0 !important;
+        }
+        .tier-box p {
+            color: #cbd5e1 !important;
+            font-size: 0.86rem !important;
+            line-height: 1.65 !important;
+            margin: 0 !important;
+        }
+
+        /* 4-Step Attestation Flow Grid */
+        .attestation-flow-card {
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-radius: 18px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+        .attestation-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .att-step-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0284c7;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+        .att-step-num {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.76rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+        .att-step-box h4 {
+            color: #0f172a !important;
+            font-size: 0.98rem;
+            margin: 0 0 8px 0 !important;
+        }
+        .att-step-box p {
+            color: #475569 !important;
+            font-size: 0.86rem !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+
+        /* JSON Verdict Showcase */
+        .verdict-json-panel {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin: 24px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+        .json-key { color: #38bdf8; font-weight: 700; }
+        .json-val-green { color: #4ade80; font-weight: 700; }
+        .json-comment { color: #94a3b8; }
+  </style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-932W653JW8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-932W653JW8');
+  </script>
+  <script>
+    if (typeof gtag === 'function') {
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل Google Play Integrity API الشامل", "url":"https://connecttag.org/blog/google-play-integrity-api-android-security-guide"}]'></site-breadcrumb>
+                <h1>دليل Google Play Integrity API الشامل: كيف تكتشف تطبيقات البنوك وواتساب الهواتف المعدّلة والـ Root؟ وكيف تحمي تطبيقك من التلاعب؟</h1>
+                <site-article-meta
+                  date="02 نوفمبر 2026"
+                  updated="02 نوفمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp" class="img-responsive" alt="دليل Google Play Integrity API الشامل لفحص نزاهة أجهزة وتطبيقات أندرويد وحمايتها من التلاعب والنسخ المعدلة" fetchpriority="high" width="1200" height="669" decoding="async">
+
+                <p>إذا حاولت يوماً فتح تطبيق بنكي، أو محفظة إلكترونية، أو تطبيق <strong>واتساب</strong>، أو حتى لعبة جماعية على هاتف أندرويد، فربما صادفت رسالة تمنعك من الدخول وتقول: <strong>«هذا الجهاز لا يلبي معايير الأمان»</strong> أو <strong>«تحتاج إلى تثبيت التطبيق الرسمي من المتجر»</strong>. وعلى الجانب الآخر، إذا كنت مطوراً لتطبيقات الموبايل، فأنت تتساءل حتماً: <em>كيف أتأكد بنسبة 100% أن الطلب القادم إلى خادمي يصدر من تطبيقي الأصلي غير المفكك ويعمل على هاتف حقيقي غير مخترَق؟</em></p>
+
+                <p>المحرك الخفي الذي يقف وراء هذا الفحص الفوري في مليارات الهواتف حول العالم هو <strong>واجهة نزاهة Google Play (Google Play Integrity API)</strong>؛ وهي المنظومة الأمنية العتادية والبرمجية التي استبدلت بها جوجل خدمة <code>SafetyNet</code> القديمة. في هذا الدليل المرجعي الشامل، نشرح بلغة واضحة <strong>للمستخدمين والمطورين معاً</strong> كيف تعمل هذه التقنية من داخل شريحة المعالج، وما الفرق بين مستويات النزاهة الثلاثة، وكيف تحل مشاكل فشل الفحص على هاتفك أو تدمجها لحماية تطبيقك.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> خلاصة الدليل في 4 نقاط رئيسية:</div>
+                    <ul class="summary-list">
+                        <li><strong>شهادة من قلب المعالج (Hardware Attestation):</strong> لم يعد فحص الأمان يعتمد على كود داخل التطبيق يمكن خداعه، بل يعتمد على شهادة رقمية موقعة من شريحة الأمان المعزولة (<code>KeyMint / StrongBox</code>) داخل معالج الهاتف.</li>
+                        <li><strong>3 مستويات للنزاهة:</strong> تقسم جوجل حالة الهاتف إلى 3 درجات: أساسية (<code>BASIC</code>)، نزاهة الجهاز المعتمد (<code>DEVICE</code>)، والنزاهة العتادية القوية (<code>STRONG</code>) التي تشترطها البنوك والمحافظ الإلكترونية.</li>
+                        <li><strong>فحص ثلاثي الأبعاد:</strong> لا تفحص الخدمة سلامة الهاتف فحسب، بل تكشف أيضاً ما إذا كان ملف الـ <code>APK</code> قد تم تعديله أو تثبيته من خارج المتجر، وما إذا كان هناك تطبيق خبيث يسجل الشاشة في الخلفية!</li>
+                        <li><strong>للمستخدمين:</strong> فتح محمّل الإقلاع (<code>Unlocked Bootloader</code>) أو تثبيت روم غير رسمي يسقط شهادة النزاهة القوية حتى لو لم تقم بعمل <code>Root</code> للهاتف.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#why-play-integrity-replaced-safetynet">أولاً: لماذا أوقفت Google خدمة SafetyNet واستبدلتها بـ Play Integrity API؟</a></li>
+                        <li><a href="#three-integrity-tiers">ثانياً: التشريح البصري لمستويات النزاهة الثلاثة (Basic vs Device vs Strong Integrity)</a></li>
+                        <li><a href="#four-step-attestation-architecture">ثالثاً: للمطورين — كيف تعمل دورة التحقق الرباعية ولماذا يُعد استخدام requestHash إلزامياً؟</a></li>
+                        <li><a href="#verdict-json-anatomy">رابعاً: قراءة شهادة الحكم (Integrity Verdict JSON): كيف تكشف النسخ المعدّلة وتطبيقات التجسس؟</a></li>
+                        <li><a href="#user-troubleshooting-guide">خامساً: للمستخدمين — لماذا يفشل هاتفك في اجتياز فحص الأمان وكيف تصلحه؟</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول Google Play Integrity API</a></li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="why-play-integrity-replaced-safetynet">أولاً: لماذا أوقفت Google خدمة SafetyNet واستبدلتها بـ Play Integrity API؟</h2>
+                <p>لسنوات طويلة، اعتمدت تطبيقات أندرويد على أداة <strong>SafetyNet Attestation</strong> لكشف الهواتف المكسورة الحماية (<code>Rooted Devices</code>). ولكن مع تطور أدوات التعديل التي تعمل على مستوى نواة النظام (<code>Kernel-level Root Hiding</code>)، أصبح من السهل إيهام الفحوصات البرمجية التقليدية بأن الجهاز سليم.</p>
+
+                <p>لإغلاق هذه الثغرة جذرياً، نقلت جوجل مركز الثقل من «البرمجيات القابلة للتعديل» إلى <strong>«بيئة التنفيذ الموثوقة والمعزولة عتادياً» (Trusted Execution Environment - TEE / StrongBox)</strong> داخل شريحة المعالج نفسها:</p>
+                <ul>
+                    <li><strong>مفتاح تشفير محفور في المصنع:</strong> كل هاتف أندرويد حديث معتمد يخرج من المصنع وبداخل شريحته الأمنية مفتاح تشفير خاص لا يمكن حتى لنظام التشغيل نفسه قراءته أو تعديله.</li>
+                    <li><strong>حالة محمّل الإقلاع (Verified Boot State):</strong> عند تشغيل الهاتف، تسجل شريحة الأمان العتادية مباشرة ما إذا كان محمّل الإقلاع (<code>Bootloader</code>) مقفلاً أم مفتوحاً، وما إذا كانت بصمة قسم النظام مطابقة لتوقيع الشركة المصنعة، وتُضمّن هذه الحقيقة داخل الشهادة المرسلة لخوادم Google.</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="three-integrity-tiers">ثانياً: التشريح البصري لمستويات النزاهة الثلاثة (Basic vs Device vs Strong Integrity)</h2>
+                <p>عندما يطلب تطبيق البنك أو المحفظة أو واتساب فحص هاتفك عبر <code>Play Integrity API</code>، تعيد خوادم جوجل تصنيفاً دقيقاً لحالة جهازك يتكون من ثلاثة مستويات متدرجة في الصرامة:</p>
+
+                <!-- بطاقة مستويات النزاهة الثلاثة -->
+                <div class="integrity-tiers-card">
+                    <div class="integrity-tiers-header">
+                        <h3><i class="fa-solid fa-layer-group" style="color: #4ade80;"></i> مستويات شهادة نزاهة الجهاز الثلاثة في نظام أندرويد</h3>
+                        <p>يختار كل تطبيق المستوى الذي يشترطه للسماح لك بالدخول أو تنفيذ العمليات الحساسة:</p>
+                    </div>
+
+                    <div class="tiers-grid">
+                        <div class="tier-box tier-box-basic">
+                            <span class="tier-pill pill-basic">1. MEETS_BASIC_INTEGRITY</span>
+                            <h4>النزاهة الأساسية الدنيا</h4>
+                            <p>يعني أن التطبيق يعمل على جهاز أندرويد فيزيائي أو محاكي معترف به يجتاز فحوصات سلامة النظام الأولية فقط، حتى لو لم يكن الجهاز معتمداً بالكامل أو كان محمّل الإقلاع مفتوحاً بشروط محدودة.</p>
+                        </div>
+
+                        <div class="tier-box tier-box-device">
+                            <span class="tier-pill pill-device">2. MEETS_DEVICE_INTEGRITY</span>
+                            <h4>نزاهة الجهاز المعتمد رسمياً</h4>
+                            <p>يشترط أن يعمل التطبيق على جهاز أندرويد أصيل ومعتمد رسمياً من Google Play، مع كون محمّل الإقلاع (<code>Bootloader</code>) مقفلاً ونظام التشغيل موقّعاً بشهادة الشركة المصنعة دون تعديل.</p>
+                        </div>
+
+                        <div class="tier-box tier-box-strong">
+                            <span class="tier-pill pill-strong">3. MEETS_STRONG_INTEGRITY</span>
+                            <h4>النزاهة العتادية القصوى (البنوك والمحافظ)</h4>
+                            <p>أعلى درجة أمان؛ تشترط إثباتاً تشفيرياً صادراً من شريحة الأمان العتادية (<code>KeyMint</code>)، بالإضافة إلى وجود تحديثات أمان لنظام أندرويد صدرت خلال العام الأخير على الأكثر.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h2 id="four-step-attestation-architecture">ثالثاً: للمطورين — كيف تعمل دورة التحقق الرباعية ولماذا يُعد استخدام requestHash إلزامياً؟</h2>
+                <p>أكبر خطأ أمني يرتكبه بعض المطورين هو محاولة فحص نتيجة النزاهة داخل كود تطبيق الهاتف نفسه؛ لأن أي مهاجم يستطيع تعديل ملف الـ <code>APK</code> وحذف جملة الشرط <code>if (isSecure)</code>! لذلك صممت جوجل دورة التحقق لتتم <strong>حصرياً على خادمك الخلفي (Backend Server)</strong> في 4 خطوات:</p>
+
+                <!-- مخطط دورة التحقق الرباعية -->
+                <div class="attestation-flow-card">
+                    <h3 style="margin-top:0; font-size:1.15rem; color:#0f172a;"><i class="fa-solid fa-diagram-project" style="color:#0284c7;"></i> المعمارية الصحيحة للتحقق من شهادة Play Integrity عبر الخادم</h3>
+                    <p style="font-size:0.9rem; color:#475569;">كيف تضمن أن المهاجم لا يستطيع تزييف الشهادة أو سرقة شهادة هاتف آخر لتمرير عملية احتيالية:</p>
+
+                    <div class="attestation-steps-grid">
+                        <div class="att-step-box">
+                            <span class="att-step-num">الخطوة 1 · بصمة العملية</span>
+                            <h4>حساب requestHash داخل التطبيق</h4>
+                            <p>يحسب التطبيق بصمة تشفيرية (<code>SHA-256</code>) لبيانات العملية الحساسة (مثل: رقم المستفيد + المبلغ + التوقيت) ويمررها كـ <code>requestHash</code> لطلب الشهادة.</p>
+                        </div>
+
+                        <div class="att-step-box">
+                            <span class="att-step-num">الخطوة 2 · التوقيع العتادي</span>
+                            <h4>إصدار التوكن المشفر (Token)</h4>
+                            <p>تتواصل خدمات Play مع شريحة الأمان العتادية في الهاتف وخادم Google لإصدار رمز مشفر وموقّع (<code>Integrity Token</code>) يحتوي بداخله على <code>requestHash</code>.</p>
+                        </div>
+
+                        <div class="att-step-box">
+                            <span class="att-step-num">الخطوة 3 · الإرسال للخادم</span>
+                            <h4>إرسال العملية + التوكن معاً</h4>
+                            <p>يرسل التطبيق طلب العملية المالية مرفقاً بالتوكن المشفر إلى خادم شركتك الخلفي (<code>Backend API</code>) عبر اتصال آمن.</p>
+                        </div>
+
+                        <div class="att-step-box">
+                            <span class="att-step-num">الخطوة 4 · فك التشفير والمطابقة</span>
+                            <h4>التحقق في الخادم الخلفي</h4>
+                            <p>يفك خادمك تشفير التوكن عبر خوادم Google Cloud، ويتأكد من تطابق <code>requestHash</code>، ومن أن التطبيق <code>PLAY_RECOGNIZED</code> والجهاز <code>MEETS_STRONG_INTEGRITY</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>لماذا يُعد `requestHash` أقوى بكثير من الرقم العشوائي التقليدي (`Nonce`)؟</h3>
+                <p>لو اكتفيت بإرسال رقم عشوائي، قد يقوم مهاجم محترف بوضع هاتف سليم بجانبه، ويأخذ شهادة سليمة منه ليُرفقها بطلب مزور معدل القيمة من هاتفه المخترَق (هجوم التمرير <code>Relay Attack</code>). أما عندما تستخدم <code>requestHash</code> مشتقاً من تفاصيل العملية نفسها، فإن تغيير رقم واحد في مبلغ الحوالة يجعل بصمة <code>requestHash</code> داخل شهادة جوجل غير مطابقة للطلب، فيرفضه خادمك فوراً!</p>
+
+                <hr>
+
+                <h2 id="verdict-json-anatomy">رابعاً: قراءة شهادة الحكم (Integrity Verdict JSON): كيف تكشف النسخ المعدّلة وتطبيقات التجسس؟</h2>
+                <p>عندما يفك خادمك الخلفي تشفير التوكن القادم من <code>Play Integrity API</code>، يحصل على وثيقة <code>JSON</code> غنية جداً تكشف أربعة أبعاد أمنية في وقت واحد:</p>
+
+                <!-- لوحة كود JSON للحكم الأمني -->
+                <div class="verdict-json-panel" role="region" aria-label="نموذج وثيقة الحكم الأمني من Play Integrity API">
+{
+  <span class="json-comment">// 1. تفاصيل الطلب وبصمة العملية لمنع التلاعب أو إعادة الإرسال</span>
+  <span class="json-key">"requestDetails"</span>: {
+    <span class="json-key">"requestPackageName"</span>: <span class="json-val-green">"org.connecttag.app"</span>,
+    <span class="json-key">"requestHash"</span>: <span class="json-val-green">"a8f5f167f44f4964e6c998dee827110c..."</span>,
+    <span class="json-key">"timestampMillis"</span>: <span class="json-val-green">"1793618400000"</span>
+  },
+  <span class="json-comment">// 2. نزاهة التطبيق: يكشف فوراً إذا كان ملف الـ APK معدلاً أو بلس!</span>
+  <span class="json-key">"appIntegrity"</span>: {
+    <span class="json-key">"appRecognitionVerdict"</span>: <span class="json-val-green">"PLAY_RECOGNIZED"</span>,
+    <span class="json-key">"certificateSha256Digest"</span>: [<span class="json-val-green">"6a8b9c..."</span>]
+  },
+  <span class="json-comment">// 3. نزاهة الجهاز العتادية والبرمجية</span>
+  <span class="json-key">"deviceIntegrity"</span>: {
+    <span class="json-key">"deviceRecognitionVerdict"</span>: [
+      <span class="json-val-green">"MEETS_BASIC_INTEGRITY"</span>,
+      <span class="json-val-green">"MEETS_DEVICE_INTEGRITY"</span>,
+      <span class="json-val-green">"MEETS_STRONG_INTEGRITY"</span>
+    ]
+  },
+  <span class="json-comment">// 4. بيئة التشغيل: يكشف تطبيقات تسجيل الشاشة أو التحكم عن بُعد الخبيثة</span>
+  <span class="json-key">"environmentDetails"</span>: {
+    <span class="json-key">"appAccessRiskVerdict"</span>: {
+      <span class="json-key">"appsDetected"</span>: [<span class="json-val-green">"KNOWN_INSTALLED"</span>]
+    }
+  }
+}
+                </div>
+
+                <p>لاحظ الحقل <code>appAccessRiskVerdict</code> الجديد؛ فهذه الميزة الفريدة تمكّن تطبيقات البنوك والمحافظ من معرفة ما إذا كان هناك تطبيق آخر يعمل في نفس اللحظة يقوم <strong>بتصوير شاشة الهاتف أو التحكم بالنقرات عن بُعد</strong> لسرقة رمز الدخول السري!</p>
+
+                <hr>
+
+                <h2 id="user-troubleshooting-guide">خامساً: للمستخدمين — لماذا يفشل هاتفك في اجتياز فحص الأمان وكيف تصلحه؟</h2>
+                <p>إذا كنت مستخدماً عادياً وتواجه مشكلة رفض عمل تطبيقات البنوك أو المحافظ الإلكترونية أو واتساب على هاتفك، فإليك الأسباب الحقيقية وطريقة الفحص والإصلاح:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>السبب الشائع لفشل الفحص</th>
+                                <th>ماذا يحدث تقنياً؟</th>
+                                <th>الحل العملي للمستخدم</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>فتح محمّل الإقلاع (Unlocked Bootloader)</strong></td>
+                                <td>حتى بدون وجود <code>Root</code>، يسقط فتح البوتلودر درجتَي <code>DEVICE</code> و<code>STRONG</code> فوراً (شائع في الهواتف المستعملة أو الصينية المحولة لروم عالمي).</td>
+                                <td>تثبيت الروم الرسمي الأصلي للشركة المصنعة وإعادة قفل محمّل الإقلاع رسمياً.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>تثبيت التطبيق من خارج المتجر (Sideloading APK)</strong></td>
+                                <td>يعيد الحقل <code>appRecognitionVerdict</code> القيمة <code>UNRECOGNIZED_VERSION</code> بدلاً من <code>PLAY_RECOGNIZED</code>.</td>
+                                <td>احذف التطبيق المثبت يدوياً وأعد تثبيته مباشرة من متجر <code>Google Play</code> الرسمي.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>تطبيقات التحكم بالشاشة أو الطبقات العائمة</strong></td>
+                                <td>يفشل فحص <code>appAccessRiskVerdict</code> بسبب وجود تطبيق يقرأ الشاشة أو يسجلها في الخلفية.</td>
+                                <td>أغلق أو احذف أي تطبيقات تصوير شاشة غير معروفة أو أدوات نقر تلقائي قبل فتح تطبيق البنك.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>توقف التحديثات الأمنية لأكثر من سنة</strong></td>
+                                <td>تشترط درجة <code>MEETS_STRONG_INTEGRITY</code> أن يكون مستوى تصحيح الأمان لنظام أندرويد حديثاً.</td>
+                                <td>ادخل إلى إعدادات الهاتف &larr; تحديث النظام، وثبّت آخر تحديث أمني متوفر لجهازك.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>كيف تفحص حالة شهادة هاتفك بنفسك في 10 ثوانٍ؟</h3>
+                <ol>
+                    <li>افتح تطبيق <strong>متجر Google Play</strong> الرسمي على هاتفك.</li>
+                    <li>اضغط على أيقونة حسابك في أعلى الشاشة واختر <strong>«الإعدادات» (Settings)</strong>.</li>
+                    <li>اضغط على قسم <strong>«لمحة» (About)</strong> في الأسفل، وانظر تحت عنوان <strong>«شهادة Play للحماية» (Play Protect Certification)</strong>: إذا رأيت عبارة <strong>«الجهاز معتمد» (Device is certified)</strong> فهاتفك سليم ومعتمد رسمياً.</li>
+                </ol>
+
+                <hr>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول Google Play Integrity API</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين مستويات النزاهة الثلاثة: MEETS_BASIC_INTEGRITY وMEETS_DEVICE_INTEGRITY وMEETS_STRONG_INTEGRITY؟</div>
+                        <div class="faq-answer">المستوى الأساسي (MEETS_BASIC_INTEGRITY) يتحقق فقط من أن التطبيق يعمل على جهاز أندرويد حقيقي أو محاكي معترف به دون عبث واضح بالنظام؛ بينما مستوى الجهاز (MEETS_DEVICE_INTEGRITY) يشترط أن يكون الهاتف معتمداً من Google ومحمّل الإقلاع (Bootloader) مقفلاً ونظام التشغيل أصلياً؛ أما المستوى القوي (MEETS_STRONG_INTEGRITY) فيتطلب إثباتاً تشفيرياً من شريحة الأمان العتادية (KeyMint / TEE) مع وجود تحديثات أمنية حديثة، وهو المستوى الذي تطلبه تطبيقات البنوك والمحافظ الإلكترونية.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا استبدلت شركة Google واجهة SafetyNet القديمة بواجهة Play Integrity API؟</div>
+                        <div class="faq-answer">لأن واجهة SafetyNet القديمة كانت تعتمد بشكل كبير على فحوصات برمجية على مستوى النظام أمكن لأدوات إخفاء الـ Root تجاوزها، كما كانت تفتقر إلى التحقق من سلامة حزمة التطبيق نفسها وترخيص حساب المستخدم في المتجر. لذلك دمجت Google في Play Integrity API شهادة العتاد الموقعة من شريحة الأمان المعزولة (Hardware-backed Key Attestation) مع فحص التوقيع الأصلي للتطبيق وكشف أدوات الوصول عن بُعد وتسجيل الشاشة الخبيث.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا ترفض تطبيقات البنوك والمحافظ الإلكترونية وواتساب العمل على هاتفي رغم أنني لم أقم بعمل Root؟</div>
+                        <div class="faq-answer">أشهر الأسباب لرفض العمل بدون وجود Root هي: أن يكون محمّل الإقلاع (Bootloader) مفتوحاً (خاصة في الهواتف المستعملة أو الهواتف الصينية المحولة إلى روم عالمي غير رسمي)، أو أنك ثبّتت التطبيق عبر ملف APK خارجي بدلاً من متجر Google Play الرسمي، أو تفعيل خيارات المطور وأدوات التصحيح اللاسلكي أو وجود تطبيقات تتحكم بالشاشة وتلتقطها.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يُعد استخدام requestHash أقوى أمنياً من استخدام رقم عشوائي (Nonce) تقليدي في Play Integrity API؟</div>
+                        <div class="faq-answer">لأن الرقم العشوائي التقليدي يثبت فقط أن الشهادة حديثة، لكن المهاجم قد يعترض الطلب ويغيّر محتوى العملية (مثل تغيير رقم حساب المستفيد أو مبلغ الحوالة) مع الإبقاء على نفس الشهادة؛ بينما يتيح requestHash حساب بصمة تشفيرية (SHA-256) لكامل بيانات العملية المالية نفسها ودمجها داخل شهادة Google، مما يمنع أي تعديل على البيانات أثناء النقل.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين الطلبات القياسية (Standard Requests) والطلبات الكلاسيكية (Classic Requests) في Play Integrity؟</div>
+                        <div class="faq-answer">الطلبات القياسية (Standard Requests) هي الخيار المعتمد حديثاً؛ حيث يقوم التطبيق بتهيئة مزود التوكن مسبقاً مرة واحدة عند فتح التطبيق، مما يجعل إصدار شهادة النزاهة عند كل عملية حساسة يتم في أجزاء من الثانية (أقل من 100 مللي ثانية) دون انتظار اتصال شبكي طويل، بينما الطلبات الكلاسيكية تتطلب رحلة اتصال كاملة في كل مرة وتُستخدم فقط للعمليات النادرة جداً.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أعرف ما إذا كان هاتفي معتمداً ويجتاز فحص Play Integrity من إعدادات الهاتف الرسمية؟</div>
+                        <div class="faq-answer">افتح تطبيق متجر Google Play، اضغط على صورة ملفك الشخصي في الأعلى، ثم اختر «الإعدادات &larr; لمحة» (About) وانظر في الأسفل إلى خانة «شهادة Play للحماية» (Play Protect Certification)؛ إذا ظهرت عبارة «الجهاز معتمد» (Device is certified)، فهذا يعني أن هاتفك يجتاز فحص نزاهة الجهاز الرسمي.</div>
+                    </div>
+                </section>
+
+                <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 22px 24px; margin: 32px 0; font-size: 0.95rem; line-height: 1.8;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-clipboard-check" style="color: #0052cc;" aria-hidden="true"></i> منهجية التحقق والاختبار والمصادر المرجعية</h3>
+                    <p style="margin-bottom: 12px; color: #334155;">تم إعداد هذا الدليل ومراجعته هندسياً بواسطة فريق الأمن السيبراني وتطوير أندرويد في <strong>كونكت تاق</strong> بالاعتماد على اختبارات شهادة العتاد (KeyMint Attestation) والتحقق الخلفي عبر خوادم Google Cloud. لفحص أمان تطبيقك محلياً، يمكنك استخدام <a href="https://connecttag.org/tools/mobile/manifest-analyzer/">محلل أمان AndroidManifest.xml</a>، و<a href="https://connecttag.org/tools/mobile/android-permissions/">مولّد صلاحيات أندرويد</a>، ومراجعة <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">دليل حماية تطبيقات أندرويد من الهندسة العكسية</a> و<a href="https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis">التحليل الجنائي للنسخ المعدلة</a>.</p>
+                    <p style="margin-bottom: 8px; font-weight: 700; color: #1e293b;">المصادر والوثائق الرسمية المعتمدة:</p>
+                    <ul style="margin: 0; padding-right: 20px; color: #475569;">
+                        <li><a href="https://developer.android.com/google/play/integrity/overview" target="_blank" rel="noopener noreferrer">Google Play Integrity API Official Documentation — Android Developers</a></li>
+                        <li><a href="https://source.android.com/docs/security/features/keystore/attestation" target="_blank" rel="noopener noreferrer">Android Hardware-backed Key Attestation &amp; KeyMint — Android Open Source Project (AOSP)</a></li>
+                        <li><a href="https://mas.owasp.org/MASTG/" target="_blank" rel="noopener noreferrer">OWASP Mobile Application Security Testing Guide (MASTG — Anti-Tampering &amp; Attestation)</a></li>
+                    </ul>
+                </aside>
+
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="android-app-security-reverse-engineering, migrate-modded-whatsapp-to-official-app-ban-fix-guide, modded-whatsapp-gold-plus-apk-malware-security-analysis"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

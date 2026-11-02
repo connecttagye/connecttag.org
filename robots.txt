@@ -1,7 +1,52 @@
+# Connect Tag (connecttag.org) - Robots & AI Crawler Governance
+# Compliant with Google Search Central & IETF AI Usage Preferences (Oct 2026)
+
 User-agent: *
 Allow: /
 Disallow: /scripts/
-Disallow: /sync.bat
-Disallow: /agents.md
+Disallow: /offline
+Disallow: /offline.html
+Disallow: /404
+Disallow: /404.html
+
+# Google Search, AI Overviews & AI Mode (Grounding)
+User-agent: Googlebot
+Allow: /
+Disallow: /scripts/
+
+# Google Gemini & Vertex AI Grounding / Training Control
+User-agent: Google-Extended
+Allow: /
+Disallow: /scripts/
+Disallow: /offline
+Disallow: /404
+
+# IETF Standard AI Training Usage Token (Google Oct 2026 Specification)
+User-agent: __usage_ai-training
+Allow: /
+Disallow: /scripts/
+Disallow: /offline
+Disallow: /404
+
+# AI Search & Citation Assistants
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /scripts/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /scripts/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /scripts/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /scripts/
+
+# Unsolicited Bulk Scrapers
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: https://connecttag.org/sitemap.xml

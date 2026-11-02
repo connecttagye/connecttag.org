@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ثغرات ملف AndroidManifest.xml وأمن المكونات: حماية الـ Exported Components وDeep Links - كونكت تاق</title>
-    <meta name="description" content="دليل هندسي شامل لمطوري أندرويد حول اكتشاف وإغلاق ثغرات ملف AndroidManifest.xml: تأمين المكونات المصدّرة (Exported Components)، منع اختطاف الروابط العميقة (Deep Link Hijacking)، وتجنب رفض جوجل بلاي.">
+    <title>أمن ملف AndroidManifest.xml: حماية المكونات والـ Deep Links</title>
+    <meta name="description" content="دليل هندسي لمطوري أندرويد لتأمين ملف AndroidManifest.xml: إغلاق ثغرات Exported Components، منع Intent Redirection، وتوثيق روابط App Links.">
+    <meta name="author" content="عقيل محمد">
     <link rel="canonical" href="https://connecttag.org/blog/android-manifest-security-exported-components-guide" />
 
     <!-- OpenGraph meta -->
@@ -15,8 +16,9 @@
     <meta property="og:description" content="دليل هندسي شامل لمطوري أندرويد حول اكتشاف وإغلاق ثغرات ملف AndroidManifest.xml، تأمين المكونات المصدّرة، وحماية الروابط العميقة عبر Android App Links." />
     <meta property="og:image" content="https://connecttag.org/upload/android-manifest-security-guide.webp">
     <meta property="og:image:alt" content="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد">
-    <meta property="article:published_time" content="2026-10-29T15:00:00+03:00">
-    <meta property="article:modified_time" content="2026-10-29T18:30:00+03:00">
+    <meta property="article:published_time" content="2026-10-10T16:45:00+03:00">
+    <meta property="article:modified_time" content="2026-10-30T11:20:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
     <meta property="article:section" content="الأمن السيبراني">
 
     <!-- twitter OpenGraph meta -->
@@ -27,18 +29,18 @@
     <meta name="twitter:image" content="https://connecttag.org/upload/android-manifest-security-guide.webp" />
     <meta name="twitter:image:alt" content="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد" />
     <meta name="twitter:site" content="@connecttagye" />
-    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.47" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.47" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
     <link rel="preload" href="https://connecttag.org/upload/android-manifest-security-guide.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.47">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.47">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.47">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.47">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.47" defer></script>
-    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.47" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
 
     <script type="application/ld+json">
 [
@@ -51,6 +53,7 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
       "url": "https://connecttag.org/blog/authors/aqeldev"
     },
     "publisher": {
@@ -61,8 +64,8 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-10-29T15:00:00+03:00",
-    "dateModified": "2026-10-29T18:30:00+03:00",
+    "datePublished": "2026-10-10T16:45:00+03:00",
+    "dateModified": "2026-10-30T11:20:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/android-manifest-security-exported-components-guide"
@@ -149,7 +152,7 @@
     ]
   }
 ]
-    </script>
+</script>
 
     <!-- PWA & Mobile Optimization Tags -->
     <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -336,10 +339,9 @@
                 <h1>ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟</h1>
 
                 <site-article-meta
-                  date="29 أكتوبر 2026"
-                  updated="29 أكتوبر 2026"
-                  hide-author="true"
-                ></site-article-meta>
+                  date="10 أكتوبر 2026"
+                  updated="30 أكتوبر 2026"
+                ><span class="sr-only">تاريخ النشر: 10 أكتوبر 2026</span></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="https://connecttag.org/upload/android-manifest-security-guide.webp" class="img-responsive" alt="ثغرات ملف AndroidManifest.xml وأمن مكونات تطبيقات أندرويد" fetchpriority="high" width="1264" height="848" decoding="async">
@@ -613,6 +615,27 @@ if (targetComponent != null &amp;&amp;
                 </div>
 
                 <hr>
+                <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 5px solid #4f46e5; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #312e81; font-weight: 800;"><i class="fa-solid fa-code-commit" style="color: #4f46e5;" aria-hidden="true"></i> بيئة الاختبار الهندسي والوثائق الرسمية</h3>
+                    <p style="font-size: 0.94rem; color: #334155; margin-bottom: 14px; line-height: 1.75;">يستند هذا الدليل إلى قواعد الفحص الأمني المبرمجة داخل أداة تحليل AndroidManifest.xml في كونكت تاق، والمتوافقة مع متطلبات Google Play Security.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-cubes" style="color: #4f46e5;" aria-hidden="true"></i> أدوات وموارد للمطورين في الموقع:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/tools/mobile/manifest-analyzer/" style="font-weight:700; color:#0052cc;" >أداة فحص وتحليل ثغرات ملف AndroidManifest.xml الفورية</a></li>
+                            <li><a href="https://connecttag.org/tools/mobile/deep-link-generator/" style="font-weight:700; color:#0052cc;" >أداة توليد واختبار الروابط العميقة (Deep Link Generator)</a></li>
+                            <li><a href="https://connecttag.org/tools/mobile/android-permissions/" style="font-weight:700; color:#0052cc;" >أداة توليد صلاحيات أندرويد وشرح مخاطرها</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-file-code" style="color: #4f46e5;" aria-hidden="true"></i> التوثيق الرسمي (Official Docs):</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://developer.android.com/privacy-and-security/risks/intent-redirection" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">وثائق Android Developers لتأمين المكونات ومنع Intent Redirection <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://developer.android.com/training/app-links/verify-android-applinks" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">دليل توثيق الروابط العميقة الرسمي (Verify Android App Links) <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>سابعاً: الأسئلة الشائعة حول أمن ملف المانيفست</h2>
@@ -648,7 +671,7 @@ if (targetComponent != null &amp;&amp;
                     </div>
                 </section>
 
-                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="android-app-security-reverse-engineering, kmp-data-management-room-datastore, api-security-guide"></site-related-posts>
             </div>

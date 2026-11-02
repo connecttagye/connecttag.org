@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>هل إعادة ضبط المصنع تمنع استرجاع الصور؟ دليل المسح الآمن</title>
+    <meta name="description" content="تعرف علمياً على مصير صورك بعد فرمتة الهاتف، وكيف يمنع التشفير القائم على الملفات (FBE) استعادة المحذوفات، وخطوات المسح الآمن قبل بيع أو صيانة هاتفك.">
+    <meta name="author" content="كيان الرحبي">
+    <link rel="canonical" href="https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك - كونكت تاق">
+    <meta property="og:description" content="تعرف علمياً وتقنياً على مصير صورك وملفاتك بعد فرمتة الهاتف، وكيف يمنع التشفير الحديث (FBE) برامج الاسترجاع، وما الخطوات الإلزامية قبل بيع هاتفك أو تسليمه لفني الصيانة." />
+    <meta property="og:image" content="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="669">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="الدليل التقني للتدمير الآمن للبيانات ومنع استرجاع الصور قبل بيع أو صيانة الهاتف">
+    <meta property="article:published_time" content="2026-10-25T11:20:00+03:00">
+    <meta property="article:modified_time" content="2026-11-01T13:10:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/kayan">
+    <meta property="article:section" content="الأمن السيبراني">
+
+    <!-- twitter OpenGraph meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide" />
+    <meta name="twitter:title" content="هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني الشامل">
+    <meta name="twitter:description" content="كيف تضمن عدم استرجاع أي صورة أو ملف من هاتفك بنسبة 100% قبل بيعه؟ وما هو وضع الصيانة (Repair Mode) الذي يحمي بياناتك عند إصلاح الهاتف؟" />
+    <meta name="twitter:image" content="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp" />
+    <meta name="twitter:image:alt" content="الدليل التقني للتدمير الآمن للبيانات ومنع استرجاع الصور قبل بيع أو صيانة الهاتف" />
+    <meta name="twitter:site" content="@connecttagye" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+    <link rel="preload" href="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك",
+    "description": "دليل تقني وأمني يشرح كيف تعمل شرائح التخزين NAND Flash والتشفير المبني على الملفات (FBE) عند إعادة ضبط المصنع، ومتى يمكن استرجاع الصور المحذوفة، والخطوات المضمونة 100% لتدمير البيانات بأمان قبل بيع الهاتف أو تسليمه للصيانة.",
+    "image": "https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "كيان الرحبي",
+      "jobTitle": "مختص في الأمن السيبراني والتحقيق الجنائي الرقمي (DFIR)",
+      "url": "https://connecttag.org/blog/authors/kayan"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-10-25T11:20:00+03:00",
+    "dateModified": "2026-11-01T13:10:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide"
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل يمكن استرجاع الصور والملفات بعد إعادة ضبط المصنع في الهواتف الحديثة (أندرويد 10 فما فوق وآيفون)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في الهواتف الذكية الحديثة التي تعمل بنظام أندرويد 10 فما فوق أو نظام iOS في هواتف آيفون، تكون الذاكرة الداخلية مشفرة افتراضياً بتقنية التشفير القائم على الملفات (File-Based Encryption). عند إجراء إعادة ضبط المصنع، يقوم النظام بإتلاف مفتاح التشفير المخزن في شريحة الأمان المعزولة (Cryptographic Erasure)، مما يجعل استرجاع أي صورة أو ملف من الذاكرة الداخلية مستحيلاً من الناحية الرياضية والتقنية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا نسمع عن حالات تم فيها استرجاع صور من هواتف مستعملة بعد فرمتتها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تحدث هذه الحالات لثلاثة أسباب رئيسية: إما أن البائع نسي بطاقة الذاكرة الخارجية (MicroSD Card) داخل الهاتف وهي غير مشفرة افتراضياً ويسهل استرجاع كامل محتواها، أو أن الهاتف قديم جداً (أندرويد 5.1 فما دون) ولم يكن مشفراً، أو أن البائع لم يقم بإزالة حسابه السحابي (Google Photos أو iCloud) قبل تسليم الجهاز."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل فرمتة بطاقة الذاكرة الخارجية (MicroSD) داخل الهاتف تمنع استرجاع الصور منها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، التهيئة السريعة (Quick Format) لبطاقة الذاكرة الخارجية تحذف فقط فهرس الملفات بينما تبقى الصور الفعلية مخزنة في قطاعات الذاكرة ويسهل استرجاعها بأي برنامج استعادة ملفات على الحاسوب. لذلك يجب إزالة بطاقة الذاكرة الخارجية دائماً والاحتفاظ بها وعدم بيعها مع الهاتف أبداً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي خطوة الأمان الإضافية الموصى بها للهواتف القديمة قبل بيعها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في الهواتف القديمة أو لزيادة الاطمئنان النفسي، قم أولاً بإجراء إعادة ضبط المصنع، ثم افتح الكاميرا وصوّر فيديو عالي الدقة لسطح معتم (مثل طاولة أو جدار) وكرر نسخ هذا الفيديو حتى تمتلئ ذاكرة الهاتف بنسبة 100%، ثم قم بإجراء إعادة ضبط المصنع للمرة الثانية. هذه العملية تضمن الكتابة الفوقية (Overwriting) على كافة قطاعات الذاكرة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أسلم هاتفي لفني الصيانة لإصلاح الشاشة أو البطارية دون أن يطلع على صوري ورسائلي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "توفر الهواتف الحديثة ميزة رسمية تُسمى «وضع الصيانة» (Maintenance Mode في هواتف سامسونج) أو «وضع الإصلاح» (Repair Mode في هواتف بكسل وأندرويد 14+). عند تفعيل هذا الوضع من الإعدادات، يعيد الهاتف التشغيل في بيئة اختبار نظيفة تماماً تمكّن الفني من فحص الكاميرا والصوت والشاشة والشبكة، بينما تظل صورك وتطبيقاتك ورسائلك مشفرة ومخفية بالكامل ولا يمكن فتحها إلا ببصمتك أو رمزك السري."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب حذف حساب جوجل أو iCloud يدوياً قبل عمل إعادة ضبط المصنع من الإعدادات؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأنه في حال فرمتة الهاتف من قائمة الاسترداد (Recovery Mode) دون إزالة الحساب أولاً، سيُقفل الهاتف بميزة حماية إعادة تعيين المصنع (FRP Lock أو iCloud Activation Lock)، ولن يتمكن المشتري الجديد من تشغيل الهاتف إلا بإدخال بريدك الإلكتروني وكلمة مرورك."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "هل إعادة ضبط المصنع تمنع استرجاع الصور والملفات؟",
+        "item": "https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide"
+      }
+    ]
+  }
+]
+</script>
+
+    <!-- PWA & Mobile Optimization Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0052cc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357"
+         crossorigin="anonymous"></script>
+
+    <style>
+        .crypto-erasure-card {
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            border-radius: 18px;
+            padding: 28px 24px;
+            margin: 30px 0;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+        }
+        .crypto-erasure-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .crypto-erasure-header h3 {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0 0 8px;
+        }
+        .crypto-erasure-header p {
+            color: #cbd5e1 !important;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .crypto-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .crypto-step-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            padding: 18px 16px;
+        }
+        .crypto-step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #10b981;
+            color: #064e3b;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .crypto-step-box h4 {
+            color: #ffffff !important;
+            font-size: 1.02rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+        .crypto-step-box p {
+            color: #cbd5e1 !important;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        /* Storage Comparison Mockup */
+        .storage-compare-wrapper {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+        .storage-compare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .storage-panel {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 20px;
+            border: 2px solid transparent;
+        }
+        .storage-panel-unencrypted {
+            border-color: #fca5a5;
+            background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+        }
+        .storage-panel-encrypted {
+            border-color: #86efac;
+            background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        .storage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+        .badge-warn {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .badge-ok {
+            background: #dcfce7;
+            color: #15803d;
+        }
+        .hex-preview-box {
+            background: #0f172a;
+            color: #e2e8f0;
+            font-family: monospace;
+            font-size: 0.82rem;
+            padding: 10px 12px;
+            border-radius: 8px;
+            direction: ltr;
+            text-align: left;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        /* Checklist Cards */
+        .wipe-protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .wipe-protocol-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0284c7;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+        .wipe-protocol-card h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .wipe-protocol-card p {
+            font-size: 0.88rem;
+            color: #475569;
+            margin: 0;
+            line-height: 1.65;
+        }
+    </style>
+</head>
+<body data-target="#navbar-main" class="preloader-visible">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"هل إعادة ضبط المصنع تمنع استرجاع الصور والملفات؟", "url":"https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide"}]'></site-breadcrumb>
+
+                <h1>هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك</h1>
+
+                <site-article-meta
+                  date="25 أكتوبر 2026"
+                  updated="1 نوفمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 25 أكتوبر 2026</span></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp" class="img-responsive" alt="الدليل التقني للتدمير الآمن للبيانات ومنع استرجاع الصور قبل بيع أو صيانة الهاتف" fetchpriority="high" width="1200" height="669" decoding="async">
+
+                <p>يمتلك كثير من المستخدمين هواتف قديمة مكدّسة في الأدراج يرفضون بيعها أو استبدالها لسبب واحد: <strong>الخوف من قيام المشتري الجديد بتشغيل برامج استعادة المحذوفات (Data Recovery) واسترجاع الصور العائلية والملفات الخاصة بعد إجراء «إعادة ضبط المصنع» (Factory Reset)</strong>. كما يعيش آخرون قلقاً شديداً عندما يضطرون لتسليم هواتفهم لفني الصيانة لإصلاح الشاشة أو تغيير البطارية.</p>
+
+                <p>فهل تستطيع برامج استرجاع الملفات فعلاً استعادة الصور بعد فرمتة الهاتف؟ في هذا الدليل الهندسي والأمني، نشرح بلغة علمية دقيقة كيف تعمل شرائح التخزين الداخلية في الهواتف الذكية، وكيف أحدث <strong>التشفير القائم على الملفات (File-Based Encryption - FBE)</strong> ثورة جذرية في حماية الخصوصية، ومتى تظل بياناتك عرضة للاسترجاع فعلاً، وما هو البروتوكول العملي المضمون بنسبة 100% لتصفير أي هاتف قبل بيعه أو صيانته.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> الخلاصة الهندسية السريعة قبل بيع أو صيانة هاتفك:</div>
+                    <ul class="summary-list">
+                        <li><strong>في الهواتف الحديثة (أندرويد 10+ وآيفون):</strong> الذاكرة الداخلية مشفرة افتراضياً؛ وعند عمل «إعادة ضبط المصنع» يتم تدمير مفتاح التشفير (<code>Cryptographic Erasure</code>)، مما يجعل استرجاع أي صورة أو ملف من الذاكرة الداخلية <strong>مستحيلاً بنسبة 100%</strong>.</li>
+                        <li><strong>الثغرة الأخطر (بطاقة الذاكرة الخارجية MicroSD):</strong> بطاقات الذاكرة الخارجية غير مشفرة افتراضياً، ويمكن استرجاع جميع صورها بسهولة حتى بعد فرمتتها؛ لذا <strong>انزعها واحتفظ بها دائماً ولا تبعها مع الهاتف أبداً</strong>.</li>
+                        <li><strong>في الهواتف القديمة (أندرويد 5.1 فما دون):</strong> لم يكن التشفير مفعّلاً افتراضياً، لذلك يلزم ملء الذاكرة بملف فيديو كبير بعد الفرمتة ثم فرمتتها مرة ثانية لضمان الكتابة الفوقية (<code>Overwriting</code>).</li>
+                        <li><strong>عند تسليم الهاتف للصيانة:</strong> لا حاجة لفرمتة الهاتف إذا كان يدعم ميزة <strong>«وضع الصيانة / الإصلاح» (Maintenance / Repair Mode)</strong> التي تعزل صورك وتطبيقاتك بكلمة سر.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل التقني:</div>
+                    <ul class="toc-list">
+                        <li><a href="#nand-flash-basics">أولاً: كيف تعمل شرائح التخزين (NAND Flash) ولماذا لا تُمسح الملفات فوراً عند حذفها؟</a></li>
+                        <li><a href="#fbe-cryptographic-erasure">ثانياً: كيف غيّر التشفير المبني على الملفات (FBE) قواعد اللعبة في الهواتف الحديثة؟</a></li>
+                        <li><a href="#three-real-risks">ثالثاً: متى يكون خطر استرجاع الصور حقيقياً؟ (الحالات الـ 3 التي يقع فيها الضحايا)</a></li>
+                        <li><a href="#secure-wipe-protocol">رابعاً: البروتوكول العملي المضمون 100% لتصفير الهاتف قبل البيع (6 خطوات)</a></li>
+                        <li><a href="#maintenance-mode-guide">خامساً: كيف تحمي صورك عند تسليم الهاتف لفني الصيانة دون فرمتته؟</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول إعادة ضبط المصنع واسترجاع البيانات</a></li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="nand-flash-basics">أولاً: كيف تعمل شرائح التخزين (NAND Flash) ولماذا لا تُمسح الملفات فوراً عند حذفها؟</h2>
+                <p>لفهم سبب قدرة برامج الاسترجاع على استعادة الملفات في الأقراص التقليدية أو بطاقات الذاكرة غير المشفرة، يجب أولاً فهم كيف يدير نظام التشغيل شريحة التخزين من نوع <strong>NAND Flash Memory</strong>:</p>
+
+                <p>تتكون ذاكرة الهاتف من ملايين الخلايا الإلكترونية المقسمة إلى صفحات (<code>Pages</code>) وكتل (<code>Blocks</code>)، ويديرها جدول فهرسة يُعرف بـ <strong>جدول تخصيص الملفات (File System Index)</strong>، وهو بمثابة «فهرس كتاب» يخبر النظام أن الصورة رقم (1) تقع في الكتلة رقم <code>0x4A20</code>.</p>
+
+                <p>عندما تضغط على زر «حذف صورة» من الاستوديو في نظام تخزين غير مشفر، لا يقوم النظام بمسح الأصفار والآحاد الخاصة بالصورة فعلياً لأن عملية المسح الفيزيائي في شرائح الفلاش بطيئة وتستهلك العمر الافتراضي للذاكرة؛ بل يكتفي النظام بـ <strong>حذف عنوان الصورة من الفهرس فقط</strong> ووضع علامة على مساحتها بأنها «متاحة للكتابة مستقبلاً». وطالما لم يتم التقاط صور أو ملفات جديدة فوق تلك المساحة، تبقى بكسلات الصورة القديمة قابلة للقراءة عبر برامج الفحص المباشر للقطاعات!</p>
+
+                <hr>
+
+                <h2 id="fbe-cryptographic-erasure">ثانياً: كيف غيّر التشفير المبني على الملفات (FBE) قواعد اللعبة في الهواتف الحديثة؟</h2>
+                <p>أدركت شركات تطوير أنظمة التشغيل (أندرويد وiOS) هذه المشكلة الهندسية مبكراً، فاعتمدت حلاً جذرياً يُعرف باسم <strong>التشفير القائم على الملفات (File-Based Encryption - FBE)</strong> المدعوم بشريحة أمان عتادية معزولة (<code>Hardware-backed Keystore / Secure Enclave</code>).</p>
+
+                <p>في جميع الهواتف التي تعمل بنظام <strong>أندرويد 10 فما فوق</strong> (ومعظم الهواتف منذ أندرويد 7)، وكذلك جميع <strong>هواتف آيفون (منذ iPhone 3GS فما بعده)</strong>، لا تُكتب أي صورة أو وثيقة على شريحة التخزين بصيغتها الأصلية؛ بل تمر تلقائياً عبر محرك تشفير عتادي بمعيار <strong>AES-256</strong> قبل أن تلامس ذاكرة التخزين.</p>
+
+                <!-- مخطط التدمير التشفيري Cryptographic Erasure -->
+                <div class="crypto-erasure-card">
+                    <div class="crypto-erasure-header">
+                        <h3><i class="fa-solid fa-key" style="color: #34d399;"></i> آلية التدمير التشفيري (Cryptographic Erasure) عند إعادة ضبط المصنع</h3>
+                        <p>لماذا تعجز أعتى برامج الاسترجاع عن قراءة بايت واحد بعد فرمتة هاتف حديث مشفر؟</p>
+                    </div>
+
+                    <div class="crypto-steps-grid">
+                        <div class="crypto-step-box">
+                            <span class="crypto-step-badge">المرحلة 1 · التخزين المشفر</span>
+                            <h4>تشفير تلقائي بمعيار AES-256</h4>
+                            <p>كل صورة أو ملف يُحفظ في الهاتف يتم تشفيره فوراً وتتحول بياناته على شريحة الذاكرة إلى رموز غير مفهومة لا تُفك إلا بمفتاح خاص.</p>
+                        </div>
+
+                        <div class="crypto-step-box">
+                            <span class="crypto-step-badge">المرحلة 2 · عزل المفاتيح</span>
+                            <h4>مفتاح محمي داخل شريحة الأمان</h4>
+                            <p>يُحفظ مفتاح فك التشفير الرئيسي داخل معالج أمني معزول في اللوحة الأم ومرتبط برمز قفل الشاشة الخاص بك.</p>
+                        </div>
+
+                        <div class="crypto-step-box">
+                            <span class="crypto-step-badge">المرحلة 3 · ضبط المصنع</span>
+                            <h4>إتلاف مفتاح التشفير نهائياً</h4>
+                            <p>بمجرد الضغط على «إعادة ضبط المصنع»، يقوم المعالج الأمني بتدمير مفتاح التشفير ومسحه للأبد وتوليد مفتاح جديد تماماً.</p>
+                        </div>
+
+                        <div class="crypto-step-box">
+                            <span class="crypto-step-badge">المرحلة 4 · النتيجة الحتمية</span>
+                            <h4>استحالة رياضية للاسترجاع (0%)</h4>
+                            <p>حتى لو قرأ فني محترف شريحة الذاكرة بالمجهر الإلكتروني، فلن يجد سوى ضوضاء مشفرة يحتاج فكها لملايين السنين الحاسوبية!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- نموذج محاكاة مقارن: ذاكرة غير مشفرة مقابل ذاكرة مشفرة -->
+                <div class="storage-compare-wrapper">
+                    <div style="text-align: center; margin-bottom: 16px;">
+                        <h3 style="margin: 0 0 6px; font-size: 1.22rem; font-weight: 800; color: #0f172a;">مقارنة تقنية: ماذا يرى برنامج استعادة الملفات بعد الفرمتة؟</h3>
+                        <p style="margin: 0; font-size: 0.9rem; color: #475569;">الفارق بين قراءة قطاعات بطاقة ذاكرة خارجية غير مشفرة مقابل ذاكرة هاتف حديث مشفر بـ FBE:</p>
+                    </div>
+
+                    <div class="storage-compare-grid">
+                        <div class="storage-panel storage-panel-unencrypted">
+                            <span class="storage-badge badge-warn"><i class="fa-solid fa-sd-card"></i> بطاقة ذاكرة خارجية (SD Card) أو هاتف قديم غير مشفر</span>
+                            <div class="hex-preview-box">
+                                SECTOR 0x004F10: <span style="color:#f87171;">FF D8 FF E0 00 10 4A 46 49 46</span> (JPEG Header)<br>
+                                STATUS: <span style="color:#fca5a5;">RAW IMAGE BYTES INTACT — RECOVERABLE!</span>
+                            </div>
+                            <p style="font-size: 0.86rem; color: #7f1d1d; margin: 10px 0 0; line-height: 1.65;">
+                                يجد برنامج الفحص ترويسة ملف الصورة (<code>FF D8 FF</code> الخاصة بـ JPEG) واضحة وصريحة، فيعيد تجميع الصورة خلال ثوانٍ!
+                            </p>
+                        </div>
+
+                        <div class="storage-panel storage-panel-encrypted">
+                            <span class="storage-badge badge-ok"><i class="fa-solid fa-microchip"></i> ذاكرة داخلية لهاتف حديث مشفر (بعد ضبط المصنع)</span>
+                            <div class="hex-preview-box">
+                                SECTOR 0x004F10: <span style="color:#34d399;">9A 3C 7E F1 08 B2 D4 61 55 E9</span> (AES Ciphertext)<br>
+                                KEY STATUS: <span style="color:#6ee7b7;">CRYPTO KEY DESTROYED — UNREADABLE NOISE</span>
+                            </div>
+                            <p style="font-size: 0.86rem; color: #14532d; margin: 10px 0 0; line-height: 1.65;">
+                                بعد تدمير مفتاح التشفير وأمر المسح (<code>TRIM/Discard</code>)، لا يجد برنامج الفحص أي ترويسة ملفات على الإطلاق، وتفشل عملية الاسترجاع بنسبة 100%.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h2 id="three-real-risks">ثالثاً: متى يكون خطر استرجاع الصور حقيقياً؟ (الحالات الـ 3 التي يقع فيها الضحايا)</h2>
+                <p>إذا كان التشفير الحديث يمنع استرجاع البيانات من الذاكرة الداخلية، فلماذا نسمع أحياناً عن حوادث تسربت فيها صور من هواتف مباعة؟ يكشف التحليل التقني أن 99% من تلك الحوادث تقع بسبب أحد الأخطاء الثلاثة التالية:</p>
+
+                <ol>
+                    <li><strong>الخطأ القاتل الأول — بيع بطاقة الذاكرة الخارجية (MicroSD Card) مع الهاتف:</strong> بطاقات الذاكرة الخارجية التي يركّبها المستخدم لتوسيع المساحة <strong>لا تكون مشفرة افتراضياً</strong> حتى في أحدث الهواتف! وعندما يكتفي البائع بعمل «تهيئة / Format» لبطاقة الذاكرة ويتركها داخل الهاتف عند بيعه، يستطيع المشتري إخراج البطاقة ووضعها في الحاسوب واسترجاع آلاف الصور والفيديوهات المخزنة عليها سابقاً بكل سهولة.</li>
+                    <li><strong>الخطأ الثاني — الهواتف القديمة جداً (أندرويد 5.1 Lollipop فما دون):</strong> الهواتف التي أُنتجت قبل عام 2016 لم تكن تفعّل تشفير القرص بشكل إجباري افتراضياً، وبالتالي فإن إعادة ضبط المصنع العادية فيها لم تكن تتلف مفاتيح التشفير بل تحذف الفهرس فقط.</li>
+                    <li><strong>الخطأ الثالث — الخلط بين «الحذف العادي» و«إعادة ضبط المصنع»:</strong> يظن بعض البائعين أنه إذا دخل إلى تطبيق المعرض (الاستوديو) وحذف الصور يدوياً دون عمل «إعادة ضبط المصنع» الكاملة للهاتف فإنه قد مسح بياناته، بينما تبقى الصور في «سلة المحذوفات» أو في ملفات التخزين المؤقت المصغرة (<code>Thumbnails Cache</code>) وحسابات السحابة المتزامنة!</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="secure-wipe-protocol">رابعاً: البروتوكول العملي المضمون 100% لتصفير الهاتف قبل البيع (6 خطوات)</h2>
+                <p>لتبيع هاتفك القديم وأنت مطمئن تماماً من الناحية التقنية والأمنية، طبّق هذا البروتوكول المتسلسل خطوة بخطوة:</p>
+
+                <div class="wipe-protocol-grid">
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-sd-card" style="color: #dc2626;"></i> 1. انزع شريحة SIM وبطاقة الذاكرة</h4>
+                        <p>قبل أي شيء، أخرج شريحتي الاتصال وبطاقة الذاكرة الخارجية (<code>MicroSD</code>) من الهاتف واحتفظ ببطاقة الذاكرة لنفسك؛ لا تبع بطاقة ذاكرة مستعملة أبداً مهما كانت قيمتها.</p>
+                    </div>
+
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-cloud-arrow-down" style="color: #0284c7;"></i> 2. انسخ بياناتك وألغِ التزامن</h4>
+                        <p>انقل صورك وجهات اتصالك المهمة إلى هاتفك الجديد أو حاسوبك الشخصي، وتأكد من إيقاف المزامنة التلقائية للصور قبل البدء بالحذف.</p>
+                    </div>
+
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-user-minus" style="color: #d97706;"></i> 3. سجّل الخروج من كافة الحسابات</h4>
+                        <p>ادخل إلى <strong>الإعدادات &larr; الحسابات</strong> وقم بإزالة حساب جوجل (<code>Google Account</code>) وحساب سامسونج أو شاومي، وفي آيفون قم بتسجيل الخروج من <code>iCloud / Find My</code> لتعطيل قفل الحماية.</p>
+                    </div>
+
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-lock" style="color: #15803d;"></i> 4. تحقق من حالة التشفير</h4>
+                        <p>في الهواتف الحديثة يكون التشفير مفعّلاً دائماً. أما إذا كان هاتفك قديماً، فادخل إلى <strong>الإعدادات &larr; الأمان &larr; تشفير الهاتف</strong> وفعّل التشفير قبل الفرمتة.</p>
+                    </div>
+
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-rotate" style="color: #7c3aed;"></i> 5. نفّذ إعادة ضبط المصنع الشاملة</h4>
+                        <p>اذهب إلى <strong>الإعدادات &larr; الإدارة العامة / النظام &larr; إعادة الضبط &larr; مسح جميع البيانات (إعادة ضبط المصنع)</strong>، وانتظر حتى يعيد الهاتف التشغيل على شاشة الترحيب الأولية.</p>
+                    </div>
+
+                    <div class="wipe-protocol-card">
+                        <h4><i class="fa-solid fa-video" style="color: #0f172a;"></i> 6. الكتابة الفوقية (للهواتف القديمة)</h4>
+                        <p>إذا كان الهاتف قديماً أو أردت اطمئناناً مضاعفاً: بعد الفرمتة الأولى، افتح الكاميرا وصوّر فيديو لطاولة معتمة وانسخه حتى تمتلئ الذاكرة 100%، ثم أعد ضبط المصنع للمرة الثانية.</p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h2 id="maintenance-mode-guide">خامساً: كيف تحمي صورك عند تسليم الهاتف لفني الصيانة دون فرمتته؟</h2>
+                <p>ماذا لو انكسرت شاشة هاتفك أو ضعفت بطاريته وأردت تسليمه لمحل الصيانة لمدة ساعتين دون أن تضطر لمسح جميع بياناتك؟</p>
+
+                <p>وفّرت الشركات المصنعة في تحديثات الأنظمة الحديثة ميزة أمنية عبقرية تُسمى <strong>«وضع الصيانة» (Maintenance Mode)</strong> في هواتف سامسونج وشاومي، أو <strong>«وضع الإصلاح» (Repair Mode)</strong> في هواتف جوجل بكسل وأندرويد 14 فما فوق:</p>
+
+                <ul>
+                    <li><strong>كيف يعمل تقنياً؟</strong> يقوم النظام بإنشاء قسم مستخدم مؤقت ومعزول بالكامل (<code>Isolated Guest Partition</code>)، مع إبقاء قسم بياناتك الشخصية مشفراً ومقفلاً بمفتاحك السري.</li>
+                    <li><strong>ماذا يرى فني الصيانة؟</strong> عندما يشغّل الفني الهاتف، يظهر له الهاتف وكأنه جديد تماماً (معرض الصور فارغ 0 صورة، لا توجد أي رسائل أو تطبيقات تواصل أو محافظ إلكترونية)، لكنه يستطيع اختبار الكاميرا، الميكروفون، السماعات، اللمس، والواي فاي للتأكد من نجاح الإصلاح.</li>
+                    <li><strong>كيف تفعّله وتخرج منه؟</strong> من خلال الدخول إلى: <strong>الإعدادات &larr; العناية بالجهاز (أو النظام) &larr; وضع الصيانة (Maintenance Mode) &larr; تشغيل</strong>. وعند استلام هاتفك من الفني، تقوم بإلغاء الوضع عبر بصمة إصبعك أو رمزك السري لتعود كافة صورك وتطبيقاتك كما كانت!</li>
+                </ul>
+
+                <hr>
+
+                <div class="table-responsive" style="margin: 24px 0;">
+                    <table class="table table-bordered table-striped" style="background: #ffffff; font-size: 0.92rem;">
+                        <thead>
+                            <tr style="background: #0f172a; color: #ffffff;">
+                                <th style="color: #ffffff; width: 25%;">نوع وسيط التخزين / الجهاز</th>
+                                <th style="color: #ffffff; width: 25%;">حالة التشفير الافتراضية</th>
+                                <th style="color: #ffffff; width: 25%;">إمكانية الاسترجاع بعد ضبط المصنع</th>
+                                <th style="color: #ffffff; width: 25%;">الإجراء الأمني المطلوب قبل البيع</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>هواتف أندرويد الحديثة (Android 10+)</strong></td>
+                                <td>مشفرة افتراضياً بمعيار <code>FBE AES-256</code></td>
+                                <td><span style="color: #15803d; font-weight: 700;">مستحيل (0%)</span> لتدمير مفتاح التشفير</td>
+                                <td>إزالة الحسابات + إعادة ضبط المصنع من الإعدادات.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>هواتف آيفون (iOS)</strong></td>
+                                <td>مشفرة عتادياً عبر <code>Secure Enclave</code></td>
+                                <td><span style="color: #15803d; font-weight: 700;">مستحيل (0%)</span> لتدمير مفتاح التشفير</td>
+                                <td>إيقاف <code>Find My</code> + مسح جميع المحتويات والإعدادات.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>هواتف أندرويد القديمة (5.1 فما دون)</strong></td>
+                                <td>غير مشفرة افتراضياً</td>
+                                <td><span style="color: #dc2626; font-weight: 700;">ممكنة جزئياً</span> ما لم تتم الكتابة الفوقية</td>
+                                <td>تفعيل التشفير يدوياً + فرمتة + ملء الذاكرة بملفات صماء + فرمتة ثانية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>بطاقة الذاكرة الخارجية (MicroSD)</strong></td>
+                                <td>غير مشفرة افتراضياً</td>
+                                <td><span style="color: #dc2626; font-weight: 700;">عالية جداً (95%+)</span> بعد الفرمتة السريعة</td>
+                                <td><strong>عدم بيعها مع الهاتف مطلقاً</strong> والاحتفاظ بها أو إتلافها فيزيائياً.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+                <div class="ct-editorial-references" style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid #bfdbfe; border-right: 5px solid #1d4ed8; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #1e3a8a; font-weight: 800;"><i class="fa-solid fa-shield-check" style="color: #2563eb;" aria-hidden="true"></i> منهجية التحقق الأمني والمصادر المرجعية</h3>
+                    <p style="font-size: 0.94rem; color: #334155; margin-bottom: 14px; line-height: 1.75;">اعتمد هذا الدليل على معايير التدمير التشفيري للبيانات (Cryptographic Erasure) المعتمدة في نظام أندرويد ومعيار NIST SP 800-88 لمسح وسائط التخزين.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-screwdriver-wrench" style="color: #0284c7;" aria-hidden="true"></i> أدوات وأدلة كونكت تاق المرتبطة:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/company/projects/apps/forensic-kmp/" style="font-weight:700; color:#0052cc;" >تطبيق الفحص الجنائي الرقمي وتأمين البيانات (Forensic KMP)</a></li>
+                            <li><a href="https://connecttag.org/company/projects/apps/razm/" style="font-weight:700; color:#0052cc;" >تطبيق رزم (Razm) لإدارة وتشفير الملفات والأرشيفات</a></li>
+                            <li><a href="https://connecttag.org/tools/security/exif-remover/" style="font-weight:700; color:#0052cc;" >أداة مسح البيانات المخفية من الصور (EXIF Metadata Remover)</a></li>
+                            <li><a href="https://connecttag.org/tools/security/crypto-toolbox/" style="font-weight:700; color:#0052cc;" >صندوق أدوات التشفير القياسي (Crypto Toolbox - AES)</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-book-bookmark" style="color: #0284c7;" aria-hidden="true"></i> المراجع والمعايير الدولية المعتمدة:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://source.android.com/docs/security/features/encryption/file-based" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">التوثيق المعماري للتشفير القائم على الملفات (File-Based Encryption) في Android Open Source Project <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://csrc.nist.gov/pubs/sp/800/88/r1/final" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">المعيار العالمي NIST SP 800-88 Rev. 1 لإرشادات تعقيم ومسح وسائط التخزين <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول إعادة ضبط المصنع واسترجاع البيانات</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يمكن استرجاع الصور والملفات بعد إعادة ضبط المصنع في الهواتف الحديثة (أندرويد 10 فما فوق وآيفون)؟</div>
+                        <div class="faq-answer">في الهواتف الذكية الحديثة التي تعمل بنظام أندرويد 10 فما فوق أو نظام iOS في هواتف آيفون، تكون الذاكرة الداخلية مشفرة افتراضياً بتقنية التشفير القائم على الملفات (File-Based Encryption). عند إجراء إعادة ضبط المصنع، يقوم النظام بإتلاف مفتاح التشفير المخزن في شريحة الأمان المعزولة (Cryptographic Erasure)، مما يجعل استرجاع أي صورة أو ملف من الذاكرة الداخلية مستحيلاً من الناحية الرياضية والتقنية.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا نسمع عن حالات تم فيها استرجاع صور من هواتف مستعملة بعد فرمتتها؟</div>
+                        <div class="faq-answer">تحدث هذه الحالات لثلاثة أسباب رئيسية: إما أن البائع نسي بطاقة الذاكرة الخارجية (MicroSD Card) داخل الهاتف وهي غير مشفرة افتراضياً ويسهل استرجاع كامل محتواها، أو أن الهاتف قديم جداً (أندرويد 5.1 فما دون) ولم يكن مشفراً، أو أن البائع لم يقم بإزالة حسابه السحابي (Google Photos أو iCloud) قبل تسليم الجهاز.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل فرمتة بطاقة الذاكرة الخارجية (MicroSD) داخل الهاتف تمنع استرجاع الصور منها؟</div>
+                        <div class="faq-answer">لا، التهيئة السريعة (Quick Format) لبطاقة الذاكرة الخارجية تحذف فقط فهرس الملفات بينما تبقى الصور الفعلية مخزنة في قطاعات الذاكرة ويسهل استرجاعها بأي برنامج استعادة ملفات على الحاسوب. لذلك يجب إزالة بطاقة الذاكرة الخارجية دائماً والاحتفاظ بها وعدم بيعها مع الهاتف أبداً.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما هي خطوة الأمان الإضافية الموصى بها للهواتف القديمة قبل بيعها؟</div>
+                        <div class="faq-answer">في الهواتف القديمة أو لزيادة الاطمئنان النفسي، قم أولاً بإجراء إعادة ضبط المصنع، ثم افتح الكاميرا وصوّر فيديو عالي الدقة لسطح معتم (مثل طاولة أو جدار) وكرر نسخ هذا الفيديو حتى تمتلئ ذاكرة الهاتف بنسبة 100%، ثم قم بإجراء إعادة ضبط المصنع للمرة الثانية. هذه العملية تضمن الكتابة الفوقية (Overwriting) على كافة قطاعات الذاكرة.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف أسلم هاتفي لفني الصيانة لإصلاح الشاشة أو البطارية دون أن يطلع على صوري ورسائلي؟</div>
+                        <div class="faq-answer">توفر الهواتف الحديثة ميزة رسمية تُسمى «وضع الصيانة» (Maintenance Mode في هواتف سامسونج) أو «وضع الإصلاح» (Repair Mode في هواتف بكسل وأندرويد 14+). عند تفعيل هذا الوضع من الإعدادات، يعيد الهاتف التشغيل في بيئة اختبار نظيفة تماماً تمكّن الفني من فحص الكاميرا والصوت والشاشة والشبكة، بينما تظل صورك وتطبيقاتك ورسائلك مشفرة ومخفية بالكامل ولا يمكن فتحها إلا ببصمتك أو رمزك السري.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> لماذا يجب حذف حساب جوجل أو iCloud يدوياً قبل عمل إعادة ضبط المصنع من الإعدادات؟</div>
+                        <div class="faq-answer">لأنه في حال فرمتة الهاتف من قائمة الاسترداد (Recovery Mode) دون إزالة الحساب أولاً، سيُقفل الهاتف بميزة حماية إعادة تعيين المصنع (FRP Lock أو iCloud Activation Lock)، ولن يتمكن المشتري الجديد من تشغيل الهاتف إلا بإدخال بريدك الإلكتروني وكلمة مرورك.</div>
+                    </div>
+                </section>
+
+                <site-author-box name="كيان الرحبي" avatar="https://connecttag.org/upload/author/kayan.webp" link="https://connecttag.org/blog/authors/kayan"><span class="sr-only">الكاتب: كيان الرحبي</span></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="image-exif-metadata-privacy-risks-guide, caller-id-apps-privacy-risks-security-guide, e-wallet-impersonation-loan-gift-card-scam-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

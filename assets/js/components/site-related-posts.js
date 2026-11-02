@@ -14,7 +14,112 @@ class SiteRelatedPosts extends HTMLElement {
 
     // 2. Global Articles Registry
     const allPosts = [
-                  {
+      {
+        id: "android-firewall-app-internet-control-soor-net-guide",
+        title: "الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات وترشيد البيانات عبر تطبيق سور نت",
+        link: "blog/android-firewall-app-internet-control-soor-net-guide",
+        image: "upload/android-firewall-soor-net-guide.webp",
+        excerpt: "دليل تقني شامل يشرح كيف يعمل الجدار الناري المحلي في أندرويد بدون روت للتحكم بوصول التطبيقات إلى الواي فاي وبيانات الهاتف وترشيد الباقات."
+      },
+      {
+        id: "adsense-ad-serving-limit-invalid-traffic-ads-txt-guide",
+        title: "حل مشكلة «تقييد عرض الإعلانات» في Google AdSense وضبط ملف ads.txt ورسالة GDPR",
+        link: "blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide",
+        image: "upload/adsense-ad-serving-limit-invalid-traffic-guide.webp",
+        excerpt: "لماذا تفرض جوجل عقوبة تقييد عرض الإعلانات؟ خطوات حماية الحساب من النقرات غير الصالحة وإعداد ملف ads.txt ورسالة موافقة الخصوصية الأوروبية."
+      },
+      {
+        id: "google-adsense-approval-guide-fix-low-value-content",
+        title: "شروط قبول موقعك في Google AdSense من المرة الأولى: الحل الجذري لرفض «محتوى ذو قيمة منخفضة»",
+        link: "blog/google-adsense-approval-guide-fix-low-value-content",
+        image: "upload/google-adsense-approval-low-value-content-guide.webp",
+        excerpt: "التشريح الدقيق لأسباب رفض المواقع برسالة Low Value Content وعلاقتها بمعايير E-E-A-T، وقائمة فحص الصفحات القانونية وزاحف Mediapartners-Google."
+      },
+      {
+        id: "admob-ad-limit-policy-violations-app-ads-txt-guide",
+        title: "لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في واجهات التطبيق وكيف تضبط app-ads.txt؟",
+        link: "blog/admob-ad-limit-policy-violations-app-ads-txt-guide",
+        image: "upload/admob-ad-limit-policy-app-ads-txt-guide.webp",
+        excerpt: "تشريح أشهر مخالفات سياسات AdMob في مواضع البانر والإعلانات البينية، معرفات الاختبار الرسمية، وإعداد ملف app-ads.txt لمتجر Google Play وApp Store."
+      },
+      {
+        id: "professional-logo-design-types-principles-file-formats-guide",
+        title: "دليل تصميم الشعارات الاحترافية (Logo Design): أنواع الشعارات الـ 7 وصيغ الملفات",
+        link: "blog/professional-logo-design-types-principles-file-formats-guide",
+        image: "upload/professional-logo-design-principles-guide.webp",
+        excerpt: "مقارنة بين أنواع الشعارات الـ 7، معايير التوازن البصري والنسبة الذهبية، والفرق بين صيغ الفيكتور المفتوحة (AI, EPS, SVG) وصور PNG."
+      },
+      {
+        id: "visual-identity-mistakes-successful-rebranding-strategy-guide",
+        title: "7 أخطاء قاتلة في الهوية البصرية تضعف مبيعاتك: كيف تنفذ Rebranding ناجح؟",
+        link: "blog/visual-identity-mistakes-successful-rebranding-strategy-guide",
+        image: "upload/visual-identity-rebranding-strategy-guide.webp",
+        excerpt: "كيف تكتشف عيوب هويتك البصرية الحالية، والفرق بين تحديث الهوية التدريجي (Brand Refresh) وإعادة البناء الشامل (Full Rebranding)."
+      },
+      {
+        id: "google-play-integrity-api-android-security-guide",
+        title: "دليل Google Play Integrity API الشامل: كيف تكتشف التطبيقات الـ Root والنسخ المعدّلة؟",
+        link: "blog/google-play-integrity-api-android-security-guide",
+        image: "upload/google-play-integrity-api-security-guide.webp",
+        excerpt: "شرح مستويات النزاهة الثلاثة (Basic, Device, Strong Integrity)، التحقق عبر الخادم باستخدام requestHash للمطورين، وحلول مشاكل شهادة الجهاز للمستخدمين."
+      },
+      {
+        id: "migrate-modded-whatsapp-to-official-app-ban-fix-guide",
+        title: "رسالة «تحتاج إلى تطبيق واتساب الرسمي»: الدليل الكامل لفك الحظر ونقل المحادثات بأمان",
+        link: "blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide",
+        image: "upload/migrate-modded-whatsapp-official-ban-fix-guide.webp",
+        excerpt: "الطريقة الصحيحة لنقل محادثاتك وصورك من واتساب الذهبي أو البلس أو GBWhatsApp إلى واتساب الرسمي دون ضياع الدردشات وفك حظر الرقم."
+      },
+      {
+        id: "modded-whatsapp-gold-plus-apk-malware-security-analysis",
+        title: "الحقيقة التقنية وراء «واتساب الذهبي والأزرق والبلس»: كيف تسرق صورك وجلساتك؟",
+        link: "blog/modded-whatsapp-gold-plus-apk-malware-security-analysis",
+        image: "upload/modded-whatsapp-apk-malware-analysis-guide.webp",
+        excerpt: "تشريح جنائي وأمني يكشف ماذا يحدث داخل ملفات الـ APK المعدلة، وكيف تقرأ الرسائل بعد فك تشفيرها وتزرع برمجيات Triada الخبيثة."
+      },
+      {
+        id: "compose-multiplatform-shared-ui-android-ios-desktop-guide",
+        title: "دليل Compose Multiplatform الشامل: واجهة مستخدم واحدة لأندرويد وiOS وسطح المكتب والويب",
+        link: "blog/compose-multiplatform-shared-ui-android-ios-desktop-guide",
+        image: "upload/compose-multiplatform-shared-ui-guide.webp",
+        excerpt: "الفرق المعماري بين مشاركة المنطق ومشاركة الواجهة بالكامل، وكيف يرسم محرك Skia شاشات iOS بـ 120 إطاراً مع دمج UIKitView."
+      },
+      {
+        id: "yemen-4g-app-balance-modem-guide",
+        title: "شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم",
+        link: "blog/yemen-4g-app-balance-modem-guide",
+        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.48",
+        excerpt: "الدليل الكامل لاستخدام تطبيق يمن فورجي: حفظ الأرقام المتعددة، تفعيل ويدجت الرصيد على الشاشة الرئيسية، تنبيهات انتهاء الباقة، ولوحة المودم المدمجة."
+      },
+      {
+        id: "public-wifi-hotspot-security-evil-twin-mitm-guide",
+        title: "مخاطر الاتصال بشبكات الواي فاي العامة وشبكات الكروت المفتوحة: هجمات التوأم الشرير",
+        link: "blog/public-wifi-hotspot-security-evil-twin-mitm-guide",
+        image: "upload/public-wifi-evil-twin-security-guide.webp",
+        excerpt: "ماذا يرى صاحب الشبكة العامة أو المتطفل معك في نفس شبكة الكافيه أو الكروت؟ شرح هجمات Evil Twin وARP Spoofing و5 خطوات للتصفح الآمن."
+      },
+      {
+        id: "whatsapp-telegram-hijacking-linked-devices-security-guide",
+        title: "كيف تُخترق حسابات واتساب وتيليجرام دون علمك؟ كشف الأجهزة المرتبطة والنسخ المعدّلة",
+        link: "blog/whatsapp-telegram-hijacking-linked-devices-security-guide",
+        image: "upload/whatsapp-telegram-hijacking-security-guide.webp",
+        excerpt: "الدليل الأمني لكشف خدعة كود التفعيل بالخطأ، طرد الجلسات المتطفلة في واتساب ويب وتيليجرام، وخطر النسخ المعدلة."
+      },
+                        {
+        id: "phishing-links-fake-aid-ponzi-investment-scam-guide",
+        title: "احذر روابط «تسجيل المساعدات والوظائف والربح السريع»: كشف مواقع التصيّد ومنصات بونزي",
+        link: "blog/phishing-links-fake-aid-ponzi-investment-scam-guide",
+        image: "upload/phishing-links-fake-aid-scam-guide.webp",
+        excerpt: "كيف تكشف الروابط المزيفة التي تنتحل صفة المنظمات والشركات وتسرق الهويات، وتشريح منصات المهام اليومية الوهمية."
+      },
+      {
+        id: "factory-reset-data-recovery-secure-erasure-guide",
+        title: "هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات",
+        link: "blog/factory-reset-data-recovery-secure-erasure-guide",
+        image: "upload/factory-reset-secure-erasure-guide.webp",
+        excerpt: "كيف يعمل التشفير القائم على الملفات (FBE) عند فرمتة الهاتف، والخطوات المضمونة 100% لمنع استرجاع الصور قبل البيع أو الصيانة."
+      },
+      {
         id: "caller-id-apps-privacy-risks-security-guide",
         title: "كيف تعرف كواشف الأرقام اسمك حتى لو لم تثبّتها؟ الدليل الأمني الشامل",
         link: "blog/caller-id-apps-privacy-risks-security-guide",
@@ -53,14 +158,14 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-4g-modem-settings-security-guide",
         title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
         link: "blog/yemen-4g-modem-settings-security-guide",
-        image: "upload/yemen-4g-modem-settings-guide.webp",
+        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.48",
         excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
       },
       {
         id: "best-yemen-4g-modem-buying-guide",
         title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
         link: "blog/best-yemen-4g-modem-buying-guide",
-        image: "upload/best-yemen-4g-modem-guide.webp",
+        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.48",
         excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
       },
       {
@@ -95,7 +200,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",
-        image: "upload/yemen-internet-comparison.webp",
+        image: "upload/yemen-internet-comparison.webp?v=1.1.48",
         excerpt: "تعرف على أفضل خيارات الإنترنت المتاحة في اليمن وكيفية اختيار الأنسب لعملك."
       },
       {
@@ -116,7 +221,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "how-to-check-yemen-4g-balance",
         title: "كيفية استعلام رصيد يمن فورجي 4G",
         link: "blog/how-to-check-yemen-4g-balance",
-        image: "upload/yemen-4g.webp",
+        image: "upload/yemen-4g.webp?v=1.1.48",
         excerpt: "دليل شامل يشرح كافة الطرق الرسمية والميسرة لمتابعة استهلاكك لرصيد يمن فورجي."
       },
       {
@@ -205,16 +310,17 @@ class SiteRelatedPosts extends HTMLElement {
       }
     ];
 
+    const uniquePosts = Array.from(new Map(allPosts.map(p => [p.id, p])).values());
     let displayPosts = [];
 
     // 3. Determine which posts to show
     if (manualIds) {
       // Manual selection by ID
       const idsArr = manualIds.split(',').map(id => id.trim());
-      displayPosts = allPosts.filter(post => idsArr.includes(post.id));
+      displayPosts = uniquePosts.filter(post => idsArr.includes(post.id));
     } else {
       // Smart Auto-Filtering: Exclude current article and pick others in order
-      displayPosts = allPosts
+      displayPosts = uniquePosts
         .filter(post => !currentPath.includes(post.link))
         .slice(0, limit);
     }

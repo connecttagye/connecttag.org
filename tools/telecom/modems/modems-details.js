@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 pills.push(`<span class="modem-tag-pill" style="background:#fef2f2;color:#b91c1c;border-color:#fecaca;"><i class="fa-solid fa-circle-exclamation"></i> ${esc(m.availabilityStatus)}</span>`);
             }
             if (m.rating && Number(m.rating.average) > 0) {
-                pills.push(`<span class="modem-tag-pill" style="background:#fffbeb;color:#b45309;border-color:#fde68a;"><i class="fa-solid fa-star" style="color:#f59e0b;"></i> التقييم: ${Number(m.rating.average)}/5</span>`);
+                pills.push(`<span class="modem-tag-pill" style="background:#fffbeb;color:#b45309;border-color:#fde68a;"><i class="fa-solid fa-star" style="color:#f59e0b;"></i> التقييم: ${Number(m.rating.average)}/5 (${Math.max(1, Number(m.rating.count || 1))} تقييم)</span>`);
             }
             if (pills.length > 0) {
                 tagsBar.innerHTML = pills.join('');

@@ -1,43 +1,77 @@
-# Connect Tag - Technical Tools & IT Solutions Hub
+# Connect Tag - Technical Tools, Mobile Apps & IT Solutions Hub
 
-> Information about technical tools, developer utilities, cybersecurity resources, and IT services provided by Connect Tag (connecttag.org).
+> Official LLM & AI Grounding Index for Connect Tag (https://connecttag.org) — providing interactive developer utilities, Yemeni telecom directories, cybersecurity tools, mobile/desktop applications, and Arabic engineering guides.
 
-## Core Technical Tools
+## Core Technical Tools (https://connecttag.org/tools/)
 
 ### Telecom & Internet
-- [IMEI & TAC Checker](https://connecttag.org/tools/telecom/imei-checker/): Advanced tool to verify device identity, manufacturer, and technical specifications.
-- [Internet Speed Test](https://connecttag.org/tools/telecom/speed-test/): Real-time measurement of download, upload, and ping for local and global connections.
-- [Yemen 4G Modems Guide](https://connecttag.org/tools/telecom/modems/): Detailed specifications and settings for Yemen 4G approved devices.
-- [Telecom Companies Directory](https://connecttag.org/tools/telecom/company/): Quick access to services, codes, and internet packages for Yemeni providers.
+- [IMEI & TAC Checker](https://connecttag.org/tools/telecom/imei-checker/): Verify device identity, GSMA TAC manufacturer specs, and Luhn validity.
+- [Internet Speed Test](https://connecttag.org/tools/telecom/speed-test/): Real-time measurement of download, upload, ping, and jitter for local and global connections.
+- [Yemen 4G Modems Guide](https://connecttag.org/tools/telecom/modems/): Detailed specifications, bands, prices, and admin settings for Yemen 4G approved devices.
+- [Telecom Companies Directory](https://connecttag.org/tools/telecom/company/): Quick access to USSD codes, services, and internet packages for Yemen Mobile, YOU, Sabafon, Y, and Yemen Net.
+- [Yemen Phone Prefix & Network Lookup](https://connecttag.org/tools/telecom/network-lookup/): Identify Yemeni mobile operators (77, 78, 73, 71, 70) and governorate landline prefixes.
+- [Yemen Emergency & Public Service Numbers](https://connecttag.org/tools/telecom/emergency-numbers/): Directory of emergency, civil defense, ambulance, electricity, water, and telecom support numbers in Yemen.
 
-### Developer & Web Auditing Utilities
-- [Website & Technical SEO Checker](https://connecttag.org/tools/web/site-checker/): Comprehensive platform to audit Technical SEO, content keywords, HTML structure, and HTTP security headers.
-- [JSON Formatter & Validator](https://connecttag.org/tools/web/json-formatter/): Beautify, minify, and validate JSON structures for app development.
-- [JWT Debugger](https://connecttag.org/tools/web/jwt-debugger/): Decode, verify, and generate JSON Web Tokens (HS256).
-- [Android Permissions Generator](https://connecttag.org/tools/mobile/android-permissions/): Visual selector to generate AndroidManifest.xml permission codes.
-- [Android Manifest Security Analyzer](https://connecttag.org/tools/mobile/manifest-analyzer/): Inspect and audit AndroidManifest.xml files for security risks and excessive permissions.
+### Developer & Mobile Engineering Utilities
+- [Website & Technical SEO Checker](https://connecttag.org/tools/web/site-checker/): Audit Technical SEO, meta tags, semantic HTML5 structure, and HTTP security headers.
+- [SEO & Keyword Analyzer](https://connecttag.org/tools/web/site-checker/seo-checker): Analyze on-page SEO tags, heading hierarchy, keyword density, and structured data readiness.
+- [Website Security & HTTP Headers Scanner](https://connecttag.org/tools/web/site-checker/security-checker): Inspect HSTS, CSP, X-Frame-Options, SSL/TLS configuration, and common web vulnerabilities.
+- [JSON Formatter & Validator](https://connecttag.org/tools/web/json-formatter/): Beautify, minify, and validate JSON structures locally in the browser.
+- [JWT Debugger](https://connecttag.org/tools/web/jwt-debugger/): Decode, verify, and generate JSON Web Tokens (HS256) client-side.
 - [RegEx Tester](https://connecttag.org/tools/web/regex-tester/): Test and analyze Regular Expressions with full Arabic language support.
-- [Deep Link Generator](https://connecttag.org/tools/mobile/deep-link-generator/): Create and test mobile app deep links (intent:// and https://).
+- [Android Permissions Generator](https://connecttag.org/tools/mobile/android-permissions/): Visual selector to generate AndroidManifest.xml permission declarations and explanations.
+- [Android Manifest Security Analyzer](https://connecttag.org/tools/mobile/manifest-analyzer/): Inspect AndroidManifest.xml files for exported component risks, deep links, and excessive permissions.
+- [Deep Link Generator](https://connecttag.org/tools/mobile/deep-link-generator/): Create and test mobile app deep links (intent://, custom schemes, and Android App Links).
+- [App Store Screenshot & Mockup Generator](https://connecttag.org/tools/mobile/screenshot-generator/): Design and export professional Google Play and App Store promotional screenshots locally.
 
 ### Security & Privacy
-- [Crypto Toolbox](https://connecttag.org/tools/security/crypto-toolbox/): Secure AES encryption, Base64 encoding, and SHA/MD5 hashing.
-- [Password Breach Checker (k-Anonymity)](https://connecttag.org/tools/security/password-breach-checker/): Check if a password has appeared in global data breaches using local SHA-1 k-Anonymity (5-char prefix range query) and entropy analysis without transmitting the password.
-- [EXIF Metadata Remover](https://connecttag.org/tools/security/exif-remover/): Clean private data (GPS, Device Info) from images before sharing.
-- [Privacy Policy Generator](https://connecttag.org/tools/security/privacy-generator/): Generate professional legal documents for apps and websites.
+- [Crypto Toolbox](https://connecttag.org/tools/security/crypto-toolbox/): Client-side AES encryption, Base64 encoding, and SHA/MD5 hashing.
+- [Password Breach Checker (k-Anonymity)](https://connecttag.org/tools/security/password-breach-checker/): Check if a password has appeared in global data breaches using local SHA-1 k-Anonymity (5-char prefix range query) without transmitting the password.
+- [Cryptographic Password & Passphrase Generator](https://connecttag.org/tools/security/password-generator/): Generate high-entropy passwords and passphrases locally using Web Crypto API (CSPRNG).
+- [EXIF Metadata Remover](https://connecttag.org/tools/security/exif-remover/): Strip private EXIF data (GPS coordinates, camera/device metadata) from images in the browser before sharing.
+- [Privacy Policy Generator](https://connecttag.org/tools/security/privacy-generator/): Generate compliant Arabic and English privacy policies and terms of use for mobile apps and websites.
 
-### Finance & Specialized Calculators
-- [Zakat Calculator](https://connecttag.org/tools/finance/zakat-calculator/): Calculate Zakat for cash, gold, and silver based on live nisab values.
-- [Electrical Unit Converter](https://connecttag.org/tools/energy/unit-converter/): Convert between Watts, Amps, Volts, and Horsepower for solar systems.
-- [Solar Energy Calculator](https://connecttag.org/tools/energy/solar-calculator/): Design and size home solar power systems based on appliances load.
+### Finance, Energy & General Calculators
+- [Yemen Currency Exchange Rates](https://connecttag.org/tools/finance/yemen-exchange/): Track exchange rates and convert currencies across Yemeni markets (Sana'a and Aden).
+- [Zakat Calculator](https://connecttag.org/tools/finance/zakat-calculator/): Calculate Zakat for cash, gold, silver, and trade assets based on live nisab values.
+- [Electrical Unit Converter](https://connecttag.org/tools/energy/unit-converter/): Convert between Watts, Amps, Volts, VA, Wh, Ah, and Horsepower for solar and electrical systems.
+- [Solar Energy Calculator](https://connecttag.org/tools/energy/solar-calculator/): Size home solar power systems (panels, batteries, inverter, charge controller) based on appliance loads.
+- [Hijri & Gregorian Age Calculator](https://connecttag.org/tools/misc/age-calculator/): Calculate exact age and convert dates between Hijri (Umm al-Qura) and Gregorian calendars.
 
 ### Content & Design
-- [Image Format Converter & Compressor](https://connecttag.org/tools/design/image-converter/): Convert and compress images to modern WebP, PNG, and JPEG formats locally in the browser.
-- [Word & Character Counter](https://connecttag.org/tools/misc/word-counter/): Analyze text length and clean Arabic content (remove diacritics/spaces).
-- [Color Palette Extractor](https://connecttag.org/tools/design/color-extractor/): Extract Hex/RGB codes from any uploaded image or logo.
+- [Image Format Converter & Compressor](https://connecttag.org/tools/design/image-converter/): Convert and compress images to WebP, PNG, and JPEG formats locally in the browser.
+- [Word & Character Counter](https://connecttag.org/tools/misc/word-counter/): Count words, characters, reading time, and clean Arabic text (strip diacritics/tatweel).
+- [Color Palette Extractor](https://connecttag.org/tools/design/color-extractor/): Extract dominant Hex/RGB/HSL color palettes from any uploaded image or logo.
 
-## Technical Blog & Engineering Guides
+## Applications & Digital Products
+- [Connect Tag Apps Portfolio](https://connecttag.org/company/projects/apps/): 31+ Android and cross-platform (KMP/Desktop) applications including Yemen View, Yemen 4G Manager, Soor Net (No-Root Firewall), Kabeer (Hardware Diagnostics), Kashif (Caller & Telecom Directory), Badeel, Satoor, Wejhah, Mizan Pro, and Raqeem.
+- [Connect Tag Digital Store](https://connecttag.org/store/): Ready-made commercial apps, digital assets, and structured datasets.
+
+## Technical Blog & Engineering Guides (https://connecttag.org/blog/)
 - [Connect Tag Blog Hub](https://connecttag.org/blog/): Specialized Arabic articles in software engineering, cybersecurity, cloud infrastructure, digital marketing, and telecom.
-- [Technical SEO Audit Guide](https://connecttag.org/blog/technical-seo-audit-guide): Comprehensive guide to auditing meta tags, semantic HTML5, Core Web Vitals, and HTTP security headers.
+- [Android Local Firewall & App Internet Access Control Guide (Soor Net)](https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide): Technical guide to on-device no-root Android firewalls, separating Wi-Fi vs Mobile Data rules per app, saving limited data bundles, and reviewing local network activity logs via Soor Net.
+- [Resolving AdSense Ad Serving Limit, Invalid Traffic Protection, ads.txt & GDPR CMP Guide](https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide): Practical guide to resolving Google AdSense Ad Serving Limits, filtering invalid traffic via Cloudflare WAF, configuring IAB Tech Lab ads.txt, and enabling Google-certified TCF v2.2 GDPR consent messages.
+- [Google AdSense First-Time Approval Guide & Fixing "Low Value Content" Rejections](https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content): Comprehensive breakdown of Google Publisher Policies, E-E-A-T and Helpful Content standards, mandatory trust pages, and Mediapartners-Google crawler access.
+- [Why AdMob Limits Ads: 7 Fatal UI Policy Violations & app-ads.txt Setup Guide](https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide): Dissecting AdMob implementation violations (accidental banner clicks, unexpected interstitials), official Demo Ad Unit IDs, Frequency Capping, UMP SDK, and linking app-ads.txt to Google Play and App Store.
+- [Professional Logo Design Guide: 7 Logo Types, Optical Balance & Vector Formats](https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide): Comprehensive guide to the 7 logo types, 5 engineering quality tests, Golden Ratio grid construction, and Vector (AI, EPS, SVG, PDF) vs Raster file delivery.
+- [7 Visual Identity Mistakes & Successful Rebranding Strategy Guide](https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide): Identifying brand design flaws that hurt conversions, choosing between Brand Refresh and Full Rebranding, and unifying customer touchpoints.
+- [Google Play Integrity API Comprehensive Android Security Guide](https://connecttag.org/blog/google-play-integrity-api-android-security-guide): Understanding Basic, Device, and Strong Integrity verdicts, hardware-backed KeyMint attestation, server-side requestHash verification, and troubleshooting uncertified devices.
+- [Resolving "You Need the Official WhatsApp to Use This Account" & Safe Chat Migration](https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide): Step-by-step guide to unbanning numbers and migrating local msgstore.db.crypt14 backups from modded WhatsApp to the official app without losing chats.
+- [The Technical Truth Behind Modded WhatsApp APKs (Gold, Plus, GBWhatsApp)](https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis): Forensic analysis of smali code injection, broken E2EE boundaries, View-Once bypasses, and Triada trojan payloads in modified APK files.
+- [Compose Multiplatform (CMP) Comprehensive Architecture Guide](https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide): Building shared declarative UI across Android, iOS (Skia/Metal 120Hz & UIKitView), Desktop JVM, and WebAssembly (Kotlin/Wasm).
+- [Yemen 4G App Guide: Smart Balance Inquiry, Home Widget & Modem Manager](https://connecttag.org/blog/yemen-4g-app-balance-modem-guide): Checking Yemen 4G balance in one tap, saving multiple numbers, pinning the home screen widget, scheduling package expiry reminders, and managing router settings.
+- [Public Wi-Fi & Open Hotspot Security: Evil Twin & MITM Defense Guide](https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide): How Evil Twin APs, ARP spoofing, and DNS hijacking work on open/voucher networks, and 5 practical settings (Private DNS, Randomized MAC) for safe browsing.
+- [How WhatsApp & Telegram Accounts Get Hijacked: Linked Devices & OTP Scams](https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide): Detecting silent session hijacking via Linked Devices, OTP social engineering, voicemail exploits, and securing accounts with 2FA PINs and Passkeys.
+- [Fake Aid Registration Links & Ponzi Task Scams Detection Guide](https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide): Identifying phishing domains impersonating humanitarian organizations and dissecting task-based Ponzi investment scams.
+- [Does Factory Reset Prevent Data Recovery? NAND Flash & FBE Cryptographic Erasure Guide](https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide): How File-Based Encryption (FBE) and Hardware Keystore destruction permanently erase data on modern smartphones, plus Repair Mode usage before device servicing.
+- [How Caller ID Apps Know Your Name Without Installing Them: Privacy & Security Guide](https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide): Technical breakdown of crowdsourced contact harvesting in Caller ID apps and Telegram bots, modded app risks, and opt-out/delisting steps.
+- [E-Wallet Impersonation, Fake Loan Activation & Gift Card Scam Guide](https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide): How scammers impersonate local e-wallets and use gift cards or online purchase codes for irreversible money laundering.
+- [Image EXIF Metadata Privacy Risks & Removal Guide](https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide): How smartphone photos embed GPS coordinates and device serial data, when messaging apps strip or preserve EXIF, and how to clean images locally.
+- [AndroidManifest.xml Security: Exported Components & Deep Link Hijacking](https://connecttag.org/blog/android-manifest-security-exported-components-guide): Protecting Android apps against exported Activity/Receiver exploits, Intent Redirection, and Deep Link hijacking with Digital Asset Links.
+- [Yemen Telecom Companies USSD Codes & Services Guide](https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide): Complete reference for balance inquiries, 4G packages, credit transfer, and services across Yemen Mobile, YOU, Sabafon, and Y.
+- [Yemen 4G Modem Settings & Wi-Fi Security Guide](https://connecttag.org/blog/yemen-4g-modem-settings-security-guide): Accessing 192.168.x.1 admin panels, changing Wi-Fi passwords, disabling WPS/QR sharing, and preventing unauthorized bandwidth drain.
+- [Best Yemen 4G Modem Buying Guide](https://connecttag.org/blog/best-yemen-4g-modem-buying-guide): Technical comparison of portable MiFi vs home CPE routers, Cat4 vs Cat6 carrier aggregation, B3/B28 frequency bands, and battery life.
+- [Technical SEO Audit Guide](https://connecttag.org/blog/technical-seo-audit-guide): Auditing meta tags, semantic HTML5, Core Web Vitals, structured data, and HTTP security headers.
 - [KMP Data Management with Room & DataStore](https://connecttag.org/blog/kmp-data-management-room-datastore): Architectural guide for local storage and encryption in Kotlin Multiplatform (Android & iOS).
 - [Kotlin Multiplatform (KMP) vs Flutter Comparison](https://connecttag.org/blog/kmp-vs-flutter-comparison): In-depth engineering comparison of performance, native UI sharing, and business suitability.
 - [Jetpack Compose Modern Android UI Guide](https://connecttag.org/blog/jetpack-compose-guide): Declarative UI development best practices and state management for Android.
@@ -58,13 +92,27 @@
 - [Yemen Internet Comparison: 4G vs ADSL vs Fiber](https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber): Technical comparison of speeds, latency, costs, and coverage across Yemeni internet technologies.
 - [How to Check Yemen 4G Balance & Packages](https://connecttag.org/blog/how-to-check-yemen-4g-balance): Step-by-step methods to query Yemen 4G subscriber balance and renew packages.
 
-## Main Services
-- **Web & Mobile Development**: Professional solutions using Kotlin Multiplatform, Flutter, Jetpack Compose, and modern web frameworks.
+## Editorial & Engineering Team (https://connecttag.org/blog/authors/)
+- [Aqel Mohammed (عقيل محمد)](https://connecttag.org/blog/authors/aqeldev): Senior Software Engineer & Cybersecurity Researcher.
+- [Basma Sharaf (بسمة شرف)](https://connecttag.org/blog/authors/basma): Telecom & Internet Services Technical Writer.
+- [Ali Al-Rahbi (علي الرحبي)](https://connecttag.org/blog/authors/ali): Software Engineering & Technical SEO Editor.
+- [Kayan Al-Rahbi (كيان الرحبي)](https://connecttag.org/blog/authors/kayan): Cybersecurity & Digital Forensics (DFIR) Specialist.
+- [Mariam Al-Yamani (مريم اليمني)](https://connecttag.org/blog/authors/mariam): Cybersecurity & Digital Privacy Researcher.
+- [Mohammed Hameed (محمد حميد)](https://connecttag.org/blog/authors/mohammed-hameed): Network Infrastructure & Routing Security Engineer.
+- [Reem Mohammed (ريم محمد)](https://connecttag.org/blog/authors/reem): Graphic Design, Brand Identity & UI/UX Specialist.
+- [Jood Mohammed (جود محمد)](https://connecttag.org/blog/authors/jood): Digital Marketing & Business Growth Strategist.
+- [Mohammed Sharaf (محمد شرف)](https://connecttag.org/blog/authors/mohammed): Accounting Information Systems (AIS/MIS) & FinTech Specialist.
+- [Yousef Al-Rahbi (يوسف الرحبي)](https://connecttag.org/blog/authors/yousef-alrahbi): Smart Surveillance, CCTV & Physical Access Control Systems Engineer.
+- [Yousef Mohammed (يوسف محمد)](https://connecttag.org/blog/authors/yousef): Digital Media, Ad Campaigns & Content Strategy Specialist.
+- [Connect Tag Editorial Team (فريق كونكت تاق)](https://connecttag.org/blog/authors/official): Official Engineering & Editorial Team at Connect Tag.
+
+## Main Services (https://connecttag.org/company/services/)
+- **Web & Mobile Development**: Professional solutions using Kotlin Multiplatform, Compose Multiplatform, Flutter, Jetpack Compose, and modern web frameworks.
 - **Telecom Solutions**: Infrastructure and technical support for internet subscribers.
 - **Cybersecurity Services**: Digital privacy auditing, server hardening, and data protection strategies.
 - **Digital Marketing & Local SEO**: Strategic growth, Technical SEO auditing, and Google Maps verification.
 
 ## Contacts & Social
-- Twitter: [@connecttagye](https://x.com/connecttagye)
+- Twitter / X: [@connecttagye](https://x.com/connecttagye)
 - Website: [connecttag.org](https://connecttag.org)
 - Email: [support@connecttag.org](mailto:support@connecttag.org)

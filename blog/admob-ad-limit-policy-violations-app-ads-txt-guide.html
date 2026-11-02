@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أسباب تقييد الإعلانات في AdMob وضبط app-ads.txt | كونكت تاق</title>
+  <meta name="description" content="لماذا يتم تقييد الإعلانات في AdMob؟ تعرف على 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك، وخطوات إعداد وربط ملف app-ads.txt رسمياً.">
+  <meta name="keywords" content="تقييد الإعلانات في AdMob, AdMob Ad Serving Limit, مخالفات سياسات AdMob, إعداد ملف app-ads.txt, Test Ad Unit IDs AdMob, الإعلانات البينية Unexpected Interstitial, Frequency Capping AdMob, Google UMP SDK">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="يوسف محمد">
+  <link rel="canonical" href="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">
+  <meta property="og:title" content="لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في تصميم واجهات التطبيق وكيف تضبط app-ads.txt؟">
+  <meta property="og:description" content="تشريح أشهر مخالفات سياسات AdMob التي يقع فيها المطورون دون قصد، وخطوات ربط ملف app-ads.txt بمتجر Google Play وApp Store لمنع ضياع الأرباح.">
+  <meta property="og:image" content="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="669">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="أسباب تقييد الإعلانات في AdMob ومخالفات تصميم الواجهات وإعداد ملف app-ads.txt">
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق">
+  <meta property="og:locale" content="ar_YE">
+  <meta property="article:published_time" content="2026-11-02T12:00:00+03:00">
+  <meta property="article:modified_time" content="2026-11-02T15:00:00+03:00">
+  <meta property="article:author" content="https://connecttag.org/blog/authors/yousef">
+  <meta property="article:section" content="برمجة وتطوير">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة وكيف تضبط app-ads.txt؟">
+  <meta name="twitter:description" content="دليل المطور لتجنب تقييد عرض الإعلانات في Google AdMob، استخدام معرفات الاختبار الرسمية، وإعداد ملف app-ads.txt خطوة بخطوة.">
+  <meta name="twitter:image" content="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp">
+  <meta name="twitter:image:alt" content="أسباب تقييد الإعلانات في AdMob ومخالفات تصميم الواجهات وإعداد ملف app-ads.txt">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في واجهات التطبيق وكيف تضبط ملف app-ads.txt؟",
+    "image": [
+      "https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp"
+    ],
+    "datePublished": "2026-11-02T12:00:00+03:00",
+    "dateModified": "2026-11-02T15:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "يوسف محمد",
+      "jobTitle": "مختص في الإعلام الرقمي وصناعة المحتوى الاستراتيجي والحملات الإعلانية",
+      "url": "https://connecttag.org/blog/authors/yousef"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "description": "لماذا يتم تقييد الإعلانات في AdMob؟ تعرف على 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك، وخطوات إعداد وربط ملف app-ads.txt رسمياً.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide"
+    },
+    "articleSection": "برمجة وتطوير",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "كم يستغرق رفع تقييد عرض الإعلانات (Ad Serving Limit) في AdMob؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "وفقاً لتوثيق Google AdMob الرسمي، لا توجد مدة زمنية ثابتة، ولكن غالباً ما تتم مراجعة جودة الزيارات تلقائياً وتحديث حالة الحساب خلال أقل من 30 يوماً بشرط إزالة أسباب النقرات العرضية والاعتماد على زيارات حقيقية من المتجر الرسمي."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يكفي عدم النقر على إعلاناتي الحقيقية أثناء البرمجة لتفادي حظر AdMob؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا يكفي ذلك؛ يوضح توثيق Google Mobile Ads SDK أن مجرد طلب وتحميل إعلانات حقيقية بشكل متكرر أثناء التطوير أو الفحص دون تفعيل وضع أجهزة الاختبار (Test Devices) أو معرّفات الوحدات التجريبية (Demo Ad Units) قد يُصنف كزيارات غير صالحة ويعرّض الحساب للتقييد."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كم يستغرق AdMob للتحقق من ملف app-ads.txt بعد رفعه على موقع المطور؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يستغرق زاحف Google عادةً ما يصل إلى 24 ساعة لقراءة ملف app-ads.txt والتحقق منه إذا كان رابط موقع المطور مضافاً مسبقاً في صفحة المتجر، وقد يستغرق عدة أيام إذا قمت بتحديث رابط الموقع حديثاً في Google Play Console أو App Store Connect."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "أسباب تقييد الإعلانات في AdMob وضبط app-ads.txt",
+        "item": "https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide"
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" href="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+  <style>
+    .admob-violation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 26px 0;
+    }
+    .admob-violation-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-top: 4px solid #dc2626;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    .admob-violation-card h4 {
+      color: #0f172a !important;
+      font-size: 1.02rem;
+      margin: 0 0 8px 0 !important;
+    }
+    .admob-violation-card p {
+      color: #475569 !important;
+      font-size: 0.88rem !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+    .admob-code-box {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 18px 20px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid #334155;
+    }
+  </style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-932W653JW8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-932W653JW8');
+  </script>
+  <script>
+    if (typeof gtag === 'function') {
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"أسباب تقييد الإعلانات في AdMob وضبط app-ads.txt", "url":"https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide"}]'></site-breadcrumb>
+                <h1>لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك وكيف تضبط ملف app-ads.txt؟</h1>
+                <site-article-meta
+                  date="02 نوفمبر 2026"
+                  updated="02 نوفمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp" class="img-responsive" alt="لماذا يتم تقييد الإعلانات في AdMob و7 مخالفات قاتلة في تصميم واجهات التطبيق وإعداد ملف app-ads.txt" fetchpriority="high" width="1200" height="669" decoding="async">
+
+                <p>يقضي مطور التطبيقات أسابيع طويلة في كتابة الكود وتصميم الشاشات ورفع التطبيق على متجر <strong>Google Play</strong> أو <strong>App Store</strong>، وما إن يبدأ المستخدمون بتحميل التطبيق حتى يتفاجأ المطور برسالة تحذيرية في مركز السياسات داخل حساب <strong>Google AdMob</strong>: <strong>«تم تقييد عدد الإعلانات التي يمكنك عرضها» (Ad serving has been limited)</strong>، يتبعها انخفاض حاد في نسبة ظهور الإعلانات (Match Rate / Show Rate) إلى ما يقارب الصفر!</p>
+
+                <p>في هذا الدليل الهندسي والسياسي الشامل — المعتمد على الوثائق الرسمية لسياسات <strong>Google AdMob</strong> ومعايير منظمة <strong>IAB Tech Lab</strong> — نشرح الأسباب التقنية الحقيقية وراء تقييد عرض الإعلانات، ونفصّل <strong>المخالفات الـ 7 القاتلة في تصميم واجهات التطبيق (UI Implementation Violations)</strong> التي يقع فيها المطورون دون قصد، مع خطوات إعداد وربط ملف <code>app-ads.txt</code> رسمياً لمنع ضياع الأرباح.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> خلاصة الدليل لحماية حساب AdMob من التقييد والحظر:</div>
+                    <ul class="summary-list">
+                        <li><strong>لا تختبر بإعلانات حقيقية أبداً:</strong> تحميل الإعلانات الحقيقية أو النقر عليها أثناء البرمجة على هاتفك يعرّض حسابك للتقييد الفوري؛ استخدم دائماً <strong>معرّفات الوحدات التجريبية (Demo Ad Unit IDs)</strong> أو سجّل جهازك كـ <code>Test Device</code>.</li>
+                        <li><strong>احذر النقرات العرضية (Accidental Clicks):</strong> وضع إعلان البانر ملاصقاً لأزرار التنقل السفلي أو أزرار اللعب، أو إظهار الإعلان البيني (<code>Interstitial Ad</code>) فجأة أثناء لمس المستخدم للشاشة يُصنّف كمخالفة تشجيع على النقر غير الصالح.</li>
+                        <li><strong>الإعلان البيني له توقيت صارم:</strong> يُمنع عرض <code>Interstitial Ad</code> عند فتح التطبيق (استخدم <code>App Open Ad</code> بدلاً منه) أو عند الخروج من التطبيق، ويجب تحميله مسبقاً (<code>Preloading</code>) ليظهر فقط عند الفواصل الطبيعية بين الشاشات.</li>
+                        <li><strong>ملف <code>app-ads.txt</code> إجباري لحماية العوائد:</strong> يجب رفع ملف <code>app-ads.txt</code> على الجذر الرئيسي لموقع المطور المسجل في صفحة المتجر؛ وبدونه سترفض كبرى شبكات المعلنين الشراء من تطبيقك.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#why-admob-limits-ads">أولاً: لماذا يفرض AdMob عقوبة «تقييد عرض الإعلانات» (Ad Serving Limit)؟</a></li>
+                        <li><a href="#seven-fatal-ui-violations">ثانياً: 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في تقييد أو حظر حساب AdMob</a></li>
+                        <li><a href="#official-test-ad-units">ثالثاً: المعرّفات الرسمية لإعلانات الاختبار (Test Ad Unit IDs) وكيفية تفعيل أجهزة الاختبار</a></li>
+                        <li><a href="#app-ads-txt-setup-guide">رابعاً: خطوات إعداد وربط ملف app-ads.txt بمتجر Google Play وApp Store</a></li>
+                        <li><a href="#recovery-and-frequency-capping">خامساً: الإجراءات الصحيحة عند تعرض حسابك للتقييد وضبط Frequency Capping وUMP SDK</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول تقييد إعلانات AdMob وملف app-ads.txt</a></li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="why-admob-limits-ads">أولاً: لماذا يفرض AdMob عقوبة «تقييد عرض الإعلانات» (Ad Serving Limit)؟</h2>
+                <p>وفق التوثيق الرسمي لمركز مساعدة <strong>Google AdMob</strong> حول <strong>حدود عرض الإعلانات (Ad serving limits)</strong>، تفرض جوجل قيداً مؤقتاً على عدد الإعلانات التي يمكن لحسابك عرضها في حالتين أساسيتين:</p>
+                <ol>
+                    <li><strong>تقييم جودة الزيارات للحسابات والتطبيقات الجديدة (Traffic Quality Assessment):</strong> عندما يبدأ تطبيق جديد في تلقي طلبات إعلانية كثيفة فجأة (خاصة من حملات ترويجية على شبكات التواصل أو تطبيقات تنتشر بسرعة)، يقلص AdMob حجم الإعلانات المعروضة مؤقتاً ريثما تحلل خوارزمياته سلوك المستخدمين وتتأكد من أن التفاعل طبيعي وغير ناتج عن بوتات أو نقرات مضللة.</li>
+                    <li><strong>مخاوف تتعلق بالزيارات غير الصالحة (Invalid Traffic Concerns):</strong> عندما ترصد فلاتر جوجل ارتفاعاً غير منطقي في نسبة النقر إلى الظهور (<code>CTR</code>) ناتجاً عن تصميم واجهة مستخدم يدفع المستخدم للنقر بالخطأ، أو قيام المطور بالنقر على إعلاناته، أو تحميل التطبيق من خارج المتاجر الرسمية (ملفات <code>APK</code> معدّلة أو مستنسخة). ولحماية تطبيقك برمجياً من التعديل أو التشغيل على بيئات غير موثوقة، راجع دليلنا حول <a href="https://connecttag.org/blog/google-play-integrity-api-android-security-guide">تأمين تطبيقات أندرويد باستخدام Google Play Integrity API</a>.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="seven-fatal-ui-violations">ثالثاً: 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في تقييد أو حظر حساب AdMob</h2>
+                <p>معظم حالات تقييد الإعلانات وحظر الحسابات لا تنتج عن نية احتيال لدى المطور، بل عن <strong>أخطاء هندسية في موضع الإعلان أو توقيت عرضه</strong> تخالف سياسات <strong>إرشادات التنفيذ (Implementation Guidance)</strong> في AdMob:</p>
+
+                <div class="admob-violation-grid">
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-circle-xmark" style="color: #dc2626;"></i> 1. ملاصقة البانر لأزرار التنقل أو اللعب</h4>
+                        <p>وضع إعلان البانر (<code>Banner Ad</code>) ملاصقاً تماماً لشريط التنقل السفلي (<code>BottomNavigationView</code>) أو أزرار التحكم أو لوحة المفاتيح دون ترك مسافة عازلة كافية، مما يؤدي إلى نقر المستخدم على الإعلان بالخطأ أثناء التنقل.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-bolt" style="color: #dc2626;"></i> 2. ظهور الإعلان البيني فجأة أثناء التفاعل (Unexpected Interstitial)</h4>
+                        <p>استدعاء <code>interstitialAd.show()</code> فور انتهاء تحميل الإعلان من الشبكة بينما يكون المستخدم مندمجاً في القراءة أو الكتابة أو اللعب، فينقر إصبعه على الإعلان لحظة ظهوره المفاجئ.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-door-open" style="color: #dc2626;"></i> 3. عرض Interstitial عند فتح التطبيق أو الخروج منه</h4>
+                        <p>تنص سياسات AdMob صراحةً على منع عرض الإعلانات البينية (<code>Interstitial Ads</code>) عند بدء تشغيل التطبيق (استخدم وحدات <strong>إعلانات فتح التطبيق App Open Ads</strong> المخصصة لذلك) أو بعد ضغط المستخدم على زر الرجوع للخروج من التطبيق.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-clone" style="color: #dc2626;"></i> 4. الإعلانات البينية المتتالية بعد كل حركة</h4>
+                        <p>إظهار إعلان بيني بعد كل نقرة زر واحدة في التطبيق دون وجود فاصل زمني أو منطقي؛ مما يدفع المستخدم للنقر العشوائي السريع في موضع زر الإغلاق.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-eye-slash" style="color: #dc2626;"></i> 5. الإعلانات الأصلية (Native Ads) غير المميزة عن المحتوى</h4>
+                        <p>تصميم بطاقة <code>Native Ad</code> بحيث تبدو مطابقة تماماً لعناصر القوائم أو الأزرار الوظيفية داخل التطبيق دون إبراز شارة <code>Ad</code> أو «إعلان» وخيارات AdChoices وتحديد حدود البطاقة بوضوح.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-layer-group" style="color: #dc2626;"></i> 6. تغطية محتوى الشاشة بالبانر أو إعادة تهيئته برمجياً</h4>
+                        <p>وضع البانر عائماً فوق النص أو الأزرار، أو وضع مؤقت زمني داخل كود التطبيق يعيد طلب البانر كل بضع ثوانٍ بدلاً من ضبط معدل التحديث (<code>Automatic Refresh Rate</code>) من لوحة تحكم AdMob.</p>
+                    </div>
+
+                    <div class="admob-violation-card">
+                        <h4><i class="fa-solid fa-hand-pointer" style="color: #dc2626;"></i> 7. استخدام عبارات تحريضية أو مكافأة غير مصرح بها</h4>
+                        <p>كتابة عبارات مثل «ادعم التطبيق بالنقر على الإعلان» فوق البانر، أو منح مكافآت داخل التطبيق مقابل مشاهدة إعلان بيني عادي بدلاً من استخدام وحدات <strong>الإعلانات بمكافأة (Rewarded Ads)</strong> الرسمية بعد موافقة المستخدم الصريحة (Opt-in).</p>
+                    </div>
+                </div>
+
+                <h3>القاعدة الهندسية الصحيحة لتحميل وعرض الإعلان البيني (Interstitial Preloading)</h3>
+                <p>لتجنب مخالفة «الظهور المفاجئ للإعلان البيني» (<code>Unexpected Interstitial</code>)، يجب فصل عملية <strong>التحميل المسبق (<code>load</code>)</strong> عن عملية <strong>العرض (<code>show</code>)</strong> تماماً:</p>
+                <ol>
+                    <li>اطلب تحميل الإعلان البيني مسبقاً في الخلفية عند بداية المرحلة أو الشاشة (<code>InterstitialAd.load(...)</code>) واحفظ المرجع في متغير.</li>
+                    <li>لا تستدعِ <code>show()</code> أبداً داخل دالة نجاح التحميل <code>onAdLoaded()</code> مباشرة!</li>
+                    <li>اعرض الإعلان فقط عند نقطة توقف طبيعية يتوقعها المستخدم (مثل انتهاء جولة، أو إتمام عملية حفظ ملف، أو الانتقال بين قسمين رئيسيين)، واعرض الإعلان <strong>قبل</strong> تحميل الشاشة التالية وليس بعد ظهورها بثانية.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="official-test-ad-units">ثالثاً: المعرّفات الرسمية لإعلانات الاختبار (Test Ad Unit IDs) وكيفية تفعيل أجهزة الاختبار</h2>
+                <p>يشدد توثيق <strong>Google Mobile Ads SDK</strong> على أنه يُمنع منعاً باتاً اختبار التطبيق باستخدام إعلانات حقيقية حتى لو لم تنقر عليها! أثناء التطوير على أندرويد وiOS، استخدم إما <strong>معرّفات الوحدات التجريبية الرسمية من جوجل (Demo Ad Unit IDs)</strong> أو قم بتسجيل معرّف جهازك في إعدادات <code>RequestConfiguration</code>:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>نوع الوحدة الإعلانية (Ad Format)</th>
+                                <th>معرّف الاختبار الرسمي للأندرويد (Android Demo ID)</th>
+                                <th>معرّف الاختبار الرسمي لـ iOS (iOS Demo ID)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>إعلان البانر المتكيف (Adaptive Banner)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/9214589741</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/2435281174</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>إعلان البانر القياسي (Standard Banner)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/6300978111</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/2934735716</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>الإعلان البيني (Interstitial Ad)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/1033173712</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/4411468910</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>الإعلان بمكافأة (Rewarded Ad)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/5224354917</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/1712485313</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>إعلان فتح التطبيق (App Open Ad)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/9257395921</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/5575463023</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>الإعلان الأصلي المتقدم (Native Advanced)</strong></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/2247696110</code></td>
+                                <td dir="ltr"><code>ca-app-pub-3940256099942544/3986624511</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>كما يمكنك تهيئة <code>RequestConfiguration</code> في كود Kotlin (أو في مشروع <a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">Compose Multiplatform</a>) لتسجيل جهازك كجهاز اختبار رسمي حتى عند تجربة معرّفات الإنتاج قبل النشر:</p>
+
+                <div class="admob-code-box">
+val testDeviceIds = listOf("33BE2250B43518CCDA7DE426D04EE231")<br>
+val configuration = RequestConfiguration.Builder()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.setTestDeviceIds(testDeviceIds)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.build()<br>
+MobileAds.setRequestConfiguration(configuration)
+                </div>
+
+                <hr>
+
+                <h2 id="app-ads-txt-setup-guide">رابعاً: خطوات إعداد وربط ملف app-ads.txt بمتجر Google Play وApp Store</h2>
+                <p>ملف <strong><code>app-ads.txt</code> (Authorized Sellers for Apps)</strong> هو امتداد رسمي لمعيار منظمة <strong>IAB Tech Lab</strong> مخصص لتطبيقات الهواتف الذكية والتلفزيونات الذكية. يثبت هذا الملف للمعلنين وشبكات التبادل الإعلاني أنك المالك الشرعي للتطبيق المنشور على المتجر، ويمنع القراصنة من تزييف اسم الحزمة (<code>Package Name Spoofing</code>) لسرقة ميزانيات الإعلانات.</p>
+
+                <h3>الخطوات الـ 4 لإعداد والتحقق من ملف app-ads.txt بنجاح</h3>
+                <ol>
+                    <li><strong>إضافة موقع المطور في صفحة المتجر (Store Listing):</strong> ادخل إلى حسابك في <strong>Google Play Console</strong> (قسم <em>Grow &gt; Store presence &gt; Store settings</em>) أو <strong>App Store Connect</strong> (حقل <em>Marketing URL</em>)، وضع رابط موقعك الرسمي (مثلاً: <code>https://connecttag.org</code>).</li>
+                    <li><strong>نسخ سطر التفويض الخاص بحسابك من AdMob:</strong> من لوحة تحكم AdMob انتقل إلى <strong>التطبيقات (Apps) &gt; عرض جميع التطبيقات &gt; علامة تبويب app-ads.txt</strong>، وانسخ السطر المخصص لك والذي يأتي بالصيغة القياسية التالية:
+                        <div class="admob-code-box">google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0</div>
+                    </li>
+                    <li><strong>رفع الملف في الجذر الرئيسي للنطاق (Root Domain):</strong> أنشئ ملفاً نصياً باسم <code>app-ads.txt</code> بترميز <code>UTF-8</code> وارفعه في المسار الجذري المباشر لموقعك بحيث يفتح على الرابط: <code>https://yourdomain.com/app-ads.txt</code> ويعيد استجابة <code>HTTP 200 OK</code> بنوع محتوى <code>text/plain</code>.</li>
+                    <li><strong>التحقق من عدم حظر زاحف Google:</strong> تأكد من أن ملف <code>robots.txt</code> في موقعك لا يمنع مسار <code>/app-ads.txt</code>، وأن جدار الحماية (مثل Cloudflare WAF) لا يفرض صفحة تحدي CAPTCHA أمام زاحف <code>Mediapartners-Google</code> أو <code>Googlebot</code>.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="recovery-and-frequency-capping">خامساً: الإجراءات الصحيحة عند تعرض حسابك للتقييد وضبط Frequency Capping وUMP SDK</h2>
+                <p>إذا ظهر في حسابك إشعار تقييد عرض الإعلانات، فاتبع خطوات المعالجة الهندسية التالية لتسريع رفع التقييد تلقائياً:</p>
+                <ul>
+                    <li><strong>تفعيل حد مرات الظهور (Frequency Capping):</strong> ادخل إلى إعدادات كل وحدة إعلانية بينية (<code>Interstitial</code>) أو إعلان فتح التطبيق (<code>App Open</code>) داخل لوحة تحكم AdMob، واضبط <strong>تحديد عدد مرات الظهور (Frequency Capping)</strong> بحيث لا يظهر للمستخدم الواحد أكثر من إعلان واحد كل <strong>3 إلى 5 دقائق</strong> (أو بحد أقصى 3 مرات كل 15 دقيقة). هذا الإجراء وحده يقضي على معظم النقرات الانتقامية أو العرضية.</li>
+                    <li><strong>دمج حزمة موافقة الخصوصية الرسمية (Google UMP SDK):</strong> إذا كان تطبيقك متاحاً للتحميل في دول المنطقة الاقتصادية الأوروبية (EEA) أو المملكة المتحدة أو سويسرا، فمن الإلزامي برمجياً استدعاء <strong>User Messaging Platform (UMP) SDK</strong> لعرض نموذج الموافقة المتوافق مع <code>TCF v2.2</code> قبل إرسال أول طلب إعلان <code>AdRequest</code>.</li>
+                    <li><strong>مراجعة الإصدارات القديمة من التطبيق:</strong> إذا كان لديك إصدار قديم من التطبيق يحتوي على موضع إعلاني خاطئ، فقم بتعطيل معرف الوحدة الإعلانية القديمة في AdMob وأنشئ وحدة إعلانية جديدة في الإصدار المحدّث الملتزم بالسياسات حتى لا تستمر النسخ القديمة في إرسال نقرات خاطئة.</li>
+                </ul>
+                <p>ولأصحاب المواقع الإلكترونية الذين يواجهون مشكلة مشابهة في حسابات الويب، يمكنكم مراجعة دليلنا التفصيلي حول <a href="https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide">حل مشكلة تقييد عرض الإعلانات في Google AdSense وضبط ملف ads.txt</a>، وكذلك <a href="https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content">شروط قبول المواقع في Google AdSense وحل مشكلة المحتوى ذي القيمة المنخفضة</a>.</p>
+
+                <hr>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول تقييد إعلانات AdMob وملف app-ads.txt</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كم يستغرق رفع تقييد عرض الإعلانات (Ad Serving Limit) في AdMob؟</div>
+                        <div class="faq-answer">وفقاً لتوثيق Google AdMob الرسمي، لا توجد مدة زمنية ثابتة، ولكن غالباً ما تتم مراجعة جودة الزيارات تلقائياً وتحديث حالة الحساب خلال أقل من 30 يوماً بشرط إزالة أسباب النقرات العرضية والاعتماد على زيارات حقيقية من المتجر الرسمي.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يكفي عدم النقر على إعلاناتي الحقيقية أثناء البرمجة لتفادي حظر AdMob؟</div>
+                        <div class="faq-answer">لا يكفي ذلك؛ يوضح توثيق Google Mobile Ads SDK أن مجرد طلب وتحميل إعلانات حقيقية بشكل متكرر أثناء التطوير أو الفحص دون تفعيل وضع أجهزة الاختبار (Test Devices) أو معرّفات الوحدات التجريبية (Demo Ad Units) قد يُصنف كزيارات غير صالحة ويعرّض الحساب للتقييد.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كم يستغرق AdMob للتحقق من ملف app-ads.txt بعد رفعه على موقع المطور؟</div>
+                        <div class="faq-answer">يستغرق زاحف Google عادةً ما يصل إلى 24 ساعة لقراءة ملف app-ads.txt والتحقق منه إذا كان رابط موقع المطور مضافاً مسبقاً في صفحة المتجر، وقد يستغرق عدة أيام إذا قمت بتحديث رابط الموقع حديثاً في Google Play Console أو App Store Connect.</div>
+                    </div>
+                </section>
+
+                <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #dc2626; border-radius: 12px; padding: 22px 24px; margin: 32px 0; font-size: 0.95rem; line-height: 1.8;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-book-open" style="color: #dc2626;" aria-hidden="true"></i> المصادر والوثائق الرسمية المعتمدة</h3>
+                    <p style="margin-bottom: 12px; color: #334155;">أُعدّ هذا الدليل بواسطة فريق الإعلام الرقمي وهندسة تطبيقات الهواتف في <strong>كونكت تاق</strong> بالاستناد الحصري إلى الوثائق الرسمية المحدثة لسياسات Google AdMob وGoogle Developers ومنظمة IAB Tech Lab:</p>
+                    <ul style="margin: 0; padding-right: 20px; color: #475569;">
+                        <li><a href="https://support.google.com/admob/answer/9493252" target="_blank" rel="noopener noreferrer">Google AdMob Help — حدود عرض الإعلانات (Ad serving limits) وتقييم جودة الزيارات</a></li>
+                        <li><a href="https://support.google.com/admob/answer/6128877" target="_blank" rel="noopener noreferrer">Google AdMob Help — إرشادات تنفيذ الإعلانات البينية (Interstitial ad guidance &amp; disallowed implementations)</a></li>
+                        <li><a href="https://support.google.com/admob/answer/6275335" target="_blank" rel="noopener noreferrer">Google AdMob Help — إرشادات تنفيذ إعلانات البانر ومنع النقرات العرضية (Banner ad guidance)</a></li>
+                        <li><a href="https://developers.google.com/admob/android/test-ads" target="_blank" rel="noopener noreferrer">Google Developers — تفعيل إعلانات الاختبار ومعرّفات Demo Ad Units الرسمية للأندرويد وiOS</a></li>
+                        <li><a href="https://support.google.com/admob/answer/9363762" target="_blank" rel="noopener noreferrer">Google AdMob Help — إعداد ملف app-ads.txt لتطبيقاتك وحل مشكلات التحقق</a></li>
+                    </ul>
+                </aside>
+
+                <site-author-box name="يوسف محمد" avatar="https://connecttag.org/upload/author/yousef.webp" link="https://connecttag.org/blog/authors/yousef"><span class="sr-only">الكاتب: يوسف محمد</span></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="adsense-ad-serving-limit-invalid-traffic-ads-txt-guide, google-adsense-approval-guide-fix-low-value-content, google-play-integrity-api-android-security-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

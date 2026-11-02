@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>الدليل الشامل لأمن المواقع: 5 خطوات عملية لحماية مشروعك من الاختراق - كونكت تاق</title>
-<meta name="description" content="تعرف على استراتيجيات الأمن السيبراني المتقدمة لتأمين موقعك الإلكتروني. دليل تفصيلي يشمل تشفير SSL، إدارة الهوية، الحماية من DDoS، والنسخ الاحتياطي الاحترافي.">
+<title>حماية موقعك الإلكتروني من الاختراق في 5 خطوات - كونكت تاق</title>
+<meta name="description" content="تعرف على 5 خطوات عملية وأساسية لتأمين موقعك الإلكتروني ضد الاختراق: تفعيل HTTPS، المصادقة الثنائية، تحديث الأنظمة، النسخ الاحتياطي، وجدار الحماية.">
+    <meta name="author" content="عقيل محمد">
 <link rel="canonical" href="https://connecttag.org/blog/website-security-simple-steps" />
 
 <!-- OpenGraph meta -->
@@ -15,8 +16,9 @@
 <meta property="og:description" content="تعرف على استراتيجيات الأمن السيبراني المتقدمة لتأمين موقعك الإلكتروني. دليل تفصيلي يشمل تشفير SSL، إدارة الهوية، الحماية من DDoS، والنسخ الاحتياطي الاحترافي." />
 <meta property="og:image" content="https://connecttag.org/upload/security-steps.webp">
   <meta property="og:image:alt" content="أمن المواقع الإلكترونية وحمايتها">
-  <meta property="article:published_time" content="2026-08-15T11:00:00+03:00">
-  <meta property="article:modified_time" content="2026-08-17T01:30:00+03:00">
+  <meta property="article:published_time" content="2026-06-18T12:10:00+03:00">
+  <meta property="article:modified_time" content="2026-09-28T17:40:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
   <meta property="article:section" content="الأمن السيبراني">
 
 <!-- twitter OpenGraph meta -->
@@ -27,18 +29,18 @@
 <meta name="twitter:image" content="https://connecttag.org/upload/security-steps.webp" />
   <meta name="twitter:image:alt" content="أمن المواقع الإلكترونية وحمايتها" />
 <meta name="twitter:site" content="@connecttagye" />
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.47" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.47" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
   <link rel="preload" href="https://connecttag.org/upload/security-steps.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.47">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.47" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.47" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
 
 <script type="application/ld+json">
 [
@@ -51,7 +53,14 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
       "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "مريم اليمني",
+      "jobTitle": "مختصة وباحثة في الأمن السيبراني والخصوصية الرقمية",
+      "url": "https://connecttag.org/blog/authors/mariam"
     },
     "publisher": {
       "@type": "Organization",
@@ -61,8 +70,8 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-15T11:00:00+03:00",
-    "dateModified": "2026-08-17T01:30:00+03:00",
+    "datePublished": "2026-06-18T12:10:00+03:00",
+    "dateModified": "2026-09-28T17:40:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/website-security-simple-steps"
@@ -200,10 +209,9 @@
                 <h1>الدليل الشامل لأمن المواقع: 5 خطوات عملية لحماية مشروعك من الاختراق</h1>
 
                 <site-article-meta
-                  date="15 أغسطس 2026"
-                  updated="17 أغسطس 2026"
-                  hide-author="true"
-                ></site-article-meta>
+                  date="18 يونيو 2026"
+                  updated="28 سبتمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 18 يونيو 2026</span></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="https://connecttag.org/upload/security-steps.webp" class="img-responsive" alt="أمن المواقع الإلكترونية وحمايتها" fetchpriority="high" width="1536" height="1024" decoding="async">
@@ -386,6 +394,27 @@
                         </a>
                     </div>
                 </div>
+                <div class="ct-editorial-references" style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid #bfdbfe; border-right: 5px solid #1d4ed8; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #1e3a8a; font-weight: 800;"><i class="fa-solid fa-shield-check" style="color: #2563eb;" aria-hidden="true"></i> منهجية التحقق الأمني والمصادر المرجعية</h3>
+                    <p style="font-size: 0.94rem; color: #334155; margin-bottom: 14px; line-height: 1.75;">تم إعداد قائمة التدقيق الأمنية هذه وفق أحدث ضوابط حماية تطبيقات الويب (OWASP) وتجربتها عبر أداة فحص الترويسات الأمنية في كونكت تاق.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-screwdriver-wrench" style="color: #0284c7;" aria-hidden="true"></i> أدوات وأدلة كونكت تاق المرتبطة:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/tools/web/site-checker/security-checker" style="font-weight:700; color:#0052cc;" >أداة فحص أمان المواقع وترويسات الحماية HTTP Headers</a></li>
+                            <li><a href="https://connecttag.org/tools/security/password-generator/" style="font-weight:700; color:#0052cc;" >أداة توليد كلمات مرور قوية وعشوائية</a></li>
+                            <li><a href="https://connecttag.org/blog/cloudflare-waf-security-guide" style="font-weight:700; color:#0052cc;" >دليل تأمين المواقع باستخدام جدار حماية Cloudflare WAF</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-book-bookmark" style="color: #0284c7;" aria-hidden="true"></i> المراجع والمعايير الدولية المعتمدة:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">مشروع OWASP Top 10 لأبرز مخاطر أمن تطبيقات الويب <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://developers.google.com/search/docs/monitor-debug/security/prevent-abuse" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">إرشادات Google Search Central لحماية المواقع من الاختراق <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>الأسئلة الشائعة حول أمن المواقع</h2>
@@ -408,7 +437,7 @@
 
                 <p><strong>خلاصة القول:</strong> الأمن الرقمي رحلة مستمرة وليس محطة وقوف. في <strong>كونكت تاق</strong>، نعتبر الأمان هو الأولوية الأولى في كل سطر برمجي نكتبه، ونقدم <a href="https://connecttag.org/company/services/cybersecurity-solutions">خدمات الحلول الأمنية والأمن السيبراني</a> لمساعدتكم في بناء حصون رقمية تحمي استثماراتكم وتطلعاتكم المستقبلية.</p>
 
-                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="cloudflare-waf-security-guide, api-security-guide"></site-related-posts>
             </div>

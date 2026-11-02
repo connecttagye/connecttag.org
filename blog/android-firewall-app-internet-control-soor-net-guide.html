@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الجدار الناري في أندرويد: التحكم باتصال التطبيقات وترشيد البيانات</title>
+    <meta name="description" content="دليل تقني شامل يشرح كيف يعمل الجدار الناري المحلي في أندرويد بدون روت للتحكم بوصول التطبيقات إلى الإنترنت، وترشيد استهلاك الباقات عبر تطبيق سور نت.">
+    <meta name="author" content="محمد حميد">
+    <link rel="canonical" href="https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide" />
+
+    <!-- OpenGraph meta -->
+    <meta property="og:url" content="https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد البيانات عبر تطبيق سور نت - كونكت تاق">
+    <meta property="og:description" content="كيف تمنع التطبيقات غير الضرورية من استنزاف باقة الإنترنت في الخلفية بدون روت؟ تعرف على آلية عمل الجدار الناري المحلي وشرح تطبيق سور نت (Soor Net)." />
+    <meta property="og:image" content="https://connecttag.org/upload/android-firewall-soor-net-guide.webp">
+    <meta property="og:image:width" content="1376">
+    <meta property="og:image:height" content="768">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:alt" content="الجدار الناري في أندرويد والتحكم باتصال التطبيقات بالإنترنت عبر تطبيق سور نت">
+    <meta property="article:published_time" content="2026-11-02T16:00:00+03:00">
+    <meta property="article:modified_time" content="2026-11-02T16:00:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/mohammed-hameed">
+    <meta property="article:section" content="الأمن السيبراني">
+
+    <!-- twitter OpenGraph meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide" />
+    <meta name="twitter:title" content="الجدار الناري في أندرويد: التحكم باتصال التطبيقات وترشيد البيانات عبر سور نت">
+    <meta name="twitter:description" content="دليل عملي لإدارة وصول التطبيقات إلى شبكات الواي فاي وبيانات الهاتف بدون روت وترشيد استهلاك باقات الإنترنت وحماية الخصوصية محلياً." />
+    <meta name="twitter:image" content="https://connecttag.org/upload/android-firewall-soor-net-guide.webp" />
+    <meta name="twitter:image:alt" content="الجدار الناري في أندرويد والتحكم باتصال التطبيقات بالإنترنت عبر تطبيق سور نت" />
+    <meta name="twitter:site" content="@connecttagye" />
+
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+    <link rel="preload" href="https://connecttag.org/upload/android-firewall-soor-net-guide.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+    <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "الجدار الناري في أندرويد (Android Firewall): التحكم باتصال التطبيقات وترشيد البيانات عبر سور نت",
+    "description": "دليل تقني وتوعوي شامل يشرح مفهوم الجدار الناري المحلي في الهواتف الذكية وكيفية إدارة وصول التطبيقات إلى شبكات الواي فاي وبيانات الهاتف بدون روت لترشيد الباقات وحماية الخصوصية.",
+    "image": "https://connecttag.org/upload/android-firewall-soor-net-guide.webp",
+    "author": {
+      "@type": "Person",
+      "name": "محمد حميد",
+      "jobTitle": "مهندس شبكات متخصص في أنظمة التوجيه وتأمين البنية التحتية",
+      "url": "https://connecttag.org/blog/authors/mohammed-hameed"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "كونكت تاق",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "datePublished": "2026-11-02T16:00:00+03:00",
+    "dateModified": "2026-11-02T16:00:00+03:00",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide"
+    },
+    "articleSection": "الأمن السيبراني",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "كيف يعمل الجدار الناري في أندرويد بدون صلاحيات الروت (No-Root)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يعمل الجدار الناري المحلي عبر إنشاء واجهة توجيه داخلية مغلقة على الهاتف نفسه استناداً إلى معمارية الشبكة الرسمية في نظام أندرويد. تمر طلبات الاتصال الصادرة من التطبيقات عبر هذه البوابة المحلية ليتم السماح لها أو إيقافها حسب القواعد التي حددتها، دون إرسال بياناتك إلى أي خادم خارجي ودون المساس بملفات النظام."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين الجدار الناري المحلي (مثل تطبيق سور نت) وخدمات الـ VPN التقليدية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "خدمات الـ VPN التجارية تقوم بتوجيه حركة الإنترنت الخاصة بك إلى خوادم خارجية في دول أخرى لتغيير موقعك الجغرافي. أما الجدار الناري المحلي (سور نت) فهو أداة إدارة وتصفية محلية 100% تعمل داخل معالج هاتفك فقط للتحكم في أي تطبيق يُسمح له بالاتصال بالإنترنت، ولا يوجه بياناتك لأي خوادم وسيطة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يساعد تطبيق سور نت في توفير استهلاك باقات يمن فورجي وبيانات الهاتف؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يتيح لك تطبيق سور نت إيقاف وصول الإنترنت تماماً عن الألعاب وتطبيقات تحرير الصور والفيديو والأدوات التي لا تحتاج لاتصال شبكي أثناء اتصالك بشبكة الواي فاي المنزلية أو بيانات الشريحة، مما يمنعها من استهلاك الجيجابايت في المزامنة الخلفية والتحديثات غير الضرورية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يؤثر تشغيل الجدار الناري المحلي على سرعة الإنترنت أو وصول إشعارات واتساب؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا يؤثر على سرعة الإنترنت لأن الفلترة تتم محلياً على جهازك دون المرور بخوادم بعيدة. كما يمكنك استثناء تطبيقات المراسلة الفورية (مثل واتساب وتليجرام) وخدمات النظام الأساسية لضمان استمرار وصول الرسائل والإشعارات بشكل فوري."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يقوم تطبيق سور نت بجمع بياناتي الشخصية أو الاطلاع على محتوى محادثاتي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "كلا، يلتزم تطبيق سور نت بمبدأ عدم جمع البيانات، حيث لا يتطلب إنشاء حساب، ولا يفك تشفير اتصالات HTTPS/TLS الآمنة، وتُحفظ سجلات نشاط الشبكة التقنية محلياً داخل مساحة التخزين المعزولة على هاتفك فقط مع إمكانية مسحها في أي وقت."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الجدار الناري في أندرويد والتحكم باتصال التطبيقات",
+        "item": "https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide"
+      }
+    ]
+  }
+]
+</script>
+    <style>
+        .method-box { background: #f0f7fa; border-right: 5px solid #006b98; padding: 18px 20px; margin: 22px 0; border-radius: 0 12px 12px 0; }
+        .comp-table-wrap { overflow-x: auto; margin: 25px 0; border-radius: 12px; border: 1px solid #e2e8f0; }
+        .comp-table { width: 100%; border-collapse: collapse; min-width: 640px; background: #fff; font-size: 14.5px; }
+        .comp-table th { background: #0052cc; color: #ffffff; font-weight: 700; padding: 13px 15px; text-align: right; }
+        .comp-table td { padding: 12px 15px; border-bottom: 1px solid #f1f5f9; color: #334155; vertical-align: middle; line-height: 1.7; }
+        .comp-table tr:nth-child(even) td { background: #f8fafc; }
+        .comp-table tr:hover td { background: #eff6ff; }
+        .badge-yes { display: inline-flex; align-items: center; gap: 5px; background: #dcfce7; color: #166534; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 13px; }
+        .badge-no { display: inline-flex; align-items: center; gap: 5px; background: #fee2e2; color: #991b1b; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 13px; }
+        .badge-partial { display: inline-flex; align-items: center; gap: 5px; background: #fef3c7; color: #92400e; font-weight: 700; padding: 3px 10px; border-radius: 20px; font-size: 13px; }
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin: 24px 0; }
+        .step-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 14px rgba(0, 82, 204, 0.04); }
+        .step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #0052cc; color: #fff; font-weight: 800; font-size: 15px; margin-bottom: 12px; }
+        .step-card h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 10px; }
+        .step-card p { font-size: 14.5px; color: #475569; line-height: 1.7; margin-bottom: 0; }
+        .app-cta-banner { background: linear-gradient(135deg, #071936 0%, #0052cc 100%); border-radius: 18px; padding: 26px 24px; color: #ffffff; margin: 28px 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; box-shadow: 0 12px 30px rgba(0, 82, 204, 0.18); }
+        .app-cta-info { display: flex; align-items: center; gap: 18px; flex: 1; min-width: 260px; }
+        .app-cta-info img { width: 72px; height: 72px; border-radius: 16px; background: #fff; padding: 6px; box-shadow: 0 6px 16px rgba(0,0,0,0.2); flex-shrink: 0; }
+        .app-cta-text h3 { color: #ffffff !important; font-size: 20px; font-weight: 800; margin: 0 0 6px 0; }
+        .app-cta-text p { color: rgba(255,255,255,0.9) !important; font-size: 14px; margin: 0; line-height: 1.6; }
+        .app-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-play-dl { background: #ffffff; color: #0052cc !important; font-weight: 800; padding: 11px 22px; border-radius: 30px; text-decoration: none !important; display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.2s ease; }
+        .btn-play-dl:hover { transform: translateY(-2px); background: #f8fafc; }
+        .btn-app-page { background: rgba(255,255,255,0.15); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.35); font-weight: 700; padding: 11px 20px; border-radius: 30px; text-decoration: none !important; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; transition: background 0.2s ease; }
+        .btn-app-page:hover { background: rgba(255,255,255,0.25); }
+        .screenshots-duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 26px 0; }
+        .screenshot-figure { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px; text-align: center; margin: 0; }
+        .screenshot-figure img { max-height: 440px; width: auto; margin: 0 auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08); }
+        .screenshot-figure figcaption { font-size: 13.5px; font-weight: 700; color: #334155; margin-top: 12px; line-height: 1.5; }
+    </style>
+
+    <!-- PWA & Mobile Optimization Tags -->
+    <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+    <link rel="manifest" href="https://connecttag.org/manifest.json">
+    <meta name="theme-color" content="#0052cc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Google Consent Mode v2 (Default State before AdSense) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      if (!window.__CT_CONSENT_INITIALIZED__) {
+        window.__CT_CONSENT_INITIALIZED__ = true;
+        var savedChoice = null;
+        try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+        var granted = savedChoice === 'true' ? 'granted' : 'denied';
+        gtag('consent', 'default', {
+          'ad_storage': granted,
+          'ad_user_data': granted,
+          'ad_personalization': granted,
+          'analytics_storage': granted,
+          'wait_for_update': 500
+        });
+      }
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+    <!-- Modular Web Component: Header -->
+    <site-header></site-header>
+
+    <main id="main-content">
+
+        <article class="post-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"الجدار الناري في أندرويد والتحكم باتصال التطبيقات", "url":"https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide"}]'></site-breadcrumb>
+                        <h1>الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد استهلاك البيانات عبر تطبيق سور نت</h1>
+
+                        <site-article-meta
+                            date="2 نوفمبر 2026"
+                            updated="2 نوفمبر 2026"
+                        ><span class="sr-only">تاريخ النشر: 2 نوفمبر 2026</span></site-article-meta>
+
+                        <hr style="margin-top: 0;">
+                        <img src="https://connecttag.org/upload/android-firewall-soor-net-guide.webp" class="img-responsive" alt="الجدار الناري في أندرويد والتحكم باتصال التطبيقات بالإنترنت عبر تطبيق سور نت" fetchpriority="high" width="1376" height="768" decoding="async" style="border-radius: 14px; margin-bottom: 24px;">
+
+                        <p>عندما تثبّت أي تطبيق جديد على هاتفك العامل بنظام أندرويد، فإنه يحصل تلقائياً على صلاحية الاتصال الكامل بشبكة الإنترنت، سواء عبر شبكة الواي فاي المنزلية أو عبر بيانات الشريحة الخلوية. ورغم أن تطبيقات المراسلة والمتصفحات تحتاج بطبيعتها إلى اتصال مستمر، إلا أن عشرات التطبيقات الأخرى على هاتفك — مثل الألعاب الفردية، محررات الصور والفيديو، تطبيقات القراءة، والملفات — لا تحتاج إلى الإنترنت لأداء وظيفتها الأساسية، لكنها تواصل استهلاك البيانات في الخلفية على مدار الساعة.</p>
+
+                        <p>في هذا الدليل التقني الشامل، نشرح مفهوم <strong>الجدار الناري المحلي للهواتف الذكية (Local Mobile Firewall)</strong>، وكيف يمكنك التحكم بدقة في صلاحيات وصول كل تطبيق إلى الإنترنت <strong>بدون الحاجة لصلاحيات الروت (No-Root)</strong>، سواء عبر إعدادات أندرويد الافتراضية أو باستخدام <a href="https://connecttag.org/company/projects/apps/soor-net/"><strong>تطبيق سور نت (Soor Net)</strong></a>، بما يحافظ على باقات الإنترنت المحدودة ويعزز خصوصيتك الرقمية.</p>
+
+                        <div class="summary-box">
+                            <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> ماذا ستتعلم في هذا الدليل؟</div>
+                            <ul class="summary-list">
+                                <li><strong>مفهوم الجدار الناري المحلي:</strong> كيف يعمل جدار الحماية داخل الهاتف بدون روت ودون تمرير بياناتك لأي خوادم خارجية.</li>
+                                <li><strong>مقارنة الحلول المتاحة:</strong> الفرق العملي بين إعدادات توفير البيانات المدمجة في أندرويد والجدار الناري المخصص.</li>
+                                <li><strong>تخصيص قواعد الواي فاي والبيانات:</strong> كيف تسمح لتطبيق بالعمل على الواي فاي فقط وتمنعه من استنزاف بيانات الهاتف أو العكس.</li>
+                                <li><strong>حماية باقات الإنترنت المحدودة:</strong> دور الجدار الناري في تقليل استهلاك باقات المودم المنزلي مثل <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">يمن فورجي (Yemen 4G)</a>.</li>
+                                <li><strong>مراجعة نشاط الشبكة وتشخيص الاتصال:</strong> قراءة سجل الاتصالات المحلي واستخدام أدوات فحص استقرار الشبكة (Ping و DNS).</li>
+                            </ul>
+                        </div>
+
+                        <div class="toc-container">
+                            <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات المقال:</div>
+                            <ul class="toc-list">
+                                <li><a href="#what-is-android-firewall">1. ما هو الجدار الناري في أندرويد وكيف يعمل محلياً بدون روت؟</a></li>
+                                <li><a href="#why-control-app-access">2. لماذا تحتاج إلى التحكم في وصول التطبيقات إلى الإنترنت؟</a></li>
+                                <li><a href="#android-settings-vs-firewall">3. مقارنة: إعدادات أندرويد الافتراضية مقابل الجدار الناري المحلي</a></li>
+                                <li><a href="#soor-net-features-guide">4. شرح إدارة اتصال التطبيقات خطوة بخطوة عبر تطبيق «سور نت»</a></li>
+                                <li><a href="#network-logs-diagnostics">5. مراجعة سجل نشاط الشبكة وأدوات التشخيص المدمجة</a></li>
+                                <li><a href="#best-practices">6. أفضل الممارسات لضبط قواعد الجدار الناري دون تعطيل الإشعارات</a></li>
+                                <li><a href="#faq">7. الأسئلة الشائعة</a></li>
+                            </ul>
+                        </div>
+
+                        <h2 id="what-is-android-firewall">1. ما هو الجدار الناري في أندرويد وكيف يعمل محلياً بدون روت؟</h2>
+                        <p>في عالم الشبكات وأنظمة التشغيل، يُعرّف <strong>الجدار الناري (Firewall)</strong> بأنه نظام تحكم يراقب حركة البيانات الصادرة والواردة بناءً على قواعد يحددها المستخدم مسبقاً (السماح بالاتصال أو منعه). في الإصدارات القديمة من الهواتف الذكية، كان إيقاف الإنترنت عن تطبيق بعينه يتطلب تعديلاً عميقاً في جذور النظام (Root)، وهو أمر يعرّض الهاتف لمخاطر أمنية ويلغي ضمان الجهاز.</p>
+
+                        <p>أما اليوم، فيتيح نظام أندرويد الحديث إنشاء <strong>بوابة تصفية محلية داخل الجهاز (Local Loopback Interface)</strong>. عندما تستخدم جداراً نارياً محلياً مثل <strong>سور نت (Soor Net)</strong>، يحدث التالي:</p>
+
+                        <div class="step-grid">
+                            <div class="step-card">
+                                <div class="step-num">1</div>
+                                <h3>معالجة محلية 100% على الجهاز</h3>
+                                <p>تُفحص طلبات الاتصال الصادرة من التطبيقات داخل معالج هاتفك مباشرةً لتطبيق قواعد السماح أو المنع التي اخترتها، دون أن تغادر بياناتك جهازك.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">2</div>
+                                <h3>بدون خوادم وسيطة (Not a Remote VPN)</h3>
+                                <p>على عكس خدمات الـ VPN التجارية التي توجه حركتك لدول أخرى، لا يرسل الجدار الناري المحلي بياناتك إلى أي سيرفر خارجي ولا يغيّر عنوان IP الخاص بك.</p>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-num">3</div>
+                                <h3>الحفاظ على التشفير الآمن</h3>
+                                <p>لا يقوم الجدار الناري بفك تشفير اتصالاتك الآمنة (<code>HTTPS/TLS</code>) ولا يثبت شهادات خارجية، مما يضمن بقاء تطبيقاتك البنكية ومحادثاتك مشفرة بالكامل.</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info" style="border-right: 5px solid #0052cc; background: #f8fafc; padding: 16px 20px; border-radius: 10px; margin: 24px 0;">
+                            <strong><i class="fa-solid fa-circle-info" style="color: #0052cc;"></i> لماذا تظهر أيقونة المفتاح في شريط إشعارات أندرويد؟</strong>
+                            <br>يعرض نظام أندرويد تلقائياً رمز «المفتاح» الصغير في أعلى الشاشة كلما عملت بوابة توجيه الشبكة في النظام. في تطبيق سور نت، تعني هذه الأيقونة أن <strong>بوابة الفلترة المحلية داخل هاتفك نشطة</strong>، وليس أن هاتفك متصل بخادم خارجي بعيد.
+                        </div>
+
+                        <h2 id="why-control-app-access">2. لماذا تحتاج إلى التحكم في وصول التطبيقات إلى الإنترنت؟</h2>
+                        <p>ترك جميع التطبيقات متصلة بالإنترنت بلا قيود يؤدي إلى ثلاث مشكلات رئيسية يواجهها المستخدمون يومياً، لا سيما مستخدمو الباقات المحدودة:</p>
+
+                        <ul>
+                            <li><strong>1. استنزاف باقات الواي فاي المنزلي وبيانات الشريحة:</strong> عند اتصال هاتفك بشبكة المودم المنزلي (مثل مودم يمن فورجي 4G)، يفترض نظام الهاتف أن الشبكة غير محدودة، فتبدأ عشرات التطبيقات والألعاب بتحميل ملفات موارد إضافية ومقاطع فيديو تمهيدية ومزامنة بيانات في الخلفية، مما يؤدي لنفاد الباقة الشهرية بسرعة كبيرة.</li>
+                            <li><strong>2. استهلاك البطارية وموارد المعالج في الخلفية:</strong> كل اتصال شبكي تجريه التطبيقات غير المستخدمة في الخلفية يتطلب تنشيط شريحة الاتصال اللاسلكي والمعالج، وهو ما يفسر نفاد شحن البطارية حتى أثناء قفل شاشة الهاتف.</li>
+                            <li><strong>3. تعزيز الخصوصية وتقليل مشاركة بيانات الاستخدام:</strong> هناك تطبيقات خدمية بسيطة (مثل تطبيقات الكشاف، الآلة الحاسبة، الماسح الضوئي، أو معارض الصور) لا تحتاج للإنترنت إطلاقاً، ومنعها من الاتصال يضمن بقاء كافة الملفات التي تتعامل معها داخل هاتفك فقط. (راجع أيضاً: <a href="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide">مخاطر البيانات الوصفية EXIF في الصور وكيفية حمايتها</a>).</li>
+                        </ul>
+
+                        <h2 id="android-settings-vs-firewall">3. مقارنة: إعدادات أندرويد الافتراضية مقابل الجدار الناري المحلي</h2>
+                        <p>يوفر نظام أندرويد في إعداداته الافتراضية ميزة «موفّر البيانات» (Data Saver) وخيار «تقييد بيانات الخلفية»، لكن هذه الخيارات مصممة أساساً لتقليل استهلاك بيانات الشريحة الخلوية فقط، ولا تمنحك عزلاً كاملاً عبر شبكة الواي فاي. يوضح الجدول التالي الفروقات الجوهرية:</p>
+
+                        <div class="comp-table-wrap">
+                            <table class="comp-table">
+                                <thead>
+                                    <tr>
+                                        <th>معيار المقارنة</th>
+                                        <th>إعدادات أندرويد الافتراضية (Data Saver)</th>
+                                        <th>الجدار الناري المحلي (تطبيق سور نت)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>إيقاف الإنترنت عن التطبيق أثناء فتحه</strong></td>
+                                        <td><span class="badge-no"><i class="fa-solid fa-xmark"></i> غير مدعوم في معظم الواجهات</span></td>
+                                        <td><span class="badge-yes"><i class="fa-solid fa-check"></i> إيقاف كامل بضغطة زر</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>تطبيق القواعد على شبكة الواي فاي (Wi-Fi)</strong></td>
+                                        <td><span class="badge-partial"><i class="fa-solid fa-triangle-exclamation"></i> يقيّد الخلفية جزئياً فقط</span></td>
+                                        <td><span class="badge-yes"><i class="fa-solid fa-check"></i> تحكم مستقل لكل تطبيق على الواي فاي</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>فصل قواعد الواي فاي عن بيانات الشريحة</strong></td>
+                                        <td><span class="badge-no"><i class="fa-solid fa-xmark"></i> غير متاح</span></td>
+                                        <td><span class="badge-yes"><i class="fa-solid fa-check"></i> قواعد منفصلة لـ Wi-Fi و Mobile Data</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>إيقاف الإنترنت تلقائياً عند قفل الشاشة</strong></td>
+                                        <td><span class="badge-no"><i class="fa-solid fa-xmark"></i> غير متاح</span></td>
+                                        <td><span class="badge-yes"><i class="fa-solid fa-check"></i> مدعوم مع استثناء تطبيقات المراسلة</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>عرض سجل نشاط الشبكة والنطاقات</strong></td>
+                                        <td><span class="badge-no"><i class="fa-solid fa-xmark"></i> يعرض حجم الاستهلاك الإجمالي فقط</span></td>
+                                        <td><span class="badge-yes"><i class="fa-solid fa-check"></i> سجل فوري للاتصالات وحصص الاستهلاك</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="app-cta-banner">
+                            <div class="app-cta-info">
+                                <img src="https://connecttag.org/company/projects/apps/soor-net/assets/img/soor-net-app.webp?v=1.1.48" alt="أيقونة تطبيق سور نت للأندرويد" width="72" height="72" loading="lazy">
+                                <div class="app-cta-text">
+                                    <h3>تطبيق سور نت (Soor Net) للأندرويد</h3>
+                                    <p>جدار حماية محلي بدون روت للتحكم في وصول التطبيقات إلى شبكات الواي فاي وبيانات الهاتف، وترشيد استهلاك الباقات بمعالجة محلية 100% وخالٍ من الإعلانات.</p>
+                                </div>
+                            </div>
+                            <div class="app-cta-actions">
+                                <a href="https://play.google.com/store/apps/details?id=org.connecttag.soornet" target="_blank" rel="noopener" class="btn-play-dl">
+                                    <i class="fa-brands fa-google-play"></i> تحميل من Google Play
+                                </a>
+                                <a href="https://connecttag.org/company/projects/apps/soor-net/" class="btn-app-page">
+                                    <i class="fa-solid fa-circle-info"></i> صفحة التطبيق الرسمية
+                                </a>
+                            </div>
+                        </div>
+
+                        <h2 id="soor-net-features-guide">4. شرح إدارة اتصال التطبيقات خطوة بخطوة عبر تطبيق «سور نت»</h2>
+                        <p>صُمم <a href="https://connecttag.org/company/projects/apps/soor-net/">تطبيق سور نت</a> ليمنح المستخدم العادي والمختص واجهة عربية واضحة للتحكم في صلاحيات الشبكة دون تعقيد. إليك أهم الإعدادات العملية التي يمكنك ضبطها فور تثبيت التطبيق:</p>
+
+                        <h3>أولاً: تخصيص قواعد الواي فاي (Wi-Fi) وبيانات الهاتف (Mobile Data) لكل تطبيق</h3>
+                        <p>من تبويب <strong>«التطبيقات»</strong> في سور نت، تظهر لك قائمة بجميع التطبيقات المثبتة على هاتفك، وبجانب كل تطبيق أيقونتان مستقلتان:</p>
+                        <ul>
+                            <li><strong>أيقونة الواي فاي (Wi-Fi):</strong> تتحكم في السماح للتطبيق بالاتصال بالإنترنت أو منعه أثناء اتصالك بشبكة المودم اللاسلكي.</li>
+                            <li><strong>أيقونة بيانات الهاتف (Mobile Data):</strong> تتحكم في السماح للتطبيق بالاتصال أو منعه أثناء تشغيل بيانات الشريحة الخلوية.</li>
+                        </ul>
+
+                        <div class="screenshots-duo">
+                            <figure class="screenshot-figure">
+                                <img src="https://connecttag.org/company/projects/apps/soor-net/assets/screenshots/02.webp" alt="الشاشة الرئيسية ودرع الحماية المحلي في تطبيق سور نت" loading="lazy" width="904" height="2069">
+                                <figcaption>الشاشة الرئيسية وتفعيل درع التصفية المحلي بضغطة واحدة</figcaption>
+                            </figure>
+                            <figure class="screenshot-figure">
+                                <img src="https://connecttag.org/company/projects/apps/soor-net/assets/screenshots/03.webp" alt="إدارة اتصال التطبيقات بشبكات الواي فاي وبيانات الهاتف في سور نت" loading="lazy" width="904" height="2062">
+                                <figcaption>تخصيص صلاحيات الواي فاي وبيانات الهاتف لكل تطبيق بشكل مستقل</figcaption>
+                            </figure>
+                        </div>
+
+                        <h3>ثانياً: أوضاع التشغيل المرنة وقفل الشاشة</h3>
+                        <p>لتسهيل إدارة عشرات التطبيقات دفعة واحدة، يوفر التطبيق قواعد تحكم متقدمة تشمل:</p>
+                        <div class="method-box">
+                            <ul>
+                                <li><strong>حظر الاتصال عند قفل الشاشة:</strong> يمكنك ضبط التطبيقات الثانوية بحيث يُسمح لها بالاتصال بالإنترنت أثناء استخدامك الفعلي لها فقط، ويُقطع عنها الاتصال فور إغلاق شاشة الهاتف لتوفير الرصيد والبطارية.</li>
+                                <li><strong>استثناء التطبيقات الأساسية:</strong> وضع تطبيقات المراسلة الفورية (مثل واتساب وتليجرام) وتطبيقات البريد والعمل ضمن قائمة الاستثناءات الموثوقة ليظل اتصالها متاحاً دائماً.</li>
+                                <li><strong>الإيقاف المؤقت المجدول (Snooze):</strong> إمكانية منح تطبيق معين صلاحية اتصال مؤقتة (مثلاً لمدة 15 دقيقة لتحديث بياناته أو تنزيل ملف) ثم يعود الجدار الناري لتطبيق قاعدة المنع تلقائياً بعد انتهاء المهلة.</li>
+                            </ul>
+                        </div>
+
+                        <h2 id="network-logs-diagnostics">5. مراجعة سجل نشاط الشبكة وأدوات التشخيص المدمجة</h2>
+                        <p>إلى جانب التحكم بصلاحيات الاتصال، يزودك تطبيق سور نت بلوحة معلومات شفافة تساعدك على فهم كيفية استهلاك باقتك وتشخيص أي بطء في الاتصال:</p>
+
+                        <div class="screenshots-duo">
+                            <figure class="screenshot-figure">
+                                <img src="https://connecttag.org/company/projects/apps/soor-net/assets/screenshots/06.webp" alt="إعدادات التحكم المتقدم وتخصيص القواعد لكل تطبيق في سور نت" loading="lazy" width="904" height="2066">
+                                <figcaption>بطاقة التحكم المتقدم وتخصيص القواعد التفصيلية لكل تطبيق</figcaption>
+                            </figure>
+                            <figure class="screenshot-figure">
+                                <img src="https://connecttag.org/company/projects/apps/soor-net/assets/screenshots/07.webp" alt="تحليل النطاقات وسجل نشاط الشبكة المحلي في تطبيق سور نت" loading="lazy" width="904" height="2049">
+                                <figcaption>إحصائيات النطاقات وسجل نشاط الشبكة المحفوظ محلياً على الجهاز</figcaption>
+                            </figure>
+                        </div>
+
+                        <ul>
+                            <li><strong>سجل نشاط الشبكة المحلي:</strong> يعرض لك التطبيق قائمة بطلبات الاتصال التي أجرتها التطبيقات على هاتفك مع توضيح اسم التطبيق، اسم النطاق الوجهة، ووقت الاتصال، وتُحفظ هذه السجلات محلياً داخل مساحة التخزين المعزولة للتطبيق على جهازك فقط.</li>
+                            <li><strong>مراقبة حصص الاستهلاك (Data Quotas):</strong> معرفة أكثر التطبيقات استهلاكاً للميجابايت والجيجابايت يومياً وشهرياً، مما يسهّل عليك اكتشاف التطبيق الذي يستنزف باقة <a href="https://connecttag.org/blog/yemen-4g-app-balance-modem-guide">يمن فورجي</a> أو باقة هاتفك.</li>
+                            <li><strong>أدوات تشخيص الشبكة الاختيارية:</strong> يضم التطبيق أدوات تقنية مدمجة لفحص استقرار الشبكة مثل أداة قياس زمن الاستجابة (<code>Ping</code>)، تتبع مسار الاتصال (<code>Traceroute</code>)، وفحص استجابة خوادم أسماء النطاقات (<code>DNS Lookup</code>) لتشخيص أعطال الشبكة المنزلية بسهولة.</li>
+                        </ul>
+
+                        <h2 id="best-practices">6. أفضل الممارسات لضبط قواعد الجدار الناري دون تعطيل الإشعارات</h2>
+                        <p>للحصول على أفضل توازن بين توفير باقة الإنترنت والحفاظ على سلاسة استخدام هاتفك اليومي، ننصح باتباع القواعد الأربع التالية عند إعداد الجدار الناري لأول مرة:</p>
+
+                        <div class="method-box" style="background: #f0fdf4; border-right-color: #16a34a;">
+                            <ol style="margin-bottom: 0; padding-right: 18px; line-height: 1.9;">
+                                <li><strong>ابدأ بمنع التطبيقات غير الشبكية أولاً:</strong> قم بإيقاف الواي فاي وبيانات الهاتف عن الألعاب التي تعمل بدون إنترنت، تطبيقات تعديل الصور والمونتاج، تطبيقات الملاحظات المحلية، والآلات الحاسبة.</li>
+                                <li><strong>لا تحظر خدمات النظام الأساسية:</strong> تجنب حظر خدمات النظام المسؤولة عن دفع الإشعارات الفورية لضمان وصول إشعارات الرسائل والمكالمات في وقتها دون تأخير.</li>
+                                <li><strong>استخدم قاعدة «الواي فاي فقط» للتطبيقات الثقيلة:</strong> اسمح لتطبيقات المتاجر والتخزين السحابي ومشاهدة الفيديو بالاتصال عبر الواي فاي فقط (مع إيقاف التحديث التلقائي من داخلها)، وامنعها من استخدام بيانات الشريحة الخلوية.</li>
+                                <li><strong>ادمج الجدار الناري مع تأمين المودم المنزلي:</strong> لحماية باقتك المنزلية من جميع الجوانب، استخدم سور نت لترشيد استهلاك هاتفك، وراجع دليل <a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">ضبط إعدادات مودم يمن فورجي وتغيير كلمة السر</a> لمنع المتطفلين من مشاركتك في الشبكة.</li>
+                            </ol>
+                        </div>
+
+                        <div class="ct-editorial-references" style="background: #fffbeb; border: 1px solid #fde68a; border-right: 5px solid #d97706; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                            <h3 style="margin-top: 0; font-size: 1.15rem; color: #92400e; font-weight: 800;"><i class="fa-solid fa-shield-check" style="color: #d97706;" aria-hidden="true"></i> المراجع الرسمية ووثائق الأمان والخصوصية</h3>
+                            <p style="font-size: 0.94rem; color: #451a03; margin-bottom: 14px; line-height: 1.75;">أُعد هذا الدليل وفق معايير هندسة أمن الشبكات وشفافية معالجة البيانات المحلية على أجهزة أندرويد. يمكنك مراجعة صفحات التطبيق والوثائق ذات الصلة عبر الروابط التالية:</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 style="font-size: 0.95rem; font-weight: 800; color: #78350f; margin-bottom: 8px;"><i class="fa-solid fa-mobile-screen-button" style="color: #d97706;" aria-hidden="true"></i> صفحات تطبيق سور نت الرسمية:</h4>
+                                    <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                                        <li><a href="https://connecttag.org/company/projects/apps/soor-net/" style="font-weight:700; color:#0052cc;">صفحة تطبيق سور نت (Soor Net) الرسمية في كونكت تاق</a></li>
+                                        <li><a href="https://connecttag.org/company/projects/apps/soor-net/privacy-policy" style="font-weight:700; color:#0052cc;">سياسة الخصوصية ومعايير المعالجة المحلية لتطبيق سور نت</a></li>
+                                        <li><a href="https://play.google.com/store/apps/details?id=org.connecttag.soornet" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">تحميل تطبيق سور نت من متجر Google Play <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 style="font-size: 0.95rem; font-weight: 800; color: #78350f; margin-bottom: 8px;"><i class="fa-solid fa-book-open" style="color: #d97706;" aria-hidden="true"></i> أدلة ذات صلة بإدارة الشبكة والباقات:</h4>
+                                    <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                                        <li><a href="https://connecttag.org/blog/yemen-4g-app-balance-modem-guide" style="font-weight:700; color:#0052cc;">شرح تطبيق يمن فورجي للاستعلام الذكي عن الرصيد وإدارة المودم</a></li>
+                                        <li><a href="https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide" style="font-weight:700; color:#0052cc;">دليل أمان شبكات الواي فاي العامة والحماية من اعتراض البيانات</a></li>
+                                        <li><a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide" style="font-weight:700; color:#0052cc;">ضبط إعدادات مودم يمن فورجي وحماية الرصيد من السرقة</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <section class="faq-section" id="faq">
+                            <h2>7. الأسئلة الشائعة حول الجدار الناري وتطبيق سور نت</h2>
+                            <div class="faq-item">
+                                <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يعمل الجدار الناري في أندرويد بدون صلاحيات الروت (No-Root)؟</div>
+                                <div class="faq-answer">يعمل الجدار الناري المحلي عبر إنشاء واجهة توجيه داخلية مغلقة على الهاتف نفسه استناداً إلى معمارية الشبكة الرسمية في نظام أندرويد. تمر طلبات الاتصال الصادرة من التطبيقات عبر هذه البوابة المحلية ليتم السماح لها أو إيقافها حسب القواعد التي حددتها، دون إرسال بياناتك إلى أي خادم خارجي ودون المساس بملفات النظام.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق بين الجدار الناري المحلي (مثل تطبيق سور نت) وخدمات الـ VPN التقليدية؟</div>
+                                <div class="faq-answer">خدمات الـ VPN التجارية تقوم بتوجيه حركة الإنترنت الخاصة بك إلى خوادم خارجية في دول أخرى لتغيير موقعك الجغرافي. أما الجدار الناري المحلي (سور نت) فهو أداة إدارة وتصفية محلية 100% تعمل داخل معالج هاتفك فقط للتحكم في أي تطبيق يُسمح له بالاتصال بالإنترنت، ولا يوجه بياناتك لأي خوادم وسيطة.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يساعد تطبيق سور نت في توفير استهلاك باقات يمن فورجي وبيانات الهاتف؟</div>
+                                <div class="faq-answer">يتيح لك تطبيق سور نت إيقاف وصول الإنترنت تماماً عن الألعاب وتطبيقات تحرير الصور والفيديو والأدوات التي لا تحتاج لاتصال شبكي أثناء اتصالك بشبكة الواي فاي المنزلية أو بيانات الشريحة، مما يمنعها من استهلاك الجيجابايت في المزامنة الخلفية والتحديثات غير الضرورية.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يؤثر تشغيل الجدار الناري المحلي على سرعة الإنترنت أو وصول إشعارات واتساب؟</div>
+                                <div class="faq-answer">لا يؤثر على سرعة الإنترنت لأن الفلترة تتم محلياً على جهازك دون المرور بخوادم بعيدة. كما يمكنك استثناء تطبيقات المراسلة الفورية (مثل واتساب وتليجرام) وخدمات النظام الأساسية لضمان استمرار وصول الرسائل والإشعارات بشكل فوري.</div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يقوم تطبيق سور نت بجمع بياناتي الشخصية أو الاطلاع على محتوى محادثاتي؟</div>
+                                <div class="faq-answer">كلا، يلتزم تطبيق سور نت بمبدأ عدم جمع البيانات، حيث لا يتطلب إنشاء حساب، ولا يفك تشفير اتصالات HTTPS/TLS الآمنة، وتُحفظ سجلات نشاط الشبكة التقنية محلياً داخل مساحة التخزين المعزولة على هاتفك فقط مع إمكانية مسحها في أي وقت.</div>
+                            </div>
+                        </section>
+
+                        <site-author-box name="محمد حميد" avatar="https://connecttag.org/upload/author/mohammed-hameed.webp" link="https://connecttag.org/blog/authors/mohammed-hameed"><span class="sr-only">الكاتب: محمد حميد</span></site-author-box>
+
+                        <!-- Dynamic Share Component -->
+                        <site-share-buttons></site-share-buttons>
+
+                        <!-- Related Posts Component -->
+                        <site-related-posts ids="public-wifi-hotspot-security-evil-twin-mitm-guide, yemen-4g-modem-settings-security-guide, yemen-4g-app-balance-modem-guide"></site-related-posts>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Modular Web Component: Footer -->
+    <site-footer></site-footer>
+
+</div>
+<!-- Modular Web Component: Cookie Consent -->
+<cookie-consent></cookie-consent>
+</body>
+</html>

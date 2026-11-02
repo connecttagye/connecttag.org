@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS - كونكت تاق</title>
-<meta name="description" content="دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً باستخدام w3wp.exe.">
+<title>نشر وتصحيح وحدات ISAPI DLL على خادم Microsoft IIS</title>
+<meta name="description" content="دليل هندسي خطوة بخطوة لنشر تطبيقات Delphi وC++ ISAPI DLL على خادم Microsoft IIS، ضبط صلاحيات Application Pool، وتصحيح الأخطاء عن بُعد.">
+    <meta name="author" content="عقيل محمد">
 <link rel="canonical" href="https://connecttag.org/blog/iis-isapi-deployment-guide" />
 
 <!-- OpenGraph meta -->
@@ -15,8 +16,9 @@
 <meta property="og:description" content="دليل عملي لنشر وتصحيح أخطاء مكتبات ISAPI DLL على خادم IIS 7.5 و 8.5. تعلم إعداد Application Pools، صلاحيات التنفيذ، وتتبع الأخطاء برمجياً باستخدام w3wp.exe." />
 <meta property="og:image" content="https://connecttag.org/upload/iis-isapi-guide.webp">
   <meta property="og:image:alt" content="نشر ISAPI DLL على IIS">
-  <meta property="article:published_time" content="2026-08-17T18:40:00+03:00">
-  <meta property="article:modified_time" content="2026-08-17T18:40:00+03:00">
+  <meta property="article:published_time" content="2026-08-23T18:20:00+03:00">
+  <meta property="article:modified_time" content="2026-10-20T11:45:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
   <meta property="article:section" content="استضافة وسحابيات">
 
 <!-- twitter OpenGraph meta -->
@@ -27,18 +29,18 @@
 <meta name="twitter:image" content="https://connecttag.org/upload/iis-isapi-guide.webp" />
   <meta name="twitter:image:alt" content="نشر ISAPI DLL على IIS" />
 <meta name="twitter:site" content="@connecttagye" />
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.47" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.47" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
   <link rel="preload" href="https://connecttag.org/upload/iis-isapi-guide.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.47">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.47" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.47" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
 
 <script type="application/ld+json">
 [
@@ -51,6 +53,7 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
       "url": "https://connecttag.org/blog/authors/aqeldev"
     },
     "publisher": {
@@ -61,8 +64,8 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-17T18:40:00+03:00",
-    "dateModified": "2026-08-17T18:40:00+03:00",
+    "datePublished": "2026-08-23T18:20:00+03:00",
+    "dateModified": "2026-10-20T11:45:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/iis-isapi-deployment-guide"
@@ -202,10 +205,9 @@
                 <h1>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS</h1>
 
                 <site-article-meta
-                  date="17 أغسطس 2026"
-                  updated="17 أغسطس 2026"
-                  hide-author="true"
-                ></site-article-meta>
+                  date="23 أغسطس 2026"
+                  updated="20 أكتوبر 2026"
+                ><span class="sr-only">تاريخ النشر: 23 أغسطس 2026</span></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="https://connecttag.org/upload/iis-isapi-guide.webp" class="img-responsive" alt="نشر ISAPI DLL على IIS" fetchpriority="high" width="2816" height="1536" decoding="async">
@@ -387,6 +389,26 @@
                 </div>
 
                 <p><strong>القاعدة الذهبية:</strong> إذا كان هدفك النهائي هو تشغيل خادمك كـ ISAPI، فقم بتطويره وتصحيحه كـ ISAPI منذ البداية لضمان توافق التعامل مع الذاكرة والخيوط (Threads) في بيئة IIS. كما نقدم في <strong>كونكت تاق</strong> <a href="https://connecttag.org/company/services/hosting-services">خدمات الاستضافة السحابية وإدارة الخوادم</a> لتجهيز بيئات التشغيل المؤسسية.</p>
+                <div class="ct-editorial-references" style="background: #f0f9ff; border: 1px solid #bae6fd; border-right: 5px solid #0284c7; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #0c4a6e; font-weight: 800;"><i class="fa-solid fa-clipboard-check" style="color: #0284c7;" aria-hidden="true"></i> المراجعة الفنية والمصادر المرجعية</h3>
+                    <p style="font-size: 0.94rem; color: #1e293b; margin-bottom: 14px; line-height: 1.75;">خلاصة خبرة عملية في نشر وصيانة الأنظمة المؤسسية المبنية بوحدات ISAPI DLL على خوادم Windows Server في بيئات الإنتاج.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-link" style="color: #0284c7;" aria-hidden="true"></i> خدمات وأدوات ذات صلة في كونكت تاق:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/blog/iis-hardening-guide" style="font-weight:700; color:#0052cc;" >دليل تأمين خادم Microsoft IIS ضد الهجمات السيبرانية</a></li>
+                            <li><a href="https://connecttag.org/blog/api-security-guide" style="font-weight:700; color:#0052cc;" >دليل حماية واجهات برمجة التطبيقات (API Security)</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-up-right-from-square" style="color: #0284c7;" aria-hidden="true"></i> المصادر والوثائق القياسية:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://learn.microsoft.com/en-us/iis/configuration/system.webserver/isapifilters/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">وثائق Microsoft Learn الرسمية لإعداد فلاتر وإضافات ISAPI على IIS <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://docwiki.embarcadero.com/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">توثيق Embarcadero RAD Studio لبناء تطبيقات الويب ISAPI <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>7. الأسئلة الشائعة</h2>
@@ -404,7 +426,7 @@
                     </div>
                 </section>
 
-                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="iis-hardening-guide, api-security-guide"></site-related-posts>
             </div>

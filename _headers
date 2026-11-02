@@ -31,3 +31,15 @@
 
 /404.html
   X-Robots-Tag: noindex, nofollow
+
+/AGENTS.md
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+
+/agents.md
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+
+/sync.bat
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+
+/scripts/*
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive

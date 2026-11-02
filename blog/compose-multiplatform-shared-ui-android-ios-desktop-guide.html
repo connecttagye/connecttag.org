@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل Compose Multiplatform الشامل: بناء واجهة موحدة لأندرويد وiOS</title>
+  <meta name="description" content="الدليل المعماري والتطبيقي لإطار Compose Multiplatform من JetBrains: مشاركة الواجهات والمنطق بلغة Kotlin على أندرويد وiOS وسطح المكتب والويب بأداء أصيل.">
+  <meta name="keywords" content="Compose Multiplatform, Kotlin Multiplatform, KMP, مشاركة الواجهات بين أندرويد وiOS, تطوير تطبيقات متعددة المنصات, UIKitView, Skia Engine iOS, Kotlin Wasm, Compose Resources, تطوير تطبيقات الموبايل">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="علي الرحبي">
+  <link rel="canonical" href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">
+  <meta property="og:title" content="دليل Compose Multiplatform الشامل: كيف تبني واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب؟">
+  <meta property="og:description" content="تعرف كيف غيّر Compose Multiplatform قواعد تطوير التطبيقات عبر مشاركة واجهة المستخدم والمنطق البرمجي بالكامل بلغة Kotlin على أندرويد وiOS وسطح المكتب والويب (Wasm) دون التضحية بالأداء الأصيل.">
+  <meta property="og:image" content="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="669">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="دليل Compose Multiplatform لبناء واجهات مشتركة تعمل على أندرويد وiOS وسطح المكتب والويب">
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق">
+  <meta property="og:locale" content="ar_YE">
+  <meta property="article:published_time" content="2026-11-01T11:15:00+03:00">
+  <meta property="article:modified_time" content="2026-11-02T11:50:00+03:00">
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali">
+  <meta property="article:section" content="برمجة وتطوير">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="دليل Compose Multiplatform الشامل: واجهة مستخدم واحدة لأندرويد وiOS وسطح المكتب والويب">
+  <meta name="twitter:description" content="الفرق المعماري بين مشاركة المنطق ومشاركة الواجهات بالكامل، كيف يرسم محرك Skia شاشات iOS بـ 120 إطاراً، وكيف تدمج مكونات النظام الأصلية بسلاسة.">
+  <meta name="twitter:image" content="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp">
+  <meta name="twitter:image:alt" content="دليل Compose Multiplatform لبناء واجهات مشتركة تعمل على أندرويد وiOS وسطح المكتب والويب">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "دليل Compose Multiplatform الشامل لبناء واجهات أندرويد وiOS وسطح المكتب والويب",
+    "image": [
+      "https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp"
+    ],
+    "datePublished": "2026-11-01T11:15:00+03:00",
+    "dateModified": "2026-11-02T11:50:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "محرر تقني متخصص في هندسة البرمجيات والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "description": "الدليل الهندسي والتطبيقي لبناء واجهات مستخدم مشتركة عابرة للمنصات باستخدام Compose Multiplatform وKotlin Multiplatform على أندرويد وiOS وسطح المكتب والويب.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide"
+    },
+    "articleSection": "برمجة وتطوير",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما الفرق الجوهري بين Kotlin Multiplatform (KMP) وبين Compose Multiplatform (CMP)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تقنية Kotlin Multiplatform (KMP) هي المظلة الأساسية التي تتيح مشاركة كود المنطق البرمجي (الشبكات، قواعد البيانات، القواعد التجارية) بين المنصات مع ترك الخيار للمطور في كيفية بناء الواجهة؛ بينما Compose Multiplatform (CMP) هو إطار واجهات تصريحي مبني فوق KMP يتيح لك أيضاً مشاركة شاشات وتصاميم واجهة المستخدم بنسبة تصل إلى 100% بين أندرويد وiOS وسطح المكتب والويب بنفس كود Kotlin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل تطبيقات Compose Multiplatform على نظام iOS تعمل بسلاسة 120 إطاراً في الثانية (ProMotion 120Hz)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، يعتمد Compose Multiplatform على نظام iOS على مكتبة الرسوميات Skia المدعومة مباشرة بواجهة Apple Metal العتادية، مع محاكاة دقيقة لفيزياء التمرير والارتداد الخاصة بنظام iOS ودعم معدلات التحديث العالية 120Hz على شاشات ProMotion، بالإضافة إلى ترجمة كود Kotlin مباشرة إلى كود آلة أصيل (Native ARM64 Binary) عبر مترجم Kotlin/Native."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يمكن دمج شاشات أو مكونات iOS الأصلية (مثل خرائط Apple أو الكاميرا أو SwiftUI) داخل شاشة Compose Multiplatform؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم بكل سهولة، يوفر Compose Multiplatform مكون التوافق الثنائي UIKitView وUIKitViewController الذي يتيح تضمين أي عنصر أصيل من نظام iOS (مثل MKMapView أو AVCaptureVideoPreviewLayer أو حتى شاشة SwiftUI كاملة عبر UIHostingController) مباشرة داخل شجرة عناصر Compose والعكس عبر ComposeUIViewController."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يتعامل Compose Multiplatform مع اللغة العربية واتجاه الواجهة من اليمين لليسر (RTL) والخطوط المخصصة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يوفر نظام الموارد المشتركة الرسمي (composeResources) دعماً مدمجاً لتعدد اللغات وملفات النصوص والخطوط والصور المتجهة في مجلد واحد مشترك (commonMain/composeResources)، مع دعم أصيل لاتجاه التخطيط من اليمين إلى اليسار (LayoutDirection.Rtl) عبر CompositionLocalProvider على جميع المنصات."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يعمل Compose Multiplatform for Web باستخدام تقنية WebAssembly (Kotlin/Wasm)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "بدلاً من تحويل الكود إلى JavaScript تقليدي بطيء، يترجم Kotlin/Wasm كود التطبيق والواجهات إلى بايت كود ثنائي مضغوط (WebAssembly Garbage Collection - WasmGC) يعمل داخل المتصفحات الحديثة بسرعة قريبة من التطبيقات المكتبية ويرسم الواجهة عبر HTML5 Canvas / WebGL."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "متى أختار مشاركة الواجهة بالكامل عبر Compose Multiplatform ومتى أكتفي بمشاركة المنطق وبناء واجهة SwiftUI منفصلة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يُعد Compose Multiplatform الخيار الأمثل لـ 90% من تطبيقات الأعمال، التجارة الإلكترونية، التقنية المالية، والخدمات التي تحتاج إلى هوية بصرية موحدة وسرعة إطلاق عالية بميزانية هندسية ذكية؛ بينما يُفضّل بناء واجهة SwiftUI منفصلة فقط في التطبيقات التي تعتمد كلياً على إضافات نظام iOS الخاصة مثل Widgets الشاشة الرئيسية وتطبيقات ساعة Apple Watch."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل Compose Multiplatform لبناء واجهات مشتركة",
+        "item": "https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide"
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" href="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+  <style>
+        /* CMP Architecture Comparison Showcase */
+        .cmp-arch-showcase {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border-radius: 18px;
+            padding: 28px;
+            margin: 32px 0;
+            color: #f8fafc;
+            border: 1px solid #312e81;
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
+        }
+        .cmp-arch-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 16px;
+            margin-bottom: 22px;
+        }
+        .cmp-arch-header h3 {
+            color: #ffffff !important;
+            margin: 0 0 8px 0 !important;
+            font-size: 1.28rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cmp-arch-header p {
+            color: #cbd5e1 !important;
+            margin: 0 !important;
+            font-size: 0.94rem;
+        }
+        .cmp-strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .cmp-strategy-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(129, 140, 248, 0.35);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .cmp-strategy-card.highlight-cmp {
+            border-color: #38bdf8;
+            background: rgba(15, 23, 42, 0.92);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+        .cmp-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.16);
+            color: #7dd3fc;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .cmp-strategy-card h4 {
+            color: #ffffff !important;
+            font-size: 1.06rem;
+            margin: 0 0 10px 0 !important;
+        }
+        .cmp-layer-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .cmp-layer-bar {
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .layer-native-split {
+            background: rgba(245, 158, 11, 0.18);
+            border: 1px dashed #fbbf24;
+            color: #fde68a;
+        }
+        .layer-shared-ui {
+            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            color: #ffffff;
+            border: 1px solid #7dd3fc;
+        }
+        .layer-shared-logic {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #34d399;
+            color: #a7f3d0;
+        }
+
+        /* 4-Target Pipeline Grid */
+        .cmp-targets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 26px 0;
+        }
+        .cmp-target-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #4f46e5;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+        }
+        .cmp-target-box h4 {
+            color: #1e293b !important;
+            font-size: 1.02rem;
+            margin: 0 0 8px 0 !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cmp-target-box p {
+            font-size: 0.88rem !important;
+            color: #475569 !important;
+            margin: 0 !important;
+            line-height: 1.65 !important;
+        }
+        .engine-tag {
+            display: inline-block;
+            margin-top: 10px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-family: monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            direction: ltr;
+        }
+
+        /* Code & Structure Showcase */
+        .cmp-code-panel {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin: 24px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.86rem;
+            line-height: 1.65;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+        .cmp-code-comment { color: #94a3b8; }
+        .cmp-code-kw { color: #38bdf8; font-weight: 700; }
+        .cmp-code-fn { color: #a78bfa; font-weight: 700; }
+        .cmp-code-str { color: #4ade80; }
+  </style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-932W653JW8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-932W653JW8');
+  </script>
+  <script>
+    if (typeof gtag === 'function') {
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل Compose Multiplatform الشامل", "url":"https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide"}]'></site-breadcrumb>
+                <h1>دليل Compose Multiplatform الشامل: كيف تبني واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب؟</h1>
+                <site-article-meta
+                  date="01 نوفمبر 2026"
+                  updated="02 نوفمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 01 نوفمبر 2026</span></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp" class="img-responsive" alt="دليل Compose Multiplatform لبناء واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب" fetchpriority="high" width="1200" height="669" decoding="async">
+
+                <p>لطالما واجه أصحاب المشاريع التقنية والمطورون معضلة صعبة عند بناء تطبيقات الهواتف والأجهزة الذكية: هل نبني نسختين منفصلتين تماماً (أندرويد و<code>iOS</code>) بتكلفة مضاعفة ووقت تطوير طويل؟ أم نلجأ إلى أطر عمل هجينة تجبرنا على تعلم لغة برمجة منفصلة وتضع حاجزاً بين التطبيق وبين إمكانيات النظام الأصلية؟</p>
+
+                <p>اليوم، حسمت شركة <strong>JetBrains</strong> بالتعاون مع <strong>Google</strong> هذه المعادلة عبر إطار <strong>Compose Multiplatform (CMP)</strong>؛ وهو التطور الطبيعي الذي يمكّنك من كتابة <strong>واجهة المستخدم التفاعلية والمنطق البرمجي معاً مرة واحدة بلغة Kotlin</strong>، وتشغيلها بأداء أصيل (<code>Native Performance</code>) على أربعة أنظمة رئيسية: <strong>أندرويد (Android)، آيفون وآيباد (iOS)، أجهزة سطح المكتب (Windows / macOS / Linux)، ومتصفحات الويب عبر تقنية WebAssembly (Wasm)</strong>.</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-layer-group"></i> ماذا ستتعلم في هذا الدليل الهندسي والعملي؟</div>
+                    <ul class="summary-list">
+                        <li><strong>حرية القرار المعماري:</strong> الفرق الدقيق بين مشاركة المنطق فقط (<code>KMP Shared Logic</code>) وبين مشاركة الواجهة بالكامل (<code>Compose Multiplatform 100% Shared UI</code>) ومتى تختار كلاً منهما.</li>
+                        <li><strong>سر الأداء الأصيل على iOS:</strong> كيف يترجم <code>Kotlin/Native</code> الكود إلى ثنائيات معالج آبل مباشرة، وكيف يرسم محرك الرسوميات <code>Skia</code> فوق <code>Apple Metal</code> واجهات بسرعة 120 إطاراً في الثانية.</li>
+                        <li><strong>التكامل بلا حدود (Native Interop):</strong> كيف تدمج مكونات <code>iOS</code> الأصلية (مثل الخرائط والكاميرا و<code>SwiftUI</code>) داخل شاشة Compose عبر <code>UIKitView</code> دون كتابة جسور معقدة.</li>
+                        <li><strong>إدارة الموارد وتعدد اللغات (RTL):</strong> كيف توحّد الخطوط العربية، الأيقونات المتجهة، النصوص المترجمة، وإدارة حالة الشاشات (<code>ViewModel</code>) في مجلد واحد مشترك.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> فهرس الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#kmp-vs-cmp-architecture">أولاً: الفرق المعماري بين مشاركة المنطق (KMP) ومشاركة الواجهات بالكامل (Compose Multiplatform)</a></li>
+                        <li><a href="#how-cmp-renders-four-platforms">ثانياً: كيف يعمل محرك الرسم عبر المنصات الأربع؟ (سر سلاسة 120Hz على iOS)</a></li>
+                        <li><a href="#uikitview-native-interop">ثالثاً: دمج المكونات الأصلية لنظام iOS داخل شاشة Compose عبر UIKitView</a></li>
+                        <li><a href="#shared-resources-viewmodel-rtl">رابعاً: إدارة الموارد المشتركة (الخطوط، اللغات RTL/LTR) والـ ViewModel الموحد</a></li>
+                        <li><a href="#decision-matrix">خامساً: مصفوفة المقارنة واتخاذ القرار الهندسي لمشروعك القادم</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول Compose Multiplatform</a></li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="kmp-vs-cmp-architecture">أولاً: الفرق المعماري بين مشاركة المنطق (KMP) ومشاركة الواجهات بالكامل (Compose Multiplatform)</h2>
+                <p>كثيراً ما يخلط المبتدئون وأصحاب المنتجات بين مصطلحَي <strong>Kotlin Multiplatform (KMP)</strong> و<strong>Compose Multiplatform (CMP)</strong>، والحقيقة أنهما يكملان بعضهما في منظومة واحدة تمنحك مرونة لا يوفرها أي إطار آخر في العالم:</p>
+
+                <!-- مخطط معماري مقارن بين النهجين -->
+                <div class="cmp-arch-showcase">
+                    <div class="cmp-arch-header">
+                        <h3><i class="fa-solid fa-sitemap" style="color: #38bdf8;"></i> مقارنة معمارية: مشاركة المنطق فقط مقابل مشاركة الواجهة والمنطق بالكامل</h3>
+                        <p>يمكنك اعتماد أيٍّ من النهجين أو حتى المزج بينهما شاشةً بشاشة داخل نفس المشروع:</p>
+                    </div>
+
+                    <div class="cmp-strategy-grid">
+                        <div class="cmp-strategy-card">
+                            <span class="cmp-badge" style="color:#fde68a; border-color:rgba(251,191,36,0.4); background:rgba(251,191,36,0.12);">النهج الأول · KMP + Native UI</span>
+                            <h4>مشاركة المنطق البرمجي + واجهات منفصلة</h4>
+                            <p style="font-size:0.86rem; color:#cbd5e1;">تشارك حوالي 60% إلى 70% من الكود (الاتصال بالخوادم، التشفير، التخزين المحلي، وقواعد العمل)، بينما تبني واجهة أندرويد بـ Compose وواجهة آيفون بـ SwiftUI.</p>
+                            <div class="cmp-layer-stack">
+                                <div class="cmp-layer-bar layer-native-split">واجهة Android (Compose) &nbsp;|&nbsp; واجهة iOS (SwiftUI)</div>
+                                <div class="cmp-layer-bar layer-shared-logic">منطق الأعمال المشترك (commonMain: Networking + Storage + Domain)</div>
+                            </div>
+                        </div>
+
+                        <div class="cmp-strategy-card highlight-cmp">
+                            <span class="cmp-badge">النهج الثاني · Compose Multiplatform (CMP)</span>
+                            <h4>مشاركة الواجهة والمنطق بنسبة تصل إلى 95%+</h4>
+                            <p style="font-size:0.86rem; color:#cbd5e1;">تكتب التصميم التفاعلي، الحركات البصرية، التنقل بين الشاشات، والمنطق البرمجي مرة واحدة داخل <code>commonMain</code> ليعمل فوراً على جميع الأنظمة.</p>
+                            <div class="cmp-layer-stack">
+                                <div class="cmp-layer-bar layer-shared-ui">واجهة مستخدم موحدة 100% (Compose Multiplatform Shared UI)</div>
+                                <div class="cmp-layer-bar layer-shared-logic">منطق الأعمال المشترك + ViewModel + الموارد واللغات (commonMain)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>الميزة الاستثنائية هنا هي <strong>غياب القفل المعماري (Zero Architectural Lock-in)</strong>؛ فإذا بدأت مشروعك بمشاركة الواجهة بالكامل عبر <code>Compose Multiplatform</code>، ثم احتجت في شاشة واحدة فقط (مثل شاشة الدفع عبر <code>Apple Pay</code> أو شاشة واقع معزز خاصة بـ <code>ARKit</code>) إلى استخدام واجهة آيفون الأصلية، يمكنك إدراجها فوراً دون إعادة كتابة التطبيق!</p>
+
+                <hr>
+
+                <h2 id="how-cmp-renders-four-platforms">ثانياً: كيف يعمل محرك الرسم عبر المنصات الأربع؟ (سر سلاسة 120Hz على iOS)</h2>
+                <p>السؤال الأهم الذي يطرحه كل مطور وصاحب منتج هو: <em>«كيف يظهر تطبيق Compose Multiplatform على هواتف آيفون؟ وهل يشعر المستخدم بأي بطء أو اختلاف في سلاسة التمرير؟»</em></p>
+
+                <p>يكمن الجواب في البنية التحتية الهندسية التي طورتها <strong>JetBrains</strong> تحت اسم مكتبة <strong>Skiko (Kotlin Graphics Library for Skia)</strong>:</p>
+
+                <!-- شبكة المنصات الأربع -->
+                <div class="cmp-targets-grid">
+                    <div class="cmp-target-box">
+                        <h4><i class="fa-brands fa-android" style="color: #16a34a;"></i> 1. نظام أندرويد (Android)</h4>
+                        <p>يستخدم <code>Compose Multiplatform</code> نفس حزم أندرويد الرسمية مباشرة دون أي طبقة وسيطة إضافية، مما يمنحك توافقاً وأداءً أصيلاً بنسبة 100%.</p>
+                        <span class="engine-tag">Android Canvas / RenderNode</span>
+                    </div>
+
+                    <div class="cmp-target-box" style="border-top-color: #0284c7;">
+                        <h4><i class="fa-brands fa-apple" style="color: #0f172a;"></i> 2. نظام آبل (iOS / iPadOS)</h4>
+                        <p>يُترجم كود Kotlin إلى كود آلة أصيل (<code>ARM64 Native Binary</code>)، ويرسم محرك <code>Skia</code> البيكسلات مباشرة عبر شريحة الرسوميات العتادية <strong>Apple Metal</strong> بسرعة 120 إطاراً في الثانية.</p>
+                        <span class="engine-tag">Kotlin/Native + Skia over Metal</span>
+                    </div>
+
+                    <div class="cmp-target-box" style="border-top-color: #7c3aed;">
+                        <h4><i class="fa-solid fa-desktop" style="color: #7c3aed;"></i> 3. سطح المكتب (Desktop)</h4>
+                        <p>يعمل على أنظمة <code>Windows</code> و<code>macOS</code> و<code>Linux</code> فوق آلة <code>JVM</code> مع تسريع رسومي عتادي عبر <code>DirectX 12</code> على ويندوز و<code>Metal</code> على ماك.</p>
+                        <span class="engine-tag">JVM + Skiko (DirectX / Metal / OpenGL)</span>
+                    </div>
+
+                    <div class="cmp-target-box" style="border-top-color: #ea580c;">
+                        <h4><i class="fa-solid fa-globe" style="color: #ea580c;"></i> 4. متصفحات الويب (Web Wasm)</h4>
+                        <p>يُترجم الكود إلى بايت كود ثنائي فائق السرعة عبر معيار <strong>WebAssembly (Kotlin/Wasm)</strong> ليشتغل داخل المتصفح بسرعة تقارب التطبيقات المكتبية.</p>
+                        <span class="engine-tag">Kotlin/Wasm + HTML5 Canvas / WebGL</span>
+                    </div>
+                </div>
+
+                <h3>ما الذي جعل تجربة iOS في الإصدارات الحديثة مطابقة للتطبيقات الأصلية؟</h3>
+                <ol>
+                    <li><strong>فيزياء التمرير والارتداد المطابقة لنظام iOS (Cupertino Scroll Physics):</strong> يتعرف المحرك تلقائياً على كونه يعمل على جهاز آيفون، فيطبق معادلات التسارع والتباطؤ والارتداد المطاطي (<code>Overscroll Bounce</code>) الخاصة بنظام <code>iOS</code> في جميع القوائم دون أي إعداد يدوي.</li>
+                    <li><strong>دعم شاشات ProMotion بتردد 120Hz:</strong> يدعم المحرك جدولة الإطارات الديناميكية (<code>CADisplayLink</code>) ليمنح المستخدم سلاسة فائقة أثناء التمرير السريع والرسوم المتحركة.</li>
+                    <li><strong>إيماءات الرجوع وحافظة النصوص الأصلية:</strong> يدعم السحب من حافة الشاشة للرجوع للخلف (<code>Swipe-to-go-back gesture</code>)، بالإضافة إلى قوائم النسخ واللصق وتحديد النصوص الخاصة بنظام <code>iOS</code>.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="uikitview-native-interop">ثالثاً: دمج المكونات الأصلية لنظام iOS داخل شاشة Compose عبر UIKitView</h2>
+                <p>عند بناء تطبيق حقيقي، ستصادف حتماً حالات تحتاج فيها إلى عرض عنصر أصيل من نظام <code>iOS</code> داخل شاشتك المشتركة، مثل عرض خريطة <strong>Apple Maps (<code>MKMapView</code>)</strong>، أو معاينة عدسة الكاميرا المباشرة، أو مشغل فيديو <code>AVPlayer</code>، أو حتى مكون مبني بلغة <code>SwiftUI</code>.</p>
+
+                <p>يوفر إطار <code>Compose Multiplatform</code> واجهة برمجية ثنائية الاتجاه تجعل هذا الدمج سلساً للغاية:</p>
+                <ul>
+                    <li><strong>تضمين عنصر iOS داخل شاشة Compose:</strong> باستخدام المكون <code>UIKitView</code> أو <code>UIKitViewController</code> داخل مجلد <code>iosMain</code>.</li>
+                    <li><strong>تضمين شاشة Compose داخل تطبيق iOS أصيل:</strong> باستخدام <code>ComposeUIViewController</code> الذي يمكنك استدعاؤه من كود <code>Swift</code> أو <code>SwiftUI</code> في سطرين فقط.</li>
+                </ul>
+
+                <!-- مثال كود توضيحي لآلية expect/actual و UIKitView -->
+                <div class="cmp-code-panel" role="region" aria-label="مثال كود دمج مكون iOS داخل Compose Multiplatform">
+<span class="cmp-code-comment">// 1. في المجلد المشترك (commonMain): نعلن عن المكون المتوقع</span>
+<span class="cmp-code-kw">@Composable</span>
+<span class="cmp-code-kw">expect fun</span> <span class="cmp-code-fn">PlatformNativeMapView</span>(latitude: Double, longitude: Double, modifier: Modifier = Modifier)
+
+<span class="cmp-code-comment">// 2. في مجلد آبل (iosMain): ندمج خريطة Apple MKMapView الأصلية مباشرة داخل Compose</span>
+<span class="cmp-code-kw">@Composable</span>
+<span class="cmp-code-kw">actual fun</span> <span class="cmp-code-fn">PlatformNativeMapView</span>(latitude: Double, longitude: Double, modifier: Modifier) {
+    <span class="cmp-code-fn">UIKitView</span>(
+        factory = {
+            MKMapView().apply {
+                showsUserLocation = <span class="cmp-code-kw">true</span>
+            }
+        },
+        modifier = modifier,
+        update = { mapView -&gt;
+            <span class="cmp-code-comment">// تحديث إحداثيات الخريطة عند تغير الحالة في Compose</span>
+            <span class="cmp-code-kw">val</span> center = CLLocationCoordinate2DMake(latitude, longitude)
+            mapView.setCenterCoordinate(center, animated = <span class="cmp-code-kw">true</span>)
+        }
+    )
+}
+                </div>
+
+                <hr>
+
+                <h2 id="shared-resources-viewmodel-rtl">رابعاً: إدارة الموارد المشتركة (الخطوط، اللغات RTL/LTR) والـ ViewModel الموحد</h2>
+                <p>في السابق، كان المطورون يضطرون إلى تكرار ملفات الصور والخطوط وملفات الترجمة (<code>strings.xml</code> في أندرويد و<code>Localizable.strings</code> في آيفون) في كل منصة على حدة. أما اليوم، فيوفر نظام <strong>Compose Multiplatform Resources</strong> حلاً رسمياً موحداً بالكامل:</p>
+
+                <ol>
+                    <li><strong>مجلد موارد واحد (<code>commonMain/composeResources</code>):</strong> تضع فيه الصور المتجهة (<code>SVG / XML Vector Drawables</code>)، الخطوط العربية المخصصة (مثل خط <code>Cairo</code> أو <code>Tajawal</code> داخل <code>font/</code>)، وملفات النصوص متعددة اللغات (<code>values/strings.xml</code> و<code>values-ar/strings.xml</code>).</li>
+                    <li><strong>توليد آمن للأنواع (Type-Safe Resource Accessors):</strong> يقوم المترجم تلقائياً بتوليد كائن <code>Res</code> الذي تستدعي منه النصوص والصور في كودك المشترك عبر <code>stringResource(Res.string.welcome_title)</code> و<code>painterResource(Res.drawable.logo)</code> دون خوف من أخطاء كتابة الأسماء.</li>
+                    <li><strong>الدعم الكامل للغة العربية واتجاه RTL:</strong> يمكنك تبديل لغة التطبيق واتجاه الشاشة بالكامل بين العربية (<code>LayoutDirection.Rtl</code>) والإنجليزية (<code>LayoutDirection.Ltr</code>) لحظياً دون الحاجة لإعادة تشغيل التطبيق على أندرويد أو آيفون.</li>
+                    <li><strong>مشاركة الـ ViewModel الرسمي ودورة الحياة (Lifecycle):</strong> أصبحت مكتبات <code>androidx.lifecycle.ViewModel</code> و<code>collectAsStateWithLifecycle</code> و<code>Navigation Compose</code> تدعم العمل المشترك عبر المنصات رسمياً، مما يعني أن إدارة الحالة والتنقل بين الشاشات تُكتب مرة واحدة فقط في <code>commonMain</code>.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="decision-matrix">خامساً: مصفوفة المقارنة واتخاذ القرار الهندسي لمشروعك القادم</h2>
+                <p>يساعدك الجدول التالي في مقارنة الخيارات الثلاثة الأكثر شيوعاً لبناء التطبيقات الحديثة واختيار الأنسب لطبيعة مشروعك وميزانيتك:</p>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>معيار المقارنة</th>
+                                <th>Compose Multiplatform (مشاركة الواجهة والمنطق)</th>
+                                <th>KMP + SwiftUI (مشاركة المنطق فقط)</th>
+                                <th>التطوير المنفصل كلياً (Kotlin + Swift منفصلين)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>نسبة الكود المشترك</strong></td>
+                                <td><span style="color: #16a34a; font-weight: 700;">85% إلى 98% (المنطق + الشاشات + الموارد)</span></td>
+                                <td>55% إلى 70% (المنطق والشبكات والتخزين فقط)</td>
+                                <td>0% (كتابة وصيانة كل سطر مرتين)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>سرعة إطلاق المنتج وتحديثه</strong></td>
+                                <td><span style="color: #16a34a; font-weight: 700;">عالية جداً (ميزة واحدة تعمل على الجميع فوراً)</span></td>
+                                <td>متوسطة (يتطلب تصميم الواجهة مرتين)</td>
+                                <td>بطيئة ومكلفة (فريقان منفصلان)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الأداء وسلاسة الرسوميات</strong></td>
+                                <td><span style="color: #16a34a; font-weight: 700;">أصيل (Native ARM64 + Metal 120Hz)</span></td>
+                                <td>أصيل بالكامل 100%</td>
+                                <td>أصيل بالكامل 100%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>التكامل مع واجهات النظام والعتاد</strong></td>
+                                <td>مباشر عبر <code>expect/actual</code> و<code>UIKitView</code></td>
+                                <td>مباشر بالكامل</td>
+                                <td>مباشر بالكامل</td>
+                            </tr>
+                            <tr>
+                                <td><strong>حجم فريق التطوير المطلوب</strong></td>
+                                <td><span style="color: #16a34a; font-weight: 700;">فريق موحد يتقن لغة Kotlin</span></td>
+                                <td>مطورو Kotlin + مطورو SwiftUI</td>
+                                <td>فريق أندرويد كامل + فريق iOS كامل</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+                <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 5px solid #4f46e5; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #312e81; font-weight: 800;"><i class="fa-solid fa-code-commit" style="color: #4f46e5;" aria-hidden="true"></i> بيئة الاختبار الهندسي والوثائق الرسمية</h3>
+                    <p style="font-size: 0.94rem; color: #334155; margin-bottom: 14px; line-height: 1.75;">يستند هذا الدليل المعماري إلى خبرة الفريق الهندسي في كونكت تاق في بناء تطبيقات متعددة المنصات باستخدام Kotlin Multiplatform وCompose Multiplatform.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-cubes" style="color: #4f46e5;" aria-hidden="true"></i> أدوات وموارد للمطورين في الموقع:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/blog/kmp-vs-flutter-comparison" style="font-weight:700; color:#0052cc;" >مقارنة هندسية شاملة بين KMP و Flutter</a></li>
+                            <li><a href="https://connecttag.org/blog/kmp-data-management-room-datastore" style="font-weight:700; color:#0052cc;" >دليل إدارة وتشفير البيانات في KMP باستخدام Room وDataStore</a></li>
+                            <li><a href="https://connecttag.org/blog/jetpack-compose-guide" style="font-weight:700; color:#0052cc;" >الدليل الأساسي لبناء الواجهات التصريحية بـ Jetpack Compose</a></li>
+                            <li><a href="https://connecttag.org/company/services/web-app-development" style="font-weight:700; color:#0052cc;" >خدمة تطوير التطبيقات متعددة المنصات في كونكت تاق</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-file-code" style="color: #4f46e5;" aria-hidden="true"></i> التوثيق الرسمي (Official Docs):</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://www.jetbrains.com/lp/compose-multiplatform/" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">الموقع الرسمي لإطار عمل Compose Multiplatform من JetBrains <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-getting-started.html" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">وثائق Kotlin Multiplatform الرسمية لدمج UIKitView ومشاركة الموارد <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول Compose Multiplatform</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الفرق الجوهري بين Kotlin Multiplatform (KMP) وبين Compose Multiplatform (CMP)؟</div>
+                        <div class="faq-answer">تقنية Kotlin Multiplatform (KMP) هي المظلة الأساسية التي تتيح مشاركة كود المنطق البرمجي (الشبكات، قواعد البيانات، القواعد التجارية) بين المنصات مع ترك الخيار للمطور في كيفية بناء الواجهة؛ بينما Compose Multiplatform (CMP) هو إطار واجهات تصريحي مبني فوق KMP يتيح لك أيضاً مشاركة شاشات وتصاميم واجهة المستخدم بنسبة تصل إلى 100% بين أندرويد وiOS وسطح المكتب والويب بنفس كود Kotlin.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل تطبيقات Compose Multiplatform على نظام iOS تعمل بسلاسة 120 إطاراً في الثانية (ProMotion 120Hz)؟</div>
+                        <div class="faq-answer">نعم، يعتمد Compose Multiplatform على نظام iOS على مكتبة الرسوميات Skia المدعومة مباشرة بواجهة Apple Metal العتادية، مع محاكاة دقيقة لفيزياء التمرير والارتداد الخاصة بنظام iOS ودعم معدلات التحديث العالية 120Hz على شاشات ProMotion، بالإضافة إلى ترجمة كود Kotlin مباشرة إلى كود آلة أصيل (Native ARM64 Binary) عبر مترجم Kotlin/Native.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يمكن دمج شاشات أو مكونات iOS الأصلية (مثل خرائط Apple أو الكاميرا أو SwiftUI) داخل شاشة Compose Multiplatform؟</div>
+                        <div class="faq-answer">نعم بكل سهولة، يوفر Compose Multiplatform مكون التوافق الثنائي UIKitView وUIKitViewController الذي يتيح تضمين أي عنصر أصيل من نظام iOS (مثل MKMapView أو AVCaptureVideoPreviewLayer أو حتى شاشة SwiftUI كاملة عبر UIHostingController) مباشرة داخل شجرة عناصر Compose والعكس عبر ComposeUIViewController.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يتعامل Compose Multiplatform مع اللغة العربية واتجاه الواجهة من اليمين لليسار (RTL) والخطوط المخصصة؟</div>
+                        <div class="faq-answer">يوفر نظام الموارد المشتركة الرسمي (composeResources) دعماً مدمجاً لتعدد اللغات وملفات النصوص والخطوط والصور المتجهة في مجلد واحد مشترك (commonMain/composeResources)، مع دعم أصيل لاتجاه التخطيط من اليمين إلى اليسار (LayoutDirection.Rtl) عبر CompositionLocalProvider على جميع المنصات.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كيف يعمل Compose Multiplatform for Web باستخدام تقنية WebAssembly (Kotlin/Wasm)؟</div>
+                        <div class="faq-answer">بدلاً من تحويل الكود إلى JavaScript تقليدي بطيء، يترجم Kotlin/Wasm كود التطبيق والواجهات إلى بايت كود ثنائي مضغوط (WebAssembly Garbage Collection - WasmGC) يعمل داخل المتصفحات الحديثة بسرعة قريبة من التطبيقات المكتبية ويرسم الواجهة عبر HTML5 Canvas / WebGL.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> متى أختار مشاركة الواجهة بالكامل عبر Compose Multiplatform ومتى أكتفي بمشاركة المنطق وبناء واجهة SwiftUI منفصلة؟</div>
+                        <div class="faq-answer">يُعد Compose Multiplatform الخيار الأمثل لـ 90% من تطبيقات الأعمال، التجارة الإلكترونية، التقنية المالية، والخدمات التي تحتاج إلى هوية بصرية موحدة وسرعة إطلاق عالية بميزانية هندسية ذكية؛ بينما يُفضّل بناء واجهة SwiftUI منفصلة فقط في التطبيقات التي تعتمد كلياً على إضافات نظام iOS الخاصة مثل Widgets الشاشة الرئيسية وتطبيقات ساعة Apple Watch.</div>
+                    </div>
+                </section>
+
+                <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="kmp-vs-flutter-comparison, kmp-data-management-room-datastore, jetpack-compose-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حل تقييد عرض الإعلانات في AdSense وضبط ads.txt | كونكت تاق</title>
+  <meta name="description" content="دليل عملي لحل مشكلة تقييد عرض الإعلانات (Ad Serving Limit) في Google AdSense، حماية الحساب من النقرات غير الصالحة، وإعداد ملف ads.txt ورسالة موافقة GDPR.">
+  <meta name="keywords" content="تقييد عرض الإعلانات AdSense, Ad Serving Limit AdSense, النقرات غير الصالحة Invalid Traffic, إعداد ملف ads.txt, رسالة موافقة GDPR AdSense, Google CMP TCF v2.2, أرباح جوجل أدسنس, حماية حساب أدسنس">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="يوسف محمد">
+  <link rel="canonical" href="https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide">
+  <meta property="og:title" content="حل مشكلة «تقييد عرض الإعلانات» في Google AdSense وحماية الحساب وضبط ads.txt">
+  <meta property="og:description" content="لماذا تفرض جوجل عقوبة تقييد عرض الإعلانات على موقعك؟ خطوات عملية لمنع النقرات غير الصالحة وإعداد ملف ads.txt ورسالة موافقة الخصوصية الأوروبية GDPR.">
+  <meta property="og:image" content="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="669">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:alt" content="حل مشكلة تقييد عرض الإعلانات في Google AdSense وحماية الحساب من النقرات غير الصالحة وضبط ملف ads.txt">
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق">
+  <meta property="og:locale" content="ar_YE">
+  <meta property="article:published_time" content="2026-11-02T14:00:00+03:00">
+  <meta property="article:modified_time" content="2026-11-02T15:00:00+03:00">
+  <meta property="article:author" content="https://connecttag.org/blog/authors/yousef">
+  <meta property="article:section" content="تسويق وأعمال">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="حل مشكلة «تقييد عرض الإعلانات» في Google AdSense وحماية الحساب وضبط ads.txt">
+  <meta name="twitter:description" content="دليل عملي لرفع تقييد عرض الإعلانات في جوجل أدسنس، عزل الزيارات المشبوهة، وإعداد ملف ads.txt ورسالة موافقة المستخدمين GDPR.">
+  <meta name="twitter:image" content="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp">
+  <meta name="twitter:image:alt" content="حل مشكلة تقييد عرض الإعلانات في Google AdSense وحماية الحساب من النقرات غير الصالحة وضبط ملف ads.txt">
+
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "حل مشكلة تقييد عرض الإعلانات في Google AdSense وحماية الحساب من النقرات غير الصالحة وضبط ads.txt",
+    "image": [
+      "https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp"
+    ],
+    "datePublished": "2026-11-02T14:00:00+03:00",
+    "dateModified": "2026-11-02T15:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "يوسف محمد",
+      "jobTitle": "مختص في الإعلام الرقمي وصناعة المحتوى الاستراتيجي والحملات الإعلانية",
+      "url": "https://connecttag.org/blog/authors/yousef"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
+      }
+    },
+    "description": "دليل عملي لحل مشكلة تقييد عرض الإعلانات (Ad Serving Limit) في Google AdSense، حماية الحساب من النقرات غير الصالحة، وإعداد ملف ads.txt ورسالة موافقة GDPR.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide"
+    },
+    "articleSection": "تسويق وأعمال",
+    "inLanguage": "ar"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "كم يستغرق رفع تقييد عرض الإعلانات (Ad Serving Limit) في Google AdSense؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "وفق التوثيق الرسمي لمركز مساعدة Google AdSense، تستغرق مراجعة جودة الزيارات وتقييم مصادرها عادةً أقل من 30 يوماً، وقد تستغرق فترة أطول في بعض الحالات التي تتطلب تحليلاً أعمق لسلوك الزوار. يُرفع التقييد تلقائياً بمجرد تأكد أنظمة جوجل من سلامة حركة الزيارات دون الحاجة لتقديم طلب استئناف يدوي."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يجب حذف شفرات إعلانات AdSense من الموقع أثناء فترة تقييد الإعلانات؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، يُنصح بعدم إزالة شفرات الإعلانات بالكامل من الصفحات النظيفة التي تتلقى زيارات طبيعية من محركات البحث، لأن أنظمة AdSense تحتاج إلى استمرار تدفق طلبات الإعلانات القياسية لتقييم جودة الزيارات والتأكد من زوال النشاط غير الصالح. يكتفى بإيقاف الحملات الممولة المشبوهة ومراجعة المواضع التي تسبب نقرات عرضية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الذي يحدث لأرباح موقعي إذا لم أقم بإعداد ملف ads.txt أو رسالة موافقة GDPR؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عدم وجود ملف ads.txt صحيح في جذر النطاق يمنع المعلنين من التحقق من ملكيتك للمساحات الإعلانية مما يوقف معظم العطاءات الإعلانية. أما إهمال تفعيل رسالة موافقة الخصوصية المعتمدة (Google CMP / TCF v2.2) لزوار المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا فيؤدي إلى توقف عرض الإعلانات المخصصة لهم وهبوط العائد لكل ألف ظهور (RPM) بشكل حاد."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "حل تقييد عرض الإعلانات في AdSense وضبط ads.txt",
+        "item": "https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide"
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" href="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
+
+  <style>
+    .adsense-limit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 26px 0;
+    }
+    .adsense-limit-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-top: 4px solid #0284c7;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    .adsense-limit-card h4 {
+      color: #0f172a !important;
+      font-size: 1.02rem;
+      margin: 0 0 8px 0 !important;
+    }
+    .adsense-limit-card p {
+      color: #475569 !important;
+      font-size: 0.88rem !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+    .ads-txt-code-box {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 18px 20px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid #334155;
+    }
+  </style>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-932W653JW8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-932W653JW8');
+  </script>
+  <script>
+    if (typeof gtag === 'function') {
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="blog-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"حل تقييد عرض الإعلانات في AdSense وضبط ads.txt", "url":"https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide"}]'></site-breadcrumb>
+                <h1>حل مشكلة «تقييد عرض الإعلانات» في Google AdSense: كيف تحمي حسابك من النقرات غير الصالحة وتضبط ملف ads.txt ورسالة موافقة GDPR؟</h1>
+                <site-article-meta
+                  date="02 نوفمبر 2026"
+                  updated="02 نوفمبر 2026"
+                ><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
+
+                <hr style="margin-top: 0;">
+                <img src="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp" class="img-responsive" alt="حل مشكلة تقييد عرض الإعلانات في Google AdSense وحماية الحساب من النقرات غير الصالحة وضبط ملف ads.txt ورسالة موافقة GDPR" fetchpriority="high" width="1200" height="669" decoding="async">
+
+                <p>يمثل إشعار <strong>«تم تقييد عدد الإعلانات التي يمكنك عرضها» (Ad Serving Limit)</strong> في مركز السياسات داخل حساب <strong>Google AdSense</strong> أحد أكثر التحديات إيلاماً لأصحاب المواقع والمدونات؛ إذ يؤدي فوراً إلى اختفاء الوحدات الإعلانية عن النسبة العظمى من الزوار وتراجع العائدات اليومية إلى الصفر تقريباً.</p>
+
+                <p>في هذا الدليل المرجعي المبني على وثائق سياسات <strong>Google AdSense</strong> الرسمية ومعايير منظمة <strong>IAB Tech Lab</strong>، نشرح الأسباب التقنية الحقيقية وراء فرض هذا التقييد، والخطوات العملية لحماية موقعك من الزيارات والنقرات غير الصالحة (<code>Invalid Traffic - IVT</code>)، مع الشرح التطبيقي لإعداد ملف التفويض الرقمي <code>ads.txt</code> وتفعيل رسالة موافقة الخصوصية الأوروبية المعتمدة (<strong>Google CMP / GDPR TCF v2.2</strong>).</p>
+
+                <div class="summary-box">
+                    <div class="summary-title"><i class="fa-solid fa-shield-virus"></i> خلاصة الدليل لاستعادة استقرار إعلانات Google AdSense:</div>
+                    <ul class="summary-list">
+                        <li><strong>سببان رئيسيان للتقييد:</strong> إما وضع الحساب الجديد تحت «تقييم جودة الزيارات» عند تدفق زوار بكثافة من شبكات التواصل الاجتماعي، أو رصد «مخاوف تتعلق بالزيارات غير الصالحة» وارتفاع غير طبيعي في نسبة النقر إلى الظهور (<code>CTR</code>).</li>
+                        <li><strong>احمِ موقعك على مستوى الشبكة والتصميم:</strong> استخدم <strong>Cloudflare WAF</strong> لحجب الزيارات الآلية المشبوهة قبل تحميل الصفحة، واحجز مساحات ثابتة للإعلانات لمنع النقر بالخطأ أثناء تحميل عناصر الصفحة (<code>CLS</code>).</li>
+                        <li><strong>ملف <code>ads.txt</code> في جذر النطاق:</strong> يضمن توثيق ملكيتك للمساحات الإعلانية أمام المعلنين عبر معرّف الناشر <code>pub-XXXXXXXXXXXXXXXX</code> ومعرّف جوجل الرسمي <code>f08c47fec0942fa0</code>.</li>
+                        <li><strong>رسالة موافقة الخصوصية الأوروبية (GDPR CMP):</strong> إلزامية لجميع المواقع التي يزورها قراء من أوروبا والمملكة المتحدة وسويسرا لضمان استمرار عرض الإعلانات المخصصة وعدم انهيار الـ <code>RPM</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="toc-container">
+                    <div class="toc-title"><i class="fa-solid fa-bars-staggered"></i> محتويات الدليل:</div>
+                    <ul class="toc-list">
+                        <li><a href="#why-ad-serving-limit">أولاً: لماذا تفرض جوجل عقوبة «تقييد عرض الإعلانات» (Ad Serving Limit) على موقعك؟</a></li>
+                        <li><a href="#invalid-traffic-protection">ثانياً: خطوات حماية حساب AdSense من النقرات غير الصالحة (Invalid Traffic) والزيارات المشبوهة</a></li>
+                        <li><a href="#ads-txt-setup">ثالثاً: الشرح التطبيقي لإعداد ملف التفويض الرقمي ads.txt في جذر النطاق وحل أخطاء الزحف</a></li>
+                        <li><a href="#gdpr-cmp-consent">رابعاً: إعداد وتفعيل رسالة موافقة الخصوصية الأوروبية المعتمدة (Google CMP / GDPR TCF v2.2)</a></li>
+                        <li><a href="#recovery-roadmap">خامساً: خارطة الطريق العملية لرفع التقييد واستعادة استقرار الإعلانات</a></li>
+                        <li><a href="#faq">سادساً: الأسئلة الشائعة حول تقييد الإعلانات وحماية حسابات AdSense</a></li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2 id="why-ad-serving-limit">أولاً: لماذا تفرض جوجل عقوبة «تقييد عرض الإعلانات» (Ad Serving Limit) على موقعك؟</h2>
+                <p>يوضح التوثيق الرسمي لمركز مساعدة <strong>Google AdSense</strong> حول <strong>حدود عرض الإعلانات (Ad serving limits)</strong> أن جوجل تفرض قيداً مؤقتاً على عدد الإعلانات التي يمكن لحسابك إظهارها لحماية شبكة المعلنين من تكبّد نفقات غير مستحقة، وذلك في حالتين رئيسيتين محددتين رسمياً:</p>
+
+                <div class="adsense-limit-grid">
+                    <div class="adsense-limit-card" style="border-top-color: #f59e0b;">
+                        <h4><i class="fa-solid fa-magnifying-glass-chart" style="color: #d97706;"></i> 1. تقييم جودة الزيارات (Traffic Quality Evaluation)</h4>
+                        <p>تُفرض هذه الحالة غالباً على الحسابات أو المواقع المقبولة حديثاً، أو عند حدوث قفزة مفاجئة وكبيرة في الزيارات قادمة من منصات التواصل الاجتماعي (فيسبوك، إكس، تيك توك، تيليجرام) أو حملات إعلانية مدفوعة، حيث تحدّ جوجل من الإعلانات ريثما تتحقق من سلوك الزوار.</p>
+                    </div>
+
+                    <div class="adsense-limit-card" style="border-top-color: #dc2626;">
+                        <h4><i class="fa-solid fa-triangle-exclamation" style="color: #dc2626;"></i> 2. مخاوف الزيارات غير الصالحة (Invalid Traffic Concerns)</h4>
+                        <p>تُفرض عندما ترصد فلاتر الأمان في جوجل مؤشرات فعلية على نقرات أو مرات ظهور غير صالحة (IVT)؛ مثل ارتفاع غير طبيعي في نسبة النقر إلى الظهور (CTR)، أو نقر الناشر على إعلاناته، أو تصميم صفحات يدفع الزائر للنقر بالخطأ.</p>
+                    </div>
+                </div>
+
+                <h3>لماذا تؤدي زيارات منصات التواصل الاجتماعي المكثفة إلى تفعيل التقييد؟</h3>
+                <p>لا تحظر سياسات Google AdSense جلب الزوار من شبكات التواصل الاجتماعي أو الحملات الترويجية المشروعة، ولكن المشكلة تكمن في <strong>طبيعة تفاعل هذا الجمهور مقارنة بزوار محركات البحث (Organic Search)</strong>:</p>
+                <ul>
+                    <li><strong>ارتفاع معدل الارتداد السريع بعد النقر:</strong> الزائر القادم من رابط منشور ترويجي قد ينقر بالخطأ على وحدة إعلانية أثناء تحميل الصفحة على الهاتف ثم يغلق علامة التبويب خلال أقل من ثانيتين دون أي تفاعل مع صفحة المعلن (<code>Zero Advertiser Value</code>).</li>
+                    <li><strong>تكدس الزيارات من نطاق جغرافي أو عناوين IP متقاربة:</strong> عندما ينشر صاحب الموقع رابط مقاله في مجموعات «تبادل الزيارات والنقرات» أو يطلب من أصدقائه دعم الموقع، تسجل خوارزميات جوجل نمط نقر متكرر لا يتطابق مع الاهتمام الفعلي بالمعلن.</li>
+                    <li><strong>مواضع الإعلانات المربكة (Accidental Clicks):</strong> وضع إعلانات صورية أو متجاوبة ملاصقة لأزرار التحميل، أو قوائم التنقل، أو عدم حجز مساحة ثابتة للإعلان مما يسبب إزاحة عناصر الصفحة (<code>CLS</code>) أثناء وضع إصبع المستخدم على الشاشة.</li>
+                </ul>
+
+                <hr>
+
+                <h2 id="invalid-traffic-protection">ثانياً: خطوات حماية حساب AdSense من النقرات غير الصالحة (Invalid Traffic) والزيارات المشبوهة</h2>
+                <p>وفق سياسات برنامج AdSense الرسمية، يقع على عاتق الناشر وحده مسؤولية ضمان جودة الزيارات وتجنب أي نشاط يضخّم تكاليف المعلنين أو أرباح الناشر بصورة مصطنعة. لحماية حسابك من التقييد أو الإغلاق النهائي، طبّق الإجراءات الوقائية والتقنية التالية:</p>
+
+                <ol>
+                    <li><strong>الامتناع المطلق عن شراء الزيارات الرخيصة أو شبكات التبادل:</strong> تحذر جوجل صراحةً من التعامل مع مزودي الزيارات الذين يعدون بإرسال «آلاف الزوار بأسعار زهيدة»؛ فالأغلبية الساحقة من هذه الخدمات تعتمد على برمجيات زحف آلية (<code>Botnets</code>) أو نوافذ منبثقة إجبارية، وتُصنف فوراً ضمن <strong>الزيارات غير الصالحة المتطورة (SIVT)</strong>.</li>
+                    <li><strong>تقسيم مصادر الزيارات ومراقبة نسبة النقر (CTR) عبر Google Analytics 4:</strong> اربط حساب AdSense بخصائص <strong>GA4</strong> لمراقبة أداء الإعلانات حسب مصدر الزيارة والمنطقة الجغرافية. إذا لاحظت أن صفحة معينة تحقق نسبة نقر إلى ظهور (<code>Ad CTR</code>) تتجاوز المعدل الطبيعي بأضعاف (مثلاً قفزة مفاجئة إلى <code>15%</code>)، فافحص تلك الصفحة فوراً.</li>
+                    <li><strong>تفعيل حماية جدار التطبيقات (Cloudflare WAF &amp; Bot Fight Mode):</strong> اعترض الزيارات الآلية المشبوهة على مستوى الشبكة السحابية قبل أن تصل إلى خادم موقعك وتحمّل شفرة <code>adsbygoogle.js</code> (راجع <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">دليل قواعد الحماية في Cloudflare WAF</a>)، مع استثناء زواحف جوجل الرسمية المعتمدة (<code>Verified Bots</code>).</li>
+                    <li><strong>منع إزاحة التخطيط التراكمية (CLS) حول الوحدات الإعلانية:</strong> احجز أبعاداً دنيا واضحة لحاويات الوحدات الإعلانية عبر CSS (مثل <code>min-height: 280px;</code>) مع ترك هامش أمان لا يقل عن <code>20px</code> يفصل الإعلان عن الأزرار التفاعلية.</li>
+                </ol>
+
+                <p><strong>تنبيه مهم حول إضافات «منع النقرات المتكررة»:</strong> تجنب استخدام السكربتات أو الإضافات غير الموثوقة التي تتدخل برمجياً في إطار الإعلان (<code>&lt;iframe&gt;</code>) أو تعيد كتابة شفرة AdSense؛ لأن التلاعب بشفرة الإعلان أو تغطيتها بطبقات برمجية قد يُسجل كمخالفة لسياسة <strong>التعديل على شفرة AdSense (Modifying the AdSense ad code)</strong>.</p>
+
+                <hr>
+
+                <h2 id="ads-txt-setup">ثالثاً: الشرح التطبيقي لإعداد ملف التفويض الرقمي ads.txt في جذر النطاق وحل أخطاء الزحف</h2>
+                <p>ملف <strong><code>ads.txt</code> (Authorized Digital Sellers)</strong> هو معيار تقني رسمي أطلقته منظمة <strong>IAB Tech Lab</strong> لحماية الناشرين والمعلنين من انتحال النطاقات (<code>Domain Spoofing</code>). في Google AdSense، يؤدي غياب هذا الملف إلى ظهور تحذير أحمر: <strong>«الأرباح معرّضة للخطر - لا يحتوي ملف واحد أو أكثر من ملفات ads.txt على معرّف الناشر في AdSense»</strong>.</p>
+
+                <p>يجب أن يُرفع ملف نصي عادي بترميز <code>UTF-8</code> باسم <code>ads.txt</code> في المسار الجذري المباشر لنطاقك (<code>https://example.com/ads.txt</code>)، وأن يتضمن السطر القياسي التالي المكون من 4 حقول مفصولة بفواصل:</p>
+
+                <div class="ads-txt-code-box">google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0</div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>الحقل في ملف ads.txt</th>
+                                <th>القيمة القياسية</th>
+                                <th>الوظيفة التقنية وفق معيار IAB Tech Lab</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>الحقل الأول: اسم نطاق المنصة</strong></td>
+                                <td dir="ltr"><code>google.com</code></td>
+                                <td>يحدد النطاق القانوني لمنصة العرض الإعلاني المصرح لها ببيع المساحات.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الحقل الثاني: معرّف الناشر (Publisher ID)</strong></td>
+                                <td dir="ltr"><code>pub-XXXXXXXXXXXXXXXX</code></td>
+                                <td>معرّفك الفريد المكون من 16 رقماً بعد بادئة <code>pub-</code> (استبدل الأصفار برقمك الحقيقي من قسم الحساب &gt; معلومات الحساب).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الحقل الثالث: نوع العلاقة التجارية</strong></td>
+                                <td dir="ltr"><code>DIRECT</code></td>
+                                <td>يشير إلى أن مالك الموقع يتحكم مباشرةً في حساب AdSense هذا ولا يبيع المساحة عبر وسيط خارجي (<code>RESELLER</code>).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الحقل الرابع: معرّف هيئة الاعتماد (TAG ID)</strong></td>
+                                <td dir="ltr"><code>f08c47fec0942fa0</code></td>
+                                <td>البصمة الرسمية الثابتة لشركة Google لدى Trustworthy Accountability Group (TAG)، ولا تتغير من ناشر لآخر.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>وإذا كنت تمتلك تطبيقات للهواتف الذكية مرتبطة بحساب AdMob، فراجع دليلنا الشامل حول <a href="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">حظر مخالفات سياسات AdMob وإعداد ملف app-ads.txt للمتاجر</a>.</p>
+
+                <hr>
+
+                <h2 id="gdpr-cmp-consent">رابعاً: إعداد وتفعيل رسالة موافقة الخصوصية الأوروبية المعتمدة (Google CMP / GDPR TCF v2.2)</h2>
+                <p>بموجب <strong>سياسة موافقة المستخدمين في الاتحاد الأوروبي (EU User Consent Policy)</strong>، يُشترط على جميع الناشرين الذين يستخدمون Google AdSense ويعرضون إعلانات لزوار في <strong>المنطقة الاقتصادية الأوروبية (EEA) والمملكة المتحدة (UK) وسويسرا</strong> استخدام <strong>منصة إدارة موافقة معتمدة من جوجل (Google-certified CMP)</strong> متوافقة مع معيار <strong>IAB Europe TCF v2.2</strong>.</p>
+
+                <h3>خطوات تفعيل رسالة موافقة GDPR المجانية المدمجة داخل Google AdSense</h3>
+                <ol>
+                    <li>سجّل الدخول إلى حسابك في <strong>Google AdSense</strong>، وانتقل من القائمة الجانبية إلى <strong>الخصوصية والمراسلة (Privacy &amp; messaging)</strong>.</li>
+                    <li>اضغط على بطاقة <strong>اللوائح الأوروبية (European regulations / GDPR)</strong> ثم اختر <strong>إنشاء رسالة (Create message)</strong>.</li>
+                    <li>اختر موقعك الإلكتروني، وأضف <strong>رابط صفحة سياسة الخصوصية</strong> الخاصة بموقعك وشعار الموقع.</li>
+                    <li>فعّل خيارات <strong>«الموافقة» (Consent)</strong> و<strong>«إدارة الخيارات» (Manage options)</strong> وخيار <strong>«عدم الموافقة» (Do not consent)</strong>، ثم اضغط على <strong>نشر (Publish)</strong>؛ ستقوم شفرة AdSense بإظهار الرسالة تلقائياً فقط للزوار القادمين من دول الاتحاد الأوروبي والمملكة المتحدة وسويسرا.</li>
+                </ol>
+
+                <hr>
+
+                <h2 id="recovery-roadmap">خامساً: خارطة الطريق العملية لرفع التقييد واستعادة استقرار الإعلانات</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>مرحلة المعالجة</th>
+                                <th>الإجراء التنفيذي المطلوب</th>
+                                <th>الأثر التقني على مراجعة AdSense</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. إيقاف الزيارات الترويجية المشبوهة</strong></td>
+                                <td>أوقف أي حملات ممولة رخيصة أو مشاركة مكثفة للروابط في مجموعات التواصل، واعتمد على زيارات محركات البحث الطبيعية (Organic Search).</td>
+                                <td>خفض نسبة الارتداد والنقرات العشوائية، وتزويد خوارزميات جوجل بإشارات تفاعل عالية الجودة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. مراجعة مواضع الإعلانات والـ Auto Ads</strong></td>
+                                <td>قلّل كثافة الإعلانات التلقائية (Ad Load) في إعدادات AdSense، وأبعد الوحدات اليدوية عن القوائم المنسدلة وأزرار التنقل.</td>
+                                <td>القضاء التام على النقرات العرضية غير المقصودة (Accidental Clicks) التي ترفع الـ CTR بصورة مريبة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. الإبقاء على شفرة AdSense في الصفحات النظيفة</strong></td>
+                                <td>لا تحذف كود <code>adsbygoogle.js</code> من الموقع بالكامل؛ بل اتركه يعمل على الصفحات التي تتلقى زيارات بحثية طبيعية.</td>
+                                <td>تحتاج أنظمة جوجل إلى استمرار وصول طلبات الإعلانات لتقييم جودة الزيارات الجديدة ورفع التقييد تلقائياً.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. التحقق من سلامة ads.txt ورسالة GDPR</strong></td>
+                                <td>تأكد من ظهور حالة «مفوَّض» (Authorized) لملف <code>ads.txt</code> وتفعيل رسالة موافقة الخصوصية الأوروبية في لوحة التحكم.</td>
+                                <td>ضمان جاهزية الحساب لاستقبال عروض المعلنين بأعلى عائد ممكن فور رفع التقييد.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+
+                <section class="faq-section" id="faq">
+                    <h2>سادساً: الأسئلة الشائعة حول تقييد الإعلانات وحماية حسابات AdSense</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> كم يستغرق رفع تقييد عرض الإعلانات (Ad Serving Limit) في Google AdSense؟</div>
+                        <div class="faq-answer">وفق التوثيق الرسمي لمركز مساعدة Google AdSense، تستغرق مراجعة جودة الزيارات وتقييم مصادرها عادةً أقل من 30 يوماً، وقد تستغرق فترة أطول في بعض الحالات التي تتطلب تحليلاً أعمق لسلوك الزوار. يُرفع التقييد تلقائياً بمجرد تأكد أنظمة جوجل من سلامة حركة الزيارات دون الحاجة لتقديم طلب استئناف يدوي.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> هل يجب حذف شفرات إعلانات AdSense من الموقع أثناء فترة تقييد الإعلانات؟</div>
+                        <div class="faq-answer">لا، يُنصح بعدم إزالة شفرات الإعلانات بالكامل من الصفحات النظيفة التي تتلقى زيارات طبيعية من محركات البحث، لأن أنظمة AdSense تحتاج إلى استمرار تدفق طلبات الإعلانات القياسية لتقييم جودة الزيارات والتأكد من زوال النشاط غير الصالح. يكتفى بإيقاف الحملات الممولة المشبوهة ومراجعة المواضع التي تسبب نقرات عرضية.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question"><i class="fa-solid fa-circle-question"></i> ما الذي يحدث لأرباح موقعي إذا لم أقم بإعداد ملف ads.txt أو رسالة موافقة GDPR؟</div>
+                        <div class="faq-answer">عدم وجود ملف ads.txt صحيح في جذر النطاق يمنع المعلنين من التحقق من ملكيتك للمساحات الإعلانية مما يوقف معظم العطاءات الإعلانية. أما إهمال تفعيل رسالة موافقة الخصوصية المعتمدة (Google CMP / TCF v2.2) لزوار المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا فيؤدي إلى توقف عرض الإعلانات المخصصة لهم وهبوط العائد لكل ألف ظهور (RPM) بشكل حاد.</div>
+                    </div>
+                </section>
+
+                <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0284c7; border-radius: 12px; padding: 22px 24px; margin: 32px 0; font-size: 0.95rem; line-height: 1.8;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #0f172a; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-book-open" style="color: #0284c7;" aria-hidden="true"></i> المصادر والوثائق الرسمية المعتمدة</h3>
+                    <p style="margin-bottom: 12px; color: #334155;">تم تدقيق جميع الإجراءات والسياسات الواردة في هذا الدليل بواسطة فريق الإعلام الرقمي والشبكات الإعلانية في <strong>كونكت تاق</strong> بالاستناد إلى الوثائق الرسمية المحدثة لكل من Google AdSense ومنظمة IAB Tech Lab:</p>
+                    <ul style="margin: 0; padding-right: 20px; color: #475569;">
+                        <li><a href="https://support.google.com/adsense/answer/9437976" target="_blank" rel="noopener noreferrer">Google AdSense Help — دليل حدود عرض الإعلانات (Ad serving limits) وأسباب تقييم جودة الزيارات</a></li>
+                        <li><a href="https://support.google.com/adsense/answer/1112983" target="_blank" rel="noopener noreferrer">Google AdSense Help — كيف يمكنك المساعدة في منع الزيارات غير الصالحة (How you can help to prevent invalid traffic)</a></li>
+                        <li><a href="https://support.google.com/adsense/answer/7532444" target="_blank" rel="noopener noreferrer">Google AdSense Help — الدليل الرسمي لملف ads.txt وحل مشكلات التفويض (Ads.txt guide)</a></li>
+                        <li><a href="https://support.google.com/adsense/answer/13554116" target="_blank" rel="noopener noreferrer">Google AdSense Help — متطلبات Google الجديدة لإدارة الموافقة (CMP) لإعلانات المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا</a></li>
+                        <li><a href="https://iabtechlab.com/ads-txt/" target="_blank" rel="noopener noreferrer">IAB Tech Lab — المواصفة التقنية الرسمية لمعيار البائعين الرقميين المعتمدين (Authorized Digital Sellers - ads.txt)</a></li>
+                    </ul>
+                </aside>
+
+                <site-author-box name="يوسف محمد" avatar="https://connecttag.org/upload/author/yousef.webp" link="https://connecttag.org/blog/authors/yousef"><span class="sr-only">الكاتب: يوسف محمد</span></site-author-box>
+                <site-share-buttons></site-share-buttons>
+                <site-related-posts ids="google-adsense-approval-guide-fix-low-value-content, admob-ad-limit-policy-violations-app-ads-txt-guide, cloudflare-waf-security-guide"></site-related-posts>
+            </div>
+        </div>
+    </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

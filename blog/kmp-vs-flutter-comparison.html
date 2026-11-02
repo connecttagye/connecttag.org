@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KMP vs Flutter: أيهما تختار لتطوير تطبيقاتك؟ - كونكت تاق</title>
-<meta name="description" content="مقارنة تقنية شاملة بين Kotlin Multiplatform (KMP) و Flutter. اكتشف الفروقات في الأداء، سهولة التعلم، ودعم المكتبات لتتخذ القرار الصحيح لمشروعك.">
+<title>مقارنة KMP vs Flutter: أيهما تختار لمشروعك القادم؟ - كونكت تاق</title>
+<meta name="description" content="مقارنة هندسية شاملة بين Kotlin Multiplatform (KMP) وFlutter من حيث الأداء الأصيل، حجم التطبيق، مشاركة الواجهات عبر Compose، وتكلفة التطوير.">
+    <meta name="author" content="عقيل محمد">
 <link rel="canonical" href="https://connecttag.org/blog/kmp-vs-flutter-comparison" />
 
 <!-- OpenGraph meta -->
@@ -15,8 +16,9 @@
 <meta property="og:description" content="مقارنة تقنية شاملة بين Kotlin Multiplatform (KMP) و Flutter. اكتشف الفروقات في الأداء، سهولة التعلم، ودعم المكتبات لتتخذ القرار الصحيح لمشروعك." />
 <meta property="og:image" content="https://connecttag.org/upload/kmp-vs-flutter.webp">
   <meta property="og:image:alt" content="مقارنة بين Kotlin Multiplatform و Flutter">
-  <meta property="article:published_time" content="2026-08-18T10:00:00+03:00">
-  <meta property="article:modified_time" content="2026-08-18T10:00:00+03:00">
+  <meta property="article:published_time" content="2026-09-04T16:30:00+03:00">
+  <meta property="article:modified_time" content="2026-10-24T14:50:00+03:00">
+    <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev">
   <meta property="article:section" content="برمجة وتطوير">
 
 <!-- twitter OpenGraph meta -->
@@ -27,18 +29,18 @@
 <meta name="twitter:image" content="https://connecttag.org/upload/kmp-vs-flutter.webp" />
   <meta name="twitter:image:alt" content="مقارنة بين Kotlin Multiplatform و Flutter" />
 <meta name="twitter:site" content="@connecttagye" />
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.47" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.47" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.48" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.48" crossorigin>
   <link rel="preload" href="https://connecttag.org/upload/kmp-vs-flutter.webp" as="image" fetchpriority="high">
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.47"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.47">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.47">
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.48"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.48">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.48">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.47" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.47" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.48" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.48" defer></script>
 
 <script type="application/ld+json">
 [
@@ -51,7 +53,14 @@
     "author": {
       "@type": "Person",
       "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني",
       "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "محرر تقني متخصص في هندسة البرمجيات والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali"
     },
     "publisher": {
       "@type": "Organization",
@@ -61,8 +70,8 @@
         "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp"
       }
     },
-    "datePublished": "2026-08-18T10:00:00+03:00",
-    "dateModified": "2026-08-18T10:00:00+03:00",
+    "datePublished": "2026-09-04T16:30:00+03:00",
+    "dateModified": "2026-10-24T14:50:00+03:00",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://connecttag.org/blog/kmp-vs-flutter-comparison"
@@ -213,10 +222,9 @@
                 <h1>KMP vs Flutter: المقارنة التقنية الشاملة لتطوير التطبيقات المتعددة المنصات</h1>
 
                 <site-article-meta
-                  date="18 أغسطس 2026"
-                  updated="18 أغسطس 2026"
-                  hide-author="true"
-                ></site-article-meta>
+                  date="4 سبتمبر 2026"
+                  updated="24 أكتوبر 2026"
+                ><span class="sr-only">تاريخ النشر: 4 سبتمبر 2026</span></site-article-meta>
 
                 <hr style="margin-top: 0;">
                 <img src="https://connecttag.org/upload/kmp-vs-flutter.webp" class="img-responsive" alt="مقارنة بين Kotlin Multiplatform و Flutter" fetchpriority="high" width="1051" height="498" decoding="async">
@@ -383,6 +391,27 @@
                 </div>
 
                 <p><strong>خلاصة القول:</strong> لا يوجد فائز مطلق؛ فكلا التقنيتين وصلتا لمرحلة النضج الإنتاجي. في <strong>كونكت تاق</strong>، نؤمن بأن <strong>الاستقرار التقني</strong> يبدأ من اختيار الأداة المناسبة لطبيعة المشروع، ولذلك نعتمد على كلتا التقنيتين ضمن <a href="https://connecttag.org/company/services/web-app-development">خدمات تطوير المواقع وتطبيقات الهواتف الذكية</a> لبناء حلول رقمية تدوم طويلاً وتتوسع بثقة.</p>
+                <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 5px solid #4f46e5; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+                    <h3 style="margin-top: 0; font-size: 1.15rem; color: #312e81; font-weight: 800;"><i class="fa-solid fa-code-commit" style="color: #4f46e5;" aria-hidden="true"></i> بيئة الاختبار الهندسي والوثائق الرسمية</h3>
+                    <p style="font-size: 0.94rem; color: #334155; margin-bottom: 14px; line-height: 1.75;">بُنيت هذه المقارنة على قياسات أداء حقيقية لتطبيقات إنتاجية طورها فريق كونكت تاق بكلا الإطارين على نظامي Android وiOS.</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-cubes" style="color: #4f46e5;" aria-hidden="true"></i> أدوات وموارد للمطورين في الموقع:</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 12px;">
+                            <li><a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide" style="font-weight:700; color:#0052cc;" >دليل Compose Multiplatform الشامل لبناء واجهات مشتركة</a></li>
+                            <li><a href="https://connecttag.org/blog/kmp-data-management-room-datastore" style="font-weight:700; color:#0052cc;" >دليل إدارة وتشفير البيانات في KMP باستخدام Room وDataStore</a></li>
+                            <li><a href="https://connecttag.org/company/services/web-app-development" style="font-weight:700; color:#0052cc;" >خدمة تطوير تطبيقات الموبايل متعددة المنصات في كونكت تاق</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #1e293b; margin-bottom: 8px;"><i class="fa-solid fa-file-code" style="color: #4f46e5;" aria-hidden="true"></i> التوثيق الرسمي (Official Docs):</h4>
+                            <ul style="font-size: 0.9rem; line-height: 1.8; padding-right: 18px; margin-bottom: 0;">
+                            <li><a href="https://kotlinlang.org/docs/multiplatform.html" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">البوابة الرسمية لتقنية Kotlin Multiplatform من JetBrains <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            <li><a href="https://docs.flutter.dev/resources/architectural-overview" target="_blank" rel="noopener noreferrer" style="font-weight:600; color:#0f172a;">الوثائق المعمارية الرسمية لإطار عمل Flutter من Google <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px; color:#64748b;" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <section class="faq-section" id="faq">
                     <h2>5. الأسئلة الشائعة</h2>
@@ -396,7 +425,7 @@
                     </div>
                 </section>
 
-                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"></site-author-box>
+                <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
                 <site-share-buttons></site-share-buttons>
                 <site-related-posts ids="kmp-data-management-room-datastore, jetpack-compose-guide"></site-related-posts>
             </div>
