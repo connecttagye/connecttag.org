@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ما هو رقم IMEI في الهاتف والمودم؟ شرح فحصه عبر *#06# | كونكت تاق</title>
+<meta name="description" content="دليل هندسي وتطبيقي لفهم رقم الهوية الدولية (IMEI) في الهواتف ومودمات 4G: تشريح رمز TAC، خوارزمية Luhn، وخطوات كشف الأجهزة المجددة أو المقلدة قبل الشراء.">
+<meta name="keywords" content="ما هو رقم IMEI, فحص IMEI, كود *#06#, رمز TAC, كشف الهاتف المجدد, فحص مودم يمن فورجي أصلي, خوارزمية Luhn, فحص السيريال نمبر للهاتف, IMEI Checker, كونكت تاق">
+<meta name="author" content="علي الرحبي">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:locale" content="ar_YE" />
+<meta property="og:url" content="https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+<meta property="og:title" content="ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود *#06# وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟" />
+<meta property="og:description" content="كيف تقرأ الأرقام الـ 15 في رقم IMEI؟ شرح رمز TAC وخوارزمية التحقق Luhn، وخطوات مطابقة الرقم في النظام والعلبة ولوحة المودم لكشف الأجهزة المجددة أو المعاد تجميعها." />
+<meta property="og:image" content="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="669" />
+<meta property="og:image:type" content="image/webp" />
+<meta property="og:image:alt" content="ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز عبر رمز TAC وكود *#06#" />
+<meta property="article:published_time" content="2026-11-02T17:00:00+03:00" />
+<meta property="article:modified_time" content="2026-11-02T17:00:00+03:00" />
+<meta property="article:section" content="اتصالات وإنترنت" />
+<meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+<meta property="article:tag" content="فحص IMEI" />
+<meta property="article:tag" content="رمز TAC" />
+<meta property="article:tag" content="مودمات 4G" />
+<meta property="article:tag" content="فحص الهواتف" />
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ما هو رقم IMEI في الهاتف والمودم؟ شرح فحصه عبر *#06# وكشف الأجهزة المجددة" />
+<meta name="twitter:description" content="دليل عملي وهندسي لتشريح رقم IMEI ورمز TAC وخوارزمية Luhn، وكيف تفحص الهاتف أو مودم 4G قبل الشراء للتأكد من أنه أصلي وغير مجدد." />
+<meta name="twitter:url" content="https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide" />
+<meta name="twitter:image" content="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" />
+<meta name="twitter:image:alt" content="شرح فحص رقم IMEI ورمز TAC في الهواتف والمودمات" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:creator" content="@connecttagye" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ما هو رقم IMEI في الهاتف والمودم؟ شرح فحصه عبر *#06# وكشف الأجهزة المجددة أو المقلدة",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/what-is-imei-number-check-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-02T17:00:00+03:00",
+    "dateModified": "2026-11-02T17:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "محرر تقني وباحث في أنظمة الاتصالات والتحول الرقمي",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل هندسي وتطبيقي شامل لفهم رقم الهوية الدولية للأجهزة المتنقلة (IMEI) في الهواتف الذكية ومودمات 4G: تشريح رمز TAC، خوارزمية Luhn، وخطوات كشف الأجهزة المجددة أو المقلدة قبل الشراء.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز",
+        "item": "https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يظهر رقما IMEI (IMEI 1 و IMEI 2) عند طلب الكود *#06# في بعض الهواتف؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن كل مودم اتصال خلوي مستقل داخل الهاتف يحتاج إلى هوية تعريف دولية خاصة به على أبراج الشبكة. الهواتف التي تدعم شريحتي اتصال (Dual SIM) أو شريحة تقليدية مع شريحة إلكترونية مدمجة (eSIM) تمتلك قناتي اتصال مستقلتين، ولذلك يُخصّص لها رقما IMEI مختلفان يشتركان غالباً في أول 8 أرقام (رمز TAC) ويختلفان في الرقم التسلسلي ورقم التحقق."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أعرف رقم الـ IMEI الحقيقي في مودم يمن فورجي أو راوتر 4G لا يحتوي على شاشة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمكنك قراءة رقم الـ IMEI الفعلي المخزّن في شريحة المودم عبر الدخول إلى لوحة تحكم المودم في المتصفح (مثل 192.168.1.1 أو 192.168.8.1 أو 192.168.0.1)، ثم الانتقال إلى قسم معلومات الجهاز (Device Information / System Info)، ومطابقة الرقم الظاهر هناك مع الرقم المطبوع على الملصق الخلفي للمودم وعلى العلبة الكرتونية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين رقم IMEI والرقم التسلسلي للمصنع (Serial Number - S/N)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "رقم IMEI هو معرّف عالمي موحّد يتكون من 15 رقماً عشرياً تصدره منظمة GSMA حصرياً للأجهزة التي تحتوي على شريحة اتصال خلوية (3G/4G/5G)، بينما الرقم التسلسلي (Serial Number) هو رمز خاص بالشركة المصنعة قد يحتوي على حروف وأرقام لتتبع دفعات الإنتاج والضمان حتى للأجهزة التي لا تدعم شريحة اتصال مثل الحواسيب وأجهزة الواي فاي فقط."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ماذا يعني فشل رقم IMEI في اختبار خوارزمية Luhn أو ظهور طراز مختلف عند فحص رمز TAC؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "إذا فشل الرقم في اختبار خوارزمية Luhn فهذا يعني أن الرقم غير صالح رياضياً أو تم إدخاله/تعديله بطريقة غير قانونية. أما إذا كان الرقم صحيحاً رياضياً ولكن رمز الـ TAC (أول 8 أرقام) يُظهر طرازاً أو شركة مصنعة مختلفة عن الجهاز الذي بين يديك، فهذا دليل قاطع على أن الجهاز مقلّد أو تم التلاعب بهويته البرمجية (IMEI Spoofing / Cloning)."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.49" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.49" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.49">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.49" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.49" defer></script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#0052cc">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<site-header></site-header>
+
+<main id="main-content">
+<div class="blog-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"ما هو رقم IMEI في الهاتف والمودم وكيف تفحصه", "url":"https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide"}]'></site-breadcrumb>
+
+        <article class="blog-single-post">
+          <div class="post-header">
+            <img src="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" alt="ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز عبر رمز TAC وكود *#06#" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
+            <site-article-meta category="اتصالات وإنترنت" date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="11 دقائق"></site-article-meta>
+            <h1>ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود <code>*#06#</code> وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</h1>
+          </div>
+
+          <div class="post-content">
+            <p class="lead">عند شراء هاتف ذكي جديد أو مستعمل، أو اقتناء مودم اتصالات <code>4G LTE</code> في السوق المحلي، يكتفي معظم المشترين بفحص المظهر الخارجي للشاشة أو الهيكل البلاستيكي للمودم. غير أن المظهر الخارجي يسهل تجديده باستبدال الغطاء الخلفي (<code>Re-casing</code>) أو إعادة تغليف العلبة؛ بينما تظل البصمة الهندسية الوحيدة التي تكشف حقيقة اللوحة الأم (<code>Motherboard</code>) ومودم الاتصال الخلوي هي <strong>رقم الهوية الدولية للأجهزة المتنقلة (<code>IMEI</code>)</strong>.</p>
+
+            <p>في هذا الدليل التطبيقي، نشرح بلغة هندسية مبسطة كيف يتكوّن رقم <code>IMEI</code> من 15 رقماً وفق معايير اتحاد الاتصالات العالمي (<code>3GPP / GSMA</code>)، وما الذي يكشفه رمز تخصيص الطراز (<code>TAC</code>) وخوارزمية التحقق الرياضية (<code>Luhn Checksum</code>)، ثم نستعرض خطوات الفحص الميداني المثلث لمطابقة الرقم في النظام والهيكل والعلبة، والتطبيق العملي عبر <a href="https://connecttag.org/tools/telecom/imei-checker/"><strong>أداة فحص IMEI وTAC المجانية في كونكت تاق</strong></a>.</p>
+
+            <div class="key-takeaways-box">
+              <div class="kt-title"><i class="fa-solid fa-barcode"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="kt-list">
+                <li><strong>الهوية الفريدة للمودم الخلوي:</strong> رقم <code>IMEI</code> (International Mobile Equipment Identity) هو معرّف عالمي مكوّن من <strong>15 رقماً عشرياً</strong> يُخصّص لكل شريحة مودم خلوي (هاتف، جهاز لوحي بشريحة، مودم 4G/5G، أو ساعة ذكية تدعم الاتصال).</li>
+                <li><strong>أهمية أول 8 أرقام (<code>TAC</code>):</strong> الأرقام الثمانية الأولى تُسمى <strong>رمز تخصيص الطراز (<code>Type Allocation Code</code>)</strong>، وهي مسجلة رسمياً لدى منظمة <code>GSMA</code> وتحدد بدقة اسم الشركة المصنعة والطراز الفعلي للوحة الجهاز.</li>
+                <li><strong>الرقم الخامس عشر ليس عشوائياً:</strong> الرقم الأخير هو رقم تحقق رياضي (<code>Check Digit</code>) يُحسب بواسطة <strong>خوارزمية لوهن (<code>Luhn Algorithm</code>)</strong> لكشف أي خطأ في الإدخال أو تلاعب يدوي بالرقم.</li>
+                <li><strong>قاعدة المطابقة الثلاثية قبل الدفع:</strong> لا تشترِ أي هاتف أو مودم إلا بعد تطابق رقم الـ <code>IMEI</code> في <strong>3 مواضع</strong>: داخل النظام البرمجي (عبر <code>*#06#</code> أو لوحة المودم)، وعلى هيكل الجهاز/درج الشريحة، وعلى ملصق العلبة الخارجية.</li>
+              </ul>
+            </div>
+
+            <div class="toc-box">
+              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</h4>
+              <ul>
+                <li><a href="#section-1">1. ما هو رقم IMEI ولماذا يُعد البصمة الوراثية لكل هاتف ومودم؟</a></li>
+                <li><a href="#section-2">2. التشريح الهندسي للأرقام الـ 15: معنى رمز TAC والرقم التسلسلي SNR</a></li>
+                <li><a href="#section-3">3. كيف تعمل خوارزمية Luhn Checksum للتحقق الرياضي من صحة الرقم؟</a></li>
+                <li><a href="#section-4">4. طرق استخراج رقم IMEI في الهواتف الذكية ومودمات 4G LTE</a></li>
+                <li><a href="#section-5">5. الفحص الثلاثي: كيف تكتشف الهواتف المجددة والمودمات المعدّلة قبل الشراء؟</a></li>
+                <li><a href="#section-6">6. التطبيق العملي عبر أداة فحص IMEI وTAC في موقع كونكت تاق</a></li>
+                <li><a href="#section-7">7. الأسئلة الشائعة والمصادر التقنية المعتمدة</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. ما هو رقم IMEI ولماذا يُعد البصمة الوراثية لكل هاتف ومودم؟</h2>
+            <p>يرمز مصطلح <strong><code>IMEI</code></strong> إلى <em>International Mobile Equipment Identity</em> (الهوية الدولية للأجهزة المتنقلة)، وهو معيار قياسي معرّف في مواصفات الجيل الثالث والرابع والخامس للاتصالات (<code>3GPP TS 23.003</code>) وتُشرف على توزيعه عالمياً منظمة النظام العالمي للاتصالات المتنقلة (<strong><code>GSMA</code></strong>).</p>
+
+            <p>عندما يتصل هاتفك الذكي أو مودم الإنترنت اللاسلكي ببرج الاتصالات، يتبادل الجهاز مع الشبكة هويتين مختلفتين تماماً يجب عدم الخلط بينهما:</p>
+            <ul>
+              <li><strong>هوية المشترك (<code>IMSI</code>):</strong> وهي مخزّنة داخل شريحة الاتصال (<code>SIM Card / USIM</code>) وتعرّف رقم خطك وباقتك لدى شركة الاتصالات.</li>
+              <li><strong>هوية العتاد (<code>IMEI</code>):</strong> وهي مخزّنة في ذاكرة محمية داخل معالج الاتصالات الأساسي (<code>Baseband Processor / Modem NVRAM</code>) على اللوحة الأم للجهاز، وتعرّف الجهاز نفسه بغض النظر عن الشريحة الموضوعة بداخله.</li>
+            </ul>
+
+            <p>بفضل هذا الفصل الهندسي، تستطيع شبكات الاتصالات التعرف على نوع جهازك وتوافقه مع ترددات الشبكة (مثل ترددات <code>LTE Band 3 / Band 20 / Band 41</code> أو تقنية <code>VoLTE</code>)، كما تعتمد عليه قواعد البيانات الدولية مثل <strong>سجل هوية الأجهزة (<code>EIR - Equipment Identity Register</code>)</strong> للتحقق من شرعية الجهاز وعدم إدراجه في القوائم السوداء للأجهزة المسروقة أو المحظورة.</p>
+
+            <h2 id="section-2">2. التشريح الهندسي للأرقام الـ 15: معنى رمز TAC والرقم التسلسلي SNR</h2>
+            <p>يتكوّن رقم <code>IMEI</code> القياسي في جميع الأجهزة الحديثة المنتجة منذ عام 2004 من <strong>15 رقماً عشرياً</strong> مقسمة إلى 3 حقول هندسية دقيقة، بينما يظهر في بعض قوائم النظام إصدار موسّع من 16 رقماً يُسمى <strong><code>IMEISV</code></strong> يتضمن رقم إصدار البرمجيات (<code>SVN</code>) بدلاً من رقم التحقق الأخير.</p>
+
+            <!-- مخطط تشريحي تفاعلي لبنية رقم IMEI -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16); direction: rtl;">
+              <h4 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-microchip"></i> التشريح القياسي لرقم IMEI المكوّن من 15 رقماً (معيار 3GPP TS 23.003)
+              </h4>
+
+              <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(148,163,184,0.25); border-radius: 12px; padding: 18px; margin-bottom: 20px; text-align: center; direction: ltr; font-family: monospace;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; align-items: center;">
+                  <div style="background: rgba(56, 189, 248, 0.18); border: 2px solid #38bdf8; border-radius: 10px; padding: 10px 14px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #38bdf8; letter-spacing: 3px;">35</div>
+                    <div style="font-size: 11px; color: #bae6fd; margin-top: 4px;">RBI (2 Digits)</div>
+                  </div>
+                  <div style="background: rgba(59, 130, 246, 0.2); border: 2px solid #60a5fa; border-radius: 10px; padding: 10px 16px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #93c5fd; letter-spacing: 3px;">489110</div>
+                    <div style="font-size: 11px; color: #dbeafe; margin-top: 4px;">Model Code (6 Digits)</div>
+                  </div>
+                  <div style="background: rgba(16, 185, 129, 0.18); border: 2px solid #34d399; border-radius: 10px; padding: 10px 16px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #6ee7b7; letter-spacing: 3px;">123456</div>
+                    <div style="font-size: 11px; color: #d1fae5; margin-top: 4px;">SNR (6 Digits)</div>
+                  </div>
+                  <div style="background: rgba(245, 158, 11, 0.2); border: 2px solid #fbbf24; border-radius: 10px; padding: 10px 14px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #fde68a;">8</div>
+                    <div style="font-size: 11px; color: #fef3c7; margin-top: 4px;">Luhn CD (1)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px;">
+                <div style="background: rgba(56, 189, 248, 0.1); border-right: 4px solid #38bdf8; padding: 14px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #7dd3fc; font-size: 15px; margin-bottom: 6px;">1. رمز تخصيص الطراز (TAC) — أول 8 أرقام</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">أول رقمين هما معرّف هيئة التسجيل الدولية (<code>RBI</code> مثل <code>35</code> لبابيتي/GSMA أو <code>86</code> للصين TAF)، وتليهما 6 أرقام تحدد الشركة المصنعة والطراز الدقيق للجهاز.</p>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); border-right: 4px solid #34d399; padding: 14px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #6ee7b7; font-size: 15px; margin-bottom: 6px;">2. الرقم التسلسلي (SNR) — الأرقام 9 إلى 14</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">6 أرقام فريدة يخصصها المصنع لكل وحدة إنتاجية داخل نفس الطراز، وتسمح بتسجيل حتى مليون جهاز لكل رمز <code>TAC</code> واحد.</p>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.1); border-right: 4px solid #fbbf24; padding: 14px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #fde68a; font-size: 15px; margin-bottom: 6px;">3. رقم التحقق (CD) — الرقم 15 الأخير</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">خانة تدقيق رياضية تُحسب عبر خوارزمية <code>Luhn Mod-10</code> من الأرقام الـ 14 السابقة لضمان عدم وجود خطأ مطبعي أو تزوير عشوائي.</p>
+                </div>
+              </div>
+            </div>
+
+            <h3>ماذا تخبرك أول رقمين (معرّف هيئة الإصدار <code>RBI</code>)؟</h3>
+            <p>خلافاً للشائعة المنتشرة في المنتديات القديمة، لم تعد هناك خانة مخصصة لـ «بلد التجميع» في منتصف رقم الـ <code>IMEI</code> منذ إلغاء رمز التجميع النهائي (<code>FAC</code>) عام 2004؛ بل تشير أول خانتين (<code>Reporting Body Identifier</code>) إلى الهيئة الدولية المعتمدة من <code>GSMA</code> التي منحت ترخيص الطراز:</p>
+            <ul>
+              <li><strong><code>35</code>:</strong> رمز هيئة الموافقات البريطانية (<code>BABT</code>) التي تُصدر رموز الـ <code>TAC</code> لمعظم الشركات العالمية (مثل Apple وSamsung ومعظم الهواتف الدولية).</li>
+              <li><strong><code>86</code>:</strong> رمز منتدى الاتصالات الصيني (<code>TAF</code>)، وهو الأكثر شيوعاً في مودمات <code>4G LTE</code> (مثل أجهزة Huawei وZTE وFiberHome وGreenPacket) والهواتف المصممة في الصين (مثل Xiaomi وHonor).</li>
+              <li><strong><code>01</code>:</strong> رمز اتحاد صناعة الاتصالات اللاسلكية الأمريكي (<code>CTIA</code>)، ويظهر بكثرة في الهواتف الموجهة للسوق الأمريكي الشمالي.</li>
+            </ul>
+
+            <h2 id="section-3">3. كيف تعمل خوارزمية Luhn Checksum للتحقق الرياضي من صحة الرقم؟</h2>
+            <p>عندما يُغيّر فني صيانة غير مرخّص رقم الـ <code>IMEI</code> في مودم أو هاتف بطريقة عشوائية، أو عندما يخطئ البائع في كتابة رقم من الفاتورة، يفشل الرقم فوراً في اختبار <strong>خوارزمية لوهن (<code>Luhn Algorithm / Modulus 10</code>)</strong>، وهي نفس الخوارزمية المعيارية المستخدمة في التحقق من أرقام البطاقات المصرفية.</p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="padding: 14px; text-align: right;">الخطوة الحسابية</th>
+                    <th style="padding: 14px; text-align: right;">القاعدة الرياضية في خوارزمية Luhn</th>
+                    <th style="padding: 14px; text-align: right;">الهدف الهندسي</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">1. مضاعفة الخانات الزوجية</td>
+                    <td style="padding: 12px;">بدءاً من اليسار (الخانة 1 إلى 14)، نترك الخانات الفردية كما هي، ونضرب كل رقم في الخانات الزوجية (2، 4، 6، 8، 10، 12، 14) في العدد <code>2</code>.</td>
+                    <td style="padding: 12px;">اكتشاف أخطاء تبديل رقمين متجاورين (<code>Transposition Errors</code>).</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">2. جمع خانات الناتج المكون من رقمين</td>
+                    <td style="padding: 12px;">إذا كان ناتج المضاعفة أكبر من <code>9</code> (مثلاً $7 \times 2 = 14$)، نجمع خانتي الناتج معاً ($1 + 4 = 5$) أو نطرح منه <code>9</code>.</td>
+                    <td style="padding: 12px;">توحيد جميع القيم إلى خانة عشرية مفردة بين 0 و9.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">3. حساب المجموع الكلي والتحقق من القسمة على 10</td>
+                    <td style="padding: 12px;">نجمع الأرقام الـ 14 بعد المعالجة مع الرقم الخامس عشر (<code>Check Digit</code>)؛ ليكون الرقم صحيحاً يجب أن يقبل المجموع الكلي القسمة على <code>10</code> بدون باقٍ ($\text{Sum} \bmod 10 = 0$).</td>
+                    <td style="padding: 12px;">كشف 100% من أخطاء الخانة الواحدة ومعظم الأخطاء المزدوجة.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="alert alert-info" style="background: #f0f9ff; border-right: 4px solid #0284c7; color: #0c4a6e; border-radius: 10px; padding: 16px;">
+              <strong><i class="fa-solid fa-calculator"></i> ملاحظة تطبيقية:</strong> لا تحتاج إلى إجراء هذه العمليات يدوياً؛ إذ تقوم <a href="https://connecttag.org/tools/telecom/imei-checker/" style="color: #0369a1; font-weight: 700; text-decoration: underline;">أداة فحص IMEI في كونكت تاق</a> بتطبيق خوارزمية <code>Luhn</code> لحظياً فور كتابة الرقم وتنبيهك إذا كان الرقم غير صالح رياضياً قبل حتى مطابقته مع قاعدة بيانات الشركات المصنعة.
+            </div>
+
+            <h2 id="section-4">4. طرق استخراج رقم IMEI في الهواتف الذكية ومودمات 4G LTE</h2>
+            <p>لإجراء فحص سليم، يجب استخراج الرقم المخزّن برمجياً داخل الجهاز ومقارنته بالرقم المطبوع فيزيائياً على الهيكل:</p>
+
+            <h3>أولاً: في هواتف أندرويد وآيفون (Android &amp; iOS)</h3>
+            <ol>
+              <li><strong>عبر الكود الموحد (<code>*#06#</code>):</strong> افتح تطبيق الهاتف الرسمي واطلب الرمز <code>*#06#</code> (نجمة، مربع، صفر، ستة، مربع)؛ ستنبثق فوراً نافذة تعرض <code>IMEI 1</code> و<code>IMEI 2</code> والرقم التسلسلي <code>S/N</code> مع باركود قابل للمسح.</li>
+              <li><strong>من إعدادات النظام:</strong> في أندرويد انتقل إلى <strong>الإعدادات &gt; حول الهاتف &gt; الحالة (<code>Settings &gt; About Phone &gt; Status</code>)</strong>، وفي آيفون انتقل إلى <strong>الإعدادات &gt; عام &gt; حول (<code>Settings &gt; General &gt; About</code>)</strong>.</li>
+              <li><strong>على الهيكل الفيزيائي (بدون تشغيل الهاتف):</strong> في الهواتف الحديثة ذات البطارية المدمجة، يُحفر رقم الـ <code>IMEI</code> بالليزر بخط دقيق للغاية على <strong>حامل شريحة الاتصال (<code>SIM Tray</code>)</strong> أو أسفل الغطاء الزجاجي الخلفي.</li>
+            </ol>
+
+            <h3>ثانياً: في مودمات وراوترات يمن فورجي (4G LTE Modems &amp; MiFi)</h3>
+            <p>في أجهزة المودم المنزلية والمحمولة (التي استعرضنا مواصفاتها بالتفصيل في <a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">دليل شراء ومقارنة أفضل مودم يمن فورجي 4G</a>)، يتواجد الرقم في موضعين أساسيين يجب مطابقتهما:</p>
+            <ul>
+              <li><strong>الموضع الفيزيائي:</strong> مطبوع على الملصق السفلي للمودم المنزلي أو تحت البطارية في أجهزة الماي فاي المحمولة، بجانب بيانات الشبكة الافتراضية وعنوان الـ <code>MAC Address</code>.</li>
+              <li><strong>الموضع البرمجي الحقيقي (داخل لوحة تحكم المودم):</strong> اتصل بشبكة المودم وافتح المتصفح على عنوان الإدارة (غالباً <code>192.168.1.1</code> أو <code>192.168.8.1</code> أو <code>192.168.0.1</code>)، ثم ادخل إلى قسم <strong>معلومات الجهاز (<code>Device Information / System Status</code>)</strong> واقرأ حقل <code>IMEI</code> المسجّل في شريحة المودم.</li>
+            </ul>
+
+            <h2 id="section-5">5. الفحص الثلاثي: كيف تكتشف الهواتف المجددة والمودمات المعدّلة قبل الشراء؟</h2>
+            <p>تنتشر في الأسواق أجهزة مستعملة أو معاد تجميعها (<code>Refurbished / Re-cased</code>) تُباع على أنها جديدة أو «شبه جديدة»، وكذلك مودمات تم تغيير غلافها الخارجي أو تعديل رقم الـ <code>IMEI</code> البرمجي فيها لتشغيلها بطرق غير رسمية. لكشف هذه الحالات خلال أقل من دقيقتين، طبّق <strong>قاعدة المطابقة الثلاثية</strong> الموضحة في الجدول التالي:</p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+                <thead style="background: #1e293b; color: #fff;">
+                  <tr>
+                    <th style="padding: 14px; text-align: right;">حالة الفحص والمطابقة</th>
+                    <th style="padding: 14px; text-align: right;">ماذا تلاحظ عند الفحص؟</th>
+                    <th style="padding: 14px; text-align: right;">التشخيص الفني والقرار الصحيح</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700; color: #15803d;">1. تطابق كامل في المواضع الثلاثة + تطابق رمز TAC</td>
+                    <td style="padding: 12px;">الرقم في <code>*#06#</code> (أو صفحة المودم) يطابق درج الشريحة/الملصق ويطابق الكرتون، وأول 8 أرقام (<code>TAC</code>) تُظهر نفس الطراز الدقيق في أداة الفحص.</td>
+                    <td style="padding: 12px;"><strong>جهاز أصلي وموثوق:</strong> اللوحة الأم والهيكل والعلبة تنتمي لنفس الوحدة المصنعية الأصلية.</td>
+                  </tr>
+                  <tr style="background: #fffbeb;">
+                    <td style="padding: 12px; font-weight: 700; color: #b45309;">2. النظام يطابق رمز TAC لكن يختلف عن درج الشريحة أو الغطاء الخلفي</td>
+                    <td style="padding: 12px;">الرقم البرمجي سليم ويعود لنفس الطراز، لكن الرقم المحفور على درج الشريحة أو ظهر الجهاز مختلف.</td>
+                    <td style="padding: 12px;"><strong>جهاز مجدد أو مبدّل الهيكل (<code>Re-cased</code>):</strong> تعرّض الجهاز لصدمة أو صيانة سابقة وتم تغيير الشاسيه أو الغطاء الخلفي من جهاز آخر.</td>
+                  </tr>
+                  <tr style="background: #fef2f2;">
+                    <td style="padding: 12px; font-weight: 700; color: #b91c1c;">3. رمز TAC في النظام يُظهر شركة أو طرازاً مختلفاً تماماً</td>
+                    <td style="padding: 12px;">تشتري هاتفاً أو مودماً حديثاً، لكن عند فحص أول 8 أرقام من الـ <code>IMEI</code> يظهر أنه يعود لهاتف قديم أو طراز آخر.</td>
+                    <td style="padding: 12px;"><strong>تلاعب برمجي أو جهاز مقلّد (<code>IMEI Spoofing / Clone</code>):</strong> تم نسخ رقم <code>IMEI</code> من جهاز آخر وحقنه في الجهاز؛ <strong>تجنب شراءه فوراً</strong> لأنه معرّض للحظر الشبكي وفقدان التغطية.</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700; color: #475569;">4. الملصق على الكرتون مطبوع بخط باهت ولا يطابق الجهاز</td>
+                    <td style="padding: 12px;">الجهاز نفسه سليم برمجياً، لكن ملصق العلبة يحمل رقماً مختلفاً أو باركود غير قابل للقراءة.</td>
+                    <td style="padding: 12px;"><strong>علبة معاد تغليفها (<code>Repackaged Box</code>):</strong> الجهاز مستعمل وتم وضعه في علبة تجارية مطبوعة محلياً لبيعه بسعر الجديد.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-6">6. التطبيق العملي عبر أداة فحص IMEI وTAC في موقع كونكت تاق</h2>
+            <p>لتسهيل عملية الفحص الميداني دون الحاجة إلى البحث اليدوي في جداول <code>GSMA</code> المعقدة، طورنا في <strong>كونكت تاق</strong> أداة ويب مجانية وسريعة تعمل مباشرة من متصفح هاتفك أو حاسوبك:</p>
+
+            <!-- بطاقة استدعاء أداة فحص IMEI -->
+            <div style="background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); border: 2px solid #93c5fd; border-radius: 16px; padding: 26px; margin: 28px 0;">
+              <h3 style="margin-top: 0; color: #1e3a8a; font-weight: 800; font-size: 21px;"><i class="fa-solid fa-magnifying-glass-chart"></i> خطوات الفحص العملي في 30 ثانية:</h3>
+              <ol style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+                <li>استخرج رقم الـ <code>IMEI</code> المكوّن من 15 رقماً من الجهاز عبر طلب <code>*#06#</code> أو من صفحة إعدادات المودم.</li>
+                <li>افتح <a href="https://connecttag.org/tools/telecom/imei-checker/" style="font-weight: 800; color: #0284c7;">أداة فحص IMEI وTAC للأجهزة في كونكت تاق</a>، وأدخل الرقم الكامل (أو أول 8 أرقام فقط لفحص رمز <code>TAC</code> مع الحفاظ على خصوصية رقمك التسلسلي).</li>
+                <li>ستقوم الأداة فوراً بـ:
+                  <ul>
+                    <li>التحقق الرياضي من سلامة الرقم عبر خوارزمية <strong><code>Luhn Checksum</code></strong>.</li>
+                    <li>تحليل رمز <strong><code>TAC</code></strong> واستخراج اسم الشركة المصنعة والطراز المسجل والمواصفات الفنية المعتمدة.</li>
+                    <li>إظهار تفصيل الحقول (<code>RBI + Model Code + SNR + Check Digit</code>) لمقارنتها مع بيانات الجهاز الذي أمامك.</li>
+                  </ul>
+                </li>
+                <li>إذا كنت تفحص مودم اتصالات (<code>4G LTE</code>)، قارن اسم الطراز الظاهر مع المواصفات الكاملة في <a href="https://connecttag.org/tools/telecom/modems/" style="font-weight: 800; color: #0284c7;">دليل وموسوعة مودمات الاتصالات</a> للتأكد من الترددات المدعومة ونوع الهوائيات.</li>
+              </ol>
+              <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                <a href="https://connecttag.org/tools/telecom/imei-checker/" class="btn btn-primary" style="background: #0052cc; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+                  <i class="fa-solid fa-barcode"></i> افتح أداة فحص IMEI وTAC الآن
+                </a>
+                <a href="https://connecttag.org/tools/telecom/modems/" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+                  <i class="fa-solid fa-tower-broadcast"></i> تصفح دليل ومواصفات مودمات 4G
+                </a>
+              </div>
+            </div>
+
+            <p>وللمستخدمين الراغبين في فحص العتاد الداخلي للهاتف الذكي بشكل أعمق (مثل دقة الشاشة الحقيقية، معمارية المعالج، حالة البطارية، والمستشعرات) إلى جانب التحقق من الهوية، يمكنهم الاستعانة بتطبيق <a href="https://connecttag.org/company/projects/apps/hawiyyah/"><strong>هويّة (Hawiyyah)</strong></a> أو <a href="https://connecttag.org/company/projects/apps/developer-tool/"><strong>أداة المطور (Developer Tool)</strong></a> من مشاريع كونكت تاق.</p>
+
+            <h2 id="section-7">7. الأسئلة الشائعة والمصادر التقنية المعتمدة</h2>
+
+            <div class="faq-section" style="margin-top: 24px;">
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يظهر رقما IMEI (IMEI 1 و IMEI 2) عند طلب الكود <code>*#06#</code> في بعض الهواتف؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">لأن كل مودم اتصال خلوي مستقل داخل الهاتف يحتاج إلى هوية تعريف دولية خاصة به على أبراج الشبكة. الهواتف التي تدعم شريحتي اتصال (<code>Dual SIM</code>) أو شريحة تقليدية مع شريحة إلكترونية مدمجة (<code>eSIM</code>) تمتلك قناتي اتصال مستقلتين، ولذلك يُخصّص لها رقما <code>IMEI</code> مختلفان يشتركان غالباً في أول 8 أرقام (رمز <code>TAC</code>) ويختلفان في الرقم التسلسلي ورقم التحقق.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف أعرف رقم الـ IMEI الحقيقي في مودم يمن فورجي أو راوتر 4G لا يحتوي على شاشة؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">يمكنك قراءة رقم الـ <code>IMEI</code> الفعلي المخزّن في شريحة المودم عبر الدخول إلى لوحة تحكم المودم في المتصفح (مثل <code>192.168.1.1</code> أو <code>192.168.8.1</code> أو <code>192.168.0.1</code>)، ثم الانتقال إلى قسم معلومات الجهاز (<code>Device Information / System Info</code>)، ومطابقة الرقم الظاهر هناك مع الرقم المطبوع على الملصق الخلفي للمودم وعلى العلبة الكرتونية.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما الفرق بين رقم IMEI والرقم التسلسلي للمصنع (Serial Number - S/N)؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">رقم <code>IMEI</code> هو معرّف عالمي موحّد يتكون من 15 رقماً عشرياً تصدره منظمة <code>GSMA</code> حصرياً للأجهزة التي تحتوي على شريحة اتصال خلوية (<code>3G/4G/5G</code>)، بينما الرقم التسلسلي (<code>Serial Number</code>) هو رمز خاص بالشركة المصنعة قد يحتوي على حروف وأرقام لتتبع دفعات الإنتاج والضمان حتى للأجهزة التي لا تدعم شريحة اتصال مثل الحواسيب وأجهزة الواي فاي فقط.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ماذا يعني فشل رقم IMEI في اختبار خوارزمية Luhn أو ظهور طراز مختلف عند فحص رمز TAC؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">إذا فشل الرقم في اختبار خوارزمية <code>Luhn</code> فهذا يعني أن الرقم غير صالح رياضياً أو تم إدخاله/تعديله بطريقة غير قانونية. أما إذا كان الرقم صحيحاً رياضياً ولكن رمز الـ <code>TAC</code> (أول 8 أرقام) يُظهر طرازاً أو شركة مصنعة مختلفة عن الجهاز الذي بين يديك، فهذا دليل قاطع على أن الجهاز مقلّد أو تم التلاعب بهويته البرمجية (<code>IMEI Spoofing / Cloning</code>).</p>
+              </div>
+            </div>
+
+            <!-- صندوق المصادر والمراجع الرسمية -->
+            <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #0052cc; border-radius: 14px; padding: 22px; margin-top: 32px;">
+              <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #0052cc;"></i> المصادر والمعايير الهندسية المعتمدة (Official Technical References):</h4>
+              <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+                <li><strong>GSMA Official TAC &amp; IMEI Allocation Guidelines:</strong> <a href="https://www.gsma.com/get-involved/working-groups/terminal-steering-group/imei-database" target="_blank" rel="noopener noreferrer">GSMA — IMEI Database &amp; Type Allocation Code (TAC) Standards</a>.</li>
+                <li><strong>3GPP Technical Specification TS 23.003:</strong> <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=729" target="_blank" rel="noopener noreferrer">3GPP TS 23.003 — Numbering, Addressing and Identification (IMEI &amp; IMEISV Structure)</a>.</li>
+                <li><strong>ISO/IEC 7812-1 (Luhn Mod-10 Check Digit Algorithm):</strong> المواصفة القياسية الدولية لخوارزمية التحقق الحسابي من أرقام الهوية التعريفية.</li>
+              </ul>
+            </aside>
+
+          </div>
+
+          <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
+          <site-share-buttons></site-share-buttons>
+          <site-related-posts ids="best-yemen-4g-modem-buying-guide, yemen-4g-modem-settings-security-guide, factory-reset-data-recovery-secure-erasure-guide"></site-related-posts>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<site-footer></site-footer>
+<cookie-consent></cookie-consent>
+</body>
+</html>

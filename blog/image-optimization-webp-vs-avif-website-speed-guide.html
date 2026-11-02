@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دليل تحسين الصور للمواقع: مقارنة WebP وAVIF وPNG | كونكت تاق</title>
+<meta name="description" content="دليل شامل لتحسين الصور في المواقع والتطبيقات: مقارنة WebP وAVIF وPNG وJPEG بالأرقام، تحسين مؤشر LCP، وتقليل حجم الصور 70% دون فقدان الجودة.">
+<meta name="keywords" content="تحسين الصور للمواقع, الفرق بين WebP و AVIF, ضغط الصور بدون فقدان الجودة, تسريع الموقع LCP, تحويل PNG إلى WebP, محول الصور, تطبيق رونق, فحص السيو, كونكت تاق">
+<meta name="author" content="جود محمد">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:locale" content="ar_YE" />
+<meta property="og:url" content="https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+<meta property="og:title" content="دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وكيف تقلل حجم الصور 70% دون فقدان الجودة؟" />
+<meta property="og:description" content="كيف تؤثر الصور غير المضغوطة على مؤشر LCP وترتيب جوجل؟ مقارنة هندسية بالأرقام بين JPEG وPNG وWebP وAVIF وشرح التحويل الفوري في المتصفح." />
+<meta property="og:image" content="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="669" />
+<meta property="og:image:type" content="image/webp" />
+<meta property="og:image:alt" content="دليل تحسين الصور للمواقع والتطبيقات والمقارنة بين WebP وAVIF وPNG لتسريع التحميل" />
+<meta property="article:published_time" content="2026-11-02T17:30:00+03:00" />
+<meta property="article:modified_time" content="2026-11-02T17:30:00+03:00" />
+<meta property="article:section" content="برمجة وتطوير" />
+<meta property="article:author" content="https://connecttag.org/blog/authors/jood" />
+<meta property="article:tag" content="تحسين الصور" />
+<meta property="article:tag" content="WebP و AVIF" />
+<meta property="article:tag" content="سرعة المواقع LCP" />
+<meta property="article:tag" content="السيو التقني" />
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="دليل تحسين الصور للمواقع والتطبيقات: المقارنة بين WebP وAVIF وPNG وتقليل الحجم 70%" />
+<meta name="twitter:description" content="مقارنة عملية بالأرقام بين صيغ الصور الحديثة WebP وAVIF وPNG وJPEG، وكيف تحسّن مؤشر LCP وتضغط صور موقعك داخل المتصفح مع الحفاظ على الخصوصية." />
+<meta name="twitter:url" content="https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide" />
+<meta name="twitter:image" content="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" />
+<meta name="twitter:image:alt" content="مقارنة WebP وAVIF وPNG لتحسين سرعة المواقع والتطبيقات" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:creator" content="@connecttagye" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وتقليل الحجم 70%",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-02T17:30:00+03:00",
+    "dateModified": "2026-11-02T17:30:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "جود محمد",
+      "jobTitle": "مختصة في التسويق الرقمي واستراتيجيات النمو وتحسين محركات البحث (SEO)",
+      "url": "https://connecttag.org/blog/authors/jood"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل شامل لتحسين الصور في المواقع والتطبيقات: مقارنة WebP وAVIF وPNG وJPEG بالأرقام، تحسين مؤشر LCP، وتقليل حجم الصور 70% دون فقدان الجودة.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل تحسين الصور للمواقع والتطبيقات (WebP vs AVIF)",
+        "item": "https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "أيهما أفضل لموقعي الإلكتروني في عام 2026: صيغة WebP أم صيغة AVIF؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تُعد صيغة WebP المعيار الذهبي الأوسع توافقاً والأسرع في فك التشفير للصور اليومية وأغلفة المقالات ومتاجر التجارة الإلكترونية (توافق يتجاوز 98% من المتصفحات وأنظمة التشغيل)، بينما تتفوق صيغة AVIF في الصور الفوتوغرافية عالية التفاصيل والبانرات الرئيسية الضخمة (Hero Images) بتوفير إضافي يبلغ 15% إلى 20% مقارنة بـ WebP، ويمكن الجمع بينهما عبر وسم <picture> في HTML5."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يدعم WebP الخلفية الشفافة (Alpha Transparency) والصور المتحركة مثل PNG وGIF؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، تدعم صيغة WebP قناة الشفافية الكاملة (8-bit Alpha Channel) مع الضغط الفاقد واللافاقد، مما يجعلها بديلاً مباشراً لصيغة PNG بحجم أقل بنحو 60% إلى 75%، كما تدعم الرسوم المتحركة بحجم أصغر بكثير من ملفات GIF القديمة وبعمق ألوان 24-bit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب عدم وضع خاصية loading=\"lazy\" على الصورة الرئيسية في أعلى الصفحة (Hero / Featured Image)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن الصورة الرئيسية في الجزء المرئي الأول من الشاشة (Above the Fold) تمثل غالباً عنصر LCP (أكبر عنصر محتوى مرئي)؛ ووضع loading=\"lazy\" عليها يؤخر تحميلها حتى يكتمل بناء تخطيط الصفحة، مما يرفع زمن LCP ويضر بتقييم Core Web Vitals. الصحيح هو إعطاؤها fetchpriority=\"high\" وتخصيص loading=\"lazy\" للصور الموجودة أسفل الصفحة فقط."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل رفع صور العملاء أو المنتجات إلى مواقع ضغط الصور الخارجية آمن للخصوصية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "رفع الصور الخاصة أو المستندات المصورة إلى خوادم خارجية قد يعرّض بياناتك للنسخ أو الاحتفاظ ببيانات الموقع الجغرافي (EXIF Metadata). الأفضل دائماً استخدام أدوات تعتمد على المعالجة المحلية داخل المتصفح (Client-Side Canvas/WebAssembly) مثل أداة محول الصور في كونكت تاق حيث تتم عملية التحويل والضغط بالكامل على جهازك دون إرسال الصورة لأي خادم."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.49" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.49" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.49">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.49" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.49" defer></script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#0052cc">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<site-header></site-header>
+
+<main id="main-content">
+<div class="blog-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل تحسين الصور للمواقع والتطبيقات (WebP vs AVIF)", "url":"https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide"}]'></site-breadcrumb>
+
+        <article class="blog-single-post">
+          <div class="post-header">
+            <img src="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" alt="دليل تحسين الصور للمواقع والتطبيقات والمقارنة بين WebP وAVIF وPNG لتسريع التحميل" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
+            <site-article-meta category="برمجة وتطوير" date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="12 دقائق"></site-article-meta>
+            <h1>دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين <code>WebP</code> و<code>AVIF</code> و<code>PNG</code> وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</h1>
+          </div>
+
+          <div class="post-content">
+            <p class="lead">وفق تقارير أرشيف الويب العالمي (<code>HTTP Archive Web Almanac</code>)، تشكّل الصور بمفردها ما بين <strong>55% إلى 70% من إجمالي وزن صفحة الويب المتوسطة</strong> على الهواتف الذكية. في بيئات الاتصال المحدودة وشبكات الجيل الرابع <code>4G LTE</code> في منطقتنا العربية، يعني رفع صورة غلاف واحدة بصيغة <code>PNG</code> غير مضغوطة بحجم <code>1.8MB</code> أن الزائر سينتظر ما بين 4 إلى 7 ثوانٍ إضافية قبل رؤية المحتوى الرئيسي؛ وهو ما يرفع معدل الارتداد (<code>Bounce Rate</code>) بنسبة تتجاوز 40% ويُهبط بتقييم موقعك في مؤشرات تجربة الصفحة من جوجل (<code>Core Web Vitals</code>).</p>
+
+            <p>في هذا الدليل التطبيقي للمطورين ومشرفي المواقع وصنّاع المحتوى، نشرح بالأرقام الهندسية كيف تؤثر صيغ الصور وأبعادها مباشرةً على مؤشري <strong><code>LCP</code></strong> و<strong><code>CLS</code></strong>، ونعقد مقارنة تفصيلية بين <code>JPEG</code> و<code>PNG</code> و<code>WebP</code> و<code>AVIF</code> و<code>SVG</code>، ثم نوضح خطوات تحويل وضغط الصور محلياً داخل المتصفح مع الحفاظ الكامل على الخصوصية عبر <a href="https://connecttag.org/tools/design/image-converter/"><strong>أداة محول الصور المتقدم في كونكت تاق</strong></a> وتطبيق <a href="https://connecttag.org/company/projects/apps/rawnaq/"><strong>رَونق (Rawnaq)</strong></a>.</p>
+
+            <div class="key-takeaways-box">
+              <div class="kt-title"><i class="fa-solid fa-gauge-high"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="kt-list">
+                <li><strong>الصور هي المحرك الأول لمؤشر <code>LCP</code>:</strong> في أكثر من 75% من صفحات الويب، يكون عنصر «أكبر محتوى مرئي» (<code>Largest Contentful Paint</code>) هو صورة الغلاف أو بانر المنتج الرئيسي؛ وتقليل حجمها إلى أقل من <code>100KB–150KB</code> يحسّن سرعة العرض فوراً.</li>
+                <li><strong>صيغة <code>WebP</code> توفر 60%–75% مقارنة بـ <code>PNG</code> و25%–35% مقارنة بـ <code>JPEG</code>:</strong> تدعم <code>WebP</code> الشفافية الكاملة (<code>Alpha Channel</code>) والصور المتحركة مع توافق يفوق 98% من المتصفحات الحديثة وأجهزة أندرويد وiOS.</li>
+                <li><strong>صيغة <code>AVIF</code> هي الجيل الأحدث للضغط الفائق:</strong> تعتمد على معيار الفيديو <code>AV1</code> وتوفر 15%–20% إضافية مقارنة بـ <code>WebP</code> في الصور الفوتوغرافية المعقدة ودعم الألوان العالية <code>HDR / 10-bit</code>.</li>
+                <li><strong>السمات البرمجية لا تقل أهمية عن الصيغة:</strong> الجمع بين تحديد الأبعاد الصريحة (<code>width</code> و<code>height</code> لمنع <code>CLS</code>)، وسمة <code>fetchpriority="high"</code> للصورة الأولى، و<code>loading="lazy"</code> لبقية الصور هو سر الحصول على العلامة الكاملة <code>100/100</code> في PageSpeed Insights.</li>
+              </ul>
+            </div>
+
+            <div class="toc-box">
+              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</h4>
+              <ul>
+                <li><a href="#section-1">1. كيف تدمّر الصور غير المضغوطة مؤشري LCP وCLS وترتيب موقعك في بحث جوجل؟</a></li>
+                <li><a href="#section-2">2. المقارنة الهندسية الشاملة بالأرقام: JPEG مقابل PNG مقابل WebP مقابل AVIF</a></li>
+                <li><a href="#section-3">3. متى تستخدم الصور النقطية (WebP/AVIF) ومتى يجب استخدام المتجهات (SVG)؟</a></li>
+                <li><a href="#section-4">4. قواعد الكود الذهبية في HTML5 لعرض الصور بأقصى سرعة (fetchpriority &amp; picture)</a></li>
+                <li><a href="#section-5">5. التطبيق العملي: ضغط وتحويل الصور داخل المتصفح وعلى الهاتف عبر أدوات كونكت تاق</a></li>
+                <li><a href="#section-6">6. الأسئلة الشائعة والمراجع الرسمية لمطوري الويب</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. كيف تدمّر الصور غير المضغوطة مؤشري LCP وCLS وترتيب موقعك في بحث جوجل؟</h2>
+            <p>تعتمد خوارزميات ترتيب نتائج البحث في جوجل (وكذلك معايير قبول المواقع وجودة الصفحات في شبكات الإعلانات مثل Google AdSense) على ثلاثة مؤشرات حيوية لأداء الويب تُعرف باسم <strong><code>Core Web Vitals</code></strong>، وتتأثر اثنتان منها بشكل مباشر بطريقة معالجة الصور في موقعك:</p>
+
+            <ul>
+              <li><strong>مؤشر سرعة عرض أكبر عنصر مرئي (<code>LCP - Largest Contentful Paint</code>):</strong> يقيس الزمن الذي يستغرقه المتصفح لرسم أكبر عنصر في الشاشة الأولى (وعادةً ما يكون صورة المقال الرئيسية أو صورة المنتج). يشترط معيار جوجل أن يكتمل عرض هذا العنصر خلال <strong>أقل من <code>2.5 ثانية</code></strong>. إذا كانت الصورة بصيغة <code>PNG</code> أو <code>JPEG</code> غير مضغوطة بحجم يتجاوز <code>800KB</code>، فسيستغرق تنزيلها عبر شبكة الهاتف أكثر من 3 ثوانٍ بمفردها، مما يضع الصفحة في النطاق الأحمر (<code>Poor LCP</code>).</li>
+              <li><strong>مؤشر التغير التراكمي في التخطيط (<code>CLS - Cumulative Layout Shift</code>):</strong> يحدث عندما يدرج المطور وسم <code>&lt;img&gt;</code> بدون تحديد سمتي العرض والارتفاع (<code>width</code> و<code>height</code>). يبدأ القارئ بقراءة النص، وفجأة تكتمل صورة كبيرة فتدفع النص لأسفل الشاشة وتؤدي إلى نقرات خاطئة؛ وهو ما يعاقب عليه محرك البحث وتعتبره سياسات الإعلانات تجربة مستخدم رديئة.</li>
+            </ul>
+
+            <p>يمكنك التحقق من حالة هذين المؤشرين وفحص البنية الدلالية لصفحات موقعك في أي وقت عبر <a href="https://connecttag.org/tools/web/site-checker/seo-checker"><strong>أداة فحص السيو والكلمات الدلالية في كونكت تاق</strong></a>، ومراجعة خطوات الفحص الكامل في <a href="https://connecttag.org/blog/technical-seo-audit-guide">دليل الفحص التقني الشامل للمواقع (Technical SEO Audit)</a>.</p>
+
+            <h2 id="section-2">2. المقارنة الهندسية الشاملة بالأرقام: JPEG مقابل PNG مقابل WebP مقابل AVIF</h2>
+            <p>لفهم سبب تفوق الصيغ الحديثة، نحتاج إلى النظر في خوارزمية الترميز (<code>Compression Algorithm</code>) التي تستخدمها كل صيغة لتمثيل البكسلات:</p>
+
+            <ul>
+              <li><strong>صيغة <code>JPEG</code> (منذ عام 1992):</strong> تعتمد على تحويل جيب التمام المتقطع (<code>DCT</code>) بتقسيم الصورة إلى مربعات $8 \times 8$ بكسل؛ وهي ممتازة للصور الفوتوغرافية لكنها لا تدعم الشفافية وتُظهر تشوهات مربعة (<code>Blocky Artifacts</code>) حول النصوص والحواف الحادة عند زيادة الضغط.</li>
+              <li><strong>صيغة <code>PNG</code> (منذ عام 1996):</strong> تعتمد على خوارزمية <code>DEFLATE</code> غير الفاقدة للجودة مع دعم الشفافية الكاملة؛ لكنها تنتج ملفات ضخمة جداً عند حفظ صور تحتوي على تدرجات لونية أو مشاهد ثلاثية الأبعاد.</li>
+              <li><strong>صيغة <code>WebP</code> (طورتها Google استناداً إلى ترميز الفيديو <code>VP8</code>):</strong> تستخدم التنبؤ التكيفي بالكتل (<code>Predictive Coding</code>) وتدعم كلاً من الضغط الفاقد (<code>Lossy</code>) وغير الفاقد (<code>Lossless</code>) والشفافية والرسوم المتحركة في ملف واحد رشيق.</li>
+              <li><strong>صيغة <code>AVIF</code> (طورها تحالف <code>Alliance for Open Media</code> استناداً إلى <code>AV1</code>):</strong> الجيل الأحدث لضغط الصور؛ يتفوق في الحفاظ على التدرجات اللونية الدقيقة (<code>Smooth Gradients</code>) دون ظهور خطوط التدرج (<code>Color Banding</code>) ويحقق أعلى نسبة ضغط ممكنة حالياً.</li>
+            </ul>
+
+            <!-- جدول مقارنة عملي بالأرقام -->
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="padding: 14px; text-align: right;">المعيار التقني</th>
+                    <th style="padding: 14px; text-align: right;">PNG-24</th>
+                    <th style="padding: 14px; text-align: right;">JPEG (Quality 82)</th>
+                    <th style="padding: 14px; text-align: right;">WebP (Quality 82)</th>
+                    <th style="padding: 14px; text-align: right;">AVIF (Quality 75)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">متوسط حجم صورة غلاف (1200×669)</td>
+                    <td style="padding: 12px; color: #b91c1c; font-weight: 700;"><code>~680 KB – 1.2 MB</code></td>
+                    <td style="padding: 12px;"><code>~145 KB – 210 KB</code></td>
+                    <td style="padding: 12px; color: #15803d; font-weight: 700;"><code>~55 KB – 95 KB</code></td>
+                    <td style="padding: 12px; color: #0284c7; font-weight: 700;"><code>~42 KB – 75 KB</code></td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">نسبة التوفير مقارنة بـ PNG</td>
+                    <td style="padding: 12px;">خط الأساس (0%)</td>
+                    <td style="padding: 12px;">توفير ~75% (بدون شفافية)</td>
+                    <td style="padding: 12px; font-weight: 700; color: #15803d;">توفير 70% إلى 85%</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">توفير 80% إلى 90%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">دعم الخلفية الشفافة (Alpha)</td>
+                    <td style="padding: 12px;">✅ مدعوم</td>
+                    <td style="padding: 12px;">❌ غير مدعوم</td>
+                    <td style="padding: 12px;">✅ مدعوم بحجم صغير جداً</td>
+                    <td style="padding: 12px;">✅ مدعوم</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">دعم الرسوم المتحركة (Animation)</td>
+                    <td style="padding: 12px;">APNG فقط</td>
+                    <td style="padding: 12px;">❌ غير مدعوم</td>
+                    <td style="padding: 12px;">✅ بديل ممتاز لـ GIF</td>
+                    <td style="padding: 12px;">✅ مدعوم (AVIF Sequence)</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">سرعة فك التشفير على الهواتف</td>
+                    <td style="padding: 12px;">سريعة</td>
+                    <td style="padding: 12px;">سريعة جداً</td>
+                    <td style="padding: 12px; font-weight: 700; color: #15803d;">سريعة جداً ومدعومة عتادياً</td>
+                    <td style="padding: 12px;">متوسطة (تتطلب معالجاً أحدث)</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">أفضل استخدام عملي في 2026</td>
+                    <td style="padding: 12px;">أيقونات PWA والملفات المصدرية</td>
+                    <td style="padding: 12px;">الأنظمة القديمة والطباعة</td>
+                    <td style="padding: 12px; font-weight: 700; color: #15803d;">المعيار الافتراضي لجميع صور الموقع والتطبيقات</td>
+                    <td style="padding: 12px;">البانرات الفوتوغرافية الضخمة ومعارض الصور</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-3">3. متى تستخدم الصور النقطية (WebP/AVIF) ومتى يجب استخدام المتجهات (SVG)؟</h2>
+            <p>لا ينبغي تحويل جميع العناصر البصرية في موقعك إلى صيغة واحدة؛ بل يجب التفريق بين <strong>الصور النقطية (<code>Raster Images</code>)</strong> و<strong>الرسوم المتجهة (<code>Vector Graphics - SVG</code>)</strong> كما فصلنا هندسياً في <a href="https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide">دليل تصميم الشعارات الاحترافية وصيغ الملفات المتجهة</a>:</p>
+            <ul>
+              <li><strong>استخدم صيغة <code>SVG</code> لـ:</strong> الشعارات النصية والرمزية البسيطة، الأيقونات التفاعلية، والرسوم التوضيحية الهندسية المسطحة؛ لأن ملف <code>SVG</code> يتكون من معادلات رياضية بحجم لا يتجاوز <code>2KB–8KB</code> ويحتفظ بحدة مطلقة على شاشات الهواتف عالية الكثافة (<code>Retina / Super AMOLED</code>).</li>
+              <li><strong>استخدم صيغة <code>WebP</code> (أو <code>AVIF</code>) لـ:</strong> أغلفة المقالات، صور المنتجات في المتاجر، لقطات شاشة التطبيقات، والتصاميم ثلاثية الأبعاد (<code>3D Illustrations</code>) التي تحتوي على ظلال ناعمة وتدرجات إضاءة معقدة.</li>
+            </ul>
+
+            <h2 id="section-4">4. قواعد الكود الذهبية في HTML5 لعرض الصور بأقصى سرعة (fetchpriority &amp; picture)</h2>
+            <p>بعد تحويل الصورة إلى <code>WebP</code> أو <code>AVIF</code>، يأتي دور كتابة وسم الصورة في <code>HTML5</code> بالطريقة القياسية التي تمنحك أعلى أداء في <code>Google Lighthouse</code>:</p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 14px; padding: 20px; margin: 22px 0; direction: ltr; text-align: left; font-family: monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.7;">
+<span style="color: #94a3b8;">&lt;!-- 1. الصورة الرئيسية في أعلى الصفحة (LCP Hero Image) --&gt;</span>
+&lt;<span style="color: #38bdf8;">img</span>
+  <span style="color: #7dd3fc;">src</span>=<span style="color: #a7f3d0;">"https://connecttag.org/upload/hero-cover.webp"</span>
+  <span style="color: #7dd3fc;">alt</span>=<span style="color: #a7f3d0;">"وصف دقيق ومختصر لمحتوى الصورة لدعم السيو وقارئات الشاشة"</span>
+  <span style="color: #7dd3fc;">width</span>=<span style="color: #fde68a;">"1200"</span>
+  <span style="color: #7dd3fc;">height</span>=<span style="color: #fde68a;">"669"</span>
+  <span style="color: #7dd3fc;">fetchpriority</span>=<span style="color: #fca5a5;">"high"</span>
+  <span style="color: #7dd3fc;">decoding</span>=<span style="color: #a7f3d0;">"async"</span>&gt;
+
+<span style="color: #94a3b8;">&lt;!-- 2. الصور الموجودة أسفل الصفحة (Below-the-Fold Images) --&gt;</span>
+&lt;<span style="color: #38bdf8;">img</span>
+  <span style="color: #7dd3fc;">src</span>=<span style="color: #a7f3d0;">"https://connecttag.org/upload/section-diagram.webp"</span>
+  <span style="color: #7dd3fc;">alt</span>=<span style="color: #a7f3d0;">"مخطط مقارنة سرعة تحميل صيغ الصور"</span>
+  <span style="color: #7dd3fc;">width</span>=<span style="color: #fde68a;">"1200"</span>
+  <span style="color: #7dd3fc;">height</span>=<span style="color: #fde68a;">"669"</span>
+  <span style="color: #7dd3fc;">loading</span>=<span style="color: #a7f3d0;">"lazy"</span>
+  <span style="color: #7dd3fc;">decoding</span>=<span style="color: #a7f3d0;">"async"</span>&gt;
+            </div>
+
+            <h3>القاعدة الصارمة بين <code>fetchpriority="high"</code> و<code>loading="lazy"</code></h3>
+            <p>احذر الوقوع في الخطأ الشائع المتمثل في وضع <code>loading="lazy"</code> على جميع صور الصفحة بلا استثناء؛ بل طبّق القاعدة الهندسية التالية:</p>
+            <ol>
+              <li><strong>صورة واحدة فقط في أول الصفحة:</strong> تأخذ سمة <code>fetchpriority="high"</code> (بدون <code>loading="lazy"</code>) ليبدأ المتصفح بتحميلها فوراً بالتوازي مع ملفات الـ CSS.</li>
+              <li><strong>جميع الصور التالية في الصفحة:</strong> تأخذ سمة <code>loading="lazy"</code> و<code>decoding="async"</code> لتوفير باقة الإنترنت لدى الزائر وعدم تحميلها إلا عند اقتراب التمرير منها.</li>
+            </ol>
+
+            <h2 id="section-5">5. التطبيق العملي: ضغط وتحويل الصور داخل المتصفح وعلى الهاتف عبر أدوات كونكت تاق</h2>
+            <p>بدلاً من تثبيت برامج ثقيلة على الحاسوب أو رفع صور مشروعك الخاصة إلى مواقع خارجية قد تحتفظ بنسخة منها على خوادمها، وفرنا في <strong>كونكت تاق</strong> منظومة أدوات مجانية تعمل بالكامل <strong>محلياً داخل جهازك (<code>100% Client-Side Processing</code>)</strong>:</p>
+
+            <!-- بطاقة الأدوات العملية -->
+            <div style="background: linear-gradient(135deg, #f5f3ff 0%, #eff6ff 100%); border: 2px solid #c4b5fd; border-radius: 16px; padding: 26px; margin: 28px 0;">
+              <h3 style="margin-top: 0; color: #4c1d95; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-wand-magic-sparkles"></i> 3 خطوات عملية لتجهيز صور موقعك أو متجرك الإلكتروني:</h3>
+              <ol style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+                <li><strong>التحويل والضغط الفوري إلى <code>WebP</code>:</strong> افتح <a href="https://connecttag.org/tools/design/image-converter/" style="font-weight: 800; color: #6d28d9;">أداة محول الصور المتقدم في كونكت تاق</a>، واسحب صورك (سواء كانت <code>PNG</code> أو <code>JPEG</code> أو <code>SVG</code>)، ثم اختر صيغة الإخراج <strong><code>WebP</code></strong> واضبط مؤشر الجودة بين <strong><code>80%</code> و<code>88%</code></strong> (النقطة المثالية التي تقلل الحجم بنحو 70% دون أي فرق بصري تلاحظه العين البشرية)، مع إمكانية توحيد الأبعاد وإضافة العلامة المائية لمشروعك دفعة واحدة.</li>
+                <li><strong>تنظيف البيانات الوصفية الخفية (<code>EXIF Metadata</code>):</strong> إذا كانت الصور ملتقطة بكاميرا الهاتف مباشرةً، تحتوي الصورة على إحداثيات <code>GPS</code> وبيانات الكاميرا التي تزيد من حجم الملف وتكشف موقعك؛ استخدم <a href="https://connecttag.org/tools/security/exif-remover/" style="font-weight: 800; color: #6d28d9;">أداة إزالة بيانات EXIF</a> لتطهير الصور قبل نشرها.</li>
+                <li><strong>التصميم والكتابة الاحترافية على الهاتف والكمبيوتر:</strong> لتصميم بطاقات المنتجات وأغلفة المقالات بالخطوط العربية الأصيلة وإدارة الطبقات المتعددة وتصديرها بجودة عالية بدون إنترنت، استخدم تطبيق <a href="https://connecttag.org/company/projects/apps/rawnaq/" style="font-weight: 800; color: #6d28d9;">رَونق (Rawnaq)</a> من مشاريع كونكت تاق.</li>
+              </ol>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <a href="https://connecttag.org/tools/design/image-converter/" class="btn btn-primary" style="background: #6d28d9; border: none; border-radius: 10px; font-weight: 700; padding: 10px 20px;">
+                  <i class="fa-solid fa-images"></i> جرب محول وضغط الصور (WebP) الآن
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/rawnaq/" class="btn btn-default" style="border-color: #6d28d9; color: #6d28d9; background: #fff; border-radius: 10px; font-weight: 700; padding: 10px 20px;">
+                  <i class="fa-solid fa-palette"></i> استكشف تطبيق رَونق للتصميم
+                </a>
+                <a href="https://connecttag.org/tools/web/site-checker/seo-checker" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; background: #fff; border-radius: 10px; font-weight: 700; padding: 10px 20px;">
+                  <i class="fa-solid fa-magnifying-glass-chart"></i> افحص سيو وسرعة صفحتك
+                </a>
+              </div>
+            </div>
+
+            <h2 id="section-6">6. الأسئلة الشائعة والمراجع الرسمية لمطوري الويب</h2>
+
+            <div class="faq-section" style="margin-top: 24px;">
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> أيهما أفضل لموقعي الإلكتروني في عام 2026: صيغة WebP أم صيغة AVIF؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">تُعد صيغة <code>WebP</code> المعيار الذهبي الأوسع توافقاً والأسرع في فك التشفير للصور اليومية وأغلفة المقالات ومتاجر التجارة الإلكترونية (توافق يتجاوز 98% من المتصفحات وأنظمة التشغيل)، بينما تتفوق صيغة <code>AVIF</code> في الصور الفوتوغرافية عالية التفاصيل والبانرات الرئيسية الضخمة (<code>Hero Images</code>) بتوفير إضافي يبلغ 15% إلى 20% مقارنة بـ <code>WebP</code>، ويمكن الجمع بينهما عبر وسم <code>&lt;picture&gt;</code> في HTML5.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> هل يدعم WebP الخلفية الشفافة (Alpha Transparency) والصور المتحركة مثل PNG وGIF؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">نعم، تدعم صيغة <code>WebP</code> قناة الشفافية الكاملة (<code>8-bit Alpha Channel</code>) مع الضغط الفاقد واللافاقد، مما يجعلها بديلاً مباشراً لصيغة <code>PNG</code> بحجم أقل بنحو 60% إلى 75%، كما تدعم الرسوم المتحركة بحجم أصغر بكثير من ملفات <code>GIF</code> القديمة وبعمق ألوان <code>24-bit</code>.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يجب عدم وضع خاصية <code>loading="lazy"</code> على الصورة الرئيسية في أعلى الصفحة (Hero / Featured Image)؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">لأن الصورة الرئيسية في الجزء المرئي الأول من الشاشة (<code>Above the Fold</code>) تمثل غالباً عنصر <code>LCP</code> (أكبر عنصر محتوى مرئي)؛ ووضع <code>loading="lazy"</code> عليها يؤخر تحميلها حتى يكتمل بناء تخطيط الصفحة، مما يرفع زمن <code>LCP</code> ويضر بتقييم <code>Core Web Vitals</code>. الصحيح هو إعطاؤها <code>fetchpriority="high"</code> وتخصيص <code>loading="lazy"</code> للصور الموجودة أسفل الصفحة فقط.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> هل رفع صور العملاء أو المنتجات إلى مواقع ضغط الصور الخارجية آمن للخصوصية؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">رفع الصور الخاصة أو المستندات المصورة إلى خوادم خارجية قد يعرّض بياناتك للنسخ أو الاحتفاظ ببيانات الموقع الجغرافي (<code>EXIF Metadata</code>). الأفضل دائماً استخدام أدوات تعتمد على المعالجة المحلية داخل المتصفح (<code>Client-Side Canvas/WebAssembly</code>) مثل أداة محول الصور في كونكت تاق حيث تتم عملية التحويل والضغط بالكامل على جهازك دون إرسال الصورة لأي خادم.</p>
+              </div>
+            </div>
+
+            <!-- صندوق المصادر والمراجع الرسمية -->
+            <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #6d28d9; border-radius: 14px; padding: 22px; margin-top: 32px;">
+              <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #6d28d9;"></i> المصادر والوثائق الرسمية المعتمدة (Official Web Performance References):</h4>
+              <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+                <li><strong>Google web.dev — Optimizing Largest Contentful Paint (LCP):</strong> <a href="https://web.dev/articles/optimize-lcp" target="_blank" rel="noopener noreferrer">web.dev — Optimize Largest Contentful Paint &amp; Resource Fetch Priority</a>.</li>
+                <li><strong>Google Developers — WebP Image Format Compression Study:</strong> <a href="https://developers.google.com/speed/webp/docs/webp_study" target="_blank" rel="noopener noreferrer">Google Developers — Comparative Study of WebP, JPEG and PNG</a>.</li>
+                <li><strong>Alliance for Open Media (AOMedia) — AV1 Image File Format (AVIF) Specification:</strong> <a href="https://aomediacodec.github.io/av1-avif/" target="_blank" rel="noopener noreferrer">AOMedia Official AVIF v1.1.0 Technical Specification</a>.</li>
+                <li><strong>Google Search Central — Google Images SEO Best Practices:</strong> <a href="https://developers.google.com/search/docs/appearance/google-images" target="_blank" rel="noopener noreferrer">Google Search Central — Image SEO, Supported Formats (WebP, AVIF, SVG) &amp; Structured Data</a>.</li>
+              </ul>
+            </aside>
+
+          </div>
+
+          <site-author-box name="جود محمد" avatar="https://connecttag.org/upload/author/jood.webp" link="https://connecttag.org/blog/authors/jood"><span class="sr-only">الكاتب: جود محمد</span></site-author-box>
+          <site-share-buttons></site-share-buttons>
+          <site-related-posts ids="technical-seo-audit-guide, google-adsense-approval-guide-fix-low-value-content, professional-logo-design-types-principles-file-formats-guide"></site-related-posts>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<site-footer></site-footer>
+<cookie-consent></cookie-consent>
+</body>
+</html>

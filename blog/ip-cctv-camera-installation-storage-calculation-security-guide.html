@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV) | كونكت تاق</title>
+<meta name="description" content="دليل هندسي لتركيب وتأمين كاميرات المراقبة الشبكية (IP PoE CCTV & NVR): اختيار العدسة، معادلة حساب سعة الهاردسك بضغط H.265+، و5 خطوات لمنع اختراق الكاميرات.">
+<meta name="keywords" content="كاميرات المراقبة الشبكية, IP CCTV, الفرق بين NVR و DVR, حساب سعة هاردسك الكاميرات, ضغط الفيديو H.265+, حماية كاميرات المراقبة من الاختراق, PoE Switch, عزل VLAN للكاميرات, كونكت تاق">
+<meta name="author" content="يوسف الرحبي">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide" />
+
+<!-- OpenGraph meta -->
+<meta property="og:locale" content="ar_YE" />
+<meta property="og:url" content="https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+<meta property="og:title" content="دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟" />
+<meta property="og:description" content="المقارنة الهندسية بين كاميرات IP PoE وAnalog HD، جدول حساب سعة القرص الصلب (Surveillance HDD) بضغط H.265+، وكيف تؤمّن جهاز الـ NVR ضد الاختراق عبر عزل VLAN وتعطيل UPnP." />
+<meta property="og:image" content="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="669" />
+<meta property="og:image:type" content="image/webp" />
+<meta property="og:image:alt" content="دليل تركيب وتأمين كاميرات المراقبة الشبكية IP CCTV وحساب سعة التخزين NVR" />
+<meta property="article:published_time" content="2026-11-02T17:15:00+03:00" />
+<meta property="article:modified_time" content="2026-11-02T17:15:00+03:00" />
+<meta property="article:section" content="الأمن السيبراني" />
+<meta property="article:author" content="https://connecttag.org/blog/authors/yousef-alrahbi" />
+<meta property="article:tag" content="كاميرات المراقبة IP CCTV" />
+<meta property="article:tag" content="أمن الشبكات" />
+<meta property="article:tag" content="أجهزة NVR" />
+<meta property="article:tag" content="أنظمة أمنية" />
+
+<!-- twitter OpenGraph meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): اختيار العدسة وحساب الهاردسك ومنع الاختراق" />
+<meta name="twitter:description" content="دليل عملي وهندسي لاختيار كاميرات المراقبة الشبكية PoE، حساب سعة التخزين لـ 30 يوماً، وتأمين منظومة المراقبة ضد الاختراق." />
+<meta name="twitter:url" content="https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide" />
+<meta name="twitter:image" content="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" />
+<meta name="twitter:image:alt" content="تركيب وتأمين كاميرات المراقبة الشبكية IP CCTV" />
+<meta name="twitter:site" content="@connecttagye" />
+<meta name="twitter:creator" content="@connecttagye" />
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): اختيار العدسة وحساب الهاردسك ومنع الاختراق",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-02T17:15:00+03:00",
+    "dateModified": "2026-11-02T17:15:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "يوسف الرحبي",
+      "jobTitle": "مهندس ومختص في الأنظمة الأمنية والمراقبة الذكية والتحكم بالدخول (Security Systems Engineer)",
+      "url": "https://connecttag.org/blog/authors/yousef-alrahbi"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل هندسي شامل لتصميم وتركيب وتأمين كاميرات المراقبة الشبكية (IP PoE CCTV & NVR): الفرق بين كاميرات IP وAnalog، اختيار البعد البؤري للعدسة، معادلة حساب سعة الهاردسك لـ 30 يوماً، و5 خطوات لمنع اختراق الكاميرات.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV)",
+        "item": "https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا لا يصلح استخدام هاردسك الكمبيوتر العادي (Desktop HDD) داخل جهاز تسجيل الكاميرات NVR؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن أقراص الحاسوب المكتبي مصممة للعمل نحو 8 ساعات يومياً مع عمليات قراءة وكتابة متقطعة، بينما تعمل أقراص المراقبة المتخصصة (Surveillance HDD مثل WD Purple وSeagate SkyHawk) بنظام كتابة متواصلة 24/7 وتدعم تقنية AllFrame/ImagePerfect لمنع سقوط الإطارات (Frame Drop) وتتحمل درجات الحرارة العالية والاهتزازات المستمرة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما أقصى مسافة يمكن مد كابل الشبكة (Cat6) لتشغيل كاميرا IP بتقنية PoE بدون مقوٍّ؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "وفق معيار IEEE 802.3af/at تبلغ المسافة القياسية الآمنة لنقل البيانات والطاقة معاً عبر كابل نحاسي نقي (Pure Copper Cat6) نحو 100 متر. وفي حال الحاجة لمسافات تصل إلى 200-250 متراً، يمكن تفعيل وضع التمديد البعيد (Long Range / Extend PoE Mode) في مقسم PoE Switch والذي يخفض سرعة المنفذ إلى 10Mbps مقابل مضاعفة مدى الإشارة، أو استخدام محولات الألياف الضوئية (Fiber Media Converters)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين عدسة 2.8mm وعدسة 4mm أو 6mm في كاميرات المراقبة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الرقم بالمليمتر يمثل البعد البؤري للعدسة (Focal Length): عدسة 2.8mm توفر زاوية رؤية عريضة جداً (نحو 100° إلى 110°) وتناسب الغرف والصالات والمداخل القريبة، بينما عدسة 4mm أو 6mm توفر زاوية أضيق ولكن بتركيز وتقريب بصري أعلى لتفاصيل الوجوه ولوحات السيارات في الممرات الطويلة والأسوار الخارجية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أتابع كاميرات المراقبة عبر الهاتف من خارج المنزل دون فتح منافذ الراوتر (Port Forwarding)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الطريقة الأكثر أماناً للمؤسسات هي إعداد نفق اتصال مشفر خاص (WireGuard / OpenVPN) على الراوتر الرئيسي للوصول إلى الشبكة المحلية عن بُعد، أو استخدام خدمة الربط السحابي المشفرة (P2P Cloud) مع تفعيل تشفير التدفق الفيديوي (Stream Encryption Key) والمصادقة الثنائية، مع تعطيل خاصية UPnP وإغلاق كافة منافذ الاستماع الخارجية تماماً."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.49" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.49" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.49">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.49">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.49" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.49" defer></script>
+
+<!-- PWA & Mobile Optimization Tags -->
+<link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+<link rel="manifest" href="https://connecttag.org/manifest.json">
+<meta name="theme-color" content="#0052cc">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<site-header></site-header>
+
+<main id="main-content">
+<div class="blog-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV)", "url":"https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide"}]'></site-breadcrumb>
+
+        <article class="blog-single-post">
+          <div class="post-header">
+            <img src="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" alt="دليل تركيب وتأمين كاميرات المراقبة الشبكية IP CCTV وحساب سعة التخزين NVR" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
+            <site-article-meta category="الأمن السيبراني" date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="13 دقائق"></site-article-meta>
+            <h1>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</h1>
+          </div>
+
+          <div class="post-content">
+            <p class="lead">لم تعد منظومات المراقبة المرئية مجرّد كاميرات تناظرية تقليدية متصلة بشاشة تلفاز؛ بل تحوّلت إلى <strong>حواسيب شبكية مصغّرة (<code>Embedded Linux Network Nodes</code>)</strong> تعمل على مدار الساعة داخل البنية التحتية للمنزل أو الشركة. هذا التحول إلى كاميرات الشبكة الرقمية (<strong><code>IP PoE CCTV</code></strong>) منحنا دقة تصوير فائقة تصل إلى <code>4K / 8MP</code> وتحليلات ذكاء اصطناعي لتمييز البشر والمركبات، لكنه في المقابل جعل أي خطأ في تصميم الشبكة أو إعدادات التشفير ثغرة خطيرة قد تحوّل كاميرات الحماية نفسها إلى أداة تجسس مكشوفة على الإنترنت.</p>
+
+            <p>في هذا الدليل الهندسي الشامل، نضع بين يديك خلاصة الخبرة الميدانية في تصميم منظومات المراقبة الحديثة: بدءاً من المقارنة العملية بين أنظمة <code>IP PoE</code> و<code>Analog HD</code>، ومعايير اختيار البعد البؤري للعدسة (<code>2.8mm vs 4mm/6mm</code>)، مروراً بمعادلة حساب سعة القرص الصلب (<code>Surveillance HDD</code>) لتسجيل 30 يوماً متواصلة بترميز <code>H.265+</code>، وصولاً إلى <strong>الخطوات الـ 5 الحاسمة لتأمين أجهزة <code>NVR</code> والكاميرات ضد الاختراق</strong>.</p>
+
+            <div class="key-takeaways-box">
+              <div class="kt-title"><i class="fa-solid fa-shield-halved"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="kt-list">
+                <li><strong>تفوق معمارية <code>IP PoE</code>:</strong> تنقل كاميرات الشبكة الفيديو الرقمي والطاقة الكهربائية معاً عبر كابل شبكة واحد (<code>Cat6 PoE - IEEE 802.3af/at</code>) دون فقد في جودة الإشارة، مع معالجة ذكية داخل الكاميرا نفسها قبل إرسال البث إلى جهاز التسجيل الشبكي (<code>NVR</code>).</li>
+                <li><strong>ترميز <code>H.265+</code> يوفر أكثر من 50% من سعة الهاردسك:</strong> تفعيل الضغط الذكي (<code>Smart H.265+ / Ultra H.265</code>) يقلل معدل التدفق (<code>Bitrate</code>) في المشاهد الثابتة ويوفر نصف تكلفة الأقراص الصلبة دون المساس بوضوح الأجسام المتحركة.</li>
+                <li><strong>احذر فتح المنافذ (<code>Port Forwarding</code>) وتفعيل <code>UPnP</code>:</strong> السبب الأول لاختراق كاميرات المراقبة وظهورها في محركات فحص الأجهزة المتصلة مثل <code>Shodan</code> هو فتح منافذ <code>RTSP/HTTP (554, 80, 8000, 37777)</code> مباشرة للإنترنت العام.</li>
+                <li><strong>العزل الشبكي (<code>Camera VLAN</code>) قاعدة ذهبية:</strong> يجب دائماً وضع الكاميرات وجهاز <code>NVR</code> في شبكة فرعية معزولة ومنع الكاميرات من الوصول المباشر للإنترنت الخارجي عبر الجدار الناري.</li>
+              </ul>
+            </div>
+
+            <div class="toc-box">
+              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</h4>
+              <ul>
+                <li><a href="#section-1">1. المقارنة الهندسية: كاميرات الشبكة IP (PoE &amp; NVR) مقابل الكاميرات التناظرية (Analog HD &amp; DVR)</a></li>
+                <li><a href="#section-2">2. كيف تختار العدسة ومستشعر الرؤية الليلية المناسب لكل موقع؟ (2.8mm vs 4mm &amp; ColorVu)</a></li>
+                <li><a href="#section-3">3. معادلة وجدول حساب سعة الهاردسك (Surveillance HDD) لتسجيل 30 يوماً متواصلة</a></li>
+                <li><a href="#section-4">4. الأخطاء الأمنية الـ 5 القاتلة التي تجعل كاميرات المراقبة مكشوفة للاختراق</a></li>
+                <li><a href="#section-5">5. خطة التأمين الهندسية: عزل VLAN، تشفير RTSP/ONVIF، والوصول الآمن عن بُعد</a></li>
+                <li><a href="#section-6">6. الأسئلة الشائعة والمصادر والمعايير الهندسية المعتمدة</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. المقارنة الهندسية: كاميرات الشبكة IP (PoE &amp; NVR) مقابل الكاميرات التناظرية (Analog HD &amp; DVR)</h2>
+            <p>أول قرار يواجه صاحب المنشأة أو المهندس عند تأسيس منظومة مراقبة جديدة هو الاختيار بين منظومة تناظرية عالية الدقة (<code>Analog HD: TVI / CVI / AHD</code> مع جهاز تسجيل <code>DVR</code>) أو منظومة رقمية شبكية (<code>IP Cameras</code> مع مقسم <code>PoE Switch</code> وجهاز تسجيل <code>NVR</code>).</p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="padding: 14px; text-align: right;">معيار المقارنة الهندسي</th>
+                    <th style="padding: 14px; text-align: right;">كاميرات الشبكة الرقمية (IP PoE + NVR)</th>
+                    <th style="padding: 14px; text-align: right;">الكاميرات التناظرية (Analog HD + DVR)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">مكان معالجة وضغط الفيديو</td>
+                    <td style="padding: 12px; color: #15803d;"><strong>داخل الكاميرا نفسها:</strong> تحتوي كل كاميرا على معالج إشارة رقمي (<code>SoC / ISP</code>) يحوّل الصورة ويضغطها بترميز <code>H.265+</code> قبل إرسالها عبر الشبكة.</td>
+                    <td style="padding: 12px;"><strong>داخل جهاز التسجيل (DVR):</strong> ترسل الكاميرا إشارة خام غير مضغوطة عبر الكابل المحوري، ويتحمل الـ <code>DVR</code> وحده عبء التحويل والضغط.</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">الكابلات والتغذية الكهربائية</td>
+                    <td style="padding: 12px;"><strong>كابل واحد فقط (<code>Cat6 UTP/FTP</code>):</strong> ينقل البيانات والصوت والطاقة معاً عبر تقنية <code>PoE (IEEE 802.3af/at)</code> دون الحاجة لمحولات كهرباء منفصلة.</td>
+                    <td style="padding: 12px;"><strong>كابل مزدوج (<code>RG59 Coaxial + Power</code>):</strong> يتطلب كابل إشارة محوري مع أسلاك تغذية <code>12V DC</code> منفصلة وموزع طاقة مركزي.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">مقاومة التشويش الكهرومغناطيسي</td>
+                    <td style="padding: 12px;"><strong>عالية جداً:</strong> الإشارة رقمية مُحزّمة (<code>TCP/IP Packets</code>) لا تتأثر بتشويش كابلات الكهرباء المجاورة طالما التزمت بمسافة الـ 100 متر القياسية.</td>
+                    <td style="padding: 12px;"><strong>حساسة للتداخل:</strong> الإشارة التناظرية تتأثر بالحث الكهرومغناطيسي وتظهر فيها خطوط تموّج إذا مرّت بجوار كابلات التيار المتردد أو المولدات.</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">قابلية التوسعة والربط الذكي</td>
+                    <td style="padding: 12px;"><strong>مرونة شبكية كاملة:</strong> يمكن تجميع 8 أو 16 كاميرا في طابق كامل على <code>PoE Switch</code> واحد ومد كابل <code>Uplink</code> وحيد إلى غرفة السيرفر أو ربطها لاسلكياً عبر <code>Outdoor CPE</code>.</td>
+                    <td style="padding: 12px;"><strong>تمديد نقطي مباشر (<code>Point-to-Point</code>):</strong> يجب سحب كابل مستقل من كل كاميرا حتى موقع جهاز الـ <code>DVR</code> مباشرة.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">الذكاء الاصطناعي والصوت</td>
+                    <td style="padding: 12px;">تدعم أصلياً الميكروفون المدمج، التخزين الاحتياطي على بطاقة <code>MicroSD</code> داخل الكاميرا (<code>ANR</code>)، وفلترة الإنذارات الكاذبة بدقة عالية.</td>
+                    <td style="padding: 12px;">محدودة في قدرات التحليل الطرفي ولا تدعم التخزين المستقل داخل الكاميرا عند انقطاع الكابل.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="alert alert-warning" style="background: #fffbeb; border-right: 4px solid #f59e0b; color: #92400e; border-radius: 10px; padding: 16px;">
+              <strong><i class="fa-solid fa-bolt"></i> نصيحة هندسية عند شراء كابلات الشبكة:</strong> اشترِ دائماً كابلات <strong>نحاس نقي 100% (<code>Pure Bare Copper Cat6 - 23AWG</code>)</strong> للأنظمة التي تعمل بتقنية <code>PoE</code>، واحذر الكابلات التجارية المغشوشة المصنوعة من الألمنيوم المطلي بالنحاس (<code>CCA - Copper Clad Aluminum</code>) لأن مقاومتها الكهربائية العالية تسبب هبوطاً في الجهد (<code>Voltage Drop</code>) يؤدي إلى انطفاء الكاميرات ليلاً فور عمل كشافات الأشعة تحت الحمراء (<code>IR LEDs</code>).
+            </div>
+
+            <h2 id="section-2">2. كيف تختار العدسة ومستشعر الرؤية الليلية المناسب لكل موقع؟ (2.8mm vs 4mm &amp; ColorVu)</h2>
+            <p>أحد أكثر الأخطاء شيوعاً هو شراء كاميرات بدقة عالية (مثلاً <code>4MP</code> أو <code>8MP</code>) بُعدها البؤري واحد لجميع المواقع، ثم التفاجؤ بأن الكاميرا المثبتة على ارتفاع عالٍ لا تلتقط ملامح الوجوه أو أرقام السيارات بوضوح. السر الهندسي يكمن في مواءمة <strong>البعد البؤري للعدسة (<code>Focal Length</code>)</strong> مع مسافة الهدف وفق معيار <strong><code>DORI</code></strong> العالمي (Detection, Observation, Recognition, Identification):</p>
+
+            <ul>
+              <li><strong>عدسة <code>2.8mm</code> (زاوية رؤية عريضة 102°–110°):</strong> مثالية للغرف الداخلية، الصالات التجارية، المكاتب، وفوق الكاشير مباشرة حيث تكون المسافة المطلوبة للتعرف الدقيق أقل من <strong>4 إلى 5 أمتار</strong>.</li>
+              <li><strong>عدسة <code>3.6mm / 4mm</code> (زاوية متوسطة 78°–85°):</strong> الخيار المتوازن للمداخل الرئيسية، الممرات المتوسطة، وأمام المحلات التجارية لتغطية مسافة تعرّف تتراوح بين <strong>6 إلى 9 أمتار</strong>.</li>
+              <li><strong>عدسة <code>6mm</code> أو عدسة متغيرة البعد البؤري (<code>Motorized Varifocal 2.8–12mm</code>):</strong> ضرورية للأسوار الطويلة، البوابات الخارجية، ومواقف السيارات لتركيز الدقة البكسلية على ممر محدد على بُعد <strong>12 إلى 25 متراً</strong> دون تشتيت البكسلات في الجدران الجانبية.</li>
+            </ul>
+
+            <h3>الفرق بين الرؤية الليلية بالأشعة تحت الحمراء (IR) والتصوير الليلي الملون (Full-Color / ColorVu)</h3>
+            <p>في الليل، تتحول كاميرات <code>IR</code> التقليدية إلى اللونين الأبيض والأسود، مما يُفقدك معلومة جوهرية عند التحقيق في أي حادثة وهي <strong>لون الملابس أو لون المركبة</strong>. في المقابل، تعتمد كاميرات الجيل الحديث (مثل تقنيات <code>ColorVu</code> و<code>Full-Color</code> و<code>Starlight</code>) على فتحة عدسة واسعة جداً (<code>F1.0</code> بدلاً من <code>F2.0</code>) مع مستشعر كبير الحجم (<code>1/1.8" CMOS</code>) وإضاءة دافئة مساعدة لتسجيل فيديو ليلي ملون بالكامل، أو تعمل بالوضع الهجين الذكي (<code>Smart Dual-Light</code>) الذي يبقي الإضاءة غير المرئية <code>IR</code> طوال الليل ولا يشغّل الضوء الأبيض الملون إلا لحظة رصد شخص أو مركبة.</p>
+
+            <h2 id="section-3">3. معادلة وجدول حساب سعة الهاردسك (Surveillance HDD) لتسجيل 30 يوماً متواصلة</h2>
+            <p>تعتمد سعة القرص الصلب المطلوبة على 4 متغيرات رئيسية: <strong>عدد الكاميرات</strong>، <strong>دقة التصوير وعدد الإطارات (<code>FPS</code>)</strong>، <strong>معيار ضغط الفيديو (<code>Codec</code>)</strong>، و<strong>عدد أيام الأرشفة المطلوبة</strong>.</p>
+
+            <p>تُحسب سعة التخزين اليومية بالكيلوبايت ثم بالجيجابايت لكل كاميرا عبر المعادلة الهندسية القياسية التالية:</p>
+
+            $$\text{Storage (GB/Day)} = \frac{\text{Bitrate (Kbps)} \times 3600 \times 24 \times \text{Number of Cameras}}{8 \times 1024 \times 1024}$$
+
+            <p>بفضل تقنيات الضغط الذكي الحديثة (<strong><code>H.265+</code></strong>)، ينخفض معدل البت المتوسط (<code>Average Bitrate</code>) بنسبة تتراوح بين <strong>50% إلى 65%</strong> مقارنة بمعيار <code>H.264</code> القديم، لأن المعالج لا يعيد تخزين الخلفيات الثابتة (الجدران والأرضيات) في كل إطار بل يسجل فقط المتغيرات الحركية.</p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+                <thead style="background: #1e293b; color: #fff;">
+                  <tr>
+                    <th style="padding: 14px; text-align: right;">دقة الكاميرا (20 إطار/ثانية)</th>
+                    <th style="padding: 14px; text-align: right;">معدل البت بضغط H.265+</th>
+                    <th style="padding: 14px; text-align: right;">استهلاك الكاميرا الواحدة يومياً</th>
+                    <th style="padding: 14px; text-align: right;">السعة المطلوبة لـ 4 كاميرات (30 يوماً)</th>
+                    <th style="padding: 14px; text-align: right;">السعة المطلوبة لـ 8 كاميرات (30 يوماً)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">2 ميجابكسل (1080p Full HD)</td>
+                    <td style="padding: 12px;"><code>~1024 Kbps</code></td>
+                    <td style="padding: 12px;">~10.5 جيجابايت / يوم</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~1.26 تيرابايت (يُنصح بـ <code>2TB</code>)</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~2.52 تيرابايت (يُنصح بـ <code>4TB</code>)</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">4 ميجابكسل (2K QHD)</td>
+                    <td style="padding: 12px;"><code>~1792 Kbps</code></td>
+                    <td style="padding: 12px;">~18.4 جيجابايت / يوم</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~2.21 تيرابايت (يُنصح بـ <code>4TB</code>)</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~4.42 تيرابايت (يُنصح بـ <code>6TB</code>)</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px; font-weight: 700;">5 ميجابكسل (5MP Super HD)</td>
+                    <td style="padding: 12px;"><code>~2048 Kbps</code></td>
+                    <td style="padding: 12px;">~21.1 جيجابايت / يوم</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~2.53 تيرابايت (يُنصح بـ <code>4TB</code>)</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~5.06 تيرابايت (يُنصح بـ <code>6TB</code>)</td>
+                  </tr>
+                  <tr style="background: #f8fafc;">
+                    <td style="padding: 12px; font-weight: 700;">8 ميجابكسل (4K Ultra HD)</td>
+                    <td style="padding: 12px;"><code>~3584 Kbps</code></td>
+                    <td style="padding: 12px;">~36.9 جيجابايت / يوم</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~4.43 تيرابايت (يُنصح بـ <code>6TB</code>)</td>
+                    <td style="padding: 12px; font-weight: 700; color: #0284c7;">~8.85 تيرابايت (يُنصح بـ <code>10TB</code>)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>ولضمان استمرار عمل جهاز <code>NVR</code> ومقسم <code>PoE Switch</code> دون انقطاع أثناء انطفاء الكهرباء (وهي اللحظة الأكثر حساسية أمنياً)، احرص على ربط المنظومة بمزود طاقة احتياطي أو منظومة طاقة شمسية مستقلة؛ ويمكنك حساب سعة البطارية والإنفرتر المطلوبة لتشغيل المنظومة 24 ساعة بدقة عبر <a href="https://connecttag.org/tools/energy/solar-calculator/"><strong>حاسبة الطاقة الشمسية في كونكت تاق</strong></a> (حيث تستهلك منظومة مكونة من 8 كاميرات PoE مع جهاز NVR عادةً بين <code>65W</code> إلى <code>90W</code> في الساعة).</p>
+
+            <h2 id="section-4">4. الأخطاء الأمنية الـ 5 القاتلة التي تجعل كاميرات المراقبة مكشوفة للاختراق</h2>
+            <p>في الفحوصات الأمنية التي نجريها للشركات والمحال التجارية، نجد أن معظم اختراقات كاميرات المراقبة لا تحدث بسبب «برمجيات معقدة»، بل نتيجة 5 أخطاء قاتلة يرتكبها الفنيون أثناء التركيب السريع لتفعيل المشاهدة عبر الهاتف:</p>
+
+            <ol>
+              <li><strong>فتح المنافذ المباشر في الراوتر (<code>Manual Port Forwarding</code>) وتفعيل <code>UPnP</code>:</strong> يقوم بعض الفنيين بفتح منافذ البث والإدارة (مثل منفذ <code>RTSP 554</code>، ومنفذ الويب <code>80/443</code>، ومنافذ الخدمة مثل <code>8000</code> أو <code>37777</code>) أو تفعيل بروتوكول <code>UPnP</code> الذي يفتح المنافذ تلقائياً دون علم المالك. النتيجة هي ظهور واجهة الكاميرا فوراً في محركات البحث عن الأجهزة المتصلة بالإنترنت (مثل <code>Shodan</code> و<code>Censys</code>) وتعرّضها لهجمات آلية على مدار الساعة.</li>
+              <li><strong>استخدام كلمات مرور ضعيفة أو موحّدة بين الـ NVR والكاميرات:</strong> وضع كلمة مرور بسيطة مثل <code>admin12345</code> أو رقم الهاتف يسهّل كسرها خلال ثوانٍ عبر هجمات التخمين الآلي (<code>Brute-Force Attacks</code>).</li>
+              <li><strong>ربط الكاميرات على نفس شبكة الواي فاي المخصصة للضيوف أو الموظفين:</strong> وضع جهاز <code>NVR</code> والكاميرات على نفس النطاق الشبكي (<code>Flat Subnet</code>) الذي يتصل به الزوار يسمح لأي جهاز متصل بالواي فاي بفحص الشبكة ومحاولة اعتراض بث <code>RTSP</code> أو تنفيذ هجمات حجب الخدمة على الكاميرات.</li>
+              <li><strong>إهمال تحديث النظام البرمجي (<code>Firmware Updates</code>) وترك الخدمات القديمة مفعّلة:</strong> بقاء خدمات غير ضرورية مثل <code>Telnet</code> أو <code>SSH</code> أو <code>SNMP</code> أو بروتوكول <code>ONVIF</code> بدون مصادقة قوية يعرّض الجهاز لثغرات تجاوز الصلاحيات المسجلة عالمياً.</li>
+              <li><strong>إعطاء صلاحية المسؤول الكامل (<code>Admin</code>) لجميع الهواتف:</strong> مشاركة حساب المدير الرئيسي لجهاز التسجيل مع جميع أفراد الأسرة أو الموظفين يمنحهم صلاحية مسح الهاردسك (<code>Format HDD</code>) أو إيقاف التسجيل أو تعديل الشبكة.</li>
+            </ol>
+
+            <h2 id="section-5">5. خطة التأمين الهندسية: عزل VLAN، تشفير RTSP/ONVIF، والوصول الآمن عن بُعد</h2>
+            <p>لتأمين منظومة كاميرات المراقبة وفق معايير الأمن السيبراني المؤسسي (<code>Zero-Trust Surveillance Architecture</code>)، طبّق المعمارية الدفاعية التالية خطوة بخطوة:</p>
+
+            <!-- مخطط معماري لتأمين شبكة الكاميرات -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16); direction: rtl;">
+              <h4 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+                <i class="fa-solid fa-diagram-project"></i> المعمارية الآمنة لعزل وتأمين شبكة كاميرات المراقبة (Isolated Camera VLAN)
+              </h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+                <div style="background: rgba(56, 189, 248, 0.1); border-right: 4px solid #38bdf8; padding: 15px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #7dd3fc; margin-bottom: 6px;">الطبقة 1: عزل الكاميرات في VLAN مستقل</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">تخصيص شبكة فرعية خاصة للكاميرات (مثلاً <code>VLAN 30: 10.30.0.0/24</code>) منفصلة تماماً عن شبكة الحواسيب وشبكة الواي فاي للضيوف، أو ربطها مباشرة بمنافذ <code>PoE</code> المعزولة خلف جهاز الـ <code>NVR</code>.</p>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); border-right: 4px solid #34d399; padding: 15px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #6ee7b7; margin-bottom: 6px;">الطبقة 2: حظر الإنترنت عن الكاميرات</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">الكاميرات نفسها لا تحتاج للاتصال بالإنترنت أبداً؛ يتم حظر خروج عناوين الكاميرات في الجدار الناري (<code>Block WAN Outbound</code>) وحصر التواصل بينها وبين جهاز <code>NVR</code> ومزود الوقت المحلي <code>NTP</code>.</p>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.1); border-right: 4px solid #fbbf24; padding: 15px; border-radius: 10px;">
+                  <div style="font-weight: 800; color: #fde68a; margin-bottom: 6px;">الطبقة 3: الوصول المشفر عن بُعد</div>
+                  <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">إغلاق كافة منافذ <code>Port Forwarding</code> وتعطيل <code>UPnP</code>، والاعتماد على نفق <code>VPN (WireGuard)</code> للوصول المحلي الآمن، أو تفعيل تشفير التدفق السحابي المزدوج (<code>Stream Encryption Key</code>).</p>
+                </div>
+              </div>
+            </div>
+
+            <h3>قائمة الفحص الإلزامية لتأمين جهاز الـ NVR والكاميرات بعد التركيب</h3>
+            <ul>
+              <li><strong>توليد كلمات مرور معقدة وفريدة:</strong> استخدم <a href="https://connecttag.org/tools/security/password-generator/"><strong>أداة توليد كلمات المرور القوية في كونكت تاق</strong></a> لإنشاء كلمة مرور لا تقل عن 16 خانة (تجمع بين الحروف الكبيرة والصغيرة والأرقام والرموز) لحساب المدير الرئيسي (<code>Admin</code>) ومفتاح تشفير البث (<code>Stream Verification Code</code>).</li>
+              <li><strong>فحص الشبكة المحلية واكتشاف المنافذ المفتوحة:</strong> استخدم تطبيق <a href="https://connecttag.org/company/projects/apps/network-tool/"><strong>أداة الشبكة (Network Tool)</strong></a> على هاتفك الأندرويد لفحص عناوين الـ <code>IP</code> المتصلة بشبكتك المحلية والتأكد من عدم وجود منافذ إدارة غير ضرورية مفتوحة على الكاميرات أو الراوتر.</li>
+              <li><strong>تفعيل قفل الحساب التلقائي (<code>Illegal Login Lock</code>):</strong> من إعدادات الأمان في الـ <code>NVR</code>، فعّل حظر عنوان الـ <code>IP</code> مؤقتاً بعد 5 محاولات دخول خاطئة لإحباط أي محاولة تخمين لكلمة المرور.</li>
+              <li><strong>تخصيص حسابات مشاهدة فقط (<code>Viewer Accounts</code>):</strong> أنشئ حساباً بصلاحية «مشاهدة البث المباشر فقط» للهواتف اليومية أو موظفي الاستقبال، واحتفظ بحساب المسؤول الرئيسي للطوارئ والصيانة فقط.</li>
+              <li><strong>تفعيل تنبيهات تعطل القرص الصلب وفقدان الإشارة (<code>HDD Exception &amp; Video Tampering Alerts</code>):</strong> اضبط جهاز الـ <code>NVR</code> ليُصدر صافرة تنبيه فورية وإشعاراً للهاتف في حال امتلاء أو تلف القرص الصلب أو تغطية عدسة أي كاميرا.</li>
+            </ul>
+
+            <div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 2px solid #93c5fd; border-radius: 16px; padding: 24px; margin: 28px 0;">
+              <h4 style="margin-top: 0; color: #1e3a8a; font-weight: 800; font-size: 19px;"><i class="fa-solid fa-screwdriver-wrench"></i> أدوات مساعدة مجانية من كونكت تاق لمهندسي وفنيي الأنظمة الأمنية:</h4>
+              <p style="color: #334155; margin-bottom: 16px;">يمكنك الاستعانة بالأدوات والتطبيقات التالية أثناء تصميم وفحص وتأمين منظومات المراقبة والشبكات:</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <a href="https://connecttag.org/company/projects/apps/network-tool/" class="btn btn-primary" style="background: #0052cc; border: none; border-radius: 10px; font-weight: 700; padding: 9px 18px;">
+                  <i class="fa-solid fa-network-wired"></i> تطبيق أداة الشبكة (Network Tool)
+                </a>
+                <a href="https://connecttag.org/tools/security/password-generator/" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; background: #fff; border-radius: 10px; font-weight: 700; padding: 9px 18px;">
+                  <i class="fa-solid fa-key"></i> مولد كلمات المرور القوية للـ NVR
+                </a>
+                <a href="https://connecttag.org/tools/energy/solar-calculator/" class="btn btn-default" style="border-color: #334155; color: #334155; background: #fff; border-radius: 10px; font-weight: 700; padding: 9px 18px;">
+                  <i class="fa-solid fa-solar-panel"></i> حاسبة الطاقة الشمسية للكاميرات
+                </a>
+              </div>
+            </div>
+
+            <h2 id="section-6">6. الأسئلة الشائعة والمصادر والمعايير الهندسية المعتمدة</h2>
+
+            <div class="faq-section" style="margin-top: 24px;">
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا لا يصلح استخدام هاردسك الكمبيوتر العادي (Desktop HDD) داخل جهاز تسجيل الكاميرات NVR؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">لأن أقراص الحاسوب المكتبي مصممة للعمل نحو 8 ساعات يومياً مع عمليات قراءة وكتابة متقطعة، بينما تعمل أقراص المراقبة المتخصصة (<code>Surveillance HDD</code> مثل <code>WD Purple</code> و<code>Seagate SkyHawk</code>) بنظام كتابة متواصلة 24/7 وتدعم تقنية <code>AllFrame / ImagePerfect</code> لمنع سقوط الإطارات (<code>Frame Drop</code>) وتتحمل درجات الحرارة العالية والاهتزازات المستمرة.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما أقصى مسافة يمكن مد كابل الشبكة (Cat6) لتشغيل كاميرا IP بتقنية PoE بدون مقوٍّ؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">وفق معيار <code>IEEE 802.3af/at</code> تبلغ المسافة القياسية الآمنة لنقل البيانات والطاقة معاً عبر كابل نحاسي نقي (<code>Pure Copper Cat6</code>) نحو <strong>100 متر</strong>. وفي حال الحاجة لمسافات تصل إلى 200–250 متراً، يمكن تفعيل وضع التمديد البعيد (<code>Long Range / Extend PoE Mode</code>) في مقسم <code>PoE Switch</code> والذي يخفض سرعة المنفذ إلى <code>10Mbps</code> مقابل مضاعفة مدى الإشارة، أو استخدام محولات الألياف الضوئية (<code>Fiber Media Converters</code>).</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما الفرق بين عدسة 2.8mm وعدسة 4mm أو 6mm في كاميرات المراقبة؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">الرقم بالمليمتر يمثل البعد البؤري للعدسة (<code>Focal Length</code>): عدسة <code>2.8mm</code> توفر زاوية رؤية عريضة جداً (نحو 100° إلى 110°) وتناسب الغرف والصالات والمداخل القريبة، بينما عدسة <code>4mm</code> أو <code>6mm</code> توفر زاوية أضيق ولكن بتركيز وتقريب بصري أعلى لتفاصيل الوجوه ولوحات السيارات في الممرات الطويلة والأسوار الخارجية.</p>
+              </div>
+
+              <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+                <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف أتابع كاميرات المراقبة عبر الهاتف من خارج المنزل دون فتح منافذ الراوتر (Port Forwarding)؟</h4>
+                <p style="margin-bottom: 0; color: #334155;">الطريقة الأكثر أماناً للمؤسسات هي إعداد نفق اتصال مشفر خاص (<code>WireGuard / OpenVPN</code>) على الراوتر الرئيسي للوصول إلى الشبكة المحلية عن بُعد، أو استخدام خدمة الربط السحابي المشفرة (<code>P2P Cloud</code>) مع تفعيل تشفير التدفق الفيديوي (<code>Stream Encryption Key</code>) والمصادقة الثنائية، مع تعطيل خاصية <code>UPnP</code> وإغلاق كافة منافذ الاستماع الخارجية تماماً.</p>
+              </div>
+            </div>
+
+            <!-- صندوق المصادر والمراجع الرسمية -->
+            <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #0052cc; border-radius: 14px; padding: 22px; margin-top: 32px;">
+              <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #0052cc;"></i> المصادر والمعايير الهندسية المعتمدة (Official Technical References):</h4>
+              <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+                <li><strong>ONVIF Network Video Security Standards:</strong> <a href="https://www.onvif.org/profiles/" target="_blank" rel="noopener noreferrer">ONVIF Official Specifications — Profile S, Profile G &amp; Profile T for IP Video Systems</a>.</li>
+                <li><strong>ITU-T H.265 / High Efficiency Video Coding (HEVC):</strong> <a href="https://www.itu.int/rec/T-REC-H.265" target="_blank" rel="noopener noreferrer">ITU-T Recommendation H.265 — High Efficiency Video Coding Standard</a>.</li>
+                <li><strong>IEEE 802.3af / 802.3at Power over Ethernet (PoE) Standard:</strong> المعيار الهندسي لنقل الطاقة والبيانات عبر كابلات الشبكة المجدولة.</li>
+                <li><strong>IEC 62676-4 (Video Surveillance Systems — DORI Standard):</strong> المواصفة الدولية لمعايير الرصد والملاحظة والتعرف وتحديد الهوية في أنظمة المراقبة المرئية.</li>
+              </ul>
+            </aside>
+
+          </div>
+
+          <site-author-box name="يوسف الرحبي" avatar="https://connecttag.org/upload/author/yousef-alrahbi.webp" link="https://connecttag.org/blog/authors/yousef-alrahbi"><span class="sr-only">الكاتب: يوسف الرحبي</span></site-author-box>
+          <site-share-buttons></site-share-buttons>
+          <site-related-posts ids="public-wifi-hotspot-security-evil-twin-mitm-guide, android-firewall-app-internet-control-soor-net-guide, website-security-simple-steps"></site-related-posts>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<site-footer></site-footer>
+<cookie-consent></cookie-consent>
+</body>
+</html>
