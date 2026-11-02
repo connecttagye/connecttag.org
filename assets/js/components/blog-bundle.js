@@ -23,6 +23,8 @@ connectedCallback() {
 const baseUrl = (window.CT_BASE_URL || 'https://connecttag.org').replace(/\/+$/, '');
 const date = this.getAttribute('date') || '';
 const updated = this.getAttribute('updated') || '';
+const category = this.getAttribute('category') || '';
+const subcategory = this.getAttribute('subcategory') || '';
 const authorMap = {
 'عقيل محمد': `${baseUrl}/blog/authors/aqeldev`,
 'م. عقيل المشرعي': `${baseUrl}/blog/authors/aqeldev`,
@@ -66,8 +68,9 @@ return { dm: d, y: '' };
 };
 const pub = parseDate(date);
 const upd = parseDate(updated);
+const catBarHtml = category ? `<div class="ct-article-cat-bar" style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:14px; font-size:13px; font-weight:700;"><a href="${baseUrl}/blog/?cat=${encodeURIComponent(category)}" style="display:inline-flex; align-items:center; gap:6px; background:#eff6ff; color:#0052cc; border:1px solid #bfdbfe; padding:4px 12px; border-radius:20px; text-decoration:none;"><i class="fa-solid fa-folder-open" aria-hidden="true" style="font-size:12px;"></i> ${category}</a>${subcategory ? `<span style="color:#94a3b8; font-weight:800;" aria-hidden="true">›</span><a href="${baseUrl}/blog/?cat=${encodeURIComponent(category)}&sub=${encodeURIComponent(subcategory)}" style="display:inline-flex; align-items:center; gap:6px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1; padding:4px 12px; border-radius:20px; text-decoration:none;"><i class="fa-solid fa-tag" aria-hidden="true" style="font-size:11px; color:#0284c7;"></i> ${subcategory}</a>` : ''}</div>` : '';
 this.innerHTML = `
-<div class="ct-modern-meta">${authorName ? `<div class="meta-col"><div class="meta-label"><i class="fa-regular fa-user" aria-hidden="true"></i> الكاتب</div><div class="meta-value">${authorLink ? `<a href="${authorLink}" class="meta-dm" style="color: #0052cc; text-decoration: none;">${authorName}</a>` : `<span class="meta-dm">${authorName}</span>`}</div></div><div class="meta-sep"></div>` : ''}<div class="meta-col"><div class="meta-label"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i> تاريخ النشر</div><div class="meta-value"><span class="meta-dm">${pub.dm}</span><span class="meta-y">${pub.y}</span></div></div>
+${catBarHtml}<div class="ct-modern-meta">${authorName ? `<div class="meta-col"><div class="meta-label"><i class="fa-regular fa-user" aria-hidden="true"></i> الكاتب</div><div class="meta-value">${authorLink ? `<a href="${authorLink}" class="meta-dm" style="color: #0052cc; text-decoration: none;">${authorName}</a>` : `<span class="meta-dm">${authorName}</span>`}</div></div><div class="meta-sep"></div>` : ''}<div class="meta-col"><div class="meta-label"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i> تاريخ النشر</div><div class="meta-value"><span class="meta-dm">${pub.dm}</span><span class="meta-y">${pub.y}</span></div></div>
 ${updated ? `
 <div class="meta-sep"></div><div class="meta-col"><div class="meta-label"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> تاريخ التحديث</div><div class="meta-value"><span class="meta-dm">${upd.dm}</span><span class="meta-y">${upd.y}</span></div></div>` : ''}
 </div>
@@ -265,7 +268,7 @@ const allPosts = [
         id: "yemen-4g-app-balance-modem-guide",
         title: "شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم",
         link: "blog/yemen-4g-app-balance-modem-guide",
-        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.49",
+        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.50",
         excerpt: "الدليل الكامل لاستخدام تطبيق يمن فورجي: حفظ الأرقام المتعددة، تفعيل ويدجت الرصيد على الشاشة الرئيسية، تنبيهات انتهاء الباقة، ولوحة المودم المدمجة."
       },
       {
@@ -335,14 +338,14 @@ const allPosts = [
         id: "yemen-4g-modem-settings-security-guide",
         title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
         link: "blog/yemen-4g-modem-settings-security-guide",
-        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.49",
+        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.50",
         excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
       },
       {
         id: "best-yemen-4g-modem-buying-guide",
         title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
         link: "blog/best-yemen-4g-modem-buying-guide",
-        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.49",
+        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.50",
         excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
       },
       {
@@ -377,7 +380,7 @@ const allPosts = [
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",
-        image: "upload/yemen-internet-comparison.webp?v=1.1.49",
+        image: "upload/yemen-internet-comparison.webp?v=1.1.50",
         excerpt: "تعرف على أفضل خيارات الإنترنت المتاحة في اليمن وكيفية اختيار الأنسب لعملك."
       },
       {
@@ -398,7 +401,7 @@ const allPosts = [
         id: "how-to-check-yemen-4g-balance",
         title: "كيفية استعلام رصيد يمن فورجي 4G",
         link: "blog/how-to-check-yemen-4g-balance",
-        image: "upload/yemen-4g.webp?v=1.1.49",
+        image: "upload/yemen-4g.webp?v=1.1.50",
         excerpt: "دليل شامل يشرح كافة الطرق الرسمية والميسرة لمتابعة استهلاكك لرصيد يمن فورجي."
       },
       {

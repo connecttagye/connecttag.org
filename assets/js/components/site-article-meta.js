@@ -7,6 +7,8 @@ class SiteArticleMeta extends HTMLElement {
     const baseUrl = (window.CT_BASE_URL || 'https://connecttag.org').replace(/\/+$/, '');
     const date = this.getAttribute('date') || '';
     const updated = this.getAttribute('updated') || '';
+    const category = this.getAttribute('category') || '';
+    const subcategory = this.getAttribute('subcategory') || '';
 
     const authorMap = {
       'عقيل محمد': { name: 'عقيل محمد', link: `${baseUrl}/blog/authors/aqeldev` },
@@ -56,7 +58,20 @@ class SiteArticleMeta extends HTMLElement {
     const pub = parseDate(date);
     const upd = parseDate(updated);
 
+    const catBarHtml = category ? `
+      <div class="ct-article-cat-bar" style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:14px; font-size:13px; font-weight:700;">
+        <a href="${baseUrl}/blog/?cat=${encodeURIComponent(category)}" style="display:inline-flex; align-items:center; gap:6px; background:#eff6ff; color:#0052cc; border:1px solid #bfdbfe; padding:4px 12px; border-radius:20px; text-decoration:none;">
+          <i class="fa-solid fa-folder-open" aria-hidden="true" style="font-size:12px;"></i> ${category}
+        </a>
+        ${subcategory ? `
+        <span style="color:#94a3b8; font-weight:800;" aria-hidden="true">›</span>
+        <a href="${baseUrl}/blog/?cat=${encodeURIComponent(category)}&sub=${encodeURIComponent(subcategory)}" style="display:inline-flex; align-items:center; gap:6px; background:#f8fafc; color:#334155; border:1px solid #cbd5e1; padding:4px 12px; border-radius:20px; text-decoration:none;">
+          <i class="fa-solid fa-tag" aria-hidden="true" style="font-size:11px; color:#0284c7;"></i> ${subcategory}
+        </a>` : ''}
+      </div>` : '';
+
     this.innerHTML = `
+      ${catBarHtml}
       <div class="ct-modern-meta">
         ${authorName ? `
         <div class="meta-col">

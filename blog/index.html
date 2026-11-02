@@ -75,17 +75,17 @@
     <meta name="twitter:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
     <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/blog-tech-cover.webp" />
     <meta name="twitter:image:alt" content="مدونة كونكت تاق الشاملة" />
-    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.49" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.49" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.50" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.50" crossorigin>
     <link rel="preload" href="https://connecttag.org/assets/img/blog-cover.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.49"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.49">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.49">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.49">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.49">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.50">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.50">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.50">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.50">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.49" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.50" defer></script>
 
     <!-- CSS المخصص لتحسين تصميم المدونة -->
     <style>
@@ -165,8 +165,8 @@
 
         .filter-wrapper {
             background: #fff;
-            padding: 20px 30px;
-            border-radius: 50px;
+            padding: 20px 28px;
+            border-radius: 28px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
@@ -396,6 +396,85 @@
             background: #0052cc;
             color: #ffffff !important;
         }
+        .blog-cat-btn .cat-count {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 700;
+            background: rgba(15, 23, 42, 0.08);
+            color: inherit;
+            padding: 1px 7px;
+            border-radius: 12px;
+            margin-right: 4px;
+        }
+        .blog-cat-btn.active .cat-count,
+        .blog-cat-btn[aria-pressed="true"] .cat-count {
+            background: rgba(255, 255, 255, 0.22);
+            color: #ffffff;
+        }
+        .subcategories-tabs {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding-top: 14px;
+            margin-top: 4px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .blog-subcat-btn {
+            background: #f8fafc;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .blog-subcat-btn:hover {
+            background: #eff6ff;
+            color: #0052cc;
+            border-color: #93c5fd;
+        }
+        .blog-subcat-btn.active,
+        .blog-subcat-btn[aria-pressed="true"] {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+        }
+        .blog-subcat-btn .subcat-count {
+            font-size: 11px;
+            opacity: 0.85;
+        }
+        .subcat-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            background: #f0f9ff;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+            padding: 3px 11px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .subcat-tag:hover {
+            background: #0284c7;
+            color: #ffffff;
+            border-color: #0284c7;
+        }
+        .subcat-tag i {
+            font-size: 11px;
+        }
 
         /* تجاوب الشاشات */
         @media (max-width: 768px) {
@@ -470,17 +549,18 @@
                                 <label for="blog-search" class="sr-only">ابحث عن مقال</label>
                                 <input type="text" id="blog-search" placeholder="ابحث عن مقال معين...">
                             </div>
-                            <div class="categories-tabs" role="group" aria-label="تصفية المقالات حسب التصنيف" style="display: flex; align-items: center; gap: 10px; overflow-x: auto; white-space: nowrap; max-width: 100%; padding-bottom: 4px; scrollbar-width: none;">
-                                <span style="font-weight: 700; color: #0052cc; font-size: 14px;">التصنيفات:</span>
-                                <button type="button" class="blog-cat-btn active" aria-pressed="true" data-cat="الكل">الكل</button>
-                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="الأمن السيبراني">الأمن السيبراني</button>
-                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="برمجة وتطوير">برمجة وتطوير</button>
-                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="استضافة وسحابيات">استضافة وسحابيات</button>
-                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="تسويق وأعمال">تسويق وأعمال</button>
-                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="اتصالات وإنترنت">اتصالات وإنترنت</button>
+                            <div class="categories-tabs" role="group" aria-label="تصفية المقالات حسب التصنيف الرئيسي" style="display: flex; align-items: center; gap: 8px; overflow-x: auto; white-space: nowrap; max-width: 100%; padding-bottom: 4px; scrollbar-width: none;">
+                                <span style="font-weight: 700; color: #0052cc; font-size: 14px;"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> التصنيفات:</span>
+                                <button type="button" class="blog-cat-btn active" aria-pressed="true" data-cat="الكل">الكل <span class="cat-count">46</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="الأمن السيبراني">الأمن السيبراني <span class="cat-count">16</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="اتصالات وشبكات">اتصالات وشبكات <span class="cat-count">9</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="تسويق وإعلانات">تسويق وإعلانات <span class="cat-count">8</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="استضافة وسحابيات">استضافة وسحابيات <span class="cat-count">6</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="برمجة وتطوير">برمجة وتطوير <span class="cat-count">4</span></button>
+                                <button type="button" class="blog-cat-btn" aria-pressed="false" data-cat="تصميم وجرافيكس">تصميم وجرافيكس <span class="cat-count">3</span></button>
                                 <a href="https://connecttag.org/blog/authors/" class="authors-hub-link"><i class="fa-solid fa-users" aria-hidden="true"></i> كتّاب المدونة</a>
                             </div>
-                        </div>
+                            <div id="subcategories-bar" class="subcategories-tabs" role="group" aria-label="تصفية المقالات حسب التصنيف الفرعي" style="display: none;"></div></div>
                     </div>
                 </div>
 
@@ -488,14 +568,15 @@
 
                     <!-- Blog Item 46 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/how-to-write-seo-articles-tutorials-google-search-essentials-guide">
                                     <img src="https://connecttag.org/upload/how-to-write-seo-articles-tutorials-guide.webp" alt="دليل كتابة المقالات والشروحات المتوافقة مع السيو SEO وسياسات مشرفي المواقع Google Search Essentials" fetchpriority="high" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO" title="تصفية حسب التصنيف الفرعي: السيو وصناعة المحتوى SEO"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>السيو وصناعة المحتوى SEO</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/how-to-write-seo-articles-tutorials-google-search-essentials-guide">دليل كتابة المقالات والشروحات التقنية المتوافقة مع السيو (SEO): كيف تتصدر نتائج البحث وتلتزم بمعايير E-E-A-T وسياسات مشرفي المواقع؟</a>
                                 </h2>
@@ -513,14 +594,15 @@
 
                     <!-- Blog Item 45 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تصميم وجرافيكس" data-subcat="أداء الصور والوسائط">
                             <div class="img-wrapper">
-                                <span class="category-badge">برمجة وتطوير</span>
+                                <span class="category-badge">تصميم وجرافيكس</span>
                                 <a href="https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide">
                                     <img src="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" alt="دليل تحسين الصور للمواقع والتطبيقات والمقارنة بين WebP وAVIF وPNG لتسريع التحميل" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تصميم وجرافيكس" data-subcat="أداء الصور والوسائط" title="تصفية حسب التصنيف الفرعي: أداء الصور والوسائط"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أداء الصور والوسائط</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide">دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</a>
                                 </h2>
@@ -538,7 +620,7 @@
 
                     <!-- Blog Item 44 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="الأنظمة الأمنية والمراقبة">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide">
@@ -546,6 +628,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="الأنظمة الأمنية والمراقبة" title="تصفية حسب التصنيف الفرعي: الأنظمة الأمنية والمراقبة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>الأنظمة الأمنية والمراقبة</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide">دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</a>
                                 </h2>
@@ -563,14 +646,15 @@
 
                     <!-- Blog Item 43 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="فحص الأجهزة والاتصال">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide">
                                     <img src="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" alt="ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز عبر رمز TAC وكود *#06#" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="فحص الأجهزة والاتصال" title="تصفية حسب التصنيف الفرعي: فحص الأجهزة والاتصال"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>فحص الأجهزة والاتصال</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide">ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود *#06# وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</a>
                                 </h2>
@@ -588,7 +672,7 @@
 
                     <!-- Blog Item 42 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide">
@@ -596,6 +680,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide">الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد البيانات عبر تطبيق سور نت</a>
                                 </h2>
@@ -613,14 +698,15 @@
 
                     <!-- Blog Item 41 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide">
                                     <img src="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp" alt="حل مشكلة تقييد عرض الإعلانات في Google AdSense وحماية الحساب من النقرات غير الصالحة وضبط ملف ads.txt" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني" title="تصفية حسب التصنيف الفرعي: أدسنس وأدموب والربح الإعلاني"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أدسنس وأدموب والربح الإعلاني</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide">حل مشكلة «تقييد عرض الإعلانات» في Google AdSense: كيف تحمي حسابك من النقرات غير الصالحة وتضبط ملف ads.txt ورسالة موافقة GDPR؟</a>
                                 </h2>
@@ -638,14 +724,15 @@
 
                     <!-- Blog Item 40 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content">
                                     <img src="https://connecttag.org/upload/google-adsense-approval-low-value-content-guide.webp" alt="شروط قبول موقعك في Google AdSense من المرة الأولى والحل الجذري لرسالة الرفض محتوى ذو قيمة منخفضة" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني" title="تصفية حسب التصنيف الفرعي: أدسنس وأدموب والربح الإعلاني"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أدسنس وأدموب والربح الإعلاني</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content">شروط قبول موقعك في Google AdSense من المرة الأولى: الحل الجذري لرسالة الرفض «محتوى ذو قيمة منخفضة» (Low Value Content)</a>
                                 </h2>
@@ -663,14 +750,15 @@
 
                     <!-- Blog Item 39 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني">
                             <div class="img-wrapper">
-                                <span class="category-badge">برمجة وتطوير</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">
                                     <img src="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp" alt="لماذا يتم تقييد الإعلانات في AdMob و7 مخالفات قاتلة في تصميم واجهات التطبيق وإعداد ملف app-ads.txt" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="أدسنس وأدموب والربح الإعلاني" title="تصفية حسب التصنيف الفرعي: أدسنس وأدموب والربح الإعلاني"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أدسنس وأدموب والربح الإعلاني</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك وكيف تضبط ملف app-ads.txt؟</a>
                                 </h2>
@@ -688,14 +776,15 @@
 
                     <!-- Blog Item 38 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-4g-app-balance-modem-guide">
-                                    <img src="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.49" alt="شرح تطبيق يمن فورجي للاستعلام الذكي عن الرصيد وإدارة المودم" loading="lazy" width="1376" height="768" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.50" alt="شرح تطبيق يمن فورجي للاستعلام الذكي عن الرصيد وإدارة المودم" loading="lazy" width="1376" height="768" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات" title="تصفية حسب التصنيف الفرعي: يمن فورجي والمودمات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>يمن فورجي والمودمات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/yemen-4g-app-balance-modem-guide">شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم</a>
                                 </h2>
@@ -713,14 +802,15 @@
 
                     <!-- Blog Item 37 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تصميم وجرافيكس" data-subcat="الهوية البصرية والشعارات">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تصميم وجرافيكس</span>
                                 <a href="https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide">
                                     <img src="https://connecttag.org/upload/professional-logo-design-principles-guide.webp" alt="دليل تصميم الشعارات الاحترافية وأنواع الشعارات السبعة ومعايير التوازن البصري وصيغ ملفات الفيكتور" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تصميم وجرافيكس" data-subcat="الهوية البصرية والشعارات" title="تصفية حسب التصنيف الفرعي: الهوية البصرية والشعارات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>الهوية البصرية والشعارات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide">دليل تصميم الشعارات الاحترافية (Logo Design): أنواع الشعارات الـ 7، معايير التوازن البصري، وصيغ الملفات التي يجب استلامها</a>
                                 </h2>
@@ -738,14 +828,15 @@
 
                     <!-- Blog Item 36 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تصميم وجرافيكس" data-subcat="الهوية البصرية والشعارات">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تصميم وجرافيكس</span>
                                 <a href="https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide">
                                     <img src="https://connecttag.org/upload/visual-identity-rebranding-strategy-guide.webp" alt="7 أخطاء قاتلة في الهوية البصرية للشركات ومتى وكيف تنفذ إعادة تصميم ناجحة للعلامة التجارية Rebranding" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تصميم وجرافيكس" data-subcat="الهوية البصرية والشعارات" title="تصفية حسب التصنيف الفرعي: الهوية البصرية والشعارات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>الهوية البصرية والشعارات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide">7 أخطاء قاتلة في الهوية البصرية تضعف مبيعاتك: متى وكيف تنفذ إعادة تصميم ناجحة لعلامتك التجارية (Rebranding)؟</a>
                                 </h2>
@@ -763,7 +854,7 @@
 
                     <!-- Blog Item 35 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/google-play-integrity-api-android-security-guide">
@@ -771,6 +862,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/google-play-integrity-api-android-security-guide">دليل Google Play Integrity API الشامل: كيف تكتشف تطبيقات البنوك وواتساب الهواتف المعدّلة والـ Root؟ وكيف تحمي تطبيقك؟</a>
                                 </h2>
@@ -788,14 +880,15 @@
 
                     <!-- Blog Item 34 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="فحص الأجهزة والاتصال">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide">
                                     <img src="https://connecttag.org/upload/migrate-modded-whatsapp-official-ban-fix-guide.webp" alt="الدليل الكامل لحل رسالة تحتاج إلى تطبيق واتساب الرسمي ونقل المحادثات من الواتساب المعدل إلى الرسمي" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="فحص الأجهزة والاتصال" title="تصفية حسب التصنيف الفرعي: فحص الأجهزة والاتصال"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>فحص الأجهزة والاتصال</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide">رسالة «تحتاج إلى تطبيق واتساب الرسمي لاستخدام هذا الحساب»: الدليل الكامل لفك حظر الرقم ونقل محادثاتك إلى الرسمي بأمان</a>
                                 </h2>
@@ -813,7 +906,7 @@
 
                     <!-- Blog Item 33 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis">
@@ -821,6 +914,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis">الحقيقة التقنية وراء «واتساب الذهبي والأزرق والبلس»: ماذا يحدث داخل ملفات الـ APK المعدّلة وكيف تسرق صورك وجلساتك؟</a>
                                 </h2>
@@ -838,7 +932,7 @@
 
                     <!-- Blog Item 32 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة">
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">
@@ -846,6 +940,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة" title="تصفية حسب التصنيف الفرعي: تطوير الهواتف والأنظمة المتعددة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>تطوير الهواتف والأنظمة المتعددة</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">دليل Compose Multiplatform الشامل: كيف تبني واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب؟</a>
                                 </h2>
@@ -863,7 +958,7 @@
 
                     <!-- Blog Item 31 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide">
@@ -871,6 +966,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد" title="تصفية حسب التصنيف الفرعي: مكافحة الاحتيال والتصيّد"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>مكافحة الاحتيال والتصيّد</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide">مخاطر الاتصال بشبكات الواي فاي العامة وشبكات الكروت المفتوحة: كيف تعمل هجمات «التوأم الشرير» واعتراض البيانات؟</a>
                                 </h2>
@@ -888,7 +984,7 @@
 
                     <!-- Blog Item 30 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide">
@@ -896,6 +992,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد" title="تصفية حسب التصنيف الفرعي: مكافحة الاحتيال والتصيّد"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>مكافحة الاحتيال والتصيّد</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide">كيف تُخترق حسابات واتساب وتيليجرام دون علمك؟ كشف خدعة «كود التفعيل»، الأجهزة المرتبطة، وخطر النسخ المعدّلة</a>
                                 </h2>
@@ -913,7 +1010,7 @@
 
                     <!-- Blog Item 29 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide">
@@ -921,6 +1018,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد" title="تصفية حسب التصنيف الفرعي: مكافحة الاحتيال والتصيّد"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>مكافحة الاحتيال والتصيّد</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide">احذر روابط «تسجيل المساعدات والوظائف والربح السريع»: كيف تكشف مواقع التصيّد (Phishing) ومنصات الاستثمار الوهمية؟</a>
                                 </h2>
@@ -938,7 +1036,7 @@
 
                     <!-- Blog Item 28 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide">
@@ -946,6 +1044,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide">هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك</a>
                                 </h2>
@@ -963,7 +1062,7 @@
 
                     <!-- Blog Item 27 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide">
@@ -971,6 +1070,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide">كيف تعرف كواشف الأرقام اسمك حتى لو لم تثبّتها؟ الدليل الأمني لعمل تطبيقات وبوتات كشف الهوية وحماية خصوصيتك</a>
                                 </h2>
@@ -988,7 +1088,7 @@
 
                     <!-- Blog Item 26 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide">
@@ -996,6 +1096,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="مكافحة الاحتيال والتصيّد" title="تصفية حسب التصنيف الفرعي: مكافحة الاحتيال والتصيّد"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>مكافحة الاحتيال والتصيّد</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide">احذر فخ «تفعيل القرض والسلفة»: الدليل الأمني لكشف انتحال المحافظ الإلكترونية وخدعة بطاقات الهدايا وأكواد الشراء</a>
                                 </h2>
@@ -1013,7 +1114,7 @@
 
                     <!-- Blog Item 23 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide">
@@ -1021,6 +1122,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide">مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟</a>
                                 </h2>
@@ -1038,7 +1140,7 @@
 
                     <!-- Blog Item 22 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/android-manifest-security-exported-components-guide">
@@ -1046,6 +1148,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/android-manifest-security-exported-components-guide">ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟</a>
                                 </h2>
@@ -1063,14 +1166,15 @@
 
                     <!-- Blog Item 21 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide">
                                     <img src="https://connecttag.org/upload/yemen-telecom-codes-guide.webp" alt="دليل أكواد وخدمات شركات الاتصالات في اليمن يمن موبايل ويو وسبأفون وواي" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت" title="تصفية حسب التصنيف الفرعي: شركات الاتصالات والإنترنت"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>شركات الاتصالات والإنترنت</span></div>
                                 <h2 class="card-title">
                                     <a href="https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide">دليل أكواد وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو YOU، سبأفون، واي)</a>
                                 </h2>
@@ -1088,14 +1192,15 @@
 
                     <!-- Blog Item 20 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">
-                                    <img src="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp?v=1.1.49" alt="ضبط إعدادات مودم يمن فورجي 4G وتغيير كلمة السر وحماية الرصيد" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp?v=1.1.50" alt="ضبط إعدادات مودم يمن فورجي 4G وتغيير كلمة السر وحماية الرصيد" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات" title="تصفية حسب التصنيف الفرعي: يمن فورجي والمودمات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>يمن فورجي والمودمات</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر، إخفاء الشبكة، وحماية الرصيد من السرقة</a></h2>
                                 <p class="card-text">دليل تطبيقي شامل لروابط الدخول لجميع مودمات يمن فورجي، تغيير كلمة سر الواي فاي، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين...</p>
                                 <div class="read-more-wrapper">
@@ -1109,14 +1214,15 @@
 
 <!-- Blog Item 19 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">
-                                    <img src="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp?v=1.1.49" alt="كيف تختار أفضل مودم يمن فورجي 4G - دليل الشراء والمقارنة" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
+                                    <img src="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp?v=1.1.50" alt="كيف تختار أفضل مودم يمن فورجي 4G - دليل الشراء والمقارنة" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات" title="تصفية حسب التصنيف الفرعي: يمن فورجي والمودمات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>يمن فورجي والمودمات</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء والمقارنة الشامل</a></h2>
                                 <p class="card-text">مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 وسعات البطارية والأسعار لمساعدتك على اختيار المودم الأنسب لتغطية منطقتك...</p>
                                 <div class="read-more-wrapper">
@@ -1130,14 +1236,15 @@
 
 <!-- Blog Item 18 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/technical-seo-audit-guide">
                                     <img src="https://connecttag.org/upload/technical-seo-audit-guide.webp" alt="الفحص التقني الشامل للمواقع Technical SEO Audit" width="1376" height="768" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO" title="تصفية حسب التصنيف الفرعي: السيو وصناعة المحتوى SEO"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>السيو وصناعة المحتوى SEO</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/technical-seo-audit-guide">الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء التي تمنع تصدرك؟</a></h2>
                                 <p class="card-text">دليل عملي لاكتشاف الأخطاء البرمجية، مشاكل الأداء، وهيكلية وسوم الميتا والعناوين التي تمنع موقعك من تصدر نتائج بحث جوجل...</p>
                                 <div class="read-more-wrapper">
@@ -1151,7 +1258,7 @@
 
                     <!-- Blog Item 17 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة">
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/kmp-data-management-room-datastore">
@@ -1159,6 +1266,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة" title="تصفية حسب التصنيف الفرعي: تطوير الهواتف والأنظمة المتعددة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>تطوير الهواتف والأنظمة المتعددة</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/kmp-data-management-room-datastore">إتقان إدارة البيانات في KMP: استخدام Room و DataStore وتشفيرهما</a></h2>
                                 <p class="card-text">دليل تطبيقي شامل لاستخدام مكتبات Room KMP و DataStore الرسمية لتخزين البيانات وتأمينها في المشاريع عابرة المنصات...</p>
                                 <div class="read-more-wrapper">
@@ -1172,7 +1280,7 @@
 
                     <!-- Blog Item 16 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة">
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison">
@@ -1180,6 +1288,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة" title="تصفية حسب التصنيف الفرعي: تطوير الهواتف والأنظمة المتعددة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>تطوير الهواتف والأنظمة المتعددة</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/kmp-vs-flutter-comparison">KMP vs Flutter: أيهما تختار لمشروعك القادم؟</a></h2>
                                 <p class="card-text">مقارنة تقنية شاملة تساعدك على الاختيار بين أداء Kotlin Multiplatform الأصيل وسرعة تطوير Flutter المذهلة...</p>
                                 <div class="read-more-wrapper">
@@ -1193,14 +1302,15 @@
 
                     <!-- Blog Item 15 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة">
                             <div class="img-wrapper">
-                                <span class="category-badge">الأمن السيبراني</span>
+                                <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/iis-hardening-guide">
                                     <img src="https://connecttag.org/upload/iis-hardening-guide.webp" alt="تأمين خادم IIS" width="2752" height="1536" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة" title="تصفية حسب التصنيف الفرعي: إدارة الخوادم والاستضافة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>إدارة الخوادم والاستضافة</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/iis-hardening-guide">دليل تأمين خادم IIS ضد الهجمات السيبرانية (IIS Hardening Guide)</a></h2>
                                 <p class="card-text">تعلم كيفية إغلاق الثغرات الأمنية في IIS، تعطيل بروتوكولات التشفير القديمة، منع Server Fingerprinting، وفلترة الطلبات المشبوهة...</p>
                                 <div class="read-more-wrapper">
@@ -1214,7 +1324,7 @@
 
                     <!-- Blog Item 14 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة">
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/iis-isapi-deployment-guide">
@@ -1222,6 +1332,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة" title="تصفية حسب التصنيف الفرعي: إدارة الخوادم والاستضافة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>إدارة الخوادم والاستضافة</span></div>
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/iis-isapi-deployment-guide">الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS</a></h2>
                                 <p class="card-text">دليل عملي خطوة بخطوة لنشر تطبيقات ISAPI DLL بنجاح على خادم IIS، مع شرح كيفية إعداد بيئة تصحيح الأخطاء (Debugging) وحل المشاكل الشائعة...</p>
                                 <div class="read-more-wrapper">
@@ -1235,7 +1346,7 @@
 
                     <!-- Blog Item 13 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare">
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">
@@ -1243,6 +1354,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare" title="تصفية حسب التصنيف الفرعي: سحابيات وأمان Cloudflare"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>سحابيات وأمان Cloudflare</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-settings-optimization-guide">ضبط إعدادات كلاود فلير بأفضل الممارسات: دليل تحسين الأداء والأمان</a></h2>
                                 <p class="card-text">تعلم كيفية تهيئة كلاود فلير لتحقيق أقصى سرعة، من ضغط Brotli وتهيئة الكاش إلى تأمين الاتصال عبر بروتوكول TLS 1.3...</p>
@@ -1257,7 +1369,7 @@
 
                     <!-- Blog Item 12 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="100">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة">
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/jetpack-compose-guide">
@@ -1265,6 +1377,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="برمجة وتطوير" data-subcat="تطوير الهواتف والأنظمة المتعددة" title="تصفية حسب التصنيف الفرعي: تطوير الهواتف والأنظمة المتعددة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>تطوير الهواتف والأنظمة المتعددة</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/jetpack-compose-guide">الدليل الشامل لـ Jetpack Compose: مستقبل تطبيقات الأندرويد</a></h2>
                                 <p class="card-text">تعرف على الأداة الثورية لبناء واجهات الأندرويد. اكتشف المميزات، الفرق بينه وبين XML، وطريقة الإعداد والبدء في مشروعك...</p>
@@ -1279,7 +1392,7 @@
 
                     <!-- Blog Item 11 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="200">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/android-app-security-reverse-engineering">
@@ -1287,6 +1400,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن الهواتف والتطبيقات" title="تصفية حسب التصنيف الفرعي: أمن الهواتف والتطبيقات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن الهواتف والتطبيقات</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/android-app-security-reverse-engineering">حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</a></h2>
                                 <p class="card-text">تعلم كيفية رفع تكلفة الهجوم على تطبيقك وحماية ملكيتك الفكرية باستخدام تشويش الكود، تقنيات RASP، واستخدام الـ NDK...</p>
@@ -1301,7 +1415,7 @@
 
                     <!-- Blog Item 10 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/api-security-guide">
@@ -1309,6 +1423,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات" title="تصفية حسب التصنيف الفرعي: أمن المواقع والشبكات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن المواقع والشبكات</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/api-security-guide">حماية واجهات برمجة التطبيقات (API Security): الدليل الشامل</a></h2>
                                 <p class="card-text">تعرف على كيفية تأمين قنوات التواصل الرقمي، من تشفير HTTPS وهندسة JWT إلى تقييد الوصول الجغرافي والحد من الطلبات...</p>
@@ -1323,14 +1438,15 @@
 
                     <!-- Blog Item 9 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="100">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات">
                             <div class="img-wrapper">
-                                <span class="category-badge">برمجة وتطوير</span>
+                                <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/advanced-database-security-architecture">
                                     <img src="https://connecttag.org/upload/database-architecture.webp" alt="هندسة قواعد البيانات" width="2752" height="1536" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات" title="تصفية حسب التصنيف الفرعي: أمن المواقع والشبكات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن المواقع والشبكات</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/advanced-database-security-architecture">المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</a></h2>
                                 <p class="card-text">دليل هندسي شامل لتصميم وتأمين قواعد البيانات، يشمل الحماية من SQL Injection، استخدام UUIDs، وهندسة الصلاحيات RBAC...</p>
@@ -1345,7 +1461,7 @@
 
                     <!-- Blog Item 8 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="200">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare">
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">
@@ -1353,6 +1469,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare" title="تصفية حسب التصنيف الفرعي: سحابيات وأمان Cloudflare"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>سحابيات وأمان Cloudflare</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-pages-hosting-guide">استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</a></h2>
                                 <p class="card-text">اكتشف كيف تطلق موقعك الإلكتروني مجاناً وبأداء عالمي باستخدام Cloudflare Pages. شرح شامل للمطورين حول تقنيات الاستضافة الحديثة...</p>
@@ -1367,14 +1484,15 @@
 
                     <!-- Blog Item 7 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare">
                             <div class="img-wrapper">
-                                <span class="category-badge">الأمن السيبراني</span>
+                                <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/cloudflare-waf-security-guide">
                                     <img src="https://connecttag.org/upload/waf-cloudflare.webp" alt="جدار حماية كلاود فلير WAF" width="2752" height="1536" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="سحابيات وأمان Cloudflare" title="تصفية حسب التصنيف الفرعي: سحابيات وأمان Cloudflare"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>سحابيات وأمان Cloudflare</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/cloudflare-waf-security-guide">وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</a></h2>
                                 <p class="card-text">دليل شامل يشرح كيفية استخدام جدار حماية كلاود فلير (WAF) لتأمين موقعك من الهجمات، وحظر الدول المشبوهة، وتفعيل وضع "تحت الهجوم"...</p>
@@ -1389,14 +1507,15 @@
 
                     <!-- Blog Item 6 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="100">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">
                                     <img src="https://connecttag.org/upload/telecom-yemen.webp" alt="وزارة الاتصالات اليمنية" width="2752" height="1536" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت" title="تصفية حسب التصنيف الفرعي: شركات الاتصالات والإنترنت"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>شركات الاتصالات والإنترنت</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-telecom-ministry-guide">وزارة الاتصالات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</a></h2>
                                 <p class="card-text">دليل شامل يشرح هيكلية وزارة الاتصالات وتكنولوجيا المعلومات في اليمن، والمؤسسات التابعة لها، وأحدث خدمات الإنترنت والألياف الضوئية المتاحة...</p>
@@ -1411,7 +1530,7 @@
 
                     <!-- Blog Item 4 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="200">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات">
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/website-security-simple-steps">
@@ -1419,6 +1538,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="الأمن السيبراني" data-subcat="أمن المواقع والشبكات" title="تصفية حسب التصنيف الفرعي: أمن المواقع والشبكات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>أمن المواقع والشبكات</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/website-security-simple-steps">5 خطوات بسيطة لحماية موقعك الإلكتروني من الاختراق</a></h2>
                                 <p class="card-text">تعرف على أهم الخطوات العملية والبسيطة لتأمين موقعك الإلكتروني وحمايته من الهجمات السيبرانية وضمان سلامة بيانات عملائك...</p>
@@ -1433,14 +1553,15 @@
 
                     <!-- Blog Item 5 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/google-business-profile-guide">
                                     <img src="https://connecttag.org/upload/google-business-guide.webp" alt="جوجل بيزنس وخرائط جوجل" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="السيو وصناعة المحتوى SEO" title="تصفية حسب التصنيف الفرعي: السيو وصناعة المحتوى SEO"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>السيو وصناعة المحتوى SEO</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/google-business-profile-guide">دليل شامل: كيف تظهر شركتك في نتائج بحث وخرائط جوجل؟</a></h2>
                                 <p class="card-text">تعلم كيفية إنشاء وتحسين ملف شركتك على جوجل لتظهر في نتائج البحث والخرائط وتجذب المزيد من العملاء المحليين لمشروعك...</p>
@@ -1455,14 +1576,15 @@
 
                     <!-- Blog Item 0.1 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="100">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
-                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp?v=1.1.49" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" width="1536" height="1024" decoding="async" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp?v=1.1.50" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="شركات الاتصالات والإنترنت" title="تصفية حسب التصنيف الفرعي: شركات الاتصالات والإنترنت"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>شركات الاتصالات والإنترنت</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة</a></h2>
                                 <p class="card-text">تعرف على الفروقات الجوهرية بين تقنيات الإنترنت المتاحة في اليمن من حيث السرعة، الاستقرار، والتكلفة لتتمكن من اختيار الخدمة الأنسب لعملك أو منزلك...</p>
@@ -1477,14 +1599,15 @@
 
                     <!-- Blog Item 0 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="200">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات">
                             <div class="img-wrapper">
-                                <span class="category-badge">اتصالات وإنترنت</span>
+                                <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
-                                    <img src="https://connecttag.org/upload/yemen-4g.webp?v=1.1.49" alt="استعلام رصيد يمن فورجي" width="1536" height="1024" decoding="async" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-4g.webp?v=1.1.50" alt="استعلام رصيد يمن فورجي" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="اتصالات وشبكات" data-subcat="يمن فورجي والمودمات" title="تصفية حسب التصنيف الفرعي: يمن فورجي والمودمات"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>يمن فورجي والمودمات</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">كيفية الاستعلام عن رصيد يمن فورجي 4G؟</a></h2>
                                 <p class="card-text">دليل شامل يشرح كافة الطرق الرسمية والميسرة للاستعلام عن رصيد إنترنت يمن فورجي، سواء عبر البوابة الإلكترونية، تطبيق الأندرويد، بوت التليجرام، أو الاتصال بالدعم...</p>
@@ -1499,7 +1622,7 @@
 
                     <!-- Blog Item 1 -->
                     <div class="col-md-6 col-lg-4">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة">
                             <div class="img-wrapper">
                                 <span class="category-badge">استضافة وسحابيات</span>
                                 <a href="https://connecttag.org/blog/choosing-web-hosting">
@@ -1507,6 +1630,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="استضافة وسحابيات" data-subcat="إدارة الخوادم والاستضافة" title="تصفية حسب التصنيف الفرعي: إدارة الخوادم والاستضافة"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>إدارة الخوادم والاستضافة</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/choosing-web-hosting">كيف تختار استضافة موقعك الإلكتروني؟</a></h2>
                                 <p class="card-text">يعتبر اختيار شركة الاستضافة المناسبة حجر الزاوية في نجاح أي موقع إلكتروني. في هذا المقال نناقش أهم العوامل التقنية والتجارية التي يجب عليك فحصها قبل اتخاذ القرار...</p>
@@ -1521,14 +1645,15 @@
 
                     <!-- Blog Item 2 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="100">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="التسويق الرقمي ونمو الأعمال">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/digital-marketing-importance">
                                     <img src="https://connecttag.org/upload/marketing-in-yout-company.webp" alt="أهمية التسويق الرقمي" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="التسويق الرقمي ونمو الأعمال" title="تصفية حسب التصنيف الفرعي: التسويق الرقمي ونمو الأعمال"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>التسويق الرقمي ونمو الأعمال</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/digital-marketing-importance">أهمية التسويق الرقمي للشركات الناشئة</a></h2>
                                 <p class="card-text">في ظل المنافسة الشديدة اليوم، لم يعد التسويق التقليدي كافياً. تعرف على كيفية استغلال قنوات التسويق الرقمي لزيادة مبيعاتك وبناء علامة تجارية قوية بأقل التكاليف...</p>
@@ -1543,14 +1668,15 @@
 
                     <!-- Blog Item 3 -->
                     <div class="col-md-6 col-lg-4" data-aos-delay="200">
-                        <div class="custom-blog-card">
+                        <div class="custom-blog-card" data-cat="تسويق وإعلانات" data-subcat="التسويق الرقمي ونمو الأعمال">
                             <div class="img-wrapper">
-                                <span class="category-badge">تسويق وأعمال</span>
+                                <span class="category-badge">تسويق وإعلانات</span>
                                 <a href="https://connecttag.org/blog/why-your-business-needs-app">
                                     <img src="https://connecttag.org/upload/why-you-need-apps.webp" alt="تطبيقات الهواتف الذكية" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
+                                <div class="subcat-tag" data-cat="تسويق وإعلانات" data-subcat="التسويق الرقمي ونمو الأعمال" title="تصفية حسب التصنيف الفرعي: التسويق الرقمي ونمو الأعمال"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span>التسويق الرقمي ونمو الأعمال</span></div>
                                 
                                 <h2 class="card-title"><a href="https://connecttag.org/blog/why-your-business-needs-app">لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف؟</a></h2>
                                 <p class="card-text">التواجد في جيوب عملائك هو أسرع طريق للنجاح. نوضح في هذا المقال كيف يساهم تطبيق الهاتف الذكي في تحويل عملائك العاديين إلى عملاء دائمين وموالين لعلامتك...</p>
@@ -1576,57 +1702,165 @@
 <!-- Modular Web Component: Cookie Consent -->
 <cookie-consent></cookie-consent>
 
-<!-- JavaScript للبحث والفلترة -->
+<!-- JavaScript للبحث والفلترة (التصنيفات الرئيسية والفرعية + دعم روابط URL) -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('blog-search');
-        const blogCards = document.querySelectorAll('.custom-blog-card');
+        const blogCards = Array.from(document.querySelectorAll('.custom-blog-card'));
+        const categoryBtns = Array.from(document.querySelectorAll('.blog-cat-btn'));
+        const subcatBar = document.getElementById('subcategories-bar');
 
-        if (searchInput) {
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+        const SUBCATEGORIES_MAP = {
+            'الأمن السيبراني': [
+                { name: 'أمن الهواتف والتطبيقات', count: 8 },
+                { name: 'مكافحة الاحتيال والتصيّد', count: 4 },
+                { name: 'أمن المواقع والشبكات', count: 3 },
+                { name: 'الأنظمة الأمنية والمراقبة', count: 1 }
+            ],
+            'اتصالات وشبكات': [
+                { name: 'يمن فورجي والمودمات', count: 4 },
+                { name: 'شركات الاتصالات والإنترنت', count: 3 },
+                { name: 'فحص الأجهزة والاتصال', count: 2 }
+            ],
+            'تسويق وإعلانات': [
+                { name: 'أدسنس وأدموب والربح الإعلاني', count: 3 },
+                { name: 'السيو وصناعة المحتوى SEO', count: 3 },
+                { name: 'التسويق الرقمي ونمو الأعمال', count: 2 }
+            ],
+            'استضافة وسحابيات': [
+                { name: 'سحابيات وأمان Cloudflare', count: 3 },
+                { name: 'إدارة الخوادم والاستضافة', count: 3 }
+            ],
+            'برمجة وتطوير': [
+                { name: 'تطوير الهواتف والأنظمة المتعددة', count: 4 }
+            ],
+            'تصميم وجرافيكس': [
+                { name: 'الهوية البصرية والشعارات', count: 2 },
+                { name: 'أداء الصور والوسائط', count: 1 }
+            ]
+        };
 
-                blogCards.forEach(card => {
-                    const title = card.querySelector('.card-title').textContent.toLowerCase();
-                    const text = card.querySelector('.card-text').textContent.toLowerCase();
-                    const category = card.querySelector('.category-badge').textContent.toLowerCase();
+        let activeCat = 'الكل';
+        let activeSubcat = 'الكل';
 
-                    const parentCol = card.closest('.col-md-6');
+        function renderSubcategories(mainCat, selectedSub) {
+            if (!subcatBar) return;
+            const subs = SUBCATEGORIES_MAP[mainCat];
+            if (!subs || mainCat === 'الكل') {
+                subcatBar.style.display = 'none';
+                subcatBar.innerHTML = '';
+                return;
+            }
+            const totalInCat = subs.reduce((acc, item) => acc + item.count, 0);
+            let html = `<span style="font-weight: 700; color: #0284c7; font-size: 13px;"><i class="fa-solid fa-tags" aria-hidden="true"></i> الفرعية:</span>`;
+            const isAllActive = (selectedSub === 'الكل');
+            html += `<button type="button" class="blog-subcat-btn ${isAllActive ? 'active' : ''}" aria-pressed="${isAllActive}" data-subcat="الكل">كل ${mainCat} <span class="subcat-count">(${totalInCat})</span></button>`;
+            subs.forEach(sub => {
+                const isActive = (selectedSub === sub.name);
+                html += `<button type="button" class="blog-subcat-btn ${isActive ? 'active' : ''}" aria-pressed="${isActive}" data-subcat="${sub.name}"><i class="fa-solid fa-tag" aria-hidden="true" style="font-size:10px;"></i> ${sub.name} <span class="subcat-count">(${sub.count})</span></button>`;
+            });
+            subcatBar.innerHTML = html;
+            subcatBar.style.display = 'flex';
 
-                    if (title.includes(searchTerm) || text.includes(searchTerm) || category.includes(searchTerm)) {
-                        parentCol.style.display = 'block';
-                    } else {
-                        parentCol.style.display = 'none';
-                    }
+            subcatBar.querySelectorAll('.blog-subcat-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    activeSubcat = this.getAttribute('data-subcat') || 'الكل';
+                    renderSubcategories(activeCat, activeSubcat);
+                    applyFilters(true);
                 });
             });
         }
 
-        // فلترة التصنيفات
-        const categoryBtns = document.querySelectorAll('.blog-cat-btn');
+        function applyFilters(updateUrl) {
+            const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+            blogCards.forEach(card => {
+                const cardCat = (card.getAttribute('data-cat') || '').trim();
+                const cardSubcat = (card.getAttribute('data-subcat') || '').trim();
+                const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+                const text = (card.querySelector('.card-text')?.textContent || '').toLowerCase();
+
+                const matchesCat = (activeCat === 'الكل') || (cardCat === activeCat);
+                const matchesSubcat = (activeSubcat === 'الكل') || (cardSubcat === activeSubcat);
+                const matchesSearch = !searchTerm ||
+                    title.includes(searchTerm) ||
+                    text.includes(searchTerm) ||
+                    cardCat.toLowerCase().includes(searchTerm) ||
+                    cardSubcat.toLowerCase().includes(searchTerm);
+
+                const parentCol = card.closest('.col-md-6');
+                if (parentCol) {
+                    parentCol.style.display = (matchesCat && matchesSubcat && matchesSearch) ? 'flex' : 'none';
+                }
+            });
+
+            if (updateUrl && window.history && window.history.replaceState) {
+                const url = new URL(window.location.href);
+                if (activeCat && activeCat !== 'الكل') {
+                    url.searchParams.set('cat', activeCat);
+                    if (activeSubcat && activeSubcat !== 'الكل') {
+                        url.searchParams.set('sub', activeSubcat);
+                    } else {
+                        url.searchParams.delete('sub');
+                    }
+                } else {
+                    url.searchParams.delete('cat');
+                    url.searchParams.delete('sub');
+                }
+                window.history.replaceState({}, '', url.toString());
+            }
+        }
+
+        function setCategoryState(cat, subcat, updateUrl) {
+            activeCat = cat || 'الكل';
+            activeSubcat = subcat || 'الكل';
+
+            categoryBtns.forEach(b => {
+                const btnCat = (b.getAttribute('data-cat') || '').trim();
+                const isMatch = (btnCat === activeCat);
+                b.classList.toggle('active', isMatch);
+                b.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+            });
+
+            renderSubcategories(activeCat, activeSubcat);
+            applyFilters(updateUrl);
+        }
+
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                categoryBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-pressed', 'true');
-
-                const categoryFilter = (this.getAttribute('data-cat') || this.textContent).trim().toLowerCase();
-
-                blogCards.forEach(card => {
-                    const category = card.querySelector('.category-badge').textContent.toLowerCase();
-                    const parentCol = card.closest('.col-md-6');
-
-                    if (categoryFilter === 'الكل' || category.includes(categoryFilter)) {
-                        parentCol.style.display = 'block';
-                    } else {
-                        parentCol.style.display = 'none';
-                    }
-                });
+                const chosenCat = (this.getAttribute('data-cat') || 'الكل').trim();
+                setCategoryState(chosenCat, 'الكل', true);
             });
         });
+
+        // النقر على وسم التصنيف الفرعي داخل أي بطاقة مقال
+        document.querySelectorAll('.subcat-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const c = this.getAttribute('data-cat') || 'الكل';
+                const s = this.getAttribute('data-subcat') || 'الكل';
+                setCategoryState(c, s, true);
+                const filterSec = document.querySelector('.blog-filter-section');
+                if (filterSec) {
+                    filterSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                applyFilters(false);
+            });
+        }
+
+        // قراءة معاملات الرابط (?cat=...&sub=...) عند فتح الصفحة
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const urlCat = params.get('cat');
+            const urlSub = params.get('sub');
+            if (urlCat && SUBCATEGORIES_MAP[urlCat]) {
+                setCategoryState(urlCat, urlSub || 'الكل', false);
+            }
+        } catch (e) {}
     });
 </script>
 </body>
