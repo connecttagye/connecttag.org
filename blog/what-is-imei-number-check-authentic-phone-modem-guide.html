@@ -142,17 +142,16 @@
 ]
 </script>
 
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.50" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.50" crossorigin>
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.50">
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.50" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.50" defer></script>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.51" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.51" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.51">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.51" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.51" defer></script>
 
 <!-- PWA & Mobile Optimization Tags -->
 <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -162,32 +161,52 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
 <site-header></site-header>
 
 <main id="main-content">
-<div class="blog-section">
+
+<article class="post-content">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"ما هو رقم IMEI في الهاتف والمودم وكيف تفحصه", "url":"https://connecttag.org/blog/what-is-imei-number-check-authentic-phone-modem-guide"}]'></site-breadcrumb>
+        <h1>ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود <code>*#06#</code> وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</h1>
+        <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" category="اتصالات وشبكات" subcategory="فحص الأجهزة والاتصال"><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
 
-        <article class="blog-single-post">
-          <div class="post-header">
-            <img src="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" alt="ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز عبر رمز TAC وكود *#06#" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
-            <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="11 دقائق" category="اتصالات وشبكات" subcategory="فحص الأجهزة والاتصال"></site-article-meta>
-            <h1>ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود <code>*#06#</code> وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</h1>
-          </div>
-
-          <div class="post-content">
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" class="img-responsive" alt="ما هو رقم IMEI في الهاتف والمودم وكيف تفحص أصالة الجهاز عبر رمز TAC وكود *#06#" fetchpriority="high" width="1200" height="669" decoding="async">
             <p class="lead">عند شراء هاتف ذكي جديد أو مستعمل، أو اقتناء مودم اتصالات <code>4G LTE</code> في السوق المحلي، يكتفي معظم المشترين بفحص المظهر الخارجي للشاشة أو الهيكل البلاستيكي للمودم. غير أن المظهر الخارجي يسهل تجديده باستبدال الغطاء الخلفي (<code>Re-casing</code>) أو إعادة تغليف العلبة؛ بينما تظل البصمة الهندسية الوحيدة التي تكشف حقيقة اللوحة الأم (<code>Motherboard</code>) ومودم الاتصال الخلوي هي <strong>رقم الهوية الدولية للأجهزة المتنقلة (<code>IMEI</code>)</strong>.</p>
 
             <p>في هذا الدليل التطبيقي، نشرح بلغة هندسية مبسطة كيف يتكوّن رقم <code>IMEI</code> من 15 رقماً وفق معايير اتحاد الاتصالات العالمي (<code>3GPP / GSMA</code>)، وما الذي يكشفه رمز تخصيص الطراز (<code>TAC</code>) وخوارزمية التحقق الرياضية (<code>Luhn Checksum</code>)، ثم نستعرض خطوات الفحص الميداني المثلث لمطابقة الرقم في النظام والهيكل والعلبة، والتطبيق العملي عبر <a href="https://connecttag.org/tools/telecom/imei-checker/"><strong>أداة فحص IMEI وTAC المجانية في كونكت تاق</strong></a>.</p>
 
-            <div class="key-takeaways-box">
-              <div class="kt-title"><i class="fa-solid fa-barcode"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
-              <ul class="kt-list">
+            <div class="summary-box">
+              <div class="summary-title"><i class="fa-solid fa-barcode"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="summary-list">
                 <li><strong>الهوية الفريدة للمودم الخلوي:</strong> رقم <code>IMEI</code> (International Mobile Equipment Identity) هو معرّف عالمي مكوّن من <strong>15 رقماً عشرياً</strong> يُخصّص لكل شريحة مودم خلوي (هاتف، جهاز لوحي بشريحة، مودم 4G/5G، أو ساعة ذكية تدعم الاتصال).</li>
                 <li><strong>أهمية أول 8 أرقام (<code>TAC</code>):</strong> الأرقام الثمانية الأولى تُسمى <strong>رمز تخصيص الطراز (<code>Type Allocation Code</code>)</strong>، وهي مسجلة رسمياً لدى منظمة <code>GSMA</code> وتحدد بدقة اسم الشركة المصنعة والطراز الفعلي للوحة الجهاز.</li>
                 <li><strong>الرقم الخامس عشر ليس عشوائياً:</strong> الرقم الأخير هو رقم تحقق رياضي (<code>Check Digit</code>) يُحسب بواسطة <strong>خوارزمية لوهن (<code>Luhn Algorithm</code>)</strong> لكشف أي خطأ في الإدخال أو تلاعب يدوي بالرقم.</li>
@@ -195,9 +214,9 @@
               </ul>
             </div>
 
-            <div class="toc-box">
-              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</h4>
-              <ul>
+            <div class="toc-container">
+              <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</div>
+              <ul class="toc-list">
                 <li><a href="#section-1">1. ما هو رقم IMEI ولماذا يُعد البصمة الوراثية لكل هاتف ومودم؟</a></li>
                 <li><a href="#section-2">2. التشريح الهندسي للأرقام الـ 15: معنى رمز TAC والرقم التسلسلي SNR</a></li>
                 <li><a href="#section-3">3. كيف تعمل خوارزمية Luhn Checksum للتحقق الرياضي من صحة الرقم؟</a></li>
@@ -427,19 +446,19 @@
               </ul>
             </aside>
 
-          </div>
-
-          <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
-          <site-share-buttons></site-share-buttons>
-          <site-related-posts ids="best-yemen-4g-modem-buying-guide, yemen-4g-modem-settings-security-guide, factory-reset-data-recovery-secure-erasure-guide"></site-related-posts>
-        </article>
+          
+        <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="best-yemen-4g-modem-buying-guide, yemen-4g-modem-settings-security-guide, factory-reset-data-recovery-secure-erasure-guide"></site-related-posts>
       </div>
     </div>
   </div>
-</div>
+</article>
+
 </main>
 
 <site-footer></site-footer>
+</div>
 <cookie-consent></cookie-consent>
 </body>
 </html>

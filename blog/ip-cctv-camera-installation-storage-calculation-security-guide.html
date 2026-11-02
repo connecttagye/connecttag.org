@@ -142,17 +142,16 @@
 ]
 </script>
 
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.50" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.50" crossorigin>
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.50">
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.50" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.50" defer></script>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.51" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.51" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.51">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.51" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.51" defer></script>
 
 <!-- PWA & Mobile Optimization Tags -->
 <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -162,32 +161,52 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
 <site-header></site-header>
 
 <main id="main-content">
-<div class="blog-section">
+
+<article class="post-content">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV)", "url":"https://connecttag.org/blog/ip-cctv-camera-installation-storage-calculation-security-guide"}]'></site-breadcrumb>
+        <h1>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</h1>
+        <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" category="الأمن السيبراني" subcategory="الأنظمة الأمنية والمراقبة"><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
 
-        <article class="blog-single-post">
-          <div class="post-header">
-            <img src="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" alt="دليل تركيب وتأمين كاميرات المراقبة الشبكية IP CCTV وحساب سعة التخزين NVR" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
-            <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="13 دقائق" category="الأمن السيبراني" subcategory="الأنظمة الأمنية والمراقبة"></site-article-meta>
-            <h1>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</h1>
-          </div>
-
-          <div class="post-content">
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" class="img-responsive" alt="دليل تركيب وتأمين كاميرات المراقبة الشبكية IP CCTV وحساب سعة التخزين NVR" fetchpriority="high" width="1200" height="669" decoding="async">
             <p class="lead">لم تعد منظومات المراقبة المرئية مجرّد كاميرات تناظرية تقليدية متصلة بشاشة تلفاز؛ بل تحوّلت إلى <strong>حواسيب شبكية مصغّرة (<code>Embedded Linux Network Nodes</code>)</strong> تعمل على مدار الساعة داخل البنية التحتية للمنزل أو الشركة. هذا التحول إلى كاميرات الشبكة الرقمية (<strong><code>IP PoE CCTV</code></strong>) منحنا دقة تصوير فائقة تصل إلى <code>4K / 8MP</code> وتحليلات ذكاء اصطناعي لتمييز البشر والمركبات، لكنه في المقابل جعل أي خطأ في تصميم الشبكة أو إعدادات التشفير ثغرة خطيرة قد تحوّل كاميرات الحماية نفسها إلى أداة تجسس مكشوفة على الإنترنت.</p>
 
             <p>في هذا الدليل الهندسي الشامل، نضع بين يديك خلاصة الخبرة الميدانية في تصميم منظومات المراقبة الحديثة: بدءاً من المقارنة العملية بين أنظمة <code>IP PoE</code> و<code>Analog HD</code>، ومعايير اختيار البعد البؤري للعدسة (<code>2.8mm vs 4mm/6mm</code>)، مروراً بمعادلة حساب سعة القرص الصلب (<code>Surveillance HDD</code>) لتسجيل 30 يوماً متواصلة بترميز <code>H.265+</code>، وصولاً إلى <strong>الخطوات الـ 5 الحاسمة لتأمين أجهزة <code>NVR</code> والكاميرات ضد الاختراق</strong>.</p>
 
-            <div class="key-takeaways-box">
-              <div class="kt-title"><i class="fa-solid fa-shield-halved"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
-              <ul class="kt-list">
+            <div class="summary-box">
+              <div class="summary-title"><i class="fa-solid fa-shield-halved"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="summary-list">
                 <li><strong>تفوق معمارية <code>IP PoE</code>:</strong> تنقل كاميرات الشبكة الفيديو الرقمي والطاقة الكهربائية معاً عبر كابل شبكة واحد (<code>Cat6 PoE - IEEE 802.3af/at</code>) دون فقد في جودة الإشارة، مع معالجة ذكية داخل الكاميرا نفسها قبل إرسال البث إلى جهاز التسجيل الشبكي (<code>NVR</code>).</li>
                 <li><strong>ترميز <code>H.265+</code> يوفر أكثر من 50% من سعة الهاردسك:</strong> تفعيل الضغط الذكي (<code>Smart H.265+ / Ultra H.265</code>) يقلل معدل التدفق (<code>Bitrate</code>) في المشاهد الثابتة ويوفر نصف تكلفة الأقراص الصلبة دون المساس بوضوح الأجسام المتحركة.</li>
                 <li><strong>احذر فتح المنافذ (<code>Port Forwarding</code>) وتفعيل <code>UPnP</code>:</strong> السبب الأول لاختراق كاميرات المراقبة وظهورها في محركات فحص الأجهزة المتصلة مثل <code>Shodan</code> هو فتح منافذ <code>RTSP/HTTP (554, 80, 8000, 37777)</code> مباشرة للإنترنت العام.</li>
@@ -195,9 +214,9 @@
               </ul>
             </div>
 
-            <div class="toc-box">
-              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</h4>
-              <ul>
+            <div class="toc-container">
+              <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</div>
+              <ul class="toc-list">
                 <li><a href="#section-1">1. المقارنة الهندسية: كاميرات الشبكة IP (PoE &amp; NVR) مقابل الكاميرات التناظرية (Analog HD &amp; DVR)</a></li>
                 <li><a href="#section-2">2. كيف تختار العدسة ومستشعر الرؤية الليلية المناسب لكل موقع؟ (2.8mm vs 4mm &amp; ColorVu)</a></li>
                 <li><a href="#section-3">3. معادلة وجدول حساب سعة الهاردسك (Surveillance HDD) لتسجيل 30 يوماً متواصلة</a></li>
@@ -415,19 +434,19 @@
               </ul>
             </aside>
 
-          </div>
-
-          <site-author-box name="يوسف الرحبي" avatar="https://connecttag.org/upload/author/yousef-alrahbi.webp" link="https://connecttag.org/blog/authors/yousef-alrahbi"><span class="sr-only">الكاتب: يوسف الرحبي</span></site-author-box>
-          <site-share-buttons></site-share-buttons>
-          <site-related-posts ids="public-wifi-hotspot-security-evil-twin-mitm-guide, android-firewall-app-internet-control-soor-net-guide, website-security-simple-steps"></site-related-posts>
-        </article>
+          
+        <site-author-box name="يوسف الرحبي" avatar="https://connecttag.org/upload/author/yousef-alrahbi.webp" link="https://connecttag.org/blog/authors/yousef-alrahbi"><span class="sr-only">الكاتب: يوسف الرحبي</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="public-wifi-hotspot-security-evil-twin-mitm-guide, android-firewall-app-internet-control-soor-net-guide, website-security-simple-steps"></site-related-posts>
       </div>
     </div>
   </div>
-</div>
+</article>
+
 </main>
 
 <site-footer></site-footer>
+</div>
 <cookie-consent></cookie-consent>
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
-  "version": "1.1.50",
-  "cache_version": "v104",
+  "version": "1.1.51",
+  "cache_version": "v105",
   "last_updated": "2026-11-02",
-  "description": "Implement two-level blog taxonomy system (6 main categories + 14 subcategories) with article counts, dynamic filtering, and URL query support across all 46 articles"
+  "description": "Standardize blog post-content layout, header order, and responsive featured image across all blog articles"
 }

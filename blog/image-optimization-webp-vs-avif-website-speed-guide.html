@@ -142,17 +142,16 @@
 ]
 </script>
 
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.50" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.50" crossorigin>
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.50"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.50">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.min.css?v=1.1.50">
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.50" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.50" defer></script>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.51" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.51" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.51"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.51">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.51">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.51" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.51" defer></script>
 
 <!-- PWA & Mobile Optimization Tags -->
 <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -162,32 +161,52 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
 <site-header></site-header>
 
 <main id="main-content">
-<div class="blog-section">
+
+<article class="post-content">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل تحسين الصور للمواقع والتطبيقات (WebP vs AVIF)", "url":"https://connecttag.org/blog/image-optimization-webp-vs-avif-website-speed-guide"}]'></site-breadcrumb>
+        <h1>دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين <code>WebP</code> و<code>AVIF</code> و<code>PNG</code> وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</h1>
+        <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" category="تصميم وجرافيكس" subcategory="أداء الصور والوسائط"><span class="sr-only">تاريخ النشر: 02 نوفمبر 2026</span></site-article-meta>
 
-        <article class="blog-single-post">
-          <div class="post-header">
-            <img src="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" alt="دليل تحسين الصور للمواقع والتطبيقات والمقارنة بين WebP وAVIF وPNG لتسريع التحميل" class="post-featured-img" width="1200" height="669" fetchpriority="high" decoding="async">
-            <site-article-meta date="02 نوفمبر 2026" updated="02 نوفمبر 2026" reading-time="12 دقائق" category="تصميم وجرافيكس" subcategory="أداء الصور والوسائط"></site-article-meta>
-            <h1>دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين <code>WebP</code> و<code>AVIF</code> و<code>PNG</code> وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</h1>
-          </div>
-
-          <div class="post-content">
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" class="img-responsive" alt="دليل تحسين الصور للمواقع والتطبيقات والمقارنة بين WebP وAVIF وPNG لتسريع التحميل" fetchpriority="high" width="1200" height="669" decoding="async">
             <p class="lead">وفق تقارير أرشيف الويب العالمي (<code>HTTP Archive Web Almanac</code>)، تشكّل الصور بمفردها ما بين <strong>55% إلى 70% من إجمالي وزن صفحة الويب المتوسطة</strong> على الهواتف الذكية. في بيئات الاتصال المحدودة وشبكات الجيل الرابع <code>4G LTE</code> في منطقتنا العربية، يعني رفع صورة غلاف واحدة بصيغة <code>PNG</code> غير مضغوطة بحجم <code>1.8MB</code> أن الزائر سينتظر ما بين 4 إلى 7 ثوانٍ إضافية قبل رؤية المحتوى الرئيسي؛ وهو ما يرفع معدل الارتداد (<code>Bounce Rate</code>) بنسبة تتجاوز 40% ويُهبط بتقييم موقعك في مؤشرات تجربة الصفحة من جوجل (<code>Core Web Vitals</code>).</p>
 
             <p>في هذا الدليل التطبيقي للمطورين ومشرفي المواقع وصنّاع المحتوى، نشرح بالأرقام الهندسية كيف تؤثر صيغ الصور وأبعادها مباشرةً على مؤشري <strong><code>LCP</code></strong> و<strong><code>CLS</code></strong>، ونعقد مقارنة تفصيلية بين <code>JPEG</code> و<code>PNG</code> و<code>WebP</code> و<code>AVIF</code> و<code>SVG</code>، ثم نوضح خطوات تحويل وضغط الصور محلياً داخل المتصفح مع الحفاظ الكامل على الخصوصية عبر <a href="https://connecttag.org/tools/design/image-converter/"><strong>أداة محول الصور المتقدم في كونكت تاق</strong></a> وتطبيق <a href="https://connecttag.org/company/projects/apps/rawnaq/"><strong>رَونق (Rawnaq)</strong></a>.</p>
 
-            <div class="key-takeaways-box">
-              <div class="kt-title"><i class="fa-solid fa-gauge-high"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
-              <ul class="kt-list">
+            <div class="summary-box">
+              <div class="summary-title"><i class="fa-solid fa-gauge-high"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+              <ul class="summary-list">
                 <li><strong>الصور هي المحرك الأول لمؤشر <code>LCP</code>:</strong> في أكثر من 75% من صفحات الويب، يكون عنصر «أكبر محتوى مرئي» (<code>Largest Contentful Paint</code>) هو صورة الغلاف أو بانر المنتج الرئيسي؛ وتقليل حجمها إلى أقل من <code>100KB–150KB</code> يحسّن سرعة العرض فوراً.</li>
                 <li><strong>صيغة <code>WebP</code> توفر 60%–75% مقارنة بـ <code>PNG</code> و25%–35% مقارنة بـ <code>JPEG</code>:</strong> تدعم <code>WebP</code> الشفافية الكاملة (<code>Alpha Channel</code>) والصور المتحركة مع توافق يفوق 98% من المتصفحات الحديثة وأجهزة أندرويد وiOS.</li>
                 <li><strong>صيغة <code>AVIF</code> هي الجيل الأحدث للضغط الفائق:</strong> تعتمد على معيار الفيديو <code>AV1</code> وتوفر 15%–20% إضافية مقارنة بـ <code>WebP</code> في الصور الفوتوغرافية المعقدة ودعم الألوان العالية <code>HDR / 10-bit</code>.</li>
@@ -195,9 +214,9 @@
               </ul>
             </div>
 
-            <div class="toc-box">
-              <h4><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</h4>
-              <ul>
+            <div class="toc-container">
+              <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</div>
+              <ul class="toc-list">
                 <li><a href="#section-1">1. كيف تدمّر الصور غير المضغوطة مؤشري LCP وCLS وترتيب موقعك في بحث جوجل؟</a></li>
                 <li><a href="#section-2">2. المقارنة الهندسية الشاملة بالأرقام: JPEG مقابل PNG مقابل WebP مقابل AVIF</a></li>
                 <li><a href="#section-3">3. متى تستخدم الصور النقطية (WebP/AVIF) ومتى يجب استخدام المتجهات (SVG)؟</a></li>
@@ -382,19 +401,19 @@
               </ul>
             </aside>
 
-          </div>
-
-          <site-author-box name="جود محمد" avatar="https://connecttag.org/upload/author/jood.webp" link="https://connecttag.org/blog/authors/jood"><span class="sr-only">الكاتب: جود محمد</span></site-author-box>
-          <site-share-buttons></site-share-buttons>
-          <site-related-posts ids="technical-seo-audit-guide, google-adsense-approval-guide-fix-low-value-content, professional-logo-design-types-principles-file-formats-guide"></site-related-posts>
-        </article>
+          
+        <site-author-box name="جود محمد" avatar="https://connecttag.org/upload/author/jood.webp" link="https://connecttag.org/blog/authors/jood"><span class="sr-only">الكاتب: جود محمد</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="technical-seo-audit-guide, google-adsense-approval-guide-fix-low-value-content, professional-logo-design-types-principles-file-formats-guide"></site-related-posts>
       </div>
     </div>
   </div>
-</div>
+</article>
+
 </main>
 
 <site-footer></site-footer>
+</div>
 <cookie-consent></cookie-consent>
 </body>
 </html>

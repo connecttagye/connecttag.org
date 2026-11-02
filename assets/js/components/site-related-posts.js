@@ -116,7 +116,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-4g-app-balance-modem-guide",
         title: "شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم",
         link: "blog/yemen-4g-app-balance-modem-guide",
-        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.50",
+        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.51",
         excerpt: "الدليل الكامل لاستخدام تطبيق يمن فورجي: حفظ الأرقام المتعددة، تفعيل ويدجت الرصيد على الشاشة الرئيسية، تنبيهات انتهاء الباقة، ولوحة المودم المدمجة."
       },
       {
@@ -186,14 +186,14 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-4g-modem-settings-security-guide",
         title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
         link: "blog/yemen-4g-modem-settings-security-guide",
-        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.50",
+        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.51",
         excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
       },
       {
         id: "best-yemen-4g-modem-buying-guide",
         title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
         link: "blog/best-yemen-4g-modem-buying-guide",
-        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.50",
+        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.51",
         excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
       },
       {
@@ -228,7 +228,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",
-        image: "upload/yemen-internet-comparison.webp?v=1.1.50",
+        image: "upload/yemen-internet-comparison.webp?v=1.1.51",
         excerpt: "تعرف على أفضل خيارات الإنترنت المتاحة في اليمن وكيفية اختيار الأنسب لعملك."
       },
       {
@@ -249,7 +249,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "how-to-check-yemen-4g-balance",
         title: "كيفية استعلام رصيد يمن فورجي 4G",
         link: "blog/how-to-check-yemen-4g-balance",
-        image: "upload/yemen-4g.webp?v=1.1.50",
+        image: "upload/yemen-4g.webp?v=1.1.51",
         excerpt: "دليل شامل يشرح كافة الطرق الرسمية والميسرة لمتابعة استهلاكك لرصيد يمن فورجي."
       },
       {
