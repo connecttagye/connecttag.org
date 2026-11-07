@@ -15,30 +15,93 @@ class SiteRelatedPosts extends HTMLElement {
     // 2. Global Articles Registry
     const allPosts = [
       {
-        id: "how-to-write-seo-articles-tutorials-google-search-essentials-guide",
+        id: "offline-gps-yemen-emergency-guide",
+        title: "هل يعمل الـ GPS في الهاتف بدون إنترنت؟ الدليل العملي للملاحة البرية وأرقام الطوارئ في اليمن",
+        link: "blog/offline-gps-yemen-emergency-guide",
+        image: "upload/offline-gps-yemen-emergency-guide.webp",
+        excerpt: "كيف تتصل شريحة GNSS بالأقمار الصناعية مباشرةً لتحديد الموقع والسرعة بدون أبراج، وكيف تستعد للسفر عبر رفيق الدرب وأرقام الطوارئ."
+      },
+      {
+        id: "android-accessibility-security-guide",
+        title: "سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام في الأتمتة ولماذا تطلبها البرمجيات الخبيثة؟",
+        link: "blog/android-accessibility-security-guide",
+        image: "upload/android-accessibility-security-guide.webp",
+        excerpt: "كيف توظف تطبيقات الأتمتة المحلية مثل نَسَق (TouchFlow) خدمة تسهيلات الاستخدام، ولماذا فرضت جوجل قيود الإعدادات المقيدة في أندرويد 13+؟"
+      },
+      {
+        id: "android-mdm-kiosk-mode-guide",
+        title: "كيف تقفل الهواتف والأجهزة اللوحية على تطبيق عمل واحد؟ دليل أنظمة MDM ووضع الكشك (Kiosk Mode)",
+        link: "blog/android-mdm-kiosk-mode-guide",
+        image: "upload/android-mdm-kiosk-mode-guide.webp",
+        excerpt: "شرح هندسي لتقنية Device Owner وLock Task Mode في أندرويد لمنع الموظفين أو الطلاب من الخروج من تطبيق العمل عبر منظومة زِمام."
+      },
+      {
+        id: "android-deep-links-guide",
+        title: "الدليل العملي للروابط العميقة (Deep Links وAndroid App Links) وإعداد ملف assetlinks.json",
+        link: "blog/android-deep-links-guide",
+        image: "upload/android-deep-links-guide.webp",
+        excerpt: "الفرق بين Custom URI Schemes وIntent URLs وAndroid App Links الموثقة، وخطوات إعداد ملف assetlinks.json ببصمة SHA-256."
+      },
+      {
+        id: "zakat-calculation-accounting-guide",
+        title: "دليل حساب زكاة المال وعروض التجارة والذهب: القواعد المحاسبية لتقييم البضاعة والديون وفرق العملات",
+        link: "blog/zakat-calculation-accounting-guide",
+        image: "upload/zakat-money-trade-gold-accounting-guide.webp",
+        excerpt: "المعادلة المحاسبية المعتمدة لحساب زكاة عروض التجارة (النقدية + المخزون بسعر البيع + الديون المرجوة − الالتزامات الحالة) ونصاب الذهب."
+      },
+      {
+        id: "small-business-accounting-guide",
+        title: "كيف تدير حسابات متجرك، الديون الآجلة، وجرد المخزون بدون أخطاء؟ الفرق بين القيد المفرد والمزدوج",
+        link: "blog/small-business-accounting-guide",
+        image: "upload/small-business-accounting-inventory-debt-guide.webp",
+        excerpt: "أشهر 5 أخطاء تتسبب في تآكل رأس مال المتاجر، والمقارنة الرقمية بين القيد المفرد والقيد المزدوج وضبط الفواتير والمخزون."
+      },
+      {
+        id: "lte-wifi-signal-rsrp-sinr-guide",
+        title: "ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج والواي فاي",
+        link: "blog/lte-wifi-signal-rsrp-sinr-guide",
+        image: "upload/lte-wifi-signal-rsrp-sinr-guide.webp",
+        excerpt: "الفرق الهندسي بين قوة الإشارة (RSRP) ونقائها من التشويش (SINR) وجدول القيم المثالية بالـ dBm لاختيار أفضل مكان للمودم."
+      },
+      {
+        id: "jwt-security-debugging-guide",
+        title: "تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وفحصها محلياً",
+        link: "blog/jwt-security-debugging-guide",
+        image: "upload/jwt-json-web-tokens-security-guide.webp",
+        excerpt: "الدليل الهندسي لبنية JWT وفق RFC 7519، الفرق بين HS256 وRS256، وأشهر الثغرات الأمنية وكيفية فحص الرموز داخل المتصفح بأمان."
+      },
+      {
+        id: "ui-color-palette-wcag-guide",
+        title: "دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات وفق قاعدة 60-30-10 ومعيار التباين WCAG",
+        link: "blog/ui-color-palette-wcag-guide",
+        image: "upload/ui-color-palette-wcag-contrast-guide.webp",
+        excerpt: "كيف تستخرج لوحة ألوان متناسقة وتضمن نسبة التباين القياسية (4.5:1) لاجتياز فحص Google Lighthouse وتصميم الوضع الليلي."
+      },
+      {
+        id: "seo-article-writing-guide",
         title: "دليل كتابة المقالات والشروحات المتوافقة مع السيو (SEO): معايير E-E-A-T وسياسات مشرفي المواقع",
-        link: "blog/how-to-write-seo-articles-tutorials-google-search-essentials-guide",
+        link: "blog/seo-article-writing-guide",
         image: "upload/how-to-write-seo-articles-tutorials-guide.webp",
         excerpt: "المنهجية الشاملة لصياغة المقالات والشروحات الاحترافية وفق Google Search Essentials وهيكلة العناوين ومعايير E-E-A-T."
       },
       {
-        id: "image-optimization-webp-vs-avif-website-speed-guide",
+        id: "image-optimization-webp-avif-guide",
         title: "دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وتقليل الحجم 70%",
-        link: "blog/image-optimization-webp-vs-avif-website-speed-guide",
+        link: "blog/image-optimization-webp-avif-guide",
         image: "upload/image-optimization-webp-vs-avif-guide.webp",
         excerpt: "مقارنة عملية بالأرقام بين صيغ الصور الحديثة WebP وAVIF وPNG وJPEG، وكيف تحسّن مؤشر LCP وتضغط صور موقعك داخل المتصفح."
       },
       {
-        id: "ip-cctv-camera-installation-storage-calculation-security-guide",
+        id: "ip-cctv-security-guide",
         title: "دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): اختيار العدسة وحساب الهاردسك ومنع الاختراق",
-        link: "blog/ip-cctv-camera-installation-storage-calculation-security-guide",
+        link: "blog/ip-cctv-security-guide",
         image: "upload/ip-cctv-camera-installation-security-guide.webp",
         excerpt: "المقارنة الهندسية بين كاميرات IP PoE وAnalog HD، جدول حساب سعة القرص الصلب بضغط H.265+، وتأمين الـ NVR ضد الاختراق."
       },
       {
-        id: "what-is-imei-number-check-authentic-phone-modem-guide",
+        id: "imei-number-check-guide",
         title: "ما هو رقم IMEI في الهاتف والمودم؟ شرح فحصه عبر *#06# وكشف الأجهزة المجددة أو المقلدة",
-        link: "blog/what-is-imei-number-check-authentic-phone-modem-guide",
+        link: "blog/imei-number-check-guide",
         image: "upload/what-is-imei-number-check-guide.webp",
         excerpt: "التشريح الهندسي لرقم IMEI ورمز TAC وخوارزمية Luhn، وخطوات مطابقة الرقم لكشف الهواتف المجددة والمودمات المعدلة."
       },
@@ -116,7 +179,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-4g-app-balance-modem-guide",
         title: "شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم",
         link: "blog/yemen-4g-app-balance-modem-guide",
-        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.51",
+        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.52",
         excerpt: "الدليل الكامل لاستخدام تطبيق يمن فورجي: حفظ الأرقام المتعددة، تفعيل ويدجت الرصيد على الشاشة الرئيسية، تنبيهات انتهاء الباقة، ولوحة المودم المدمجة."
       },
       {
@@ -186,14 +249,14 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-4g-modem-settings-security-guide",
         title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
         link: "blog/yemen-4g-modem-settings-security-guide",
-        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.51",
+        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.52",
         excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
       },
       {
         id: "best-yemen-4g-modem-buying-guide",
         title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
         link: "blog/best-yemen-4g-modem-buying-guide",
-        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.51",
+        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.52",
         excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
       },
       {
@@ -228,7 +291,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",
-        image: "upload/yemen-internet-comparison.webp?v=1.1.51",
+        image: "upload/yemen-internet-comparison.webp?v=1.1.52",
         excerpt: "تعرف على أفضل خيارات الإنترنت المتاحة في اليمن وكيفية اختيار الأنسب لعملك."
       },
       {
@@ -249,7 +312,7 @@ class SiteRelatedPosts extends HTMLElement {
         id: "how-to-check-yemen-4g-balance",
         title: "كيفية استعلام رصيد يمن فورجي 4G",
         link: "blog/how-to-check-yemen-4g-balance",
-        image: "upload/yemen-4g.webp?v=1.1.51",
+        image: "upload/yemen-4g.webp?v=1.1.52",
         excerpt: "دليل شامل يشرح كافة الطرق الرسمية والميسرة لمتابعة استهلاكك لرصيد يمن فورجي."
       },
       {

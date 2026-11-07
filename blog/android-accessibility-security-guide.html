@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خدمة تسهيلات الاستخدام في أندرويد: الأتمتة والأمان | كونكت تاق</title>
+  <meta name="description" content="دليل تقني وأمني لخدمة تسهيلات الاستخدام (AccessibilityService) في أندرويد: كيف تعمل أتمتة اللمس والماكرو محلياً عبر نَسَق، ولماذا فرضت جوجل قيود أندرويد 13+؟" />
+  <meta name="author" content="عقيل محمد" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/android-accessibility-security-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/android-accessibility-security-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/android-accessibility-security-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="الأمن السيبراني" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev" />
+  <meta property="og:url" content="https://connecttag.org/blog/android-accessibility-security-guide" />
+  <meta property="og:title" content="سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام (AccessibilityService) في أتمتة المهام، ولماذا تطلبها البرمجيات الخبيثة؟" />
+  <meta property="og:description" content="كيف توظف تطبيقات الأتمتة المحلية مثل نَسَق (TouchFlow) خدمة تسهيلات الاستخدام لبناء سيناريوهات الماكرو، ولماذا فرضت جوجل قيود Restricted Settings في أندرويد 13+؟" />
+  <meta property="og:image" content="https://connecttag.org/upload/android-accessibility-security-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="خدمة تسهيلات الاستخدام في أندرويد بين أتمتة المهام الذكية والحماية من البرمجيات الخبيثة" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="خدمة تسهيلات الاستخدام في أندرويد: أتمتة المهام مقابل المخاطر الأمنية" />
+  <meta name="twitter:description" content="تعرف على آلية عمل إمكانية الوصول في أندرويد، والفرق بين أدوات الماكرو المحلية المعزولة وبين التطبيقات المشبوهة." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/android-accessibility-security-guide.webp" />
+  <meta name="twitter:image:alt" content="خدمة تسهيلات الاستخدام في أندرويد بين أتمتة المهام الذكية والحماية من البرمجيات الخبيثة" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام في الأتمتة ولماذا تطلبها البرمجيات الخبيثة؟",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/android-accessibility-security-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/android-accessibility-security-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "jobTitle": "مطور حلول برمجية ومتخصص في الأمن السيبراني",
+      "url": "https://connecttag.org/blog/authors/aqeldev",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "دليل تقني وأمني لخدمة تسهيلات الاستخدام (AccessibilityService) في أندرويد: كيف تعمل أتمتة اللمس والماكرو محلياً عبر نَسَق، ولماذا فرضت جوجل قيود أندرويد 13+؟",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/android-accessibility-security-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الأمن السيبراني",
+        "item": "https://connecttag.org/blog/?cat=%D8%A7%D9%84%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "أمن الهواتف والتطبيقات",
+        "item": "https://connecttag.org/blog/?cat=%D8%A7%D9%84%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A&sub=%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%AA%D9%81+%D9%88%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "خدمة تسهيلات الاستخدام في أندرويد: الأتمتة والأمان",
+        "item": "https://connecttag.org/blog/android-accessibility-security-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا تظهر رسالة «الإعدادات المقيدة (Restricted Settings)» عند محاولة تفعيل تسهيلات الاستخدام في أندرويد 13 فصاعداً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "فرضت جوجل ميزة الإعدادات المقيدة (Restricted Settings) ابتداءً من أندرويد 13 لحماية المستخدمين من التطبيقات المثبتة يدوياً من خارج المتجر (Sideloaded APKs) التي تطلب صلاحية تسهيلات الاستخدام أو الوصول للإشعارات، لمنع الهندسة الاجتماعية وتروجان البنوك من تفعيلها بسهولة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أميّز بين تطبيق أتمتة موثوق وآمن وبين تطبيق خبيث يطلب صلاحية إمكانية الوصول؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تطبيق الأتمتة والاختبار الشرعي يكون غرضه الأساسي معلناً وواضحاً (مثل أتمتة تفاعلات اللمس المتكررة أو مساعدة ذوي الإعاقة) ويعمل محلياً بمعزل عن الإنترنت أو عبر بروتوكول ADB المحلي مثل استوديو نَسَق (TouchFlow). أما التطبيق الخبيث فينتحل صفة لعبة أو مشغل فيديو أو منظف رام ويطلب هذه الصلاحية مع الاتصال بخوادم خارجية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما مخاطر منح صلاحية تسهيلات الاستخدام لتطبيق مجهول المصدر؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمتلك التطبيق المزود بهذه الصلاحية القدرة على قراءة شجرة النصوص المعروضة على الشاشة (بما فيها رسائل التحقق OTP وأرصدة المحافظ)، وتنفيذ نقرات صامتة للموافقة على منح نفسه صلاحيات إضافية، ومنع المستخدم من فتح صفحة إعدادات التطبيق لإلغاء تثبيته."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أحذف تطبيقاً خبيثاً يمنعني من الدخول إلى شاشة الإعدادات بعد منحه صلاحية إمكانية الوصول؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "أعد تشغيل الهاتف في الوضع الآمن (Safe Mode) بالضغط المطول على زر إيقاف التشغيل على الشاشة، حيث يعطل نظام أندرويد جميع تطبيقات الطرف الثالث وخدمات تسهيلات الاستخدام الخارجية، ثم توجه إلى الإعدادات فالتطبيقات واحذف التطبيق المشبوه فوراً."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+
+  <!-- Google Consent Mode v2 -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"الأمن السيبراني", "url":"https://connecttag.org/blog/?cat=%D8%A7%D9%84%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A"}, {"title":"أمن الهواتف والتطبيقات", "url":"https://connecttag.org/blog/?cat=%D8%A7%D9%84%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A&sub=%D8%A3%D9%85%D9%86+%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%AA%D9%81+%D9%88%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA"}, {"title":"خدمة تسهيلات الاستخدام في أندرويد: الأتمتة والأمان", "url":""}]'></site-breadcrumb>
+
+            <h1>سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام (AccessibilityService) في أتمتة المهام، ولماذا تطلبها البرمجيات الخبيثة؟</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="الأمن السيبراني" subcategory="أمن الهواتف والتطبيقات">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: الأمن السيبراني - أمن الهواتف والتطبيقات</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/android-accessibility-security-guide.webp" class="img-responsive" alt="خدمة تسهيلات الاستخدام في أندرويد بين أتمتة المهام الذكية والحماية من البرمجيات الخبيثة" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              يفرض نظام التشغيل أندرويد عزلاً صارماً بين التطبيقات (`Application Sandboxing`)، بحيث لا يستطيع أي تطبيق رؤية ما يفعله المستخدم داخل تطبيق آخر أو النقر على أزراره نيابةً عنه. لكن هناك استثناءً معمارياً واحداً فائق القوة صممه مهندسو أندرويد لغرض نبيل وإنتاجي، وهو إطار عمل <strong>خدمة تسهيلات الاستخدام وإمكانية الوصول (`Accessibility Framework`)</strong>. هذه الخدمة تتيح لقارئات الشاشة وأدوات أتمتة الاختبار والماكرو التفاعل المباشر مع عناصر الواجهة وتنفيذ إيماءات اللمس التلقائي؛ غير أنها في الوقت ذاته تُعد الهدف رقم واحد للبرمجيات الخبيثة وتروجان المصارف (`Banking Trojans`)!
+            </p>
+            <p>
+              في هذا الدليل الهندسي والأمني من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح كيف تعمل هذه الخدمة من الداخل، وكيف توظفها أدوات الأتمتة الاحترافية والاختبار الآلي مثل <a href="https://connecttag.org/company/projects/apps/touch-flow/">استوديو نَسَق (TouchFlow) لأتمتة اللمس والماكرو</a>، ولماذا فرضت جوجل قيود <strong>الإعدادات المقيدة (`Restricted Settings`)</strong> في أندرويد 13 و14 و15، وكيف تحمي هاتفك وتطبيقاتك المالية من استغلالها.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-microchip" aria-hidden="true"></i> خلاصة تقنية وأمنية سريعة</div>
+              <ul style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>ما هي خدمة تسهيلات الاستخدام؟</strong> واجهة نظام عليا في أندرويد صُممت لمساعدة ذوي الإعاقة البصرية أو الحركية، وتمكّن التطبيق المفوّض من قراءة شجرة عناصر الشاشة (`UI Node Tree`) وتنفيذ إيماءات النقر والسحب (`Gesture Dispatching`).</li>
+                <li><strong>الاستخدام الإنتاجي الآمن:</strong> تُستخدم في استوديوهات أتمتة اللمس والاختبار الهندسي للواجهات (مثل <a href="https://connecttag.org/company/projects/apps/touch-flow/">منظومة نَسَق TouchFlow</a>) لتنفيذ المهام المتكررة محلياً بدون إنترنت.</li>
+                <li><strong>لماذا تطلبها البرمجيات الخبيثة؟</strong> لأنها تمنح التطبيق الخبيث القدرة على قراءة رسائل التحقق (`OTP`) من الشاشة، والموافقة التلقائية على الصلاحيات، ومنع المستخدم من حذف التطبيق.</li>
+                <li><strong>درع أندرويد 13+ (`Restricted Settings`):</strong> يحظر نظام أندرويد تلقائياً تفعيل هذه الخدمة لأي تطبيق حُمّل بصيغة `APK` من المتصفح أو تليجرام خارج جلسة التثبيت المعتمدة (`Session-based Installer`).</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل التقني والأمني</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. كيف تعمل خدمة تسهيلات الاستخدام هندسياً داخل نظام أندرويد؟</a></li>
+                <li><a href="#section-2">2. الوجه المشرق: كيف تعمل أتمتة اللمس وسيناريوهات الماكرو الذكية (نَسَق TouchFlow)؟</a></li>
+                <li><a href="#section-3">3. الوجه المظلم: كيف تستغل البرمجيات الخبيثة وتروجان المحافظ هذه الخدمة؟</a></li>
+                <li><a href="#section-4">4. قيود الإعدادات المقيدة (Restricted Settings) في أندرويد 13+ وسياسات متجر Play</a></li>
+                <li><a href="#section-5">5. كيف تحمي تطبيقاتك المالية وهاتفك الشخصي من هجمات إمكانية الوصول؟</a></li>
+                <li><a href="#faq">6. الأسئلة الشائعة حول خدمة تسهيلات الاستخدام وأتمتة اللمس</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. كيف تعمل خدمة تسهيلات الاستخدام هندسياً داخل نظام أندرويد؟</h2>
+            <p>
+              في الوضع الطبيعي، يرسم كل تطبيق في أندرويد واجهته الرسومية داخل منطقة ذاكرة معزولة، ولا يسمح مدير النوافذ (`WindowManagerService`) لأي تطبيق آخر بمعرفة النصوص أو الأزرار المعروضة. ولكن عند تفعيل خدمة إمكانية الوصول لمساعدة المستخدم، يقوم النظام بإنشاء قناة اتصال مباشرة مع <strong>مدير تسهيلات الاستخدام (`AccessibilityManagerService`)</strong> تعتمد على ثلاث قدرات رئيسية:
+            </p>
+            <ol>
+              <li>
+                <strong>استقبال أحداث الواجهة (`AccessibilityEvents`):</strong>
+                إشعار الخدمة فوراً عند تغير النافذة النشطة، أو ظهور مربع حوار جديد، أو النقر على زر، أو وصول إشعار في شريط الحالة.
+              </li>
+              <li>
+                <strong>فحص شجرة العقد المرئية (`AccessibilityNodeInfo Tree`):</strong>
+                عند تفعيل خيار استكشاف محتوى النافذة، تستطيع الخدمة قراءة الهيكل الشجري الكامل للعناصر المعروضة على الشاشة (النصوص، المعرّفات البرمجية للأزرار، إحداثيات كل عنصر على الشاشة `(X, Y)`، وحالته هل هو قابل للنقر أم لا).
+              </li>
+              <li>
+                <strong>تنفيذ الإجراءات وإيماءات اللمس (`performAction &amp; dispatchGesture`):</strong>
+                القدرة على تنفيذ نقرة برمجية مباشرة على عنصر محدد، أو رسم مسار لمس وسحب متعدد النقاط على الشاشة، أو محاكاة أزرار النظام (الرجوع، الشاشة الرئيسية، الإشعارات، ولقطة الشاشة).
+              </li>
+            </ol>
+
+            <h2 id="section-2">2. الوجه المشرق: كيف تعمل أتمتة اللمس وسيناريوهات الماكرو الذكية (`نَسَق TouchFlow`)؟</h2>
+            <p>
+              بفضل هذه القدرات المعمارية، برزت حاجة هندسية وإنتاجية واسعة لدى مطوري التطبيقات، مهندسي ضمان الجودة (`QA Engineers`)، ومديري العمليات الرقمية لأتمتة الاختبارات والمهام الرتيبة المتكررة على أجهزة أندرويد دون الحاجة لكسر حماية الجهاز (`Root`):
+            </p>
+            <ul>
+              <li>
+                <strong>الاختبار الآلي لواجهات التطبيقات (`UI Stress &amp; Regression Testing`):</strong>
+                تسجيل مسار تفاعل كامل (تسجيل الدخول، فتح القوائم، إدخال بيانات تجريبية، والتأكد من ظهور رسالة النجاح) وإعادة تشغيله مئات المرات لاكتشاف تسرب الذاكرة أو تعطل الشاشات.
+              </li>
+              <li>
+                <strong>سيناريوهات الماكرو الشرطية (`Conditional Touch Macros`):</strong>
+                بدلاً من النقر الأعمى على إحداثيات ثابتة قد تتغير بتغير حجم الشاشة، تعتمد الأنظمة المتقدمة مثل <a href="https://connecttag.org/company/projects/apps/touch-flow/">استوديو نَسَق (TouchFlow) في كونكت تاق</a> على <strong>التحقق الشرطي الذكي</strong>: انتظر حتى يظهر العنصر ذو النص المحدد، ثم نفّذ النقرة، ثم اسحب للأسفل، مع فواصل زمنية دقيقة.
+              </li>
+              <li>
+                <strong>العزل المحلي الكامل (`100% Local &amp; Offline Execution`):</strong>
+                الفرق الجوهري الذي يميز الأدوات الهندسية الموثوقة مثل <a href="https://connecttag.org/company/projects/apps/touch-flow/">نَسَق (TouchFlow)</a> و<a href="https://connecttag.org/company/projects/apps/dhawd/">منظومة ذَود</a> هو أنها تعمل محلياً بالكامل بين حاسوب المهندس والهاتف دون أي اتصال بالإنترنت، مما يضمن استحالة خروج أي بيانات من الجهاز.
+              </li>
+            </ul>
+
+            <h2 id="section-3">3. الوجه المظلم: كيف تستغل البرمجيات الخبيثة وتروجان المحافظ هذه الخدمة؟</h2>
+            <p>
+              على الجانب الآخر، عندما يخدع القراصنة مستخدماً عادياً لتثبيت تطبيق ملغوم من خارج المتجر (مثل نسخة واتساب معدلة، أو تطبيق «زيادة متابعين»، أو «مشغل مباريات مجاني» — راجع تحليلنا الجنائي حول <a href="https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis">التشريح الأمني لنسخ واتساب المعدلة</a>)، فإن أول ما يطلبه التطبيق الخبيث هو: <strong>«يرجى تفعيل خدمة إمكانية الوصول لتشغيل الميزة!»</strong>.
+            </p>
+            <p>
+              بمجرد أن يوافق الضحية، ينفّذ التروجان 4 هجمات خطيرة في أجزاء من الثانية:
+            </p>
+
+            <div class="table-responsive" style="margin: 22px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">نوع الهجوم الخبيث</th>
+                    <th style="color:#fff;">كيف ينفّذه التروجان عبر الخدمة؟</th>
+                    <th style="color:#fff;">الأثر الأمني على الضحية</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. الموافقة التلقائية على الصلاحيات (`Auto-Granting`)</strong></td>
+                    <td>يطلب التطبيق صلاحيات حساسة ويضغط زر «سماح / Allow» برمجياً في أقل من 50 مللي ثانية قبل أن يقرأها المستخدم</td>
+                    <td style="color:#b91c1c; font-weight:700;">السيطرة الكاملة على الرسائل والملفات</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. سرقة رموز التحقق (`OTP &amp; 2FA Harvesting`)</strong></td>
+                    <td>يراقب إشعارات الرسائل النصية أو يفتح تطبيقات المصادقة (`Authenticator`) ويقرأ الأرقام المعروضة على الشاشة</td>
+                    <td style="color:#b91c1c; font-weight:700;">اختراق الحسابات البنكية والمحافظ الإلكترونية</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. الطبقات الوهمية (`Overlay Phishing`)</strong></td>
+                    <td>يكتشف لحظة فتح المستخدم لتطبيق المحفظة المالية فيرسم فوقه شاشة تسجيل دخول مزيفة مطابقة للأصل</td>
+                    <td>سرقة كلمة المرور والرمز السري (`PIN`)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. منع الحذف (`Self-Defense Loop`)</strong></td>
+                    <td>كلما حاول المستخدم دخول صفحة «معلومات التطبيق» للضغط على «إلغاء التثبيت»، يضغط التروجان زر «الرجوع» تلقائياً!</td>
+                    <td>بقاء البرمجية الخبيثة صامدة داخل الهاتف</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-4">4. قيود الإعدادات المقيدة (`Restricted Settings`) في أندرويد 13+ وسياسات متجر Play</h2>
+            <p>
+              لمواجهة هذا الاستغلال، أدخلت جوجل خطين دفاعيين صارمين على مستوى نظام التشغيل وعلى مستوى متجر التطبيقات (ويمكنك مراجعة متطلبات كل صلاحية عبر <a href="https://connecttag.org/tools/mobile/android-permissions/">أداة مولد صلاحيات أندرويد في كونكت تاق</a>):
+            </p>
+            <ol>
+              <li>
+                <strong>درع الإعدادات المقيدة (`Restricted Settings`) في أندرويد 13 و14 و15:</strong>
+                إذا قام المستخدم بتحميل ملف `APK` مباشرةً من متصفح الإنترنت أو تطبيق مراسلة وتثبيته يدوياً، ثم توجه إلى إعدادات تسهيلات الاستخدام لتفعيله، سيجد الخيار <strong>معطلاً باللون الرمادي (`Grayed Out`)</strong> مع رسالة: <em>«الإعداد مقيد لحماية أمانك»</em>.
+              </li>
+              <li>
+                <strong>زر الإيقاف السريع وعلامة الوصول للأجهزة في أندرويد 14+:</strong>
+                أضاف أندرويد 14 خاصية <code>accessibilityDataSensitive="true"</code> التي تسمح للتطبيقات البنكية والحساسة بإخفاء عناصرها تماماً عن أي خدمة تسهيلات استخدام غير معتمدة رسمياً.
+              </li>
+              <li>
+                <strong>سياسة متجر Google Play الصارمة:</strong>
+                يرفض متجر جوجل بلاي أي تطبيق يضمّن خدمة تسهيلات الاستخدام دون أن يكون غرضه الأساسي مساعدة ذوي الإعاقة أو دون تقديم <strong>إفصاح بارز (`Prominent Disclosure`)</strong> وفيديو توضيحي لفريق المراجعة.
+              </li>
+            </ol>
+
+            <h2 id="section-5">5. كيف تحمي تطبيقاتك المالية وهاتفك الشخصي من هجمات إمكانية الوصول؟</h2>
+
+            <h3>أولاً: نصائح للمستخدمين لحماية هواتفهم</h3>
+            <ul>
+              <li><strong>لا تمنح صلاحية «تسهيلات الاستخدام» لأي تطبيق ترفيهي أو معدل:</strong> أي تطبيق يدّعي أنه لعبة أو مشغل فيديو أو أداة تنظيف ويطلب تفعيل إمكانية الوصول هو تطبيق خبيث بنسبة 100%.</li>
+              <li><strong>راجع الخدمات النشطة دورياً:</strong> ادخل إلى <strong>الإعدادات &gt; تسهيلات الاستخدام &gt; التطبيقات المثبتة</strong>، وتأكد من عدم وجود أي تطبيق غريب مفعّل، أو افحص هاتفك عبر <a href="https://connecttag.org/company/projects/apps/hazm/">تطبيق حزم لإدارة التطبيقات وحارس الخصوصية</a> و<a href="https://connecttag.org/company/projects/apps/soor-defender/">تطبيق سياج (Soor Defender)</a>.</li>
+              <li><strong>طريقة حذف التطبيق الخبيث عبر الوضع الآمن (`Safe Mode`):</strong> إذا منعك تطبيق خبيث من حذفه، اضغط مطولاً على زر الطاقة، ثم اضغط مطولاً على أيقونة «إيقاف التشغيل» على الشاشة لاختيار <strong>«الوضع الآمن (Safe Mode)»</strong>؛ عندها تتوقف جميع خدمات الطرف الثالث ويمكنك حذفه من الإعدادات فوراً.</li>
+            </ul>
+
+            <h3>ثانياً: نصائح لمطوري التطبيقات المالية والمحافظ الإلكترونية</h3>
+            <ul>
+              <li>فعّل خاصية حماية النوافذ من النقرات العابرة للطبقات الوهمية (<code>filterTouchesWhenObscured="true"</code>) على جميع أزرار التحويل المالي وتأكيد العمليات.</li>
+              <li>فعّل علم حماية الشاشة (<code>FLAG_SECURE</code>) على شاشات إدخال الرمز السري (`PIN`) وعبارات الاسترداد لمنع التقاط الشاشة أو قراءتها.</li>
+              <li>استخدم خاصية حجب البيانات الحساسة في أندرويد 14+ لحماية حقول الأرصدة ورموز التحقق من القراءة الآلية غير المصرح بها.</li>
+            </ul>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 6. الأسئلة الشائعة حول خدمة تسهيلات الاستخدام وأتمتة اللمس</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا تظهر رسالة «الإعدادات المقيدة (Restricted Settings)» عند محاولة تفعيل تسهيلات الاستخدام في أندرويد 13 فصاعداً؟</h3>
+                <p class="faq-answer">
+                  فرضت جوجل ميزة الإعدادات المقيدة (`Restricted Settings`) ابتداءً من أندرويد 13 لحماية المستخدمين من التطبيقات المثبتة يدوياً من خارج المتجر (`Sideloaded APKs`) التي تطلب صلاحية تسهيلات الاستخدام أو الوصول للإشعارات، لمنع الهندسة الاجتماعية وتروجان البنوك من تفعيلها بسهولة.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أميّز بين تطبيق أتمتة موثوق وآمن وبين تطبيق خبيث يطلب صلاحية إمكانية الوصول؟</h3>
+                <p class="faq-answer">
+                  تطبيق الأتمتة والاختبار الشرعي يكون غرضه الأساسي معلناً وواضحاً (مثل أتمتة تفاعلات اللمس المتكررة أو مساعدة ذوي الإعاقة) ويعمل محلياً بمعزل عن الإنترنت أو عبر بروتوكول `ADB` المحلي مثل استوديو نَسَق (`TouchFlow`). أما التطبيق الخبيث فينتحل صفة لعبة أو مشغل فيديو أو منظف رام ويطلب هذه الصلاحية مع الاتصال بخوادم خارجية.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما مخاطر منح صلاحية تسهيلات الاستخدام لتطبيق مجهول المصدر؟</h3>
+                <p class="faq-answer">
+                  يمتلك التطبيق المزود بهذه الصلاحية القدرة على قراءة شجرة النصوص المعروضة على الشاشة (بما فيها رسائل التحقق `OTP` وأرصدة المحافظ)، وتنفيذ نقرات صامتة للموافقة على منح نفسه صلاحيات إضافية، ومنع المستخدم من فتح صفحة إعدادات التطبيق لإلغاء تثبيته.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أحذف تطبيقاً خبيثاً يمنعني من الدخول إلى شاشة الإعدادات بعد منحه صلاحية إمكانية الوصول؟</h3>
+                <p class="faq-answer">
+                  أعد تشغيل الهاتف في الوضع الآمن (`Safe Mode`) بالضغط المطول على زر إيقاف التشغيل على الشاشة، حيث يعطل نظام أندرويد جميع تطبيقات الطرف الثالث وخدمات تسهيلات الاستخدام الخارجية، ثم توجه إلى الإعدادات فالتطبيقات واحذف التطبيق المشبوه فوراً.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والتوثيقات الأمنية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://developer.android.com/guide/topics/ui/accessibility/service" target="_blank" rel="noopener noreferrer">Android Developers — Creating an Accessibility Service &amp; Security Best Practices</a></li>
+                <li><a href="https://support.google.com/googleplay/android-developer/answer/10964491" target="_blank" rel="noopener noreferrer">Google Play Developer Policy Center — Accessibility API Policy &amp; Prominent Disclosure Requirements</a></li>
+                <li><a href="https://connecttag.org/company/projects/apps/touch-flow/">التوثيق الهندسي لاستوديو نَسَق (TouchFlow: Cross-Platform Touch Automation &amp; Macro Studio) — كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="عقيل محمد"
+              avatar="https://connecttag.org/upload/author/aqeldev.webp"
+              link="https://connecttag.org/blog/authors/aqeldev">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="android-mdm-kiosk-mode-guide,modded-whatsapp-gold-plus-apk-malware-security-analysis,android-manifest-security-exported-components-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

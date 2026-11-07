@@ -1,6 +1,6 @@
 {
-  "version": "1.1.51",
-  "cache_version": "v105",
-  "last_updated": "2026-11-02",
-  "description": "Standardize blog post-content layout, header order, and responsive featured image across all blog articles"
+  "version": "1.1.52",
+  "cache_version": "v106",
+  "last_updated": "2026-11-08",
+  "description": "Publish 9 new technical guides with concise slugs, add author Mohammed Sharaf, update homepage latest 6 articles, and sync blog indexes (55 articles)"
 }

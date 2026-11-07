@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل اختيار الألوان والهوية اللونية ومعيار التباين WCAG | كونكت تاق</title>
+  <meta name="description" content="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: سيكولوجية الألوان، قاعدة 60-30-10، حساب نسبة التباين WCAG 2.1 (4.5:1)، واستخراج الألوان من الصور." />
+  <meta name="author" content="ريم محمد" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/ui-color-palette-wcag-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/ui-color-palette-wcag-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/ui-color-palette-wcag-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="تصميم وجرافيكس" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/reem" />
+  <meta property="og:url" content="https://connecttag.org/blog/ui-color-palette-wcag-guide" />
+  <meta property="og:title" content="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: كيف تستخرج لوحة ألوان متناسقة وتضمن وضوح القراءة وفق معيار WCAG؟" />
+  <meta property="og:description" content="تعرف على سيكولوجية الألوان في واجهات الاستخدام، قاعدة التوزيع الذهبية 60-30-10، معادلة التباين البصري WCAG 2.1 لاجتياز فحص Google Lighthouse، وطريقة استخراج الألوان من الصور." />
+  <meta property="og:image" content="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات ومعيار التباين البصري WCAG" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات (قاعدة 60-30-10 ومعيار WCAG)" />
+  <meta name="twitter:description" content="كيف تختار لوحة ألوان احترافية لتطبيقك أو موقعك، وتضبط تباين النصوص والأزرار لاجتياز معايير الوصول WCAG 2.1؟" />
+  <meta name="twitter:image" content="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp" />
+  <meta name="twitter:image:alt" content="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات ومعيار التباين البصري WCAG" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات وفق قاعدة 60-30-10 ومعيار WCAG",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/ui-color-palette-wcag-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "ريم محمد",
+      "jobTitle": "مختصة في التصميم الجرافيكي والهويات البصرية وواجهات الاستخدام",
+      "url": "https://connecttag.org/blog/authors/reem",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل التطبيقي الشامل لاختيار الألوان وبناء نظام لوني متناسق للمواقع والتطبيقات: سيكولوجية الألوان، قاعدة 60-30-10، وحساب نسبة التباين WCAG 2.1.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/ui-color-palette-wcag-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل اختيار الألوان ومعيار التباين البصري WCAG",
+        "item": "https://connecttag.org/blog/ui-color-palette-wcag-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما هي قاعدة 60-30-10 في تصميم واجهات المواقع والتطبيقات؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "هي قاعدة توازن بصري تقسّم توزيع الألوان داخل الشاشة إلى ثلاث نسب: 60% للون المحايد الأساسي (خلفيات الصفحة والبطاقات لراحة العين)، و30% للون الهوية الثانوي (الترويسات، القوائم، والأقسام المميزة)، و10% فقط للون التفاعل والتركيز (Accent / CTA) مثل أزرار الشراء والتسجيل والتنبيهات المهمة لضمان جذب انتباه المستخدم فوراً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الحد الأدنى لنسبة التباين اللوني (Contrast Ratio) المطلوب وفق معيار WCAG 2.1؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "وفق معيار W3C WCAG 2.1 على المستوى القياسي (Level AA)، يجب ألا تقل نسبة التباين بين لون النص ولون الخلفية عن 4.5:1 للنصوص العادية (الأصغر من 18pt أو 14pt عريض)، وعن 3:1 للنصوص الكبيرة والعناوين وعناصر واجهة المستخدم النشطة. أما المستوى المتقدم (Level AAA) فيتطلب نسبة 7:1 للنصوص العادية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يُفضل استخدام صيغة HSL أو OKLCH بدلاً من HEX عند بناء نظام ألوان للتطبيق؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن صيغة HEX (مثل #0052CC) تمثل مزيج قنوات الأحمر والأخضر والأزرق بصورة يصعب تعديلها يدوياً، بينما تفصل صيغة HSL وOKLCH اللون إلى ثلاث خصائص مفهومة: صبغة اللون (Hue)، والتشبع (Saturation/Chroma)، والإضاءة (Lightness). هذا يتيح للمصمم والمطور توليد 9 تدرجات متناسقة (من 50 إلى 900) لنفس اللون بمجرد تغيير قيمة الإضاءة مع ثبات زاوية اللون."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب تجنب اللون الأسود الصريح (#000000) والأبيض الصريح (#FFFFFF) معاً في الوضع الداكن (Dark Mode)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "استخدام نص أبيض ناصع (#FFFFFF) فوق خلفية سوداء مطلقة (#000000) يخلق تبايناً حاداً يبلغ 21:1 يتسبب في ظاهرة التوهج البصري (Halation / Astigmatism Blur) وإجهاد العين عند القراءة الطويلة. الأفضل استخدام درجات رمادية داكنة مشبعة قليلاً للخلفية (مثل #0F172A أو #121212) مع نص أبيض هادئ (#F8FAFC أو #E2E8F0) وتخفيض تشبع الألوان الساطعة."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل اختيار الألوان ومعيار التباين البصري WCAG", "url":"https://connecttag.org/blog/ui-color-palette-wcag-guide"}]'></site-breadcrumb>
+        <h1>دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: كيف تستخرج لوحة ألوان متناسقة وتضمن وضوح القراءة وفق معيار <code>WCAG</code>؟</h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="تصميم وجرافيكس" subcategory="الهوية البصرية والشعارات"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp" class="img-responsive" alt="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات وفق قاعدة 60-30-10 ومعيار التباين البصري WCAG" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">عندما يفتح المستخدم موقعك الإلكتروني أو تطبيقك لأول مرة، يُصدر عقله حكماً انطباعياً خلال <strong>أقل من 90 ثانية</strong>، وتستند ما بين <strong>62% إلى 90% من هذا التقييم المبدئي على الألوان وحدها</strong>. غير أن اختيار الألوان في هندسة واجهات الاستخدام الحديثة (<code>UI/UX Design</code>) لم يعد مسألة ذوق فني شخصي؛ بل هو علم يجمع بين <strong>سيكولوجية الإدراك البصري</strong>، و<strong>توزيع النسب الرياضية (<code>60-30-10 Rule</code>)</strong>، و<strong>معادلات التباين الضوئي الصارمة (<code>WCAG Contrast Ratios</code>)</strong> التي تحدد مدى سهولة قراءة النصوص وتفاعل المستخدمين مع أزرار الشراء.</p>
+
+        <p>في هذا الدليل التطبيقي للمصممين ومطوري الواجهات وأصحاب المشاريع الرقمية، نشرح منهجية بناء نظام لوني احترافي متكامل (<code>Color Design System</code>): بدءاً من دلالات الألوان النفسية، وتطبيق قاعدة <code>60-30-10</code>، مروراً بشرح معيار التباين العالمي <strong><code>WCAG 2.1</code></strong> لتجنب أخطاء إمكانية الوصول في تقارير <code>Google Lighthouse</code>، وصولاً إلى التطبيق العملي لاستخراج لوحات الألوان المتناسقة عبر <a href="https://connecttag.org/tools/design/color-extractor/"><strong>أداة استخراج الألوان من الصور في كونكت تاق</strong></a>.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-palette"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>قاعدة <code>60-30-10</code> تمنع الفوضى البصرية:</strong> خصّص <code>60%</code> من مساحة الشاشة للألوان المحايدة المريحة للعين (الخلفيات)، و<code>30%</code> للون الهوية الأساسي (الترويسات والبطاقات)، و<code>10%</code> فقط للون التفاعل (<code>CTA Accent</code>) لجذب النقرات نحو الهدف الأهم.</li>
+            <li><strong>معيار <code>WCAG 2.1 AA</code> شرط أساسي للوضوح والسيو:</strong> يجب ألا يقل تباين النصوص العادية عن <strong><code>4.5:1</code></strong> والعناوين الكبيرة عن <strong><code>3:1</code></strong>؛ فالتباين الضعيف (مثل نص رمادي باهت فوق خلفية بيضاء) يرهق القارئ ويُخفّض تقييم إمكانية الوصول (<code>Accessibility Score</code>) في فحص جوجل.</li>
+            <li><strong>نظام الألوان الحديث يعتمد على التدرجات الدلالية (<code>Semantic Tokens</code>):</strong> لا يكفي اختيار 3 ألوان فقط؛ يحتاج أي تطبيق ناجح إلى سلم تدرجات من <code>50</code> إلى <code>900</code> لكل لون، بالإضافة إلى ألوان الحالة الأربعة (نجاح <code>Success</code>، تحذير <code>Warning</code>، خطأ <code>Danger</code>، معلومة <code>Info</code>).</li>
+            <li><strong>تجنب الأسود المطلق في الوضع الداكن (<code>Dark Mode</code>):</strong> استبدل الخلفية السوداء الحادة (<code>#000000</code>) بدرجات الكحلي أو الرمادي العميق (مثل <code>#0F172A</code>) مع تخفيض تشبع الألوان الساطعة لمنع التوهج البصري وإجهاد العين.</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. سيكولوجية الألوان في المنتجات الرقمية: كيف تختار اللون الذي يعكس شخصية علامتك؟</a></li>
+            <li><a href="#section-2">2. قاعدة 60-30-10 الهندسية لتوزيع الألوان داخل شاشات المواقع والتطبيقات</a></li>
+            <li><a href="#section-3">3. معيار التباين البصري (WCAG 2.1 Contrast): كيف تضمن وضوح القراءة وتجتاز فحص Lighthouse؟</a></li>
+            <li><a href="#section-4">4. بناء نظام الرموز اللونية (Color Tokens) بصيغة HSL/OKLCH وتصميم الوضع الداكن (Dark Mode)</a></li>
+            <li><a href="#section-5">5. التطبيق العملي: استخراج لوحة ألوان متناسقة وتصميم واجهات المتاجر عبر أدوات كونكت تاق</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمصادر المعيارية المعتمدة</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. سيكولوجية الألوان في المنتجات الرقمية: كيف تختار اللون الذي يعكس شخصية علامتك؟</h2>
+        <p>قبل كتابة سطر كود واحد في ملف <code>CSS</code> أو رسم الشاشة الأولى في برنامج التصميم، يجب أن يرتبط اللون الأساسي للمشروع بطبيعة القطاع والرسالة النفسية التي ترغب في إيصالها للمستخدم (وهو ما يكمّل القواعد التي فصلناها في <a href="https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide">دليل تصميم الشعارات الاحترافية وأنواعها الـ 7</a> و<a href="https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide">دليل تجنب أخطاء الهوية البصرية وإعادة التصميم Rebranding</a>).</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">العائلة اللونية</th>
+                <th style="padding: 14px; text-align: right;">مثال قياسي (HEX)</th>
+                <th style="padding: 14px; text-align: right;">الدلالة النفسية والانطباع البصري</th>
+                <th style="padding: 14px; text-align: right;">القطاعات والتطبيقات الأنسب</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0052cc;"><span style="display:inline-block; width:14px; height:14px; border-radius:4px; background:#0052cc; vertical-align:middle; margin-left:6px;"></span> الأزرق الملكي والتقني</td>
+                <td style="padding: 12px; direction: ltr; text-align: right;"><code>#0052CC</code> / <code>#0284C7</code></td>
+                <td style="padding: 12px;">الثقة، الأمان، الاعتمادية المؤسسية، والهدوء الذهني.</td>
+                <td style="padding: 12px;">البنوك والتقنيات المالية (<code>FinTech</code>)، شركات البرمجيات والاتصالات، الأمن السيبراني، والمنصات الحكومية.</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 800; color: #059669;"><span style="display:inline-block; width:14px; height:14px; border-radius:4px; background:#059669; vertical-align:middle; margin-left:6px;"></span> الأخضر الزمردي والطبيعي</td>
+                <td style="padding: 12px; direction: ltr; text-align: right;"><code>#059669</code> / <code>#10B981</code></td>
+                <td style="padding: 12px;">النمو المالي، الاستدامة، الصحة، وإشارات القبول والنجاح.</td>
+                <td style="padding: 12px;">تطبيقات المحاسبة والاستثمار، الطاقة الشمسية والبيئة، الصحة والتغذية، وتطبيقات المراسلة.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #7c3aed;"><span style="display:inline-block; width:14px; height:14px; border-radius:4px; background:#7c3aed; vertical-align:middle; margin-left:6px;"></span> البنفسجي والنيلي الإبداعي</td>
+                <td style="padding: 12px; direction: ltr; text-align: right;"><code>#6D28D9</code> / <code>#4F46E5</code></td>
+                <td style="padding: 12px;">الابتكار، الفخامة، الذكاء الاصطناعي، والحداثة الرقمية.</td>
+                <td style="padding: 12px;">أدوات الذكاء الاصطناعي، منصات التصميم والإبداع، المنصات التعليمية المتقدمة، والمنتجات الفاخرة.</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 800; color: #d97706;"><span style="display:inline-block; width:14px; height:14px; border-radius:4px; background:#d97706; vertical-align:middle; margin-left:6px;"></span> البرتقالي والعنبري الدافئ</td>
+                <td style="padding: 12px; direction: ltr; text-align: right;"><code>#EA580C</code> / <code>#D97706</code></td>
+                <td style="padding: 12px;">الحيوية، الحماس، السرعة، وتحفيز اتخاذ القرار الفوري.</td>
+                <td style="padding: 12px;">المتاجر الإلكترونية، تطبيقات التوصيل والمطاعم، وأزرار الحث على الشراء (<code>Call-to-Action</code>).</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #dc2626;"><span style="display:inline-block; width:14px; height:14px; border-radius:4px; background:#dc2626; vertical-align:middle; margin-left:6px;"></span> الأحمر والمرجاني القوي</td>
+                <td style="padding: 12px; direction: ltr; text-align: right;"><code>#DC2626</code> / <code>#E11D48</code></td>
+                <td style="padding: 12px;">الأهمية القصوى، العروض العاجلة، أو التنبيهات التحذيرية.</td>
+                <td style="padding: 12px;">منصات البث والفيديو، العروض الموسمية، وحالات الحذف أو التنبيه الأمني الحرج داخل الأنظمة.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-2">2. قاعدة 60-30-10 الهندسية لتوزيع الألوان داخل شاشات المواقع والتطبيقات</h2>
+        <p>أكبر خطأ يقع فيه المبتدئون عند تصميم موقع أو تطبيق هو استخدام ألوان الهوية الساطعة في كل مكان بنسب متساوية، مما يربك عين الزائر ويجعله عاجزاً عن تمييز الزر الرئيسي في الشاشة. الحل الهندسي المعتمد في التصميم الداخلي وتصميم الواجهات الرقمية هو <strong>قاعدة <code>60-30-10</code></strong>:</p>
+
+        <!-- مخطط بصري لقاعدة 60-30-10 -->
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
+          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-chart-pie"></i> التمثيل البصري لقاعدة التوازن اللوني (60% — 30% — 10%)
+          </h3>
+
+          <div style="display: flex; width: 100%; height: 54px; border-radius: 12px; overflow: hidden; margin-bottom: 22px; border: 2px solid rgba(255,255,255,0.2); font-weight: 800; font-size: 14px;">
+            <div style="width: 60%; background: #f8fafc; color: #0f172a; display: flex; align-items: center; justify-content: center;">60% مساحات محايدة (#F8FAFC / #FFFFFF)</div>
+            <div style="width: 30%; background: #0052cc; color: #ffffff; display: flex; align-items: center; justify-content: center;">30% هوية (#0052CC)</div>
+            <div style="width: 10%; background: #00b4d8; color: #0f172a; display: flex; align-items: center; justify-content: center;">10% CTA</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+            <div style="background: rgba(255,255,255,0.06); border-right: 4px solid #f8fafc; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #f8fafc; margin-bottom: 6px;">1. نسبة 60% — اللون المهيمن المحايد (Dominant Neutral)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.65;">يشمل خلفية الصفحة، خلفيات البطاقات، والمساحات البيضاء (<code>Whitespace</code>). وظيفته إراحة العين وإبراز المحتوى النصي والصور دون ضجيج بصري.</p>
+            </div>
+            <div style="background: rgba(0, 82, 204, 0.2); border-right: 4px solid #3b82f6; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #93c5fd; margin-bottom: 6px;">2. نسبة 30% — لون الهوية الثانوي (Secondary Brand)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.65;">يُستخدم في شريط التنقل العلوي، ترويسات الأقسام، الأيقونات، والحدود المميزة لمنح الموقع هويته البصرية الفريدة وترسيخ العلامة التجارية.</p>
+            </div>
+            <div style="background: rgba(0, 180, 216, 0.16); border-right: 4px solid #00b4d8; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #67e8f9; margin-bottom: 6px;">3. نسبة 10% — لون التفاعل والتركيز (Accent / CTA)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #cbd5e1; line-height: 1.65;">يُحجز حصرياً للأزرار الحاسمة (مثل «اشترِ الآن»، «حمّل التطبيق»، «ابدأ الفحص») والشارات المهمة؛ نُدرته في الشاشة تجعل عين المستخدم تتجه إليه تلقائياً.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="section-3">3. معيار التباين البصري (WCAG 2.1 Contrast): كيف تضمن وضوح القراءة وتجتاز فحص Lighthouse؟</h2>
+        <p>تفرض إرشادات إمكانية الوصول لمحتوى الويب الصادرة عن رابطة الشبكة العالمية (<strong><code>W3C WCAG 2.1 / 2.2</code></strong>) معايير رياضية دقيقة لنسبة التباين الضوئي بين لون النص (<code>Foreground</code>) ولون الخلفية (<code>Background</code>). هذا المعيار لا يخدم الأشخاص الذين يعانون من ضعف البصر أو عمى الألوان فحسب، بل يضمن أيضاً لكل مستخدم قراءة موقعك بوضوح تام تحت أشعة الشمس المباشرة على شاشة الهاتف، كما أنه عنصر رئيسي في تقييم <strong><code>Accessibility</code></strong> داخل أداة <code>Google PageSpeed Insights / Lighthouse</code>.</p>
+
+        <h3>كيف تُحسب نسبة التباين رياضياً؟</h3>
+        <p>تُحسب نسبة التباين (<code>Contrast Ratio</code>) بناءً على <strong>السطوع النسبي (<code>Relative Luminance - L</code>)</strong> للونين وفق المعادلة القياسية التي تتراوح نتيجتها بين <code>1:1</code> (لونان متطابقان تماماً بلا أي تباين) و<code>21:1</code> (أسود خالص فوق أبيض خالص):</p>
+
+        <p style="text-align: center; direction: ltr; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; font-weight: 700;">
+          $$\text{Contrast Ratio} = \frac{L_{\text{lighter}} + 0.05}{L_{\text{darker}} + 0.05}$$
+        </p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #1e293b; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">عنصر الواجهة</th>
+                <th style="padding: 14px; text-align: right;">المستوى القياسي الإلزامي (WCAG Level AA)</th>
+                <th style="padding: 14px; text-align: right;">المستوى المتقدم (WCAG Level AAA)</th>
+                <th style="padding: 14px; text-align: right;">مثال تطبيقي ناجح مقابل مثال فاشل</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 700;">1. النصوص العادية (أقل من <code>18pt</code> أو <code>24px</code>)</td>
+                <td style="padding: 12px; font-weight: 800; color: #0052cc;">لا يقل عن <code>4.5 : 1</code></td>
+                <td style="padding: 12px; font-weight: 700; color: #15803d;">لا يقل عن <code>7.0 : 1</code></td>
+                <td style="padding: 12px;">✅ نص <code>#334155</code> فوق <code>#FFFFFF</code> (تباين <code>10.1:1</code>)<br>❌ نص رمادي <code>#94A3B8</code> فوق <code>#FFFFFF</code> (تباين <code>2.5:1</code> — يفشل)</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 700;">2. العناوين والنصوص الكبيرة (<code>24px+</code> أو <code>18.66px Bold</code>)</td>
+                <td style="padding: 12px; font-weight: 800; color: #0052cc;">لا يقل عن <code>3.0 : 1</code></td>
+                <td style="padding: 12px; font-weight: 700; color: #15803d;">لا يقل عن <code>4.5 : 1</code></td>
+                <td style="padding: 12px;">✅ عنوان أزرق <code>#0052CC</code> فوق <code>#FFFFFF</code> (تباين <code>6.9:1</code>)<br>❌ عنوان سماوي فاتح <code>#38BDF8</code> فوق <code>#FFFFFF</code> (تباين <code>2.1:1</code> — يفشل)</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 700;">3. الأزرار، حدود حقول الإدخال، والأيقونات الوظيفية</td>
+                <td style="padding: 12px; font-weight: 800; color: #0052cc;">لا يقل عن <code>3.0 : 1</code></td>
+                <td style="padding: 12px; font-weight: 700; color: #15803d;">لا يقل عن <code>4.5 : 1</code></td>
+                <td style="padding: 12px;">✅ زر أخضر داكن <code>#047857</code> مع نص أبيض (تباين <code>5.4:1</code>)<br>❌ زر أصفر <code>#FACC15</code> مع نص أبيض (تباين <code>1.5:1</code> — غير مقروء)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-4">4. بناء نظام الرموز اللونية (Color Tokens) بصيغة HSL/OKLCH وتصميم الوضع الداكن (Dark Mode)</h2>
+        <p>عند تحويل الهوية اللونية إلى كود برمجي في المواقع أو تطبيقات الهواتف، لا يكتب المطورون رموز <code>HEX</code> بشكل متناثر داخل الملفات؛ بل يُبنَى نظام <strong>متغيرات لونية دلالية (<code>CSS Custom Properties / Design Tokens</code>)</strong> يعتمد على تمثيل <code>HSL</code> أو الفضاء اللوني الإدراكي الحديث <code>OKLCH</code>:</p>
+
+        <pre style="background: #0f172a; color: #e2e8f0; padding: 18px; border-radius: 12px; direction: ltr; text-align: left; overflow-x: auto; font-size: 13.5px; line-height: 1.7;"><code>:root {
+  /* 1. Brand Primary Scale (Royal Blue) */
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-600: #0052cc; /* Main Brand Color (Contrast 6.9:1 on white) */
+  --color-primary-800: #1e40af;
+
+  /* 2. Semantic Surface &amp; Text Tokens (60-30-10 Rule) */
+  --surface-bg:        #ffffff; /* 60% Dominant Neutral */
+  --surface-card:      #f8fafc;
+  --text-primary:      #0f172a; /* Contrast 17.8:1 */
+  --text-secondary:    #475569; /* Contrast 7.5:1 (Passes WCAG AAA) */
+  --accent-cta:        #0284c7; /* 10% Action Accent */
+}</code></pre>
+
+        <h3>3 قواعد ذهبية لتصميم الوضع الداكن (Dark Mode) دون إجهاد العين:</h3>
+        <ol>
+          <li><strong>لا تستخدم الأسود المطلق (<code>#000000</code>) كخلفية أساسية:</strong> التباين الحاد (<code>21:1</code>) بين النص الأبيض والخلفية السوداء المطلقة يسبب تشتتاً بصرياً لحواف الحروف (<code>Halation Effect</code>). استخدم درجات رمادية أو كحلية داكنة متدرجة الارتفاع مثل <code>#0F172A</code> للخلفية و<code>#1E293B</code> للبطاقات البارزة.</li>
+          <li><strong>خفّض تشبع الألوان الساطعة (<code>Desaturate Colors</code>):</strong> اللون الأزرق أو الأحمر المشبع بنسبة <code>100%</code> يبدو جميلاً فوق الخلفية البيضاء، لكنه «يهتز بصرياً» ويفقد تباينه فوق الخلفية الداكنة؛ لذا يجب رفع إضاءته وتخفيض تشبعه بنسبة <code>15%–25%</code> في الوضع الداكن (مثلاً يتحول <code>#0052CC</code> إلى <code>#60A5FA</code>).</li>
+          <li><strong>لا تعتمد على اللون وحده لإيصال المعلومة:</strong> نحو <code>8%</code> من الرجال يعانون من درجة من درجات عمى الألوان (خاصة التمييز بين الأحمر والأخضر)؛ لذلك يجب دائماً إرفاق رسائل الخطأ أو النجاح بأيقونة توضيحية ونص صريح وليس مجرد تغيير لون إطار الحقل.</li>
+        </ol>
+
+        <h2 id="section-5">5. التطبيق العملي: استخراج لوحة ألوان متناسقة وتصميم واجهات المتاجر عبر أدوات كونكت تاق</h2>
+        <p>سواء كنت تبدأ تصميم موقع جديد انطلاقاً من شعار العميل، أو ترغب في استلهام لوحة ألوان متناغمة من صورة فوتوغرافية احترافية، نوفر لك في <strong>كونكت تاق</strong> منظومة أدوات مجانية تعمل محلياً داخل متصفحك:</p>
+
+        <div style="background: linear-gradient(135deg, #fdf4ff 0%, #eff6ff 100%); border: 2px solid #c084fc; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #581c87; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-eye-dropper"></i> سير العمل التطبيقي للمصمم والمطور في 3 خطوات:</h3>
+          <ol style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li><strong>استخراج لوحة الألوان الذكية:</strong> افتح <a href="https://connecttag.org/tools/design/color-extractor/" style="font-weight: 800; color: #7e22ce;">أداة استخراج الألوان من الصور (Color Extractor)</a>، وارفع شعار علامتك التجارية أو صورة مرجعية؛ ستقوم خوارزمية التكميم اللوني باستخراج الألوان المهيمنة والثانوية فوراً بصيغ <code>HEX</code> و<code>RGB</code> و<code>HSL</code> مع إمكانية نسخها بضغطة زر.</li>
+            <li><strong>تصميم لقطات شاشة المتجر بنفس الهوية اللونية:</strong> بعد اعتماد ألوانك الأساسية، انتقل إلى <a href="https://connecttag.org/tools/mobile/screenshot-generator/" style="font-weight: 800; color: #7e22ce;">أداة تصميم لقطات شاشة المتاجر (App Store &amp; Google Play Screenshot Generator)</a> لتوليد شاشات عرض احترافية لتطبيقك بخلفيات متدرجة مطابقة لهويتك اللونية.</li>
+            <li><strong>تحسين وضغط الصور قبل النشر:</strong> استخدم <a href="https://connecttag.org/tools/design/image-converter/" style="font-weight: 800; color: #7e22ce;">محول وضغط الصور المتقدم</a> أو تطبيق <a href="https://connecttag.org/company/projects/apps/rawnaq/" style="font-weight: 800; color: #7e22ce;">رَونق (Rawnaq)</a> لتحويل رسوميات الواجهة إلى صيغة <code>WebP</code> أو <code>AVIF</code> مع الحفاظ التام على دقة الألوان.</li>
+          </ol>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/tools/design/color-extractor/" class="btn btn-primary" style="background: #6d28d9; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-palette"></i> جرب أداة استخراج الألوان من الصور
+            </a>
+            <a href="https://connecttag.org/tools/mobile/screenshot-generator/" class="btn btn-default" style="border-color: #6d28d9; color: #6d28d9; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-mobile-screen"></i> مصمم لقطات شاشة المتاجر
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمصادر المعيارية المعتمدة</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما هي قاعدة 60-30-10 في تصميم واجهات المواقع والتطبيقات؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">هي قاعدة توازن بصري تقسّم توزيع الألوان داخل الشاشة إلى ثلاث نسب: <code>60%</code> للون المحايد الأساسي (خلفيات الصفحة والبطاقات لراحة العين)، و<code>30%</code> للون الهوية الثانوي (الترويسات، القوائم، والأقسام المميزة)، و<code>10%</code> فقط للون التفاعل والتركيز (<code>Accent / CTA</code>) مثل أزرار الشراء والتسجيل والتنبيهات المهمة لضمان جذب انتباه المستخدم فوراً.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما هو الحد الأدنى لنسبة التباين اللوني (Contrast Ratio) المطلوب وفق معيار WCAG 2.1؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">وفق معيار <code>W3C WCAG 2.1</code> على المستوى القياسي (<code>Level AA</code>)، يجب ألا تقل نسبة التباين بين لون النص ولون الخلفية عن <strong><code>4.5:1</code></strong> للنصوص العادية (الأصغر من <code>18pt</code> أو <code>14pt</code> عريض)، وعن <strong><code>3:1</code></strong> للنصوص الكبيرة والعناوين وعناصر واجهة المستخدم النشطة. أما المستوى المتقدم (<code>Level AAA</code>) فيتطلب نسبة <code>7:1</code> للنصوص العادية.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يُفضل استخدام صيغة HSL أو OKLCH بدلاً من HEX عند بناء نظام ألوان للتطبيق؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن صيغة <code>HEX</code> (مثل <code>#0052CC</code>) تمثل مزيج قنوات الأحمر والأخضر والأزرق بصورة يصعب تعديلها يدوياً، بينما تفصل صيغة <code>HSL</code> و<code>OKLCH</code> اللون إلى ثلاث خصائص مفهومة: صبغة اللون (<code>Hue</code>)، والتشبع (<code>Saturation/Chroma</code>)، والإضاءة (<code>Lightness</code>). هذا يتيح للمصمم والمطور توليد 9 تدرجات متناسقة (من <code>50</code> إلى <code>900</code>) لنفس اللون بمجرد تغيير قيمة الإضاءة مع ثبات زاوية اللون.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يجب تجنب اللون الأسود الصريح (#000000) والأبيض الصريح (#FFFFFF) معاً في الوضع الداكن (Dark Mode)؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">استخدام نص أبيض ناصع (<code>#FFFFFF</code>) فوق خلفية سوداء مطلقة (<code>#000000</code>) يخلق تبايناً حاداً يبلغ <code>21:1</code> يتسبب في ظاهرة التوهج البصري (<code>Halation / Astigmatism Blur</code>) وإجهاد العين عند القراءة الطويلة. الأفضل استخدام درجات رمادية داكنة مشبعة قليلاً للخلفية (مثل <code>#0F172A</code> أو <code>#121212</code>) مع نص أبيض هادئ (<code>#F8FAFC</code> أو <code>#E2E8F0</code>) وتخفيض تشبع الألوان الساطعة.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #6d28d9; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #6d28d9;"></i> المصادر والمعايير الرسمية المعتمدة (Official Design &amp; Accessibility References):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>W3C Web Content Accessibility Guidelines (WCAG 2.1 — Contrast Minimum 1.4.3):</strong> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">W3C WAI — Understanding Success Criterion 1.4.3: Contrast (Minimum)</a>.</li>
+            <li><strong>Material Design 3 Color System Specification:</strong> <a href="https://m3.material.io/styles/color/system/overview" target="_blank" rel="noopener noreferrer">Google Material Design 3 — Color Roles, Tonal Palettes &amp; Contrast Accessibility</a>.</li>
+            <li><strong>W3C CSS Color Module Level 4 (HSL, LCH &amp; OKLCH Spaces):</strong> <a href="https://www.w3.org/TR/css-color-4/" target="_blank" rel="noopener noreferrer">W3C Candidate Recommendation — CSS Color Module Level 4</a>.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="ريم محمد" avatar="https://connecttag.org/upload/author/reem.webp" link="https://connecttag.org/blog/authors/reem"><span class="sr-only">الكاتب: ريم محمد</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="professional-logo-design-types-principles-file-formats-guide, visual-identity-mistakes-successful-rebranding-strategy-guide, image-optimization-webp-avif-guide"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

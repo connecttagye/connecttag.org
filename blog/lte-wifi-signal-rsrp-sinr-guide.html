@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شرح RSRP وSINR وRSSI في المودم والهاتف وتقوية إشارة 4G | كونكت تاق</title>
+  <meta name="description" content="الدليل الهندسي لقراءة مؤشرات إشارة 4G LTE والواي فاي (dBm): الفرق بين قوة الإشارة RSRP ونقائها SINR وRSRQ وRSSI، وجدول القيم لاختيار أفضل مكان للمودم." />
+  <meta name="author" content="محمد حميد" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="اتصالات وشبكات" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/mohammed-hameed" />
+  <meta property="og:url" content="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide" />
+  <meta property="og:title" content="ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج (4G/LTE) والواي فاي واختيار أفضل مكان للمودم" />
+  <meta property="og:description" content="لماذا تظهر أبراج الشبكة كاملة بينما الإنترنت بطيء؟ شرح عملي بالأرقام لمؤشرات RSRP وSINR وRSRQ وRSSI وكيف تضبط اتجاه المودم أو الهوائي الخارجي." />
+  <meta property="og:image" content="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="دليل قراءة مؤشرات إشارة الأبراج 4G LTE والواي فاي RSRP وSINR وRSSI وتقوية المودم" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ دليل تقوية إشارة 4G والواي فاي" />
+  <meta name="twitter:description" content="المرجع الهندسي لقراءة قيم RSRP وSINR بالسالب (dBm) في مودمات يمن فورجي والهواتف الذكية وضبط أفضل زاوية للتغطية." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp" />
+  <meta name="twitter:image:alt" content="دليل قراءة مؤشرات إشارة الأبراج 4G LTE والواي فاي RSRP وSINR وRSSI وتقوية المودم" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ دليل قراءة إشارة 4G والواي فاي",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "محمد حميد",
+      "jobTitle": "مهندس شبكات متخصص في أنظمة التوجيه وتأمين البنية التحتية",
+      "url": "https://connecttag.org/blog/authors/mohammed-hameed",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل الهندسي الشامل لقراءة مؤشرات إشارة الأبراج (4G LTE) والواي فاي بالسالب (dBm): الفرق بين قوة الإشارة RSRP، نقاء الإشارة SINR، وRSRQ وRSSI.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل قراءة مؤشرات إشارة الأبراج RSRP وSINR وRSSI",
+        "item": "https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا تُقاس قوة إشارة المودم والواي فاي بأرقام سالبة (-dBm) وأيهما أفضل: -75 dBm أم -105 dBm؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تُقاس إشارات الراديو بوحدة الديسيبل نسبةً إلى واحد ملي واط (dBm). ولأن طاقة الموجة اللاسلكية التي تصل إلى هوائي هاتفك أو مودمك بعد قطع مسافات في الهواء تكون جزءاً صغيراً جداً أقل من 1 ملي واط، فإن اللوغاريتم الرياضي لها يكون دائماً بالسالب. القاعدة الذهبية: كلما اقترب الرقم من الصفر كانت الإشارة أقوى؛ فقراءة -75 dBm ممتازة وأقوى بـ 1000 مرة من قراءة -105 dBm الضعيفة جداً!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا تظهر أبراج التغطية كاملة في المودم لكن سرعة التحميل بطيئة جداً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن مؤشر الأبراج التقليدي على شاشة المودم يعتمد غالباً على قوة الإشارة الخام فقط (RSRP أو RSSI) ولا يعكس نقاء الإشارة من التداخل (SINR). إذا كان المودم قريباً من البرج (RSRP = -80 dBm) ولكن هناك تشويشاً عالياً من أبراج مجاورة أو ازدحاماً شديداً على نفس القطاع يجعل قيمة SINR أقل من 0 dB أو بالسالب، فستنخفض سرعة الإنترنت بشكل حاد رغم امتلاء الأبراج."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي القيم المثالية لمؤشري RSRP وSINR للحصول على أقصى سرعة في مودم يمن فورجي (4G LTE)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "للحصول على سرعة تحميل كاملة واستقرار في الألعاب والبث، يُنصح بأن تكون قيمة RSRP بين -65 dBm و-85 dBm (ممتازة) أو لا تقل عن -95 dBm (جيدة)، وأن تكون قيمة SINR موجبة وأعلى من +13 dB إلى +20 dB، مع قيمة RSRQ بين -3 dB و-10 dB."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "عند تحريك المودم في الغرفة، هل أركز على تحسين رقم RSRP أم رقم SINR؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "الأولوية الهندسية لتحسين السرعة الفعلية هي لمؤشر SINR (نقاء الإشارة). مكان يعطيك RSRP = -90 dBm مع SINR = +16 dB سيعطيك سرعة إنترنت أعلى وأكثر استقراراً بمراحل من مكان آخر بجانب نافذة يعطيك RSRP = -78 dBm ولكن بتشويش مرتفع SINR = +2 dB."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل قراءة مؤشرات إشارة الأبراج RSRP وSINR وRSSI", "url":"https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide"}]'></site-breadcrumb>
+        <h1>ماذا تعني أرقام <code>RSRP</code> و<code>SINR</code> و<code>RSSI</code> في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج (<code>4G/LTE</code>) والواي فاي واختيار أفضل مكان للمودم</h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="اتصالات وشبكات" subcategory="يمن فورجي والمودمات"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp" class="img-responsive" alt="دليل قراءة مؤشرات إشارة الأبراج 4G LTE والواي فاي RSRP وSINR وRSSI واختيار أفضل مكان للمودم" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">هل سبق أن نظرت إلى شاشة مودم <strong>يمن فورجي (<code>Yemen 4G</code>)</strong> أو شريط التغطية في هاتفك فوجدت <strong>أبراج الشبكة ممتلئة بالكامل (4 أو 5 شرطات)</strong>، ومع ذلك تعاني من بطء شديد في التصفح وارتفاع زمن الاستجابة (<code>Ping</code>)؟ السبب الهندسي وراء هذه الظاهرة المحيّرة هو أن «أيقونة الأبراج» ليست معياراً قياسياً موحّداً، بل هي تبسيط بصري يخفي وراءه أربعة مقاييس راديوية دقيقة تحدد السرعة الحقيقية للاتصال: <strong><code>RSRP</code></strong> و<strong><code>SINR</code></strong> و<strong><code>RSRQ</code></strong> و<strong><code>RSSI</code></strong>.</p>
+
+        <p>في هذا الدليل الهندسي والعملي، نشرح بلغة مبسطة كيف تقرأ هذه الأرقام السالبة والموجبة داخل صفحة إعدادات المودم أو عبر تطبيقات الفحص الميداني مثل <a href="https://connecttag.org/company/projects/apps/yemen-view/"><strong>تطبيق يمن فيو (Yemen View)</strong></a> و<a href="https://connecttag.org/company/projects/apps/tayf-spectrum/"><strong>تطبيق طيف (Tayf Spectrum)</strong></a>، ونضع بين يديك جدول القيم القياسية المعتمدة من اتحاد الاتصالات العالمي (<code>3GPP</code>)، مع خطوات عملية لاختيار أفضل نافذة أو غرفة للمودم وتوجيه الهوائيات الخارجية لمضاعفة سرعة الإنترنت.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-tower-cell"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>الأرقام السالبة (<code>-dBm</code>) كلما اقتربت من الصفر كانت أقوى:</strong> في مؤشر قوة الإشارة (<code>RSRP</code> أو <code>RSSI</code>)، قراءة <strong><code>-75 dBm</code></strong> تعني تغطية ممتازة وقوية جداً، بينما قراءة <strong><code>-112 dBm</code></strong> تعني إشارة ضعيفة على وشك الانقطاع.</li>
+            <li><strong>مؤشر <code>SINR</code> هو سر السرعة الحقيقية:</strong> يقيس نسبة الإشارة الصافية إلى الضوضاء والتداخل (بالـ <code>dB</code> الموجب). إذا كان <code>SINR</code> أعلى من <strong><code>+15 dB</code></strong> فستحصل على أقصى سرعة للبرج، أما إذا نزل تحت <strong><code>0 dB</code></strong> فسيصبح الإنترنت بطيئاً حتى لو كانت الأبراج كاملة!</li>
+            <li><strong>مؤشر <code>RSRQ</code> يكشف ازدحام البرج:</strong> عندما تكون قوة الإشارة <code>RSRP</code> جيدة لكن قيمة <code>RSRQ</code> تهبط إلى <code>-16 dB</code> أو <code>-19 dB</code> في أوقات الذروة المسائية، فهذا يعني أن القطاع الخلوي (<code>Cell Sector</code>) المتصل به مزدحم بالمستخدمين.</li>
+            <li><strong>حركة 30 سنتيمتراً قد تضاعف السرعة:</strong> إبعاد المودم عن النوافذ المغطاة بطبقة عاكسة معدنية، أو العوازل الخرسانية، أو أجهزة الميكروويف والراوترات الملاصقة يرفع قيمة <code>SINR</code> فوراً.</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل التطبيقي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. لماذا تُقاس إشارة الأبراج والواي فاي بالسالب (-dBm)؟ فهم مقياس اللوغاريتم الراديوي</a></li>
+            <li><a href="#section-2">2. التشريح الهندسي للمؤشرات الأربعة في شبكات الجيل الرابع (RSRP vs SINR vs RSRQ vs RSSI)</a></li>
+            <li><a href="#section-3">3. الجدول المرجعي الشامل لتقييم جودة إشارة 4G LTE وإشارة الواي فاي بالأرقام</a></li>
+            <li><a href="#section-4">4. خطوات عملية: كيف تختار أفضل مكان للمودم في المنزل وتوجّه الهوائيات الخارجية؟</a></li>
+            <li><a href="#section-5">5. التطبيق العملي عبر تطبيقات كونكت تاق (Yemen View وTayf Spectrum) وأداة فحص السرعة</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة (3GPP &amp; IEEE)</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. لماذا تُقاس إشارة الأبراج والواي فاي بالسالب (-dBm)؟ فهم مقياس اللوغاريتم الراديوي</h2>
+        <p>أول ما يلفت انتباه المستخدم عند فتح صفحة معلومات الجهاز في مودم <code>4G</code> هو وجود إشارة السالب (<code>-</code>) أمام أرقام التغطية مثل <code>-82 dBm</code>. يرمز مصطلح <strong><code>dBm</code></strong> إلى <em>Decibel-milliwatts</em>، وهو مقياس لوغاريتمي يقيس قدرة الموجة الكهرومغناطيسية المستقبَلة مقارنةً بمرجع قياسي ثابت مقداره <strong><code>1 ملي واط (1 mW)</code></strong> وفق المعادلة الهندسية:</p>
+
+        <p style="text-align: center; direction: ltr; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; font-weight: 700;">
+          $$P_{(\text{dBm})} = 10 \cdot \log_{10}\left(\frac{P_{(\text{mW})}}{1\text{ mW}}\right)$$
+        </p>
+
+        <p>بما أن الموجة اللاسلكية تخرج من برج الاتصالات بطاقة عالية ثم تضعف تدريجياً أثناء عبورها مئات الأمتار في الهواء والجدران، فإن الطاقة التي تصل فعلياً إلى هوائي المودم تكون جزءاً ضئيلاً جداً من الملي واط (مثلاً $0.00000001\text{ mW}$)، ونتيجة لوغاريتم أي كسر عشري أصغر من الواحد الصحيح تكون <strong>رقماً سالباً دائماً</strong>:</p>
+        <ul>
+          <li><strong>قاعدة الـ <code>3 dB</code> والـ <code>10 dB</code>:</strong> لأن المقياس لوغاريتمي وليس خطياً، فإن تحسّن إشارة المودم بمقدار <strong><code>3 dB</code> فقط</strong> (مثلاً من <code>-85 dBm</code> إلى <code>-82 dBm</code>) يعني أن طاقة الإشارة المستقبَلة قد <strong>تضاعفت مرتين (200%)</strong>! وتحسّنها بمقدار <strong><code>10 dB</code></strong> (مثلاً من <code>-95 dBm</code> إلى <code>-85 dBm</code>) يعني أن الإشارة أصبحت <strong>أقوى بعشر مرات كاملة (10x)</strong>!</li>
+        </ul>
+
+        <h2 id="section-2">2. التشريح الهندسي للمؤشرات الأربعة في شبكات الجيل الرابع (RSRP vs SINR vs RSRQ vs RSSI)</h2>
+        <p>عند الدخول إلى صفحة حالة الشبكة في مودم <code>4G LTE</code> (كما شرحنا في <a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">دليل ضبط إعدادات مودم يمن فورجي 4G</a>)، ستجد أربعة مصطلحات هندسية معيارية حددتها منظمة <code>3GPP</code>. لفهم الفرق بينها، تخيّل أنك تستمع إلى متحدث في قاعة مزدحمة:</p>
+
+        <!-- بطاقات توضيحية للمؤشرات الأربعة -->
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
+          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-wave-square"></i> الفرق الهندسي والتمثيل الواقعي لمؤشرات إشارة 4G LTE الأربعة
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px;">
+            <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #7dd3fc; font-size: 16px; margin-bottom: 6px;">1. مؤشر RSRP (قوة الإشارة الصافية)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Power</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس قوة إشارة المرجع القادمة من البرج المتصل به تحديداً دون ضجيج. في مثال القاعة: <strong>هو مدى ارتفاع صوت الشخص الذي يحدثك</strong>. يحدد مدى قربك أو بعدك عن البرج.</p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.12); border-right: 4px solid #34d399; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #6ee7b7; font-size: 16px; margin-bottom: 6px;">2. مؤشر SINR (نقاء الإشارة من التشويش)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Signal-to-Interference-plus-Noise Ratio</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس الفارق بين قوة صوت البرج ومستوى الضوضاء والتداخل من الأبراج المجاورة. في مثال القاعة: <strong>هو مدى هدوء الغرفة حولكما</strong>. هو العامل رقم 1 الذي يحدد سرعة التحميل (<code>Modulation MCS</code>).</p>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.12); border-right: 4px solid #fbbf24; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #fde68a; font-size: 16px; margin-bottom: 6px;">3. مؤشر RSRQ (جودة وحمل القطاع)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Quality</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يربط بين قوة الإشارة المرجعية (<code>RSRP</code>) وإجمالي الطاقة في القناة (<code>RSSI</code>) وعدد الكتل الترددية. يكشف لك مدى <strong>ازدحام البرج بالمستخدمين</strong> في ساعات الذروة.</p>
+            </div>
+
+            <div style="background: rgba(192, 132, 252, 0.12); border-right: 4px solid #c084fc; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #e9d5ff; font-size: 16px; margin-bottom: 6px;">4. مؤشر RSSI (إجمالي الطاقة المستقبلة)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Received Signal Strength Indicator</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس مجموع كل الإشارات والضوضاء والتداخلات في التردد دفعة واحدة. يُستخدم بشكل أساسي لقياس <strong>قوة إشارة شبكات الواي فاي (Wi-Fi)</strong>، لكنه لا يكفي وحده لتقييم جودة <code>4G</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="section-3">3. الجدول المرجعي الشامل لتقييم جودة إشارة 4G LTE وإشارة الواي فاي بالأرقام</h2>
+        <p>عندما تفتح لوحة المودم أو تطبيق الفحص وتقرأ الأرقام الحالية، قارنها مباشرةً بهذا الجدول الهندسي لتعرف حالة خطك بدقة:</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">تقييم الجودة</th>
+                <th style="padding: 14px; text-align: right;">قوة إشارة البرج (<code>RSRP</code>)</th>
+                <th style="padding: 14px; text-align: right;">نقاء الإشارة (<code>SINR</code>)</th>
+                <th style="padding: 14px; text-align: right;">جودة القطاع (<code>RSRQ</code>)</th>
+                <th style="padding: 14px; text-align: right;">إشارة الواي فاي (<code>Wi-Fi RSSI</code>)</th>
+                <th style="padding: 14px; text-align: right;">الأثر الفعلي على السرعة والـ Ping</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #f0fdf4;">
+                <td style="padding: 12px; font-weight: 800; color: #15803d;">🟢 ممتازة جداً (Excellent)</td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-65</code> إلى <code>-80 dBm</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;">أعلى من <code>+20 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-3</code> إلى <code>-9 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-30</code> إلى <code>-60 dBm</code></td>
+                <td style="padding: 12px;">أقصى سرعة تحميل ورفع ممكنة (تعديل <code>64QAM / 256QAM</code>) وأقل Ping.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0284c7;">🔵 جيدة ومستقرة (Good)</td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-81</code> إلى <code>-90 dBm</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>+13</code> إلى <code>+19 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-10</code> إلى <code>-12 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-61</code> إلى <code>-70 dBm</code></td>
+                <td style="padding: 12px;">سرعة عالية ومستقرة للبث المرئي عالية الدقة والألعاب والعمل عن بُعد.</td>
+              </tr>
+              <tr style="background: #fffbeb;">
+                <td style="padding: 12px; font-weight: 800; color: #b45309;">🟡 متوسطة (Fair / Cell Edge)</td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-91</code> إلى <code>-100 dBm</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>+5</code> إلى <code>+12 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-13</code> إلى <code>-15 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;"><code>-71</code> إلى <code>-80 dBm</code></td>
+                <td style="padding: 12px;">تصفح مقبول، لكن السرعة تتذبذب عند التحميل الكبير أو في المساء؛ يفضّل تحسين موقع المودم.</td>
+              </tr>
+              <tr style="background: #fef2f2;">
+                <td style="padding: 12px; font-weight: 800; color: #b91c1c;">🔴 ضعيفة إلى منقطعة (Poor)</td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;">أقل من <code>-105 dBm</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;">أقل من <code>0 dB</code> (أو بالسالب)</td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;">أقل من <code>-16 dB</code></td>
+                <td style="padding: 12px; direction: ltr; text-align: right; font-weight: 700;">أقل من <code>-82 dBm</code></td>
+                <td style="padding: 12px;">بطء شديد، فقدان حزم البيانات (<code>Packet Loss</code>)، وانقطاع متكرر؛ يتطلب تغيير الغرفة أو تركيب هوائي خارجي.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-4">4. خطوات عملية: كيف تختار أفضل مكان للمودم في المنزل وتوجّه الهوائيات الخارجية؟</h2>
+        <p>لتحقيق أقصى استفادة من مودم <code>4G LTE</code> (خاصة الأجهزة المزودة بمنافذ هوائيات وميزة دمج الترددات التي استعرضناها في <a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">دليل شراء أفضل مودم يمن فورجي 4G</a>)، طبّق الخطوات الميدانية الخمس التالية:</p>
+
+        <ol>
+          <li><strong>اجعل معيارك الأول هو رفع قيمة <code>SINR</code> وليس فقط <code>RSRP</code>:</strong> قد تضع المودم في شرفة مرتفعة فتلتقط إشارات من 3 أبراج مختلفة في وقت واحد؛ حينها ترتفع قيمة <code>RSRP</code> إلى <code>-78 dBm</code>، لكن التداخل بين الأبراج الثلاثة يُسقط قيمة <code>SINR</code> إلى <code>-2 dB</code> فينهار الإنترنت! حرّك المودم قليلاً إلى زاوية تحجب الأبراج الجانبية وتبقيك مواجهاً للبرج الأساسي لترتفع قيمة <code>SINR</code> فوق <code>+12 dB</code>.</li>
+          <li><strong>احذر الزجاج العاكس للحرارة وشبك الحماية المعدني:</strong> النوافذ الحديثة المطلية بطبقة أكسيد معدني عاكسة للشمس (<code>Low-E Tinted Glass</code>) والشبك الحديدي الكثيف تعمل كـ «قفص فاراداي» يمتص ويعكس ما بين <code>10 dB</code> إلى <code>20 dB</code> من إشارة البرج؛ في هذه الحالة يكون وضع المودم بجوار جدار طوبي عادي أو إخراج هوائي خارجي أفضل بكثير.</li>
+          <li><strong>اضبط زاوية الهوائيات الثنائية بوضعية الاستقطاب المتعامد (<code>X-Pol ±45° أو 90°</code>):</strong> تبث أبراج الجيل الرابع بتقنية <code>MIMO 2x2 / 4x4</code> باستخدام استقطاب مائل متعامد (<code>+45°</code> و<code>-45°</code>). عند تركيب قرني الهوائي خلف المودم، لا تجعلهما متلاصقين بشكل متوازٍ تماماً، بل أمِل أحدهما بزاوية <code>45 درجة</code> لليمين والآخر <code>45 درجة</code> لليسار على شكل حرف <strong><code>V</code></strong> لتقليل التداخل وتعظيم سرعة الـ <code>MIMO</code>.</li>
+          <li><strong>افصل المودم مسافة متر واحد على الأقل عن الأجهزة الكهربائية:</strong> محولات الطاقة الرديئة، شاشات التلفاز، الراوترات الأخرى، وأفران الميكروويف تُصدر ضوضاء كهرومغناطيسية ترفع معدل التشويش وتُضعف تغطية الواي فاي وتقلل نقاء الإشارة.</li>
+          <li><strong>ثبّت التردد الأقل ازدحاماً عند الضرورة:</strong> تدعم بعض المودمات التبديل بين الترددات؛ الترددات المنخفضة تخترق الجدران بعمق أكبر وتعطي <code>RSRP</code> أعلى، بينما الترددات الأعلى توفر سعة وسرعة تحميل أكبر إذا كان المودم في موقع مكشوف قريب من البرج.</li>
+        </ol>
+
+        <h2 id="section-5">5. التطبيق العملي عبر تطبيقات كونكت تاق (Yemen View وTayf Spectrum) وأداة فحص السرعة</h2>
+        <p>بدلاً من التخمين العشوائي أثناء البحث عن أفضل نقطة تغطية في منزلك أو مكتبك، طور فريق <strong>كونكت تاق</strong> منظومة تطبيقات وأدوات هندسية متخصصة لقراءة الشبكة وتحليل الطيف اللاسلكي لحظياً:</p>
+
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%); border: 2px solid #6ee7b7; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #065f46; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-satellite-dish"></i> أدوات الفحص الميداني لقوة الإشارة والسرعة:</h3>
+          <ul style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li><strong>تطبيق <a href="https://connecttag.org/company/projects/apps/yemen-view/" style="font-weight: 800; color: #047857;">يمن فيو (Yemen View)</a>:</strong> يعرض لك قراءات أبراج الاتصالات الحية ومؤشرات الإشارة الخلوية على هاتفك لتمشي به داخل الغرف وتحدد النقطة التي تسجل أعلى <code>RSRP</code> وأفضل <code>SINR</code> قبل تثبيت المودم.</li>
+            <li><strong>تطبيق <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/" style="font-weight: 800; color: #047857;">طيف (Tayf Spectrum)</a>:</strong> يحلل قنوات شبكات الواي فاي المحيطة بك (<code>2.4GHz &amp; 5GHz</code>) وقوة إشارة <code>RSSI</code> بالـ <code>dBm</code> لاكتشاف القنوات المزدحمة من راوترات الجيران واختيار القناة الأنظف لمودمك.</li>
+            <li><strong><a href="https://connecttag.org/tools/telecom/speed-test/" style="font-weight: 800; color: #047857;">أداة قياس سرعة الإنترنت والـ Ping المباشرة</a>:</strong> بعد تثبيت المودم في المكان الجديد، افتح أداة الفحص لقياس سرعة التنزيل (<code>Download</code>)، وسرعة الرفع (<code>Upload</code>)، وزمن الاستجابة (<code>Ping</code>) والتذبذب (<code>Jitter</code>) للتحقق من التحسن الفعلي.</li>
+          </ul>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/tools/telecom/speed-test/" class="btn btn-primary" style="background: #059669; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-gauge-high"></i> افحص سرعة الإنترنت والـ Ping الآن
+            </a>
+            <a href="https://connecttag.org/company/projects/apps/yemen-view/" class="btn btn-default" style="border-color: #059669; color: #059669; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-tower-cell"></i> تطبيق يمن فيو (Yemen View)
+            </a>
+            <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/" class="btn btn-default" style="border-color: #059669; color: #059669; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-wifi"></i> تطبيق طيف (Tayf Spectrum)
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة (3GPP &amp; IEEE)</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا تُقاس قوة إشارة المودم والواي فاي بأرقام سالبة (-dBm) وأيهما أفضل: -75 dBm أم -105 dBm؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تُقاس إشارات الراديو بوحدة الديسيبل نسبةً إلى واحد ملي واط (<code>dBm</code>). ولأن طاقة الموجة اللاسلكية التي تصل إلى هوائي هاتفك أو مودمك بعد قطع مسافات في الهواء تكون جزءاً صغيراً جداً أقل من <code>1 mW</code>، فإن اللوغاريتم الرياضي لها يكون دائماً بالسالب. القاعدة الذهبية: <strong>كلما اقترب الرقم من الصفر كانت الإشارة أقوى</strong>؛ فقراءة <code>-75 dBm</code> ممتازة وأقوى بـ 1000 مرة من قراءة <code>-105 dBm</code> الضعيفة جداً!</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا تظهر أبراج التغطية كاملة في المودم لكن سرعة التحميل بطيئة جداً؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن مؤشر الأبراج التقليدي على شاشة المودم يعتمد غالباً على قوة الإشارة الخام فقط (<code>RSRP</code> أو <code>RSSI</code>) ولا يعكس نقاء الإشارة من التداخل (<code>SINR</code>). إذا كان المودم قريباً من البرج (<code>RSRP = -80 dBm</code>) ولكن هناك تشويشاً عالياً من أبراج مجاورة أو ازدحاماً شديداً على نفس القطاع يجعل قيمة <code>SINR</code> أقل من <code>0 dB</code> أو بالسالب، فستنخفض سرعة الإنترنت بشكل حاد رغم امتلاء الأبراج.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما هي القيم المثالية لمؤشري RSRP وSINR للحصول على أقصى سرعة في مودم يمن فورجي (4G LTE)؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">للحصول على سرعة تحميل كاملة واستقرار في الألعاب والبث، يُنصح بأن تكون قيمة <code>RSRP</code> بين <strong><code>-65 dBm</code> و<code>-85 dBm</code></strong> (ممتازة) أو لا تقل عن <code>-95 dBm</code> (جيدة)، وأن تكون قيمة <code>SINR</code> موجبة وأعلى من <strong><code>+13 dB</code> إلى <code>+20 dB</code></strong>، مع قيمة <code>RSRQ</code> بين <code>-3 dB</code> و<code>-10 dB</code>.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> عند تحريك المودم في الغرفة، هل أركز على تحسين رقم RSRP أم رقم SINR؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">الأولوية الهندسية لتحسين السرعة الفعلية هي لمؤشر <strong><code>SINR</code> (نقاء الإشارة)</strong>. مكان يعطيك <code>RSRP = -90 dBm</code> مع <code>SINR = +16 dB</code> سيعطيك سرعة إنترنت أعلى وأكثر استقراراً بمراحل من مكان آخر بجانب نافذة يعطيك <code>RSRP = -78 dBm</code> ولكن بتشويش مرتفع <code>SINR = +2 dB</code>.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #059669; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #059669;"></i> المصادر والمعايير الهندسية المعتمدة (Official Telecom &amp; RF Standards):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>3GPP Technical Specification TS 36.214 (E-UTRA Physical Layer Measurements):</strong> <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=2428" target="_blank" rel="noopener noreferrer">3GPP TS 36.214 — Official Definitions of RSRP, RSRQ, and RS-SINR for LTE Networks</a>.</li>
+            <li><strong>3GPP TS 36.133 (Requirements for Support of Radio Resource Management):</strong> المواصفة القياسية لنطاقات القياس والتبديل الخلوي بين الأبراج.</li>
+            <li><strong>IEEE 802.11 Wireless LAN Standard (RSSI &amp; SNR Metrics):</strong> المعيار الهندسي لقياس قوة الإشارة ونسبة التشويش في شبكات الواي فاي.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="محمد حميد" avatar="https://connecttag.org/upload/author/mohammed-hameed.webp" link="https://connecttag.org/blog/authors/mohammed-hameed"><span class="sr-only">الكاتب: محمد حميد</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="best-yemen-4g-modem-buying-guide, yemen-4g-modem-settings-security-guide, yemen-4g-app-balance-modem-guide"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تشريح رموز المصادقة JWT: كيف تعمل وأشهر ثغراتها الأمنية | كونكت تاق</title>
+  <meta name="description" content="الدليل الهندسي لرموز المصادقة الرقمية (JWT - RFC 7519): تشريح Header وPayload وSignature، الفرق بين HS256 وRS256، أشهر ثغرات JWT، وفحصها محلياً بأمان." />
+  <meta name="author" content="علي الرحبي" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/jwt-security-debugging-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/jwt-security-debugging-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/jwt-security-debugging-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+  <meta property="og:url" content="https://connecttag.org/blog/jwt-security-debugging-guide" />
+  <meta property="og:title" content="تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وكيف تفك ترميزها وتفحصها محلياً بأمان؟" />
+  <meta property="og:description" content="كيف تعمل رموز المصادقة عديمة الحالة (Stateless JWT)؟ شرح الأجزاء الثلاثة (Header.Payload.Signature)، ثغرات التلاعب بالخوارزمية، وكيف تحلل الرموز محلياً داخل المتصفح دون تسريب مفاتيحك." />
+  <meta property="og:image" content="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="تشريح رموز المصادقة الرقمية JWT JSON Web Tokens وفحص ثغراتها الأمنية" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="تشريح رموز المصادقة الرقمية (JWT): البنية، الثغرات الأمنية، والفحص المحلي" />
+  <meta name="twitter:description" content="الدليل الهندسي للمطورين لفهم معيار JWT (RFC 7519)، الفرق بين JWS وJWE، وتجنب ثغرات المصادقة القاتلة في تطبيقات الويب والموبايل." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp" />
+  <meta name="twitter:image:alt" content="تشريح رموز المصادقة الرقمية JWT JSON Web Tokens وفحص ثغراتها الأمنية" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها، وفحصها محلياً",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/jwt-security-debugging-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "محرر تقني متخصص في هندسة البرمجيات وتحسين محركات البحث",
+      "url": "https://connecttag.org/blog/authors/ali",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل الهندسي الشامل لرموز المصادقة الرقمية (JWT - RFC 7519): تشريح بنية Header وPayload وSignature، الفرق بين HS256 وRS256، وأشهر الثغرات الأمنية.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/jwt-security-debugging-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "تشريح رموز المصادقة الرقمية (JWT)",
+        "item": "https://connecttag.org/blog/jwt-security-debugging-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هل البيانات الموجودة داخل حمولة الـ JWT (Payload) مشفرة ولا يمكن قراءتها؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "كلا، في النوع القياسي الأكثر شيوعاً (JWS - Signed JWT)، تكون الترويسة (Header) والحمولة (Payload) مرمّزتين فقط بصيغة Base64Url وليستا مشفرتين! يمكن لأي شخص يمتلك الرمز فك ترميز Base64Url وقراءة محتويات الـ Payload في ثانية واحدة. وظيفة التوقيع الرقمي (Signature) هي منع تعديل البيانات وليس إخفاءها، ولذلك يُحظر تماماً وضع كلمات مرور أو أرقام بطاقات أو أسرار حساسة داخل الـ Payload."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق العملي بين خوارزمية HS256 وخوارزمية RS256 في توقيع رموز JWT؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تعتمد خوارزمية HS256 (HMAC + SHA-256) على التشفير المتماثل، حيث يُستخدم مفتاح سري واحد مشترك (Shared Secret) لإنشاء التوقيع والتحقق منه معاً، وتناسب التطبيقات ذات الخادم الواحد. أما خوارزمية RS256 (RSA + SHA-256) فتعتمد على التشفير غير المتماثل، حيث يوقّع خادم الهوية الرمز باستخدام المفتاح الخاص (Private Key)، بينما تتحقق الخدمات المصغرة الأخرى من صحته باستخدام المفتاح العام (Public Key) دون امتلاك القدرة على تزوير رموز جديدة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "أين يجب تخزين رمز الـ JWT في تطبيقات الويب وتطبيقات الهواتف الذكية بأمان؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في تطبيقات الويب، يُنصح بتخزين رمز التحديث (Refresh Token) في ملفات تعريف ارتباط محمية بسمات HttpOnly; Secure; SameSite=Strict لمنع سرقته عبر ثغرات XSS، والاحتفاظ برمز الوصول قصير العمر (Access Token) في ذاكرة التطبيق المؤقتة (In-Memory). أما في تطبيقات الهواتف الذكية (Android وiOS)، فيُحفظ داخل مساحة التخزين المشفرة المحمية بعتاد الجهاز."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يُعد لصق رموز JWT الخاصة ببيئة الإنتاج (Production) في مواقع الفحص الخارجية خطراً أمنياً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن رمز JWT الصالح في بيئة الإنتاج يعمل بمثابة مفتاح دخول مباشر لحساب المستخدم أو المسؤول طوال فترة صلاحيته (exp). إرساله إلى خادم خارجي قد يعرّضه للتسجيل في سجلات الخادم (Server Logs) أو اعتراضه. لذلك يجب دائماً فحص رموز JWT عبر أداة تعمل محلياً 100% داخل متصفحك (Client-Side) دون إرسال أي طلب شبكي."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تشريح رموز المصادقة الرقمية (JWT)", "url":"https://connecttag.org/blog/jwt-security-debugging-guide"}]'></site-breadcrumb>
+        <h1>تشريح رموز المصادقة الرقمية (<code>JWT - JSON Web Tokens</code>): كيف تعمل، أشهر ثغراتها الأمنية، وكيف تفك ترميزها وتفحصها محلياً بأمان؟</h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp" class="img-responsive" alt="تشريح رموز المصادقة الرقمية JWT JSON Web Tokens وبنيتها الأمنية وفحص ثغراتها" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">في معمارية تطبيقات الويب الحديثة وتطبيقات الهواتف الذكية (<code>Android &amp; iOS</code>) والخدمات المصغّرة (<code>Microservices</code>)، لم يعد الاعتماد على جلسات الخادم التقليدية المخزّنة في الذاكرة (<code>Stateful Server Sessions</code>) كافياً لمواكبة ملايين الطلبات المتزامنة. هنا برز معيار <strong>رموز الويب بصيغة JSON (<code>JWT - JSON Web Tokens</code>)</strong> المعرّف في الوثيقة القياسية <strong><code>IETF RFC 7519</code></strong> كعمود فقري للمصادقة عديمة الحالة (<code>Stateless Authentication</code>) وتفويض واجهات البرمجة (<code>OAuth 2.0 &amp; OpenID Connect</code>).</p>
+
+        <p>غير أن البساطة الظاهرية لرمز <code>JWT</code> تخفي وراءها تفاصيل تشفيرية دقيقة؛ إذ إن خطأً واحداً في التحقق من خوارزمية التوقيع أو اختيار مفتاح التعمية قد يسمح للمهاجم بتزوير هوية المدير العام للنظام بالكامل! في هذا الدليل الهندسي الشامل، نشرح بنية الرمز الثلاثية، والفرق بين خوارزميات التوقيع المتماثلة وغير المتماثلة، ونحلل أشهر <strong>5 ثغرات أمنية قاتلة في تطبيقات الـ JWT</strong>، مع شرح الفحص العملي الآمن عبر <a href="https://connecttag.org/tools/web/jwt-debugger/"><strong>أداة فحص وتحليل JWT المحلية في كونكت تاق</strong></a>.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-key"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>الرمز الموقّع (<code>JWS</code>) مكشوف للقراءة ومحصّن ضد التعديل:</strong> الأجزاء الأول والثاني من رمز <code>JWT</code> مرمّزة بصيغة <code>Base64Url</code> فقط وليست مشفرة؛ أي شخص يمكنه قراءة محتواها، لكن لا أحد يستطيع تعديل حرف واحد فيها دون إبطال التوقيع الرقمي (<code>Signature</code>).</li>
+            <li><strong>ثلاثية البنية (<code>Header.Payload.Signature</code>):</strong> يتكون الرمز من 3 مقاطع نصية مفصولة بنقطتين (<code>.</code>): الترويسة (تحدد الخوارزمية)، الحمولة (تضم المطالبات الزمنية وهوية المستخدم <code>Claims</code>)، والتوقيع الرقمي المشتق.</li>
+            <li><strong>احذر ثغرة الخلط بين الخوارزميات (<code>Algorithm Confusion</code>) وخوارزمية <code>none</code>:</strong> لا تثق أبداً بحقل <code>alg</code> القادم في ترويسة الرمز من العميل؛ بل فرض خوارزمية محددة صراحةً في كود الخادم (Whitelist).</li>
+            <li><strong>افحص رموزك محلياً فقط (Client-Side Debugging):</strong> إرسال رموز <code>JWT</code> الحية إلى مواقع خارجية قد يسرب جلسات المستخدمين؛ استخدم دائماً أداة فحص تعمل داخل متصفحك بدون اتصال بالخادم.</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. لماذا استبدلت الأنظمة الحديثة جلسات الخادم التقليدية (Session IDs) برموز JWT؟</a></li>
+            <li><a href="#section-2">2. التشريح الهندسي لأجزاء رمز JWT الثلاثة: Header وPayload وSignature</a></li>
+            <li><a href="#section-3">3. المقارنة التشفيرية: متى تستخدم خوارزمية HS256 المتماثلة ومتى تنتقل إلى RS256 / EdDSA؟</a></li>
+            <li><a href="#section-4">4. أشهر 5 ثغرات أمنية قاتلة في تطبيقات الـ JWT وكيف تغلقها برمجياً؟</a></li>
+            <li><a href="#section-5">5. التطبيق العملي: فك ترميز وفحص رموز JWT محلياً بأمان عبر أدوات كونكت تاق</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمراجع المعيارية المعتمدة (IETF RFCs)</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. لماذا استبدلت الأنظمة الحديثة جلسات الخادم التقليدية (Session IDs) برموز JWT؟</h2>
+        <p>في الأنظمة التقليدية (<code>Stateful Sessions</code>)، عندما يسجل المستخدم دخوله، ينشئ الخادم سجل جلسة في قاعدة البيانات أو ذاكرة <code>Redis</code> ويعطي المتصفح رقم معرّف عشوائي (<code>Session ID</code>). مع كل طلب قادم، يضطر الخادم للبحث عن هذا الرقم في قاعدة البيانات لمعرفة هوية المستخدم. هذه الآلية تصبح عنق زجاجة مكلفاً عندما يتوسع نظامك ليشمل عدة خوادم خلف موازن أحمال (<code>Load Balancer</code>) أو عشرات الخدمات المصغرة (كما أوضحنا في <a href="https://connecttag.org/blog/api-security-guide">دليل حماية وتأمين واجهات برمجة التطبيقات API</a>).</p>
+
+        <p>في المقابل، يقدم معيار <strong><code>JWT</code></strong> نموذجاً <strong>ذاتي الاحتواء وعديم الحالة (<code>Self-Contained &amp; Stateless</code>)</strong>: يحمل الرمز نفسه هوية المستخدم وصلاحياته وتاريخ انتهاء الجلسة، ويحمل في ذيله ختماً تشفيرياً (<code>Cryptographic Signature</code>). بمجرد وصول الطلب إلى أي خادم في المنظومة، يتحقق الخادم رياضياً من صحة الختم في أجزاء من الملي ثانية دون الحاجة للاستعلام من قاعدة بيانات الجلسات.</p>
+
+        <h2 id="section-2">2. التشريح الهندسي لأجزاء رمز JWT الثلاثة: Header وPayload وSignature</h2>
+        <p>يتكوّن كل رمز <code>JWT</code> قياسي موقّع (<code>JWS - RFC 7515</code>) من ثلاث سلاسل نصية مرمّزة بصيغة <code>Base64Url</code> ومفصولة بنقطتين على النحو: <code>xxxxx.yyyyy.zzzzz</code>:</p>
+
+        <!-- مخطط تشريحي بصري لبنية رمز JWT -->
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16); direction: rtl;">
+          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 16px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-code"></i> التشريح اللوني والبرمجي لرمز JWT الموقّع (RFC 7519)
+          </h3>
+
+          <div style="background: #020617; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 20px; direction: ltr; text-align: left; font-family: monospace; font-size: 13.5px; word-break: break-all; line-height: 1.7;">
+            <span style="color: #fb7185; font-weight: 700;">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleS0yMDI2LTAxIn0</span><span style="color: #fff; font-weight: 900;">.</span><span style="color: #c084fc; font-weight: 700;">eyJzdWIiOiJ1c3JfOTg0MiIsInJvbGUiOiJhZG1pbiIsImlzcyI6ImFwaS5jb25uZWN0dGFnLm9yZyIsImlhdCI6MTc5NDA4NzYwMCwiZXhwIjoxNzk0MDg4NTAwfQ</span><span style="color: #fff; font-weight: 900;">.</span><span style="color: #38bdf8; font-weight: 700;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+            <div style="background: rgba(244, 63, 94, 0.12); border-right: 4px solid #fb7185; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #fda4af; margin-bottom: 6px;">1. الترويسة (Header) — الأحمر</div>
+              <pre style="background: rgba(0,0,0,0.35); color: #fecdd3; padding: 10px; border-radius: 8px; direction: ltr; text-align: left; font-size: 12px; margin: 0 0 8px 0;">{
+  "alg": "HS256",
+  "typ": "JWT",
+  "kid": "key-2026-01"
+}</pre>
+              <p style="margin: 0; font-size: 13px; color: #e2e8f0; line-height: 1.6;">يحدد خوارزمية التوقيع (<code>alg</code>)، ونوع الرمز (<code>typ</code>)، ومعرّف المفتاح (<code>kid</code>) عند تدوير المفاتيح.</p>
+            </div>
+
+            <div style="background: rgba(192, 132, 252, 0.12); border-right: 4px solid #c084fc; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #e9d5ff; margin-bottom: 6px;">2. الحمولة (Payload) — البنفسجي</div>
+              <pre style="background: rgba(0,0,0,0.35); color: #f3e8ff; padding: 10px; border-radius: 8px; direction: ltr; text-align: left; font-size: 12px; margin: 0 0 8px 0;">{
+  "sub": "usr_9842",
+  "role": "admin",
+  "iat": 1794087600,
+  "exp": 1794088500
+}</pre>
+              <p style="margin: 0; font-size: 13px; color: #e2e8f0; line-height: 1.6;">تحتوي على المطالبات القياسية (<code>Registered Claims</code>) مثل معرّف المستخدم (<code>sub</code>) ووقت الانتهاء (<code>exp</code>).</p>
+            </div>
+
+            <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 15px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #7dd3fc; margin-bottom: 6px;">3. التوقيع (Signature) — السماوي</div>
+              <pre style="background: rgba(0,0,0,0.35); color: #bae6fd; padding: 10px; border-radius: 8px; direction: ltr; text-align: left; font-size: 12px; margin: 0 0 8px 0;">HMACSHA256(
+  base64Url(header) + "." +
+  base64Url(payload),
+  secret_key
+)</pre>
+              <p style="margin: 0; font-size: 13px; color: #e2e8f0; line-height: 1.6;">الختم التشفيري الذي يضمن أن الرمز صدر فعلاً من خادمك ولم يتم تغيير أي بايت داخل الـ <code>Payload</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>أهم الحقول القياسية (Registered Claims) التي يجب التحقق منها في كل طلب:</h3>
+        <ul>
+          <li><strong><code>iss</code> (Issuer):</strong> الجهة التي أصدرت الرمز (مثلاً خادم المصادقة الخاص بك).</li>
+          <li><strong><code>sub</code> (Subject):</strong> المعرّف الفريد للمستخدم صاحب الجلسة.</li>
+          <li><strong><code>aud</code> (Audience):</strong> الخدمة المستهدفة بهذا الرمز (يمنع استخدام رمز مخصص لخدمة الدفع في خدمة إدارة الحسابات).</li>
+          <li><strong><code>exp</code> (Expiration Time):</strong> طابع زمني بصيغة <code>Unix Timestamp</code> يحدد اللحظة التي يصبح بعدها الرمز منتهي الصلاحية ومرفوضاً.</li>
+          <li><strong><code>iat</code> (Issued At) و<code>nbf</code> (Not Before):</strong> وقت إصدار الرمز والوقت الذي يبدأ فيه سريانه الفعلي.</li>
+          <li><strong><code>jti</code> (JWT ID):</strong> معرّف فريد للرمز نفسه يُستخدم لمنع هجمات إعادة الإرسال (<code>Replay Attacks</code>) أو لإدراج الرمز في قائمة الإبطال الفوري.</li>
+        </ul>
+
+        <h2 id="section-3">3. المقارنة التشفيرية: متى تستخدم خوارزمية HS256 المتماثلة ومتى تنتقل إلى RS256 / EdDSA؟</h2>
+        <p>يعتمد أمان رمز <code>JWT</code> كلياً على الخوارزمية المستخدمة في إنشاء التوقيع الرقمي (المعرفة في معيار <code>RFC 7518 - JWA</code>). يوضح الجدول التالي الفروقات الجوهرية لاختيار الخوارزمية المناسبة لمعمارية مشروعك:</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">وجه المقارنة</th>
+                <th style="padding: 14px; text-align: right;"><code>HS256</code> (HMAC + SHA-256)</th>
+                <th style="padding: 14px; text-align: right;"><code>RS256</code> (RSA + SHA-256)</th>
+                <th style="padding: 14px; text-align: right;"><code>ES256 / EdDSA</code> (المنحنيات الإهليلجية)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 700;">نوع التعمية</td>
+                <td style="padding: 12px;">متماثلة (<code>Symmetric</code>) — مفتاح سري واحد مشترك.</td>
+                <td style="padding: 12px;">غير متماثلة (<code>Asymmetric</code>) — مفتاح خاص ومفتاح عام.</td>
+                <td style="padding: 12px;">غير متماثلة حديثة (<code>Elliptic Curve</code>).</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 700;">من يوقّع ومن يتحقق؟</td>
+                <td style="padding: 12px;">أي خادم يملك المفتاح السري لتدقيق الرمز يمكنه أيضاً إصدار رموز جديدة!</td>
+                <td style="padding: 12px;">خادم الهوية فقط يوقّع بـ <code>Private Key</code>، وبقية الخوادم تتحقق بـ <code>Public Key</code>.</td>
+                <td style="padding: 12px;">نفس مبدأ الفصل التام بين التوقيع والتحقق بأمان أعلى.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 700;">حجم التوقيع وسرعة الأداء</td>
+                <td style="padding: 12px;">توقيع صغير جداً (32 بايت) وسرعة حساب فائقة.</td>
+                <td style="padding: 12px;">توقيع أكبر نسبياً (256 بايت لمفتاح 2048-bit) واستهلاك أعلى للمعالج.</td>
+                <td style="padding: 12px;">توقيع صغير (64 بايت) وسرعة تحقق عالية جداً مع أمان مكافئ لـ RSA-3072.</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 700;">حالة الاستخدام المثالية</td>
+                <td style="padding: 12px;">تطبيق متجانس واحد (<code>Monolith</code>) يصدر الرمز ويتحقق منه داخل نفس الخادم.</td>
+                <td style="padding: 12px;">الأنظمة الموزعة، البوابات السحابية، والربط مع خدمات خارجية عبر <code>JWKS</code>.</td>
+                <td style="padding: 12px;">تطبيقات الهواتف الذكية عالية الأداء والواجهات البرمجية الحديثة.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-4">4. أشهر 5 ثغرات أمنية قاتلة في تطبيقات الـ JWT وكيف تغلقها برمجياً؟</h2>
+        <p>خلال عمليات الفحص الأمني واختبار الاختراق لواجهات الـ <code>API</code>، تتكرر خمس ثغرات برمجية خطيرة تؤدي إلى تجاوز المصادقة بالكامل (<code>Authentication Bypass</code>):</p>
+
+        <ol>
+          <li><strong>هجوم الخوارزمية الفارغة (<code>The "none" Algorithm Attack</code>):</strong> يدعم معيار <code>JWT</code> تاريخياً قيمة <code>"alg": "none"</code> للرموز غير الموقعة. إذا كانت مكتبة الخادم لديك تقبل الخوارزمية المذكورة في ترويسة الرمز دون تقييد، سيقوم المهاجم بتعديل <code>"role": "admin"</code> وتغيير الخوارزمية إلى <code>"none"</code> وحذف قسم التوقيع، فيقبله الخادم كرمز صحيح! <strong>الحل:</strong> مرّر قائمة بيضاء صريحة بالخوارزميات المسموحة فقط (مثلاً <code>algorithms: ['RS256']</code>) في دالة التحقق.</li>
+          <li><strong>ثغرة الخلط بين المفتاح العام والمفتاح السري (<code>RS256 to HS256 Algorithm Confusion</code>):</strong> عندما يستخدم الخادم <code>RS256</code>، يكون المفتاح العام (<code>Public Key</code>) متاحاً للجميع. إذا لم يحدد المطور نوع الخوارزمية المتوقعة، يغيّر المهاجم الترويسة إلى <code>HS256</code> ويوقّع الرمز المزور مستخدماً نص المفتاح العام باعتباره «مفتاحاً سرياً متماثلاً»!</li>
+          <li><strong>استخدام مفاتيح سرية ضعيفة قابلة للكسر التخميني (<code>Weak HMAC Secret Brute-Force</code>):</strong> لأن التحقق من التوقيع يمكن إجراؤه دون اتصال بالخادم (<code>Offline Cracking</code>)، يستطيع المهاجم الذي يلتقط رمز <code>HS256</code> تشغيل أدوات مثل <code>Hashcat</code> لتجربة ملايين الكلمات في الثانية. إذا كان مفتاحك كلمة قصيرة مثل <code>secret123</code> فسيُكسر في ثوانٍ. <strong>الحل:</strong> ولّد مفتاحاً عشوائياً بطول <code>256-bit</code> (32 بايت على الأقل) عبر <a href="https://connecttag.org/tools/security/crypto-toolbox/">صندوق أدوات التشفير</a>.</li>
+          <li><strong>إهمال التحقق من وقت الانتهاء والجمهور (<code>Missing exp &amp; aud Validation</code>):</strong> إصدار رموز وصول (<code>Access Tokens</code>) صالحة لعدة أشهر أو بدون حقل <code>exp</code> يعني أنه في حال سرقة الرمز فلن تتمكن من إيقافه. <strong>الحل:</strong> اجعل عمر <code>Access Token</code> قصيراً جداً (من <code>5</code> إلى <code>15 دقيقة</code>) مع استخدام <code>Refresh Token</code> قابل للإبطال في قاعدة البيانات.</li>
+          <li><strong>حقن معرّف المفتاح (<code>kid</code> / <code>jku</code> Header Injection):</strong> الاعتماد غير الآمن على حقل <code>kid</code> لجلب ملف المفتاح من مسار النظام أو حقل <code>jku</code> لجلب المفاتيح من رابط خارجي قد يعرّض الخادم لثغرات <code>Path Traversal</code> أو <code>SSRF</code>.</li>
+        </ol>
+
+        <h2 id="section-5">5. التطبيق العملي: فك ترميز وفحص رموز JWT محلياً بأمان عبر أدوات كونكت تاق</h2>
+        <p>أثناء تطوير تطبيقات الموبايل والويب أو تشخيص أخطاء <code>401 Unauthorized</code>، يحتاج المطور يومياً إلى فك ترميز رموز الـ <code>JWT</code> لقراءة الحقول ومراجعة توقيت الانتهاء. ولأن لصق رموز بيئة العمل في مواقع خارجية قد يعرّض بياناتك للتسريب، وفرنا لك في <strong>كونكت تاق</strong> حزمة أدوات تعمل <strong>محلياً 100% داخل متصفحك (Client-Side)</strong>:</p>
+
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%); border: 2px solid #93c5fd; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #1e3a8a; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-shield-halved"></i> خطوات فحص وتحليل رموز JWT بأمان تام:</h3>
+          <ol style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li>افتح <a href="https://connecttag.org/tools/web/jwt-debugger/" style="font-weight: 800; color: #0284c7;">أداة فحص وتحليل رموز JWT (JWT Debugger) في كونكت تاق</a>، والصق الرمز المرمّز في حقل الإدخال.</li>
+            <li>ستقوم الأداة فوراً بفك ترميز <strong>الترويسة (Header)</strong> و<strong>الحمولة (Payload)</strong> وعرضهما بصيغة <code>JSON</code> منسقة، مع تحويل الطوابع الزمنية الرقمية (<code>iat</code> و<code>exp</code>) تلقائياً إلى تاريخ ووقت مقروء وتنبيهك فوراً إذا كان الرمز منتهي الصلاحية!</li>
+            <li>لتنسيق أو تدقيق كائنات الـ <code>JSON</code> المعقدة المستخرجة من الرمز أو بناء هياكل البيانات، استخدم <a href="https://connecttag.org/tools/web/json-formatter/" style="font-weight: 800; color: #0284c7;">منسق ومصحح JSON الفوري</a>.</li>
+            <li>لتوليد مفاتيح توقيع عشوائية عالية الإنتروبيا أو اختبار تجزئات <code>SHA-256 / HMAC</code> وترميز <code>Base64Url</code>، استخدم <a href="https://connecttag.org/tools/security/crypto-toolbox/" style="font-weight: 800; color: #0284c7;">صندوق أدوات التشفير والـ Hash</a>، أو عبر هاتفك مباشرة باستخدام تطبيق <a href="https://connecttag.org/company/projects/apps/developer-tool/" style="font-weight: 800; color: #0284c7;">أداة المطور (Developer Tool)</a>.</li>
+          </ol>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/tools/web/jwt-debugger/" class="btn btn-primary" style="background: #0052cc; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-key"></i> افتح أداة فحص JWT الآن
+            </a>
+            <a href="https://connecttag.org/tools/security/crypto-toolbox/" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-lock"></i> صندوق أدوات التشفير
+            </a>
+            <a href="https://connecttag.org/tools/web/json-formatter/" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-file-code"></i> منسق ومصحح JSON
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمراجع المعيارية المعتمدة (IETF RFCs)</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> هل البيانات الموجودة داخل حمولة الـ JWT (Payload) مشفرة ولا يمكن قراءتها؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">كلا، في النوع القياسي الأكثر شيوعاً (<code>JWS - Signed JWT</code>)، تكون الترويسة (<code>Header</code>) والحمولة (<code>Payload</code>) مرمّزتين فقط بصيغة <code>Base64Url</code> وليستا مشفرتين! يمكن لأي شخص يمتلك الرمز فك ترميز <code>Base64Url</code> وقراءة محتويات الـ <code>Payload</code> في ثانية واحدة. وظيفة التوقيع الرقمي (<code>Signature</code>) هي منع تعديل البيانات وليس إخفاءها، ولذلك يُحظر تماماً وضع كلمات مرور أو أرقام بطاقات أو أسرار حساسة داخل الـ <code>Payload</code>.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما الفرق العملي بين خوارزمية HS256 وخوارزمية RS256 في توقيع رموز JWT؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تعتمد خوارزمية <code>HS256</code> (HMAC + SHA-256) على التشفير المتماثل، حيث يُستخدم مفتاح سري واحد مشترك (<code>Shared Secret</code>) لإنشاء التوقيع والتحقق منه معاً، وتناسب التطبيقات ذات الخادم الواحد. أما خوارزمية <code>RS256</code> (RSA + SHA-256) فتعتمد على التشفير غير المتماثل، حيث يوقّع خادم الهوية الرمز باستخدام المفتاح الخاص (<code>Private Key</code>)، بينما تتحقق الخدمات المصغرة الأخرى من صحته باستخدام المفتاح العام (<code>Public Key</code>) دون امتلاك القدرة على تزوير رموز جديدة.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> أين يجب تخزين رمز الـ JWT في تطبيقات الويب وتطبيقات الهواتف الذكية بأمان؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">في تطبيقات الويب، يُنصح بتخزين رمز التحديث (<code>Refresh Token</code>) في ملفات تعريف ارتباط محمية بسمات <code>HttpOnly; Secure; SameSite=Strict</code> لمنع سرقته عبر ثغرات <code>XSS</code>، والاحتفاظ برمز الوصول قصير العمر (<code>Access Token</code>) في ذاكرة التطبيق المؤقتة (<code>In-Memory</code>). أما في تطبيقات الهواتف الذكية (Android وiOS)، فيُحفظ داخل مساحة التخزين المشفرة المحمية بعتاد الجهاز.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يُعد لصق رموز JWT الخاصة ببيئة الإنتاج (Production) في مواقع الفحص الخارجية خطراً أمنياً؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن رمز <code>JWT</code> الصالح في بيئة الإنتاج يعمل بمثابة مفتاح دخول مباشر لحساب المستخدم أو المسؤول طوال فترة صلاحيته (<code>exp</code>). إرساله إلى خادم خارجي قد يعرّضه للتسجيل في سجلات الخادم (<code>Server Logs</code>) أو اعتراضه. لذلك يجب دائماً فحص رموز <code>JWT</code> عبر أداة تعمل محلياً 100% داخل متصفحك (<code>Client-Side</code>) دون إرسال أي طلب شبكي.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="منهجية الفحص والمصادر التقنية" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #0052cc; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #0052cc;"></i> المصادر والمعايير الهندسية المعتمدة (Official IETF &amp; Security References):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>IETF RFC 7519 — JSON Web Token (JWT) Standard:</strong> <a href="https://datatracker.ietf.org/doc/html/rfc7519" target="_blank" rel="noopener noreferrer">IETF Official Specification — RFC 7519: JSON Web Token (JWT)</a>.</li>
+            <li><strong>IETF RFC 8725 — JSON Web Token Best Current Practices:</strong> <a href="https://datatracker.ietf.org/doc/html/rfc8725" target="_blank" rel="noopener noreferrer">IETF RFC 8725 — Security Best Current Practices for JWT Implementation</a>.</li>
+            <li><strong>OWASP JSON Web Token Security Cheat Sheet:</strong> <a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP Foundation — JWT Security &amp; Validation Guidelines</a>.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="api-security-guide, google-play-integrity-api-android-security-guide, advanced-database-security-architecture"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
