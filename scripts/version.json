@@ -1,6 +1,6 @@
 {
-  "version": "1.1.53",
-  "cache_version": "v107",
+  "version": "1.1.54",
+  "cache_version": "v108",
   "last_updated": "2026-11-08",
-  "description": "Fix markdown code/bold rendering, replace raw LaTeX with styled HTML formulas, remove 404 blog-post.css link, and enhance summary-box contrast across all 55 blog articles"
+  "description": "Add privacy policy, telecom cell-id/E.164, and telegram webhook security guides (58 articles) and unify all blog cover illustrations with bright white backgrounds"
 }
