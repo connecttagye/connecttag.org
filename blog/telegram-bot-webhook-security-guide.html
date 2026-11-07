@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>الدليل الهندسي لبناء وتأمين بوتات تيليجرام Webhook | كونكت تاق</title>
+  <meta name="description" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق بـ Secret Token؟">
+  <meta name="keywords" content="تطوير بوتات تيليجرام, Telegram Bot API, الفرق بين Long Polling و Webhook, X-Telegram-Bot-Api-Secret-Token, حماية توكن بوت تيليجرام, Cloudflare Workers Telegram Bot, عناوين IP تيليجرام, بوتات الأعمال والأتمتة, كونكت تاق">
+  <meta name="author" content="علي الرحبي">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/telegram-bot-webhook-security-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/telegram-bot-webhook-security-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟" />
+  <meta property="og:description" content="لماذا يستهلك getUpdates موارد السيرفر بينما يوفر Webhook استجابة لحظية؟ وكيف تتحقق من الطلبات عبر X-Telegram-Bot-Api-Secret-Token والشبكات الفرعية الرسمية لتيليجرام؟" />
+  <meta property="og:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" />
+  <meta property="article:published_time" content="2026-11-08T03:30:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T03:30:00+03:00" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+  <meta property="article:tag" content="Telegram Bot API" />
+  <meta property="article:tag" content="Webhook Security" />
+  <meta property="article:tag" content="هندسة البرمجيات" />
+  <meta property="article:tag" content="أمن واجهات API" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/telegram-bot-webhook-security-guide" />
+  <meta name="twitter:title" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): Webhook وتأمين التوكن" />
+  <meta name="twitter:description" content="مقارنة هندسية بين Long Polling وWebhook في بوتات تيليجرام، وكيفية حماية نقطة النهاية عبر Secret Token وعناوين IP الرسمية." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp" />
+  <meta name="twitter:image:alt" content="هندسة وتأمين بوتات تيليجرام للأعمال عبر Webhook وSecret Token" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وتأمين التوكن",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T03:30:00+03:00",
+    "dateModified": "2026-11-08T03:30:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "كاتب ومحرر تقني متخصص في التحول الرقمي والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "مرجع هندسي شامل لمطوري بوتات تيليجرام وأنظمة الأتمتة يشرح الفارق المعماري بين getUpdates (Long Polling) وWebhook، وكيفية تأمين نقطة استقبال التحديثات عبر X-Telegram-Bot-Api-Secret-Token وتقييد عناوين الشبكة الفرعية الرسمية لتيليجرام.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/telegram-bot-webhook-security-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الدليل الهندسي لبناء وتأمين بوتات تيليجرام Webhook",
+        "item": "https://connecttag.org/blog/telegram-bot-webhook-security-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "متى أستخدم Long Polling (getUpdates) ومتى يجب الانتقال إلى Webhook في بوتات تيليجرام؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يُستخدم Long Polling (عبر الدالة getUpdates) أثناء مرحلة التطوير والاختبار المحلي على جهاز المبرمج (Localhost) لأنه لا يتطلب نطاقاً عاماً أو شهادة SSL. أما في بيئة الإنتاج الفعلية (Production) ولدى بوتات الأعمال ذات الكثافة العالية، فيجب استخدام Webhook عبر HTTPS لأنه يوفر استجابة لحظية، ولا يستهلك موارد المعالج في فتح اتصالات متكررة، ويتكامل بكفاءة مع منصات الحوسبة السحابية مثل Cloudflare Workers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أمنع المخترقين من إرسال طلبات POST مزيفة إلى رابط الـ Webhook الخاص ببوت تيليجرام؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "عند تسجيل الرابط عبر دالة setWebhook، مرّر معامل secret_token بقيمة عشوائية مشفرة. ستقوم خوادم تيليجرام بإرفاق هذا الرمز في ترويسة HTTP تحت اسم X-Telegram-Bot-Api-Secret-Token مع كل طلب حقيقي. يجب على خادمك فحص هذه الترويسة أولاً ورفض أي طلب لا يطابق الرمز السري فوراً بكود 401 Unauthorized، بالإضافة إلى حصر عناوين IP المسموح لها بالنطاقين الرسميين لتيليجرام: 149.154.160.0/20 و91.108.4.0/22."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ماذا أفعل إذا تسرّب توكن البوت (Bot Token) بالخطأ في مستودع GitHub؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "توجه فوراً إلى البوت الرسمي @BotFather في تيليجرام، وأرسل الأمر /revoke ثم اختر البوت المعني. سيقوم BotFather بإبطال التوكن القديم فوراً وتوليد توكن جديد. بعد ذلك، خزّن التوكن الجديد حصراً داخل متغيرات البيئة الآمنة (Environment Variables / Secrets) على خادمك ولا تضعه أبداً داخل ملفات الكود المصدري."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يكرر بوت تيليجرام إرسال نفس الرد عدة مرات أحياناً عند استخدام Webhook؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ينتظر خادم تيليجرام استجابة HTTP 200 OK من خادمك عند إرسال أي تحديث. إذا استغرق خادمك وقتاً طويلاً في معالجة الطلب (مثل توليد ملف PDF أو انتظار استجابة قاعدة بيانات بطيئة) ولم يرد خلال المهلة المحددة، يفترض تيليجرام أن التحديث لم يصل ويعيد إرساله مراراً. الحل الهندسي هو التحقق من عدم تكرار رقم التحديث (update_id) وإرجاع 200 OK بسرعة مع تمرير المهام الثقيلة إلى طابور معالجة غير متزامن (Background Queue)."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "الدليل الهندسي لبناء وتأمين بوتات تيليجرام Webhook", "url": "https://connecttag.org/blog/telegram-bot-webhook-security-guide"}]'></site-breadcrumb>
+
+            <h1>الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: برمجة وتطوير - تطوير الهواتف والأنظمة المتعددة</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp" class="img-responsive" alt="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              تحوّلت بوتات تيليجرام (<code>Telegram Bots</code>) من مجرد أدوات دردشة بسيطة إلى واجهات تشغيل متكاملة للأعمال والتجارة الإلكترونية، وإشعارات السيرفرات الفورية، وأنظمة التحقق والمصادقة، وأدوات الأتمتة المؤسسية. ولكن مع ازدياد الاعتماد عليها، يقع كثير من المطورين في خطأين هندسيين شائعين: تشغيل البوت في بيئة الإنتاج بأسلوب الاستعلام المتكرر (<code>Long Polling</code>) الذي يستنزف موارد الخادم، أو فتح نقطة استقبال <code>Webhook</code> عامة على الإنترنت دون التحقق التشفيري من مصدر الطلبات!
+            </p>
+            <p>
+              في هذا الدليل الهندسي التطبيقي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نستعرض المعمارية الداخلية لـ <strong><code>Telegram Bot API</code></strong>، ونقارن علمياً بين <code>getUpdates</code> و<code>setWebhook</code>، ونشرح خطوة بخطوة كيف صمّمنا وطوّرنا <a href="https://connecttag.org/company/projects/bots/">منظومة بوتات تيليجرام الذكية في كونكت تاق</a> بأعلى معايير الأمان عبر الترويسة السرية <code>X-Telegram-Bot-Api-Secret-Token</code>، وعزل عناوين الشبكة الفرعية الرسمية لتيليجرام، ومنع تكرار العمليات (<code>Idempotency</code>).
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-robot" aria-hidden="true"></i> خلاصة تنفيذية لمهندسي البرمجيات ومطوري البوتات</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong><code>Webhook</code> للإنتاج و<code>Long Polling</code> للتطوير:</strong> استخدم <code>getUpdates</code> أثناء البرمجة المحلية فقط، وانتقل إلى <code>setWebhook</code> عبر بروتوكول <code>HTTPS</code> (أو <code>Cloudflare Workers</code>) في بيئة الإنتاج للحصول على استجابة لحظية بتكلفة موارد صفرية تقريباً في أوقات السكون.</li>
+                <li><strong>التحقق الإلزامي عبر <code>Secret Token</code>:</strong> لا تضع توكن البوت داخل رابط الـ Webhook؛ بل فعّل معامل <code>secret_token</code> وافحص ترويسة <code>X-Telegram-Bot-Api-Secret-Token</code> في كل طلب وارد لرفض الطلبات المزيفة فوراً.</li>
+                <li><strong>تقييد عناوين الشبكة (<code>IP Whitelisting</code>):</strong> تصدر جميع طلبات الـ Webhook الرسمية من خوادم تيليجرام حصراً من النطاقين: <code>149.154.160.0/20</code> و<code>91.108.4.0/22</code> وعبر المنافذ <code>443, 80, 88, 8443</code>.</li>
+                <li><strong>عدم تكرار المعالجة (<code>Idempotency via update_id</code>):</strong> احرص على تسجيل <code>update_id</code> والرد بكود <code>200 OK</code> سريعاً لمنع إعادة إرسال نفس الرسالة عند تأخر استجابة الخادم.</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل الهندسي والأمني</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. المقارنة المعمارية: لماذا يتفوق Webhook على Long Polling (getUpdates) في بيئة الإنتاج؟</a></li>
+                <li><a href="#section-2">2. ثغرة تزوير طلبات الـ Webhook (Webhook Spoofing): كيف تتحقق من هوية خوادم تيليجرام؟</a></li>
+                <li><a href="#section-3">3. التطبيق العملي: كود إعداد setWebhook وفحص X-Telegram-Bot-Api-Secret-Token</a></li>
+                <li><a href="#section-4">4. حماية توكن البوت (Bot Token Security) والتصدي لهجمات الإغراق (Rate Limiting)</a></li>
+                <li><a href="#section-5">5. معالجة التحديثات بدون تكرار (Idempotency) وحدود الإرسال في Telegram API</a></li>
+                <li><a href="#section-6">6. جولة في منظومة بوتات تيليجرام الذكية وحلول الـ API في كونكت تاق</a></li>
+                <li><a href="#faq">7. الأسئلة الشائعة حول تطوير وتأمين بوتات تيليجرام</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. المقارنة المعمارية: لماذا يتفوق Webhook على Long Polling (getUpdates) في بيئة الإنتاج؟</h2>
+            <p>
+              توفّر واجهة <code>Telegram Bot API</code> طريقتين متعاكستين تماماً (لا يمكن تشغيلهما معاً في نفس الوقت) لاستلام رسائل وتفاعلات المستخدمين (<code>Update Objects</code>، والتي يمكنك فحص هيكلها عبر <a href="https://connecttag.org/tools/web/json-formatter/">أداة تنسيق وفحص JSON في كونكت تاق</a>):
+            </p>
+            <ol>
+              <li>
+                <strong>الاستعلام الطويل المتكرر (<code>Long Polling — getUpdates</code>):</strong>
+                يقوم خادمك بفتح اتصال <code>HTTP</code> مستمر نحو خادم تيليجرام يسأله: <em>«هل وصلت رسائل جديدة؟»</em>. إذا لم تكن هناك رسائل، يُبقي تيليجرام الاتصال مفتوحاً لعدة ثوانٍ (<code>timeout</code>) ثم يغلقه، فيعيد خادمك فتح اتصال جديد في حلقة لا نهائية (<code>Infinite Loop</code>).
+              </li>
+              <li>
+                <strong>الدفع الفوري المعتمد على الأحداث (<code>Event-Driven Webhook — setWebhook</code>):</strong>
+                يظل خادمك (أو دالتك السحابية <code>Serverless Function</code>) خاملاً لا يستهلك أي اتصال، وبمجرد أن يضغط مستخدم على زر أو يرسل رسالة، تقوم خوادم تيليجرام بدفع حزمة <code>JSON</code> فوراً عبر طلب <code>HTTPS POST</code> إلى عنوان نقطة النهاية التي حددتها.
+              </li>
+            </ol>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">معيار المقارنة الهندسي</th>
+                    <th style="color:#fff;">Long Polling (<code>getUpdates</code>)</th>
+                    <th style="color:#fff;">Webhook (<code>setWebhook</code>)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>استهلاك الموارد في وقت السكون</strong></td>
+                    <td>مرتفع — عملية تعمل باستمرار وتفتح اتصالات متكررة حتى لو لم يراسل البوت أحد</td>
+                    <td style="color:#065f46; font-weight:600;">صفري (<code>Zero Idle Cost</code>) — يعمل الكود فقط لحظة وصول رسالة فعلية</td>
+                  </tr>
+                  <tr>
+                    <td><strong>سرعة الاستجابة (Latency)</strong></td>
+                    <td>متوسطة — تتأثر بفترات إعادة الاتصال ومعالجة الدفعات المتراكمة</td>
+                    <td style="color:#065f46; font-weight:600;">لحظية (أجزاء من الثانية) عبر دفع الحدث فور وقوعه</td>
+                  </tr>
+                  <tr>
+                    <td><strong>التوسع الأفقي (Horizontal Scaling)</strong></td>
+                    <td>معقد — تشغيل عدة نسخ يسبب تضارب قراءة <code>offset</code> وتكرار الردود</td>
+                    <td style="color:#065f46; font-weight:600;">ممتاز — يمكن توزيع الطلبات تلقائياً عبر موازن أحمال أو <code>Cloudflare Workers</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>المتطلبات التشغيلية</strong></td>
+                    <td>لا يتطلب نطاقاً أو شهادة <code>TLS</code> (مثالي للتطوير المحلي <code>localhost</code>)</td>
+                    <td>يشترط نطاقاً عاماً وشهادة <code>HTTPS / TLS 1.2+</code> وأحد المنافذ: <code>443, 80, 88, 8443</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-2">2. ثغرة تزوير طلبات الـ Webhook (Webhook Spoofing): كيف تتحقق من هوية خوادم تيليجرام؟</h2>
+            <p>
+              لنفترض أنك أنشأت مسار استقبال التحديثات لبوتك على الرابط: <code>https://api.example.com/telegram/webhook</code>. ماذا يحدث لو اكتشف مهاجم هذا الرابط عبر فحص المسارات، وبدأ بإرسال طلبات <code>POST</code> مزيفة تحتوي على JSON يحاكي رسالة من مدير النظام أو عملية دفع مكتملة؟
+            </p>
+            <p>
+              إذا كان كود البوت يثق بأي جسم <code>JSON</code> يصل إلى هذا الرابط دون التحقق من المصدر، فسيتمكن المهاجم من تنفيذ أوامر إدارية، أو استخراج بيانات حساسة، أو إغراق البوت بطلبات وهمية! لتأمين نقطة الـ Webhook بنسبة 100%، يجب تطبيق <strong>طبقتي دفاع متكاملتين</strong> (راجع أيضاً <a href="https://connecttag.org/blog/api-security-guide">الدليل الشامل لأمان واجهات برمجة التطبيقات API Security</a> و<a href="https://connecttag.org/blog/cloudflare-waf-security-guide">دليل إعداد جدار حماية Cloudflare WAF</a>):
+            </p>
+            <ol>
+              <li>
+                <strong>التحقق التشفيري عبر الترويسة السرية (<code>X-Telegram-Bot-Api-Secret-Token</code>):</strong>
+                يدعم تيليجرام تمرير معامل يُسمى <code>secret_token</code> (بطول 1 إلى 256 حرفاً من الحروف والأرقام و<code>_</code> و<code>-</code>، ويمكنك توليده عبر <a href="https://connecttag.org/tools/security/password-generator/">مولد المفاتيح العشوائية المشفرة في كونكت تاق</a>) عند استدعاء <code>setWebhook</code>. بعدها، ترفق خوادم تيليجرام هذا الرمز تلقائياً في ترويسة <code>X-Telegram-Bot-Api-Secret-Token</code> مع كل طلب. أي طلب لا يحمل هذه الترويسة بنفس القيمة يُرفض فوراً قبل قراءة الـ JSON!
+              </li>
+              <li>
+                <strong>تقييد عناوين الشبكة الفرعية الرسمية لتيليجرام (<code>Telegram Subnet Whitelisting</code>):</strong>
+                تُرسل خوادم تيليجرام جميع طلبات الـ Webhook حصراً من نطاقين شبكيين (<code>CIDR Subnets</code>) معتمدين رسمياً:
+                <code>149.154.160.0/20</code> و<code>91.108.4.0/22</code>. يمكنك إنشاء قاعدة في جدار حماية الخادم أو في <code>Cloudflare WAF</code> لحظر أي طلب يتجه إلى مسار <code>/telegram/webhook</code> من خارج هذين النطاقين.
+              </li>
+            </ol>
+
+            <h2 id="section-3">3. التطبيق العملي: كود إعداد setWebhook وفحص X-Telegram-Bot-Api-Secret-Token</h2>
+            <p>
+              يوضح المثال الهندسي التالي كيفية تسجيل الـ Webhook بأمان مع تحديد أنواع التحديثات المطلوبة فقط (<code>allowed_updates</code> لتقليل الحمل الشبكي)، ثم كيفية فحص الترويسة السرية بمقارنة زمنية ثابتة في خادم <code>Node.js / Cloudflare Worker</code>:
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i> 1. أمر تسجيل الـ Webhook الآمن مع Secret Token وتحديد التحديثات المسموحة
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 18px;"><code>curl -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/setWebhook" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://api.example.com/webhooks/telegram",
+    "secret_token": "CT_SecToken_9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c",
+    "max_connections": 40,
+    "allowed_updates": ["message", "callback_query"],
+    "drop_pending_updates": true
+  }'</code></pre>
+
+              <div style="color: #34d399; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-code" aria-hidden="true"></i> 2. كود التحقق من الترويسة السرية ومنع التكرار في نقطة استقبال الـ Webhook
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>export default {
+  async fetch(request, env, ctx) {
+    // 1. قبول طلبات POST فقط
+    if (request.method !== 'POST') {
+      return new Response('Method Not Allowed', { status: 405 });
+    }
+
+    // 2. التحقق الصارم من ترويسة الأمان السرية الخاصة بتيليجرام
+    const incomingSecret = request.headers.get('X-Telegram-Bot-Api-Secret-Token');
+    if (!incomingSecret || incomingSecret !== env.TELEGRAM_WEBHOOK_SECRET) {
+      return new Response('Unauthorized Webhook Request', { status: 401 });
+    }
+
+    // 3. قراءة جسم التحديث والتحقق من عدم تكرار معالجة update_id
+    const update = await request.json();
+    if (!update || typeof update.update_id !== 'number') {
+      return new Response('Bad Request', { status: 400 });
+    }
+
+    // 4. تنفيذ منطق البوت بشكل غير متزامن وإرجاع 200 OK فوراً لخادم تيليجرام
+    ctx.waitUntil(handleBotUpdateSafely(update, env));
+    return new Response('OK', { status: 200 });
+  }
+};</code></pre>
+            </div>
+
+            <h2 id="section-4">4. حماية توكن البوت (Bot Token Security) والتصدي لهجمات الإغراق (Rate Limiting)</h2>
+            <p>
+              يُعد توكن البوت (مثل <code>123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw</code>) بمثابة المفتاح الرئيسي الكامل لحساب البوت؛ ومن يمتلكه يستطيع قراءة الرسائل الواردة، تغيير عنوان الـ Webhook إلى خادمه الخاص، أو إرسال رسائل احتيالية باسم مؤسستك لجميع المشتركين. لحماية التوكن والبنية التحتية للبوت، التزم بالقواعد الهندسية الخمس التالية:
+            </p>
+            <ul>
+              <li>
+                <strong>حظر تضمين التوكن في الكود المصدري أو تطبيقات الهواتف (<code>No Hardcoded Tokens</code>):</strong>
+                لا تضع توكن البوت أبداً داخل كود تطبيق أندرويد أو جافاسكربت في المتصفح (لأنه يسهل استخراجه عبر الهندسة العكسية وفحص حركة الشبكة). يجب أن يظل التوكن محفوظاً حصراً في متغيرات البيئة المشفرة على خادمك الخلفي (<code>Backend Environment Secrets</code>).
+              </li>
+              <li>
+                <strong>عدم وضع التوكن في مسار رابط الـ Webhook:</strong>
+                كان بعض المطورين قديماً يجعلون رابط الـ Webhook يحتوي على التوكن نفسه كنوع من الحماية، وهذا خطأ أمني لأن الروابط تُسجّل كنص واضح في سجلات الوصول (<code>Nginx / Apache Access Logs</code>) وأدوات المراقبة؛ استخدم <code>secret_token</code> في الترويسة بدلاً من ذلك.
+              </li>
+              <li>
+                <strong>تحديد معدل الطلبات لكل مستخدم (<code>Per-User Rate Limiting</code>):</strong>
+                حتى لو كان الطلب قادماً من تيليجرام فعلاً، فقد يقوم مستخدم بكتابة سكربت يضغط على أزرار البوت (<code>Inline Keyboard Callbacks</code>) مئات المرات في الدقيقة لاستنزاف رصيد خادمك أو قاعدة بياناتك. طبّق عدّاد تقييد (<code>Rate Limiter</code>) يعتمد على معرّف المستخدم <code>from.id</code> (مثلاً: بحد أقصى 10 أوامر في الدقيقة لكل مستخدم).
+              </li>
+              <li>
+                <strong>التحقق من صلاحيات المشرفين (<code>Admin Chat ID Whitelist</code>):</strong>
+                إذا كان البوت يتضمن أوامر حساسة (مثل <code>/broadcast</code> أو <code>/stats</code> أو إدارة النظام)، فلا تعتمد على إخفاء اسم الأمر فقط، بل تحقق برمجياً من أن <code>message.from.id</code> يطابق القائمة البيضاء لمعرّفات المديرين المخزنة في البيئة.
+              </li>
+            </ul>
+
+            <h2 id="section-5">5. معالجة التحديثات بدون تكرار (Idempotency) وحدود الإرسال في Telegram API</h2>
+            <p>
+              عند بناء بوتات تيليجرام عالية الاعتمادية للشركات، يجب مراعاة قيدين تقنيين في بروتوكول تيليجرام الرسمي:
+            </p>
+            <ol>
+              <li>
+                <strong>منع تكرار تنفيذ الأوامر (<code>Idempotency via update_id</code>):</strong>
+                يرفق تيليجرام مع كل حدث رقماً تسلسلياً فريداً يُسمى <code>update_id</code>. إذا استغرق خادمك أكثر من بضع ثوانٍ للرد بـ <code>HTTP 200 OK</code>، سيعتبر تيليجرام أن الطلب فشل وسيعيد إرسال نفس الـ <code>update_id</code> مرة أخرى. لذلك يجب أن يرد خادمك بـ <code>200 OK</code> فور استلام الطلب والتحقق من الترويسة، مع حفظ آخر <code>update_id</code> تمت معالجته لتجاهل أي نسخة مكررة.
+              </li>
+              <li>
+                <strong>احترام حدود الإرسال الرسمية (<code>Telegram Bot API Rate Limits</code>) لتجنب خطأ <code>429 Too Many Requests</code>:</strong>
+                يفرض تيليجرام سقفاً للإرسال يبلغ <strong>30 رسالة في الثانية الواحدة</strong> عند الإرسال لمستخدمين مختلفين، و<strong>رسالة واحدة في الثانية</strong> داخل المحادثة الفردية الواحدة، و<strong>20 رسالة في الدقيقة</strong> داخل المجموعات (<code>Groups</code>). عند إرسال إشعارات جماعية، استخدم دائماً طابور رسائل متدرج (<code>Message Queue</code>) يحترم حقل <code>retry_after</code> في حال ظهور الكود <code>429</code>.
+              </li>
+            </ol>
+
+            <h2 id="section-6">6. جولة في منظومة بوتات تيليجرام الذكية وحلول الـ API في كونكت تاق</h2>
+            <p>
+              قمنا في شركة <strong>كونكت تاق</strong> بتطبيق هذه المعايير الهندسية والأمنية الصارمة في تطوير <a href="https://connecttag.org/company/projects/bots/">منظومة بوتات تيليجرام الذكية والخدمية</a> التي تخدم آلاف المستخدمين يومياً بسرعات استجابة لحظية، ومن أبرزها:
+            </p>
+            <ul>
+              <li><strong>بوت الباحث الذكي ودليل الخدمات:</strong> للاستعلام الفوري والآمن عبر واجهات برمجية معزولة ومحمية.</li>
+              <li><strong>بوت التذكيرات وإدارة المهام والملفات:</strong> المبني على معمارية <code>Webhook</code> غير متزامنة عالية الكفاءة.</li>
+              <li><strong>تطوير البوتات المخصصة والربط البرمجي للمؤسسات:</strong> إذا كانت شركتك أو متجرك الإلكتروني بحاجة إلى بناء بوت تيليجرام مخصص مرتبط بنظام المحاسبة أو إدارة العملاء أو بوابات التحقق، يمكنك التواصل معنا عبر <a href="https://connecttag.org/company/services/api-solutions">خدمة حلول الـ API وتكامل البيانات وبوتات الأعمال في كونكت تاق</a>.</li>
+            </ul>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 7. الأسئلة الشائعة حول تطوير وتأمين بوتات تيليجرام</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">متى أستخدم Long Polling (getUpdates) ومتى يجب الانتقال إلى Webhook في بوتات تيليجرام؟</h3>
+                <p class="faq-answer">
+                  يُستخدم <code>Long Polling</code> (عبر الدالة <code>getUpdates</code>) أثناء مرحلة التطوير والاختبار المحلي على جهاز المبرمج (<code>Localhost</code>) لأنه لا يتطلب نطاقاً عاماً أو شهادة <code>SSL</code>. أما في بيئة الإنتاج الفعلية (<code>Production</code>) ولدى بوتات الأعمال ذات الكثافة العالية، فيجب استخدام <code>Webhook</code> عبر <code>HTTPS</code> لأنه يوفر استجابة لحظية، ولا يستهلك موارد المعالج في فتح اتصالات متكررة، ويتكامل بكفاءة مع منصات الحوسبة السحابية مثل <code>Cloudflare Workers</code>.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أمنع المخترقين من إرسال طلبات POST مزيفة إلى رابط الـ Webhook الخاص ببوت تيليجرام؟</h3>
+                <p class="faq-answer">
+                  عند تسجيل الرابط عبر دالة <code>setWebhook</code>، مرّر معامل <code>secret_token</code> بقيمة عشوائية مشفرة. ستقوم خوادم تيليجرام بإرفاق هذا الرمز في ترويسة <code>HTTP</code> تحت اسم <code>X-Telegram-Bot-Api-Secret-Token</code> مع كل طلب حقيقي. يجب على خادمك فحص هذه الترويسة أولاً ورفض أي طلب لا يطابق الرمز السري فوراً بكود <code>401 Unauthorized</code>، بالإضافة إلى حصر عناوين <code>IP</code> المسموح لها بالنطاقين الرسميين لتيليجرام: <code>149.154.160.0/20</code> و<code>91.108.4.0/22</code>.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ماذا أفعل إذا تسرّب توكن البوت (Bot Token) بالخطأ في مستودع GitHub؟</h3>
+                <p class="faq-answer">
+                  توجه فوراً إلى البوت الرسمي <code>@BotFather</code> في تيليجرام، وأرسل الأمر <code>/revoke</code> ثم اختر البوت المعني. سيقوم <code>BotFather</code> بإبطال التوكن القديم فوراً وتوليد توكن جديد. بعد ذلك، خزّن التوكن الجديد حصراً داخل متغيرات البيئة الآمنة (<code>Environment Variables / Secrets</code>) على خادمك ولا تضعه أبداً داخل ملفات الكود المصدري.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يكرر بوت تيليجرام إرسال نفس الرد عدة مرات أحياناً عند استخدام Webhook؟</h3>
+                <p class="faq-answer">
+                  ينتظر خادم تيليجرام استجابة <code>HTTP 200 OK</code> من خادمك عند إرسال أي تحديث. إذا استغرق خادمك وقتاً طويلاً في معالجة الطلب (مثل توليد ملف <code>PDF</code> أو انتظار استجابة قاعدة بيانات بطيئة) ولم يرد خلال المهلة المحددة، يفترض تيليجرام أن التحديث لم يصل ويعيد إرساله مراراً. الحل الهندسي هو التحقق من عدم تكرار رقم التحديث (<code>update_id</code>) وإرجاع <code>200 OK</code> بسرعة مع تمرير المهام الثقيلة إلى طابور معالجة غير متزامن (<code>Background Queue</code>).
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والتوثيقات الهندسية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://core.telegram.org/bots/api#setwebhook" target="_blank" rel="noopener noreferrer">Telegram Bot API Official Documentation — Getting Updates &amp; setWebhook (secret_token)</a></li>
+                <li><a href="https://core.telegram.org/bots/webhooks" target="_blank" rel="noopener noreferrer">Telegram Engineering Guide — Marvin's Marvellous Guide to All Things Webhook</a></li>
+                <li><a href="https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this" target="_blank" rel="noopener noreferrer">Telegram Bot FAQ — Rate Limits &amp; Broadcast Best Practices</a></li>
+                <li><a href="https://connecttag.org/company/projects/bots/">منظومة بوتات تيليجرام الذكية — مشاريع شركة كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="علي الرحبي"
+              avatar="https://connecttag.org/upload/author/ali.webp"
+              link="https://connecttag.org/blog/authors/ali">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="api-security-guide,cloudflare-waf-security-guide,jwt-security-debugging-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

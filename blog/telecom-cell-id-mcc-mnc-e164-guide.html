@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>دليل معرّفات أبراج الجوال MCC/MNC وCell-ID ومعيار E.164 | كونكت تاق</title>
+  <meta name="description" content="كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين وشبكات اليمن.">
+  <meta name="keywords" content="معرفات أبراج الجوال, MCC MNC اليمن, كود الشبكة 421, Cell-ID و TAC و LAC, معيار ترقيم الهواتف E.164, ECGI و CGI, eNodeB ID, تنسيق أرقام الهواتف في قواعد البيانات, يمن موبايل يو سبأفون واي, ذكاء الاتصالات, كونكت تاق">
+  <meta name="author" content="محمد حميد">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين" />
+  <meta property="og:description" content="تشريح الهوية العالمية للخلية الخلوية (CGI/ECGI) وأكواد شبكات الجوال في اليمن (MCC 421)، وكيف يخزّن المطورون أرقام الهواتف وفق معيار ITU-T E.164 لمنع تكرار الحسابات." />
+  <meta property="og:image" content="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل الهندسي لمعرّفات أبراج الجوال MCC/MNC وCell-ID وTAC ومعيار ترقيم الهواتف الدولي E.164" />
+  <meta property="article:published_time" content="2026-11-08T03:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T03:00:00+03:00" />
+  <meta property="article:section" content="اتصالات وشبكات" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/mohammed-hameed" />
+  <meta property="article:tag" content="هندسة الاتصالات" />
+  <meta property="article:tag" content="MCC/MNC" />
+  <meta property="article:tag" content="Cell-ID" />
+  <meta property="article:tag" content="E.164" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide" />
+  <meta name="twitter:title" content="كيف يتعرف هاتفك على البرج والشبكة؟ دليل معرّفات الأبراج (MCC/MNC وCell-ID) ومعيار E.164" />
+  <meta name="twitter:description" content="الدليل الهندسي لتشريح الهوية العالمية للخلية (ECGI) وأكواد المشغلين في اليمن ومعيار تنسيق أرقام الهواتف الدولي ITU-T E.164 في قواعد البيانات." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp" />
+  <meta name="twitter:image:alt" content="تشريح معرفات أبراج الاتصالات MCC/MNC وCell-ID ومعيار E.164" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار E.164",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T03:00:00+03:00",
+    "dateModified": "2026-11-08T03:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "محمد حميد",
+      "jobTitle": "مهندس شبكات وبنية تحتية اتصالية (Network & Routing Engineer)",
+      "url": "https://connecttag.org/blog/authors/mohammed-hameed"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل هندسي وبرمجي يشرح كيف يتعرف الهاتف الذكي أو المودم على برج الاتصالات عبر الهوية العالمية للخلية (CGI/ECGI: MCC, MNC, LAC/TAC, Cell-ID, PCI)، وجدول أكواد المشغلين في اليمن (MCC 421)، وكيف يطبّق المطورون معيار ITU-T E.164 لتخزين أرقام الهواتف في قواعد البيانات.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل معرّفات أبراج الجوال MCC/MNC وCell-ID ومعيار E.164",
+        "item": "https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين معرّف الخلية المنطقي (Cell-ID / ECI) ومعرّف الخلية الفيزيائي (PCI)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "معرّف الخلية الفيزيائي (PCI) في شبكات الجيل الرابع 4G LTE هو رقم قصير يتراوح بين 0 و503 يُبث في إشارات المزامنة الأولية لتمكين الهاتف من التمييز السريع بين القطاعات المتجاورة على مستوى الطبقة الفيزيائية، ويتكرر استخدامه في أبراج أخرى بعيدة. أما معرّف الخلية في شبكة النفاذ (ECI) فهو رقم بطول 28 بت (يُقسّم إلى 20 بت لرقم البرج eNodeB ID و8 بت لرقم القطاع Sector ID) ويشكّل مع MCC وMNC هوية فريدة عالمياً لا تتكرر لأي قطاع آخر."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو كود الدولة الهاتفي وكود الشبكة الخلوية (MCC) للجمهورية اليمنية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تختلف منظومة الترقيم الهاتفي عن منظومة ترقيم الشبكات اللاسلكية في الاتحاد الدولي للاتصالات (ITU-T): كود الاتصال الهاتفي الدولي لليمن وفق معيار E.164 هو (+967)، بينما كود الدولة للشبكات الخلوية المتنقلة وفق معيار E.212 هو (MCC = 421)، وتتفرع منه أكواد المشغلين (MNC): سبأفون (01)، يو YOU (02)، يمن موبايل (03)، وواي تيليكوم (04)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب تخزين أرقام الهواتف في قواعد البيانات بصيغة E.164 القياسية (+96777xxxxxxx)؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن المستخدمين يدخلون أرقامهم بصيغ محلية متباينة (مثل 77xxxxxxx أو 077xxxxxxx أو 0096777xxxxxxx أو مع مسافات وشرطات). تخزين الرقم بدون تطبيع موحد يؤدي إلى إنشاء حسابات مكررة لنفس المستخدم وفشل إرسال رسائل التحقق (SMS OTP) عبر البوابات الدولية التي تشترط صيغة E.164 القياسية التي تبدأ بعلامة (+) متبوعة بكود الدولة والرقم الوطني بدون أصفار بادئة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما وظيفة كود منطقة التتبع (TAC) في شبكات 4G/5G وكود منطقة الموقع (LAC) في شبكات 2G/3G؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تجمع شركات الاتصالات كل مجموعة من الأبراج المتجاورة جغرافياً في منطقة منطقية واحدة تُسمى LAC (في 2G/3G) أو TAC (في 4G/5G). عندما يكون هاتفك في وضع الخمول (Idle Mode) وترد إليك مكالمة أو رسالة، لا تقوم الشبكة بمناداة هاتفك عبر آلاف الأبراج في كل البلاد، بل ترسل إشارة النداء (Paging Message) فقط إلى الأبراج الواقعة ضمن منطقة التتبع (TAC) المسجل فيها هاتفك حالياً، مما يوفر طاقة البطارية ويخفف الحمل عن الشبكة."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "دليل معرّفات أبراج الجوال MCC/MNC وCell-ID ومعيار E.164", "url": "https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide"}]'></site-breadcrumb>
+
+            <h1>كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="اتصالات وشبكات" subcategory="فحص الأجهزة والاتصال">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: اتصالات وشبكات - فحص الأجهزة والاتصال</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp" class="img-responsive" alt="الدليل الهندسي لمعرّفات أبراج الجوال MCC/MNC وCell-ID وTAC ومعيار ترقيم الهواتف الدولي E.164" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              في اللحظة التي تخرج فيها بهاتفك من «وضع الطيران» (<code>Airplane Mode</code>)، يبدأ معالج المودم اللاسلكي (<code>Baseband Processor</code>) رحلة مسح طيفي معقدة في أجزاء من الثانية: يلتقط إشارات عشرات القطاعات الهوائية المحيطة، يفرز الشبكة المسموح لشريحتك (<code>SIM / USIM</code>) بالاتصال بها عن بقية الشركات المنافسة، يحدد رقم البرج ورقم القطاع الهوائي الموجه نحوك، ثم يسجّل موقعه المنطقي لكي تصل إليك المكالمات والرسائل فوراً!
+            </p>
+            <p>
+              كيف تتم هذه العملية هندسياً؟ وما الذي تعنيه الرموز التي تظهر في شاشات الفحص الهندسي للمودم والهاتف مثل <code>MCC</code>، و<code>MNC</code>، و<code>LAC / TAC</code>، و<code>Cell-ID / ECI</code>، و<code>PCI</code>؟ وكيف يرتبط ذلك بهندسة البرمجيات وتخزين أرقام الهواتف وفق المعيار الدولي <strong><code>ITU-T E.164</code></strong> لمنع تكرار الحسابات وفشل بوابات رسائل التحقق (<code>SMS OTP</code>)؟ في هذا الدليل المرجعي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح البنية الهندسية لمعرّفات الأبراج الخلوية وشبكات اليمن، مع ربطها المباشر بـ <a href="https://connecttag.org/company/services/telecom-intelligence">خدمة ذكاء الاتصالات ومسح الأبراج</a> و<a href="https://connecttag.org/tools/telecom/network-lookup/">أداة فحص شبكات وأكواد اليمن</a>.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-tower-cell" aria-hidden="true"></i> خلاصة تنفيذية لمهندسي الشبكات ومطوري الأنظمة</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>الهوية العالمية للخلية (<code>CGI / ECGI</code>):</strong> يمتلك كل قطاع هوائي على أي برج اتصالات في العالم عنواناً فريداً يتكون من: <strong>كود الدولة الخلوي (<code>MCC</code>)</strong> + <strong>كود الشبكة (<code>MNC</code>)</strong> + <strong>منطقة التتبع (<code>LAC / TAC</code>)</strong> + <strong>معرّف الخلية (<code>CID / ECI</code>)</strong>.</li>
+                <li><strong>كود الشبكات اللاسلكية في اليمن (<code>MCC = 421</code>):</strong> وفق معيار <code>ITU-T E.212</code>، تحمل الجمهورية اليمنية الكود <code>421</code>، وتتفرع منه أكواد الشركات: سبأفون (<code>01</code>)، يو YOU (<code>02</code>)، يمن موبايل (<code>03</code>)، وواي تيليكوم (<code>04</code>).</li>
+                <li><strong>حساب رقم البرج (<code>eNodeB ID</code>) في 4G LTE:</strong> يُشتق من معرّف الخلية ذي الـ 28 بت (<code>ECI</code>) عبر قسمته الصحيحة على <code>256</code>، بينما يمثل باقي القسمة رقم القطاع الهوائي (<code>Sector ID</code>).</li>
+                <li><strong>معيار ترقيم الهواتف الدولي (<code>ITU-T E.164</code>):</strong> المعيار الذهبي لتخزين أرقام الهواتف في قواعد البيانات وبوابات التحقق (بحد أقصى 15 رقماً يبدأ بـ <code>+</code> وكود الدولة بدون أصفار محلية بادئة، مثل <code>+96777xxxxxxx</code>).</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل الهندسي والبرمجي</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. تشريح الهوية العالمية للخلية (CGI &amp; ECGI): كيف يُعنْوَن كل برج وقطاع هوائي؟</a></li>
+                <li><a href="#section-2">2. خريطة أكواد الدولة والشبكات الخلوية في اليمن (MCC = 421 &amp; MNC)</a></li>
+                <li><a href="#section-3">3. كيف تستخرج رقم البرج (eNodeB ID) ورقم القطاع (Sector ID) من Cell-ID في شبكات 4G؟</a></li>
+                <li><a href="#section-4">4. الفرق الهندسي بين TAC/LAC وECI ومعرّف الخلية الفيزيائي (PCI)</a></li>
+                <li><a href="#section-5">5. معيار ITU-T E.164: كيف يطبّع المطورون أرقام الهواتف لمنع تكرار الحسابات وفشل OTP؟</a></li>
+                <li><a href="#section-6">6. تطبيقات عملية: من مسح الأبراج عبر «طيف» إلى مكتبة phone-lib-kmp وقواعد البيانات</a></li>
+                <li><a href="#faq">7. الأسئلة الشائعة حول معرّفات الأبراج ومعيار E.164</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. تشريح الهوية العالمية للخلية (CGI &amp; ECGI): كيف يُعنْوَن كل برج وقطاع هوائي؟</h2>
+            <p>
+              في هندسة الاتصالات الخلوية (وفق مواصفات <code>3GPP TS 23.003</code> ومعيار الاتحاد الدولي للاتصالات <code>ITU-T E.212</code>)، لا يتعامل الهاتف مع «البرج الحديدي» ككتلة واحدة، بل يتعامل مع كل هوائي قطاعي (<code>Sector Antenna</code>) باعتباره <strong>«خلية منطقية مستقلة» (<code>Cell</code>)</strong>. عادةً ما يحمل البرج الواحد ثلاثة قطاعات هوائية يغطي كلٌّ منها زاوية <code>120°</code> لتشكيل تغطية دائرية كاملة بزاوية <code>360°</code>.
+            </p>
+            <p>
+              لكي لا يختلط قطاع في صنعاء أو عدن بقطاع آخر في القاهرة أو طوكيو، يُمنح كل قطاع هوائي <strong>هوية عالمية للخلية</strong> تُسمى في الجيلين الثاني والثالث <strong><code>CGI</code> (Cell Global Identity)</strong> وفي الجيل الرابع <strong><code>ECGI</code> (E-UTRAN Cell Global Identifier)</strong>، وتتألف من أربعة مقاطع هرمية متسلسلة:
+            </p>
+
+            <!-- Visual Hierarchy Diagram of CGI / ECGI -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; border-radius: 16px; padding: 26px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16); direction: ltr; text-align: left;">
+              <div style="font-size: 16px; font-weight: 800; color: #38bdf8; margin-bottom: 18px; text-align: right; direction: rtl;">
+                <i class="fas fa-sitemap" aria-hidden="true"></i> البنية الهرمية للهوية العالمية للخلية (ECGI / CGI Structure) — مثال لقطاع 4G في اليمن
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; text-align: center;">
+                <div style="background: rgba(6, 182, 212, 0.14); border: 1px solid rgba(6, 182, 212, 0.4); border-radius: 12px; padding: 14px;">
+                  <div style="font-size: 12px; color: #67e8f9; font-weight: 700;">1. MCC (Country)</div>
+                  <div style="font-size: 24px; font-weight: 800; color: #ffffff; margin: 6px 0; font-family: monospace;">421</div>
+                  <div style="font-size: 12.5px; color: #cbd5e1; direction: rtl;">كود الدولة الخلوي (اليمن)</div>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 14px;">
+                  <div style="font-size: 12px; color: #6ee7b7; font-weight: 700;">2. MNC (Operator)</div>
+                  <div style="font-size: 24px; font-weight: 800; color: #ffffff; margin: 6px 0; font-family: monospace;">03</div>
+                  <div style="font-size: 12.5px; color: #cbd5e1; direction: rtl;">كود المشغل (يمن موبايل)</div>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 12px; padding: 14px;">
+                  <div style="font-size: 12px; color: #fcd34d; font-weight: 700;">3. TAC / LAC (Area)</div>
+                  <div style="font-size: 24px; font-weight: 800; color: #ffffff; margin: 6px 0; font-family: monospace;">1010</div>
+                  <div style="font-size: 12.5px; color: #cbd5e1; direction: rtl;">كود منطقة التتبع الجغرافية</div>
+                </div>
+                <div style="background: rgba(99, 102, 241, 0.18); border: 1px solid rgba(99, 102, 241, 0.45); border-radius: 12px; padding: 14px;">
+                  <div style="font-size: 12px; color: #a5b4fc; font-weight: 700;">4. ECI / Cell-ID</div>
+                  <div style="font-size: 24px; font-weight: 800; color: #ffffff; margin: 6px 0; font-family: monospace;">281857</div>
+                  <div style="font-size: 12.5px; color: #cbd5e1; direction: rtl;">رقم البرج (1101) + القطاع (1)</div>
+                </div>
+              </div>
+              <div style="margin-top: 14px; font-size: 13px; color: #94a3b8; text-align: right; direction: rtl;">
+                * مجموع <code>MCC + MNC</code> يُعرف هندسياً باسم <strong>معرّف الشبكة المتنقلة البرية العامة (<code>PLMN ID = 42103</code>)</strong>، وهو الكود الذي تقارنه شريحة <code>SIM</code> لتحديد ما إذا كانت الشبكة هي شبكتك المنزلية (<code>Home Network</code>) أم شبكة تجوال (<code>Roaming</code>).
+              </div>
+            </div>
+
+            <h2 id="section-2">2. خريطة أكواد الدولة والشبكات الخلوية في اليمن (MCC = 421 &amp; MNC)</h2>
+            <p>
+              يخلط كثير من المبتدئين بين <strong>مفتاح الاتصال الهاتفي الدولي</strong> لليمن (<code>+967</code> وفق معيار <code>E.164</code>) وبين <strong>كود الدولة للشبكات الخلوية</strong> (<code>MCC = 421</code> وفق معيار <code>E.212</code>). يستخدم الهاتف كود <code>421</code> للتعرف على هوية الشبكة اللاسلكية في الهواء قبل إجراء أي مكالمة، كما يُشكّل هذا الكود أول 3 أرقام من الرقم التسلسلي الدولي لاشتراك الشريحة (<code>IMSI — International Mobile Subscriber Identity</code>) المكون من 15 رقماً والمخزن داخل شريحة الاتصال.
+            </p>
+            <p>
+              يوضح الجدول المرجعي التالي أكواد الشبكات الخلوية المعتمدة لشركات الاتصالات في الجمهورية اليمنية (ويمكنك فحص تبعية أي رقم هاتف يمني فورياً عبر <a href="https://connecttag.org/tools/telecom/network-lookup/">أداة فحص شبكات وأكواد اليمن</a>):
+            </p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">شركة الاتصالات (المشغل)</th>
+                    <th style="color:#fff;">كود الدولة (MCC)</th>
+                    <th style="color:#fff;">كود الشبكة (MNC)</th>
+                    <th style="color:#fff;">معرّف الشبكة (PLMN)</th>
+                    <th style="color:#fff;">بادئة الأرقام الوطنية</th>
+                    <th style="color:#fff;">التقنيات المشغّلة</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>سبأفون (SabaFon)</strong></td>
+                    <td><code>421</code></td>
+                    <td><code>01</code></td>
+                    <td><code>42101</code></td>
+                    <td><code>71xxxxxxx</code></td>
+                    <td>GSM (2G) / LTE (4G)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>يو (YOU — فودافون/إم تي إن سابقاً)</strong></td>
+                    <td><code>421</code></td>
+                    <td><code>02</code></td>
+                    <td><code>42102</code></td>
+                    <td><code>73xxxxxxx</code></td>
+                    <td>GSM (2G) / UMTS (3G) / LTE (4G)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>يمن موبايل (Yemen Mobile)</strong></td>
+                    <td><code>421</code></td>
+                    <td><code>03</code></td>
+                    <td><code>42103</code></td>
+                    <td><code>77xxxxxxx</code> / <code>78xxxxxxx</code></td>
+                    <td>LTE (4G VoLTE) / CDMA EV-DO</td>
+                  </tr>
+                  <tr>
+                    <td><strong>واي تيليكوم (Y Telecom)</strong></td>
+                    <td><code>421</code></td>
+                    <td><code>04</code></td>
+                    <td><code>42104</code></td>
+                    <td><code>70xxxxxxx</code></td>
+                    <td>GSM (2G) / LTE (4G)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-3">3. كيف تستخرج رقم البرج (eNodeB ID) ورقم القطاع (Sector ID) من Cell-ID في شبكات 4G؟</h2>
+            <p>
+              عندما تفتح صفحة معلومات الشبكة في مودم 4G منزلي أو تطبيق فحص أبراج (كما شرحنا في <a href="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide">دليل قراءة مؤشرات إشارة الأبراج RSRP وSINR</a>)، ستجد رقماً طويلاً أمام خانة <strong><code>CELL_ID</code></strong> أو <strong><code>ECI</code> (E-UTRAN Cell Identifier)</strong>، مثل <code>281857</code>.
+            </p>
+            <p>
+              في معمارية الجيل الرابع <code>4G LTE</code>، يتكون معرّف الخلية <code>ECI</code> من <strong>28 بت ثنائي (<code>28-bit Binary</code>)</strong> مقسّمة هندسياً إلى جزأين:
+            </p>
+            <ul>
+              <li><strong>أعلى 20 بت (<code>Most Significant 20 bits</code>):</strong> تمثل <strong>الرقم الفريد للمحطة القاعدية / البرج (<code>eNodeB ID</code>)</strong>، وتستوعب حتى <code>1,048,576</code> برجاً داخل الشبكة الواحدة.</li>
+              <li><strong>أدنى 8 بت (<code>Least Significant 8 bits</code>):</strong> تمثل <strong>معرّف الخلية المحلية أو القطاع الهوائي على ذلك البرج (<code>Local Cell ID / Sector ID</code>)</strong>، وتستوعب نظرياً من <code>0</code> إلى <code>255</code> قطاعاً وحاملاً ترددياً على نفس البرج.</li>
+            </ul>
+
+            <!-- Mathematical Formula Box in Pure HTML -->
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 5px solid #0284c7; border-radius: 12px; padding: 20px 24px; margin: 24px 0;">
+              <div style="font-weight: 800; color: #0f172a; font-size: 16px; margin-bottom: 12px;">
+                <i class="fas fa-calculator" style="color: #0284c7; margin-left: 8px;" aria-hidden="true"></i> المعادلة الهندسية لفك شفرة معرّف الخلية (ECI = 281857):
+              </div>
+              <ul style="margin-bottom: 0; line-height: 2; font-size: 15px; color: #1e293b;">
+                <li><strong>حساب رقم البرج (<code>eNodeB ID</code>):</strong> نقسم <code>ECI</code> قسمة صحيحة على <code>256</code> (أي إزاحة 8 بت لليمين):<br>
+                  <code>eNodeB ID = Floor(281857 / 256) = 1101</code> (رقم البرج هو <strong>1101</strong>).</li>
+                <li><strong>حساب رقم القطاع الهوائي (<code>Sector / Local Cell ID</code>):</strong> نأخذ باقي قسمة <code>ECI</code> على <code>256</code>:<br>
+                  <code>Sector ID = 281857 mod 256 = 1</code> (أنت متصل بالقطاع رقم <strong>1</strong> على البرج 1101).</li>
+                <li><strong>إعادة التركيب العكسي:</strong> <code>ECI = (eNodeB ID × 256) + Sector ID = (1101 × 256) + 1 = 281857</code>.</li>
+              </ul>
+            </div>
+            <p>
+              تتيح هذه المعادلة لمهندسي التحسين اللاسلكي (<code>RF Optimization Engineers</code>) معرفة ما إذا كان هاتفك قد انتقل إلى <strong>برج جديد كلياً</strong> (تغيّر <code>eNodeB ID</code>) أم أنه انتقل فقط إلى <strong>القطاع المجاور على نفس البرج</strong> (ثبات <code>eNodeB ID</code> وتغيّر <code>Sector ID</code> من <code>1</code> إلى <code>2</code> أو تغيّر التردد الحامل). أما في شبكات الجيل الخامس <code>5G NR</code>، فقد وُسّع معرّف الخلية ليصبح <strong><code>NCI</code> (NR Cell Identity)</strong> بطول <strong>36 بت</strong> لتغطية الكثافة الهائلة للخلايا الصغيرة (<code>Small Cells</code>).
+            </p>
+
+            <h2 id="section-4">4. الفرق الهندسي بين TAC/LAC وECI ومعرّف الخلية الفيزيائي (PCI)</h2>
+            <p>
+              لفهم الصورة الكاملة لما يقرؤه تطبيق فحص الأبراج، يجب التمييز بين ثلاثة معرّفات تظهر معاً ولكن لكل منها وظيفة مختلفة تماماً في طبقات البروتوكول الخلوي:
+            </p>
+            <ol>
+              <li>
+                <strong>كود منطقة الموقع / التتبع (<code>LAC</code> في 2G/3G و<code>TAC — Tracking Area Code</code> في 4G/5G):</strong>
+                رقم بطول 16 بت يجمع عشرات الأبراج المتجاورة في مدينة أو مديرية واحدة. عندما يكون هاتفك في جيبك والشاشة مغلقة (<code>RRC Idle Mode</code>)، لا يخبر الهاتف الشبكة كل ثانية بأي برج يتصل به لتوفير البطارية؛ بل يكتفي بإبلاغ الشبكة فقط إذا انتقل إلى منطقة تتبع (<code>TAC</code>) جديدة. وعندما يتصل بك شخص ما، ترسل النواة المركزية للشبكة (<code>MME / AMF</code>) رسالة نداء (<code>Paging</code>) لجميع أبراج ذلك الـ <code>TAC</code> فقط ليرن هاتفك خلال أجزاء من الثانية.
+              </li>
+              <li>
+                <strong>معرّف الخلية الفيزيائي (<code>PCI — Physical Cell ID</code>):</strong>
+                في شبكات <code>4G LTE</code> هو رقم قصير يتراوح بين <code>0</code> و<code>503</code> (وفي <code>5G NR</code> بين <code>0</code> و<code>1007</code>). يُحسب من إشارات المزامنة الأولية والثانوية (<code>PSS / SSS</code>) ليتمكن المودم من التعرف اللحظي على القطاع وفك تشفير إشاراته المرجعية قبل حتى أن يقرأ رسالة معلومات النظام الكاملة (<code>SIB1</code>). ولأنه محصور في 504 أرقام فقط، يُعاد استخدامه في أبراج أخرى بعيدة، مع الحرص الهندسي الصارم على ألا يحمل قطاعان متجاوران نفس الـ <code>PCI</code> (تجنباً لمشكلة <code>PCI Collision / Mod-3 Interference</code>).
+              </li>
+              <li>
+                <strong>معرّف الخلية المنطقي العالمي (<code>ECI / CGI</code>):</strong>
+                هو البطاقة الشخصية الكاملة للقطاع التي تُبث داخل حزمة معلومات النظام (<code>System Information Block Type 1 — SIB1</code>)، ولا تتكرر أبداً على مستوى الشبكة.
+              </li>
+            </ol>
+
+            <h2 id="section-5">5. معيار ITU-T E.164: كيف يطبّع المطورون أرقام الهواتف لمنع تكرار الحسابات وفشل OTP؟</h2>
+            <p>
+              ننتقل الآن من برج الاتصالات إلى قاعدة البيانات في خادم تطبيقك أو متجرك الإلكتروني. عندما تطلب من المستخدم في اليمن إدخال رقم هاتفه للتسجيل أو استلام رمز تحقق (<code>SMS / WhatsApp OTP</code>)، فقد يكتبه المستخدم بإحدى الصيغ الست التالية:
+            </p>
+            <ul>
+              <li><code>771234567</code> (بدون صفر أو مفتاح دولة)</li>
+              <li><code>0771234567</code> (بصفر محلي بادئ)</li>
+              <li><code>967771234567</code> (بمفتاح الدولة بدون علامة زائد)</li>
+              <li><code>00967771234567</code> (ببادئة الاتصال الدولي <code>00</code>)</li>
+              <li><code>+967 771 234 567</code> (مع مسافات أو شرطات عند النسخ من جهات الاتصال)</li>
+              <li><code>+٩٦٧٧٧١٢٣٤٥٦٧</code> (بأرقام هندية شرقية)</li>
+            </ul>
+            <p>
+              إذا قام المبرمج بحفظ حقل الهاتف في قاعدة البيانات (<code>users.phone</code>) كنص خام كما أدخله المستخدم دون تطبيع (<code>Normalization</code>)، فستقع الكوارث الهندسية والأمنية التالية:
+            </p>
+            <ol>
+              <li><strong>تجاوز قيد التفرد (<code>UNIQUE Constraint Bypass</code>) وتكرار الحسابات:</strong> يستطيع نفس الشخص إنشاء 5 حسابات مختلفة بنفس الشريحة والاستفادة من عروض المستخدمين الجدد أو التهرب من الحظر!</li>
+              <li><strong>فشل تسجيل الدخول واستعادة الحساب:</strong> يسجل المستخدم برقم <code>771234567</code>، وفي اليوم التالي يحاول الدخول بـ <code>+967771234567</code> فيخبره النظام أن «الحساب غير موجود».</li>
+              <li><strong>فشل بوابات إرسال رسائل التحقق (<code>SMS Gateways &amp; WhatsApp Cloud API</code>):</strong> تشترط جميع بوابات الاتصالات العالمية التزام الرقم الصارم بمعيار <strong><code>ITU-T E.164</code></strong>.</li>
+            </ol>
+
+            <!-- E.164 Anatomy & Normalization Code Box -->
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-code" aria-hidden="true"></i> تشريـح معيار ITU-T E.164 ودالة التطبيع القياسية لأرقام الهواتف في اليمن
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>// 1. بنية الرقم وفق معيار ITU-T E.164 (الحد الأقصى العالمي = 15 رقماً بعد علامة +):
+// [+] [Country Code: 1-3 digits] [National Significant Number (Subscriber Number)]
+// مثال لليمن: +967771234567 (12 رقماً + علامة الزائد)
+
+function normalizeYemenPhoneToE164(rawInput) {
+  // أ) تحويل الأرقام الهندية الشرقية (٠-٩) إلى أرقام عالمية (0-9)
+  const easternToWestern = rawInput.replace(/[٠-٩]/g, d =&gt; '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+
+  // ب) إزالة المسافات والشرطات والأقواس وكافة الرموز غير الرقمية
+  let digits = easternToWestern.replace(/\D/g, '');
+
+  // ج) إزالة بادئة الاتصال الدولي (00967 أو 967) أو الصفر المحلي البادئ (0)
+  if (digits.startsWith('00967')) {
+    digits = digits.slice(5);
+  } else if (digits.startsWith('967') &amp;&amp; digits.length === 12) {
+    digits = digits.slice(3);
+  } else if (digits.startsWith('0') &amp;&amp; digits.length === 10) {
+    digits = digits.slice(1);
+  }
+
+  // د) التحقق من صحة الرقم الخلوي اليمني (9 أرقام تبدأ بـ 70, 71, 73, 77, 78)
+  if (!/^7[01378]\d{7}$/.test(digits)) {
+    throw new Error('رقم هاتف خلوي يمني غير صالح');
+  }
+
+  // هـ) إرجاع الصيغة القياسية الموحدة ITU-T E.164 للتخزين في قاعدة البيانات
+  return '+967' + digits;
+}</code></pre>
+            </div>
+
+            <h2 id="section-6">6. تطبيقات عملية: من مسح الأبراج عبر «طيف» إلى مكتبة phone-lib-kmp وقواعد البيانات</h2>
+            <p>
+              لتوظيف هذه المعايير الهندسية والبرمجية في مشاريعك أو شبكتك المؤسسية، نوفر في منظومة كونكت تاق حزمة متكاملة من الحلول والأدوات المتخصصة:
+            </p>
+            <ul>
+              <li>
+                <strong>تحليل التغطية ومسح الأبراج ميدانياً:</strong> يمكنك استخدام <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/">تطبيق طيف (Tayf Spectrum) لمسح وتحليل الشبكات الخلوية والواي فاي</a> لقراءة معرّفات الخلية الحية (<code>MCC/MNC</code>, <code>TAC</code>, <code>ECI</code>, <code>PCI</code>) ومؤشرات جودة الإشارة (<code>RSRP</code> و<code>SINR</code>)، أو الاستعانة بـ <a href="https://connecttag.org/company/services/telecom-intelligence">خدمة ذكاء الاتصالات ومسح الأبراج للمؤسسات</a>.
+              </li>
+              <li>
+                <strong>مكتبة التحقق وتطبيع الأرقام للمطورين (<code>phone-lib-kmp</code>):</strong> بدلاً من كتابة تعابير نمطية (<code>Regex</code>) يدوية لكل دولة، يمكنك دمج مكتبتنا البرمجية العابرة للمنصات ضمن <a href="https://connecttag.org/company/projects/libraries/">مكتبات وحزم كونكت تاق البرمجية (phone-lib-kmp)</a> للتحقق من أرقام الهواتف وتحديد شركة الاتصالات وتوليد صيغة <code>E.164</code> تلقائياً في تطبيقات أندرويد و<code>Kotlin Multiplatform</code>.
+              </li>
+              <li>
+                <strong>قواعد بيانات الدول والترقيم والمشغلين:</strong> إذا كنت تبني نظاماً سحابياً أو منصة تجارة إلكترونية دولية وتحتاج إلى جداول جاهزة ومحققة لمفاتيح الدول وأكواد <code>ISO-3166</code> وأكواد <code>MCC/MNC</code> ومخططات الترقيم، تصفّح <a href="https://connecttag.org/store/databases/">متجر قواعد البيانات المعيارية في كونكت تاق</a>، أو استخدم <a href="https://connecttag.org/tools/telecom/network-lookup/">أداة فحص شبكات وأكواد اليمن المجانية</a> (ولفحص هوية الجهاز نفسه راجع <a href="https://connecttag.org/blog/imei-number-check-guide">دليل فحص رقم IMEI ومعرفة الجهاز الأصلي</a>).
+              </li>
+            </ul>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 7. الأسئلة الشائعة حول معرّفات الأبراج ومعيار E.164</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما الفرق بين معرّف الخلية المنطقي (Cell-ID / ECI) ومعرّف الخلية الفيزيائي (PCI)؟</h3>
+                <p class="faq-answer">
+                  معرّف الخلية الفيزيائي (<code>PCI</code>) في شبكات الجيل الرابع <code>4G LTE</code> هو رقم قصير يتراوح بين <code>0</code> و<code>503</code> يُبث في إشارات المزامنة الأولية لتمكين الهاتف من التمييز السريع بين القطاعات المتجاورة على مستوى الطبقة الفيزيائية، ويتكرر استخدامه في أبراج أخرى بعيدة. أما معرّف الخلية في شبكة النفاذ (<code>ECI</code>) فهو رقم بطول 28 بت (يُقسّم إلى 20 بت لرقم البرج <code>eNodeB ID</code> و8 بت لرقم القطاع <code>Sector ID</code>) ويشكّل مع <code>MCC</code> و<code>MNC</code> هوية فريدة عالمياً لا تتكرر لأي قطاع آخر.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما هو كود الدولة الهاتفي وكود الشبكة الخلوية (MCC) للجمهورية اليمنية؟</h3>
+                <p class="faq-answer">
+                  تختلف منظومة الترقيم الهاتفي عن منظومة ترقيم الشبكات اللاسلكية في الاتحاد الدولي للاتصالات (<code>ITU-T</code>): كود الاتصال الهاتفي الدولي لليمن وفق معيار <code>E.164</code> هو (<code>+967</code>)، بينما كود الدولة للشبكات الخلوية المتنقلة وفق معيار <code>E.212</code> هو (<code>MCC = 421</code>)، وتتفرع منه أكواد المشغلين (<code>MNC</code>): سبأفون (<code>01</code>)، يو YOU (<code>02</code>)، يمن موبايل (<code>03</code>)، وواي تيليكوم (<code>04</code>).
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يجب تخزين أرقام الهواتف في قواعد البيانات بصيغة E.164 القياسية (+96777xxxxxxx)؟</h3>
+                <p class="faq-answer">
+                  لأن المستخدمين يدخلون أرقامهم بصيغ محلية متباينة (مثل <code>77xxxxxxx</code> أو <code>077xxxxxxx</code> أو <code>0096777xxxxxxx</code> أو مع مسافات وشرطات). تخزين الرقم بدون تطبيع موحد يؤدي إلى إنشاء حسابات مكررة لنفس المستخدم وفشل إرسال رسائل التحقق (<code>SMS OTP</code>) عبر البوابات الدولية التي تشترط صيغة <code>E.164</code> القياسية التي تبدأ بعلامة (<code>+</code>) متبوعة بكود الدولة والرقم الوطني بدون أصفار بادئة.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما وظيفة كود منطقة التتبع (TAC) في شبكات 4G/5G وكود منطقة الموقع (LAC) في شبكات 2G/3G؟</h3>
+                <p class="faq-answer">
+                  تجمع شركات الاتصالات كل مجموعة من الأبراج المتجاورة جغرافياً في منطقة منطقية واحدة تُسمى <code>LAC</code> (في 2G/3G) أو <code>TAC</code> (في 4G/5G). عندما يكون هاتفك في وضع الخمول (<code>Idle Mode</code>) وترد إليك مكالمة أو رسالة، لا تقوم الشبكة بمناداة هاتفك عبر آلاف الأبراج في كل البلاد، بل ترسل إشارة النداء (<code>Paging Message</code>) فقط إلى الأبراج الواقعة ضمن منطقة التتبع (<code>TAC</code>) المسجل فيها هاتفك حالياً، مما يوفر طاقة البطارية ويخفف الحمل عن الشبكة.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والمعايير الدولية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://www.itu.int/rec/T-REC-E.164" target="_blank" rel="noopener noreferrer">ITU-T Recommendation E.164 — The international public telecommunication numbering plan</a></li>
+                <li><a href="https://www.itu.int/rec/T-REC-E.212" target="_blank" rel="noopener noreferrer">ITU-T Recommendation E.212 — The international identification plan for public networks and subscriptions (MCC/MNC)</a></li>
+                <li><a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=729" target="_blank" rel="noopener noreferrer">3GPP TS 23.003 — Numbering, addressing and identification (CGI, ECGI, TAC, eNodeB ID)</a></li>
+                <li><a href="https://connecttag.org/tools/telecom/network-lookup/">أداة فحص شبكات وأكواد الهواتف في اليمن — كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="محمد حميد"
+              avatar="https://connecttag.org/upload/author/mohammed-hameed.webp"
+              link="https://connecttag.org/blog/authors/mohammed-hameed">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="lte-wifi-signal-rsrp-sinr-guide,imei-number-check-guide,yemen-4g-modem-settings-security-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

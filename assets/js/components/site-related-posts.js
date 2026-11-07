@@ -15,6 +15,27 @@ class SiteRelatedPosts extends HTMLElement {
     // 2. Global Articles Registry
     const allPosts = [
       {
+        id: "telegram-bot-webhook-security-guide",
+        title: "الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وتأمين التوكن",
+        link: "blog/telegram-bot-webhook-security-guide",
+        image: "upload/telegram-bot-webhook-security-guide.webp",
+        excerpt: "لماذا يستهلك getUpdates موارد السيرفر بينما يوفر Webhook استجابة لحظية؟ وكيف تتحقق من الطلبات عبر X-Telegram-Bot-Api-Secret-Token؟"
+      },
+      {
+        id: "telecom-cell-id-mcc-mnc-e164-guide",
+        title: "كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار E.164",
+        link: "blog/telecom-cell-id-mcc-mnc-e164-guide",
+        image: "upload/telecom-cell-id-mcc-mnc-e164-guide.webp",
+        excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأكواد شبكات الجوال في اليمن (MCC 421)، وكيف يخزّن المطورون أرقام الهواتف وفق معيار ITU-T E.164."
+      },
+      {
+        id: "app-privacy-policy-play-store-guide",
+        title: "لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية؟ دليل إعداد سياسة الخصوصية واستمارة Data Safety",
+        link: "blog/app-privacy-policy-play-store-guide",
+        image: "upload/app-privacy-policy-play-store-guide.webp",
+        excerpt: "الأخطاء القاتلة التي تسبب رفض التطبيقات في مراجعة Google Play وApp Store وأدسنس، وكيف تطابق الصلاحيات مع استمارة Data Safety."
+      },
+      {
         id: "offline-gps-yemen-emergency-guide",
         title: "هل يعمل الـ GPS في الهاتف بدون إنترنت؟ الدليل العملي للملاحة البرية وأرقام الطوارئ في اليمن",
         link: "blog/offline-gps-yemen-emergency-guide",

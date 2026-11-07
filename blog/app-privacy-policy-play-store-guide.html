@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>دليل كتابة سياسة الخصوصية واستمارة Data Safety للتطبيقات | كونكت تاق</title>
+  <meta name="description" content="لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة أمان البيانات Data Safety.">
+  <meta name="keywords" content="سياسة الخصوصية للتطبيقات, استمارة أمان البيانات Data Safety, رفض تطبيق جوجل بلاي سياسة الخصوصية, Google Consent Mode v2, سياسة خصوصية أدسنس, حذف الحساب جوجل بلاي, مولد سياسة الخصوصية, App Store Privacy Nutrition Labels, كونكت تاق">
+  <meta name="author" content="يوسف محمد">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/app-privacy-policy-play-store-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/app-privacy-policy-play-store-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة Data Safety" />
+  <meta property="og:description" content="الأخطاء القاتلة التي تسبب رفض التطبيقات في مراجعة Google Play وApp Store وأدسنس، وكيف تطابق الصلاحيات مع استمارة Data Safety وتولّد سياسة خصوصية ثنائية اللغة." />
+  <meta property="og:image" content="https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل القانوني والتقني لإعداد سياسة الخصوصية واستمارة Data Safety لتطبيقات Google Play وApp Store ومواقع AdSense" />
+  <meta property="article:published_time" content="2026-11-08T02:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T02:00:00+03:00" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/yousef" />
+  <meta property="article:tag" content="سياسة الخصوصية" />
+  <meta property="article:tag" content="Data Safety" />
+  <meta property="article:tag" content="Google Play" />
+  <meta property="article:tag" content="Google AdSense" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/app-privacy-policy-play-store-guide" />
+  <meta name="twitter:title" content="لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟" />
+  <meta name="twitter:description" content="الدليل القانوني والتقني لإعداد سياسة خصوصية وشروط استخدام مقبولة في Google Play وApp Store وAdSense ومطابقة استمارة أمان البيانات Data Safety." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp" />
+  <meta name="twitter:image:alt" content="دليل كتابة سياسة الخصوصية واستمارة أمان البيانات Data Safety للتطبيقات والمواقع" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية؟ دليل إعداد سياسة الخصوصية واستمارة Data Safety",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T02:00:00+03:00",
+    "dateModified": "2026-11-08T02:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "يوسف محمد",
+      "jobTitle": "مختص في الإعلام الرقمي والتسويق الإعلاني وصناعة المحتوى",
+      "url": "https://connecttag.org/blog/authors/yousef"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل قانوني وتقني شامل للمطورين والناشرين حول أسباب رفض سياسات الخصوصية في متجر Google Play وApp Store وGoogle AdSense، وكيفية مطابقة استمارة أمان البيانات Data Safety ومتطلبات حذف الحساب وConsent Mode v2.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/app-privacy-policy-play-store-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل كتابة سياسة الخصوصية واستمارة Data Safety للتطبيقات والمواقع",
+        "item": "https://connecttag.org/blog/app-privacy-policy-play-store-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يرفض متجر Google Play تطبيقي بسبب عدم تطابق استمارة أمان البيانات (Data Safety) مع سياسة الخصوصية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يفحص محرك المراجعة الآلي في Google Play الحزم البرمجية المدمجة داخل التطبيق (مثل حزم الإعلانات والتحليلات وتقارير الأعطال) ويقارن البيانات التي تجمعها فعلياً (مثل معرّف الإعلانات ومعلومات الجهاز والموقع التقريبي) بما أعلنت عنه في استمارة Data Safety ونص سياسة الخصوصية. إذا اخترت «لا يجمع التطبيق أي بيانات» بينما يضم تطبيقك حزمة إعلانية أو تحليلية، يتم رفض التحديث تلقائياً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يُقبل وضع رابط ملف PDF أو مستند Google Docs كرابط لسياسة الخصوصية في متجر Google Play؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا، تشترط سياسات برنامج مطوري Google Play أن يكون رابط سياسة الخصوصية صفحة ويب قياسية وعامة تعمل عبر بروتوكول HTTPS، قابلة للقراءة المباشرة على المتصفح بدون تسجيل دخول، وغير قابلة للتعديل من عامة الزوار، وألا تكون رابطاً لملف PDF قابل للتحميل."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو شرط رابط حذف الحساب والبيانات الإلزامي في متجر Google Play؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "أي تطبيق يتيح للمستخدم إنشاء حساب (حتى لو كان عبر تسجيل الدخول السريع بحساب جوجل أو رقم الهاتف) ملزم بتوفير خيار لحذف الحساب من داخل التطبيق، بالإضافة إلى توفير رابط ويب خارجي مخصص يمكّن المستخدم من طلب حذف حسابه وبياناته المرتبطة دون الحاجة لإعادة تثبيت التطبيق على هاتفه."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب تجنب كتابة أسماء الصلاحيات والمكتبات البرمجية بصيغتها الكودية داخل وثيقة سياسة الخصوصية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن سياسة الخصوصية وثيقة قانونية وتوعوية موجهة للمستخدم النهائي ولجان المراجعة القانونية وفق معايير GDPR وCCPA وليست توثيقاً برمجياً للمطورين. يجب الإفصاح عن الصلاحيات بلغة إنسانية واضحة تشرح نوع البيانات والغرض الوظيفي منها (مثل: الموقع الجغرافي الدقيق لتحديد أقرب فرع، أو الاتصال بالإنترنت لمزامنة الفواتير) بدلاً من سرد ثوابت برمجية أو أسماء مكتبات داخلية."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "دليل كتابة سياسة الخصوصية واستمارة Data Safety للتطبيقات والمواقع", "url": "https://connecttag.org/blog/app-privacy-policy-play-store-guide"}]'></site-breadcrumb>
+
+            <h1>لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة Data Safety</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: برمجة وتطوير - تطوير الهواتف والأنظمة المتعددة</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp" class="img-responsive" alt="الدليل القانوني والتقني لإعداد سياسة الخصوصية واستمارة Data Safety لتطبيقات Google Play وApp Store ومواقع AdSense" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              يستثمر المطورون وأصحاب المشاريع الرقمية أشهراً طويلة في برمجة تطبيقاتهم أو بناء مواقعهم الإلكترونية، ثم يصطدمون عند لحظة الإطلاق برسالة رفض محبطة من فريق مراجعة <strong>Google Play</strong> أو <strong>Apple App Store</strong> أو برنامج <strong>Google AdSense</strong> بسبب: <em>«مخالفة سياسة بيانات المستخدم — Invalid Privacy Policy / Data Safety Discrepancy»</em>! لم تعد صفحة «سياسة الخصوصية» مجرد نص شكلي منسوخ يوضع في تذييل الموقع، بل أصبحت عقداً قانونياً ملزماً تفحصه أنظمة المراجعة الآلية وتطابقه حرفياً مع الحزم البرمجية والصلاحيات الفعلية داخل تطبيقك.
+            </p>
+            <p>
+              في هذا الدليل القانوني والتقني من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح الأسباب الحقيقية وراء رفض سياسات الخصوصية في متاجر التطبيقات وشبكات الإعلانات، وكيف تطابق <strong>استمارة أمان البيانات (<code>Data Safety</code>)</strong> في Google Play و<strong>ملصقات الخصوصية (<code>Privacy Nutrition Labels</code>)</strong> في App Store، وما هي قواعد الصياغة القانونية السليمة (بلغة إنسانية واضحة خالية من الرموز البرمجية الخام)، وكيف تنشئ وثيقة احترافية ثنائية اللغة خلال دقائق عبر <a href="https://connecttag.org/tools/security/privacy-generator/">أداة مولد سياسة الخصوصية وشروط الاستخدام المجانية في كونكت تاق</a>.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-scale-balanced" aria-hidden="true"></i> خلاصة تنفيذية للمطورين وأصحاب المواقع</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>التطابق الثلاثي في متاجر التطبيقات:</strong> يجب أن تتطابق الصلاحيات وحزم الطرف الثالث داخل التطبيق مع إجاباتك في استمارة <code>Data Safety</code> ومع النص المكتوب في صفحة سياسة الخصوصية.</li>
+                <li><strong>الصياغة القانونية بلغة إنسانية مبسطة:</strong> تُكتب سياسة الخصوصية للمستخدم النهائي ولجان الامتثال القانوني (<code>GDPR / CCPA</code>)؛ لذا يُمنع سرد ثوابت برمجية خام أو أسماء مكتبات داخلية، ويجب توضيح <strong>نوع البيانات والغرض الوظيفي</strong> منها بوضوح.</li>
+                <li><strong>شرط حذف الحساب والبيانات الإلزامي:</strong> أي تطبيق يسمح بإنشاء حساب ملزم بتوفير مسار لحذف الحساب من داخل التطبيق، إضافةً إلى <strong>رابط ويب خارجي مستقل</strong> لطلب حذف البيانات دون الحاجة لإعادة تثبيت التطبيق.</li>
+                <li><strong>متطلبات <code>Google AdSense</code> و<code>Consent Mode v2</code>:</strong> يشترط أدسنس وأدموب الإفصاح الصريح عن ملفات تعريف الارتباط الإعلانية ومعرّفات الإعلانات وبانر موافقة المستخدم قبل تفعيل التخصيص الإعلاني.</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل القانوني والتقني</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. أشهر 6 أخطاء قاتلة تسبب رفض سياسة الخصوصية في Google Play وApp Store</a></li>
+                <li><a href="#section-2">2. المعيار الذهبي للصياغة: كيف تفصح عن الصلاحيات والبيانات بلغة إنسانية قانونية؟</a></li>
+                <li><a href="#section-3">3. كيف تملأ استمارة أمان البيانات (Data Safety) بدون تناقض مع حزم الإعلانات والتحليلات؟</a></li>
+                <li><a href="#section-4">4. شرط حذف الحساب والبيانات (Account &amp; Data Deletion) في سياسات المتاجر الحديثة</a></li>
+                <li><a href="#section-5">5. متطلبات سياسة الخصوصية لمقبولية Google AdSense وAdMob ووضع الموافقة Consent Mode v2</a></li>
+                <li><a href="#section-6">6. كيف تولّد سياسة خصوصية وشروط استخدام ثنائية اللغة عبر أداة كونكت تاق؟</a></li>
+                <li><a href="#faq">7. الأسئلة الشائعة حول سياسات الخصوصية ومراجعة المتاجر</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. أشهر 6 أخطاء قاتلة تسبب رفض سياسة الخصوصية في Google Play وApp Store</h2>
+            <p>
+              تعتمد متاجر التطبيقات الحديثة على ماسحات آلية (<code>Automated Policy Scanners</code>) تزور رابط سياسة الخصوصية المرفق في لوحة المطور وتفحص محتواه قبل أن يصل التطبيق إلى المراجع البشري. إليك الأخطاء الستة الأكثر تسبباً في رفض التحديثات أو تعليق التطبيقات:
+            </p>
+            <ol>
+              <li>
+                <strong>استخدام روابط غير قياسية (ملفات <code>PDF</code> أو <code>Google Docs</code> أو صفحات تطلب تسجيل دخول):</strong>
+                تشترط سياسات متجر Google Play أن يكون الرابط صفحة ويب HTML عامة ومستقرة تعمل ببروتوكول <code>HTTPS</code>، قابلة للفتح على أي متصفح بدون حساب، وغير قابلة للتعديل، ولا تقبل روابط التحميل المباشر أو المستندات السحابية المؤقتة.
+              </li>
+              <li>
+                <strong>نسخ قالب عام لا يذكر اسم التطبيق الرسمي أو جهة التطوير:</strong>
+                إذا كان اسم تطبيقك في المتجر «وِجهة» بينما تخلو صفحة سياسة الخصوصية من ذكر اسم التطبيق صراحةً أو تذكر اسماً عاماً مثل «التطبيق»، يرفضها المراجع فوراً لعدم ارتباط الوثيقة بالتطبيق المعني.
+              </li>
+              <li>
+                <strong>الادعاء بأن التطبيق «لا يجمع أي بيانات» رغم وجود حزم إعلانات أو تحليلات:</strong>
+                مجرد تضمين حزمة إعلانية (مثل <code>Google AdMob</code>) أو أداة تقارير أعطال وإحصائيات يعني أن التطبيق يجمع تلقائياً <strong>معرّفات الجهاز والإعلانات</strong>، و<strong>بيانات التفاعل</strong>، و<strong>سجلات الأعطال التشخيصية</strong>، و<strong>الموقع التقريبي عبر عنوان الشبكة</strong>؛ وإغفال ذكرها يُعد تضليلاً للمستخدم.
+              </li>
+              <li>
+                <strong>غياب وسيلة تواصل رسمية وفعالة مع مسؤول حماية البيانات:</strong>
+                يجب أن تتضمن الوثيقة عنوان بريد إلكتروني رسمي أو رابط صفحة تواصل واضحة تتيح للمستخدم ممارسة حقوقه القانونية (الاستعلام، التصحيح، أو طلب الحذف).
+              </li>
+              <li>
+                <strong>عدم ذكر سياسة الاحتفاظ بالبيانات وحذفها (<code>Data Retention &amp; Deletion</code>):</strong>
+                إغفال توضيح المدة الزمنية التي يحتفظ فيها النظام بالبيانات وكيفية مسحها عند انتهاء الغرض منها أو عند طلب المستخدم.
+              </li>
+              <li>
+                <strong>غياب التطابق اللغوي (<code>Bilingual Consistency</code>):</strong>
+                إذا كانت واجهة التطبيق أو صفحة المتجر متاحة باللغتين العربية والإنجليزية، فيُنصح بشدة بتوفير سياسة الخصوصية باللغتين معاً في صفحة منظمة لضمان سهولة مراجعتها من قِبل فرق التدقيق الدولية والمستخدمين المحليين.
+              </li>
+            </ol>
+
+            <h2 id="section-2">2. المعيار الذهبي للصياغة: كيف تفصح عن الصلاحيات والبيانات بلغة إنسانية قانونية؟</h2>
+            <p>
+              من أكثر الأخطاء الشائعة لدى المبرمجين كتابة سياسة الخصوصية وكأنها «مواصفة برمجية داخلية»، عبر لصق أسماء ثوابت الصلاحيات البرمجية من ملفات الكود أو ذكر أسماء مكتبات قواعد البيانات وأطر العمل الداخلية. هذا الأسلوب يربك المستخدم النهائي ويخالف مبدأ <strong>الشفافية والوضوح اللغوي (<code>Plain Language Transparency</code>)</strong> المنصوص عليه في المادة 12 من اللائحة العامة لحماية البيانات (<code>GDPR</code>).
+            </p>
+            <p>
+              القاعدة القانونية المعتمدة في صياغة سياسات الخصوصية وشروط الاستخدام تقوم على <strong>الإفصاح الوظيفي الواضح</strong>: اذكر <strong>نوع البيانات بلغة مفهومة</strong> + <strong>متى تُطلب</strong> + <strong>الغرض الوظيفي الذي يستفيد منه المستخدم</strong> + <strong>مكان المعالجة والحماية</strong> (ويمكنك معرفة الوصف الوظيفي الدقيق لكل صلاحية عبر <a href="https://connecttag.org/tools/mobile/android-permissions/">أداة مولد وفاحص صلاحيات أندرويد في كونكت تاق</a>):
+            </p>
+
+            <!-- Interactive Comparison Table: Raw Code vs Legal Plain Language -->
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">المجال أو الصلاحية</th>
+                    <th style="color:#fff;">صياغة تقنية خام (غير مناسبة للمستخدم النهائي ❌)</th>
+                    <th style="color:#fff;">الصياغة القانونية والإنسانية المعتمدة (موصى بها ✅)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. الموقع الجغرافي</strong></td>
+                    <td>كتابة ثوابت الكود البرمجية الخام للموقع بدون شرح السياق</td>
+                    <td style="color:#065f46; font-weight:600;"><strong>الموقع الجغرافي (الدقيق والتقريبي):</strong> يُستخدم أثناء تشغيل الميزة فقط لتحديد موقعك على الخريطة أو عرض أقرب نقاط الخدمة، ولا يتم تتبعه في الخلفية دون إذنك.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. التخزين المحلي والأمان</strong></td>
+                    <td>ذكر أسماء مكتبات قواعد البيانات الداخلية أو مكتبات التشفير البرمجية</td>
+                    <td style="color:#065f46; font-weight:600;"><strong>التخزين المحلي الآمن:</strong> تُحفظ سجلاتك وإعداداتك في قاعدة بيانات محلية معزولة ومشفرة على جهازك باستخدام خوارزميات التشفير القياسية المعتمدة.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. فحص التطبيقات والنظام</strong></td>
+                    <td>سرد معرفات أذونات الحزم وإحصائيات النظام بصيغة الكود</td>
+                    <td style="color:#065f46; font-weight:600;"><strong>الوصول لقائمة التطبيقات وإحصائيات الاستخدام:</strong> يُستخدم محلياً على جهازك لتمكينك من مراجعة أذونات تطبيقاتك وتحليل وقت الاستخدام دون رفع القائمة لأي خادم خارجي.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4. الكاميرا والوسائط</strong></td>
+                    <td>ذكر ثوابت أذونات القراءة والتصوير الخاصة بنظام التشغيل</td>
+                    <td style="color:#065f46; font-weight:600;"><strong>إذن الكاميرا والصور:</strong> يُطلب حصراً عندما تختار مسح رمز استجابة سريعة (<code>QR Code</code>) أو إرفاق صورة ملف شخصي أو مستند داخل التطبيق.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-3">3. كيف تملأ استمارة أمان البيانات (Data Safety) بدون تناقض مع حزم الإعلانات والتحليلات؟</h2>
+            <p>
+              في لوحة <code>Google Play Console</code> (تحت قسم <strong>محتوى التطبيق &gt; أمان البيانات Data Safety</strong>)، يفرّق المتجر بدقة بين مصطلحين قانونيين يجب فهمهما جيداً قبل الإجابة:
+            </p>
+            <ul>
+              <li>
+                <strong>جمع البيانات (<code>Data Collection</code>):</strong> يعني نقل أي بيانات من جهاز المستخدم إلى خارج الجهاز (سواء إلى خوادمك الخاصة أو إلى خوادم طرف ثالث مدمج في التطبيق). <strong>ملاحظة جوهرية:</strong> البيانات التي تُعالَج وتُحفظ محلياً على هاتف المستخدم فقط ولا تغادر الجهاز إطلاقاً (<code>On-Device Processing</code>) لا تُعدّ «بيانات مجمّعة» في استمارة <code>Data Safety</code>.
+              </li>
+              <li>
+                <strong>مشاركة البيانات (<code>Data Sharing</code>):</strong> تعني نقل بيانات المستخدم المجمّعة إلى طرف ثالث (مثل شبكات الإعلانات المخصصة). يستثني المتجر من مفهوم «المشاركة» نقل البيانات إلى مزودي الخدمة الذين يعالجون البيانات نيابةً عنك وبأمرك الحصري (مثل استضافة قواعد البيانات السحابية الموثقة بعقد حماية بيانات).
+              </li>
+            </ul>
+
+            <!-- Visual Checklist Card for Common App Types -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f8fafc; border-radius: 16px; padding: 26px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
+              <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-size: 19px; font-weight: 800;">
+                <i class="fas fa-clipboard-check" aria-hidden="true"></i> دليل المطابقة السريع لاستمارة Data Safety حسب طبيعة تطبيقك
+              </h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;">
+                <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 12px; padding: 16px;">
+                  <div style="font-weight: 800; color: #34d399; font-size: 15px; margin-bottom: 8px;">1. تطبيق محلي 100% بدون إنترنت أو إعلانات</div>
+                  <div style="font-size: 13.5px; color: #e2e8f0; line-height: 1.75;">
+                    • الإجابة في <code>Data Safety</code>: <strong>لا يجمع ولا يشارك أي بيانات</strong>.<br>
+                    • في سياسة الخصوصية: وضّح أن جميع عمليات المعالجة والتخزين تتم محلياً داخل المساحة المعزولة للتطبيق على جهاز المستخدم.
+                  </div>
+                </div>
+                <div style="background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 16px;">
+                  <div style="font-weight: 800; color: #38bdf8; font-size: 15px; margin-bottom: 8px;">2. تطبيق يضم إعلانات AdMob أو تحليلات</div>
+                  <div style="font-size: 13.5px; color: #e2e8f0; line-height: 1.75;">
+                    • الإجابة في <code>Data Safety</code>: <strong>نعم، يجمع البيانات</strong>.<br>
+                    • حدد: <strong>معرّف الإعلانات والجهاز</strong>، <strong>تفاعلات التطبيق</strong>، <strong>سجلات الأعطال</strong>، و<strong>الموقع التقريبي</strong> (لأغراض الإعلانات والتحليلات ومنع الاحتيال).
+                  </div>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 12px; padding: 16px;">
+                  <div style="font-weight: 800; color: #fbbf24; font-size: 15px; margin-bottom: 8px;">3. تطبيق بحسابات مستخدمين أو متجر إلكتروني</div>
+                  <div style="font-size: 13.5px; color: #e2e8f0; line-height: 1.75;">
+                    • حدد: <strong>المعلومات الشخصية</strong> (الاسم، البريد، رقم الهاتف، العنوان).<br>
+                    • فعّل خيار: <strong>البيانات مشفرة أثناء النقل عبر HTTPS</strong>، وأضف <strong>رابط صفحة حذف الحساب والبيانات</strong>.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2 id="section-4">4. شرط حذف الحساب والبيانات (Account &amp; Data Deletion) في سياسات المتاجر الحديثة</h2>
+            <p>
+              ابتداءً من التحديثات الإلزامية لمتجر Google Play ومتجر Apple App Store، أصبح أي تطبيق يتيح للمستخدم إنشاء حساب (سواء بالبريد الإلكتروني، أو رقم الهاتف، أو تسجيل الدخول عبر Google/Apple) ملزماً بتوفير <strong>مسارين متوازيين لحذف الحساب</strong> (كما نطبق ذلك في أدلة الخصوصية للتطبيقات التفاعلية؛ راجع أيضاً <a href="https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide">دليل حماية الخصوصية وحذف البيانات في تطبيقات الهواتف</a>):
+            </p>
+            <ol>
+              <li>
+                <strong>مسار داخل التطبيق (<code>In-App Deletion Path</code>):</strong>
+                زر واضح داخل إعدادات الحساب في التطبيق يمكّن المستخدم من حذف حسابه وبياناته مباشرةً دون إجباره على الاتصال الهاتفي بالدعم الفني.
+              </li>
+              <li>
+                <strong>رابط ويب خارجي مستقل (<code>Web Link Deletion Resource</code>):</strong>
+                صفحة ويب مخصصة (أو قسم واضح المعالم برابط مباشر <code>#delete-account</code> داخل صفحة الخصوصية/الدعم) تتيح للمستخدم الذي حذف التطبيق من هاتفه تقديم طلب حذف حسابه وبياناته عبر المتصفح، مع توضيح البيانات التي تُحذف فوراً والبيانات التي قد يُحتفظ بها لفترة قانونية محددة (مثل فواتير المعاملات المالية لأغراض الامتثال المحاسبي).
+              </li>
+            </ol>
+
+            <h2 id="section-5">5. متطلبات سياسة الخصوصية لمقبولية Google AdSense وAdMob ووضع الموافقة Consent Mode v2</h2>
+            <p>
+              إذا كنت تستعد لتقديم موقعك الإلكتروني للمراجعة في <strong>Google AdSense</strong> (راجع دليلنا الشامل حول <a href="https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content">شروط قبول الموقع في جوجل أدسنس وحل مشكلة المحتوى ذي القيمة المنخفضة</a> ودليل <a href="https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide">حماية حساب AdMob من تقييد الإعلانات ومخالفات السياسات</a>)، فإن صفحة سياسة الخصوصية في موقعك يجب أن تتضمن أربعة بنود أساسية تفحصها عناكب مراجعة أدسنس:
+            </p>
+            <ul>
+              <li>
+                <strong>الإفصاح عن ملفات تعريف الارتباط للإعلانات (<code>DoubleClick / AdSense Cookies</code>):</strong>
+                النص صراحةً على أن الموردين الخارجيين — وبما فيهم شركة Google — يستخدمون ملفات تعريف الارتباط (<code>Cookies</code>) لعرض الإعلانات بناءً على زيارات المستخدم السابقة لموقعك أو لمواقع أخرى على الإنترنت.
+              </li>
+              <li>
+                <strong>توضيح حق المستخدم في إيقاف الإعلانات المخصصة (<code>Opt-Out Link</code>):</strong>
+                توجيه الزوار إلى إمكانية تعطيل الإعلانات المخصصة عبر زيارة <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">إعدادات الإعلانات في حساب Google</a>.
+              </li>
+              <li>
+                <strong>تطبيق وضع الموافقة المحدّث (<code>Google Consent Mode v2</code>):</strong>
+                ضبط الحالة الافتراضية لإشارات التخزين الإعلاني والتحليلي (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>, <code>analytics_storage</code>) بحيث تحترم اختيار الزائر في شريط الموافقة على ملفات تعريف الارتباط (<code>Cookie Consent Banner</code>).
+              </li>
+              <li>
+                <strong>وجود صفحات الثقة الأربع في القائمة والتذييل:</strong>
+                لا تكتفِ بصفحة سياسة الخصوصية وحدها؛ بل تأكد من ربطها مع صفحات <strong>«شروط الاستخدام»</strong> و<strong>«من نحن»</strong> و<strong>«اتصل بنا»</strong> في ترويسة وتذييل جميع صفحات الموقع.
+              </li>
+            </ul>
+
+            <h2 id="section-6">6. كيف تولّد سياسة خصوصية وشروط استخدام ثنائية اللغة عبر أداة كونكت تاق؟</h2>
+            <p>
+              تسهيلاً على المطورين وأصحاب المتاجر والمدونات، بنينا في كونكت تاق <a href="https://connecttag.org/tools/security/privacy-generator/">أداة مولد سياسة الخصوصية وشروط الاستخدام الاحترافية</a> التي تعمل محلياً بالكامل داخل متصفحك لإنتاج وثائق قانونية متكاملة ومصاغة بلغة إنسانية رصينة متوافقة مع سياسات <code>Google Play</code> و<code>Apple App Store</code> و<code>Google AdSense</code> و<code>GDPR</code>:
+            </p>
+            <ol>
+              <li>افتح <a href="https://connecttag.org/tools/security/privacy-generator/">أداة مولد سياسة الخصوصية في كونكت تاق</a>، وأدخل <strong>اسم التطبيق أو الموقع</strong>، <strong>اسم الشركة أو المطور</strong>، <strong>البريد الإلكتروني الرسمي للدعم</strong>، و<strong>الرابط الأساسي للموقع</strong>.</li>
+              <li>حدد طبيعة مشروعك والخيارات المفعّلة فيه (هل يتضمن إعلانات <code>AdSense / AdMob</code>؟ هل يستخدم تحليلات الأداء؟ هل يطلب الموقع الجغرافي أو الكاميرا؟ هل يتضمن إنشاء حسابات أو مدفوعات إلكترونية؟).</li>
+              <li>اختر لغة الوثيقة (العربية، الإنجليزية، أو ثنائية اللغة)، ثم انسخ النص المنسّق أو الكود الجاهز بصيغة <code>HTML</code> النظيفة، وارفعه على مسار ثابت في موقعك (مثل <code>/privacy-policy</code>) لربطه مباشرةً في لوحة متجر Google Play وApp Store.</li>
+            </ol>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 7. الأسئلة الشائعة حول سياسات الخصوصية ومراجعة المتاجر</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يرفض متجر Google Play تطبيقي بسبب عدم تطابق استمارة أمان البيانات (Data Safety) مع سياسة الخصوصية؟</h3>
+                <p class="faq-answer">
+                  يفحص محرك المراجعة الآلي في Google Play الحزم البرمجية المدمجة داخل التطبيق (مثل حزم الإعلانات والتحليلات وتقارير الأعطال) ويقارن البيانات التي تجمعها فعلياً (مثل معرّف الإعلانات ومعلومات الجهاز والموقع التقريبي) بما أعلنت عنه في استمارة <code>Data Safety</code> ونص سياسة الخصوصية. إذا اخترت «لا يجمع التطبيق أي بيانات» بينما يضم تطبيقك حزمة إعلانية أو تحليلية، يتم رفض التحديث تلقائياً.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">هل يُقبل وضع رابط ملف PDF أو مستند Google Docs كرابط لسياسة الخصوصية في متجر Google Play؟</h3>
+                <p class="faq-answer">
+                  لا، تشترط سياسات برنامج مطوري Google Play أن يكون رابط سياسة الخصوصية صفحة ويب قياسية وعامة تعمل عبر بروتوكول <code>HTTPS</code>، قابلة للقراءة المباشرة على المتصفح بدون تسجيل دخول، وغير قابلة للتعديل من عامة الزوار، وألا تكون رابطاً لملف <code>PDF</code> قابل للتحميل.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما هو شرط رابط حذف الحساب والبيانات الإلزامي في متجر Google Play؟</h3>
+                <p class="faq-answer">
+                  أي تطبيق يتيح للمستخدم إنشاء حساب (حتى لو كان عبر تسجيل الدخول السريع بحساب جوجل أو رقم الهاتف) ملزم بتوفير خيار لحذف الحساب من داخل التطبيق، بالإضافة إلى توفير رابط ويب خارجي مخصص يمكّن المستخدم من طلب حذف حسابه وبياناته المرتبطة دون الحاجة لإعادة تثبيت التطبيق على هاتفه.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يجب تجنب كتابة أسماء الصلاحيات والمكتبات البرمجية بصيغتها الكودية داخل وثيقة سياسة الخصوصية؟</h3>
+                <p class="faq-answer">
+                  لأن سياسة الخصوصية وثيقة قانونية وتوعوية موجهة للمستخدم النهائي ولجان المراجعة القانونية وفق معايير <code>GDPR</code> و<code>CCPA</code> وليست توثيقاً برمجياً للمطورين. يجب الإفصاح عن الصلاحيات بلغة إنسانية واضحة تشرح نوع البيانات والغرض الوظيفي منها (مثل: الموقع الجغرافي الدقيق لتحديد أقرب فرع، أو الاتصال بالإنترنت لمزامنة الفواتير) بدلاً من سرد ثوابت برمجية أو أسماء مكتبات داخلية.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والسياسات الرسمية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://support.google.com/googleplay/android-developer/answer/10787469" target="_blank" rel="noopener noreferrer">Google Play Developer Policy Center — Provide information for Google Play's Data safety section</a></li>
+                <li><a href="https://support.google.com/googleplay/android-developer/answer/13327111" target="_blank" rel="noopener noreferrer">Google Play Policy — Understanding Google Play's app account deletion requirements</a></li>
+                <li><a href="https://developer.apple.com/app-store/app-privacy-details/" target="_blank" rel="noopener noreferrer">Apple Developer — App Privacy Details on the App Store</a></li>
+                <li><a href="https://connecttag.org/tools/security/privacy-generator/">أداة مولد سياسة الخصوصية وشروط الاستخدام للمواقع والتطبيقات — كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="يوسف محمد"
+              avatar="https://connecttag.org/upload/author/yousef.webp"
+              link="https://connecttag.org/blog/authors/yousef">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="google-adsense-approval-guide-fix-low-value-content,admob-ad-limit-policy-violations-app-ads-txt-guide,android-manifest-security-exported-components-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

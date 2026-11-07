@@ -1511,6 +1511,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://connecttag.org/blog/telegram-bot-webhook-security-guide</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://connecttag.org/blog/app-privacy-policy-play-store-guide</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://connecttag.org/blog/offline-gps-yemen-emergency-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
