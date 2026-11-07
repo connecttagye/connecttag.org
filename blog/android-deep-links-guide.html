@@ -156,18 +156,17 @@
 ]
   </script>
 
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/blog-post.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
 
-  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
-  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
 
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
@@ -206,7 +205,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"برمجة وتطوير", "url":"https://connecttag.org/blog/?cat=%D8%A8%D8%B1%D9%85%D8%AC%D8%A9+%D9%88%D8%AA%D8%B7%D9%88%D9%8A%D8%B1"}, {"title":"تطوير الهواتف والأنظمة المتعددة", "url":"https://connecttag.org/blog/?cat=%D8%A8%D8%B1%D9%85%D8%AC%D8%A9+%D9%88%D8%AA%D8%B7%D9%88%D9%8A%D8%B1&sub=%D8%AA%D8%B7%D9%88%D9%8A%D8%B1+%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%AA%D9%81+%D9%88%D8%A7%D9%84%D8%A3%D9%86%D8%B8%D9%85%D8%A9+%D8%A7%D9%84%D9%85%D8%AA%D8%B9%D8%AF%D8%AF%D8%A9"}, {"title":"الدليل العملي للروابط العميقة Deep Links وApp Links", "url":""}]'></site-breadcrumb>
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "دليل الروابط العميقة Deep Links وAndroid App Links", "url": "https://connecttag.org/blog/android-deep-links-guide"}]'></site-breadcrumb>
 
             <h1>الدليل العملي للروابط العميقة (Deep Links وAndroid App Links): كيف تجعل روابط موقعك تفتح شاشة محددة داخل تطبيقك مباشرةً بأمان؟</h1>
 
@@ -222,20 +221,20 @@
             <img src="https://connecttag.org/upload/android-deep-links-guide.webp" class="img-responsive" alt="الدليل العملي للروابط العميقة Deep Links وAndroid App Links وإعداد ملف assetlinks.json" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
 
             <p class="lead">
-              عندما يشارك مستخدم رابط منتج من متجرك الإلكتروني أو رابط فاتورة أو مقال عبر واتساب أو تليجرام، فإن أسوأ تجربة ممكنة هي أن يفتح الرابط داخل متصفح الهاتف المدمج ويطلب من المستخدم تسجيل الدخول من جديد رغم أن تطبيقك الرسمي مثبت بالفعل على جهازه! في المقابل، فإن استخدام الروابط العميقة البدائية (`Custom URI Schemes` مثل `myapp://`) يعرّض تطبيقك لخطر أمني جسيم يُعرف بـ <strong>اختطاف الروابط العميقة (`Deep Link Hijacking`)</strong>، حيث يمكن لأي تطبيق خبيث مثبت على الجهاز تسجيل نفس البادئة وسرقة رموز المصادقة أو بيانات الدفع.
+              عندما يشارك مستخدم رابط منتج من متجرك الإلكتروني أو رابط فاتورة أو مقال عبر واتساب أو تليجرام، فإن أسوأ تجربة ممكنة هي أن يفتح الرابط داخل متصفح الهاتف المدمج ويطلب من المستخدم تسجيل الدخول من جديد رغم أن تطبيقك الرسمي مثبت بالفعل على جهازه! في المقابل، فإن استخدام الروابط العميقة البدائية (<code>Custom URI Schemes</code> مثل <code>myapp://</code>) يعرّض تطبيقك لخطر أمني جسيم يُعرف بـ <strong>اختطاف الروابط العميقة (<code>Deep Link Hijacking</code>)</strong>، حيث يمكن لأي تطبيق خبيث مثبت على الجهاز تسجيل نفس البادئة وسرقة رموز المصادقة أو بيانات الدفع.
             </p>
             <p>
-              في هذا الدليل الهندسي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح لمطوري أندرويد والأنظمة المتعددة (`Kotlin Multiplatform` و`Flutter`) الفروق المعمارية بين أنواع الروابط العميقة الثلاثة، وكيف تبني <strong>روابط تطبيقات موثقة (`Verified Android App Links`)</strong> عبر ملف <code>.well-known/assetlinks.json</code> وبصمة الشهادة <code>SHA-256</code>، وكيف تولّد وتختبر روابطك محلياً عبر <a href="https://connecttag.org/tools/mobile/deep-link-generator/">أداة مولد الروابط العميقة (Deep Link Generator)</a> و<a href="https://connecttag.org/tools/mobile/manifest-analyzer/">فاحص أمان ملف المانيفست</a>.
+              في هذا الدليل الهندسي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح لمطوري أندرويد والأنظمة المتعددة (<code>Kotlin Multiplatform</code> و<code>Flutter</code>) الفروق المعمارية بين أنواع الروابط العميقة الثلاثة، وكيف تبني <strong>روابط تطبيقات موثقة (<code>Verified Android App Links</code>)</strong> عبر ملف <code>.well-known/assetlinks.json</code> وبصمة الشهادة <code>SHA-256</code>، وكيف تولّد وتختبر روابطك محلياً عبر <a href="https://connecttag.org/tools/mobile/deep-link-generator/">أداة مولد الروابط العميقة (Deep Link Generator)</a> و<a href="https://connecttag.org/tools/mobile/manifest-analyzer/">فاحص أمان ملف المانيفست</a>.
             </p>
 
             <!-- Summary Box -->
             <div class="summary-box">
               <div class="summary-title"><i class="fas fa-link" aria-hidden="true"></i> خلاصة معمارية سريعة للمطورين</div>
-              <ul style="margin-bottom: 0; line-height: 1.9;">
-                <li><strong>المخططات المخصصة (`Custom Schemes - myapp://`):</strong> سهلة الإعداد بدون خادم، لكنها <strong>غير آمنة</strong> للمصادقة ولا تعمل إذا لم يكن التطبيق مثبتاً، وتُظهر نافذة اختيار التطبيق (`Disambiguation Dialog`).</li>
-                <li><strong>روابط النوايا (`Chrome Intent URLs - intent://`):</strong> حل ممتاز لصفحات الويب على أندرويد لأنها تتحقق من وجود حزمة التطبيق (`package`) وتوجّه الزائر تلقائياً لمتجر Google Play أو لرابط ويب بديل (`S.browser_fallback_url`) عند عدم تثبيت التطبيق.</li>
-                <li><strong>روابط التطبيقات الموثقة (`Android App Links - https://`):</strong> المعيار الذهبي الرسمي منذ أندرويد 6.0 (وأصبح إلزامياً في أندرويد 12+)؛ يربط نطاق موقعك بالتطبيق تشفيرياً عبر ملف <code>/.well-known/assetlinks.json</code> ليفتح التطبيق فوراً دون أي نافذة وسيطة.</li>
-                <li><strong>القاعدة الذهبية لمتجر Play:</strong> يجب دائماً وضع بصمتي `SHA-256` في ملف `assetlinks.json`: بصمة مفتاح التطوير/الرفع (`Upload Key`) وبصمة مفتاح توقيع جوجل بلاي (`App Signing Key`).</li>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>المخططات المخصصة (<code>Custom Schemes - myapp://</code>):</strong> سهلة الإعداد بدون خادم، لكنها <strong>غير آمنة</strong> للمصادقة ولا تعمل إذا لم يكن التطبيق مثبتاً، وتُظهر نافذة اختيار التطبيق (<code>Disambiguation Dialog</code>).</li>
+                <li><strong>روابط النوايا (<code>Chrome Intent URLs - intent://</code>):</strong> حل ممتاز لصفحات الويب على أندرويد لأنها تتحقق من وجود حزمة التطبيق (<code>package</code>) وتوجّه الزائر تلقائياً لمتجر Google Play أو لرابط ويب بديل (<code>S.browser_fallback_url</code>) عند عدم تثبيت التطبيق.</li>
+                <li><strong>روابط التطبيقات الموثقة (<code>Android App Links - https://</code>):</strong> المعيار الذهبي الرسمي منذ أندرويد 6.0 (وأصبح إلزامياً في أندرويد 12+)؛ يربط نطاق موقعك بالتطبيق تشفيرياً عبر ملف <code>/.well-known/assetlinks.json</code> ليفتح التطبيق فوراً دون أي نافذة وسيطة.</li>
+                <li><strong>القاعدة الذهبية لمتجر Play:</strong> يجب دائماً وضع بصمتي <code>SHA-256</code> في ملف <code>assetlinks.json</code>: بصمة مفتاح التطوير/الرفع (<code>Upload Key</code>) وبصمة مفتاح توقيع جوجل بلاي (<code>App Signing Key</code>).</li>
               </ul>
             </div>
 
@@ -253,9 +252,9 @@
               </ul>
             </div>
 
-            <h2 id="section-1">1. المقارنة الهندسية: `Custom URI Schemes` مقابل `Intent URLs` مقابل `Android App Links`</h2>
+            <h2 id="section-1">1. المقارنة الهندسية: <code>Custom URI Schemes</code> مقابل <code>Intent URLs</code> مقابل <code>Android App Links</code></h2>
             <p>
-              قبل كتابة أول `intent-filter` في تطبيقك، يجب أن تفرّق بدقة بين الآليات الثلاث التي يدعمها نظام أندرويد لفتح الشاشات الداخلية من الروابط الخارجية:
+              قبل كتابة أول <code>intent-filter</code> في تطبيقك، يجب أن تفرّق بدقة بين الآليات الثلاث التي يدعمها نظام أندرويد لفتح الشاشات الداخلية من الروابط الخارجية:
             </p>
 
             <div class="table-responsive" style="margin: 22px 0;">
@@ -284,7 +283,7 @@
                   <tr>
                     <td><strong>ظهور نافذة اختيار التطبيق (Disambiguation)</strong></td>
                     <td>تظهر إذا سجل تطبيق آخر نفس الـ Scheme</td>
-                    <td>يستهدف `package` محدد مباشرةً</td>
+                    <td>يستهدف <code>package</code> محدد مباشرةً</td>
                     <td style="color:#15803d; font-weight:700;">لا تظهر أبداً؛ يفتح التطبيق مباشرةً</td>
                   </tr>
                   <tr>
@@ -305,28 +304,28 @@
 
             <div style="background: #fffbeb; border-right: 4px solid #f59e0b; padding: 16px 20px; border-radius: 10px; margin: 20px 0;">
               <strong><i class="fa-solid fa-triangle-exclamation" style="color: #d97706; margin-left: 6px;" aria-hidden="true"></i> تغيير جوهري منذ أندرويد 12 (API 31):</strong>
-              في الإصدارات الأقدم من أندرويد 12، كان وضع رابط `https://` عادي داخل `intent-filter` بدون توثيق يُظهر للمستخدم نافذة «فتح باستخدام...». أما ابتداءً من <strong>أندرويد 12 فصاعداً</strong>، إذا لم ينجح التحقق التلقائي من ملف `assetlinks.json`، فإن النظام <strong>يفتح الرابط في المتصفح الافتراضي مباشرةً ولا يعرض تطبيقك ضمن الخيارات مطلقاً!</strong>
+              في الإصدارات الأقدم من أندرويد 12، كان وضع رابط <code>https://</code> عادي داخل <code>intent-filter</code> بدون توثيق يُظهر للمستخدم نافذة «فتح باستخدام...». أما ابتداءً من <strong>أندرويد 12 فصاعداً</strong>، إذا لم ينجح التحقق التلقائي من ملف <code>assetlinks.json</code>، فإن النظام <strong>يفتح الرابط في المتصفح الافتراضي مباشرةً ولا يعرض تطبيقك ضمن الخيارات مطلقاً!</strong>
             </div>
 
-            <h2 id="section-2">2. كيف تعمل روابط `Android App Links`؟ تشريح آلية التحقق التلقائي (`autoVerify`)</h2>
+            <h2 id="section-2">2. كيف تعمل روابط <code>Android App Links</code>؟ تشريح آلية التحقق التلقائي (<code>autoVerify</code>)</h2>
             <p>
-              تعتمد تقنية `Android App Links` على بروتوكول <strong>Digital Asset Links (DAL)</strong> من جوجل لإثبات أن مالك النطاق الإلكتروني (مثل `connecttag.org`) هو نفسه المطور الذي وقّع حزمة التطبيق (`APK / AAB`) بشهادته التشفيرية:
+              تعتمد تقنية <code>Android App Links</code> على بروتوكول <strong>Digital Asset Links (DAL)</strong> من جوجل لإثبات أن مالك النطاق الإلكتروني (مثل <code>connecttag.org</code>) هو نفسه المطور الذي وقّع حزمة التطبيق (<code>APK / AAB</code>) بشهادته التشفيرية:
             </p>
             <ol>
-              <li>عندما يثبت المستخدم التطبيق على هاتفه، يقرأ نظام أندرويد وسم <code>android:autoVerify="true"</code> داخل `AndroidManifest.xml`.</li>
-              <li>يتصل مدير الحزم في أندرويد بالخادم عبر `HTTPS` (بدون أي تحويلات `301/302 Redirects`) لطلب الملف:
+              <li>عندما يثبت المستخدم التطبيق على هاتفه، يقرأ نظام أندرويد وسم <code>android:autoVerify="true"</code> داخل <code>AndroidManifest.xml</code>.</li>
+              <li>يتصل مدير الحزم في أندرويد بالخادم عبر <code>HTTPS</code> (بدون أي تحويلات <code>301/302 Redirects</code>) لطلب الملف:
                 <br>
                 <code>https://example.com/.well-known/assetlinks.json</code>
               </li>
-              <li>يتحقق النظام من أن الملف يحتوي على اسم حزمة التطبيق (`package_name`) وبصمة شهادة التوقيع (`sha256_cert_fingerprints`) المطابقة للتطبيق المثبت.</li>
-              <li>عند تطابق البصمة، يسجل نظام أندرويد تطبيقك كـ <strong>المعالج الافتراضي الحصري (`Default Handler`)</strong> لجميع الروابط المطابقة لذلك النطاق.</li>
+              <li>يتحقق النظام من أن الملف يحتوي على اسم حزمة التطبيق (<code>package_name</code>) وبصمة شهادة التوقيع (<code>sha256_cert_fingerprints</code>) المطابقة للتطبيق المثبت.</li>
+              <li>عند تطابق البصمة، يسجل نظام أندرويد تطبيقك كـ <strong>المعالج الافتراضي الحصري (<code>Default Handler</code>)</strong> لجميع الروابط المطابقة لذلك النطاق.</li>
             </ol>
 
-            <h2 id="section-3">3. خطوات إعداد ملف `AndroidManifest.xml` وملف `assetlinks.json` خطوة بخطوة</h2>
+            <h2 id="section-3">3. خطوات إعداد ملف <code>AndroidManifest.xml</code> وملف <code>assetlinks.json</code> خطوة بخطوة</h2>
 
-            <h3>الخطوة الأولى: تعريف `intent-filter` في ملف `AndroidManifest.xml`</h3>
+            <h3>الخطوة الأولى: تعريف <code>intent-filter</code> في ملف <code>AndroidManifest.xml</code></h3>
             <p>
-              افتح ملف `AndroidManifest.xml` وأضف فلتر النوايا داخل الـ `Activity` المستهدفة مع تفعيل `android:autoVerify="true"` ووجود الفئتين `CATEGORY_DEFAULT` و`CATEGORY_BROWSABLE` معاً:
+              افتح ملف <code>AndroidManifest.xml</code> وأضف فلتر النوايا داخل الـ <code>Activity</code> المستهدفة مع تفعيل <code>android:autoVerify="true"</code> ووجود الفئتين <code>CATEGORY_DEFAULT</code> و<code>CATEGORY_BROWSABLE</code> معاً:
             </p>
             <div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px 20px; margin: 18px 0; font-family: monospace; font-size: 13.5px; direction: ltr; text-align: left; overflow-x: auto; line-height: 1.7;">
 &lt;activity
@@ -347,15 +346,15 @@
 &lt;/activity&gt;
             </div>
 
-            <h3>الخطوة الثانية: استخراج بصمة التوقيع `SHA-256` وإنشاء ملف `assetlinks.json`</h3>
+            <h3>الخطوة الثانية: استخراج بصمة التوقيع <code>SHA-256</code> وإنشاء ملف <code>assetlinks.json</code></h3>
             <p>
-              استخرج بصمة شهادة التوقيع بصيغة `SHA-256` (مع النقطتين الراسيتين `:` بين كل بايتين وبأحرف كبيرة `UPPERCASE`) من لوحة `Google Play Console` (تحت <strong>Setup &gt; App signing</strong>) أو عبر أداة `keytool`:
+              استخرج بصمة شهادة التوقيع بصيغة <code>SHA-256</code> (مع النقطتين الراسيتين <code>:</code> بين كل بايتين وبأحرف كبيرة <code>UPPERCASE</code>) من لوحة <code>Google Play Console</code> (تحت <strong>Setup &gt; App signing</strong>) أو عبر أداة <code>keytool</code>:
             </p>
             <div style="background: #0f172a; color: #38bdf8; border-radius: 12px; padding: 14px 18px; margin: 16px 0; font-family: monospace; font-size: 13.5px; direction: ltr; text-align: left; overflow-x: auto;">
 keytool -list -v -keystore release-key.jks -alias my-alias
             </div>
             <p>
-              ثم أنشئ ملفاً باسم <code>assetlinks.json</code> داخل مجلد <code>/.well-known/</code> في جذر موقعك، مع التأكد من إرجاع الترويسة <code>Content-Type: application/json</code> وحالة `HTTP 200 OK`:
+              ثم أنشئ ملفاً باسم <code>assetlinks.json</code> داخل مجلد <code>/.well-known/</code> في جذر موقعك، مع التأكد من إرجاع الترويسة <code>Content-Type: application/json</code> وحالة <code>HTTP 200 OK</code>:
             </p>
             <div style="background: #0f172a; color: #4ade80; border-radius: 12px; padding: 18px 20px; margin: 18px 0; font-family: monospace; font-size: 13.5px; direction: ltr; text-align: left; overflow-x: auto; line-height: 1.7;">
 [
@@ -373,39 +372,39 @@ keytool -list -v -keystore release-key.jks -alias my-alias
 ]
             </div>
 
-            <h2 id="section-4">4. صيغة `Intent URL` الذكية مع التوجيه البديل التلقائي (`Fallback URL`)</h2>
+            <h2 id="section-4">4. صيغة <code>Intent URL</code> الذكية مع التوجيه البديل التلقائي (<code>Fallback URL</code>)</h2>
             <p>
-              عند وضع زر «افتح في التطبيق» داخل صفحة ويب، يمكنك استخدام صيغة `intent://` القياسية في متصفحات أندرويد، والتي تتميز بقدرتها على فتح التطبيق إن وُجد، أو تحويل الزائر تلقائياً إلى رابط بديل (`S.browser_fallback_url`) دون إظهار أي شاشة خطأ:
+              عند وضع زر «افتح في التطبيق» داخل صفحة ويب، يمكنك استخدام صيغة <code>intent://</code> القياسية في متصفحات أندرويد، والتي تتميز بقدرتها على فتح التطبيق إن وُجد، أو تحويل الزائر تلقائياً إلى رابط بديل (<code>S.browser_fallback_url</code>) دون إظهار أي شاشة خطأ:
             </p>
             <div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 16px 20px; margin: 18px 0; font-family: monospace; font-size: 13.5px; direction: ltr; text-align: left; overflow-x: auto; line-height: 1.7;">
 intent://store/products/25#Intent;scheme=https;package=org.connecttag.store;S.browser_fallback_url=https%3A%2F%2Fconnecttag.org%2Fstore%2Fproducts%2F;end
             </div>
             <p>
-              وبدلاً من كتابة هذه الصيغة المعقدة يدوياً وتشفير الروابط البديلة (`URL Encoding`)، يمكنك توليدها في ثانية واحدة عبر <a href="https://connecttag.org/tools/mobile/deep-link-generator/">أداة مولد الروابط العميقة (Deep Link Generator) في كونكت تاق</a>، والتي تنشئ لك كود الرابط الجاهز وكود زر `HTML` المعاين للتجربة المباشرة على هاتفك.
+              وبدلاً من كتابة هذه الصيغة المعقدة يدوياً وتشفير الروابط البديلة (<code>URL Encoding</code>)، يمكنك توليدها في ثانية واحدة عبر <a href="https://connecttag.org/tools/mobile/deep-link-generator/">أداة مولد الروابط العميقة (Deep Link Generator) في كونكت تاق</a>، والتي تنشئ لك كود الرابط الجاهز وكود زر <code>HTML</code> المعاين للتجربة المباشرة على هاتفك.
             </p>
 
-            <h2 id="section-5">5. المخاطر الأمنية: كيف تمنع اختطاف الروابط (`Link Hijacking`) وثغرات `Intent Redirection`؟</h2>
+            <h2 id="section-5">5. المخاطر الأمنية: كيف تمنع اختطاف الروابط (<code>Link Hijacking</code>) وثغرات <code>Intent Redirection</code>؟</h2>
             <p>
-              لأن أي نشاط (`Activity`) يستقبل روابط عميقة يجب أن يكون مصدّراً للخارج (<code>android:exported="true"</code>)، فإنه يصبح سطح هجوم محتمل لأي تطبيق آخر على الجهاز. لتأمين تطبيقك بالكامل (راجع دليلنا المفصل حول <a href="https://connecttag.org/blog/android-manifest-security-exported-components-guide">تأمين ملف AndroidManifest.xml وحماية المكونات المصدّرة</a>):
+              لأن أي نشاط (<code>Activity</code>) يستقبل روابط عميقة يجب أن يكون مصدّراً للخارج (<code>android:exported="true"</code>)، فإنه يصبح سطح هجوم محتمل لأي تطبيق آخر على الجهاز. لتأمين تطبيقك بالكامل (راجع دليلنا المفصل حول <a href="https://connecttag.org/blog/android-manifest-security-exported-components-guide">تأمين ملف AndroidManifest.xml وحماية المكونات المصدّرة</a>):
             </p>
             <ol>
               <li>
-                <strong>لا ترسل رموز جلسات أو `JWT` مكشوفة في `Custom URI Scheme`:</strong>
-                في تدفقات تسجيل الدخول الاجتماعي (`OAuth 2.0`)، إذا استخدمت `myapp://callback?token=...` بدون معيار **`PKCE` (Proof Key for Code Exchange - RFC 7636)** وبدون `App Links` موثقة، فيمكن لتطبيق خبيث التقاط رمز الوصول قبل تطبيقك.
+                <strong>لا ترسل رموز جلسات أو <code>JWT</code> مكشوفة في <code>Custom URI Scheme</code>:</strong>
+                في تدفقات تسجيل الدخول الاجتماعي (<code>OAuth 2.0</code>)، إذا استخدمت <code>myapp://callback?token=...</code> بدون معيار <strong><code>PKCE</code> (Proof Key for Code Exchange - RFC 7636)</strong> وبدون <code>App Links</code> موثقة، فيمكن لتطبيق خبيث التقاط رمز الوصول قبل تطبيقك.
               </li>
               <li>
-                <strong>تحقق دائماً من `intent.data` ولا تمرر `WebView` مفتوحاً:</strong>
-                أخطر ثغرة في معالجة الروابط العميقة هي قراءة معامل مثل <code>?url=https://...</code> من الرابط العميق وتحميله مباشرةً داخل `WebView` مزود بصلاحيات `JavaScriptInterface` أو مع تفعيل `AllowFileAccess`. تحقق دائماً من أن النطاق ينتمي لقائمة بيضاء صارمة (`Strict Host Whitelist`).
+                <strong>تحقق دائماً من <code>intent.data</code> ولا تمرر <code>WebView</code> مفتوحاً:</strong>
+                أخطر ثغرة في معالجة الروابط العميقة هي قراءة معامل مثل <code>?url=https://...</code> من الرابط العميق وتحميله مباشرةً داخل <code>WebView</code> مزود بصلاحيات <code>JavaScriptInterface</code> أو مع تفعيل <code>AllowFileAccess</code>. تحقق دائماً من أن النطاق ينتمي لقائمة بيضاء صارمة (<code>Strict Host Whitelist</code>).
               </li>
               <li>
                 <strong>افحص ملف المانيفست آلياً قبل كل إصدار:</strong>
-                انسخ محتوى ملف `AndroidManifest.xml` الخاص بمشروعك وافحصه عبر <a href="https://connecttag.org/tools/mobile/manifest-analyzer/">أداة فاحص أمان المانيفست (Manifest Security Analyzer)</a> لاكتشاف الأنشطة المصدّرة غير المحمية وفلاتر النوايا الفضفاضة.
+                انسخ محتوى ملف <code>AndroidManifest.xml</code> الخاص بمشروعك وافحصه عبر <a href="https://connecttag.org/tools/mobile/manifest-analyzer/">أداة فاحص أمان المانيفست (Manifest Security Analyzer)</a> لاكتشاف الأنشطة المصدّرة غير المحمية وفلاتر النوايا الفضفاضة.
               </li>
             </ol>
 
-            <h2 id="section-6">6. اختبار وتوليد الروابط عبر أداة كونكت تاق وأوامر `ADB`</h2>
+            <h2 id="section-6">6. اختبار وتوليد الروابط عبر أداة كونكت تاق وأوامر <code>ADB</code></h2>
             <p>
-              لاختبار الروابط العميقة والتحقق من حالة `Domain Verification` على جهاز أندرويد الحقيقي أو المحاكي، استخدم أوامر `ADB` التالية (أو عبر <a href="https://connecttag.org/company/projects/apps/dhawd/">منظومة ذَود لإدارة أندرويد عبر ADB</a>):
+              لاختبار الروابط العميقة والتحقق من حالة <code>Domain Verification</code> على جهاز أندرويد الحقيقي أو المحاكي، استخدم أوامر <code>ADB</code> التالية (أو عبر <a href="https://connecttag.org/company/projects/apps/dhawd/">منظومة ذَود لإدارة أندرويد عبر ADB</a>):
             </p>
             <div style="background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 18px 20px; margin: 18px 0; font-family: monospace; font-size: 13.5px; direction: ltr; text-align: left; overflow-x: auto; line-height: 1.8;">
 # 1. محاكاة النقر على رابط عميق لفتح التطبيق
@@ -425,28 +424,28 @@ adb shell pm get-app-links org.connecttag.store
               <div class="faq-item">
                 <h3 class="faq-question">ما الفرق الجوهري بين Deep Link العادي وAndroid App Link الموثق؟</h3>
                 <p class="faq-answer">
-                  الرابط العميق العادي (`Deep Link`) يستخدم غالباً مخططاً مخصصاً مثل `myapp://` أو رابط ويب غير موثق، وعند النقر عليه يظهر للمستخدم مربع حوار لاختيار التطبيق (`Disambiguation Dialog`) ويمكن لأي تطبيق آخر على الهاتف انتحاله. أما `Android App Link` فيستخدم روابط `https://` فقط مع خاصية `android:autoVerify="true"` وملف `.well-known/assetlinks.json` على الخادم، فيفتح التطبيق مباشرةً دون سؤال المستخدم ويمنع أي تطبيق خبيث من اعتراض الرابط.
+                  الرابط العميق العادي (<code>Deep Link</code>) يستخدم غالباً مخططاً مخصصاً مثل <code>myapp://</code> أو رابط ويب غير موثق، وعند النقر عليه يظهر للمستخدم مربع حوار لاختيار التطبيق (<code>Disambiguation Dialog</code>) ويمكن لأي تطبيق آخر على الهاتف انتحاله. أما <code>Android App Link</code> فيستخدم روابط <code>https://</code> فقط مع خاصية <code>android:autoVerify="true"</code> وملف <code>.well-known/assetlinks.json</code> على الخادم، فيفتح التطبيق مباشرةً دون سؤال المستخدم ويمنع أي تطبيق خبيث من اعتراض الرابط.
                 </p>
               </div>
 
               <div class="faq-item">
                 <h3 class="faq-question">لماذا يفشل التحقق التلقائي من ملف assetlinks.json بعد رفع التطبيق على متجر Google Play؟</h3>
                 <p class="faq-answer">
-                  أشهر سبب هو وضع بصمة مفتاح التوقيع المحلي (`Upload Key SHA-256`) فقط داخل ملف `assetlinks.json` ونسيان إضافة بصمة مفتاح التوقيع النهائي لمتجر جوجل (`Play App Signing Key SHA-256`) الموجودة في `Google Play Console` تحت قسم `App Integrity`.
+                  أشهر سبب هو وضع بصمة مفتاح التوقيع المحلي (<code>Upload Key SHA-256</code>) فقط داخل ملف <code>assetlinks.json</code> ونسيان إضافة بصمة مفتاح التوقيع النهائي لمتجر جوجل (<code>Play App Signing Key SHA-256</code>) الموجودة في <code>Google Play Console</code> تحت قسم <code>App Integrity</code>.
                 </p>
               </div>
 
               <div class="faq-item">
                 <h3 class="faq-question">كيف أحمي تطبيقي من ثغرات اختطاف الروابط العميقة (Deep Link Hijacking)؟</h3>
                 <p class="faq-answer">
-                  عبر استبدال `Custom URI Schemes` بروابط `HTTPS` موثقة (`App Links / Universal Links`)، وعدم إرسال رموز المصادقة الحساسة أو `OAuth Tokens` في معاملات الرابط المكشوفة دون `PKCE`، والتحقق الصارم من المضيف (`Host`) والمسار (`Path`) قبل تنفيذ أي إجراء داخل النشاط المستهدف.
+                  عبر استبدال <code>Custom URI Schemes</code> بروابط <code>HTTPS</code> موثقة (<code>App Links / Universal Links</code>)، وعدم إرسال رموز المصادقة الحساسة أو <code>OAuth Tokens</code> في معاملات الرابط المكشوفة دون <code>PKCE</code>، والتحقق الصارم من المضيف (<code>Host</code>) والمسار (<code>Path</code>) قبل تنفيذ أي إجراء داخل النشاط المستهدف.
                 </p>
               </div>
 
               <div class="faq-item">
                 <h3 class="faq-question">ما هي صيغة Intent URL ومتى نستخدمها في صفحات الويب؟</h3>
                 <p class="faq-answer">
-                  صيغة `intent://` هي بنية روابط خاصة بمتصفحات أندرويد (مثل Chrome) تتيح تمرير اسم الحزمة (`package`) وإجراء الـ `Intent` مع رابط بديل تلقائي (`S.browser_fallback_url`) يوجه الزائر إلى صفحة ويب أو متجر التطبيقات إذا لم يكن التطبيق مثبتاً على هاتفه.
+                  صيغة <code>intent://</code> هي بنية روابط خاصة بمتصفحات أندرويد (مثل Chrome) تتيح تمرير اسم الحزمة (<code>package</code>) وإجراء الـ <code>Intent</code> مع رابط بديل تلقائي (<code>S.browser_fallback_url</code>) يوجه الزائر إلى صفحة ويب أو متجر التطبيقات إذا لم يكن التطبيق مثبتاً على هاتفه.
                 </p>
               </div>
             </div>
@@ -458,7 +457,7 @@ adb shell pm get-app-links org.connecttag.store
               </h3>
               <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
                 <li><a href="https://developer.android.com/training/app-links" target="_blank" rel="noopener noreferrer">Android Developers Official Documentation — Handling Android App Links &amp; Digital Asset Links Verification</a></li>
-                <li><a href="https://developer.chrome.com/docs/multidevice/android/intents" target="_blank" rel="noopener noreferrer">Chrome for Developers — Android Intents with Chrome (`intent://` Syntax &amp; Fallback URLs)</a></li>
+                <li><a href="https://developer.chrome.com/docs/multidevice/android/intents" target="_blank" rel="noopener noreferrer">Chrome for Developers — Android Intents with Chrome (<code>intent://</code> Syntax &amp; Fallback URLs)</a></li>
                 <li><a href="https://connecttag.org/tools/mobile/deep-link-generator/">أداة مولد وفاحص الروابط العميقة (Deep Link Generator) — أدوات المطورين في كونكت تاق</a></li>
               </ul>
             </div>

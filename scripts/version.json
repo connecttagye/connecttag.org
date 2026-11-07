@@ -1,6 +1,6 @@
 {
-  "version": "1.1.52",
-  "cache_version": "v106",
+  "version": "1.1.53",
+  "cache_version": "v107",
   "last_updated": "2026-11-08",
-  "description": "Publish 9 new technical guides with concise slugs, add author Mohammed Sharaf, update homepage latest 6 articles, and sync blog indexes (55 articles)"
+  "description": "Fix markdown code/bold rendering, replace raw LaTeX with styled HTML formulas, remove 404 blog-post.css link, and enhance summary-box contrast across all 55 blog articles"
 }

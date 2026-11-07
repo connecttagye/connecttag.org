@@ -142,16 +142,16 @@
 ]
 </script>
 
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
-<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
-<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+<link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+<script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
 
 <!-- PWA & Mobile Optimization Tags -->
 <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -312,12 +312,12 @@
                   </tr>
                   <tr style="background: #f8fafc;">
                     <td style="padding: 12px; font-weight: 700;">2. جمع خانات الناتج المكون من رقمين</td>
-                    <td style="padding: 12px;">إذا كان ناتج المضاعفة أكبر من <code>9</code> (مثلاً $7 \times 2 = 14$)، نجمع خانتي الناتج معاً ($1 + 4 = 5$) أو نطرح منه <code>9</code>.</td>
+                    <td style="padding: 12px;">إذا كان ناتج المضاعفة أكبر من <code>9</code> (مثلاً <code>7 × 2 = 14</code>)، نجمع خانتي الناتج معاً (<code>1 + 4 = 5</code>) أو نطرح منه <code>9</code>.</td>
                     <td style="padding: 12px;">توحيد جميع القيم إلى خانة عشرية مفردة بين 0 و9.</td>
                   </tr>
                   <tr>
                     <td style="padding: 12px; font-weight: 700;">3. حساب المجموع الكلي والتحقق من القسمة على 10</td>
-                    <td style="padding: 12px;">نجمع الأرقام الـ 14 بعد المعالجة مع الرقم الخامس عشر (<code>Check Digit</code>)؛ ليكون الرقم صحيحاً يجب أن يقبل المجموع الكلي القسمة على <code>10</code> بدون باقٍ ($\text{Sum} \bmod 10 = 0$).</td>
+                    <td style="padding: 12px;">نجمع الأرقام الـ 14 بعد المعالجة مع الرقم الخامس عشر (<code>Check Digit</code>)؛ ليكون الرقم صحيحاً يجب أن يقبل المجموع الكلي القسمة على <code>10</code> بدون باقٍ (<code>Sum mod 10 = 0</code>).</td>
                     <td style="padding: 12px;">كشف 100% من أخطاء الخانة الواحدة ومعظم الأخطاء المزدوجة.</td>
                   </tr>
                 </tbody>

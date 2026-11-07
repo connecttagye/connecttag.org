@@ -144,16 +144,16 @@
 ]
 </script>
 
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.52" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.52" crossorigin>
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.52"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.52">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.52">
-  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.52" defer></script>
-  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.52" defer></script>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.53" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.53"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.53">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.53">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.53" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.53" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -233,10 +233,10 @@
         <p>أول ما يلفت انتباه المستخدم عند فتح صفحة معلومات الجهاز في مودم <code>4G</code> هو وجود إشارة السالب (<code>-</code>) أمام أرقام التغطية مثل <code>-82 dBm</code>. يرمز مصطلح <strong><code>dBm</code></strong> إلى <em>Decibel-milliwatts</em>، وهو مقياس لوغاريتمي يقيس قدرة الموجة الكهرومغناطيسية المستقبَلة مقارنةً بمرجع قياسي ثابت مقداره <strong><code>1 ملي واط (1 mW)</code></strong> وفق المعادلة الهندسية:</p>
 
         <p style="text-align: center; direction: ltr; background: #f8fafc; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; font-weight: 700;">
-          $$P_{(\text{dBm})} = 10 \cdot \log_{10}\left(\frac{P_{(\text{mW})}}{1\text{ mW}}\right)$$
+          <code>P(dBm) = 10 × log<sub>10</sub>( P(mW) / 1 mW )</code>
         </p>
 
-        <p>بما أن الموجة اللاسلكية تخرج من برج الاتصالات بطاقة عالية ثم تضعف تدريجياً أثناء عبورها مئات الأمتار في الهواء والجدران، فإن الطاقة التي تصل فعلياً إلى هوائي المودم تكون جزءاً ضئيلاً جداً من الملي واط (مثلاً $0.00000001\text{ mW}$)، ونتيجة لوغاريتم أي كسر عشري أصغر من الواحد الصحيح تكون <strong>رقماً سالباً دائماً</strong>:</p>
+        <p>بما أن الموجة اللاسلكية تخرج من برج الاتصالات بطاقة عالية ثم تضعف تدريجياً أثناء عبورها مئات الأمتار في الهواء والجدران، فإن الطاقة التي تصل فعلياً إلى هوائي المودم تكون جزءاً ضئيلاً جداً من الملي واط (مثلاً <code>0.00000001 mW</code>)، ونتيجة لوغاريتم أي كسر عشري أصغر من الواحد الصحيح تكون <strong>رقماً سالباً دائماً</strong>:</p>
         <ul>
           <li><strong>قاعدة الـ <code>3 dB</code> والـ <code>10 dB</code>:</strong> لأن المقياس لوغاريتمي وليس خطياً، فإن تحسّن إشارة المودم بمقدار <strong><code>3 dB</code> فقط</strong> (مثلاً من <code>-85 dBm</code> إلى <code>-82 dBm</code>) يعني أن طاقة الإشارة المستقبَلة قد <strong>تضاعفت مرتين (200%)</strong>! وتحسّنها بمقدار <strong><code>10 dB</code></strong> (مثلاً من <code>-95 dBm</code> إلى <code>-85 dBm</code>) يعني أن الإشارة أصبحت <strong>أقوى بعشر مرات كاملة (10x)</strong>!</li>
         </ul>
