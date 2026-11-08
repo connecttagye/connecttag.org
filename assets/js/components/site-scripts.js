@@ -41,11 +41,12 @@ el.removeAttribute('data-aos');
 triggerAOS();
 const backToTop = document.getElementById('back-to-top');
 if (backToTop) {
+let bttVisible = false;
 const updateBtt = () => {
-if (window.scrollY > 300) {
-backToTop.classList.add('visible');
-} else {
-backToTop.classList.remove('visible');
+const shouldShow = window.scrollY > 300;
+if (shouldShow !== bttVisible) {
+bttVisible = shouldShow;
+backToTop.classList.toggle('visible', shouldShow);
 }
 };
 window.addEventListener('scroll', updateBtt, { passive: true });
@@ -61,7 +62,7 @@ const observer = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 startCounters();
-observer.unobserve(entry.target);
+observer.disconnect();
 }
 });
 }, { threshold: 0.5 });
@@ -92,6 +93,10 @@ const newTextDelay = 2000;
 let textArrayIndex = 0;
 let charIndex = textArray[0].length;
 function type() {
+if (document.hidden) {
+setTimeout(type, 1000);
+return;
+}
 if (charIndex < textArray[textArrayIndex].length) {
 typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex + 1);
 charIndex++;
@@ -101,6 +106,10 @@ setTimeout(erase, newTextDelay);
 }
 }
 function erase() {
+if (document.hidden) {
+setTimeout(erase, 1000);
+return;
+}
 if (charIndex > 0) {
 typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
 charIndex--;

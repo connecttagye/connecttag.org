@@ -103,7 +103,8 @@ orderedSlugs.forEach((slug, idx) => {
     ensureHeadSeoTags(filePath, true);
     const html = fs.readFileSync(filePath, 'utf8');
 
-    const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+    const bodyWithoutScripts = html.replace(/<head[\s\S]*?<\/head>/i, '').replace(/<script[\s\S]*?<\/script>/gi, '');
+    const h1Match = bodyWithoutScripts.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
     const titleMatch = html.match(/<meta\s+property=["']og:title["']\s+content=["']([^"']+)["']/i) || html.match(/<title>([^<]+)<\/title>/i);
     const descMatch = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
     const imgMatch = html.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
@@ -700,7 +701,8 @@ if (fs.existsSync(appsRoot)) {
         const canonicalUrl = `https://connecttag.org/company/projects/apps/${appSlug}/`;
         const ogImgMatch = html.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
         const cleanAppImg = ogImgMatch ? ogImgMatch[1].split('?')[0].trim() : 'https://connecttag.org/icon-512.png';
-        const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+        const bodyWithoutScripts = html.replace(/<head[\s\S]*?<\/head>/i, '').replace(/<script[\s\S]*?<\/script>/gi, '');
+    const h1Match = bodyWithoutScripts.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
         const appDisplayTitle = h1Match ? stripTags(h1Match[1]) : appSlug;
 
         const ldMatch = html.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/);

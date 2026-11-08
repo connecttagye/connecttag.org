@@ -84,16 +84,16 @@
     ]
 }
   </script>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.60" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.60" crossorigin>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.60">
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.59" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.60" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.60" defer></script>
 
 <style>
     :root {
@@ -556,10 +556,12 @@ function copyText(mode) {
 function downloadDoc() {
     const t = document.getElementById('policyPreview').innerHTML;
     const blob = new Blob([t], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    a.href = url;
     a.download = `privacy-doc.html`;
     a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 window.onload = () => { if(typeof AOS !== 'undefined') AOS.init({duration: 800, once: true}); liveUpdate(); };

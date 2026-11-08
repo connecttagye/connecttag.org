@@ -1,6 +1,6 @@
 {
-  "version": "1.1.59",
-  "cache_version": "v113",
+  "version": "1.1.60",
+  "sw_cache": "v114",
   "last_updated": "2026-11-08",
-  "description": "Add Phase 2 Bidirectional Topic Clusters, complete SoftwareApplication & Service JSON-LD schemas, Author E-E-A-T ItemLists, and 100% Google Discover meta coverage"
+  "description": "Configuration for ConnectTag automated cache busting, SEO synchronization, and performance/AdSense hardening."
 }

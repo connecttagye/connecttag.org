@@ -84,13 +84,13 @@
     ]
 }
   </script>
-<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
-<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.59">
-<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+<link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.60" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.60" crossorigin>
+<link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/tools-shared.css?v=1.1.60">
+<link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.60">
 
 <style>
     body { background-color: #f8fafc; font-family: 'Cairo', sans-serif; }
@@ -137,8 +137,8 @@
     .json-null { color: #cbd5e1; }
 </style>
 
-<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
-<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.59" defer></script>
+<script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.60" defer></script>
+<script src="https://connecttag.org/assets/js/components/site-toast.js?v=1.1.60" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -399,6 +399,7 @@
         a.href = url;
         a.download = 'connecttag-formatted.json';
         a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
         if(window.showToast) window.showToast("بدء التحميل...", "info");
     }
 </script>

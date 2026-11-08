@@ -28,7 +28,7 @@ class SiteHeader extends HTMLElement {
         <a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a>
         <div class="ct-header-container">
           <a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية">
-            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.59" alt="كونكت تاق - Connect Tag" width="105" height="42" />
+            <img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.60" alt="كونكت تاق - Connect Tag" width="105" height="42" />
           </a>
 
           <nav aria-label="التنقل الرئيسي">
@@ -88,8 +88,11 @@ class SiteHeader extends HTMLElement {
         if (!isOpen) hideOverlay();
       });
 
-      // Close menu on Escape key
-      document.addEventListener('keydown', (e) => {
+      // Close menu on Escape key (stored reference for clean removal in disconnectedCallback)
+      if (this._onKeyDown) {
+        document.removeEventListener('keydown', this._onKeyDown);
+      }
+      this._onKeyDown = (e) => {
         if (e.key === 'Escape' && menu.classList.contains('open')) {
           menu.classList.remove('open');
           toggleBtn.setAttribute('aria-expanded', 'false');
@@ -97,7 +100,8 @@ class SiteHeader extends HTMLElement {
           hideOverlay();
           toggleBtn.focus();
         }
-      });
+      };
+      document.addEventListener('keydown', this._onKeyDown);
 
       // Close menu on link click
       menu.querySelectorAll('a').forEach(link => {
@@ -108,6 +112,13 @@ class SiteHeader extends HTMLElement {
           hideOverlay();
         });
       });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._onKeyDown) {
+      document.removeEventListener('keydown', this._onKeyDown);
+      this._onKeyDown = null;
     }
   }
 }

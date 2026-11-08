@@ -92,7 +92,7 @@ const isCompanyPage = [
 '/company/our-company.html'
 ].includes(currentPath);
 this.innerHTML = `
-<header class="ct-header-navbar"><a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a><div class="ct-header-container"><a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية"><img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.59" alt="كونكت تاق - Connect Tag" width="105" height="42" /></a><nav aria-label="التنقل الرئيسي"><ul class="ct-nav-menu" id="ct-nav-menu"><li class="ct-nav-item ${isHome ? 'active' : ''}"><a href="${baseUrl}/" class="ct-nav-link" ${isHome ? 'aria-current="page"' : ''}>الرئيسية</a></li><li class="ct-nav-item ${isCompanyPage ? 'active' : ''}"><a href="${baseUrl}/company/" class="ct-nav-link" ${isCompanyPage ? 'aria-current="page"' : ''}>من نحن</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}"><a href="${baseUrl}/company/projects/" class="ct-nav-link" ${isActive(baseUrl + '/company/projects/') ? 'aria-current="page"' : ''}>أعمالنا</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}"><a href="${baseUrl}/company/services/" class="ct-nav-link" ${isActive(baseUrl + '/company/services/') ? 'aria-current="page"' : ''}>الخدمات</a></li><li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}"><a href="${baseUrl}/blog/" class="ct-nav-link" ${isActive(baseUrl + '/blog/') ? 'aria-current="page"' : ''}>المدونة</a></li><li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}"><a href="${baseUrl}/store/" class="ct-nav-link" ${isActive(baseUrl + '/store/') ? 'aria-current="page"' : ''}>المتجر</a></li><li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}"><a href="${baseUrl}/tools/" class="ct-nav-link" ${isActive(baseUrl + '/tools/') ? 'aria-current="page"' : ''}>الأدوات</a></li></ul></nav><button type="button" class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" aria-controls="ct-nav-menu" id="ct-menu-btn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></header>
+<header class="ct-header-navbar"><a href="#main-content" class="ct-skip-link">تخطي إلى المحتوى الرئيسي</a><div class="ct-header-container"><a href="${baseUrl}/" class="ct-logo-brand" aria-label="كونكت تاق - الصفحة الرئيسية"><img src="${baseUrl}/assets/img/connect-tag-horizontal-light.webp?v=1.1.60" alt="كونكت تاق - Connect Tag" width="105" height="42" /></a><nav aria-label="التنقل الرئيسي"><ul class="ct-nav-menu" id="ct-nav-menu"><li class="ct-nav-item ${isHome ? 'active' : ''}"><a href="${baseUrl}/" class="ct-nav-link" ${isHome ? 'aria-current="page"' : ''}>الرئيسية</a></li><li class="ct-nav-item ${isCompanyPage ? 'active' : ''}"><a href="${baseUrl}/company/" class="ct-nav-link" ${isCompanyPage ? 'aria-current="page"' : ''}>من نحن</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/projects/') ? 'active' : ''}"><a href="${baseUrl}/company/projects/" class="ct-nav-link" ${isActive(baseUrl + '/company/projects/') ? 'aria-current="page"' : ''}>أعمالنا</a></li><li class="ct-nav-item ${isActive(baseUrl + '/company/services/') ? 'active' : ''}"><a href="${baseUrl}/company/services/" class="ct-nav-link" ${isActive(baseUrl + '/company/services/') ? 'aria-current="page"' : ''}>الخدمات</a></li><li class="ct-nav-item ${isActive(baseUrl + '/blog/') ? 'active' : ''}"><a href="${baseUrl}/blog/" class="ct-nav-link" ${isActive(baseUrl + '/blog/') ? 'aria-current="page"' : ''}>المدونة</a></li><li class="ct-nav-item ${isActive(baseUrl + '/store/') ? 'active' : ''}"><a href="${baseUrl}/store/" class="ct-nav-link" ${isActive(baseUrl + '/store/') ? 'aria-current="page"' : ''}>المتجر</a></li><li class="ct-nav-item ${isActive(baseUrl + '/tools/') ? 'active' : ''}"><a href="${baseUrl}/tools/" class="ct-nav-link" ${isActive(baseUrl + '/tools/') ? 'aria-current="page"' : ''}>الأدوات</a></li></ul></nav><button type="button" class="ct-mobile-toggle" aria-label="فتح القائمة الرئيسية" aria-expanded="false" aria-controls="ct-nav-menu" id="ct-menu-btn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></header>
 `;
 if (!document.getElementById('main-content')) {
 const mainEl = document.querySelector('main') || this.nextElementSibling;
@@ -113,7 +113,10 @@ toggleBtn.setAttribute('aria-expanded', isOpen);
 toggleBtn.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
 if (!isOpen) hideOverlay();
 });
-document.addEventListener('keydown', (e) => {
+if (this._onKeyDown) {
+document.removeEventListener('keydown', this._onKeyDown);
+}
+this._onKeyDown = (e) => {
 if (e.key === 'Escape' && menu.classList.contains('open')) {
 menu.classList.remove('open');
 toggleBtn.setAttribute('aria-expanded', 'false');
@@ -121,7 +124,8 @@ toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
 hideOverlay();
 toggleBtn.focus();
 }
-});
+};
+document.addEventListener('keydown', this._onKeyDown);
 menu.querySelectorAll('a').forEach(link => {
 link.addEventListener('click', () => {
 menu.classList.remove('open');
@@ -130,6 +134,12 @@ toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
 hideOverlay();
 });
 });
+}
+}
+disconnectedCallback() {
+if (this._onKeyDown) {
+document.removeEventListener('keydown', this._onKeyDown);
+this._onKeyDown = null;
 }
 }
 }
@@ -353,6 +363,8 @@ if (!customElements.get('site-code-block')) {
 customElements.define('site-code-block', SiteCodeBlock);
 }
 (function initGoogleConsentModeDefault() {
+if (window.__CT_CONSENT_INITIALIZED__) return;
+window.__CT_CONSENT_INITIALIZED__ = true;
 window.dataLayer = window.dataLayer || [];
 function gtag() { window.dataLayer.push(arguments); }
 const savedChoice = localStorage.getItem('ct_cookie_accepted');
@@ -592,11 +604,12 @@ el.removeAttribute('data-aos');
 triggerAOS();
 const backToTop = document.getElementById('back-to-top');
 if (backToTop) {
+let bttVisible = false;
 const updateBtt = () => {
-if (window.scrollY > 300) {
-backToTop.classList.add('visible');
-} else {
-backToTop.classList.remove('visible');
+const shouldShow = window.scrollY > 300;
+if (shouldShow !== bttVisible) {
+bttVisible = shouldShow;
+backToTop.classList.toggle('visible', shouldShow);
 }
 };
 window.addEventListener('scroll', updateBtt, { passive: true });
@@ -612,7 +625,7 @@ const observer = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 startCounters();
-observer.unobserve(entry.target);
+observer.disconnect();
 }
 });
 }, { threshold: 0.5 });
@@ -643,6 +656,10 @@ const newTextDelay = 2000;
 let textArrayIndex = 0;
 let charIndex = textArray[0].length;
 function type() {
+if (document.hidden) {
+setTimeout(type, 1000);
+return;
+}
 if (charIndex < textArray[textArrayIndex].length) {
 typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex + 1);
 charIndex++;
@@ -652,6 +669,10 @@ setTimeout(erase, newTextDelay);
 }
 }
 function erase() {
+if (document.hidden) {
+setTimeout(erase, 1000);
+return;
+}
 if (charIndex > 0) {
 typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
 charIndex--;

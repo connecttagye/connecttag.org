@@ -1,6 +1,20 @@
 const ENABLE_CACHE = true;
-const CACHE_NAME = 'connecttag-cache-v113';
+const CACHE_NAME = 'connecttag-cache-undefined';
 const OFFLINE_URL = 'https://connecttag.org/offline';
+const MAX_CACHE_ENTRIES = 120;
+
+async function trimCache(cacheName, maxItems) {
+  try {
+    const cache = await caches.open(cacheName);
+    const keys = await cache.keys();
+    if (keys.length > maxItems) {
+      const excess = keys.length - maxItems;
+      for (let i = 0; i < excess; i++) {
+        await cache.delete(keys[i]);
+      }
+    }
+  } catch (e) {}
+}
 
 const ASSETS_TO_CACHE = [
   'https://connecttag.org/',
@@ -9,17 +23,17 @@ const ASSETS_TO_CACHE = [
   'https://connecttag.org/favicon.webp',
   'https://connecttag.org/icon-192.webp',
   'https://connecttag.org/icon-512.webp',
-  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59',
-  'https://connecttag.org/assets/css/styles.min.css?v=1.1.59',
-  'https://connecttag.org/assets/css/components.min.css?v=1.1.59',
-  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.59',
-  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59',
-  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59',
-  'https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59',
-  'https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59',
-  'https://connecttag.org/assets/fonts/fa-solid-900.woff2?v=1.1.59',
-  'https://connecttag.org/assets/fonts/fa-brands-400.woff2?v=1.1.59',
-  'https://connecttag.org/assets/fonts/fa-regular-400.woff2?v=1.1.59'
+  'https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.60',
+  'https://connecttag.org/assets/css/styles.min.css?v=1.1.60',
+  'https://connecttag.org/assets/css/components.min.css?v=1.1.60',
+  'https://connecttag.org/assets/css/shared-styles.css?v=1.1.60',
+  'https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.60',
+  'https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.60',
+  'https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.60',
+  'https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.60',
+  'https://connecttag.org/assets/fonts/fa-solid-900.woff2?v=1.1.60',
+  'https://connecttag.org/assets/fonts/fa-brands-400.woff2?v=1.1.60',
+  'https://connecttag.org/assets/fonts/fa-regular-400.woff2?v=1.1.60'
 ];
 
 // Install Event
@@ -76,7 +90,7 @@ self.addEventListener('fetch', event => {
         if (networkRes && networkRes.status === 200 && networkRes.type === 'basic') {
           const resClone = networkRes.clone();
           caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, resClone);
+            cache.put(event.request, resClone).then(() => trimCache(CACHE_NAME, MAX_CACHE_ENTRIES));
           });
         }
         return networkRes;
