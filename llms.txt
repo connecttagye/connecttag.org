@@ -1,6 +1,9 @@
 # Connect Tag - Technical Tools, Mobile Apps & IT Solutions Hub
 
 > Official LLM & AI Grounding Index for Connect Tag (https://connecttag.org) — providing interactive developer utilities, Yemeni telecom directories, cybersecurity tools, mobile/desktop applications, and Arabic engineering guides.
+> - **Full Comprehensive Knowledge Base (`llms-full.txt`)**: [https://connecttag.org/llms-full.txt](https://connecttag.org/llms-full.txt)
+> - **RSS 2.0 Syndication Feed (`feed.xml`)**: [https://connecttag.org/feed.xml](https://connecttag.org/feed.xml)
+> - **XML & Image Sitemap (`sitemap.xml`)**: [https://connecttag.org/sitemap.xml](https://connecttag.org/sitemap.xml)
 
 ## Core Technical Tools (https://connecttag.org/tools/)
 

@@ -50,3 +50,4 @@ User-agent: Bytespider
 Disallow: /
 
 Sitemap: https://connecttag.org/sitemap.xml
+Sitemap: https://connecttag.org/feed.xml

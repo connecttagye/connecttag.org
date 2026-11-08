@@ -8,6 +8,7 @@
   <meta name="author" content="عقيل محمد" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
+  <link rel="alternate" type="application/rss+xml" title="مدونة كونكت تاق التقنية (RSS)" href="https://connecttag.org/feed.xml">
   <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
   <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
 
@@ -18,7 +19,7 @@
   <meta property="og:url" content="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
   <meta property="og:title" content="كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في Kotlin Multiplatform؟" />
   <meta property="og:description" content="متى تستخدم expect/actual ومتى تفضل الواجهات القابلة للحقن؟ وكيف تختبر StateFlow وCoroutines في جزء من الثانية عبر DispatcherProvider وrunTest؟" />
-  <meta property="og:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" />
+  <meta property="og:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.59" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="669" />
   <meta property="og:image:alt" content="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" />
@@ -31,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="كيف تصمم جسور الأنظمة الأصلية (expect/actual) وتختبر مشاريع KMP؟" />
   <meta name="twitter:description" content="الدليل الهندسي للمفاضلة بين expect/actual والواجهات البرمجية، وحقن DispatcherProvider لاختبار تدفقات StateFlow عبر runTest وTurbine." />
-  <meta name="twitter:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" />
+  <meta name="twitter:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.59" />
   <meta name="twitter:image:alt" content="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" />
 
   <!-- Structured Data (JSON-LD) -->
@@ -43,7 +44,7 @@
     "headline": "كيف تصمم جسور الأنظمة الأصلية (expect/actual) وتكتب اختبارات وحدات سريعة في KMP؟",
     "image": {
       "@type": "ImageObject",
-      "url": "https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57",
+      "url": "https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.59",
       "width": 1200,
       "height": 669
     },
@@ -144,16 +145,16 @@
 ]
 </script>
 
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
-  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
-  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.59">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.59" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -201,7 +202,7 @@
         <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
 
         <hr style="margin-top: 0;">
-        <img src="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" fetchpriority="high" width="1200" height="669" decoding="async">
+        <img src="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.59" class="img-responsive" alt="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" fetchpriority="high" width="1200" height="669" decoding="async">
 
         <p class="lead">يكمن السحر الهندسي الحقيقي لتقنية <strong><code>Kotlin Multiplatform (KMP)</code></strong> (كما أوضحنا في <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison"><strong>مقارنة KMP مع Flutter</strong></a>) في أنها لا تعزلك داخل آلة افتراضية مغلقة، بل تمنح الكود المشترك في <code>commonMain</code> وصولاً مباشراً وأصيلاً لواجهات النظام في أندرويد (<code>JVM/Android SDK</code>) وأبل (<code>iOS Objective-C / Swift</code>) وسطح المكتب والويب. غير أن أول قرار معماري يواجه أي مهندس عند بناء مشروع <code>KMP</code> ضخم هو: <strong>متى أستخدم آلية <code>expect / actual</code> المدمجة في اللغة، ومتى أستخدم الواجهات البرمجية القابلة للحقن (<code>Dependency Injection Interfaces</code>)؟</strong></p>
 

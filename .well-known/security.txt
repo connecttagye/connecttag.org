@@ -1,0 +1,8 @@
+# Connect Tag (connecttag.org) - Security Disclosure Policy (RFC 9116)
+Contact: mailto:support@connecttag.org
+Contact: https://connecttag.org/contact
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: ar, en
+Canonical: https://connecttag.org/.well-known/security.txt
+Policy: https://connecttag.org/privacy-policy
+Hiring: https://connecttag.org/company/our-company

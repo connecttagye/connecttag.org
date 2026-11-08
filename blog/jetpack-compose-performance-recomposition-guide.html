@@ -8,6 +8,7 @@
   <meta name="author" content="علي الرحبي" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
+  <link rel="alternate" type="application/rss+xml" title="مدونة كونكت تاق التقنية (RSS)" href="https://connecttag.org/feed.xml">
   <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
   <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
 
@@ -18,7 +19,7 @@
   <meta property="og:url" content="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
   <meta property="og:title" content="لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (Stability)، وBaseline Profiles" />
   <meta property="og:description" content="كيف يقرر مترجم Compose تخطي الدوال (Skippable)، ولماذا تسبب List<T> إعادة رسم غير ضرورية، ومتى تستخدم derivedStateOf مقابل remember؟" />
-  <meta property="og:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" />
+  <meta property="og:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.59" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="669" />
   <meta property="og:image:alt" content="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" />
@@ -31,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ دليل Recomposition وStability" />
   <meta name="twitter:description" content="المرجع الهندسي لتحسين سرعة Jetpack Compose إلى 120 إطاراً في الثانية: @Immutable، derivedStateOf، تأجيل قراءة الحالة، وBaseline Profiles." />
-  <meta name="twitter:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" />
+  <meta name="twitter:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.59" />
   <meta name="twitter:image:alt" content="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" />
 
   <!-- Structured Data (JSON-LD) -->
@@ -43,7 +44,7 @@
     "headline": "لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ دليل Recomposition وStability",
     "image": {
       "@type": "ImageObject",
-      "url": "https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57",
+      "url": "https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.59",
       "width": 1200,
       "height": 669
     },
@@ -144,16 +145,16 @@
 ]
 </script>
 
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
-  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
-  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.59">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.59" defer></script>
 
   <!-- PWA & Mobile Optimization Tags -->
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
@@ -201,7 +202,7 @@
         <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
 
         <hr style="margin-top: 0;">
-        <img src="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" fetchpriority="high" width="1200" height="669" decoding="async">
+        <img src="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.59" class="img-responsive" alt="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" fetchpriority="high" width="1200" height="669" decoding="async">
 
         <p class="lead">على شاشات الهواتف الحديثة التي تعمل بمعدل تحديث <strong><code>120Hz</code></strong>، لا يملك محرك الرسم سوى <strong><code>8.33 ملي ثانية فقط</code></strong> لإنجاز حسابات وإظهار كل إطار بصري (<code>Frame</code>). وعندما يتجاوز تنفيذ إحدى دوال <code>@Composable</code> هذا الهامش الزمني الضيق بسبب إعادة تركيب جماعية غير ضرورية (<code>Unnecessary Recomposition</code>)، يشعر المستخدم فوراً بتقطيع وتلكؤ أثناء تمرير القوائم الطويلة (<code>Jank / Dropped Frames</code>).</p>
 

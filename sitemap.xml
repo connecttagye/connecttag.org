@@ -1,1579 +1,2634 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://connecttag.org/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/about/connect-tag-team.webp</image:loc>
+      <image:title>كونكت تاق - Connect Tag | حلول برمجية، أمن سيبراني، وشبكات الاتصالات</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/company-portal-cover.webp</image:loc>
+      <image:title>شركة كونكت تاق | الخدمات والأعمال</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/our-company</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/about/connect-tag-team.webp</image:loc>
+      <image:title>الشركة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/about</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/about-site-cover.webp</image:loc>
+      <image:title>حول الموقع - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/it-services-cover.webp</image:loc>
+      <image:title>خدماتنا وحلولنا التقنية المتكاملة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/web-app-development</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/web-app-dev-cover.webp</image:loc>
+      <image:title>تطوير المواقع وتطبيقات الهواتف - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/cybersecurity-solutions</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/cybersecurity-cover.webp</image:loc>
+      <image:title>حلول الأمن السيبراني وحماية النطاقات والتطبيقات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/telecom-intelligence</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-intelligence-cover.webp</image:loc>
+      <image:title>بيانات الاتصالات ومسح خلايا الأبراج وشبكات الواي فاي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/creative-design</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/creative-design-cover.webp</image:loc>
+      <image:title>التصميم الإبداعي وهندسة واجهات المستخدم (UX/UI) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/digital-marketing</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/digital-marketing-cover.webp</image:loc>
+      <image:title>التسويق الرقمي واستراتيجيات النمو وتحسين الـ SEO - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/hosting-services</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/cloud-hosting-cover.webp</image:loc>
+      <image:title>الاستضافة السحابية وتسجيل النطاقات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/crypto-exchange</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/crypto-exchange-cover.webp</image:loc>
+      <image:title>بيع وشراء العملات الرقمية والمشفرة (USDT / Crypto) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/local-seo</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/seo-marketing-cover.webp</image:loc>
+      <image:title>توثيق خرائط Google والسيو المحلي (Local SEO) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/store/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/store-main-hub-cover.webp</image:loc>
+      <image:title>متجر كونكت تاق - الأجهزة الذكية والأصول الرقمية</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/store/products/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/store-products-cover.webp</image:loc>
+      <image:title>الأجهزة والمنتجات المادية والأنظمة الذكية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/store/digital-assets/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/digital-assets-store-cover.webp</image:loc>
+      <image:title>التراخيص البرمجية والاشتراكات وأنظمة التحقيق الجنائي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/store/databases/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/databases-cover.webp</image:loc>
+      <image:title>بنك قواعد البيانات والجداول المرجعية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/company-projects-hub-cover.webp</image:loc>
+      <image:title>أعمالنا ومشاريعنا - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/projects-apps-cover.webp</image:loc>
+      <image:title>التطبيقات والبرمجيات — كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-net/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-net/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سور نت — جدار حماية محلي ومراقبة اتصال التطبيقات | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tayf-spectrum/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tayf-spectrum/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق طيف — مسح وتحليل الشبكات الخلوية والواي فاي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hazm/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hazm/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق حزم — ادارة وتحليل التطبيقات وحارس الخصوصية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/network-tool/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/network-tool/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق مِقياس — المنظومة الاحترافية لفحص وتحليل وإدارة الشبكات | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/razm/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/razm/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق رَزْم — استعراض وإدارة وضغط ملفات الأرشيف | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/athar/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/athar/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق أثر — حارس الخصوصية الرقمية وإبادة الملفات وتطهير الذاكرة نهائياً | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق رفيق الدرب — رفيق السفر والرحلات البرية ومسارات الطرق السريعة بدون إنترنت | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/naqsh/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/naqsh/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق نقش — منصة إدارة وتصفح وتصدير مكتبات الأيقونات والرسومات المتجهة SVG | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sima/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sima/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سِيما — المنظومة المتقدمة لتركيب ورسم ملامح الوجوه والبورتريه التقريبي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/munqidh/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/munqidh/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق مُنقِذ — محاكاة مكالمات ورسائل الهروب الذكية من المواقف المحرجة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tarteel/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tarteel/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق ترتيل — القرآن الكريم كاملاً بالرسم العثماني وتلاوات متزامنة وبحث ذكي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/dhawd/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/dhawd/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق ذَود — المنظومة المستقلة لإدارة وصيانة أجهزة أندرويد عبر ADB | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sabr/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sabr/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سَبْر — استوديو الفحص والتدقيق الأمني المتقدم لحزم أندرويد APK | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/wejhah/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/wejhah/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق وِجهة — دليلك في اليمن | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/asmaa/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/asmaa/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق أسماء — دليل الهواتف وكاشف الأرقام الذكي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rawnaq/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rawnaq/assets/img/rawnaq-store-icon-512x512.png</image:loc>
+      <image:title>تطبيق رَونق — استوديو التصميم والخط العربي الاحترافي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/blog-note/</loc>
     <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/blog-note/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق مدونة — تدوين الملاحظات والمهام بتشفير محلي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/kabeer/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/kabeer/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق خبير — فحص وتشخيص عتاد الهاتف ومراقبة النظام | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/satoor/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/satoor/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سطور — خواطر كلمات مسجات وحالات منوعة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-4g/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-4g/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق يمن فورجي — استعلام الرصيد وإدارة المودم والباقات | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-view/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-view/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق يمن فيو — دليل خدمات وباقات الاتصالات اليمنية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/developer-tool/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/developer-tool/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق مطور — الحقيبة الشاملة لأدوات المبرمجين واختبار الأكواد | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tasbih/</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tasbih/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق تسبيح — المسبحة الإلكترونية الذكية ومتتبع الورد وسلاسل الالتزام | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/age-tool/</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/age-tool/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق عُمر — حاسبة العمر والمناسبات الاحترافية ومحطة الفضاء | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/blog-authors-cover.webp</image:loc>
+      <image:title>كُتّاب مدونة كونكت تاق - نخبة من الخبراء التقنيين</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/aqeldev</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/aqeldev.webp</image:loc>
+      <image:title>عقيل محمد (aqeldev) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/basma</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/basma.webp</image:loc>
+      <image:title>بسمة شرف - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/ali</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/ali.webp</image:loc>
+      <image:title>علي الرحبي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/official</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/connect-tag-official-logo.webp</image:loc>
+      <image:title>فريق الموقع - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/jood</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/jood.webp</image:loc>
+      <image:title>جود محمد - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/mariam</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/mariam.webp</image:loc>
+      <image:title>مريم اليمني - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/yousef</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/yousef.webp</image:loc>
+      <image:title>يوسف محمد - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/reem</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/reem.webp</image:loc>
+      <image:title>ريم محمد - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/mohammed</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/mohammed.webp</image:loc>
+      <image:title>محمد شرف - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/mohammed-hameed</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/mohammed-hameed.webp</image:loc>
+      <image:title>محمد حميد - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/yousef-alrahbi</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/yousef-alrahbi.webp</image:loc>
+      <image:title>يوسف الرحبي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/authors/kayan</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/author/kayan.webp</image:loc>
+      <image:title>كيان الرحبي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/blog-tech-cover.webp</image:loc>
+      <image:title>المدونة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp</image:loc>
+      <image:title>كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في Kotlin Multiplatform؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp</image:loc>
+      <image:title>لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (Stability)، وBaseline Profiles</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp</image:loc>
+      <image:title>كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors, والبطارية)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/wireguard-vs-openvpn-ipsec-security-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/wireguard-vs-openvpn-ipsec-security-guide.webp</image:loc>
+      <image:title>لماذا يتفوق بروتوكول WireGuard على OpenVPN وIPsec في السرعة والأمان؟ الدليل الهندسي لأنفاق الاتصال المشفرة (VPN)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-usb-otg-serial-communication-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp</image:loc>
+      <image:title>كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/kmp-mvi-architecture-state-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp</image:loc>
+      <image:title>الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/pwa-service-worker-offline-web-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp</image:loc>
+      <image:title>كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/technical-seo-audit-guide</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/technical-seo-audit-guide.webp</image:loc>
+      <image:title>الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج البحث؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/kmp-data-management-room-datastore</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/kmp-data-encryption.webp</image:loc>
+      <image:title>إدارة البيانات في KMP: التكامل الهندسي بين Room و DataStore</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/kmp-vs-flutter-comparison</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/kmp-vs-flutter.webp</image:loc>
+      <image:title>KMP vs Flutter: المقارنة التقنية الشاملة لتطوير التطبيقات المتعددة المنصات</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/jetpack-compose-guide</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/jetpack-compose.webp</image:loc>
+      <image:title>الدليل الشامل لـ Jetpack Compose: مستقبل تطوير تطبيقات الأندرويد</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-app-security-reverse-engineering</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-reverse-engineering.webp</image:loc>
+      <image:title>حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/api-security-guide</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/api-security.webp</image:loc>
+      <image:title>حماية واجهات برمجة التطبيقات (API Security): الدليل التقني الشامل</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/advanced-database-security-architecture</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/database-architecture.webp</image:loc>
+      <image:title>المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/iis-isapi-deployment-guide</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/iis-isapi-guide.webp</image:loc>
+      <image:title>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/iis-hardening-guide</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/iis-hardening-guide.webp</image:loc>
+      <image:title>دليل تأمين وتحصين خادم Microsoft IIS (IIS Hardening)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/cloudflare-pages-hosting-guide</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/cloudflare-page-hosting.webp</image:loc>
+      <image:title>استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/cloudflare-waf-security-guide</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/waf-cloudflare.webp</image:loc>
+      <image:title>وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/cloudflare-settings-optimization-guide</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/cloudflare-settings-optimization.webp</image:loc>
+      <image:title>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/yemen-telecom-ministry-guide</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/telecom-yemen.webp</image:loc>
+      <image:title>وزارة الاتصالات وتكنولوجيا المعلومات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/website-security-simple-steps</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/security-steps.webp</image:loc>
+      <image:title>الدليل الشامل لأمن المواقع: 5 خطوات عملية لحماية مشروعك من الاختراق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/google-business-profile-guide</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/google-business-guide.webp</image:loc>
+      <image:title>كيفية إضافة نشاطك التجاري على خرائط جوجل وتصدر البحث المحلي</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/yemen-internet-comparison.webp</image:loc>
+      <image:title>يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لاختيار الإنترنت الأنسب لشركتك في اليمن</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/how-to-check-yemen-4g-balance</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/yemen-4g.webp</image:loc>
+      <image:title>كيفية الاستعلام عن رصيد يمن فورجي Yemen 4G: دليل شامل ومحدث</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/choosing-web-hosting</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/how-chose-yout-hosting.webp</image:loc>
+      <image:title>كيفية اختيار أفضل استضافة ويب لموقعك الإلكتروني: الدليل الكامل</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/digital-marketing-importance</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/marketing-in-yout-company.webp</image:loc>
+      <image:title>أهمية التسويق الرقمي للشركات الناشئة في العصر الحديث</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/why-your-business-needs-app</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/why-you-need-apps.webp</image:loc>
+      <image:title>لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف ذكي؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/support/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/customer-support-cover.webp</image:loc>
+      <image:title>الدعم والطلبات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/support/faq</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/faq-support-cover.webp</image:loc>
+      <image:title>الأسئلة الشائعة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/support/order</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/order-service-cover.webp</image:loc>
+      <image:title>طلب خدمة أو منتج - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/contact</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/contact-us-cover.webp</image:loc>
+      <image:title>تواصل معنا - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/privacy-policy</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/privacy-policy-cover.webp</image:loc>
+      <image:title>سياسة الخصوصية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/terms-of-use</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/terms-of-use-cover.webp</image:loc>
+      <image:title>اتفاقية الاستخدام - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/all-tools-hub-cover.webp</image:loc>
+      <image:title>الأدوات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-tools-cover.webp</image:loc>
+      <image:title>ادوات اتصالات وانترنت - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/speed-test/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/speed-test-cover.webp</image:loc>
+      <image:title>فحص سرعة الإنترنت - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/network-lookup/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/network-lookup-cover.webp</image:loc>
+      <image:title>مستكشف مشغلي الشبكات العالمي (MCC/MNC) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/emergency-numbers/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/emergency-numbers-cover.webp</image:loc>
+      <image:title>دليل أرقام الطوارئ والخدمات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/modems/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/modems-catalog-cover.webp</image:loc>
+      <image:title>دليل مودمات يمن فورجي 4G - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/imei-checker/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/imei-checker-cover.webp</image:loc>
+      <image:title>فحص IMEI و TAC للأجهزة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/company/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-companies-cover.webp</image:loc>
+      <image:title>دليل شركات الاتصالات اليمنية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/web-tools-hub-cover.webp</image:loc>
+      <image:title>أدوات مطوري الويب والبرمجيات المجانية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/json-formatter/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/json-formatter-cover.webp</image:loc>
+      <image:title>منسق ومحقق ملفات JSON - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/jwt-debugger/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/jwt-debugger-cover.webp</image:loc>
+      <image:title>منشئ وفاحص JWT - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/regex-tester/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/regex-tester-cover.webp</image:loc>
+      <image:title>مختبر التعبيرات النمطية (RegEx Tester) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/site-checker/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/site-checker-cover.webp</image:loc>
+      <image:title>منصة تحليل المواقع الاحترافية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/site-checker/security-checker</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/security-checker-cover.webp</image:loc>
+      <image:title>أداة فحص أمان المواقع والموثوقية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/web/site-checker/seo-checker</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/seo-checker-cover.webp</image:loc>
+      <image:title>أداة فحص الـ SEO والكلمات الدلالية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/mobile/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/mobile-tools-hub-cover.webp</image:loc>
+      <image:title>أدوات مطوري تطبيقات الأندرويد والجوال - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/mobile/android-permissions/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/android-permissions-cover.webp</image:loc>
+      <image:title>مولد صلاحيات الأندرويد - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/mobile/deep-link-generator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/deep-link-generator-cover.webp</image:loc>
+      <image:title>مولد الروابط العميقة (Deep Links) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/mobile/manifest-analyzer/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/manifest-analyzer-cover.webp</image:loc>
+      <image:title>فاحص ملف AndroidManifest - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/mobile/screenshot-generator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/screenshot-generator-cover.webp</image:loc>
+      <image:title>مولد لقطات المتاجر الاحترافي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/security-tools-hub-cover.webp</image:loc>
+      <image:title>أدوات الأمن والخصوصية وحماية البيانات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/crypto-toolbox/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/crypto-toolbox-cover.webp</image:loc>
+      <image:title>أدوات التشفير والترميز الشاملة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/exif-remover/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/exif-remover-cover.webp</image:loc>
+      <image:title>منظف بصمة الصور والخصوصية (EXIF Remover) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/password-generator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/password-generator-cover.webp</image:loc>
+      <image:title>مولد كلمات المرور الآمنة (Secure Password) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/password-breach-checker/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/password-breach-checker-cover.webp</image:loc>
+      <image:title>فاحص تسرب كلمات المرور محلياً (Password Breach Checker) - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/security/privacy-generator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/privacy-generator-cover.webp</image:loc>
+      <image:title>مولد الوثائق القانونية الاحترافي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/finance/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/finance-tools-hub-cover.webp</image:loc>
+      <image:title>أسعار الصرف والخدمات المالية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/finance/yemen-exchange/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/finance-exchange-cover.webp</image:loc>
+      <image:title>حاسبة ومتوسط أسعار الصرف في اليمن - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/finance/zakat-calculator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/zakat-calculator-cover.webp</image:loc>
+      <image:title>حاسبة الزكاة الشاملة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/energy/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/energy-tools-hub-cover.webp</image:loc>
+      <image:title>حاسبة الطاقة الشمسية والكهرباء - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/energy/solar-calculator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/solar-energy-cover.webp</image:loc>
+      <image:title>حاسبة استهلاك الطاقة الشاملة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/energy/unit-converter/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/unit-converter-cover.webp</image:loc>
+      <image:title>محول الوحدات الكهربائية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/design/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/design-tools-hub-cover.webp</image:loc>
+      <image:title>أدوات التصميم وتحويل الصور والوسائط - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/design/image-converter/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/image-converter-cover.webp</image:loc>
+      <image:title>محول الصور المتقدم - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/design/color-extractor/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/color-extractor-cover.webp</image:loc>
+      <image:title>مستخرج الألوان من الصور - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/misc/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/misc-tools-hub-cover.webp</image:loc>
+      <image:title>أدوات متنوعة وحاسبات ذكية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/misc/age-calculator/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/age-calculator-cover.webp</image:loc>
+      <image:title>حاسبة العمر وتحويل التاريخ - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/misc/word-counter/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/word-counter-cover.webp</image:loc>
+      <image:title>عداد الكلمات والحروف - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/services/api-solutions</loc>
     <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/api-solutions-cover.webp</image:loc>
+      <image:title>خدمات الـ API والبيانات المتقدمة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/commerce/payment-methods</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/payment-methods-cover.webp</image:loc>
+      <image:title>طرق الدفع المقبولة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/advertising/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/advertising-hub-cover.webp</image:loc>
+      <image:title>بوابة الإعلانات والتسويق الرقمي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/advertising/our-network</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/our-ad-network-cover.webp</image:loc>
+      <image:title>شبكة إعلانات كونكت تاق المباشرة - أعلن معنا</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/advertising/third-party-networks</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/third-party-ad-networks-cover.webp</image:loc>
+      <image:title>شبكات الإعلانات الخارجية وإدارة الحملات الممولة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/age-tool/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/age-tool/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق عُمر (AgeTool) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/age-tool/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/age-tool/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق عُمر (AgeTool) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/asmaa/delete-data</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/asmaa/assets/img/icon-512.png</image:loc>
+      <image:title>طلب حذف البيانات وحق النسيان - تطبيق أسماء | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/asmaa/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/asmaa/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق أسماء | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/asmaa/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/asmaa/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق أسماء (Asmaa) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/athar/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/athar/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق أثر | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/athar/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/athar/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق أثر | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/blog-note/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/blog-note/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق مدونة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/blog-note/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/blog-note/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق مدونة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/developer-tool/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/developer-tool/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق مطور (Developer) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/developer-tool/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/developer-tool/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق مطور (Developer) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/dhawd/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/dhawd/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق ذَود | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/dhawd/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/dhawd/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق ذَود | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hazm/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hazm/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق حزم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hazm/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hazm/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق حزم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/kabeer/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/kabeer/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق خبير (Expert) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/kabeer/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/kabeer/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق خبير (Expert) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/munqidh/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/munqidh/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق مُنقِذ | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/munqidh/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/munqidh/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق مُنقِذ | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/naqsh/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/naqsh/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق نقش | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/naqsh/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/naqsh/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق نقش | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/network-tool/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/network-tool/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق مِقياس | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/network-tool/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/network-tool/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق مِقياس | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق رفيق الدرب | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rafeeq-al-darb/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق رفيق الدرب | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rawnaq/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rawnaq/assets/img/rawnaq-store-icon-512x512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق رَونق | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/rawnaq/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/rawnaq/assets/img/rawnaq-store-icon-512x512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق رَونق (Rawnaq) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/razm/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/razm/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق رَزْم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/razm/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/razm/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق رَزْم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sabr/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sabr/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سَبْر | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sabr/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sabr/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سَبْر | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/satoor/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/satoor/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سُطور (Lines) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/satoor/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/satoor/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سُطور (Lines) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sima/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sima/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سِيما | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/sima/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/sima/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سِيما | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-net/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-net/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سور نت (Soor Net) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-net/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-net/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سور نت (Soor Net) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tarteel/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tarteel/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق ترتيل | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tarteel/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tarteel/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق ترتيل | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tasbih/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tasbih/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق تسبيح (Tasbih) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tasbih/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tasbih/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق تسبيح (Tasbih) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tayf-spectrum/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tayf-spectrum/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق طيف | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/tayf-spectrum/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/tayf-spectrum/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق طيف (Tayf Spectrum) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/wejhah/account-deletion</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/wejhah/assets/img/icon-512.png</image:loc>
+      <image:title>حذف الحساب والبيانات - تطبيق وِجهة</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/wejhah/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/wejhah/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق وِجهة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/wejhah/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/wejhah/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق وِجهة (Wejhah) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-4g/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-4g/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق يمن فورجي | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-4g/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-4g/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق يمن فورجي (Yemen4g) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-view/privacy-policy</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-view/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق يمن فيو | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/yemen-view/terms-of-use</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/yemen-view/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق يمن فيو | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/bots/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/ai-bots-cover.webp</image:loc>
+      <image:title>بوتات تليجرام الذكية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/codes/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/projects-codes-cover.webp</image:loc>
+      <image:title>الأكواد والقوالب المفتوحة - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/design/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/projects-design-cover.webp</image:loc>
+      <image:title>أعمال التصميم الجرافيكي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/libraries/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/projects-libraries-cover.webp</image:loc>
+      <image:title>المكاتب البرمجية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/sites/</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/projects-sites-cover.webp</image:loc>
+      <image:title>مشاريع الويب والمتاجر الإلكترونية - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/best-yemen-4g-modem-buying-guide</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/best-yemen-4g-modem-guide.webp</image:loc>
+      <image:title>كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء والمقارنة الشامل</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/yemen-4g-modem-settings-security-guide</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp</image:loc>
+      <image:title>ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر، إخفاء الشبكة، وحماية الرصيد من السرقة</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/yemen-telecom-codes-guide.webp</image:loc>
+      <image:title>دليل أكواد وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو YOU، سبأفون، واي)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-manifest-security-exported-components-guide</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-manifest-security-guide.webp</image:loc>
+      <image:title>ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp</image:loc>
+      <image:title>مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/e-wallet-impersonation-scam-guide.webp</image:loc>
+      <image:title>احذر فخ «تفعيل القرض والسلفة»: الدليل الأمني لكشف انتحال المحافظ الإلكترونية وخدعة بطاقات الهدايا وأكواد الشراء</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/caller-id-privacy-risks-guide.webp</image:loc>
+      <image:title>كيف تعرف كواشف الأرقام اسمك حتى لو لم تثبّتها؟ الدليل الأمني لعمل تطبيقات وبوتات كشف الهوية وحماية خصوصيتك</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/company/details</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-company-details-cover.webp</image:loc>
+      <image:title>تفاصيل الشركة - دليل الاتصالات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/company/packages</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-packages-cover.webp</image:loc>
+      <image:title>باقات وعروض الاتصالات والإنترنت - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/company/services</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/telecom-services-ussd-cover.webp</image:loc>
+      <image:title>أكواد ومواقع الخدمات - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/tools/telecom/modems/details</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/assets/img/covers/modem-details-cover.webp</image:loc>
+      <image:title>تفاصيل المودم - دليل يمن فورجي - كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-defender/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-defender/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سياج — درع الحماية الفورية وفحص التطبيقات والملفات محلياً | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-defender/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-defender/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سياج | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-defender/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-defender/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سياج | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/amanah/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/amanah/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق أمانة — المنصة المجتمعية للمفقودات والمعثورات في اليمن | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/amanah/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/amanah/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق أمانة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/amanah/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/amanah/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق أمانة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hawiyyah/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hawiyyah/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق هوية — دليل المعالم السياحية والأثرية والتراثية في اليمن | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hawiyyah/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hawiyyah/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق هوية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/hawiyyah/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/hawiyyah/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق هوية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-mdm/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-mdm/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق زِمام — منظومة إدارة وحوكمة الأجهزة المؤسسية ووضع الكشك المقيد | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-mdm/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-mdm/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق زِمام | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-mdm/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-mdm/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق زِمام | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-usb/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-usb/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق سور USB — منظومة حماية وإدارة منافذ وسائط التخزين لنظام ويندوز | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-usb/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-usb/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق سور USB | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/soor-usb/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/soor-usb/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق سور USB | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/flexible-records/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/flexible-records/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق رَقيم — استوديو الجداول والسجلات المرنة المخصصة | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/flexible-records/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/flexible-records/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق رَقيم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/flexible-records/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/flexible-records/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق رَقيم | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/mizan-pro/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/mizan-pro/assets/img/icon-512.png</image:loc>
+      <image:title>نظام ميزان برو — المنظومة المحاسبية وإدارة المخزون والفوترة والموازنات | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/mizan-pro/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/mizan-pro/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - نظام ميزان برو | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/mizan-pro/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/mizan-pro/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - نظام ميزان برو | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/baseera/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/baseera/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق بصيرة — الرؤية الذكية والمسح الضوئي واستخراج النصوص (OCR) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/baseera/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/baseera/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق بصيرة (Baseera) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/baseera/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/baseera/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق بصيرة (Baseera) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/taaleem-pro/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/taaleem-pro/assets/img/icon-512.png</image:loc>
+      <image:title>نظام تعليم برو — إدارة المنشآت التعليمية والتعلم الإلكتروني والشؤون الأكاديمية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/taaleem-pro/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/taaleem-pro/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - نظام تعليم برو (Taaleem Pro) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/taaleem-pro/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/taaleem-pro/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - نظام تعليم برو (Taaleem Pro) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/forensic-kmp/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/forensic-kmp/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق تَقصّي — استوديو أرشفة وتحليل وفحص سجلات المحادثات محلياً | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/forensic-kmp/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/forensic-kmp/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق تَقصّي (Taqassi) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/forensic-kmp/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/forensic-kmp/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق تَقصّي (Taqassi) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/touch-flow/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/touch-flow/assets/img/icon-512.png</image:loc>
+      <image:title>تطبيق نَسَق (TouchFlow) — استوديو أتمتة اللمس وبناء سيناريوهات الماكرو الذكية | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/touch-flow/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/touch-flow/assets/img/icon-512.png</image:loc>
+      <image:title>سياسة الخصوصية - تطبيق نَسَق (TouchFlow) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/company/projects/apps/touch-flow/terms-of-use</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/company/projects/apps/touch-flow/assets/img/icon-512.png</image:loc>
+      <image:title>شروط الاستخدام - تطبيق نَسَق (TouchFlow) | كونكت تاق</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp</image:loc>
+      <image:title>هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/phishing-links-fake-aid-scam-guide.webp</image:loc>
+      <image:title>احذر روابط «تسجيل المساعدات والوظائف والربح السريع»: كيف تكشف مواقع التصيّد (Phishing) ومنصات الاستثمار الوهمية التي تسرق هويتك وأموالك؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/whatsapp-telegram-hijacking-security-guide.webp</image:loc>
+      <image:title>كيف تُخترق حسابات واتساب وتيليجرام دون علمك؟ الدليل الأمني لكشف خدعة «كود التفعيل بالخطأ»، التجسس عبر الأجهزة المرتبطة (Linked Devices)، وخطر النسخ المعدّلة</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/public-wifi-evil-twin-security-guide.webp</image:loc>
+      <image:title>مخاطر الاتصال بشبكات الواي فاي العامة وشبكات الكروت المفتوحة: كيف تعمل هجمات «التوأم الشرير» واعتراض البيانات وكيف تتصفح بأمان؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/yemen-4g-app-balance-modem-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp</image:loc>
+      <image:title>شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp</image:loc>
+      <image:title>دليل Compose Multiplatform الشامل: كيف تبني واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/modded-whatsapp-apk-malware-analysis-guide.webp</image:loc>
+      <image:title>الحقيقة التقنية وراء «واتساب الذهبي والأزرق والبلس»: ماذا يحدث داخل ملفات الـ APK المعدّلة وكيف تسرق صورك وجلساتك؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/migrate-modded-whatsapp-official-ban-fix-guide.webp</image:loc>
+      <image:title>رسالة «تحتاج إلى تطبيق واتساب الرسمي لاستخدام هذا الحساب»: الدليل الكامل لفك حظر الرقم ونقل محادثاتك من الواتساب المعدّل إلى الرسمي بأمان</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/google-play-integrity-api-android-security-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/google-play-integrity-api-security-guide.webp</image:loc>
+      <image:title>دليل Google Play Integrity API الشامل: كيف تكتشف تطبيقات البنوك وواتساب الهواتف المعدّلة والـ Root؟ وكيف تحمي تطبيقك من التلاعب؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/visual-identity-rebranding-strategy-guide.webp</image:loc>
+      <image:title>7 أخطاء قاتلة في الهوية البصرية تضعف مبيعاتك: متى وكيف تنفذ إعادة تصميم ناجحة لعلامتك التجارية (Rebranding)؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/professional-logo-design-principles-guide.webp</image:loc>
+      <image:title>دليل تصميم الشعارات الاحترافية (Logo Design): أنواع الشعارات الـ 7، معايير التوازن البصري، وصيغ الملفات التي يجب استلامها من المصمم</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp</image:loc>
+      <image:title>لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك وكيف تضبط ملف app-ads.txt؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/google-adsense-approval-low-value-content-guide.webp</image:loc>
+      <image:title>شروط قبول موقعك في Google AdSense من المرة الأولى: الحل الجذري لرسالة الرفض «محتوى ذو قيمة منخفضة» (Low Value Content)</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp</image:loc>
+      <image:title>حل مشكلة «تقييد عرض الإعلانات» في Google AdSense: كيف تحمي حسابك من النقرات غير الصالحة وتضبط ملف ads.txt ورسالة موافقة GDPR؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-firewall-soor-net-guide.webp</image:loc>
+      <image:title>الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد استهلاك البيانات عبر تطبيق سور نت</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/imei-number-check-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/what-is-imei-number-check-guide.webp</image:loc>
+      <image:title>ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود *#06# وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/ip-cctv-security-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp</image:loc>
+      <image:title>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/image-optimization-webp-avif-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp</image:loc>
+      <image:title>دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/seo-article-writing-guide</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/how-to-write-seo-articles-tutorials-guide.webp</image:loc>
+      <image:title>)، وفي المقدمة، وفي عنوان فرعي أو اثنين ()، مع استخدام المرادفات والمصطلحات المرتبطة دلالياً (Semantic Entities) في سياق الشرح الطبيعي بحيث لا تتجاوز الكثافة 1% إلى 1.5%.&quot; } } ] } ] window.dataLayer = window.dataLayer || []; function gtag() { window.dataLayer.push(arguments); } if (!window.__CT_CONSENT_INITIALIZED__) { window.__CT_CONSENT_INITIALIZED__ = true; var savedChoice = null; try { savedChoice = localStorage.getItem(&apos;ct_cookie_accepted&apos;); } catch (e) {} var granted = savedChoice === &apos;true&apos; ? &apos;granted&apos; : &apos;denied&apos;; gtag(&apos;consent&apos;, &apos;default&apos;, { &apos;ad_storage&apos;: granted, &apos;ad_user_data&apos;: granted, &apos;ad_personalization&apos;: granted, &apos;analytics_storage&apos;: granted, &apos;wait_for_update&apos;: 500 }); } دليل كتابة المقالات والشروحات التقنية المتوافقة مع السيو (SEO): كيف تتصدر نتائج البحث وتلتزم بمعايير E-E-A-T وسياسات مشرفي المواقع؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/ui-color-palette-wcag-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp</image:loc>
+      <image:title>دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: كيف تستخرج لوحة ألوان متناسقة وتضمن وضوح القراءة وفق معيار WCAG؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/jwt-security-debugging-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp</image:loc>
+      <image:title>تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وكيف تفك ترميزها وتفحصها محلياً بأمان؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp</image:loc>
+      <image:title>ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج (4G/LTE) والواي فاي واختيار أفضل مكان للمودم</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/small-business-accounting-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/small-business-accounting-inventory-debt-guide.webp</image:loc>
+      <image:title>كيف تدير حسابات متجرك، الديون الآجلة، وجرد المخزون بدون أخطاء؟ الفرق العملي بين القيد المفرد والقيد المزدوج واختيار النظام المحاسبي المناسب</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/zakat-calculation-accounting-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/zakat-money-trade-gold-accounting-guide.webp</image:loc>
+      <image:title>دليل حساب زكاة المال وعروض التجارة والذهب: القواعد المحاسبية لتقييم البضاعة والديون وفرق العملات وكيف تحسبها بدقة؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-deep-links-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-deep-links-guide.webp</image:loc>
+      <image:title>الدليل العملي للروابط العميقة (Deep Links وAndroid App Links): كيف تجعل روابط موقعك تفتح شاشة محددة داخل تطبيقك مباشرةً بأمان؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-mdm-kiosk-mode-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-mdm-kiosk-mode-guide.webp</image:loc>
+      <image:title>كيف تقفل الهواتف والأجهزة اللوحية على تطبيق عمل واحد فقط؟ دليل أنظمة إدارة الأجهزة (MDM) ووضع الكشك (Kiosk Mode) للشركات والمدارس</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/android-accessibility-security-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/android-accessibility-security-guide.webp</image:loc>
+      <image:title>سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام (AccessibilityService) في أتمتة المهام، ولماذا تطلبها البرمجيات الخبيثة؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/telegram-bot-webhook-security-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp</image:loc>
+      <image:title>الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp</image:loc>
+      <image:title>كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/app-privacy-policy-play-store-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp</image:loc>
+      <image:title>لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة Data Safety</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://connecttag.org/blog/offline-gps-yemen-emergency-guide</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://connecttag.org/upload/offline-gps-yemen-emergency-guide.webp</image:loc>
+      <image:title>هل يعمل الـ GPS في الهاتف بدون إنترنت أو تغطية أبراج؟ الدليل العملي للملاحة البرية في الطرق الطويلة ودليل أرقام الطوارئ والخدمات في اليمن</image:title>
+    </image:image>
   </url>
 </urlset>

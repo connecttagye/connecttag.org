@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>مدونة كونكت تاق التقنية | Connect Tag Engineering Blog</title>
+    <link>https://connecttag.org/blog/</link>
+    <description>أدلة هندسية ومقالات تقنية متخصصة في برمجة تطبيقات الأندرويد وKotlin Multiplatform، الأمن السيبراني، الشبكات والاتصالات في اليمن، إدارة الخوادم، والتسويق الرقمي.</description>
+    <language>ar</language>
+    <lastBuildDate>Sun, 08 Nov 2026 09:00:00 +0300</lastBuildDate>
+    <atom:link href="https://connecttag.org/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://connecttag.org/assets/img/connect-tag-official-logo.webp</url>
+      <title>مدونة كونكت تاق التقنية | Connect Tag</title>
+      <link>https://connecttag.org/blog/</link>
+    </image>
+    <item>
+      <title>كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في Kotlin Multiplatform؟</title>
+      <link>https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل الهندسي لتصميم جسور الأنظمة الأصلية (expect/actual مقابل Interface Bridges) وحقن DispatcherProvider لاختبار تدفقات Coroutines في KMP.</description>
+      <enclosure url="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp" length="54080" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (Stability)، وBaseline Profiles</title>
+      <link>https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:59:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>لماذا تتباطأ واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (@Immutable)، derivedStateOf وBaseline Profiles.</description>
+      <enclosure url="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp" length="33836" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors, والبطارية)</title>
+      <link>https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:58:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>فحص الأجهزة والاتصال</category>
+      <description>كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors)، دورات الشحن، وتطبيع الشاشة.</description>
+      <enclosure url="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp" length="48094" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>لماذا يتفوق بروتوكول WireGuard على OpenVPN وIPsec في السرعة والأمان؟ الدليل الهندسي لأنفاق الاتصال المشفرة (VPN)</title>
+      <link>https://connecttag.org/blog/wireguard-vs-openvpn-ipsec-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/wireguard-vs-openvpn-ipsec-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:57:00 +0300</pubDate>
+      <dc:creator>محمد حميد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن المواقع والشبكات</category>
+      <description>لماذا يتفوق بروتوكول WireGuard على OpenVPN وIPsec في السرعة وعمر البطارية؟ الدليل الهندسي لخوارزميات ChaCha20-Poly1305 وتوجيه المفاتيح والتنقل السلس.</description>
+      <enclosure url="https://connecttag.org/upload/wireguard-vs-openvpn-ipsec-security-guide.webp" length="67546" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/wireguard-vs-openvpn-ipsec-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG</title>
+      <link>https://connecttag.org/blog/android-usb-otg-serial-communication-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-usb-otg-serial-communication-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:56:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG ومكتبة serial-lib-kmp.</description>
+      <enclosure url="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp" length="35448" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن؟</title>
+      <link>https://connecttag.org/blog/kmp-mvi-architecture-state-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/kmp-mvi-architecture-state-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:55:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن في Compose؟</description>
+      <enclosure url="https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp" length="17850" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers</title>
+      <link>https://connecttag.org/blog/pwa-service-worker-offline-web-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/pwa-service-worker-offline-web-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:54:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers وملف manifest.json.</description>
+      <enclosure url="https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp" length="20412" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟</title>
+      <link>https://connecttag.org/blog/telegram-bot-webhook-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/telegram-bot-webhook-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:53:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق بـ Secret Token؟</description>
+      <enclosure url="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp" length="22934" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين</title>
+      <link>https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:52:00 +0300</pubDate>
+      <dc:creator>محمد حميد</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>فحص الأجهزة والاتصال</category>
+      <description>كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين وشبكات اليمن.</description>
+      <enclosure url="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp" length="26182" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة Data Safety</title>
+      <link>https://connecttag.org/blog/app-privacy-policy-play-store-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/app-privacy-policy-play-store-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:51:00 +0300</pubDate>
+      <dc:creator>يوسف محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة أمان البيانات Data Safety.</description>
+      <enclosure url="https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp" length="45006" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/app-privacy-policy-play-store-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>هل يعمل الـ GPS في الهاتف بدون إنترنت أو تغطية أبراج؟ الدليل العملي للملاحة البرية في الطرق الطويلة ودليل أرقام الطوارئ والخدمات في اليمن</title>
+      <link>https://connecttag.org/blog/offline-gps-yemen-emergency-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/offline-gps-yemen-emergency-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:50:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>شركات الاتصالات والإنترنت</category>
+      <description>هل يعمل الـ GPS بدون إنترنت أو تغطية أبراج؟ شرح علمي لاتصال شريحة GNSS بالأقمار الصناعية، دليل الملاحة البرية عبر رفيق الدرب، وأرقام الطوارئ في اليمن.</description>
+      <enclosure url="https://connecttag.org/upload/offline-gps-yemen-emergency-guide.webp" length="48160" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/offline-gps-yemen-emergency-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام (AccessibilityService) في أتمتة المهام، ولماذا تطلبها البرمجيات الخبيثة؟</title>
+      <link>https://connecttag.org/blog/android-accessibility-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-accessibility-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:49:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>دليل تقني وأمني لخدمة تسهيلات الاستخدام (AccessibilityService) في أندرويد: كيف تعمل أتمتة اللمس والماكرو محلياً عبر نَسَق، ولماذا فرضت جوجل قيود أندرويد 13+؟</description>
+      <enclosure url="https://connecttag.org/upload/android-accessibility-security-guide.webp" length="33682" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-accessibility-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تقفل الهواتف والأجهزة اللوحية على تطبيق عمل واحد فقط؟ دليل أنظمة إدارة الأجهزة (MDM) ووضع الكشك (Kiosk Mode) للشركات والمدارس</title>
+      <link>https://connecttag.org/blog/android-mdm-kiosk-mode-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-mdm-kiosk-mode-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:48:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>الدليل الشامل لأنظمة إدارة الأجهزة المؤسسية (MDM) ووضع الكشك (Kiosk Mode) في أندرويد: قفل الهواتف على تطبيق واحد للشركات ونقاط البيع والمدارس عبر منظومة زِمام.</description>
+      <enclosure url="https://connecttag.org/upload/android-mdm-kiosk-mode-guide.webp" length="38266" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-mdm-kiosk-mode-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل العملي للروابط العميقة (Deep Links وAndroid App Links): كيف تجعل روابط موقعك تفتح شاشة محددة داخل تطبيقك مباشرةً بأمان؟</title>
+      <link>https://connecttag.org/blog/android-deep-links-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-deep-links-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:47:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل الهندسي للروابط العميقة (Deep Links وAndroid App Links): الفرق بين Custom Schemes وIntent URLs، وإعداد ملف assetlinks.json ببصمة SHA-256 بأمان.</description>
+      <enclosure url="https://connecttag.org/upload/android-deep-links-guide.webp" length="31154" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-deep-links-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل حساب زكاة المال وعروض التجارة والذهب: القواعد المحاسبية لتقييم البضاعة والديون وفرق العملات وكيف تحسبها بدقة؟</title>
+      <link>https://connecttag.org/blog/zakat-calculation-accounting-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/zakat-calculation-accounting-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:46:00 +0300</pubDate>
+      <dc:creator>محمد شرف</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>التسويق الرقمي ونمو الأعمال</category>
+      <description>دليل محاسبي وشرعي شامل لحساب زكاة المال وعروض التجارة والذهب (85 جرام عيار 24): معادلة تقييم البضاعة بسعر البيع، الديون المرجوة، وحساب الزكاة بتعدد العملات.</description>
+      <enclosure url="https://connecttag.org/upload/zakat-money-trade-gold-accounting-guide.webp" length="35218" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/zakat-money-trade-gold-accounting-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تدير حسابات متجرك، الديون الآجلة، وجرد المخزون بدون أخطاء؟ الفرق العملي بين القيد المفرد والقيد المزدوج واختيار النظام المحاسبي المناسب</title>
+      <link>https://connecttag.org/blog/small-business-accounting-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/small-business-accounting-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:45:00 +0300</pubDate>
+      <dc:creator>محمد شرف</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>التسويق الرقمي ونمو الأعمال</category>
+      <description>دليل المحاسبة العملية للمتاجر والشركات الصغيرة: أشهر 5 أخطاء تآكل رأس المال، الفرق الرقمي بين القيد المفرد والمزدوج، وضبط الفواتير والمخزون والديون الآجلة.</description>
+      <enclosure url="https://connecttag.org/upload/small-business-accounting-inventory-debt-guide.webp" length="27174" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/small-business-accounting-inventory-debt-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج (4G/LTE) والواي فاي واختيار أفضل مكان للمودم</title>
+      <link>https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:44:00 +0300</pubDate>
+      <dc:creator>محمد حميد</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>يمن فورجي والمودمات</category>
+      <description>الدليل الهندسي لقراءة مؤشرات إشارة 4G LTE والواي فاي (dBm): الفرق بين قوة الإشارة RSRP ونقائها SINR وRSRQ وRSSI، وجدول القيم لاختيار أفضل مكان للمودم.</description>
+      <enclosure url="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp" length="22124" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وكيف تفك ترميزها وتفحصها محلياً بأمان؟</title>
+      <link>https://connecttag.org/blog/jwt-security-debugging-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/jwt-security-debugging-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:43:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل الهندسي لرموز المصادقة الرقمية (JWT - RFC 7519): تشريح Header وPayload وSignature، الفرق بين HS256 وRS256، أشهر ثغرات JWT، وفحصها محلياً بأمان.</description>
+      <enclosure url="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp" length="25066" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: كيف تستخرج لوحة ألوان متناسقة وتضمن وضوح القراءة وفق معيار WCAG؟</title>
+      <link>https://connecttag.org/blog/ui-color-palette-wcag-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/ui-color-palette-wcag-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:42:00 +0300</pubDate>
+      <dc:creator>ريم محمد</dc:creator>
+      <category>تصميم وجرافيكس</category>
+      <category>الهوية البصرية والشعارات</category>
+      <description>دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: سيكولوجية الألوان، قاعدة 60-30-10، حساب نسبة التباين WCAG 2.1 (4.5:1)، واستخراج الألوان من الصور.</description>
+      <enclosure url="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp" length="27764" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>)، وفي المقدمة، وفي عنوان فرعي أو اثنين ()، مع استخدام المرادفات والمصطلحات المرتبطة دلالياً (Semantic Entities) في سياق الشرح الطبيعي بحيث لا تتجاوز الكثافة 1% إلى 1.5%.&quot; } } ] } ] window.dataLayer = window.dataLayer || []; function gtag() { window.dataLayer.push(arguments); } if (!window.__CT_CONSENT_INITIALIZED__) { window.__CT_CONSENT_INITIALIZED__ = true; var savedChoice = null; try { savedChoice = localStorage.getItem(&apos;ct_cookie_accepted&apos;); } catch (e) {} var granted = savedChoice === &apos;true&apos; ? &apos;granted&apos; : &apos;denied&apos;; gtag(&apos;consent&apos;, &apos;default&apos;, { &apos;ad_storage&apos;: granted, &apos;ad_user_data&apos;: granted, &apos;ad_personalization&apos;: granted, &apos;analytics_storage&apos;: granted, &apos;wait_for_update&apos;: 500 }); } دليل كتابة المقالات والشروحات التقنية المتوافقة مع السيو (SEO): كيف تتصدر نتائج البحث وتلتزم بمعايير E-E-A-T وسياسات مشرفي المواقع؟</title>
+      <link>https://connecttag.org/blog/seo-article-writing-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/seo-article-writing-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:41:00 +0300</pubDate>
+      <dc:creator>يوسف محمد</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>السيو وصناعة المحتوى SEO</category>
+      <description>دليل عملي لكتابة المقالات والشروحات التقنية المتوافقة مع السيو (SEO) وسياسات مشرفي المواقع: تطبيق معايير E-E-A-T، هيكلة العناوين، وتجنب مخالفات السبام.</description>
+      <enclosure url="https://connecttag.org/upload/how-to-write-seo-articles-tutorials-guide.webp" length="38582" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/how-to-write-seo-articles-tutorials-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وكيف تقلل حجم الصور 70% دون فقدان الجودة؟</title>
+      <link>https://connecttag.org/blog/image-optimization-webp-avif-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/image-optimization-webp-avif-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:40:00 +0300</pubDate>
+      <dc:creator>جود محمد</dc:creator>
+      <category>تصميم وجرافيكس</category>
+      <category>أداء الصور والوسائط</category>
+      <description>دليل شامل لتحسين الصور في المواقع والتطبيقات: مقارنة WebP وAVIF وPNG وJPEG بالأرقام، تحسين مؤشر LCP، وتقليل حجم الصور 70% دون فقدان الجودة.</description>
+      <enclosure url="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" length="47604" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/image-optimization-webp-vs-avif-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟</title>
+      <link>https://connecttag.org/blog/ip-cctv-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/ip-cctv-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:39:00 +0300</pubDate>
+      <dc:creator>يوسف الرحبي</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>الأنظمة الأمنية والمراقبة</category>
+      <description>دليل هندسي لتركيب وتأمين كاميرات المراقبة الشبكية (IP PoE CCTV &amp; NVR): اختيار العدسة، معادلة حساب سعة الهاردسك بضغط H.265+، و5 خطوات لمنع اختراق الكاميرات.</description>
+      <enclosure url="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" length="50012" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/ip-cctv-camera-installation-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود *#06# وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟</title>
+      <link>https://connecttag.org/blog/imei-number-check-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/imei-number-check-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:38:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>فحص الأجهزة والاتصال</category>
+      <description>دليل هندسي وتطبيقي لفهم رقم الهوية الدولية (IMEI) في الهواتف ومودمات 4G: تشريح رمز TAC، خوارزمية Luhn، وخطوات كشف الأجهزة المجددة أو المقلدة قبل الشراء.</description>
+      <enclosure url="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" length="37104" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/what-is-imei-number-check-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد استهلاك البيانات عبر تطبيق سور نت</title>
+      <link>https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:37:00 +0300</pubDate>
+      <dc:creator>محمد حميد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>دليل تقني شامل يشرح كيف يعمل الجدار الناري المحلي في أندرويد بدون روت للتحكم بوصول التطبيقات إلى الإنترنت، وترشيد استهلاك الباقات عبر تطبيق سور نت.</description>
+      <enclosure url="https://connecttag.org/upload/android-firewall-soor-net-guide.webp" length="44996" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-firewall-soor-net-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>حل مشكلة «تقييد عرض الإعلانات» في Google AdSense: كيف تحمي حسابك من النقرات غير الصالحة وتضبط ملف ads.txt ورسالة موافقة GDPR؟</title>
+      <link>https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:36:00 +0300</pubDate>
+      <dc:creator>يوسف محمد</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>أدسنس وأدموب والربح الإعلاني</category>
+      <description>دليل عملي لحل مشكلة تقييد عرض الإعلانات (Ad Serving Limit) في Google AdSense، حماية الحساب من النقرات غير الصالحة، وإعداد ملف ads.txt ورسالة موافقة GDPR.</description>
+      <enclosure url="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp" length="51552" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/adsense-ad-serving-limit-invalid-traffic-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>شروط قبول موقعك في Google AdSense من المرة الأولى: الحل الجذري لرسالة الرفض «محتوى ذو قيمة منخفضة» (Low Value Content)</title>
+      <link>https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/google-adsense-approval-guide-fix-low-value-content</guid>
+      <pubDate>Sun, 08 Nov 2026 08:35:00 +0300</pubDate>
+      <dc:creator>جود محمد</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>أدسنس وأدموب والربح الإعلاني</category>
+      <description>شروط قبول موقعك في Google AdSense من المرة الأولى: التشريح التقني والحل الجذري لرسالة الرفض «محتوى ذو قيمة منخفضة» (Low Value Content) وفق معايير E-E-A-T.</description>
+      <enclosure url="https://connecttag.org/upload/google-adsense-approval-low-value-content-guide.webp" length="57340" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/google-adsense-approval-low-value-content-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>لماذا يتم تقييد الإعلانات في AdMob؟ 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك وكيف تضبط ملف app-ads.txt؟</title>
+      <link>https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/admob-ad-limit-policy-violations-app-ads-txt-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:34:00 +0300</pubDate>
+      <dc:creator>يوسف محمد</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>أدسنس وأدموب والربح الإعلاني</category>
+      <description>لماذا يتم تقييد الإعلانات في AdMob؟ تعرف على 7 مخالفات قاتلة في تصميم واجهات التطبيق تتسبب في حظر حسابك، وخطوات إعداد وربط ملف app-ads.txt رسمياً.</description>
+      <enclosure url="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp" length="33676" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/admob-ad-limit-policy-app-ads-txt-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم</title>
+      <link>https://connecttag.org/blog/yemen-4g-app-balance-modem-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/yemen-4g-app-balance-modem-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:33:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>يمن فورجي والمودمات</category>
+      <description>الدليل الكامل لاستخدام تطبيق يمن فورجي (Yemen 4G) للأندرويد: الاستعلام الذكي عن الرصيد بضغطة زر، حفظ الأرقام المتعددة، ويدجت الشاشة، وإدارة المودم.</description>
+      <enclosure url="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp" length="65840" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل تصميم الشعارات الاحترافية (Logo Design): أنواع الشعارات الـ 7، معايير التوازن البصري، وصيغ الملفات التي يجب استلامها من المصمم</title>
+      <link>https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/professional-logo-design-types-principles-file-formats-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:32:00 +0300</pubDate>
+      <dc:creator>ريم محمد</dc:creator>
+      <category>تصميم وجرافيكس</category>
+      <category>الهوية البصرية والشعارات</category>
+      <description>دليل تصميم الشعارات الاحترافية (Logo Design): أنواع الشعارات السبعة، معايير النسبة الذهبية، والفرق بين صيغ الفيكتور المفتوحة (AI, SVG, EPS) وصور PNG.</description>
+      <enclosure url="https://connecttag.org/upload/professional-logo-design-principles-guide.webp" length="58434" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/professional-logo-design-principles-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>7 أخطاء قاتلة في الهوية البصرية تضعف مبيعاتك: متى وكيف تنفذ إعادة تصميم ناجحة لعلامتك التجارية (Rebranding)؟</title>
+      <link>https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/visual-identity-mistakes-successful-rebranding-strategy-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:31:00 +0300</pubDate>
+      <dc:creator>ريم محمد</dc:creator>
+      <category>تصميم وجرافيكس</category>
+      <category>الهوية البصرية والشعارات</category>
+      <description>تعرف على 7 أخطاء قاتلة في الهوية البصرية تضعف مبيعاتك، والفرق بين تحديث الهوية (Brand Refresh) وإعادة البناء الشامل (Full Rebranding) لنمو أعمالك.</description>
+      <enclosure url="https://connecttag.org/upload/visual-identity-rebranding-strategy-guide.webp" length="56916" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/visual-identity-rebranding-strategy-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل Google Play Integrity API الشامل: كيف تكتشف تطبيقات البنوك وواتساب الهواتف المعدّلة والـ Root؟ وكيف تحمي تطبيقك من التلاعب؟</title>
+      <link>https://connecttag.org/blog/google-play-integrity-api-android-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/google-play-integrity-api-android-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:30:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>شرح واجهة Google Play Integrity API ومستويات النزاهة الثلاثة (Basic, Device, Strong)، وكيف تكشف تطبيقات البنوك وواتساب الـ Root والنسخ المعدلة.</description>
+      <enclosure url="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp" length="46790" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/google-play-integrity-api-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>رسالة «تحتاج إلى تطبيق واتساب الرسمي لاستخدام هذا الحساب»: الدليل الكامل لفك حظر الرقم ونقل محادثاتك من الواتساب المعدّل إلى الرسمي بأمان</title>
+      <link>https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/migrate-modded-whatsapp-to-official-app-ban-fix-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:29:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>فحص الأجهزة والاتصال</category>
+      <description>هل ظهرت لك رسالة «تحتاج إلى تطبيق واتساب الرسمي لاستخدام هذا الحساب»؟ تعلم بالخطوات كيف تفك الحظر وتنقل محادثاتك وصورك من واتساب المعدل إلى الرسمي دون ضياعها.</description>
+      <enclosure url="https://connecttag.org/upload/migrate-modded-whatsapp-official-ban-fix-guide.webp" length="47174" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/migrate-modded-whatsapp-official-ban-fix-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الحقيقة التقنية وراء «واتساب الذهبي والأزرق والبلس»: ماذا يحدث داخل ملفات الـ APK المعدّلة وكيف تسرق صورك وجلساتك؟</title>
+      <link>https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/modded-whatsapp-gold-plus-apk-malware-security-analysis</guid>
+      <pubDate>Sun, 08 Nov 2026 08:28:00 +0300</pubDate>
+      <dc:creator>كيان الرحبي</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>اكتشف التشريح التقني والأمني لما يحدث داخل ملفات APK المعدلة (واتساب الذهبي والأزرق وGBWhatsApp)، وكيف تكسر التشفير وتزرع برمجيات Triada لسرقة حساباتك.</description>
+      <enclosure url="https://connecttag.org/upload/modded-whatsapp-apk-malware-analysis-guide.webp" length="71532" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/modded-whatsapp-apk-malware-analysis-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل Compose Multiplatform الشامل: كيف تبني واجهة مستخدم واحدة تعمل بأداء أصيل على أندرويد وiOS وسطح المكتب والويب؟</title>
+      <link>https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:27:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>الدليل المعماري والتطبيقي لإطار Compose Multiplatform من JetBrains: مشاركة الواجهات والمنطق بلغة Kotlin على أندرويد وiOS وسطح المكتب والويب بأداء أصيل.</description>
+      <enclosure url="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp" length="51048" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/compose-multiplatform-shared-ui-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>مخاطر الاتصال بشبكات الواي فاي العامة وشبكات الكروت المفتوحة: كيف تعمل هجمات «التوأم الشرير» واعتراض البيانات وكيف تتصفح بأمان؟</title>
+      <link>https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/public-wifi-hotspot-security-evil-twin-mitm-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:26:00 +0300</pubDate>
+      <dc:creator>محمد حميد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>مكافحة الاحتيال والتصيّد</category>
+      <description>ماذا يرى صاحب الشبكة العامة أو المتطفل في شبكة الكافيه والكروت؟ شرح هجمات التوأم الشرير (Evil Twin) وARP Spoofing و5 خطوات للتصفح الآمن.</description>
+      <enclosure url="https://connecttag.org/upload/public-wifi-evil-twin-security-guide.webp" length="34304" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/public-wifi-evil-twin-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تُخترق حسابات واتساب وتيليجرام دون علمك؟ الدليل الأمني لكشف خدعة «كود التفعيل بالخطأ»، التجسس عبر الأجهزة المرتبطة (Linked Devices)، وخطر النسخ المعدّلة</title>
+      <link>https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/whatsapp-telegram-hijacking-linked-devices-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:25:00 +0300</pubDate>
+      <dc:creator>مريم اليمني</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>مكافحة الاحتيال والتصيّد</category>
+      <description>الدليل الأمني لكشف خدعة سرقة حسابات واتساب وتيليجرام عبر كود التفعيل، طريقة فحص وطرد الأجهزة المرتبطة المتطفلة، وتفعيل التحقق بخطوتين ومفاتيح المرور.</description>
+      <enclosure url="https://connecttag.org/upload/whatsapp-telegram-hijacking-security-guide.webp" length="43862" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/whatsapp-telegram-hijacking-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>احذر روابط «تسجيل المساعدات والوظائف والربح السريع»: كيف تكشف مواقع التصيّد (Phishing) ومنصات الاستثمار الوهمية التي تسرق هويتك وأموالك؟</title>
+      <link>https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/phishing-links-fake-aid-ponzi-investment-scam-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:24:00 +0300</pubDate>
+      <dc:creator>مريم اليمني</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>مكافحة الاحتيال والتصيّد</category>
+      <description>دليل أمني لكشف روابط التسجيل الوهمية في المساعدات والمنح والوظائف، وتشريح منصات المهام اليومية والتداول الوهمي (مخططات بونزي)، وفحص النطاقات في 5 ثوانٍ.</description>
+      <enclosure url="https://connecttag.org/upload/phishing-links-fake-aid-scam-guide.webp" length="59308" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/phishing-links-fake-aid-scam-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>هل «إعادة ضبط المصنع» تمنع استرجاع الصور والملفات؟ الدليل التقني للتدمير الآمن للبيانات قبل بيع أو صيانة هاتفك</title>
+      <link>https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/factory-reset-data-recovery-secure-erasure-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:23:00 +0300</pubDate>
+      <dc:creator>كيان الرحبي</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>تعرف علمياً على مصير صورك بعد فرمتة الهاتف، وكيف يمنع التشفير القائم على الملفات (FBE) استعادة المحذوفات، وخطوات المسح الآمن قبل بيع أو صيانة هاتفك.</description>
+      <enclosure url="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp" length="37626" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/factory-reset-secure-erasure-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تعرف كواشف الأرقام اسمك حتى لو لم تثبّتها؟ الدليل الأمني لعمل تطبيقات وبوتات كشف الهوية وحماية خصوصيتك</title>
+      <link>https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/caller-id-apps-privacy-risks-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:22:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>تعرف تقنياً كيف تجمع تطبيقات وبوتات كشف الأرقام الأسماء عبر الحصاد الجماعي لجهات الاتصال حتى لو لم تثبتها، ومخاطر النسخ المعدلة، وكيف تحمي خصوصيتك.</description>
+      <enclosure url="https://connecttag.org/upload/caller-id-privacy-risks-guide.webp" length="48528" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/caller-id-privacy-risks-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>احذر فخ «تفعيل القرض والسلفة»: الدليل الأمني لكشف انتحال المحافظ الإلكترونية وخدعة بطاقات الهدايا وأكواد الشراء</title>
+      <link>https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/e-wallet-impersonation-loan-gift-card-scam-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:21:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>مكافحة الاحتيال والتصيّد</category>
+      <description>دليل أمني يكشف أساليب انتحال صفة المحافظ الإلكترونية والبنوك، ولماذا يطلب المحتالون شراء بطاقات هدايا أو إصدار أكواد شراء أونلاين بحجة تفعيل قرض.</description>
+      <enclosure url="https://connecttag.org/upload/e-wallet-impersonation-scam-guide.webp" length="83442" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/e-wallet-impersonation-scam-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>مخاطر البيانات المخفية في الصور (EXIF Metadata): كيف تكشف صور الهاتف موقعك الجغرافي وكيف تحذفها؟</title>
+      <link>https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/image-exif-metadata-privacy-risks-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:20:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>تعرف كيف تكشف البيانات الوصفية المخفية في الصور (EXIF Metadata) إحداثيات موقعك الجغرافي GPS ونوع هاتفك، ومتى تبقى مكشوفة، وكيف تحذفها بأمان.</description>
+      <enclosure url="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" length="27952" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/image-exif-metadata-privacy-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>ثغرات ملف AndroidManifest.xml وأمن المكونات: كيف تحمي تطبيقك من اختراق الـ Exported Components وDeep Links؟</title>
+      <link>https://connecttag.org/blog/android-manifest-security-exported-components-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-manifest-security-exported-components-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:19:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>دليل هندسي لمطوري أندرويد لتأمين ملف AndroidManifest.xml: إغلاق ثغرات Exported Components، منع Intent Redirection، وتوثيق روابط App Links.</description>
+      <enclosure url="https://connecttag.org/upload/android-manifest-security-guide.webp" length="35168" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-manifest-security-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل أكواد وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو YOU، سبأفون، واي)</title>
+      <link>https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/yemen-telecom-companies-codes-services-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:18:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>شركات الاتصالات والإنترنت</category>
+      <description>المرجع الشامل والمحدث لجميع أكواد USSD وخدمات شركات الاتصالات في اليمن (يمن موبايل، يو YOU، سبأفون، واي): استعلام الرصيد، باقات 4G، وتحويل الرصيد.</description>
+      <enclosure url="https://connecttag.org/upload/yemen-telecom-codes-guide.webp" length="43630" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/yemen-telecom-codes-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر، إخفاء الشبكة، وحماية الرصيد من السرقة</title>
+      <link>https://connecttag.org/blog/yemen-4g-modem-settings-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/yemen-4g-modem-settings-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:17:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>يمن فورجي والمودمات</category>
+      <description>الدليل العملي للدخول إلى صفحة إعدادات مودم يمن فورجي (192.168.8.1 و192.168.1.1)، تغيير كلمة سر الواي فاي، إخفاء الشبكة والباركود، وتحديد السرعة.</description>
+      <enclosure url="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp" length="40562" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء والمقارنة الشامل</title>
+      <link>https://connecttag.org/blog/best-yemen-4g-modem-buying-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/best-yemen-4g-modem-buying-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:16:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>يمن فورجي والمودمات</category>
+      <description>دليل شراء ومقارنة أفضل مودمات يمن فورجي (Yemen 4G) المنزلية والمحمولة: الفرق بين مودمات Cat4 وCat6 دمج الترددات، سعة البطارية، والأسعار.</description>
+      <enclosure url="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp" length="41380" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الفحص التقني الشامل للمواقع (Technical SEO Audit): كيف تكتشف الأخطاء البرمجية ومشاكل الأداء التي تمنع موقعك من تصدر نتائج البحث؟</title>
+      <link>https://connecttag.org/blog/technical-seo-audit-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/technical-seo-audit-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:15:00 +0300</pubDate>
+      <dc:creator>علي الرحبي</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>السيو وصناعة المحتوى SEO</category>
+      <description>دليل عملي لإجراء الفحص التقني الشامل للمواقع (Technical SEO Audit): تدقيق وسوم الميتا، الهيكلة الدلالية HTML5، سرعة LCP، وترويسات الأمان.</description>
+      <enclosure url="https://connecttag.org/upload/technical-seo-audit-guide.webp" length="19120" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/technical-seo-audit-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>إدارة البيانات في KMP: التكامل الهندسي بين Room و DataStore</title>
+      <link>https://connecttag.org/blog/kmp-data-management-room-datastore</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/kmp-data-management-room-datastore</guid>
+      <pubDate>Sun, 08 Nov 2026 08:14:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>دليل تطبيقي شامل لإدارة وتخزين البيانات محلياً في Kotlin Multiplatform (KMP) باستخدام مكتبات Room KMP وJetpack DataStore وتشفيرها على أندرويد وiOS.</description>
+      <enclosure url="https://connecttag.org/upload/kmp-data-encryption.webp" length="13158" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/kmp-data-encryption.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>KMP vs Flutter: المقارنة التقنية الشاملة لتطوير التطبيقات المتعددة المنصات</title>
+      <link>https://connecttag.org/blog/kmp-vs-flutter-comparison</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/kmp-vs-flutter-comparison</guid>
+      <pubDate>Sun, 08 Nov 2026 08:13:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>مقارنة هندسية شاملة بين Kotlin Multiplatform (KMP) وFlutter من حيث الأداء الأصيل، حجم التطبيق، مشاركة الواجهات عبر Compose، وتكلفة التطوير.</description>
+      <enclosure url="https://connecttag.org/upload/kmp-vs-flutter.webp" length="10430" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/kmp-vs-flutter.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>دليل تأمين وتحصين خادم Microsoft IIS (IIS Hardening)</title>
+      <link>https://connecttag.org/blog/iis-hardening-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/iis-hardening-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:12:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>إدارة الخوادم والاستضافة</category>
+      <description>دليل عملي لتأمين خادم الويب Microsoft IIS: إخفاء بصمة الخادم، فرض TLS 1.3، عزل Application Pools، ضبط Request Filtering، وترويسات الأمان.</description>
+      <enclosure url="https://connecttag.org/upload/iis-hardening-guide.webp" length="12514" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/iis-hardening-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل الشامل لنشر وتصحيح أخطاء وحدات ISAPI DLL على خادم Microsoft IIS</title>
+      <link>https://connecttag.org/blog/iis-isapi-deployment-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/iis-isapi-deployment-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:11:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>إدارة الخوادم والاستضافة</category>
+      <description>دليل هندسي خطوة بخطوة لنشر تطبيقات Delphi وC++ ISAPI DLL على خادم Microsoft IIS، ضبط صلاحيات Application Pool، وتصحيح الأخطاء عن بُعد.</description>
+      <enclosure url="https://connecttag.org/upload/iis-isapi-guide.webp" length="67216" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/iis-isapi-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>ضبط إعدادات كلاود فلير بافضل الممارسات: الدليل الشامل لسرعة وأمان موقعك</title>
+      <link>https://connecttag.org/blog/cloudflare-settings-optimization-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/cloudflare-settings-optimization-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 09:00:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>سحابيات وأمان Cloudflare</category>
+      <description>دليل عملي لتهيئة إعدادات Cloudflare لتحقيق أقصى سرعة وأمان لموقعك: ضبط SSL Full Strict، تفعيل HTTP/3 وBrotli، وتحسين قواعد الكاش وTTFB.</description>
+      <enclosure url="https://connecttag.org/upload/cloudflare-settings-optimization.webp" length="71424" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/cloudflare-settings-optimization.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل الشامل لـ Jetpack Compose: مستقبل تطوير تطبيقات الأندرويد</title>
+      <link>https://connecttag.org/blog/jetpack-compose-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/jetpack-compose-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:59:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>برمجة وتطوير</category>
+      <category>تطوير الهواتف والأنظمة المتعددة</category>
+      <description>تعرف على إطار Jetpack Compose لبناء واجهات تطبيقات أندرويد التصريحية بلغة Kotlin: المميزات، مقارنة الأداء مع XML، وإدارة الحالة State Hoisting.</description>
+      <enclosure url="https://connecttag.org/upload/jetpack-compose.webp" length="20880" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/jetpack-compose.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>حماية تطبيقات الأندرويد من الهندسة العكسية: الدليل الشامل</title>
+      <link>https://connecttag.org/blog/android-app-security-reverse-engineering</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/android-app-security-reverse-engineering</guid>
+      <pubDate>Sun, 08 Nov 2026 08:58:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن الهواتف والتطبيقات</category>
+      <description>دليل هندسي لحماية تطبيقات الأندرويد من الهندسة العكسية وكسر الحماية: تشويش الكود بـ R8، إخفاء المفاتيح في NDK C++، تشفير Tink، وPlay Integrity API.</description>
+      <enclosure url="https://connecttag.org/upload/android-reverse-engineering.webp" length="27084" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/android-reverse-engineering.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>حماية واجهات برمجة التطبيقات (API Security): الدليل التقني الشامل</title>
+      <link>https://connecttag.org/blog/api-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/api-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:57:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن المواقع والشبكات</category>
+      <description>الدليل الهندسي الشامل لتأمين واجهات REST وGraphQL API ضد مخاطر OWASP API Top 10: تأمين رموز JWT، منع ثغرات BOLA، وتطبيق Rate Limiting.</description>
+      <enclosure url="https://connecttag.org/upload/api-security.webp" length="44908" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/api-security.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>المعمارية الأمنية والهندسية لقواعد البيانات المتطورة</title>
+      <link>https://connecttag.org/blog/advanced-database-security-architecture</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/advanced-database-security-architecture</guid>
+      <pubDate>Sun, 08 Nov 2026 08:56:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن المواقع والشبكات</category>
+      <description>دليل هندسي لتصميم وتأمين قواعد البيانات: الوقاية من ثغرات SQL Injection، اعتماد معرّفات UUIDv7، هندسة صلاحيات RBAC، والتشفير الشفاف TDE.</description>
+      <enclosure url="https://connecttag.org/upload/database-architecture.webp" length="82836" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/database-architecture.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>استضافة المواقع مجاناً وبسرعة خارقة: الدليل الشامل لـ Cloudflare Pages</title>
+      <link>https://connecttag.org/blog/cloudflare-pages-hosting-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/cloudflare-pages-hosting-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:55:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>سحابيات وأمان Cloudflare</category>
+      <description>الدليل العملي لاستضافة المواقع الثابتة وتطبيقات الويب مجاناً عبر شبكة Cloudflare Pages مع ربط مستودعات GitHub وشهادات SSL التلقائية.</description>
+      <enclosure url="https://connecttag.org/upload/cloudflare-page-hosting.webp" length="81354" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/cloudflare-page-hosting.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>وداعاً للاختراق: كيف تستخدم جدار حماية كلاود فلير (WAF) لحماية بياناتك؟</title>
+      <link>https://connecttag.org/blog/cloudflare-waf-security-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/cloudflare-waf-security-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:54:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>سحابيات وأمان Cloudflare</category>
+      <description>تعلم بالخطوات كيفية إعداد قواعد جدار الحماية Cloudflare WAF لتأمين موقعك من هجمات DDoS، حظر البوتات الخبيثة، وتأمين مسارات لوحة التحكم.</description>
+      <enclosure url="https://connecttag.org/upload/waf-cloudflare.webp" length="126874" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/waf-cloudflare.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>وزارة الاتصالات وتكنولوجيا المعلومات اليمنية: الهيكلية، القطاعات، والخدمات الرقمية</title>
+      <link>https://connecttag.org/blog/yemen-telecom-ministry-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/yemen-telecom-ministry-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:53:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>شركات الاتصالات والإنترنت</category>
+      <description>دليل شامل يشرح هيكلية وزارة الاتصالات وتقنية المعلومات في اليمن، المؤسسات والشركات التابعة لها (يمن نت، تيليمن، يمن موبايل)، والخدمات الرقمية.</description>
+      <enclosure url="https://connecttag.org/upload/telecom-yemen.webp" length="132664" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/telecom-yemen.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>الدليل الشامل لأمن المواقع: 5 خطوات عملية لحماية مشروعك من الاختراق</title>
+      <link>https://connecttag.org/blog/website-security-simple-steps</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/website-security-simple-steps</guid>
+      <pubDate>Sun, 08 Nov 2026 08:52:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>الأمن السيبراني</category>
+      <category>أمن المواقع والشبكات</category>
+      <description>تعرف على 5 خطوات عملية وأساسية لتأمين موقعك الإلكتروني ضد الاختراق: تفعيل HTTPS، المصادقة الثنائية، تحديث الأنظمة، النسخ الاحتياطي، وجدار الحماية.</description>
+      <enclosure url="https://connecttag.org/upload/security-steps.webp" length="33950" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/security-steps.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيفية إضافة نشاطك التجاري على خرائط جوجل وتصدر البحث المحلي</title>
+      <link>https://connecttag.org/blog/google-business-profile-guide</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/google-business-profile-guide</guid>
+      <pubDate>Sun, 08 Nov 2026 08:51:00 +0300</pubDate>
+      <dc:creator>عقيل محمد</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>السيو وصناعة المحتوى SEO</category>
+      <description>دليل عملي لإنشاء وتوثيق وتحسين ملف نشاطك التجاري في Google Business Profile لتصدر نتائج البحث المحلي وخرائط جوجل وجذب العملاء.</description>
+      <enclosure url="https://connecttag.org/upload/google-business-guide.webp" length="22614" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/google-business-guide.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>يمن فورجي، ADSL، أم فايبر؟ مقارنة شاملة لاختيار الإنترنت الأنسب لشركتك في اليمن</title>
+      <link>https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber</guid>
+      <pubDate>Sun, 08 Nov 2026 08:50:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>شركات الاتصالات والإنترنت</category>
+      <description>مقارنة تقنية شاملة بين خدمات الإنترنت في اليمن (Yemen 4G وADSL والألياف الضوئية Fiber) من حيث السرعة، زمن الاستجابة Ping، التكلفة، والاستقرار.</description>
+      <enclosure url="https://connecttag.org/upload/yemen-internet-comparison.webp" length="53248" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/yemen-internet-comparison.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيفية الاستعلام عن رصيد يمن فورجي Yemen 4G: دليل شامل ومحدث</title>
+      <link>https://connecttag.org/blog/how-to-check-yemen-4g-balance</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/how-to-check-yemen-4g-balance</guid>
+      <pubDate>Sun, 08 Nov 2026 08:49:00 +0300</pubDate>
+      <dc:creator>بسمة شرف</dc:creator>
+      <category>اتصالات وشبكات</category>
+      <category>يمن فورجي والمودمات</category>
+      <description>دليل شامل ومحدث يشرح طرق الاستعلام عن رصيد إنترنت يمن فورجي (Yemen 4G) عبر الموقع الرسمي ptc.gov.ye، تطبيق الأندرويد، بوت التليجرام، وخدمة العملاء 8000000.</description>
+      <enclosure url="https://connecttag.org/upload/yemen-4g.webp" length="64186" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/yemen-4g.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>كيفية اختيار أفضل استضافة ويب لموقعك الإلكتروني: الدليل الكامل</title>
+      <link>https://connecttag.org/blog/choosing-web-hosting</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/choosing-web-hosting</guid>
+      <pubDate>Sun, 08 Nov 2026 08:48:00 +0300</pubDate>
+      <dc:creator>فريق كونكت تاق</dc:creator>
+      <category>استضافة وسحابيات</category>
+      <category>إدارة الخوادم والاستضافة</category>
+      <description>دليل تقني وتجاري لاختيار أفضل استضافة ويب في 2026: مقارنة بين الاستضافة المشتركة وVPS والسحابية، ومعايير أقراص NVMe والأمان والدعم الفني.</description>
+      <enclosure url="https://connecttag.org/upload/how-chose-yout-hosting.webp" length="54276" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/how-chose-yout-hosting.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>أهمية التسويق الرقمي للشركات الناشئة في العصر الحديث</title>
+      <link>https://connecttag.org/blog/digital-marketing-importance</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/digital-marketing-importance</guid>
+      <pubDate>Sun, 08 Nov 2026 08:47:00 +0300</pubDate>
+      <dc:creator>فريق كونكت تاق</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>التسويق الرقمي ونمو الأعمال</category>
+      <description>تعرف على أهمية التسويق الرقمي للشركات الناشئة وكيفية استثمار تحسين محركات البحث (SEO) والحملات الموجهة لزيادة المبيعات وبناء علامة تجارية قوية.</description>
+      <enclosure url="https://connecttag.org/upload/marketing-in-yout-company.webp" length="55988" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/marketing-in-yout-company.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+    <item>
+      <title>لماذا يحتاج نشاطك التجاري إلى تطبيق هاتف ذكي؟</title>
+      <link>https://connecttag.org/blog/why-your-business-needs-app</link>
+      <guid isPermaLink="true">https://connecttag.org/blog/why-your-business-needs-app</guid>
+      <pubDate>Sun, 08 Nov 2026 08:46:00 +0300</pubDate>
+      <dc:creator>فريق كونكت تاق</dc:creator>
+      <category>تسويق وإعلانات</category>
+      <category>التسويق الرقمي ونمو الأعمال</category>
+      <description>اكتشف كيف يساهم تطبيق الهاتف الذكي (أندرويد وiOS) في مضاعفة مبيعات نشاطك التجاري، تعزيز ولاء العملاء، وبناء قناة تواصل مباشرة عبر الإشعارات.</description>
+      <enclosure url="https://connecttag.org/upload/why-you-need-apps.webp" length="29194" type="image/webp" />
+      <media:content url="https://connecttag.org/upload/why-you-need-apps.webp" medium="image" type="image/webp" width="1200" height="669" />
+    </item>
+  </channel>
+</rss>

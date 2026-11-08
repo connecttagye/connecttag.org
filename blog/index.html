@@ -6,15 +6,21 @@
     <title>المدونة التقنية وأدلة البرمجة والأمن السيبراني | كونكت تاق</title>
     <meta name="description" content="مقالات وأدلة هندسية متخصصة في تطوير تطبيقات الأندرويد وKMP، الأمن السيبراني، إدارة الخوادم، وخدمات الاتصالات والإنترنت في اليمن من فريق كونكت تاق.">
     <link rel="canonical" href="https://connecttag.org/blog/" />
+  <link rel="alternate" type="application/rss+xml" title="مدونة كونكت تاق التقنية (RSS)" href="https://connecttag.org/feed.xml">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@graph": [
         {
-            "@type": "Blog",
-            "name": "مدونة كونكت تاق",
-            "description": "اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي وتطوير التطبيقات في مدونة كونكت تاق.",
+            "@type": [
+                "Blog",
+                "CollectionPage"
+            ],
+            "@id": "https://connecttag.org/blog/#blog",
+            "name": "مدونة كونكت تاق التقنية",
+            "description": "مقالات وأدلة هندسية متخصصة في تطوير تطبيقات الأندرويد وKotlin Multiplatform، الأمن السيبراني، إدارة الخوادم، وخدمات الاتصالات والإنترنت في اليمن من فريق كونكت تاق.",
             "url": "https://connecttag.org/blog/",
             "inLanguage": "ar",
             "publisher": {
@@ -42,6 +48,164 @@
                     "position": 2,
                     "name": "المدونة",
                     "item": "https://connecttag.org/blog/"
+                }
+            ]
+        },
+        {
+            "@type": "ItemList",
+            "name": "أحدث الأدلة الهندسية والمقالات التقنية في مدونة كونكت تاق",
+            "itemListOrder": "https://schema.org/ItemListOrderDescending",
+            "numberOfItems": 65,
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في Kotlin Multiplatform؟",
+                    "url": "https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (Stability)، وBaseline Profiles",
+                    "url": "https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors, والبطارية)",
+                    "url": "https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "لماذا يتفوق بروتوكول WireGuard على OpenVPN وIPsec في السرعة والأمان؟ الدليل الهندسي لأنفاق الاتصال المشفرة (VPN)",
+                    "url": "https://connecttag.org/blog/wireguard-vs-openvpn-ipsec-security-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG",
+                    "url": "https://connecttag.org/blog/android-usb-otg-serial-communication-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 6,
+                    "name": "الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن؟",
+                    "url": "https://connecttag.org/blog/kmp-mvi-architecture-state-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 7,
+                    "name": "كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers",
+                    "url": "https://connecttag.org/blog/pwa-service-worker-offline-web-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 8,
+                    "name": "الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟",
+                    "url": "https://connecttag.org/blog/telegram-bot-webhook-security-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 9,
+                    "name": "كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار ترقيم الهواتف العالمي E.164 للمطورين",
+                    "url": "https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 10,
+                    "name": "لماذا يرفض متجر Google Play وأبل وأدسنس سياسة الخصوصية في تطبيقك أو موقعك؟ الدليل القانوني والتقني لإعداد سياسة خصوصية واستمارة Data Safety",
+                    "url": "https://connecttag.org/blog/app-privacy-policy-play-store-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 11,
+                    "name": "هل يعمل الـ GPS في الهاتف بدون إنترنت أو تغطية أبراج؟ الدليل العملي للملاحة البرية في الطرق الطويلة ودليل أرقام الطوارئ والخدمات في اليمن",
+                    "url": "https://connecttag.org/blog/offline-gps-yemen-emergency-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 12,
+                    "name": "سلاح ذو حدين في أندرويد: كيف تعمل خدمة تسهيلات الاستخدام (AccessibilityService) في أتمتة المهام، ولماذا تطلبها البرمجيات الخبيثة؟",
+                    "url": "https://connecttag.org/blog/android-accessibility-security-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 13,
+                    "name": "كيف تقفل الهواتف والأجهزة اللوحية على تطبيق عمل واحد فقط؟ دليل أنظمة إدارة الأجهزة (MDM) ووضع الكشك (Kiosk Mode) للشركات والمدارس",
+                    "url": "https://connecttag.org/blog/android-mdm-kiosk-mode-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 14,
+                    "name": "الدليل العملي للروابط العميقة (Deep Links وAndroid App Links): كيف تجعل روابط موقعك تفتح شاشة محددة داخل تطبيقك مباشرةً بأمان؟",
+                    "url": "https://connecttag.org/blog/android-deep-links-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 15,
+                    "name": "دليل حساب زكاة المال وعروض التجارة والذهب: القواعد المحاسبية لتقييم البضاعة والديون وفرق العملات وكيف تحسبها بدقة؟",
+                    "url": "https://connecttag.org/blog/zakat-calculation-accounting-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 16,
+                    "name": "كيف تدير حسابات متجرك، الديون الآجلة، وجرد المخزون بدون أخطاء؟ الفرق العملي بين القيد المفرد والقيد المزدوج واختيار النظام المحاسبي المناسب",
+                    "url": "https://connecttag.org/blog/small-business-accounting-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 17,
+                    "name": "ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج (4G/LTE) والواي فاي واختيار أفضل مكان للمودم",
+                    "url": "https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 18,
+                    "name": "تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وكيف تفك ترميزها وتفحصها محلياً بأمان؟",
+                    "url": "https://connecttag.org/blog/jwt-security-debugging-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 19,
+                    "name": "دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات: كيف تستخرج لوحة ألوان متناسقة وتضمن وضوح القراءة وفق معيار WCAG؟",
+                    "url": "https://connecttag.org/blog/ui-color-palette-wcag-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 20,
+                    "name": ")، وفي المقدمة، وفي عنوان فرعي أو اثنين ()، مع استخدام المرادفات والمصطلحات المرتبطة دلالياً (Semantic Entities) في سياق الشرح الطبيعي بحيث لا تتجاوز الكثافة 1% إلى 1.5%.\" } } ] } ] window.dataLayer = window.dataLayer || []; function gtag() { window.dataLayer.push(arguments); } if (!window.__CT_CONSENT_INITIALIZED__) { window.__CT_CONSENT_INITIALIZED__ = true; var savedChoice = null; try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {} var granted = savedChoice === 'true' ? 'granted' : 'denied'; gtag('consent', 'default', { 'ad_storage': granted, 'ad_user_data': granted, 'ad_personalization': granted, 'analytics_storage': granted, 'wait_for_update': 500 }); } دليل كتابة المقالات والشروحات التقنية المتوافقة مع السيو (SEO): كيف تتصدر نتائج البحث وتلتزم بمعايير E-E-A-T وسياسات مشرفي المواقع؟",
+                    "url": "https://connecttag.org/blog/seo-article-writing-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 21,
+                    "name": "دليل تحسين الصور للمواقع والتطبيقات: المقارنة الشاملة بين WebP وAVIF وPNG وكيف تقلل حجم الصور 70% دون فقدان الجودة؟",
+                    "url": "https://connecttag.org/blog/image-optimization-webp-avif-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 22,
+                    "name": "دليل تركيب وتأمين كاميرات المراقبة الشبكية (IP CCTV): كيف تختار دقة العدسة، تحسب سعة الهاردسك، وتحمي الكاميرات من الاختراق؟",
+                    "url": "https://connecttag.org/blog/ip-cctv-security-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 23,
+                    "name": "ما هو رقم IMEI في الهاتف والمودم؟ شرح طريقة فحصه عبر كود *#06# وكيف تكتشف الأجهزة المجددة أو المقلدة قبل الشراء؟",
+                    "url": "https://connecttag.org/blog/imei-number-check-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 24,
+                    "name": "الجدار الناري في أندرويد (Android Firewall): دليل التحكم باتصال التطبيقات بالإنترنت وترشيد استهلاك البيانات عبر تطبيق سور نت",
+                    "url": "https://connecttag.org/blog/android-firewall-app-internet-control-soor-net-guide"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 25,
+                    "name": "حل مشكلة «تقييد عرض الإعلانات» في Google AdSense: كيف تحمي حسابك من النقرات غير الصالحة وتضبط ملف ads.txt ورسالة موافقة GDPR؟",
+                    "url": "https://connecttag.org/blog/adsense-ad-serving-limit-invalid-traffic-ads-txt-guide"
                 }
             ]
         }
@@ -75,17 +239,17 @@
     <meta name="twitter:description" content="اكتشف أحدث المقالات التقنية، نصائح الاستضافة، وأسرار التسويق الرقمي." />
     <meta name="twitter:image" content="https://connecttag.org/assets/img/covers/blog-tech-cover.webp" />
     <meta name="twitter:image:alt" content="مدونة كونكت تاق الشاملة" />
-    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
     <link rel="preload" href="https://connecttag.org/assets/img/blog-cover.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
-    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+    <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59"></noscript>
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+    <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.59">
 
-    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+    <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
 
     <!-- CSS المخصص لتحسين تصميم المدونة -->
     <style>
@@ -572,7 +736,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide">
-                                    <img src="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" alt="الدليل الهندسي لجسور الأنظمة الأصلية expect actual وواجهات Interface Bridges واختبار Coroutines في Kotlin Multiplatform" fetchpriority="high" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.59" alt="الدليل الهندسي لجسور الأنظمة الأصلية expect actual وواجهات Interface Bridges واختبار Coroutines في Kotlin Multiplatform" fetchpriority="high" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -598,7 +762,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide">
-                                    <img src="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" alt="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع وderivedStateOf وBaseline Profiles" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.59" alt="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع وderivedStateOf وBaseline Profiles" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -624,7 +788,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide">
-                                    <img src="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57" alt="الدليل الهندسي لفحص عتاد الهاتف وصحة البطارية والمعالج والحساسات والشاشة قبل الشراء" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.59" alt="الدليل الهندسي لفحص عتاد الهاتف وصحة البطارية والمعالج والحساسات والشاشة قبل الشراء" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -650,7 +814,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">الأمن السيبراني</span>
                                 <a href="https://connecttag.org/blog/wireguard-vs-openvpn-ipsec-security-guide">
-                                    <img src="https://connecttag.org/upload/wireguard-vs-openvpn-ipsec-security-guide.webp?v=1.1.57" alt="الدليل الهندسي لمقارنة بروتوكول WireGuard مع OpenVPN وIPsec في السرعة والأمان وعمر البطارية" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/wireguard-vs-openvpn-ipsec-security-guide.webp?v=1.1.59" alt="الدليل الهندسي لمقارنة بروتوكول WireGuard مع OpenVPN وIPsec في السرعة والأمان وعمر البطارية" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -676,7 +840,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/android-usb-otg-serial-communication-guide">
-                                    <img src="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp?v=1.1.57" alt="الدليل الهندسي لبروتوكول Serial وUSB-OTG وربط تطبيقات أندرويد وسطح المكتب بالعتاد والـ Arduino وقارئات الباركود" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp?v=1.1.59" alt="الدليل الهندسي لبروتوكول Serial وUSB-OTG وربط تطبيقات أندرويد وسطح المكتب بالعتاد والـ Arduino وقارئات الباركود" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -754,7 +918,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/telegram-bot-webhook-security-guide">
-                                    <img src="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.57" alt="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.59" alt="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -780,7 +944,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/telecom-cell-id-mcc-mnc-e164-guide">
-                                    <img src="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp?v=1.1.57" alt="الدليل الهندسي لمعرّفات أبراج الجوال MCC/MNC وCell-ID وTAC ومعيار ترقيم الهواتف الدولي E.164" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/telecom-cell-id-mcc-mnc-e164-guide.webp?v=1.1.59" alt="الدليل الهندسي لمعرّفات أبراج الجوال MCC/MNC وCell-ID وTAC ومعيار ترقيم الهواتف الدولي E.164" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -988,7 +1152,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/lte-wifi-signal-rsrp-sinr-guide">
-                                    <img src="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp?v=1.1.57" alt="شرح مؤشرات إشارة المودم والهاتف RSRP وSINR وRSRQ وRSSI لتقوية تغطية 4G والواي فاي" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/lte-wifi-signal-rsrp-sinr-guide.webp?v=1.1.59" alt="شرح مؤشرات إشارة المودم والهاتف RSRP وSINR وRSRQ وRSSI لتقوية تغطية 4G والواي فاي" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -1014,7 +1178,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">برمجة وتطوير</span>
                                 <a href="https://connecttag.org/blog/jwt-security-debugging-guide">
-                                    <img src="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp?v=1.1.57" alt="تشريح رموز المصادقة الرقمية JWT JSON Web Tokens وأشهر ثغراتها الأمنية وفحصها محلياً" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/jwt-json-web-tokens-security-guide.webp?v=1.1.59" alt="تشريح رموز المصادقة الرقمية JWT JSON Web Tokens وأشهر ثغراتها الأمنية وفحصها محلياً" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -1040,7 +1204,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">تصميم وجرافيكس</span>
                                 <a href="https://connecttag.org/blog/ui-color-palette-wcag-guide">
-                                    <img src="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp?v=1.1.57" alt="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات ومعيار التباين البصري WCAG" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/ui-color-palette-wcag-contrast-guide.webp?v=1.1.59" alt="دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات ومعيار التباين البصري WCAG" loading="lazy" width="1200" height="669" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -1274,7 +1438,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-4g-app-balance-modem-guide">
-                                    <img src="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.57" alt="شرح تطبيق يمن فورجي للاستعلام الذكي عن الرصيد وإدارة المودم" loading="lazy" width="1376" height="768" decoding="async" style="background:#ffffff;">
+                                    <img src="https://connecttag.org/upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.59" alt="شرح تطبيق يمن فورجي للاستعلام الذكي عن الرصيد وإدارة المودم" loading="lazy" width="1376" height="768" decoding="async" style="background:#ffffff;">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -1690,7 +1854,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">
-                                    <img src="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp?v=1.1.57" alt="ضبط إعدادات مودم يمن فورجي 4G وتغيير كلمة السر وحماية الرصيد" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-4g-modem-settings-guide.webp?v=1.1.59" alt="ضبط إعدادات مودم يمن فورجي 4G وتغيير كلمة السر وحماية الرصيد" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -1712,7 +1876,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/best-yemen-4g-modem-buying-guide">
-                                    <img src="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp?v=1.1.57" alt="كيف تختار أفضل مودم يمن فورجي 4G - دليل الشراء والمقارنة" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
+                                    <img src="https://connecttag.org/upload/best-yemen-4g-modem-guide.webp?v=1.1.59" alt="كيف تختار أفضل مودم يمن فورجي 4G - دليل الشراء والمقارنة" width="1264" height="848" decoding="async" style="background:#ffffff;" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -2074,7 +2238,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/yemen-internet-comparison-4g-adsl-fiber">
-                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp?v=1.1.57" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" width="1536" height="1024" decoding="async" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-internet-comparison.webp?v=1.1.59" alt="مقارنة إنترنت اليمن 4G ADSL Fiber" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">
@@ -2097,7 +2261,7 @@
                             <div class="img-wrapper">
                                 <span class="category-badge">اتصالات وشبكات</span>
                                 <a href="https://connecttag.org/blog/how-to-check-yemen-4g-balance">
-                                    <img src="https://connecttag.org/upload/yemen-4g.webp?v=1.1.57" alt="استعلام رصيد يمن فورجي" width="1536" height="1024" decoding="async" loading="lazy">
+                                    <img src="https://connecttag.org/upload/yemen-4g.webp?v=1.1.59" alt="استعلام رصيد يمن فورجي" width="1536" height="1024" decoding="async" loading="lazy">
                                 </a>
                             </div>
                             <div class="card-body">

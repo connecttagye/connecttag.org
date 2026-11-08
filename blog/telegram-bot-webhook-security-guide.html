@@ -10,6 +10,7 @@
   <meta name="author" content="علي الرحبي">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://connecttag.org/blog/telegram-bot-webhook-security-guide" />
+  <link rel="alternate" type="application/rss+xml" title="مدونة كونكت تاق التقنية (RSS)" href="https://connecttag.org/feed.xml">
 
   <!-- OpenGraph meta -->
   <meta property="og:locale" content="ar_YE" />
@@ -18,7 +19,7 @@
   <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
   <meta property="og:title" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وكيف تحمي توكن البوت من الاختراق والإغراق؟" />
   <meta property="og:description" content="لماذا يستهلك getUpdates موارد السيرفر بينما يوفر Webhook استجابة لحظية؟ وكيف تتحقق من الطلبات عبر X-Telegram-Bot-Api-Secret-Token والشبكات الفرعية الرسمية لتيليجرام؟" />
-  <meta property="og:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.57" />
+  <meta property="og:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.59" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="669" />
   <meta property="og:image:type" content="image/webp" />
@@ -37,7 +38,7 @@
   <meta name="twitter:url" content="https://connecttag.org/blog/telegram-bot-webhook-security-guide" />
   <meta name="twitter:title" content="الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): Webhook وتأمين التوكن" />
   <meta name="twitter:description" content="مقارنة هندسية بين Long Polling وWebhook في بوتات تيليجرام، وكيفية حماية نقطة النهاية عبر Secret Token وعناوين IP الرسمية." />
-  <meta name="twitter:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.57" />
+  <meta name="twitter:image" content="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.59" />
   <meta name="twitter:image:alt" content="هندسة وتأمين بوتات تيليجرام للأعمال عبر Webhook وSecret Token" />
   <meta name="twitter:site" content="@connecttagye" />
   <meta name="twitter:creator" content="@connecttagye" />
@@ -50,7 +51,7 @@
     "headline": "الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وتأمين التوكن",
     "image": {
       "@type": "ImageObject",
-      "url": "https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.57",
+      "url": "https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.59",
       "width": 1200,
       "height": 669
     },
@@ -142,17 +143,17 @@
 ]
   </script>
 
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
-  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
-  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.59" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.59"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.59">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.59">
 
-  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
-  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.59" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.59" defer></script>
 
   <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
   <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
@@ -207,7 +208,7 @@
 
             <hr style="margin-top: 0;">
 
-            <img src="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+            <img src="https://connecttag.org/upload/telegram-bot-webhook-security-guide.webp?v=1.1.59" class="img-responsive" alt="الدليل الهندسي لبناء وتأمين بوتات تيليجرام عبر Webhook والترويسة السرية X-Telegram-Bot-Api-Secret-Token" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
 
             <p class="lead">
               تحوّلت بوتات تيليجرام (<code>Telegram Bots</code>) من مجرد أدوات دردشة بسيطة إلى واجهات تشغيل متكاملة للأعمال والتجارة الإلكترونية، وإشعارات السيرفرات الفورية، وأنظمة التحقق والمصادقة، وأدوات الأتمتة المؤسسية. ولكن مع ازدياد الاعتماد عليها، يقع كثير من المطورين في خطأين هندسيين شائعين: تشغيل البوت في بيئة الإنتاج بأسلوب الاستعلام المتكرر (<code>Long Polling</code>) الذي يستنزف موارد الخادم، أو فتح نقطة استقبال <code>Webhook</code> عامة على الإنترنت دون التحقق التشفيري من مصدر الطلبات!
