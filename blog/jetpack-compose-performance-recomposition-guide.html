@@ -241,19 +241,19 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px;">
             <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 16px; border-radius: 10px;">
               <div style="font-weight: 800; color: #7dd3fc; font-size: 16px; margin-bottom: 6px;">1. مرحلة التركيب (Composition)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">ماذا سنعرض؟ (What to show)</div>
+              <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">ماذا سنعرض؟ (What to show)</div>
               <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">تنفيذ دوال <code>@Composable</code> وبناء شجرة عقد الواجهة في جدول الفتحات (<code>Slot Table</code>). هي المرحلة <strong>الأعلى تكلفة على المعالج</strong> عند تكرارها كل إطار.</p>
             </div>
 
             <div style="background: rgba(16, 185, 129, 0.12); border-right: 4px solid #34d399; padding: 16px; border-radius: 10px;">
               <div style="font-weight: 800; color: #6ee7b7; font-size: 16px; margin-bottom: 6px;">2. مرحلة التخطيط (Layout)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">أين سنضع كل عنصر؟ (Where to place)</div>
+              <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">أين سنضع كل عنصر؟ (Where to place)</div>
               <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">قياس أبعاد كل عقدة (<code>Measure</code>) وتحديد إحداثيات موقعها <code>(X, Y)</code> على الشاشة (<code>Place</code>) في مسحة واحدة سريعة (<code>Single-Pass Measurement</code>).</p>
             </div>
 
             <div style="background: rgba(245, 158, 11, 0.12); border-right: 4px solid #fbbf24; padding: 16px; border-radius: 10px;">
               <div style="font-weight: 800; color: #fde68a; font-size: 16px; margin-bottom: 6px;">3. مرحلة الرسم (Drawing)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">كيف نرسم البكسلات؟ (How to render)</div>
+              <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 8px;">كيف نرسم البكسلات؟ (How to render)</div>
               <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">إصدار أوامر الرسم المباشرة على لوحة <code>Canvas</code> (أو طبقة <code>Skia/Impeller</code>) لتحريك الألوان والظلال والشفافية بأقل عبء ممكن.</p>
             </div>
           </div>
