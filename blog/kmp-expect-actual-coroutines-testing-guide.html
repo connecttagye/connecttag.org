@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل expect/actual واختبار Coroutines في KMP | كونكت تاق</title>
+  <meta name="description" content="الدليل الهندسي لتصميم جسور الأنظمة الأصلية (expect/actual مقابل Interface Bridges) وحقن DispatcherProvider لاختبار تدفقات Coroutines في KMP." />
+  <meta name="author" content="عقيل محمد" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev" />
+  <meta property="og:url" content="https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide" />
+  <meta property="og:title" content="كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في Kotlin Multiplatform؟" />
+  <meta property="og:description" content="متى تستخدم expect/actual ومتى تفضل الواجهات القابلة للحقن؟ وكيف تختبر StateFlow وCoroutines في جزء من الثانية عبر DispatcherProvider وrunTest؟" />
+  <meta property="og:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="كيف تصمم جسور الأنظمة الأصلية (expect/actual) وتختبر مشاريع KMP؟" />
+  <meta name="twitter:description" content="الدليل الهندسي للمفاضلة بين expect/actual والواجهات البرمجية، وحقن DispatcherProvider لاختبار تدفقات StateFlow عبر runTest وTurbine." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" />
+  <meta name="twitter:image:alt" content="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف تصمم جسور الأنظمة الأصلية (expect/actual) وتكتب اختبارات وحدات سريعة في KMP؟",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني (Senior Software Engineer & Cybersecurity Researcher)",
+      "url": "https://connecttag.org/blog/authors/aqeldev",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل الهندسي الشامل لتصميم جسور الأنظمة الأصلية في Kotlin Multiplatform: مقارنة expect/actual بالواجهات القابلة للحقن، وحقن DispatcherProvider لاختبار تدفقات Coroutines.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل expect/actual واختبار Coroutines في KMP",
+        "item": "https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا ينصح فريق JetBrains بتفضيل الواجهات البرمجية (Interfaces) على expect class في منطق الأعمال داخل KMP؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن آلية expect / actual تربط الكود بتطبيق واحد ثابت في وقت الترجمة (Compile-Time Binding)، مما يجعل استبدال الكلاس بنسخة وهمية (Fake أو Mock) أثناء اختبارات الوحدات في commonTest أمراً مستحيلاً بدون أدوات معقدة، كما يمنع تمرير تبعيات مثل Android Context في المُنشئ بسهولة. أما الواجهات البرمجية (Interfaces) فتسمح بحقن تطبيق حقيقي لكل منصة في الإنتاج وتطبيق مزيف خفيف (Fake) في الاختبارات."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي الحالات الهندسية التي تتفوق فيها expect / actual على الواجهات البرمجية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تتفوق expect / actual في أربع حالات محددة: 1) ربط نوع مشترك بنوع أصيل موجود مسبقاً عبر actual typealias (مثل ربط UUID أو Decimal). 2) الدوال التوسعية والعليا البسيطة التي لا تملك حالة داخلية (Stateless Top-Level Functions) مثل قراءة الوقت الحالي أو توليد معرّف فريد. 3) توفير دالة مصنع (Factory Function) تنشئ الكائن المناسب للمنصة. 4) تعريف الوسوم (Annotations) الخاصة بالمنصات مثل @Parcelize."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يفشل اختبار ViewModel في commonTest عند استدعاء Dispatchers.Main أو Dispatchers.IO مباشرةً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن Dispatchers.Main يعتمد على حلقة أحداث الواجهة الرسومية للنظام (مثل Android Looper)، وهي غير موجودة أثناء تشغيل اختبارات الوحدات السريعة على JVM أو Native! وعند كتابة Dispatchers.IO بشكل صلب (Hardcoded) داخل الكود، تنتقل المهام إلى خيوط حقيقية خارج سيطرة محرك الاختبار الزمني (TestCoroutineScheduler)، فتفشل الاختبارات بشكل عشوائي (Flaky Tests). الحل الهندسي هو حقن واجهة DispatcherProvider."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين StandardTestDispatcher وUnconfinedTestDispatcher في مكتبة kotlinx-coroutines-test؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يضع StandardTestDispatcher كافة الكوروتينات الجديدة في طابور انتظار افتراضي ولا ينفذها إلا عندما تتقدم الساعة الافتراضية أو تستدعي advanceUntilIdle()، مما يمنحك تحكماً دقيقاً في ترتيب الأحداث واختبار حالات التحميل (isLoading = true ثم false). بينما ينفذ UnconfinedTestDispatcher الكوروتينات بشكل فوري ومتلهف (Eagerly) فور إطلاقها، وهو مناسب لتجمع انبعاثات StateFlow في الخلفية."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل expect/actual واختبار Coroutines في KMP", "url":"https://connecttag.org/blog/kmp-expect-actual-coroutines-testing-guide"}]'></site-breadcrumb>
+        <h1>كيف تصمم جسور الأنظمة الأصلية (<code>expect / actual</code> وواجهات <code>Interface Bridges</code>) وتكتب اختبارات وحدات سريعة في <code>Kotlin Multiplatform</code>؟</h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لآلية expect/actual وجسور الأنظمة الأصلية واختبار Coroutines في Kotlin Multiplatform" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">يكمن السحر الهندسي الحقيقي لتقنية <strong><code>Kotlin Multiplatform (KMP)</code></strong> (كما أوضحنا في <a href="https://connecttag.org/blog/kmp-vs-flutter-comparison"><strong>مقارنة KMP مع Flutter</strong></a>) في أنها لا تعزلك داخل آلة افتراضية مغلقة، بل تمنح الكود المشترك في <code>commonMain</code> وصولاً مباشراً وأصيلاً لواجهات النظام في أندرويد (<code>JVM/Android SDK</code>) وأبل (<code>iOS Objective-C / Swift</code>) وسطح المكتب والويب. غير أن أول قرار معماري يواجه أي مهندس عند بناء مشروع <code>KMP</code> ضخم هو: <strong>متى أستخدم آلية <code>expect / actual</code> المدمجة في اللغة، ومتى أستخدم الواجهات البرمجية القابلة للحقن (<code>Dependency Injection Interfaces</code>)؟</strong></p>
+
+        <p>في هذا الدليل الهندسي والعملي، نضع بين يديك القواعد المعمارية الصارمة لتصميم جسور الأنظمة الأصلية دون الإضرار بقابلية الاختبار (<code>Testability</code>)، ونشرح كيف تتغلب على مشكلة تجمّد أو فشل اختبارات الكوروتينات عبر حقن <strong><code>DispatcherProvider</code></strong> واستخدام <code>runTest</code> و<code>StandardTestDispatcher</code> ومكتبة <code>Turbine</code>، مع أمثلة حية من مكاتب <strong><code>coroutine-dispatchers-kmp</code></strong> و<strong><code>logging-lib-kmp</code></strong> و<strong><code>device-lib-kmp</code></strong> في <a href="https://connecttag.org/company/projects/libraries/"><strong>قسم المكاتب البرمجية في كونكت تاق</strong></a>.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-Vials"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>اجعل <code>Interface</code> خيارك الأول للخدمات ذات الحالة:</strong> أي مكون يعتمد على موارد النظام (مثل البلوتوث، قاعدة البيانات، الحافظة، أو الشبكة) ويحتاج إلى محاكاة (<code>Fake/Mock</code>) في الاختبارات يجب أن يُصمم كـ <code>interface</code> في <code>commonMain</code> وليس كـ <code>expect class</code>.</li>
+            <li><strong>استخدم <code>expect / actual</code> للدوال عديمة الحالة و<code>typealias</code>:</strong> تتألق <code>expect fun</code> و<code>actual typealias</code> في ربط الأنواع الأصلية (مثل <code>UUID</code>) أو كتابة مصانع الكائنات (<code>Platform Factories</code>).</li>
+            <li><strong>يُحظر كتابة <code>Dispatchers.IO</code> أو <code>Dispatchers.Main</code> بشكل صلب:</strong> استدعاء موزعات الكوروتين مباشرةً داخل <code>ViewModel</code> أو <code>Repository</code> يجعل اختباراتك بطيئة ومتقلبة (<code>Flaky</code>)؛ الحل هو حقن عقد <code>DispatcherProvider</code>.</li>
+            <li><strong>الساعة الافتراضية في <code>runTest</code> تتخطى التأخير الزمني فوراً:</strong> دالة <code>delay(30_000)</code> داخل اختبار يستخدم <code>StandardTestDispatcher</code> تنفذ في أقل من <code>1 ملي ثانية</code> دون انتظار فعلي!</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. تشريح المعمارية الهرمية لمجموعات المصادر (Hierarchical Source Sets) في KMP</a></li>
+            <li><a href="#section-2">2. المقارنة المعمارية الحاسمة: متى تستخدم expect / actual ومتى تستخدم الواجهات (Interfaces)؟</a></li>
+            <li><a href="#section-3">3. هندسة التزامن القابل للاختبار: لماذا يجب حقن DispatcherProvider بدلاً من Dispatchers المباشرة؟</a></li>
+            <li><a href="#section-4">4. كتابة اختبارات وحدات حتمية لتدفقات StateFlow عبر runTest وTurbine في commonTest</a></li>
+            <li><a href="#section-5">5. التطبيق العملي عبر مكاتب كونكت تاق (coroutine-dispatchers-kmp وlogging-lib-kmp وdevice-lib-kmp)</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. تشريح المعمارية الهرمية لمجموعات المصادر (Hierarchical Source Sets) في KMP</h2>
+        <p>ينظم مترجم <code>Kotlin Multiplatform</code> الكود البرمجي في شجرة هرمية من مجموعات المصادر (<code>Source Sets</code>). يقع الكود المشترك بالكامل في قمة الهرم داخل <strong><code>commonMain</code></strong>، بينما تقع الاختبارات المشتركة في <strong><code>commonTest</code></strong>، وتتفرع تحتها المنصات المستهدفة (<code>androidMain</code>، <code>iosMain</code>، <code>jvmMain</code>، <code>wasmJsMain</code>).</p>
+
+        <p>عندما يحتاج الكود في <code>commonMain</code> إلى استدعاء قدرة خاصة بنظام التشغيل (مثل قراءة اسم موديل الجهاز، أو الكتابة في سجل النظام <code>Timber / NSLog</code>، أو الوصول للحافظة)، يتيح لك المترجم طريقتين هندسيتين لبناء هذا الجسر:</p>
+        <ol>
+          <li><strong>الربط في وقت الترجمة (<code>Compile-Time Binding</code>) عبر <code>expect / actual</code>:</strong> تعلن في <code>commonMain</code> عن توقيع دالة أو كلاس بكلمة <code>expect</code>، ويلزمك المترجم بتقديم تنفيذ <code>actual</code> مطابق له في كل منصة مستهدفة؛ ثم يقوم المترجم باستبدال الاستدعاء مباشرةً أثناء بناء الحزمة الثنائية.</li>
+          <li><strong>الربط في وقت التشغيل (<code>Runtime Polymorphism</code>) عبر <code>Interfaces + Dependency Injection</code>:</strong> تعرّف عقداً برمجياً <code>interface</code> في <code>commonMain</code>، وتكتب كلاساً ينفذه في كل منصة (مثلاً <code>AndroidClipboardBridge</code> الذي يأخذ <code>Context</code> في مُنشئه، و<code>IosClipboardBridge</code> الذي يستخدم <code>UIPasteboard</code>)، ثم تحقنه عبر <code>Koin</code> أو <code>Kotlin-Inject</code> أو يدوياً.</li>
+        </ol>
+
+        <h2 id="section-2">2. المقارنة المعمارية الحاسمة: متى تستخدم expect / actual ومتى تستخدم الواجهات (Interfaces)؟</h2>
+        <p>يوضح الجدول الهندسي التالي متى تختار كلاً من الآليتين وفق أفضل الممارسات المعتمدة من فريق <code>JetBrains</code>:</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">وجه المقارنة</th>
+                <th style="padding: 14px; text-align: right;">آلية <code>expect / actual</code></th>
+                <th style="padding: 14px; text-align: right;">الواجهات البرمجية (<code>Interface Bridges</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">وقت الربط (Binding Time)</td>
+                <td style="padding: 12px;">ثابت في وقت الترجمة (<code>Compile-Time</code>)؛ تطبيق واحد فقط لكل منصة.</td>
+                <td style="padding: 12px; color: #15803d; font-weight: 700;">مرن في وقت التشغيل (<code>Runtime</code>)؛ يدعم تعدد التطبيقات.</td>
+              </tr>
+              <tr style="background: #f0fdf4;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">قابلية المحاكاة والاختبار (Testing)</td>
+                <td style="padding: 12px; color: #b91c1c;">صعبة؛ لا يمكن تمرير نسخة وهمية (<code>Fake</code>) بسهولة في <code>commonTest</code>.</td>
+                <td style="padding: 12px; color: #15803d; font-weight: 700;">ممتازة؛ يمكنك تمرير <code>FakeRepository</code> أو <code>FakeDeviceBridge</code> بسطر واحد.</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">تمرير تبعيات المنصة في المُنشئ</td>
+                <td style="padding: 12px; color: #b91c1c;">مقيد جداً؛ لأن توقيع المُنشئ في <code>expect class</code> لا يعرف كائن <code>Android Context</code>!</td>
+                <td style="padding: 12px; color: #15803d; font-weight: 700;">حر تماماً؛ كل كلاس في <code>androidMain</code> يستقبل <code>Context</code> في مُنشئه الطبيعي.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">الاستخدام الهندسي الأمثل</td>
+                <td style="padding: 12px;"><code>actual typealias</code>، الدوال التوسعية عديمة الحالة، ودوال المصنع (<code>Factory Functions</code>).</td>
+                <td style="padding: 12px;">مستودعات البيانات، مديري الحساسات والاتصال، جسور النظام، وخدمات التشفير.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-3">3. هندسة التزامن القابل للاختبار: لماذا يجب حقن DispatcherProvider بدلاً من Dispatchers المباشرة؟</h2>
+        <p>من أكثر الأخطاء شيوعاً في مشاريع <code>KMP</code> كتابة <code>withContext(Dispatchers.IO)</code> أو إطلاق كوروتين على <code>Dispatchers.Default</code> مباشرةً داخل طبقات منطق الأعمال. عندما تحاول كتابة اختبار وحدات لهذا الكود في <code>commonTest</code>، ستفاجأ بأن الاختبار يفشل لأن الكوروتين يعمل في خيط منفصل خارج سيطرة جدولة الاختبار!</p>
+
+        <p>الحل المعماري النظيف (الذي تطبقه مكتبة <strong><code>coroutine-dispatchers-kmp</code></strong>) هو تعريف عقد <code>DispatcherProvider</code> وحقنه في جميع الكلاسات:</p>
+
+<pre style="direction: ltr; text-align: left; background: #0f172a; color: #f8fafc; padding: 18px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.7;"><code>// 1. In commonMain: Injectable DispatcherProvider Contract
+interface DispatcherProvider {
+    val main: CoroutineDispatcher
+    val io: CoroutineDispatcher
+    val default: CoroutineDispatcher
+    val unconfined: CoroutineDispatcher
+}
+
+// 2. Production Implementation (Injected via DI in app launch)
+class DefaultDispatcherProvider : DispatcherProvider {
+    override val main: CoroutineDispatcher = Dispatchers.Main
+    override val io: CoroutineDispatcher = Dispatchers.IO
+    override val default: CoroutineDispatcher = Dispatchers.Default
+    override val unconfined: CoroutineDispatcher = Dispatchers.Unconfined
+}
+
+// 3. Test Implementation (Used in commonTest with a single TestDispatcher)
+class TestDispatcherProvider(
+    val testDispatcher: TestDispatcher = StandardTestDispatcher()
+) : DispatcherProvider {
+    override val main: CoroutineDispatcher = testDispatcher
+    override val io: CoroutineDispatcher = testDispatcher
+    override val default: CoroutineDispatcher = testDispatcher
+    override val unconfined: CoroutineDispatcher = testDispatcher
+}</code></pre>
+
+        <h2 id="section-4">4. كتابة اختبارات وحدات حتمية لتدفقات StateFlow عبر runTest وTurbine في commonTest</h2>
+        <p>بفضل حقن <code>DispatcherProvider</code> وبناء الواجهات على نمط <a href="https://connecttag.org/blog/kmp-mvi-architecture-state-guide"><strong>معمارية MVI أحادية التدفق</strong></a>، يمكنك الآن اختبار أي <code>ViewModel</code> أو <code>UseCase</code> في <code>commonTest</code> والتحقق من تتابع حالات الواجهة (<code>Loading → Success / Error</code>) في أقل من <code>5 ملي ثانية</code>:</p>
+
+<pre style="direction: ltr; text-align: left; background: #0f172a; color: #f8fafc; padding: 18px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.7;"><code>import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
+class DeviceScannerViewModelTest {
+
+    @Test
+    fun whenScanTriggered_emitsLoadingThenDeviceListDeterministically() = runTest {
+        // Arrange: Share the same TestScheduler with our TestDispatcherProvider
+        val testDispatcher = StandardTestDispatcher(testScheduler)
+        val dispatchers = TestDispatcherProvider(testDispatcher)
+        val fakeBridge = FakeDeviceDiagnosticsBridge(
+            mockBatteryLevel = 92,
+            mockModelName = "ConnectTag-Pro"
+        )
+        val viewModel = DeviceScannerViewModel(
+            deviceBridge = fakeBridge,
+            dispatchers = dispatchers
+        )
+
+        // Act: Dispatch user intent
+        viewModel.onIntent(ScannerIntent.StartHardwareCheck)
+
+        // Advance virtual time until all queued coroutines complete
+        advanceUntilIdle()
+
+        // Assert: Verify final immutable UI state
+        val state = viewModel.uiState.value
+        assertFalse(state.isScanning)
+        assertEquals(92, state.batteryPercentage)
+        assertTrue(state.isHealthy)
+    }
+}</code></pre>
+
+        <h2 id="section-5">5. التطبيق العملي عبر مكاتب كونكت تاق (coroutine-dispatchers-kmp وlogging-lib-kmp وdevice-lib-kmp)</h2>
+        <p>لتوفير بنية تحتية جاهزة ومختبرة لمشاريع الأندرويد و<code>Kotlin Multiplatform</code>، طور الفريق الهندسي في <strong>كونكت تاق</strong> حزماً برمجية معيارية تطبق هذه الأنماط الهندسية بدقة:</p>
+
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #1e3a8a; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-boxes-stacked"></i> مكاتب جسور الأنظمة واختبار الكوروتينات في كونكت تاق:</h3>
+          <ul style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li><strong>مكتبة <code>coroutine-dispatchers-kmp</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #0052cc;">قسم المكاتب البرمجية</a>:</strong> توفر عقود <code>DispatcherProvider</code> القابلة للحقن وموزعات الاختبار الجاهزة لفصل منطق الأعمال عن خيوط النظام.</li>
+            <li><strong>مكتبة <code>logging-lib-kmp</code> ومكتبة <code>device-lib-kmp</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #0052cc;">قسم المكاتب البرمجية</a>:</strong> نماذج عملية للدمج الهجين بين واجهات البرمجة ومصانع <code>expect / actual</code> لتوحيد تسجيل السجلات (<code>Timber / SLF4J / NSLog</code>) وقراءة حالة العتاد عبر المنصات.</li>
+            <li><strong>مكتبة <code>system-bridge-android</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #0052cc;">قسم المكاتب البرمجية</a>:</strong> جسر التفاعل الآمن مع نظام أندرويد (الحافظة، مستمعات لوحة المفاتيح، وتوجيه النوايا) مع عقود جاهزة للحقن والاختبار.</li>
+          </ul>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/company/projects/libraries/" class="btn btn-primary" style="background: #0052cc; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-code"></i> تصفح مكاتب KMP الـ 74
+            </a>
+            <a href="https://connecttag.org/blog/kmp-mvi-architecture-state-guide" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-diagram-project"></i> دليل معمارية MVI في KMP
+            </a>
+            <a href="https://connecttag.org/company/services/web-app-development" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-laptop-code"></i> خدمة تطوير الأنظمة والتطبيقات
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا ينصح فريق JetBrains بتفضيل الواجهات البرمجية (Interfaces) على expect class في منطق الأعمال داخل KMP؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن آلية <code>expect / actual</code> تربط الكود بتطبيق واحد ثابت في وقت الترجمة (<code>Compile-Time Binding</code>)، مما يجعل استبدال الكلاس بنسخة وهمية (<code>Fake</code>) أثناء اختبارات الوحدات في <code>commonTest</code> أمراً عسيراً، كما يمنع تمرير تبعيات مثل <code>Android Context</code> في المُنشئ بسهولة. أما الواجهات البرمجية (<code>Interfaces</code>) فتسمح بحقن تطبيق حقيقي لكل منصة في الإنتاج وتطبيق مزيف خفيف في الاختبارات.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما هي الحالات الهندسية التي تتفوق فيها expect / actual على الواجهات البرمجية؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تتفوق <code>expect / actual</code> في أربع حالات محددة: 1) ربط نوع مشترك بنوع أصيل موجود مسبقاً عبر <code>actual typealias</code>. 2) الدوال التوسعية والعليا البسيطة التي لا تملك حالة داخلية (<code>Stateless Top-Level Functions</code>). 3) توفير دالة مصنع (<code>Factory Function</code>) تنشئ الكائن المناسب للمنصة. 4) تعريف الوسوم (<code>Annotations</code>) الاختيارية الخاصة بالمنصات.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يفشل اختبار ViewModel في commonTest عند استدعاء Dispatchers.Main أو Dispatchers.IO مباشرةً؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن <code>Dispatchers.Main</code> يعتمد على حلقة أحداث الواجهة الرسومية للنظام، وهي غير موجودة أثناء تشغيل اختبارات الوحدات السريعة! وعند كتابة <code>Dispatchers.IO</code> بشكل صلب داخل الكود، تنتقل المهام إلى خيوط حقيقية خارج سيطرة محرك الاختبار الزمني (<code>TestCoroutineScheduler</code>)، فتفشل الاختبارات بشكل عشوائي. الحل الهندسي هو حقن واجهة <code>DispatcherProvider</code>.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما الفرق بين StandardTestDispatcher وUnconfinedTestDispatcher في مكتبة kotlinx-coroutines-test؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">يضع <code>StandardTestDispatcher</code> كافة الكوروتينات الجديدة في طابور انتظار افتراضي ولا ينفذها إلا عندما تتقدم الساعة الافتراضية أو تستدعي <code>advanceUntilIdle()</code>، مما يمنحك تحكماً دقيقاً في اختبار حالات التحميل المتعاقبة. بينما ينفذ <code>UnconfinedTestDispatcher</code> الكوروتينات بشكل فوري ومتلهف فور إطلاقها، وهو مناسب لتجمع انبعاثات <code>StateFlow</code> في الخلفية.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="المصادر والوثائق الهندسية المعتمدة" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #0052cc; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #0052cc;"></i> المصادر والوثائق الهندسية المعتمدة (Official JetBrains &amp; Kotlin Docs):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>JetBrains Kotlin Multiplatform Documentation — Connect to Platform-Specific APIs (expect/actual Rules):</strong> <a href="https://kotlinlang.org/docs/multiplatform-connect-to-apis.html" target="_blank" rel="noopener noreferrer">Official Rules &amp; Best Practices for expect and actual Declarations vs Interfaces</a>.</li>
+            <li><strong>Kotlinx Coroutines Test API Reference (runTest &amp; TestDispatcher):</strong> <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-test/" target="_blank" rel="noopener noreferrer">Deterministic Unit Testing for Kotlin Coroutines across Multiplatform Targets</a>.</li>
+            <li><strong>Android Developers — Testing Kotlin Coroutines on Android &amp; KMP:</strong> المرجع الهندسي لحقن موزعات الكوروتين واستبدال <code>Dispatchers.Main</code> في الاختبارات.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="عقيل محمد" avatar="https://connecttag.org/upload/author/aqeldev.webp" link="https://connecttag.org/blog/authors/aqeldev"><span class="sr-only">الكاتب: عقيل محمد</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="kmp-mvi-architecture-state-guide, jetpack-compose-performance-recomposition-guide, kmp-data-management-room-datastore"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

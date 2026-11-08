@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>دليل تطبيقات الويب التقدمية PWA وService Workers | كونكت تاق</title>
+  <meta name="description" content="كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers وملف manifest.json.">
+  <meta name="keywords" content="تطبيقات الويب التقدمية PWA, شرح Service Worker, عمل الموقع بدون إنترنت Offline, ملف manifest.json, Cache-First vs Network-First, Stale-While-Revalidate, تحديث كاش الموقع Cache Busting, كونكت تاق">
+  <meta name="author" content="علي الرحبي">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/pwa-service-worker-offline-web-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/pwa-service-worker-offline-web-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers" />
+  <meta property="og:description" content="مقارنة استراتيجيات التخزين المؤقت في Service Worker (Cache-First وNetwork-First وStale-While-Revalidate) وكيف تمنع بقاء الزائر على النسخة القديمة عبر Cache Versioning." />
+  <meta property="og:image" content="https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل الهندسي لتطبيقات الويب التقدمية PWA وإدارة التخزين المؤقت عبر Service Workers" />
+  <meta property="article:published_time" content="2026-11-08T04:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T04:00:00+03:00" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+  <meta property="article:tag" content="PWA" />
+  <meta property="article:tag" content="Service Workers" />
+  <meta property="article:tag" content="تطوير الويب" />
+  <meta property="article:tag" content="Web Performance" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/pwa-service-worker-offline-web-guide" />
+  <meta name="twitter:title" content="كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ دليل PWA وService Workers" />
+  <meta name="twitter:description" content="شرح هندسي لتحويل المواقع إلى تطبيقات ويب تقدمية (PWA) قابلة للتثبيت وتعمل بدون إنترنت عبر Service Workers وmanifest.json." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp" />
+  <meta name="twitter:image:alt" content="دليل تطبيقات الويب التقدمية PWA وService Workers" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA)",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T04:00:00+03:00",
+    "dateModified": "2026-11-08T04:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "كاتب ومحرر تقني متخصص في التحول الرقمي والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل هندسي عملي لمطوري الويب يشرح كيفية تحويل الموقع الإلكتروني إلى تطبيق ويب تقدمي (PWA) يعمل بدون إنترنت، إعداد ملف manifest.json، مقارنة استراتيجيات التخزين المؤقت في Service Worker، وحل مشكلة تحديث الكاش.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/pwa-service-worker-offline-web-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل تطبيقات الويب التقدمية PWA وService Workers",
+        "item": "https://connecttag.org/blog/pwa-service-worker-offline-web-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يشترط المتصفح وجود شهادة أمان HTTPS لتفعيل Service Worker في تطبيقات PWA؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن Service Worker يعمل كوكيل شبكي (Network Proxy) داخل متصفح المستخدم يمتلك صلاحية اعتراض جميع طلبات HTTP وتعديل استجاباتها وتخزينها محلياً. لو سُمح بتشغيله عبر اتصال HTTP غير مشفر، لتمكّن أي مهاجم على الشبكة (Man-in-the-Middle) من حقن ملف Service Worker خبيث يظل مسيطراً على المتصفح حتى بعد مغادرة الشبكة؛ لذا يُحصر تشغيله في نطاقات HTTPS الآمنة (مع استثناء localhost لأغراض التطوير)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين استراتيجية Cache-First واستراتيجية Network-First في Service Worker؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في استراتيجية Cache-First، يبحث الـ Service Worker عن الملف في الذاكرة المؤقتة المحلية أولاً وإذا وجده يعرضه فوراً بدون الاتصال بالشبكة، وهي مثالية للأصول الثابتة مثل الخطوط (woff2) والأيقونات والملفات المرقمة بإصدار. أما في استراتيجية Network-First، فيحاول جلب أحدث نسخة من الخادم أولاً، ولا يلجأ للكاش المحلي إلا عند انقطاع الإنترنت أو بطء الشبكة، وهي مثالية لصفحات HTML المتجددة والمقالات."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أحل مشكلة بقاء الزوار على النسخة القديمة من الموقع بعد رفع تحديث جديد بسبب كاش الـ Service Worker؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يتم حلها عبر الجمع بين آليتين: أولاً، ربط اسم مخزن الكاش في ملف sw.js برقم إصدار متسلسل (مثل CACHE_NAME = 'ct-cache-v108') وحذف جميع مخازن الكاش القديمة داخل حدث activate عبر Caches.delete(). ثانياً، استدعاء self.skipWaiting() وclients.claim() مع إرفاق معامل إصدار (?v=1.1.54) بروابط ملفات CSS وJS لضمان تحديث الأصول فور نشر الإصدار الجديد."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل تدعم أجهزة iPhone وiPad (متصفح Safari على iOS) تثبيت تطبيقات الويب التقدمية PWA؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، يدعم نظام iOS وiPadOS تشغيل تطبيقات الويب التقدمية عبر خيار «إضافة إلى الشاشة الرئيسية» (Add to Home Screen) في متصفح Safari، شريطة توفير ملف manifest.json سليم ووسوم أبل المخصصة مثل apple-touch-icon وapple-mobile-web-app-capable، كما أضافت أبل دعم الإشعارات الفورية (Web Push Notifications) لتطبيقات PWA المثبتة على الشاشة الرئيسية."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "دليل تطبيقات الويب التقدمية PWA وService Workers", "url": "https://connecttag.org/blog/pwa-service-worker-offline-web-guide"}]'></site-breadcrumb>
+
+            <h1>كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وإدارة الكاش عبر Service Workers</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: برمجة وتطوير - تطوير الهواتف والأنظمة المتعددة</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/pwa-service-worker-offline-web-guide.webp" class="img-responsive" alt="الدليل الهندسي لتطبيقات الويب التقدمية PWA وإدارة التخزين المؤقت عبر Service Workers" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              هل لاحظت أنه عند تصفحك لموقع <strong>كونكت تاق</strong> واستخدامك لأدواتنا التقنية ثم انقطاع اتصال الإنترنت فجأة، يظل الموقع قادراً على فتح الصفحات التي زرتها وتشغيل الأدوات البرمجية محلياً مع عرض شاشة تنبيه أنيقة للوضع غير المتصل (<code>Offline Fallback</code>) بدلاً من شاشة خطأ المتصفح الرمادية المزعجة؟ السّر الهندسي وراء هذه التجربة يكمن في معمارية <strong>تطبيقات الويب التقدمية (<code>Progressive Web Apps — PWA</code>)</strong> ومحرك <strong><code>Service Worker</code></strong>!
+            </p>
+            <p>
+              في هذا الدليل الهندسي التطبيقي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح خطوة بخطوة كيف تحوّل أي موقع إلكتروني إلى تطبيق قابل للتثبيت على شاشة الهاتف وسطح المكتب، وكيف تختار استراتيجية التخزين المؤقت (<code>Caching Strategy</code>) المناسبة لكل نوع من الملفات، وكيف تمنع أشهر فخ يقع فيه المطورون وهو «بقاء الزوار عالقين على النسخة القديمة من الموقع بعد التحديث»، مع ربط عملي بـ <a href="https://connecttag.org/tools/web/site-checker/">أداة فحص الموقع والـ SEO</a> و<a href="https://connecttag.org/company/services/web-app-development">خدمة تطوير المواقع والأنظمة السحابية</a>.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-bolt" aria-hidden="true"></i> خلاصة تنفيذية لمطوري الويب ومهندسي الأداء</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>الأركان الثلاثة لأي تطبيق <code>PWA</code>:</strong> اتصال آمن مشفر عبر <code>HTTPS</code> + ملف بيان التطبيق (<code>manifest.json</code>) لتعريف الأيقونات ونمط العرض المستقل (<code>standalone</code>) + عامل خدمة مسجّل (<code>Service Worker — sw.js</code>).</li>
+                <li><strong>لا توجد استراتيجية كاش واحدة تناسب كل شيء:</strong> استخدم <code>Cache-First</code> للخطوط والأيقونات الثابتة، و<code>Stale-While-Revalidate</code> لملفات التصميم والصور، و<code>Network-First</code> لصفحات <code>HTML</code> وواجهات البيانات الحية.</li>
+                <li><strong>إدارة الإصدارات وتطهير الكاش (<code>Cache Versioning &amp; Busting</code>):</strong> اربط اسم مخزن الكاش في <code>sw.js</code> بمعرّف إصدار واضح (مثل <code>v108</code>) وامسح المخازن القديمة تلقائياً داخل حدث <code>activate</code>.</li>
+                <li><strong>التشغيل المحلي داخل تطبيقات الهواتف:</strong> إذا كنت ترغب في تشغيل تطبيق ويب كامل داخل تطبيق أندرويد بدون إنترنت، يمكنك دمج مكتبتنا مفتوحة المصدر <code>local-web-server</code> من <a href="https://connecttag.org/company/projects/libraries/">قسم المكاتب البرمجية في كونكت تاق</a>.</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل الهندسي لتطبيقات PWA</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. ما هو تطبيق الويب التقدمي (PWA) وكيف يعمل الـ Service Worker كوكيل شبكي؟</a></li>
+                <li><a href="#section-2">2. تشريح ملف manifest.json ووسوم التوافق مع أندرويد وiOS</a></li>
+                <li><a href="#section-3">3. مقارنة استراتيجيات الكاش الثلاث: Cache-First مقابل Network-First مقابل Stale-While-Revalidate</a></li>
+                <li><a href="#section-4">4. التطبيق العملي: كود بناء ملف sw.js احترافي مع صفحة Offline Fallback</a></li>
+                <li><a href="#section-5">5. كيف تمنع بقاء الزائر على النسخة القديمة؟ هندسة إصدارات الكاش (Cache Busting)</a></li>
+                <li><a href="#section-6">6. فحص جاهزية الـ PWA وتشغيل الويب محلياً عبر مكتبة local-web-server</a></li>
+                <li><a href="#faq">7. الأسئلة الشائعة حول تطبيقات الويب التقدمية (PWA)</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. ما هو تطبيق الويب التقدمي (PWA) وكيف يعمل الـ Service Worker كوكيل شبكي؟</h2>
+            <p>
+              تطبيق الويب التقدمي (<code>Progressive Web App</code>) هو موقع ويب مبني بمعايير الويب القياسية (<code>HTML5</code>, <code>CSS3</code>, <code>JavaScript</code>)، لكنه يمتلك قدرات تحاكي التطبيقات الأصيلة (<code>Native Apps</code>): يمكن تثبيته بأيقونة مستقلة على الشاشة الرئيسية للهاتف أو سطح المكتب، يعمل في نافذة كاملة بدون شريط عنوان المتصفح، ويستمر في العمل حتى عند انقطاع الإنترنت.
+            </p>
+            <p>
+              العقل المدبر وراء هذه القدرات هو <strong>عامل الخدمة (<code>Service Worker</code>)</strong>؛ وهو ملف جافاسكربت يعمل في خيط معالجة خلفي مستقل (<code>Background Worker Thread</code>) منفصل تماماً عن صفحة الويب الرئيسية (<code>DOM</code>). يمرّ الـ <code>Service Worker</code> بثلاث مراحل أساسية في دورة حياته (<code>Lifecycle</code>):
+            </p>
+            <ol>
+              <li><strong>التسجيل والتثبيت (<code>Registration &amp; Install</code>):</strong> يقوم المتصفح بتنزيل ملف <code>sw.js</code> وتنفيذ حدث <code>install</code>، حيث يتم تخزين الملفات الحرجة للواجهة (<code>App Shell</code>: صفحة البداية، الخطوط، ملفات <code>CSS/JS</code> الأساسية، وصفحة <code>offline.html</code>) داخل واجهة <strong><code>Cache Storage API</code></strong>.</li>
+              <li><strong>التفعيل وتنظيف الإصدارات القديمة (<code>Activate</code>):</strong> بمجرد تفعيل النسخة الجديدة، يقوم الحدث <code>activate</code> بحذف أي مخازن كاش تابعة لإصدارات سابقة لتحرير مساحة تخزين جهاز المستخدم.</li>
+              <li><strong>اعتراض الطلبات الشبكية (<code>Fetch Interception</code>):</strong> يتحول الـ <code>Service Worker</code> إلى وكيل شبكي ذكي (<code>Programmable Network Proxy</code>) يعترض كل حدث <code>fetch</code> يطلبه الموقع ليقرر برمجياً: هل يجلبه من الكاش المحلي في جزء من الألف من الثانية أم من خادم الإنترنت؟</li>
+            </ol>
+
+            <h2 id="section-2">2. تشريح ملف manifest.json ووسوم التوافق مع أندرويد وiOS</h2>
+            <p>
+              لكي يتعرف متصفح <code>Google Chrome</code> أو <code>Microsoft Edge</code> أو <code>Safari</code> على موقعك كـتطبيق قابل للتثبيت ويعرض للمستخدم نافذة <em>«تثبيت التطبيق — Install App»</em>، يجب توفير ملف <strong><code>manifest.json</code></strong> في جذر الموقع (ويمكنك التحقق من سلامة بنيته عبر <a href="https://connecttag.org/tools/web/json-formatter/">أداة تنسيق وفحص JSON في كونكت تاق</a>):
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-file-code" aria-hidden="true"></i> نموذج قياسي لملف manifest.json يدعم اللغة العربية والاتجاه من اليمين لليسار (RTL)
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>{
+  "name": "Connect Tag - كونكت تاق للحلول والأدوات التقنية",
+  "short_name": "كونكت تاق",
+  "description": "منظومة الأدوات التقنية والبرمجية ودليل الاتصالات في اليمن",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0052cc",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}</code></pre>
+            </div>
+
+            <h2 id="section-3">3. مقارنة استراتيجيات الكاش الثلاث: Cache-First مقابل Network-First مقابل Stale-While-Revalidate</h2>
+            <p>
+              الخطأ الأكبر الذي يرتكبه المبتدئون عند كتابة <code>Service Worker</code> هو تطبيق استراتيجية <code>Cache-First</code> على جميع ملفات الموقع بما فيها صفحات <code>HTML</code>! يؤدي ذلك إلى تجمد محتوى الموقع لدى الزائر وعدم رؤيته لأي مقالات أو تحديثات جديدة. الهندسة الصحيحة تقسم موارد الموقع حسب طبيعتها إلى 3 استراتيجيات:
+            </p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">استراتيجية التخزين المؤقت</th>
+                    <th style="color:#fff;">آلية العمل الهندسية</th>
+                    <th style="color:#fff;">أفضل استخدام عملي (Use Case)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1. الكاش أولاً (<code>Cache-First</code>)</strong></td>
+                    <td>يقرأ الملف من الكاش المحلي فوراً؛ ولا يتصل بالشبكة إلا إذا لم يكن الملف موجوداً في الكاش.</td>
+                    <td style="color:#065f46; font-weight:600;">ملفات الخطوط (<code>.woff2</code>)، الأيقونات الثابتة، وملفات <code>CSS/JS</code> المزودة برقم إصدار (<code>?v=1.1.54</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2. الشبكة أولاً مع بديل الكاش (<code>Network-First</code>)</strong></td>
+                    <td>يجلب أحدث نسخة من السيرفر ويحدث الكاش؛ وإذا كان الإنترنت مقطوعاً يعرض النسخة المحفوظة أو صفحة <code>offline.html</code>.</td>
+                    <td style="color:#065f46; font-weight:600;">صفحات <code>HTML</code> للمقالات، الفهارس المتجددة، وأسعار الصرف والبيانات الحية.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3. العرض الفوري مع التحديث الخلفي (<code>Stale-While-Revalidate</code>)</strong></td>
+                    <td>يعرض النسخة المخزنة في الكاش فوراً للزائر لسرعة قصوى، وفي نفس اللحظة يطلب نسخة محدثة من الشبكة في الخلفية للزيارة القادمة.</td>
+                    <td style="color:#065f46; font-weight:600;">صور المقالات (<code>WebP</code>)، الصور الرمزية للكتّاب، والبيانات شبه الثابتة.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-4">4. التطبيق العملي: كود بناء ملف sw.js احترافي مع صفحة Offline Fallback</h2>
+            <p>
+              إليك الهيكل الهندسي المعتمد لبناء ملف <code>sw.js</code> يجمع بين الاستراتيجيات الثلاث ويوفر صفحة بديلة أنيقة عند انقطاع الإنترنت:
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #34d399; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-gears" aria-hidden="true"></i> كود Service Worker (sw.js) هجين يدعم التحديث الذكي والعمل بدون إنترنت
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>const CACHE_VERSION = 'v108';
+const STATIC_CACHE = 'ct-static-' + CACHE_VERSION;
+const OFFLINE_URL = '/offline.html';
+
+const PRECACHE_ASSETS = [
+  '/',
+  OFFLINE_URL,
+  '/assets/css/styles.min.css?v=1.1.54',
+  '/assets/js/components/components-bundle.js?v=1.1.54',
+  '/assets/fonts/cairo-arabic.woff2?v=1.1.57'
+];
+
+// 1. مرحلة التثبيت: حفظ ملفات الـ App Shell الأساسية
+self.addEventListener('install', event =&gt; {
+  event.waitUntil(
+    caches.open(STATIC_CACHE)
+      .then(cache =&gt; cache.addAll(PRECACHE_ASSETS))
+      .then(() =&gt; self.skipWaiting())
+  );
+});
+
+// 2. مرحلة التفعيل: حذف مخازن الكاش القديمة فوراً
+self.addEventListener('activate', event =&gt; {
+  event.waitUntil(
+    caches.keys().then(keys =&gt; Promise.all(
+      keys.filter(key =&gt; key !== STATIC_CACHE).map(key =&gt; caches.delete(key))
+    )).then(() =&gt; self.clients.claim())
+  );
+});
+
+// 3. اعتراض الطلبات: Network-First لصفحات HTML و Cache-First للأصول الثابتة
+self.addEventListener('fetch', event =&gt; {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() =&gt; caches.match(event.request) || caches.match(OFFLINE_URL))
+    );
+    return;
+  }
+  event.respondWith(
+    caches.match(event.request).then(cached =&gt; cached || fetch(event.request))
+  );
+});</code></pre>
+            </div>
+
+            <h2 id="section-5">5. كيف تمنع بقاء الزائر على النسخة القديمة؟ هندسة إصدارات الكاش (Cache Busting)</h2>
+            <p>
+              من أشهر المشاكل الهندسية بعد إطلاق <code>Service Worker</code> هي أن المطور يعدّل ملف <code>styles.min.css</code> أو <code>components-bundle.js</code> ويرفعه للسيرفر، لكن الزوار القدامى لا يرون التعديل لأن المتصفح يقرأ النسخة القديمة من الكاش!
+            </p>
+            <p>
+              في منظومة <strong>كونكت تاق</strong>، حللنا هذه المشكلة جذرياً عبر أتمتة <strong>مزامنة الإصدارات المركزية (<code>Automated Version Sync</code>)</strong>:
+            </p>
+            <ul>
+              <li>نحتفظ بملف مركزي واحد للإصدار (<code>version.json</code>) يحتوي على رقم الإصدار الدلالي (<code>1.1.54</code>) ورقم إصدار الكاش (<code>v108</code>).</li>
+              <li>عند تنفيذ سكربت النشر، يقوم السكربت تلقائياً بتحديث ثابت <code>CACHE_VERSION</code> داخل ملف <code>sw.js</code>، وتحديث معامل الاستعلام <code>?v=1.1.54</code> في جميع روابط ملفات <code>CSS</code> و<code>JS</code> والخطوط عبر كافة صفحات الموقع.</li>
+              <li>بمجرد أن يزور المستخدم الموقع، يكتشف المتصفح تغيّر بايت واحد على الأقل في ملف <code>sw.js</code>، فيقوم بتثبيت العامل الجديد ومسح الكاش القديم (<code>v107</code>) وتحميل الأصول المحدثة فوراً دون أي تدخل يدوي من الزائر!</li>
+            </ul>
+
+            <h2 id="section-6">6. فحص جاهزية الـ PWA وتشغيل الويب محلياً عبر مكتبة local-web-server</h2>
+            <p>
+              قبل إطلاق تطبيق الويب التقدمي الخاص بك، ننصحك بإجراء خطوتين عمليتين:
+            </p>
+            <ol>
+              <li>
+                <strong>فحص الوسوم التقنية وأمان الرؤوس (<code>Technical SEO &amp; Security Audit</code>):</strong>
+                استخدم <a href="https://connecttag.org/tools/web/site-checker/">أداة فحص الموقع والـ SEO في كونكت تاق</a> (وراجع <a href="https://connecttag.org/blog/technical-seo-audit-guide">دليل الفحص التقني الشامل للمواقع</a>) للتأكد من وجود وسوم <code>manifest.json</code>، و<code>apple-touch-icon</code>، و<code>theme-color</code>، وتفعيل ترويسة الأمان <code>Strict-Transport-Security (HSTS)</code> الضرورية لعمل الـ <code>Service Worker</code>.
+              </li>
+              <li>
+                <strong>تضمين تطبيقات الويب داخل تطبيقات أندرويد بدون إنترنت:</strong>
+                إذا كنت تطور تطبيق أندرويد هجيناً يحتاج إلى تقديم ملفات ويب تفاعلية أو خرائط أو وثائق محلية عبر <code>WebView</code> دون الاعتماد على خادم خارجي، فقد طورنا في كونكت تاق مكتبة <strong><code>local-web-server</code></strong> ومكتبة <strong><code>webview-lib-kmp</code></strong> المتاحتين ضمن <a href="https://connecttag.org/company/projects/libraries/">قسم المكاتب البرمجية المفتوحة المصدر</a> لتشغيل خادم <code>HTTP</code> محلي خفيف الوزن داخل الهاتف نفسه! وللمشاريع المؤسسية المتكاملة، يمكنك طلب استشارة فريقنا عبر <a href="https://connecttag.org/company/services/web-app-development">خدمة تطوير المواقع والأنظمة السحابية</a>.
+              </li>
+            </ol>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 7. الأسئلة الشائعة حول تطبيقات الويب التقدمية (PWA)</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يشترط المتصفح وجود شهادة أمان HTTPS لتفعيل Service Worker في تطبيقات PWA؟</h3>
+                <p class="faq-answer">
+                  لأن <code>Service Worker</code> يعمل كوكيل شبكي (<code>Network Proxy</code>) داخل متصفح المستخدم يمتلك صلاحية اعتراض جميع طلبات <code>HTTP</code> وتعديل استجاباتها وتخزينها محلياً. لو سُمح بتشغيله عبر اتصال <code>HTTP</code> غير مشفر، لتمكّن أي مهاجم على الشبكة (<code>Man-in-the-Middle</code>) من حقن ملف <code>Service Worker</code> خبيث يظل مسيطراً على المتصفح حتى بعد مغادرة الشبكة؛ لذا يُحصر تشغيله في نطاقات <code>HTTPS</code> الآمنة (مع استثناء <code>localhost</code> لأغراض التطوير).
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما الفرق بين استراتيجية Cache-First واستراتيجية Network-First في Service Worker؟</h3>
+                <p class="faq-answer">
+                  في استراتيجية <code>Cache-First</code>، يبحث الـ <code>Service Worker</code> عن الملف في الذاكرة المؤقتة المحلية أولاً وإذا وجده يعرضه فوراً بدون الاتصال بالشبكة، وهي مثالية للأصول الثابتة مثل الخطوط (<code>woff2</code>) والأيقونات والملفات المرقمة بإصدار. أما في استراتيجية <code>Network-First</code>، فيحاول جلب أحدث نسخة من الخادم أولاً، ولا يلجأ للكاش المحلي إلا عند انقطاع الإنترنت أو بطء الشبكة، وهي مثالية لصفحات <code>HTML</code> المتجددة والمقالات.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أحل مشكلة بقاء الزوار على النسخة القديمة من الموقع بعد رفع تحديث جديد بسبب كاش الـ Service Worker؟</h3>
+                <p class="faq-answer">
+                  يتم حلها عبر الجمع بين آليتين: أولاً، ربط اسم مخزن الكاش في ملف <code>sw.js</code> برقم إصدار متسلسل (مثل <code>CACHE_NAME = 'ct-cache-v108'</code>) وحذف جميع مخازن الكاش القديمة داخل حدث <code>activate</code> عبر <code>caches.delete()</code>. ثانياً، استدعاء <code>self.skipWaiting()</code> و<code>clients.claim()</code> مع إرفاق معامل إصدار (<code>?v=1.1.54</code>) بروابط ملفات <code>CSS</code> و<code>JS</code> لضمان تحديث الأصول فور نشر الإصدار الجديد.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">هل تدعم أجهزة iPhone وiPad (متصفح Safari على iOS) تثبيت تطبيقات الويب التقدمية PWA؟</h3>
+                <p class="faq-answer">
+                  نعم، يدعم نظام <code>iOS</code> و<code>iPadOS</code> تشغيل تطبيقات الويب التقدمية عبر خيار «إضافة إلى الشاشة الرئيسية» (<code>Add to Home Screen</code>) في متصفح <code>Safari</code>، شريطة توفير ملف <code>manifest.json</code> سليم ووسوم أبل المخصصة مثل <code>apple-touch-icon</code> و<code>apple-mobile-web-app-capable</code>، كما أضافت أبل دعم الإشعارات الفورية (<code>Web Push Notifications</code>) لتطبيقات <code>PWA</code> المثبتة على الشاشة الرئيسية.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والمعايير الهندسية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://web.dev/explore/progressive-web-apps" target="_blank" rel="noopener noreferrer">Google web.dev — Progressive Web Apps (PWA) Architecture &amp; Best Practices</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">MDN Web Docs — Service Worker API &amp; CacheStorage Specification</a></li>
+                <li><a href="https://www.w3.org/TR/appmanifest/" target="_blank" rel="noopener noreferrer">W3C Specification — Web Application Manifest</a></li>
+                <li><a href="https://connecttag.org/tools/web/site-checker/">أداة الفحص التقني للمواقع والـ SEO — كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="علي الرحبي"
+              avatar="https://connecttag.org/upload/author/ali.webp"
+              link="https://connecttag.org/blog/authors/ali">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="technical-seo-audit-guide,image-optimization-webp-avif-guide,cloudflare-pages-hosting-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

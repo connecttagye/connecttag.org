@@ -1,6 +1,6 @@
 {
-  "version": "1.1.54",
-  "cache_version": "v108",
+  "version": "1.1.57",
+  "cache_version": "v111",
   "last_updated": "2026-11-08",
-  "description": "Add privacy policy, telecom cell-id/E.164, and telegram webhook security guides (58 articles) and unify all blog cover illustrations with bright white backgrounds"
+  "description": "Add Jetpack Compose Recomposition optimization and KMP expect/actual + Coroutines testing guides (65 articles) with white-background covers"
 }

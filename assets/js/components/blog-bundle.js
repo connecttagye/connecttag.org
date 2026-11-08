@@ -166,18 +166,67 @@ const customTitle = this.getAttribute('title') || 'قد يهمك أيضاً';
 const limit = parseInt(this.getAttribute('limit')) || 2;
 const manualIds = this.getAttribute('ids');
 const allPosts = [
+      {
+        id: "kmp-expect-actual-coroutines-testing-guide",
+        title: "كيف تصمم جسور الأنظمة الأصلية (expect / actual وواجهات Interface Bridges) وتكتب اختبارات وحدات سريعة في KMP؟",
+        link: "blog/kmp-expect-actual-coroutines-testing-guide",
+        image: "upload/kmp-expect-actual-coroutines-testing-guide.webp?v=1.1.57",
+        excerpt: "متى تستخدم expect / actual ومتى تفضّل واجهات DI القابلة للحقن، وكيف تحقن DispatcherProvider وتستخدم runTest وTurbine لاختبار StateFlow في جزء من الثانية."
+      },
+      {
+        id: "jetpack-compose-performance-recomposition-guide",
+        title: "لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition واستقرار الأنواع",
+        link: "blog/jetpack-compose-performance-recomposition-guide",
+        image: "upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57",
+        excerpt: "كيف يقرر مترجم Compose ما إذا كانت الدالة قابلة للتخطي (Skippable)، ومتى تستخدم remember مقابل derivedStateOf في LazyColumn مع تفعيل Strong Skipping Mode."
+      },
+      {
+        id: "smartphone-hardware-battery-diagnostics-guide",
+        title: "كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف",
+        link: "blog/smartphone-hardware-battery-diagnostics-guide",
+        image: "upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57",
+        excerpt: "كيف تقرأ السعة المتبقية الفعلية للبطارية ودورات الشحن والجهد بالملي فولت، وتكشف تطبيع شاشات OLED وتختبر الحساسات والبارومتر والـ CPU."
+      },
+      {
+        id: "wireguard-vs-openvpn-ipsec-security-guide",
+        title: "لماذا يتفوق بروتوكول WireGuard على OpenVPN وIPsec في السرعة والأمان؟ الدليل الهندسي لأنفاق VPN",
+        link: "blog/wireguard-vs-openvpn-ipsec-security-guide",
+        image: "upload/wireguard-vs-openvpn-ipsec-security-guide.webp?v=1.1.57",
+        excerpt: "كيف اختزل WireGuard كود التشفير في أقل من 4,000 سطر برمجي باستخدام ChaCha20-Poly1305 وCurve25519 وكيف يحافظ على الاتصال والبطارية أثناء التجوال."
+      },
+      {
+        id: "android-usb-otg-serial-communication-guide",
+        title: "كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ دليل Serial وUSB-OTG",
+        link: "blog/android-usb-otg-serial-communication-guide",
+        image: "upload/android-usb-otg-serial-communication-guide.webp",
+        excerpt: "كيف يتخاطب تطبيقك مع شرائح التحويل التسلسلي (FTDI, CP210x, CH340, CDC/ACM) عبر منفذ USB-OTG، وإدارة تدفقات البيانات الثنائية وآلية Watchdog."
+      },
+      {
+        id: "kmp-mvi-architecture-state-guide",
+        title: "الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform وإدارة حالة الواجهة التفاعلية",
+        link: "blog/kmp-mvi-architecture-state-guide",
+        image: "upload/kmp-mvi-architecture-state-guide.webp",
+        excerpt: "مقارنة هندسية بين MVVM وMVI، ولماذا يمنع التدفق أحادي الاتجاه (UDF) تضارب الحالات في Jetpack Compose مع تصميم Immutable State وChannel."
+      },
+      {
+        id: "pwa-service-worker-offline-web-guide",
+        title: "كيف تحوّل موقعك الإلكتروني إلى تطبيق يعمل بدون إنترنت؟ الدليل الهندسي لتطبيقات الويب التقدمية (PWA) وService Workers",
+        link: "blog/pwa-service-worker-offline-web-guide",
+        image: "upload/pwa-service-worker-offline-web-guide.webp",
+        excerpt: "مقارنة استراتيجيات التخزين المؤقت في Service Worker (Cache-First مقابل Network-First وStale-While-Revalidate) ونظام إصدارات الكاش الذكي."
+      },
 {
 id: "telegram-bot-webhook-security-guide",
 title: "الدليل الهندسي لبناء وتأمين بوتات تيليجرام (Telegram Bot API): الفرق بين Long Polling وWebhook وتأمين التوكن",
 link: "blog/telegram-bot-webhook-security-guide",
-image: "upload/telegram-bot-webhook-security-guide.webp",
+image: "upload/telegram-bot-webhook-security-guide.webp?v=1.1.57",
 excerpt: "لماذا يستهلك getUpdates موارد السيرفر بينما يوفر Webhook استجابة لحظية؟ وكيف تتحقق من الطلبات عبر X-Telegram-Bot-Api-Secret-Token؟"
 },
 {
 id: "telecom-cell-id-mcc-mnc-e164-guide",
 title: "كيف يتعرف هاتفك على البرج والشبكة؟ الدليل الهندسي لمعرّفات الأبراج (MCC/MNC وCell-ID وTAC) ومعيار E.164",
 link: "blog/telecom-cell-id-mcc-mnc-e164-guide",
-image: "upload/telecom-cell-id-mcc-mnc-e164-guide.webp",
+image: "upload/telecom-cell-id-mcc-mnc-e164-guide.webp?v=1.1.57",
 excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأكواد شبكات الجوال في اليمن (MCC 421)، وكيف يخزّن المطورون أرقام الهواتف وفق معيار ITU-T E.164."
 },
       {
@@ -233,21 +282,21 @@ excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأ�
         id: "lte-wifi-signal-rsrp-sinr-guide",
         title: "ماذا تعني أرقام RSRP وSINR وRSSI في المودم والهاتف؟ الدليل الهندسي لقراءة قوة إشارة الأبراج والواي فاي",
         link: "blog/lte-wifi-signal-rsrp-sinr-guide",
-        image: "upload/lte-wifi-signal-rsrp-sinr-guide.webp",
+        image: "upload/lte-wifi-signal-rsrp-sinr-guide.webp?v=1.1.57",
         excerpt: "الفرق الهندسي بين قوة الإشارة (RSRP) ونقائها من التشويش (SINR) وجدول القيم المثالية بالـ dBm لاختيار أفضل مكان للمودم."
       },
       {
         id: "jwt-security-debugging-guide",
         title: "تشريح رموز المصادقة الرقمية (JWT - JSON Web Tokens): كيف تعمل، أشهر ثغراتها الأمنية، وفحصها محلياً",
         link: "blog/jwt-security-debugging-guide",
-        image: "upload/jwt-json-web-tokens-security-guide.webp",
+        image: "upload/jwt-json-web-tokens-security-guide.webp?v=1.1.57",
         excerpt: "الدليل الهندسي لبنية JWT وفق RFC 7519، الفرق بين HS256 وRS256، وأشهر الثغرات الأمنية وكيفية فحص الرموز داخل المتصفح بأمان."
       },
       {
         id: "ui-color-palette-wcag-guide",
         title: "دليل اختيار الألوان وبناء الهوية اللونية للمواقع والتطبيقات وفق قاعدة 60-30-10 ومعيار التباين WCAG",
         link: "blog/ui-color-palette-wcag-guide",
-        image: "upload/ui-color-palette-wcag-contrast-guide.webp",
+        image: "upload/ui-color-palette-wcag-contrast-guide.webp?v=1.1.57",
         excerpt: "كيف تستخرج لوحة ألوان متناسقة وتضمن نسبة التباين القياسية (4.5:1) لاجتياز فحص Google Lighthouse وتصميم الوضع الليلي."
       },
       {
@@ -352,7 +401,7 @@ excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأ�
         id: "yemen-4g-app-balance-modem-guide",
         title: "شرح تطبيق يمن فورجي: الاستعلام الذكي عن الرصيد بضغطة زر وإدارة المودم",
         link: "blog/yemen-4g-app-balance-modem-guide",
-        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.54",
+        image: "upload/yemen-4g-app-balance-modem-guide.webp?v=1.1.57",
         excerpt: "الدليل الكامل لاستخدام تطبيق يمن فورجي: حفظ الأرقام المتعددة، تفعيل ويدجت الرصيد على الشاشة الرئيسية، تنبيهات انتهاء الباقة، ولوحة المودم المدمجة."
       },
       {
@@ -422,14 +471,14 @@ excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأ�
         id: "yemen-4g-modem-settings-security-guide",
         title: "ضبط إعدادات مودم يمن فورجي 4G: تغيير كلمة السر وحماية الرصيد",
         link: "blog/yemen-4g-modem-settings-security-guide",
-        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.54",
+        image: "upload/yemen-4g-modem-settings-guide.webp?v=1.1.57",
         excerpt: "دليل عملي للدخول لإعدادات المودم، تغيير كلمة السر، إخفاء الشبكة والباركود QR، وتحديد السرعة للمتصلين."
       },
       {
         id: "best-yemen-4g-modem-buying-guide",
         title: "كيف تختار أفضل مودم يمن فورجي 4G؟ دليل الشراء الشامل",
         link: "blog/best-yemen-4g-modem-buying-guide",
-        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.54",
+        image: "upload/best-yemen-4g-modem-guide.webp?v=1.1.57",
         excerpt: "مقارنة تفصيلية بين المودمات المنزلية والمحمولة ومودمات Cat6 والبطاريات والأسعار لاختيار الأنسب."
       },
       {
@@ -464,7 +513,7 @@ excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأ�
         id: "yemen-internet-comparison-4g-adsl-fiber",
         title: "يمن فورجي أم فايبر؟ مقارنة شاملة",
         link: "blog/yemen-internet-comparison-4g-adsl-fiber",
-        image: "upload/yemen-internet-comparison.webp?v=1.1.54",
+        image: "upload/yemen-internet-comparison.webp?v=1.1.57",
         excerpt: "تعرف على أفضل خيارات الإنترنت المتاحة في اليمن وكيفية اختيار الأنسب لعملك."
       },
       {
@@ -485,7 +534,7 @@ excerpt: "تشريح الهوية العالمية للخلية (CGI/ECGI) وأ�
         id: "how-to-check-yemen-4g-balance",
         title: "كيفية استعلام رصيد يمن فورجي 4G",
         link: "blog/how-to-check-yemen-4g-balance",
-        image: "upload/yemen-4g.webp?v=1.1.54",
+        image: "upload/yemen-4g.webp?v=1.1.57",
         excerpt: "دليل شامل يشرح كافة الطرق الرسمية والميسرة لمتابعة استهلاكك لرصيد يمن فورجي."
       },
       {

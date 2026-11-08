@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>الدليل الهندسي لبروتوكول Serial وUSB-OTG في أندرويد | كونكت تاق</title>
+  <meta name="description" content="كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG ومكتبة serial-lib-kmp.">
+  <meta name="keywords" content="برمجة USB-OTG أندرويد, Serial Communication Kotlin, ربط Arduino بأندرويد, FTDI CP210x CH340 CDC ACM, قارئ الباركود وطابعات نقاط البيع POS, serial-lib-kmp, UsbManager Android, كونكت تاق">
+  <meta name="author" content="عقيل محمد">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/android-usb-otg-serial-communication-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/android-usb-otg-serial-communication-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG" />
+  <meta property="og:description" content="تشريح بروتوكول الاتصال التسلسلي (UART / USB-Serial) وشرائح FTDI وCH340 وCP210x، وكيف تبني تدفقات قراءة وكتابة متينة مع Watchdog عبر مكتبة serial-lib-kmp." />
+  <meta property="og:image" content="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل الهندسي لبروتوكول الاتصال التسلسلي Serial وUSB-OTG في أندرويد وسطح المكتب" />
+  <meta property="article:published_time" content="2026-11-08T05:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T05:00:00+03:00" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/aqeldev" />
+  <meta property="article:tag" content="USB-OTG" />
+  <meta property="article:tag" content="Serial Communication" />
+  <meta property="article:tag" content="Kotlin Multiplatform" />
+  <meta property="article:tag" content="برمجة العتاد" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/android-usb-otg-serial-communication-guide" />
+  <meta name="twitter:title" content="كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟" />
+  <meta name="twitter:description" content="الدليل الهندسي لبروتوكول Serial وUSB-OTG وشرائح FTDI/CH340/CP210x وتكامل نقاط البيع عبر مكتبة serial-lib-kmp." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp" />
+  <meta name="twitter:image:alt" content="برمجة المنافذ التسلسلية Serial وUSB-OTG في أندرويد والديسكتوب" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ دليل Serial وUSB-OTG",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T05:00:00+03:00",
+    "dateModified": "2026-11-08T05:00:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "عقيل محمد",
+      "jobTitle": "مهندس برمجيات أول وباحث في الأمن السيبراني (Senior Software Engineer & Cybersecurity Researcher)",
+      "url": "https://connecttag.org/blog/authors/aqeldev"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "دليل هندسي لمطوري أندرويد وسطح المكتب (Kotlin Multiplatform / JVM) يشرح كيفية التخاطب مع المتحكمات الدقيقة (Arduino / ESP32) وقارئات الباركود وطابعات الكاشير عبر بروتوكول Serial وUSB-OTG وشرائح FTDI وCH340 وCP210x.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/android-usb-otg-serial-communication-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الدليل الهندسي لبروتوكول Serial وUSB-OTG في أندرويد",
+        "item": "https://connecttag.org/blog/android-usb-otg-serial-communication-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا لا يتعرف هاتف أندرويد على لوحة Arduino أو جهاز Serial تلقائياً بدون مكتبة تعريف؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لا تتضمن نواة أندرويد في معظم الهواتف التجارية تعريفات نواة مفعّلة لجميع شرائح الجسر التسلسلي (مثل CH340 أو FTDI أو CP2102). لذلك يتعامل التطبيق مع الجهاز في فضاء المستخدم (User-Space) عبر واجهة Android UsbHost API (UsbManager وUsbDeviceConnection)، حيث تقوم مكتبة الاتصال التسلسلي بترجمة أوامر البود ريت (Baud Rate) ونقل الحزم عبر نقاط النهاية (Bulk Endpoints IN/OUT) برمجياً دون الحاجة لصلاحيات الروت."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ماذا تعني إعدادات الاتصال التسلسلي 9600 8N1 أو 115200 8N1؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يرمز الرقم الأول (9600 أو 115200) إلى سرعة نقل الإشارات في الثانية (Baud Rate)، ويجب أن تتطابق تماماً بين التطبيق والعتاد وإلا ستظهر رموز مشوهة. أما 8N1 فتعني: 8 بتات بيانات لكل حرف (8 Data Bits)، وبدون بت تكافؤ لفحص الأخطاء (N = No Parity)، وبت توقف واحد في نهاية كل إطار (1 Stop Bit)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أعالج مشكلة تقطّع الرسالة الواحدة إلى عدة دفعات أثناء القراءة من منفذ USB-Serial؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "بروتوكول الاتصال التسلسلي ينقل تياراً مستمراً من البايتات (Byte Stream) ولا يعرف مفهوم «بداية ونهاية الرسالة» من تلقاء نفسه؛ فقد تصل جملة JSON أو رقم باركود مقسماً على قراءتين. الحل الهندسي هو استخدام مخزن تجميع مؤقت (Ring Buffer / Frame Assembler) ينتظر محرف الفصل المعتمد (مثل سطر جديد \\n أو \\r\\n) أو يتحقق من طول الإطار ورمز التدقيق (CRC Checksum) قبل إصدار الرسالة الكاملة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أجعل تطبيقي يتصل بالجهاز التسلسلي تلقائياً عند توصيل كابل USB-OTG دون إزعاج المستخدم بطلب الإذن في كل مرة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يتم ذلك عبر تعريف فلتر أجهزة USB (device_filter.xml) يتضمن معرّف المصنّع (Vendor ID - VID) ومعرّف المنتج (Product ID - PID) للجهاز، وربطه بنية UsbManager.ACTION_USB_DEVICE_ATTACHED في ملف البيان. بمجرد موافقة المستخدم مرة واحدة مع تفعيل خيار «الاستخدام افتراضياً لهذا الجهاز»، يمنح النظام الإذن تلقائياً في كل مرة يُوصل فيها الكابل."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "الدليل الهندسي لبروتوكول Serial وUSB-OTG في أندرويد", "url": "https://connecttag.org/blog/android-usb-otg-serial-communication-guide"}]'></site-breadcrumb>
+
+            <h1>كيف تربط تطبيق أندرويد أو سطح المكتب بأجهزة العتاد والـ Arduino وقارئات الباركود؟ الدليل الهندسي لبروتوكول Serial وUSB-OTG</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: برمجة وتطوير - تطوير الهواتف والأنظمة المتعددة</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/android-usb-otg-serial-communication-guide.webp" class="img-responsive" alt="الدليل الهندسي لبروتوكول الاتصال التسلسلي Serial وUSB-OTG في أندرويد وسطح المكتب" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              في أنظمة نقاط البيع (<code>POS</code>)، والمختبرات الصناعية، وأنظمة الطاقة الشمسية الذكية، وأجهزة الفحص الميداني، لا يعمل التطبيق بمعزل عن العالم المادي؛ بل يُطلب منه الاتصال المباشر عبر كابل <strong><code>USB-OTG</code></strong> أو منفذ <strong><code>COM / TTY</code></strong> لقراءة ميزان إلكتروني، أو استقبال رموز من قارئ باركود صناعي، أو طباعة فاتورة حرارية بأوامر <code>ESC/POS</code>، أو التخاطب مع لوحة متحكم دقيق (<code>Arduino / ESP32 / STM32</code>) ومودم اتصالات!
+            </p>
+            <p>
+              كيف يعمل بروتوكول الاتصال التسلسلي (<code>UART / USB-Serial</code>) تحت الغطاء؟ ولماذا تنهار كثير من التطبيقات عند اهتزاز كابل الـ USB أو تقطّع البيانات الثنائية (<code>Byte Streams</code>)؟ في هذا الدليل الهندسي من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح معمارية التخاطب مع العتاد عبر منصتي <strong>أندرويد وسطح المكتب (<code>Desktop JVM</code>)</strong>، ونستعرض كيف بنينا حزمة <strong><code>serial-lib-kmp</code></strong> مفتوحة المصدر في <a href="https://connecttag.org/company/projects/libraries/">قسم المكاتب البرمجية</a>، وتطبيقاتنا العملية في <a href="https://connecttag.org/company/projects/apps/satoor/">تطبيق سطور للباركود</a> و<a href="https://connecttag.org/company/projects/apps/kabeer/">تطبيق خبير لفحص العتاد</a> و<a href="https://connecttag.org/company/projects/apps/dhawd/">منظومة ذَود (DHAWD ADB)</a>.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-microchip" aria-hidden="true"></i> خلاصة تنفيذية لمهندسي الأنظمة المدمجة ومطوري التطبيقات</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>جسور التحويل التسلسلي (<code>USB-to-UART Bridges</code>):</strong> تتواصل الهواتف والحواسيب مع العتاد عبر شرائح جسر قياسية أشهرها <code>FTDI (FT232R)</code>، و<code>Silicon Labs (CP210x)</code>، و<code>WCH (CH340/CH341)</code>، و<code>Prolific (PL2303)</code>، ومعيار <code>CDC/ACM</code>.</li>
+                <li><strong>التطابق الصارم لمعاملات الإطار (<code>8N1 &amp; Baud Rate</code>):</strong> يجب أن تتطابق سرعة البود (مثل <code>9600</code> أو <code>115200</code>) وعدد بتات البيانات والتكافؤ والتوقف بين الكود والعتاد لتجنب تلف البيانات.</li>
+                <li><strong>تجميع الإطارات (<code>Frame Delimiting</code>):</strong> لا تفترض أبداً أن استدعاء قراءة واحد يعيد رسالة كاملة؛ استخدم دائماً مجمع بايتات (<code>Packet Framing</code>) يعتمد على محارف الفصل (<code>\n</code>) أو ترويسة الطول واختبار <code>CRC</code>.</li>
+                <li><strong>المراقبة وإعادة الاتصال التلقائي (<code>Watchdog &amp; Auto-Reconnect</code>):</strong> توفر مكتبة <code>serial-lib-kmp</code> تدفقات <code>Kotlin Flow</code> تفاعلية مع مؤقت حراسة يعيد فتح القناة تلقائياً عند انقطاع الطاقة اللحظي.</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل الهندسي لبروتوكول Serial وUSB-OTG</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. كيف يعمل وضع المضيف (USB Host / OTG) وشرائح الجسر التسلسلي؟</a></li>
+                <li><a href="#section-2">2. جدول معرّفات المصنّعين والشرائح القياسية (VID / PID) في العتاد</a></li>
+                <li><a href="#section-3">3. تشريح إطار البيانات التسلسلي: Baud Rate و8N1 والتحكم بالتدفق (Flow Control)</a></li>
+                <li><a href="#section-4">4. معضلة تجزئة البايتات (Packet Fragmentation): كيف تبني مجمّع إطارات لا يخطئ؟</a></li>
+                <li><a href="#section-5">5. التطبيق البرمجي العابر للمنصات عبر مكتبة serial-lib-kmp وآلية Watchdog</a></li>
+                <li><a href="#section-6">6. تطبيقات عملية في منظومة كونكت تاق: من نقاط البيع إلى الفحص العتادي وحماية المنافذ</a></li>
+                <li><a href="#faq">7. الأسئلة الشائعة حول برمجة USB-OTG والاتصال التسلسلي</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. كيف يعمل وضع المضيف (USB Host / OTG) وشرائح الجسر التسلسلي؟</h2>
+            <p>
+              في الحالة العادية، يعمل الهاتف الذكي عند توصيله بالكمبيوتر في وضع <strong>«الملحق / التابع» (<code>USB Peripheral / Gadget Mode</code>)</strong>. لكن عند توصيل وصلة <strong><code>USB On-The-Go (OTG)</code></strong>، يكتشف منفذ <code>USB Type-C</code> مقاومة سحب أرضية على دبوس التحديد (<code>CC / ID Pin</code>)، فيتحول الهاتف فوراً إلى <strong>«مضيف رئيسي» (<code>USB Host</code>)</strong> يزوّد الجهاز المتصل بطاقة كهربائية (<code>5V VBUS</code>) ويدير تخاطب الحزم الرقمية معه!
+            </p>
+            <p>
+              بما أن المتحكمات الدقيقة (مثل <code>Arduino</code> و<code>ESP32</code>) والموازين الرقمية تتحدث داخلياً بلغة <strong><code>TTL UART</code></strong> (إشارات منطقية متسلسلة على خطي إرسال <code>TX</code> واستقبال <code>RX</code>)، فإنها تستخدم شريحة إلكترونية وسيطة تُسمى <strong>جسر USB إلى Serial (<code>USB-to-UART Bridge</code>)</strong>. في نظام أندرويد، يخاطب التطبيق هذه الشريحة في فضاء المستخدم (بدون صلاحيات روت) عبر واجهة <code>UsbManager</code> ونقاط النهاية الثنائية (<code>Bulk Endpoints IN &amp; OUT</code>).
+            </p>
+
+            <h2 id="section-2">2. جدول معرّفات المصنّعين والشرائح القياسية (VID / PID) في العتاد</h2>
+            <p>
+              يُعرِّف كل جهاز USB نفسه للنظام عبر رقمين ست عشريين (<code>Hexadecimal</code>): <strong>معرّف المصنّع (<code>Vendor ID — VID</code>)</strong> و<strong>معرّف المنتج (<code>Product ID — PID</code>)</strong>. يوضح الجدول المرجعي التالي أشهر الشرائح التي ستصادفها عند ربط تطبيقاتك بالعتاد الخارجي:
+            </p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">الشريحة / البروتوكول</th>
+                    <th style="color:#fff;">معرّف المصنّع (VID)</th>
+                    <th style="color:#fff;">أشهر معرّفات المنتج (PID)</th>
+                    <th style="color:#fff;">الاستخدام الشائع في السوق</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>WCH CH340 / CH341</strong></td>
+                    <td><code>0x1A86</code> (6790)</td>
+                    <td><code>0x7523</code>, <code>0x5523</code></td>
+                    <td>لوحات Arduino الاقتصادية، ESP8266/ESP32، وكابلات برمجة الراوترات</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Silicon Labs CP210x</strong></td>
+                    <td><code>0x10C4</code> (4292)</td>
+                    <td><code>0xEA60</code>, <code>0xEA70</code></td>
+                    <td>عقد ESP32 الاحترافية، أجهزة القياس الطبية، ومحولات Modbus الصناعية</td>
+                  </tr>
+                  <tr>
+                    <td><strong>FTDI FT232R / FT231X</strong></td>
+                    <td><code>0x0403</code> (1027)</td>
+                    <td><code>0x6001</code>, <code>0x6015</code></td>
+                    <td>المعدات الصناعية الحساسة، أنظمة الطيران (Telemetry)، وكابلات الشبكات</td>
+                  </tr>
+                  <tr>
+                    <td><strong>USB CDC / ACM القياسي</strong></td>
+                    <td>متعدد (مثل <code>0x2341</code>)</td>
+                    <td>متعدد حسب الفئة <code>Class 0x02</code></td>
+                    <td>قارئات الباركود (في وضع Virtual COM)، لوحات STM32، والمودمات الخلوية</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-3">3. تشريح إطار البيانات التسلسلي: Baud Rate و8N1 والتحكم بالتدفق (Flow Control)</h2>
+            <p>
+              لأن بروتوكول <code>UART</code> غير متزامن (<code>Asynchronous</code> — أي لا يوجد سلك ساعة <code>Clock Wire</code> مشترك بين المرسل والمستقبل)، يجب أن يتفق الطرفان مسبقاً على أربعة معاملات دقيقة:
+            </p>
+            <ul>
+              <li><strong>سرعة النقل (<code>Baud Rate</code>):</strong> عدد النبضات في الثانية؛ أشهرها <code>9600</code> (للموازين وقارئات الباركود البسيطة) و<code>115200</code> (للوحات <code>ESP32</code> والمودمات ونقل السجلات السريع).</li>
+              <li><strong>بتات البيانات (<code>Data Bits</code>):</strong> قياسياً <code>8 bits</code> (بايت واحد لكل محرف).</li>
+              <li><strong>بت التكافؤ (<code>Parity Bit</code>):</strong> يُستخدم لاكتشاف انقلاب بت واحد بسبب التشويش الكهرومغناطيسي؛ ويكون إما بدون تكافؤ (<code>None — N</code>) أو زوجياً (<code>Even — E</code>) أو فردياً (<code>Odd — O</code>).</li>
+              <li><strong>بتات التوقف (<code>Stop Bits</code>):</strong> فترة سكون في نهاية كل بايت لمزامنة المستقبل (عادةً <code>1 Stop Bit</code>). ومن هنا جاءت التسمية الهندسية الشهيرة: <strong><code>115200 8N1</code></strong>.</li>
+            </ul>
+
+            <h2 id="section-4">4. معضلة تجزئة البايتات (Packet Fragmentation): كيف تبني مجمّع إطارات لا يخطئ؟</h2>
+            <p>
+              الخطأ البرمجي الأكثر تسبباً في فشل تطبيقات العتاد هو كتابة كود يفترض أنه إذا أرسلت لوحة الـ <code>Arduino</code> السطر <code>{"temp":26.4}\n</code>، فإن حدث القراءة في الهاتف سيستلمه دائماً كقطعة واحدة! في الواقع الفيزيائي لناقل <code>USB Bulk Transfer</code>، قد يصل الجزء <code>{"temp":</code> في القراءة الأولى، ثم يصل الجزء <code>26.4}\n</code> بعد 2 ملي ثانية في القراءة الثانية!
+            </p>
+            <p>
+              لذلك، يجب دائماً تمرير البايتات الخام الواردة عبر <strong>مجمّع إطارات تفاعلي (<code>Reactive Line/Frame Assembler</code>)</strong> قبل محاولة قراءتها أو تحويلها إلى نص أو <code>JSON</code>:
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-code" aria-hidden="true"></i> كود تجميع الحزم التسلسلية المقطّعة وإعادة الاتصال التلقائي بـ Kotlin Flow
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>// دالة تحويل تدفق البايتات الخام المتقطعة إلى رسائل سطرية مكتملة (Line-Delimited Frames)
+fun Flow&lt;ByteArray&gt;.assembleSerialLines(maxBufferSize: Int = 8192): Flow&lt;String&gt; = flow {
+    val buffer = StringBuilder()
+    collect { chunk -&gt;
+        buffer.append(chunk.decodeToString())
+        // حماية الذاكرة في حال عدم وصول محرف سطر جديد بسبب ضوضاء الخط
+        if (buffer.length &gt; maxBufferSize) {
+            buffer.clear()
+        }
+        var newlineIndex = buffer.indexOf('\n')
+        while (newlineIndex != -1) {
+            val completeLine = buffer.substring(0, newlineIndex).trimEnd('\r')
+            buffer.delete(0, newlineIndex + 1)
+            if (completeLine.isNotEmpty()) {
+                emit(completeLine)
+            }
+            newlineIndex = buffer.indexOf('\n')
+        }
+    }
+}</code></pre>
+            </div>
+
+            <h2 id="section-5">5. التطبيق البرمجي العابر للمنصات عبر مكتبة serial-lib-kmp وآلية Watchdog</h2>
+            <p>
+              لتوحيد كود التخاطب مع المنافذ التسلسلية بين نظامي <strong>أندرويد (<code>USB-OTG</code>)</strong> و<strong>سطح المكتب (<code>Windows COM Ports / Linux ttyUSB</code>)</strong>، طورنا في شركة كونكت تاق حزمة <strong><code>serial-lib-kmp</code></strong> المتاحة في <a href="https://connecttag.org/company/projects/libraries/">قسم المكاتب البرمجية</a>، والتي توفر المزايا الهندسية التالية:
+            </p>
+            <ul>
+              <li><strong>واجهة برمجية موحدة (<code>Unified SerialTransport Contract</code>):</strong> تكتب منطق البروتوكول مرة واحدة في وحدة <code>commonMain</code>، وتتكفل المكتبة بتشغيله عبر <code>UsbManager</code> في أندرويد وعبر منافذ النظام الأصيلة في <code>Desktop JVM</code>.</li>
+              <li><strong>مراقب الحراسة الذكي (<code>Connection Watchdog &amp; Auto-Recovery</code>):</strong> في البيئات الصناعية ونقاط البيع، قد يتعرض كابل الـ USB لاهتزاز لحظي أو نبضة كهربائية تفصل الاتصال لجزء من الثانية. يقوم الـ <code>Watchdog</code> بمراقبة نبضات الجهاز (<code>Heartbeat</code>) وإعادة تهيئة المنفذ تلقائياً دون تجميد واجهة المستخدم.</li>
+              <li><strong>دعم وضع التحديث البرمجي (<code>DFU / Bootloader Mode</code>):</strong> التحكم الدقيق بإشارات التحكم <code>DTR</code> (Data Terminal Ready) و<code>RTS</code> (Request To Send) اللازمة لإدخال لوحات <code>ESP32</code> و<code>Arduino</code> في وضع البرمجة وتحديث الفيرموير.</li>
+            </ul>
+
+            <h2 id="section-6">6. تطبيقات عملية في منظومة كونكت تاق: من نقاط البيع إلى الفحص العتادي وحماية المنافذ</h2>
+            <p>
+              تُستخدم تقنيات التخاطب العتادي والـ <code>USB-OTG</code> في عدد من أبرز منتجات وحلول <strong>كونكت تاق</strong> التي يمكنك استكشافها وتجربتها:
+            </p>
+            <ul>
+              <li>
+                <strong>قراءة وتوليد الباركود لنقاط البيع والمخازن:</strong> يتيح <a href="https://connecttag.org/company/projects/apps/satoor/">تطبيق سطور (Satoor) لقراءة وتوليد الباركود</a> التكامل السلس مع عمليات المسح السريع وإدارة الأصناف، ويتكامل في بيئات الشركات مع <a href="https://connecttag.org/blog/android-mdm-kiosk-mode-guide">أنظمة إدارة الأجهزة المؤسسية ووضع الكشك (Kiosk Mode)</a>.
+              </li>
+              <li>
+                <strong>الفحص الهندسي لمنافذ ومستشعرات الجهاز:</strong> يمكّنك <a href="https://connecttag.org/company/projects/apps/kabeer/">تطبيق خبير (Kabeer) لفحص العتاد والمستشعرات</a> من التحقق من دعم هاتفك لميزة <code>USB Host / OTG</code> وفحص سلامة المستشعرات والبطارية والشاشة.
+              </li>
+              <li>
+                <strong>إدارة وصيانة أجهزة أندرويد عبر سطح المكتب:</strong> تعتمد <a href="https://connecttag.org/company/projects/apps/dhawd/">منظومة ذَود (DHAWD ADB) لإدارة أجهزة أندرويد</a> على قنوات الاتصال المباشر عبر <code>USB</code> والشبكة لتنفيذ أوامر الفحص والنسخ الاحتياطي وإدارة الحزم.
+              </li>
+              <li>
+                <strong>الأمن السيبراني وحوكمة منافذ الـ USB:</strong> للحماية من هجمات <code>BadUSB / Rubber Ducky</code> التي تنتحل صفة لوحة مفاتيح عبر منفذ <code>OTG</code>، توفر منظومتنا <a href="https://connecttag.org/company/projects/apps/soor-usb/">تطبيق سور USB (Soor USB) لحماية وحوكمة منافذ الـ USB</a>.
+              </li>
+            </ul>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 7. الأسئلة الشائعة حول برمجة USB-OTG والاتصال التسلسلي</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا لا يتعرف هاتف أندرويد على لوحة Arduino أو جهاز Serial تلقائياً بدون مكتبة تعريف؟</h3>
+                <p class="faq-answer">
+                  لا تتضمن نواة أندرويد في معظم الهواتف التجارية تعريفات نواة مفعّلة لجميع شرائح الجسر التسلسلي (مثل <code>CH340</code> أو <code>FTDI</code> أو <code>CP2102</code>). لذلك يتعامل التطبيق مع الجهاز في فضاء المستخدم (<code>User-Space</code>) عبر واجهة <code>Android UsbHost API</code> (<code>UsbManager</code> و<code>UsbDeviceConnection</code>)، حيث تقوم مكتبة الاتصال التسلسلي بترجمة أوامر البود ريت (<code>Baud Rate</code>) ونقل الحزم عبر نقاط النهاية (<code>Bulk Endpoints IN/OUT</code>) برمجياً دون الحاجة لصلاحيات الروت.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ماذا تعني إعدادات الاتصال التسلسلي 9600 8N1 أو 115200 8N1؟</h3>
+                <p class="faq-answer">
+                  يرمز الرقم الأول (<code>9600</code> أو <code>115200</code>) إلى سرعة نقل الإشارات في الثانية (<code>Baud Rate</code>)، ويجب أن تتطابق تماماً بين التطبيق والعتاد وإلا ستظهر رموز مشوهة. أما <code>8N1</code> فتعني: 8 بتات بيانات لكل حرف (<code>8 Data Bits</code>)، وبدون بت تكافؤ لفحص الأخطاء (<code>N = No Parity</code>)، وبت توقف واحد في نهاية كل إطار (<code>1 Stop Bit</code>).
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أعالج مشكلة تقطّع الرسالة الواحدة إلى عدة دفعات أثناء القراءة من منفذ USB-Serial؟</h3>
+                <p class="faq-answer">
+                  بروتوكول الاتصال التسلسلي ينقل تياراً مستمراً من البايتات (<code>Byte Stream</code>) ولا يعرف مفهوم «بداية ونهاية الرسالة» من تلقاء نفسه؛ فقد تصل جملة <code>JSON</code> أو رقم باركود مقسماً على قراءتين. الحل الهندسي هو استخدام مخزن تجميع مؤقت (<code>Ring Buffer / Frame Assembler</code>) ينتظر محرف الفصل المعتمد (مثل سطر جديد <code>\n</code> أو <code>\r\n</code>) أو يتحقق من طول الإطار ورمز التدقيق (<code>CRC Checksum</code>) قبل إصدار الرسالة الكاملة.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أجعل تطبيقي يتصل بالجهاز التسلسلي تلقائياً عند توصيل كابل USB-OTG دون إزعاج المستخدم بطلب الإذن في كل مرة؟</h3>
+                <p class="faq-answer">
+                  يتم ذلك عبر تعريف فلتر أجهزة USB (<code>device_filter.xml</code>) يتضمن معرّف المصنّع (<code>Vendor ID — VID</code>) ومعرّف المنتج (<code>Product ID — PID</code>) للجهاز، وربطه بنية <code>UsbManager.ACTION_USB_DEVICE_ATTACHED</code> في ملف البيان. بمجرد موافقة المستخدم مرة واحدة مع تفعيل خيار «الاستخدام افتراضياً لهذا الجهاز»، يمنح النظام الإذن تلقائياً في كل مرة يُوصل فيها الكابل.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والتوثيقات الهندسية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://developer.android.com/develop/connectivity/usb/host" target="_blank" rel="noopener noreferrer">Android Developers Documentation — USB Host Overview &amp; UsbManager API</a></li>
+                <li><a href="https://www.usb.org/sites/default/files/CDC1.2_WMC1.1_012011.zip" target="_blank" rel="noopener noreferrer">USB Implementers Forum (USB-IF) — Universal Serial Bus Class Definitions for Communications Devices (CDC/ACM)</a></li>
+                <li><a href="https://github.com/connecttag/serial-lib-kmp" target="_blank" rel="noopener noreferrer">Connect Tag Open-Source — serial-lib-kmp (Cross-Platform Serial &amp; USB-OTG SDK for Android &amp; Desktop JVM)</a></li>
+                <li><a href="https://connecttag.org/company/projects/libraries/">المكاتب البرمجية وحزم التطوير — شركة كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="عقيل محمد"
+              avatar="https://connecttag.org/upload/author/aqeldev.webp"
+              link="https://connecttag.org/blog/authors/aqeldev">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="android-mdm-kiosk-mode-guide,compose-multiplatform-shared-ui-android-ios-desktop-guide,android-accessibility-security-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل فحص بطارية الهاتف، المعالج، الحساسات والشاشة | كونكت تاق</title>
+  <meta name="description" content="كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors)، دورات الشحن، وتطبيع الشاشة." />
+  <meta name="author" content="بسمة شرف" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="اتصالات وشبكات" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/basma" />
+  <meta property="og:url" content="https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide" />
+  <meta property="og:title" content="كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (CPU, RAM, Sensors, والبطارية)" />
+  <meta property="og:description" content="كيف تقرأ السعة المتبقية الفعلية للبطارية (Charge Counter) ودورات الشحن (Cycle Count)، وتكشف تطبيع شاشات OLED (Burn-in) وتختبر الحساسات والاختناق الحراري للمعالج؟" />
+  <meta property="og:image" content="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="الدليل الهندسي لفحص عتاد الهاتف وصحة البطارية والمعالج والحساسات والشاشة قبل الشراء" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟" />
+  <meta name="twitter:description" content="دليل الفحص المعملي للهواتف المستعملة والجديدة: قراءة صحة البطارية الحقيقية، فحص البكسلات الميتة وOLED Burn-in، واختبار الحساسات عبر تطبيق خبير." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57" />
+  <meta name="twitter:image:alt" content="الدليل الهندسي لفحص عتاد الهاتف وصحة البطارية والمعالج والحساسات والشاشة قبل الشراء" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ دليل فحص عتاد الهاتف",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "بسمة شرف",
+      "jobTitle": "كاتبة وباحثة تقنية متخصصة في قطاع الاتصالات والإنترنت",
+      "url": "https://connecttag.org/blog/authors/basma",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل الهندسي الشامل لفحص عتاد الهاتف الذكي قبل الشراء: قراءة السعة الفعلية للبطارية ودورات الشحن، اختبار تطبيع شاشات OLED واللمس المتعدد، وفحص الحساسات والمعالج.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "دليل فحص عتاد الهاتف وصحة البطارية قبل الشراء",
+        "item": "https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "كيف أعرف نسبة صحة البطارية الحقيقية (Battery Health) وعدد دورات الشحن في هواتف أندرويد؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تحتفظ شريحة قياس الوقود (Fuel Gauge IC) في اللوحة الأم بقيمتين أساسيتين: السعة التصميمية للمصنع (Design Capacity بـ mAh) والسعة القصوى المتبقية فعلياً عند الشحن الكامل (Charge Counter بـ µAh). عبر قسمة السعة الفعلية عند شحن 100% على السعة التصميمية وضرب الناتج في 100 تحصل على نسبة صحة البطارية الحقيقية. إذا كانت النسبة أقل من 80% أو تجاوز عدد دورات الشحن (Cycle Count) حاجز 500 إلى 800 دورة، فالبطارية مستهلكة وتحتاج للاستبدال."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أكشف تطبيع الشاشة (OLED Burn-in) أو الشاشات التجارية المبدلة عند فحص هاتف مستعمل؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "افتح شاشة فحص الألوان الكاملة (Full-Screen RGB Test) وارفع سطوع الشاشة إلى 50% ثم إلى 100% على خلفية بيضاء ناصعة وخلفية رمادية متوسطة (#808080). يظهر تطبيع شاشات AMOLED/OLED على شكل ظلال وردية أو رمادية باهتة ثابتة لأيقونات شريط الحالة العلوي أو أزرار تطبيقات مثل تيك توك وواتساب أو لوحة المفاتيح السفلية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يساعدني مستشعر الضغط الجوي (Barometer) في معرفة ما إذا كان الهاتف المقاوم للماء قد فُتح للصيانة سابقاً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في الهواتف الرائدة المقاومة للماء بمعيار IP68، يكون الهيكل الداخلي محكم الإغلاق بعوازل مطاطية. عند مراقبة قراءة مستشعر البارومتر (بالـ hPa) في تطبيق فحص العتاد ثم الضغط برفق بإصبعيك على منتصف الشاشة والظهر معاً، سترتفع قراءة الضغط الجوي لحظياً بمقدار 0.5 إلى 2.0 hPa إذا كانت عوازل الوكالة سليمة، بينما لن تتغير القراءة إطلاقاً إذا كان الهاتف قد فُتح وفقد إحكام العزل!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أكشف تزييف حجم الذاكرة العشوائية (RAM) أو سعة التخزين في الهواتف المقلدة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تعدّل بعض الهواتف المقلدة نص شاشة الإعدادات ليظهر وكأن الذاكرة 12GB RAM أو 512GB تخزين، لكن قراءة ملفات النواة الحقيقية (/proc/meminfo وStatFs) وموديل المعالج الفعلي (SoC Board/Hardware ID) عبر تطبيق تشخيص عتاد موثوق مثل تطبيق خبير (Kabeer) تكشف السعة الفيزيائية الحقيقية ونوع معالج الجهاز خلال ثوانٍ."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"دليل فحص عتاد الهاتف وصحة البطارية قبل الشراء", "url":"https://connecttag.org/blog/smartphone-hardware-battery-diagnostics-guide"}]'></site-breadcrumb>
+        <h1>كيف تكشف عيوب الهاتف الخفية وصحة البطارية الحقيقية قبل الشراء؟ الدليل الهندسي لفحص عتاد الهاتف (<code>CPU</code>, <code>RAM</code>, <code>Sensors</code>, والبطارية)</h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="اتصالات وشبكات" subcategory="فحص الأجهزة والاتصال"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/smartphone-hardware-battery-diagnostics-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لفحص عتاد الهاتف وصحة البطارية والمعالج والحساسات والشاشة قبل الشراء" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">عند شراء هاتف ذكي مستعمل أو مفتوح الكرتون (<code>Open Box / Refurbished</code>)، غالباً ما يبدو المظهر الخارجي للهاتف لامعاً وخالياً من الخدوش بعد تغيير الغطاء الخلفي أو الإطار، بينما تختبئ الأعطال المكلفة في العتاد الداخلي: بطارية مستهلكة فقدت أكثر من <code>30%</code> من سعتها الحقيقية، أو شاشة <code>AMOLED</code> تعاني من تطبيع شبحي (<code>Burn-in</code>) أو مناطق لمس ميتة، أو مستشعرات متوقفة بسبب سقوط سابق أو دخول سوائل، أو حتى معالج يتعرض لاختناق حراري حاد (<code>Thermal Throttling</code>) بسبب جفاف المعجون الحراري بعد صيانة غير احترافية.</p>
+
+        <p>استكمالاً لما شرحناه في <a href="https://connecttag.org/blog/imei-number-check-guide"><strong>دليل فحص رقم IMEI وكشف الأجهزة المجددة قبل الشراء</strong></a>، يقدم لك هذا الدليل الهندسي والعملي منهجية الفحص المعملي الشامل لعتاد الهاتف خلال 5 دقائق فقط باستخدام القراءات الفيزيائية المباشرة من نواة النظام عبر <a href="https://connecttag.org/company/projects/apps/kabeer/"><strong>تطبيق خبير (Kabeer) لفحص وتشخيص عتاد الهاتف</strong></a> وأدوات القياس في <strong>كونكت تاق</strong>.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-microchip"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>لا تنخدع بنسبة الشحن <code>100%</code> على الشاشة:</strong> النسبة المئوية للبطارية تقيس امتلاء السعة المتبقية حالياً فقط؛ أما صحة البطارية الفعلية فتُقاس بمقارنة <strong>السعة المتبقية (<code>Charge Counter</code>)</strong> مع <strong>السعة التصميمية للمصنع (<code>Design Capacity</code>)</strong> وعدد دورات الشحن (<code>Cycle Count</code>).</li>
+            <li><strong>الجهد الكهربائي (<code>Voltage mV</code>) يكشف الخلايا التالفة:</strong> البطارية السليمة المشحونة بالكامل تسجل جهداً يتراوح بين <strong><code>4,250 mV</code> و<code>4,450 mV</code></strong>. إذا هبط الجهد فجأة تحت الضغط بـ <code>300 mV</code> أو قفزت الحرارة فوق <code>43°C</code> أثناء التصفح العادي، فالبطارية متدهورة كيميائياً.</li>
+            <li><strong>الخلفية الرمادية (<code>50% Gray</code>) تكشف خفايا شاشات <code>OLED</code>:</strong> البكسلات الميتة تظهر بوضوح على الألوان الأساسية (الأحمر، الأخضر، الأزرق)، بينما لا يظهر التطبيع الشبحي (<code>Burn-in</code>) والاصفرار إلا على خلفية بيضاء أو رمادية متوسطة.</li>
+            <li><strong>مستشعر البارومتر (<code>Barometer</code>) يكشف فك الهاتف المقاوم للماء:</strong> الضغط الخفيف على الشاشة مع مراقبة قراءة الضغط الجوي بالـ <code>hPa</code> يكشف فوراً ما إذا كانت عوازل الوكالة (<code>IP68 Seals</code>) ما تزال محكمة أم أن الهاتف فُتح للصيانة.</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. التشريح الهندسي لصحة البطارية: كيف تقرأ السعة الفعلية، الجهد (mV)، ودورات الشحن؟</a></li>
+            <li><a href="#section-2">2. الفحص المعملي للشاشة واللمس: كشف البكسلات الميتة، تطبيع OLED Burn-in، والشاشات المبدلة</a></li>
+            <li><a href="#section-3">3. جدول القيم المرجعية لفحص الحساسات الفيزيائية (Sensors) وكشف فتح الجهاز المقاوم للماء</a></li>
+            <li><a href="#section-4">4. فحص المعالج والذاكرة (SoC &amp; RAM/UFS): كشف الاختناق الحراري والمواصفات المزيفة</a></li>
+            <li><a href="#section-5">5. التطبيق العملي عبر تطبيق خبير (Kabeer) وأدوات الفحص في كونكت تاق</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. التشريح الهندسي لصحة البطارية: كيف تقرأ السعة الفعلية، الجهد (mV)، ودورات الشحن؟</h2>
+        <p>تحتوي كل بطارية ليثيوم-أيون (<code>Li-Ion</code>) أو ليثيوم-بوليمر (<code>Li-Po</code>) في الهواتف الحديثة على شريحة إلكترونية دقيقة تُسمى <strong>شريحة قياس الوقود (<code>Fuel Gauge IC / Coulomb Counter</code>)</strong>، مهمتها حساب كمية الشحنة الكهربائية الداخلة والخارجة بالميكرو أمبير-ساعة (<code>µAh</code>). لفحص حالة البطارية الحقيقية، هناك 4 مؤشرات هندسية حاسمة:</p>
+
+        <ul>
+          <li><strong>السعة التصميمية (<code>Design Capacity</code>) مقابل السعة الفعلية المتبقية (<code>Full Charge Capacity</code>):</strong> إذا كانت سعة البطارية من المصنع <code>5,000 mAh</code>، وعند شحن الهاتف إلى <code>100%</code> قرأت شريحة القياس أن إجمالي الشحنة المخزنة هو <code>3,650 mAh</code> (أي <code>3,650,000 µAh</code>)، فإن نسبة صحة البطارية الحقيقية هي:
+            <p style="text-align: center; direction: ltr; background: #f8fafc; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; font-weight: 700; margin: 12px 0;">
+              <code>Battery Health (%) = (3,650 mAh / 5,000 mAh) × 100 = 73% (تحتاج للاستبدال)</code>
+            </p>
+            ويمكنك دائماً تحويل سعة البطارية من ملي أمبير-ساعة (<code>mAh</code>) إلى واط-ساعة (<code>Wh</code>) بمعرفة جهد البطارية الاسمي (<code>3.85V</code>) عبر <a href="https://connecttag.org/tools/energy/unit-converter/"><strong>محول الوحدات الكهربائية في كونكت تاق</strong></a>.
+          </li>
+          <li><strong>عدد دورات الشحن (<code>Battery Cycle Count</code>):</strong> تُحسب الدورة الواحدة كلما استهلكت <code>100%</code> من سعة البطارية تراكمياً. صُممت بطاريات الهواتف للاحتفاظ بنحو <code>80%</code> من سعتها حتى <strong><code>500 إلى 800 دورة شحن</code></strong>؛ فإذا تجاوز العداد <code>600 دورة</code> في هاتف مستعمل، فتوقع انخفاضاً واضحاً في زمن الصمود اليومي.</li>
+          <li><strong>الجهد الكهربائي الفوري (<code>Voltage in mV</code>) والمقاومة الداخلية:</strong> تتراوح قراءة الجهد الطبيعي بين <code>3,700 mV</code> (عند 20% شحن) و<code>4,400 mV</code> (عند 100% شحن). إذا لاحظت أثناء تشغيل الكاميرا أو لعبة ثقيلة أن الجهد يهبط فجأة إلى أقل من <code>3,450 mV</code> وينطفئ الهاتف رغم أن النسبة <code>25%</code>، فهذا دليل قاطع على ارتفاع المقاومة الداخلية للبطارية وتلف خلاياها.</li>
+        </ul>
+
+        <h2 id="section-2">2. الفحص المعملي للشاشة واللمس: كشف البكسلات الميتة، تطبيع OLED Burn-in، والشاشات المبدلة</h2>
+        <p>تُعدّ الشاشة القطعة الأغلى ثمناً في الهاتف (تمثل أحياناً <code>35%–45%</code> من سعر الجهاز المستعمل). لكشف الشاشات التجارية المبدلة أو المعيبة، نفّذ الفحوصات الأربعة التالية بالترتيب:</p>
+
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
+          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-mobile-screen-button"></i> الاختبارات الأربعة الكاشفة لعيوب شاشات الهواتف (AMOLED &amp; IPS LCD)
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
+            <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #7dd3fc; font-size: 15.5px; margin-bottom: 6px;">1. كشف التطبيع الشبحي (OLED Burn-in)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">اعرض شاشة رمادية صلبة (<code>#808080</code>) وشاشة بيضاء ناصعة في غرفة خافتة الإضاءة. دقق في أعلى الشاشة وأسفلها؛ أي خيال وردي ثابت لأيقونات البطارية أو شريط التنقل يعني احتراق البكسلات العضوية.</p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.12); border-right: 4px solid #34d399; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #6ee7b7; font-size: 15.5px; margin-bottom: 6px;">2. فحص البكسلات الميتة والعالقة (RGB)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">بدّل بين اللون الأحمر والأخضر والأزرق والأسود الكامل. البكسل الميت (<code>Dead Pixel</code>) يظل نقطة سوداء طافئة، بينما البكسل العالق (<code>Stuck Pixel</code>) يلمع بلون واحد ثابت على الخلفية السوداء.</p>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.12); border-right: 4px solid #fbbf24; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #fde68a; font-size: 15.5px; margin-bottom: 6px;">3. اختبار شبكة اللمس والـ Multi-Touch</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">مرّر إصبعك ببطء في خطوط قطرية وأفقية على كامل حواف الشاشة دون رفع الإصبع؛ إذا انقطع الخط في منطقة معينة، فطبقة الـ <code>Digitizer</code> تالفة. ثم ضع 10 أصابع معاً للتأكد من دعم <code>10-Point Touch</code>.</p>
+            </div>
+
+            <div style="background: rgba(192, 132, 252, 0.12); border-right: 4px solid #c084fc; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #e9d5ff; font-size: 15.5px; margin-bottom: 6px;">4. تردد التحديث واللون الأسود (120Hz)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">الشاشات التجارية المقلدة التي تُركّب بدلاً من شاشات <code>AMOLED</code> الأصلية تعمل غالباً بتردد <code>60Hz</code> فقط بدل <code>120Hz</code>، وتُصدر إضاءة خلفية رمادية باهتة عند عرض اللون الأسود في الظلام.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="section-3">3. جدول القيم المرجعية لفحص الحساسات الفيزيائية (Sensors) وكشف فتح الجهاز المقاوم للماء</h2>
+        <p>يضم الهاتف الحديث أكثر من 10 مستشعرات كهروميكانيكية دقيقة (<code>MEMS Sensors</code>). توقف أي مستشعر منها بعد سقوط الهاتف أو صيانته يسبب مشاكل مزعجة مثل عدم انطفاء الشاشة أثناء المكالمات أو دوران الشاشة التلقائي الخاطئ أو فشل تحديد اتجاه القبلة في الخرائط:</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">المستشعر الفيزيائي</th>
+                <th style="padding: 14px; text-align: right;">الوظيفة الهندسية في الهاتف</th>
+                <th style="padding: 14px; text-align: right;">القراءة السليمة وطريقة الاختبار المعملي</th>
+                <th style="padding: 14px; text-align: right;">دلالة القراءة الخاطئة أو المتجمدة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">مقياس التسارع (<code>Accelerometer</code>)</td>
+                <td style="padding: 12px;">قياس تسارع الحركة والجاذبية في المحاور الثلاثة (<code>X, Y, Z</code>)</td>
+                <td style="padding: 12px;">عند وضع الهاتف مسطحاً على طاولة مستوية: <code>X ≈ 0</code>، <code>Y ≈ 0</code>، و<code>Z ≈ +9.81 m/s²</code> (تسارع الجاذبية الأرضية).</td>
+                <td style="padding: 12px; color: #b91c1c;">تلف الشريحة إثر سقوط قوي؛ يؤدي لتعطل تدوير الشاشة وعدّاد الخطوات.</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">الجيروسكوب (<code>Gyroscope</code>)</td>
+                <td style="padding: 12px;">قياس السرعة الزاوية للدوران الدقيق (<code>rad/s</code>)</td>
+                <td style="padding: 12px;">عند ثبات الهاتف تماماً تكون المحاور الثلاثة <code>0.00 rad/s</code>، وتتغير بسلاسة فور إمالة الهاتف.</td>
+                <td style="padding: 12px; color: #b91c1c;">انجراف مستمر في الألعاب (<code>Gyro Drift</code>) واهتزاز تثبيت الفيديو البصري.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">مستشعر التقارب (<code>Proximity</code>)</td>
+                <td style="padding: 12px;">إطفاء الشاشة عند تقريب الهاتف من الأذن أثناء المكالمة</td>
+                <td style="padding: 12px;">يسجل <code>5.0 cm</code> (بعيد) ويتحول فوراً إلى <code>0.0 cm</code> (قريب) عند وضع راحة اليد أعلى الشاشة.</td>
+                <td style="padding: 12px; color: #b91c1c;">تغير الشاشة بدون نقل جلدة العزل المطاطية للمستشعر أو تراكم الغبار تحت الكاميرا.</td>
+              </tr>
+              <tr style="background: #f0fdf4;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">البارومتر (<code>Barometer</code>)</td>
+                <td style="padding: 12px;">قياس الضغط الجوي بالهكتوباسكال (<code>hPa</code>) والارتفاع</td>
+                <td style="padding: 12px; color: #15803d; font-weight: 700;">اضغط بإصبعيك برفق على منتصف الشاشة؛ إذا قفزت القراءة لحظياً بمقدار <code>+0.5 إلى +2.0 hPa</code>، فالهاتف محكم الإغلاق ولم يُفتح!</td>
+                <td style="padding: 12px; color: #b91c1c;">ثبات القراءة تماماً عند الضغط على الشاشة يعني تسرب الهواء وفقدان عزل <code>IP68</code> المائي.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;">البوصلة (<code>Magnetometer</code>)</td>
+                <td style="padding: 12px;">قياس المجال المغناطيسي للأرض بالميكرو تسلا (<code>µT</code>)</td>
+                <td style="padding: 12px;">قراءة طبيعية بين <code>25 µT</code> و<code>65 µT</code> بعيداً عن المعادن؛ وتتم معايرتها بتحريك الهاتف على شكل رقم <code>8</code> بالفرنسية.</td>
+                <td style="padding: 12px; color: #b91c1c;">انحراف دائم في اتجاه الخريطة والقبلة بسبب مغنطة داخلية أو جراب مغناطيسي رديء.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-4">4. فحص المعالج والذاكرة (SoC &amp; RAM/UFS): كشف الاختناق الحراري والمواصفات المزيفة</h2>
+        <p>تنتشر في الأسواق بعض الأجهزة المقلدة أو المعدّلة برمجياً (<code>Fake ROM Spoofing</code>) التي تعدّل شاشة «حول الهاتف» لتظهر ذاكرة عشوائية وهمية (مثل <code>16GB RAM</code> بينما الحقيقية <code>2GB</code>) أو معالجاً رائداً مزيفاً. للتحقق الهندسي الصارم:</p>
+
+        <ol>
+          <li><strong>قراءة معرّف اللوحة والمعمارية الحقيقية (<code>SoC Hardware &amp; Board ID</code>):</strong> اقرأ اسم اللوحة الأم الفعلي وترددات أنوية المعالج (<code>Big.LITTLE Clusters</code>) ودقة التصنيع بالنانومتر؛ المعالجات الأصلية تعرض تردد كل نواة حياً (من وضع الخمول <code>300MHz</code> حتى التردد الأقصى <code>2.8GHz–3.3GHz</code>).</li>
+          <li><strong>مراقبة الاختناق الحراري (<code>Thermal Throttling</code>):</strong> إذا ارتفعت حرارة مناطق المعالج (<code>Thermal Zones</code>) فوق <code>45°C–48°C</code> خلال دقيقتين فقط من الاستخدام العادي وهبطت ترددات الأنوية إلى النصف مع تقطيع واضح في الواجهة، فهذا يشير إلى مشكلة في التشتيت الحراري أو استهلاك غير طبيعي في اللوحة الأم.</li>
+          <li><strong>فحص الذاكرة الحقيقية وسرعة التخزين (<code>Memory &amp; Storage Integrity</code>):</strong> قارن إجمالي المساحة الفيزيائية المقروءة من نظام الملفات مباشرةً مع الرقم المكتوب على العلبة، وتأكد من مطابقة الرقم التسلسلي ورقم <code>IMEI</code> ثلاثياً كما فصلنا في <a href="https://connecttag.org/blog/imei-number-check-guide">دليل فحص رقم IMEI</a>.</li>
+        </ol>
+
+        <h2 id="section-5">5. التطبيق العملي عبر تطبيق خبير (Kabeer) وأدوات الفحص في كونكت تاق</h2>
+        <p>لتسهيل إجراء كافة هذه الاختبارات المعملية في مكان واحد وبدون صلاحيات روت أو اتصال بالإنترنت، طور الفريق الهندسي في <strong>كونكت تاق</strong> منظومة متكاملة لفحص وتشخيص الهواتف:</p>
+
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #6ee7b7; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #065f46; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-stethoscope"></i> حقيبة الفحص والتشخيص الهندسي للهواتف من كونكت تاق:</h3>
+          <ul style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li><strong>تطبيق <a href="https://connecttag.org/company/projects/apps/kabeer/" style="font-weight: 800; color: #047857;">خبير (Kabeer) لفحص وتشخيص عتاد الهاتف</a>:</strong> يعرض لك لوحة قياس حية لصحة البطارية، الجهد الكهربائي (<code>mV</code>)، تيار الشحن والتفريغ (<code>mA</code>)، حرارة البطارية والمعالج، ترددات أنوية الـ <code>CPU</code> والذاكرة الحقيقية، مع مختبر تفاعلي لفحص ألوان الشاشة واللمس المتعدد وجميع الحساسات (<code>Accelerometer, Gyroscope, Barometer, Proximity, Magnetometer</code>).</li>
+            <li><strong><a href="https://connecttag.org/tools/telecom/imei-checker/" style="font-weight: 800; color: #047857;">أداة فحص رقم IMEI والتحقق من كود المصنع (TAC)</a>:</strong> للتحقق الفوري من صحة رقم <code>IMEI</code> ومطابقة اسم الشركة المصنعة والموديل الأصلي قبل دفع ثمن الجهاز.</li>
+            <li><strong><a href="https://connecttag.org/tools/energy/unit-converter/" style="font-weight: 800; color: #047857;">أداة محول الوحدات الكهربائية (mAh / Wh / V / W)</a>:</strong> لحساب الطاقة الفعلية للبطارية بالواط-ساعة وقدرة الشواحن السريعة (<code>USB-PD Watts</code>).</li>
+            <li><strong>مكتبة <code>telephony-collector</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #047857;">قسم المكاتب البرمجية</a>:</strong> للمطورين الراغبين في دمج أدوات قراءة حالة شرائح الاتصال وعتاد الهاتف داخل تطبيقاتهم.</li>
+          </ul>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/company/projects/apps/kabeer/" class="btn btn-primary" style="background: #059669; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-microchip"></i> استكشف تطبيق خبير (Kabeer)
+            </a>
+            <a href="https://connecttag.org/tools/telecom/imei-checker/" class="btn btn-default" style="border-color: #059669; color: #059669; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-barcode"></i> أداة فحص رقم IMEI الأصلي
+            </a>
+            <a href="https://connecttag.org/tools/energy/unit-converter/" class="btn btn-default" style="border-color: #059669; color: #059669; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-bolt"></i> محول وحدات البطارية والطاقة
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف أعرف نسبة صحة البطارية الحقيقية (Battery Health) وعدد دورات الشحن في هواتف أندرويد؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تحتفظ شريحة قياس الوقود (<code>Fuel Gauge IC</code>) في اللوحة الأم بقيمتين أساسيتين: السعة التصميمية للمصنع (<code>Design Capacity</code> بـ <code>mAh</code>) والسعة القصوى المتبقية فعلياً عند الشحن الكامل (<code>Charge Counter</code> بـ <code>µAh</code>). عبر قسمة السعة الفعلية عند شحن <code>100%</code> على السعة التصميمية وضرب الناتج في <code>100</code> تحصل على نسبة صحة البطارية الحقيقية. إذا كانت النسبة أقل من <code>80%</code> أو تجاوز عدد دورات الشحن (<code>Cycle Count</code>) حاجز <code>500 إلى 800 دورة</code>، فالبطارية مستهلكة وتحتاج للاستبدال.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف أكشف تطبيع الشاشة (OLED Burn-in) أو الشاشات التجارية المبدلة عند فحص هاتف مستعمل؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">افتح شاشة فحص الألوان الكاملة (<code>Full-Screen RGB Test</code>) وارفع سطوع الشاشة إلى <code>50%</code> ثم إلى <code>100%</code> على خلفية بيضاء ناصعة وخلفية رمادية متوسطة (<code>#808080</code>). يظهر تطبيع شاشات <code>AMOLED/OLED</code> على شكل ظلال وردية أو رمادية باهتة ثابتة لأيقونات شريط الحالة العلوي أو أزرار تطبيقات الفيديو أو لوحة المفاتيح السفلية.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف يساعدني مستشعر الضغط الجوي (Barometer) في معرفة ما إذا كان الهاتف المقاوم للماء قد فُتح للصيانة سابقاً؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">في الهواتف الرائدة المقاومة للماء بمعيار <code>IP68</code>، يكون الهيكل الداخلي محكم الإغلاق بعوازل مطاطية. عند مراقبة قراءة مستشعر البارومتر (بالـ <code>hPa</code>) في تطبيق فحص العتاد ثم الضغط برفق بإصبعيك على منتصف الشاشة والظهر معاً، سترتفع قراءة الضغط الجوي لحظياً بمقدار <code>0.5 إلى 2.0 hPa</code> إذا كانت عوازل الوكالة سليمة، بينما لن تتغير القراءة إطلاقاً إذا كان الهاتف قد فُتح وفقد إحكام العزل!</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف أكشف تزييف حجم الذاكرة العشوائية (RAM) أو سعة التخزين في الهواتف المقلدة؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تعدّل بعض الهواتف المقلدة نص شاشة الإعدادات ليظهر وكأن الذاكرة <code>12GB RAM</code> أو <code>512GB</code> تخزين، لكن قراءة ملفات النواة الحقيقية وموديل المعالج الفعلي (<code>SoC Hardware ID</code>) عبر تطبيق تشخيص عتاد موثوق مثل <a href="https://connecttag.org/company/projects/apps/kabeer/">تطبيق خبير (Kabeer)</a> تكشف السعة الفيزيائية الحقيقية ونوع معالج الجهاز خلال ثوانٍ.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="المصادر والمعايير الهندسية المعتمدة" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #059669; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #059669;"></i> المصادر والوثائق الهندسية المعتمدة (Official Hardware &amp; Battery Standards):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>Android Open Source Project (AOSP) — Sensor Stack &amp; HAL Documentation:</strong> <a href="https://source.android.com/docs/core/interaction/sensors/sensor-types" target="_blank" rel="noopener noreferrer">Official Android Sensor Types (Accelerometer, Gyroscope, Barometer &amp; Magnetometer Specifications)</a>.</li>
+            <li><strong>Android Developers — BatteryManager &amp; Power Profile Architecture:</strong> <a href="https://developer.android.com/reference/android/os/BatteryManager" target="_blank" rel="noopener noreferrer">BatteryManager — Charge Counter, Voltage, Temperature, and Cycle Count Properties</a>.</li>
+            <li><strong>IEEE Standard 1725 for Rechargeable Batteries for Cellular Telephones:</strong> المعيار الهندسي الدولي لتقييم كفاءة وأمان بطاريات الليثيوم في الهواتف المحمولة.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="بسمة شرف" avatar="https://connecttag.org/upload/author/basma.webp" link="https://connecttag.org/blog/authors/basma"><span class="sr-only">الكاتبة: بسمة شرف</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="imei-number-check-guide, factory-reset-data-recovery-secure-erasure-guide, telecom-cell-id-mcc-mnc-e164-guide"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>

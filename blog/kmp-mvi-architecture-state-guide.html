@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>الدليل الهندسي لمعمارية MVI في Kotlin Multiplatform | كونكت تاق</title>
+  <meta name="description" content="الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن في Compose؟">
+  <meta name="keywords" content="معمارية MVI, Model-View-Intent Kotlin Multiplatform, إدارة الحالة في Jetpack Compose, StateFlow vs SharedFlow vs Channel, Unidirectional Data Flow, mvi-lib-kmp, هندسة تطبيقات أندرويد وKMP, كونكت تاق">
+  <meta name="author" content="علي الرحبي">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://connecttag.org/blog/kmp-mvi-architecture-state-guide" />
+
+  <!-- OpenGraph meta -->
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="og:url" content="https://connecttag.org/blog/kmp-mvi-architecture-state-guide" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Connect Tag - كونكت تاق" />
+  <meta property="og:title" content="الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن؟" />
+  <meta property="og:description" content="مقارنة هندسية بين MVVM وMVI، وكيف يمنع التدفق أحادي الاتجاه تضارب الحالات في Compose، وكود تطبيقي لتصميم UiState وSideEffect عبر StateFlow وChannel." />
+  <meta property="og:image" content="https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:alt" content="الدليل الهندسي لمعمارية MVI (Model-View-Intent) وإدارة الحالة في Kotlin Multiplatform وCompose" />
+  <meta property="article:published_time" content="2026-11-08T04:30:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T04:30:00+03:00" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+  <meta property="article:tag" content="Kotlin Multiplatform" />
+  <meta property="article:tag" content="MVI Architecture" />
+  <meta property="article:tag" content="Compose Multiplatform" />
+  <meta property="article:tag" content="هندسة البرمجيات" />
+
+  <!-- twitter OpenGraph meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://connecttag.org/blog/kmp-mvi-architecture-state-guide" />
+  <meta name="twitter:title" content="الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform وCompose" />
+  <meta name="twitter:description" content="كيف تدير حالة الواجهة (UI State) والأحداث الجانبية (Side Effects) بدون أخطاء تزامن عبر معمارية MVI ومكتبة mvi-lib-kmp." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp" />
+  <meta name="twitter:image:alt" content="معمارية MVI وإدارة الحالة في Kotlin Multiplatform" />
+  <meta name="twitter:site" content="@connecttagye" />
+  <meta name="twitter:creator" content="@connecttagye" />
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform وإدارة الحالة في Compose",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp",
+      "width": 1200,
+      "height": 669
+    },
+    "datePublished": "2026-11-08T04:30:00+03:00",
+    "dateModified": "2026-11-08T04:30:00+03:00",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "كاتب ومحرر تقني متخصص في التحول الرقمي والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/logo.png"
+      }
+    },
+    "description": "مرجع هندسي لمطوري Kotlin Multiplatform وCompose يشرح الفارق المعماري بين MVVM وMVI، وكيفية بناء تدفق بيانات أحادي الاتجاه (UDF) باستخدام StateFlow وChannel ومكتبات كونكت تاق مفتوحة المصدر.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/kmp-mvi-architecture-state-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "الدليل الهندسي لمعمارية MVI في Kotlin Multiplatform",
+        "item": "https://connecttag.org/blog/kmp-mvi-architecture-state-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا تتفوق معمارية MVI على MVVM التقليدية عند بناء واجهات Jetpack Compose وCompose Multiplatform؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "في معمارية MVVM التقليدية، غالباً ما يمتلك الـ ViewModel عدة تدفقات حالة منفصلة (مثل isLoading وerrorMessage وitemsList)، مما قد يولّد حالات متناقضة عند تحديثها من خيوط متزامنة (مثل ظهور مؤشر التحميل ورسالة الخطأ في نفس اللحظة). أما معمارية MVI فتفرض مصدر حقيقة واحداً غير قابل للتعديل (Single Immutable UiState) يتم تحديثه ذرياً عبر الدالة update {}، مما يطابق طبيعة إعادة التركيب (Recomposition) في Compose بنسبة 100%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق بين State (الحالة) وSideEffect (الأثر الجانبي لمرة واحدة) في معمارية MVI؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تمثل الحالة (UiState) ما يجب رسمه على الشاشة بشكل مستمر حتى عند تدوير الجهاز أو إعادة بناء الواجهة (مثل قائمة المنتجات وحالة التحميل)، وتُحفظ داخل StateFlow. أما الأثر الجانبي (SideEffect / Event) فهو حدث عابر يُنفّذ مرة واحدة فقط ولا يجوز تكراره عند تدوير الشاشة (مثل عرض رسالة Snackbar أو الانتقال إلى شاشة الدفع)، ويُرسل عبر Channel مع استهلاكه كـ Flow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "لماذا يجب استخدام MutableStateFlow.update {} بدلاً من إسناد القيمة مباشرة عبر .value = في البيئات المتزامنة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "إذا كان لديك عمليتان غير متزامنتين (Coroutines) تعملان في نفس الوقت وتستخدمان (_state.value = _state.value.copy(...))، فقد تقرأ كلتا العمليتين نفس النسخة القديمة وتكتب إحداهما فوق الأخرى (Lost Update Race Condition). أما الدالة الذرية (_state.update { current -> current.copy(...) }) فتستخدم حلقة مقارنة وتبديل (CAS - Compare-And-Swap) تضمن عدم ضياع أي تحديث متزامن."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أسهّل اختبار الوحدة (Unit Testing) للـ ViewModel المبني بمعمارية MVI في مشاريع KMP؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "بما أن معمارية MVI تعتمد على مدخل واحد (onIntent) ومخرجين واضحين (state وeffect)، يصبح الاختبار حتمياً وسهلاً للغاية: تحقن مزود موزعات اختباري (TestDispatcherProvider مثل مكتبة coroutine-dispatchers-kmp)، وترسل النية عبر viewModel.onIntent(...)، ثم تتحقق من تسلسل الحالات المتوقعة مباشرةً."
+        }
+      }
+    ]
+  }
+]
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+  <site-header></site-header>
+
+  <main id="main-content">
+    <article class="post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <site-breadcrumb items='[{"title": "الرئيسية", "url": "https://connecttag.org/"}, {"title": "المدونة", "url": "https://connecttag.org/blog/"}, {"title": "الدليل الهندسي لمعمارية MVI في Kotlin Multiplatform", "url": "https://connecttag.org/blog/kmp-mvi-architecture-state-guide"}]'></site-breadcrumb>
+
+            <h1>الدليل الهندسي لمعمارية MVI (Model-View-Intent) في Kotlin Multiplatform: كيف تدير حالة الواجهة (UI State) والأحداث الجانبية بدون أخطاء تزامن؟</h1>
+
+            <site-article-meta
+              date="08 نوفمبر 2026"
+              updated="08 نوفمبر 2026"
+              category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة">
+              <span class="sr-only">تاريخ النشر: 08 نوفمبر 2026 - التصنيف: برمجة وتطوير - تطوير الهواتف والأنظمة المتعددة</span>
+            </site-article-meta>
+
+            <hr style="margin-top: 0;">
+
+            <img src="https://connecttag.org/upload/kmp-mvi-architecture-state-guide.webp" class="img-responsive" alt="الدليل الهندسي لمعمارية MVI (Model-View-Intent) وإدارة الحالة في Kotlin Multiplatform وCompose" fetchpriority="high" width="1200" height="669" decoding="async" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+
+            <p class="lead">
+              عندما يكبر حجم تطبيقك المبني بـ <strong><code>Kotlin Multiplatform (KMP)</code></strong> وواجهات <strong><code>Compose Multiplatform</code></strong>، تبدأ المشاكل الخفية بالظهور في الشاشات المعقدة: مؤشر تحميل يظل عالقاً على الشاشة رغم ظهور البيانات، أو رسالة خطأ تنبثق مرتين عند تدوير الهاتف، أو تعارض في حالة سلة المشتريات عندما يضغط المستخدم على زرّين بسرعة! السبب الجذري لهذه الأعطال ليس في إطار العمل، بل في تشتت حالة الواجهة عبر متغيرات متعددة قابلة للتعديل المتزامن.
+            </p>
+            <p>
+              في هذا الدليل الهندسي العميق من <a href="https://connecttag.org/blog/">مدونة كونكت تاق</a>، نشرح كيف تعالج <strong>معمارية <code>MVI (Model-View-Intent)</code></strong> هذه المعضلة جذرياً عبر فرض حلقة <strong>تدفق البيانات أحادي الاتجاه (<code>Unidirectional Data Flow — UDF</code>)</strong>، وكيف طوّرنا في شركة كونكت تاق حزمة مكتباتنا المعمارية مفتوحة المصدر (<code>mvi-lib-kmp</code>، و<code>result-lib-kmp</code>، و<code>actions-lib-kmp</code>) المتاحة في <a href="https://connecttag.org/company/projects/libraries/">قسم المكاتب البرمجية</a> لتوحيد إدارة الحالة في أكثر من 31 تطبيقاً تجارياً وخدمياً.
+            </p>
+
+            <!-- Summary Box -->
+            <div class="summary-box">
+              <div class="summary-title"><i class="fas fa-diagram-project" aria-hidden="true"></i> خلاصة تنفيذية لمهندسي البرمجيات ومطوري KMP</div>
+              <ul class="summary-list" style="margin-bottom: 0; line-height: 1.9;">
+                <li><strong>معادلة الواجهة التصريحية:</strong> في <code>Compose</code>، الواجهة هي دالة رياضية صافية للحالة <code>UI = f(State)</code>؛ ومعمارية <code>MVI</code> تضمن وجود كائن حالة واحد فقط غير قابل للتعديل (<code>Single Immutable UiState</code>) لكل شاشة.</li>
+                <li><strong>التحديث الذري الآمن (<code>Atomic State Mutation</code>):</strong> يُمنع تعديل الحالة عبر <code>_state.value = ...</code> في العمليات المتوازية؛ بل يُستخدم <code>_state.update { it.copy(...) }</code> القائم على خوارزمية <code>Compare-And-Swap (CAS)</code> لمنع ضياع التحديثات.</li>
+                <li><strong>فصل الحالة المستمرة عن الحدث العابر:</strong> تُبث الحالة المستمرة عبر <code>StateFlow</code>، بينما تُرسل الأحداث لمرة واحدة (<code>One-Time Side Effects</code> كالتنقل والرسائل العابرة) عبر <code>Channel(Channel.BUFFERED)</code>.</li>
+                <li><strong>مكتبات كونكت تاق الجاهزة:</strong> يمكنك اختصار مئات الأسطر المتكررة عبر استخدام مكتبات <code>mvi-lib-kmp</code> و<code>result-lib-kmp</code> و<code>coroutine-dispatchers-kmp</code> مباشرةً في مشروعك.</li>
+              </ul>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <div class="toc-title"><i class="fas fa-list-ol" aria-hidden="true"></i> فهرس الدليل الهندسي لمعمارية MVI</div>
+              <ul class="toc-list">
+                <li><a href="#section-1">1. تشريح حلقة MVI: كيف يدور التدفق أحادي الاتجاه بين Intent وModel وView؟</a></li>
+                <li><a href="#section-2">2. المقارنة الهندسية: لماذا تتفوق MVI على MVVM التقليدية في واجهات Compose؟</a></li>
+                <li><a href="#section-3">3. العقد الثلاثي (Contract): كيف تصمم State وIntent وSideEffect باحترافية؟</a></li>
+                <li><a href="#section-4">4. التطبيق الكودي الكامل: بناء MviViewModel متين مقاوم لأخطاء التزامن</a></li>
+                <li><a href="#section-5">5. معالجة الأخطاء وتنسيق المعمارية عبر مكتبات mvi-lib-kmp وresult-lib-kmp</a></li>
+                <li><a href="#faq">6. الأسئلة الشائعة حول معمارية MVI وإدارة الحالة في KMP</a></li>
+              </ul>
+            </div>
+
+            <h2 id="section-1">1. تشريح حلقة MVI: كيف يدور التدفق أحادي الاتجاه بين Intent وModel وView؟</h2>
+            <p>
+              تستمد معمارية <code>MVI</code> فلسفتها من البرمجة التفاعلية الوظيفية (<code>Functional Reactive Programming</code>)، حيث تتدفق البيانات في دائرة مغلقة ذات اتجاه واحد لا يمكن كسره (راجع أيضاً <a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide">دليل Compose Multiplatform لبناء واجهات مشتركة</a> و<a href="https://connecttag.org/blog/jetpack-compose-guide">دليل Jetpack Compose الحديث</a>):
+            </p>
+            <ol>
+              <li>
+                <strong>النية / الإجراء (<code>Intent / Action</code>):</strong>
+                لا تعني كلمة <code>Intent</code> هنا كائن <code>android.content.Intent</code> الخاص بنظام أندرويد، بل تعني <strong>«نية المستخدم أو الحدث الوارد من الواجهة»</strong> (مثل: الضغط على زر البحث، تغيير نص حقل الإدخال، أو سحب الشاشة للتحديث).
+              </li>
+              <li>
+                <strong>النموذج / المُخفِّض (<code>Model / Reducer</code>):</strong>
+                يستقبل الـ <code>ViewModel</code> النية، ينفذ منطق الأعمال غير المتزامن عبر <code>UseCases</code> و<code>Repositories</code>، ثم يدمج النتيجة مع الحالة السابقة لإنتاج <strong>كائن حالة جديد كلياً غير قابل للتعديل (<code>New Immutable Model/State</code>)</strong>.
+              </li>
+              <li>
+                <strong>الواجهة المرئية (<code>View / Composable</code>):</strong>
+                تراقب دالة <code>@Composable</code> تدفق الحالة (<code>StateFlow</code>) فقط وتعيد رسم الأجزاء التي تغيّرت دون أن تمتلك أي صلاحية لتعديل الحالة مباشرةً من داخل الواجهة.
+              </li>
+            </ol>
+
+            <h2 id="section-2">2. المقارنة الهندسية: لماذا تتفوق MVI على MVVM التقليدية في واجهات Compose؟</h2>
+            <p>
+              يوضح الجدول الهندسي التالي الفوارق الجوهرية بين نمط <code>MVVM</code> التقليدي متعدد التدفقات ونمط <code>MVI</code> الموحد في المشاريع الكبيرة:
+            </p>
+
+            <div class="table-responsive" style="margin: 24px 0;">
+              <table class="table table-bordered" style="background: #fff; font-size: 14.5px;">
+                <thead style="background: #0f172a; color: #fff;">
+                  <tr>
+                    <th style="color:#fff;">معيار المقارنة المعماري</th>
+                    <th style="color:#fff;">نمط MVVM التقليدي (Multiple Streams)</th>
+                    <th style="color:#fff;">نمط MVI الحديث (Single State + UDF)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>تمثيل حالة الشاشة</strong></td>
+                    <td>موزع بين عدة متغيرات (<code>loadingFlow</code>, <code>dataFlow</code>, <code>errorFlow</code>)</td>
+                    <td style="color:#065f46; font-weight:600;">كائن واحد شامل غير قابل للتعديل (<code>data class UiState</code>)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>خطر تضارب الحالات (State Inconsistency)</strong></td>
+                    <td>مرتفع — قد تظهر حالة التحميل والخطأ معاً إذا لم تُصفَّر يدوياً</td>
+                    <td style="color:#065f46; font-weight:600;">منعدم — انتقال الحالة ذري ومحصور عبر <code>update {}</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>نقطة دخول أوامر الواجهة</strong></td>
+                    <td>عشرات الدوال العامة المتفرقة داخل الـ <code>ViewModel</code></td>
+                    <td style="color:#065f46; font-weight:600;">بوابة واحدة موحدة (<code>fun onIntent(intent: Intent)</code>) يسهل تسجيلها واختبارها</td>
+                  </tr>
+                  <tr>
+                    <td><strong>تتبع الأخطاء (Crash Reproduction)</strong></td>
+                    <td>صعب — يتطلب معرفة ترتيب استدعاء عدة دوال متداخلة</td>
+                    <td style="color:#065f46; font-weight:600;">سهل جداً — يكفي تسجيل آخر <code>UiState</code> وآخر <code>Intent</code> لإعادة تمثيل العطل</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2 id="section-3">3. العقد الثلاثي (Contract): كيف تصمم State وIntent وSideEffect باحترافية؟</h2>
+            <p>
+              أفضل ممارسة هندسية في مشاريع <code>Kotlin Multiplatform</code> هي تجميع عناصر الشاشة الثلاثة داخل ملف عقد واضح (<code>ScreenContract.kt</code>) بحيث يفهم أي مطور في الفريق كل ما تفعله الشاشة بمجرد قراءة هذا الملف:
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-file-code" aria-hidden="true"></i> 1. تعريف العقد الثلاثي للشاشة (State, Intent, SideEffect) بلغة Kotlin
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>// 1. الحالة المستمرة للشاشة (Immutable UI State)
+data class ProductsUiState(
+    val query: String = "",
+    val isLoading: Boolean = false,
+    val products: List&lt;ProductItem&gt; = emptyList(),
+    val errorBannerMessage: String? = null
+)
+
+// 2. نوايا وأفعال المستخدم (User Intents)
+sealed interface ProductsIntent {
+    data class SearchQueryChanged(val query: String) : ProductsIntent
+    data object RefreshClicked : ProductsIntent
+    data class ProductClicked(val productId: String) : ProductsIntent
+}
+
+// 3. الآثار الجانبية العابرة لمرة واحدة (One-Time Side Effects)
+sealed interface ProductsEffect {
+    data class NavigateToDetails(val productId: String) : ProductsEffect
+    data class ShowToast(val message: String) : ProductsEffect
+}</code></pre>
+            </div>
+
+            <h2 id="section-4">4. التطبيق الكودي الكامل: بناء MviViewModel متين مقاوم لأخطاء التزامن</h2>
+            <p>
+              الآن نربط هذا العقد الثلاثي داخل قاعدة <code>BaseMviViewModel</code> (المتوفر جاهزاً في مكتبتنا <code>mvi-lib-kmp</code>)، مع استخدام <code>StateFlow.update {}</code> لتحديث الحالة بأمان تزامني، و<code>Channel(Channel.BUFFERED)</code> لإرسال الآثار الجانبية العابرة دون فقدانها:
+            </p>
+
+            <div style="background: #0f172a; color: #f8fafc; border-radius: 16px; padding: 24px; margin: 28px 0; direction: ltr; text-align: left;">
+              <div style="color: #34d399; font-weight: 800; font-size: 15px; margin-bottom: 12px; direction: rtl; text-align: right;">
+                <i class="fas fa-code" aria-hidden="true"></i> 2. تطبيق الـ ViewModel واستهلاك الحالة والأثر الجانبي بأمان في Compose
+              </div>
+              <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 10px; border: 1px solid #334155; overflow-x: auto; font-size: 13.5px; line-height: 1.7; margin-bottom: 0;"><code>class ProductsViewModel(
+    private val searchProductsUseCase: SearchProductsUseCase
+) : ViewModel() {
+
+    private val _state = MutableStateFlow(ProductsUiState())
+    val state: StateFlow&lt;ProductsUiState&gt; = _state.asStateFlow()
+
+    private val _effect = Channel&lt;ProductsEffect&gt;(Channel.BUFFERED)
+    val effect: Flow&lt;ProductsEffect&gt; = _effect.receiveAsFlow()
+
+    fun onIntent(intent: ProductsIntent) {
+        when (intent) {
+            is ProductsIntent.SearchQueryChanged =&gt; {
+                // تحديث ذري آمن ضد أخطاء التزامن (CAS Atomic Update)
+                _state.update { it.copy(query = intent.query, errorBannerMessage = null) }
+            }
+            is ProductsIntent.RefreshClicked =&gt; loadProducts()
+            is ProductsIntent.ProductClicked =&gt; {
+                viewModelScope.launch {
+                    _effect.send(ProductsEffect.NavigateToDetails(intent.productId))
+                }
+            }
+        }
+    }
+
+    private fun loadProducts() {
+        viewModelScope.launch {
+            _state.update { it.copy(isLoading = true, errorBannerMessage = null) }
+            searchProductsUseCase(_state.value.query)
+                .onSuccess { items =&gt;
+                    _state.update { it.copy(isLoading = false, products = items) }
+                }
+                .onFailure { error =&gt;
+                    _state.update { it.copy(isLoading = false, errorBannerMessage = error.message) }
+                    _effect.send(ProductsEffect.ShowToast("تعذر تحديث القائمة"))
+                }
+        }
+    }
+}</code></pre>
+            </div>
+
+            <h2 id="section-5">5. معالجة الأخطاء وتنسيق المعمارية عبر مكتبات mvi-lib-kmp وresult-lib-kmp</h2>
+            <p>
+              لتجنب إعادة كتابة قوالب الـ <code>MVI</code> في كل مشروع جديد، قمنا في شركة <strong>كونكت تاق</strong> بتجريد هذه المعمارية في حزمة مكتبات معيارية مفتوحة المصدر متاحة للمطورين في <a href="https://connecttag.org/company/projects/libraries/">صفحة المكاتب البرمجية</a> (ويمكنك دمجها مع طبقة التخزين المشروحة في <a href="https://connecttag.org/blog/kmp-data-management-room-datastore">دليل إدارة البيانات في KMP عبر Room وDataStore</a>):
+            </p>
+            <ul>
+              <li>
+                <strong>مكتبة <code>mvi-lib-kmp</code>:</strong> توفر صنف الأساس <code>MviViewModel&lt;State, Intent, Effect&gt;</code> جاهزاً مع أنابيب معالجة النوايا (<code>Coroutine Pipelines</code>) وقوالب <code>UseCase</code> المعيارية.
+              </li>
+              <li>
+                <strong>مكتبة <code>result-lib-kmp</code> و<code>common-models</code>:</strong> توفر مغلف نتائج آمن نوعياً (<code>Type-safe Result &amp; DomainError</code>) يمنع تسرب الاستثناءات غير المتوقعة (<code>Uncaught Exceptions</code>) من طبقة الشبكة أو قاعدة البيانات إلى طبقة الواجهة.
+              </li>
+              <li>
+                <strong>مكتبة <code>actions-lib-kmp</code>:</strong> توفر ناقل أحداث وإجراءات مفكك الارتباط (<code>Universal Action Bus</code>) للتنسيق الآمن بين الوحدات المستقلة (<code>Multi-Module KMP Features</code>).
+              </li>
+              <li>
+                <strong>مكتبة <code>coroutine-dispatchers-kmp</code>:</strong> توفر واجهة <code>DispatcherProvider</code> قابلة للحقن لتبديل موزعات الخيوط (<code>IO</code>, <code>Default</code>, <code>Main</code>) بموزع اختبار فوري (<code>StandardTestDispatcher</code>) أثناء اختبارات الوحدة.
+              </li>
+            </ul>
+
+            <!-- FAQ Section -->
+            <div id="faq" class="faq-section">
+              <h2 class="faq-title"><i class="fas fa-circle-question" aria-hidden="true"></i> 6. الأسئلة الشائعة حول معمارية MVI وإدارة الحالة في KMP</h2>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا تتفوق معمارية MVI على MVVM التقليدية عند بناء واجهات Jetpack Compose وCompose Multiplatform؟</h3>
+                <p class="faq-answer">
+                  في معمارية <code>MVVM</code> التقليدية، غالباً ما يمتلك الـ <code>ViewModel</code> عدة تدفقات حالة منفصلة (مثل <code>isLoading</code> و<code>errorMessage</code> و<code>itemsList</code>)، مما قد يولّد حالات متناقضة عند تحديثها من خيوط متزامنة (مثل ظهور مؤشر التحميل ورسالة الخطأ في نفس اللحظة). أما معمارية <code>MVI</code> فتفرض مصدر حقيقة واحداً غير قابل للتعديل (<code>Single Immutable UiState</code>) يتم تحديثه ذرياً عبر الدالة <code>update {}</code>، مما يطابق طبيعة إعادة التركيب (<code>Recomposition</code>) في <code>Compose</code> بنسبة 100%.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">ما الفرق بين State (الحالة) وSideEffect (الأثر الجانبي لمرة واحدة) في معمارية MVI؟</h3>
+                <p class="faq-answer">
+                  تمثل الحالة (<code>UiState</code>) ما يجب رسمه على الشاشة بشكل مستمر حتى عند تدوير الجهاز أو إعادة بناء الواجهة (مثل قائمة المنتجات وحالة التحميل)، وتُحفظ داخل <code>StateFlow</code>. أما الأثر الجانبي (<code>SideEffect / Event</code>) فهو حدث عابر يُنفّذ مرة واحدة فقط ولا يجوز تكراره عند تدوير الشاشة (مثل عرض رسالة <code>Snackbar</code> أو الانتقال إلى شاشة الدفع)، ويُرسل عبر <code>Channel</code> مع استهلاكه كـ <code>Flow</code>.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">لماذا يجب استخدام MutableStateFlow.update {} بدلاً من إسناد القيمة مباشرة عبر .value = في البيئات المتزامنة؟</h3>
+                <p class="faq-answer">
+                  إذا كان لديك عمليتان غير متزامنتين (<code>Coroutines</code>) تعملان في نفس الوقت وتستخدمان <code>_state.value = _state.value.copy(...)</code>، فقد تقرأ كلتا العمليتين نفس النسخة القديمة وتكتب إحداهما فوق الأخرى (<code>Lost Update Race Condition</code>). أما الدالة الذرية <code>_state.update { current -&gt; current.copy(...) }</code> فتستخدم حلقة مقارنة وتبديل (<code>CAS — Compare-And-Swap</code>) تضمن عدم ضياع أي تحديث متزامن.
+                </p>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-question">كيف أسهّل اختبار الوحدة (Unit Testing) للـ ViewModel المبني بمعمارية MVI في مشاريع KMP؟</h3>
+                <p class="faq-answer">
+                  بما أن معمارية <code>MVI</code> تعتمد على مدخل واحد (<code>onIntent</code>) ومخرجين واضحين (<code>state</code> و<code>effect</code>)، يصبح الاختبار حتمياً وسهلاً للغاية: تحقن مزود موزعات اختباري (<code>TestDispatcherProvider</code> مثل مكتبة <code>coroutine-dispatchers-kmp</code>)، وترسل النية عبر <code>viewModel.onIntent(...)</code>، ثم تتحقق من تسلسل الحالات المتوقعة مباشرةً.
+                </p>
+              </div>
+            </div>
+
+            <!-- Official References -->
+            <div class="ct-editorial-references" style="background: #f8fafc; border: 1px solid #e2e8f0; border-right: 4px solid #0052cc; border-radius: 12px; padding: 20px 24px; margin: 32px 0;">
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 0; margin-bottom: 12px;">
+                <i class="fa-solid fa-book-bookmark" style="color: #0052cc; margin-left: 8px;" aria-hidden="true"></i> المراجع والمكتبات الهندسية المعتمدة
+              </h3>
+              <ul style="margin-bottom: 0; padding-right: 20px; line-height: 1.9; font-size: 14.5px; color: #334155;">
+                <li><a href="https://developer.android.com/topic/architecture/ui-layer" target="_blank" rel="noopener noreferrer">Android Developers Official Guide — UI Layer Architecture &amp; Unidirectional Data Flow (UDF)</a></li>
+                <li><a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/" target="_blank" rel="noopener noreferrer">Kotlinx Coroutines Documentation — StateFlow, SharedFlow &amp; Atomic update</a></li>
+                <li><a href="https://github.com/connecttag/mvi-lib-kmp" target="_blank" rel="noopener noreferrer">Connect Tag Open-Source — mvi-lib-kmp (MVI Architecture &amp; State Machine for KMP)</a></li>
+                <li><a href="https://connecttag.org/company/projects/libraries/">المكاتب البرمجية المفتوحة المصدر — شركة كونكت تاق</a></li>
+              </ul>
+            </div>
+
+            <site-author-box
+              name="علي الرحبي"
+              avatar="https://connecttag.org/upload/author/ali.webp"
+              link="https://connecttag.org/blog/authors/ali">
+            </site-author-box>
+
+            <site-share-buttons></site-share-buttons>
+
+            <site-related-posts
+              ids="compose-multiplatform-shared-ui-android-ios-desktop-guide,kmp-data-management-room-datastore,jetpack-compose-guide"
+              limit="3">
+            </site-related-posts>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <site-footer></site-footer>
+  <cookie-consent></cookie-consent>
+</div>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تحسين أداء Jetpack Compose: دليل Recomposition وStability | كونكت تاق</title>
+  <meta name="description" content="لماذا تتباطأ واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (@Immutable)، derivedStateOf وBaseline Profiles." />
+  <meta name="author" content="علي الرحبي" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
+  <link rel="alternate" hreflang="ar" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
+  <link rel="alternate" hreflang="x-default" href="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article" />
+  <meta property="article:section" content="برمجة وتطوير" />
+  <meta property="article:author" content="https://connecttag.org/blog/authors/ali" />
+  <meta property="og:url" content="https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide" />
+  <meta property="og:title" content="لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ الدليل الهندسي لإتقان Recomposition، استقرار الأنواع (Stability)، وBaseline Profiles" />
+  <meta property="og:description" content="كيف يقرر مترجم Compose تخطي الدوال (Skippable)، ولماذا تسبب List<T> إعادة رسم غير ضرورية، ومتى تستخدم derivedStateOf مقابل remember؟" />
+  <meta property="og:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="669" />
+  <meta property="og:image:alt" content="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" />
+  <meta property="og:site_name" content="كونكت تاق - Connect Tag" />
+  <meta property="og:locale" content="ar_YE" />
+  <meta property="article:published_time" content="2026-11-08T00:00:00+03:00" />
+  <meta property="article:modified_time" content="2026-11-08T00:00:00+03:00" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ دليل Recomposition وStability" />
+  <meta name="twitter:description" content="المرجع الهندسي لتحسين سرعة Jetpack Compose إلى 120 إطاراً في الثانية: @Immutable، derivedStateOf، تأجيل قراءة الحالة، وBaseline Profiles." />
+  <meta name="twitter:image" content="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" />
+  <meta name="twitter:image:alt" content="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "لماذا تتباطأ بعض واجهات Jetpack Compose أثناء التمرير؟ دليل Recomposition وStability",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57",
+      "width": 1200,
+      "height": 669
+    },
+    "url": "https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide",
+    "datePublished": "2026-11-08T00:00:00+03:00",
+    "dateModified": "2026-11-08T00:00:00+03:00",
+    "inLanguage": "ar",
+    "author": {
+      "@type": "Person",
+      "name": "علي الرحبي",
+      "jobTitle": "كاتب ومحرر تقني متخصص في التحول الرقمي والفحص التقني للمواقع (Technical SEO)",
+      "url": "https://connecttag.org/blog/authors/ali",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "كونكت تاق (Connect Tag)",
+        "url": "https://connecttag.org/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Connect Tag - كونكت تاق",
+      "url": "https://connecttag.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://connecttag.org/assets/img/connect-tag-official-logo.webp",
+        "width": 105,
+        "height": 42
+      }
+    },
+    "description": "الدليل الهندسي الشامل لتحسين أداء واجهات Jetpack Compose وCompose Multiplatform: فهم مراحل الرسم الثلاث، استقرار الأنواع (@Immutable & @Stable)، والفرق بين remember وderivedStateOf.",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "الرئيسية",
+        "item": "https://connecttag.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "المدونة",
+        "item": "https://connecttag.org/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "تحسين أداء Jetpack Compose وإتقان Recomposition",
+        "item": "https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "لماذا يعتبر مترجم Jetpack Compose قائمة List<T> القياسية في كوتلن غير مستقرة (Unstable) ويعيد رسمها دائماً؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "لأن واجهة List<T> في لغة Kotlin هي واجهة للقراءة فقط ولكن يمكن أن يكون الكائن الفعلي خلفها في وقت التشغيل قائمة قابلة للتعديل مثل ArrayList أو MutableList! وبما أن مترجم Compose لا يملك ضماناً في وقت الترجمة بأن عناصر القائمة لم تتغير من مكان آخر بدون تغيير المرجع، فإنه يصنفها كـ Unstable ولا يتخطى إعادة تركيب الدالة إلا إذا استخدمت ImmutableList أو غلفتها بكلاس يحمل وسم @Immutable أو فعلت ميزة Strong Skipping Mode."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما الفرق الهندسي بين remember(key) وderivedStateOf متى أستخدم كلاً منهما؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تُستخدم remember(key) عندما تريد إعادة حساب قيمة في كل مرة يتغير فيها المتغير key بالضبط (تتغير المدخلات بنفس وتيرة المخرجات). أما derivedStateOf فتُستخدم عندما تتغير المدخلات بسرعة عالية جداً (مثل إزاحة التمرير بالملي بكسل في LazyListState كل إطار)، بينما النتيجة المنطقية التي تهم الواجهة (مثل: هل تجاوز المستخدم العنصر الأول showScrollToTopButton = true/false) لا تتغير إلا نادراً."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يساعد تأجيل قراءة الحالة (Deferring State Reads) عبر Lambda Modifiers في منع التقطيع أثناء التحريك؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمر كل إطار في Compose بثلاث مراحل: التركيب (Composition)، التخطيط (Layout)، ثم الرسم (Drawing). إذا قرأت قيمة متغيرة باستمرار (مثل قيمة حركة أو تمرير) مباشرةً داخل جسم الدالة @Composable، فستجبر النظام على تنفيذ المراحل الثلاث كلها في كل إطار! أما عند تمرير القراءة داخل دالة لامدا مثل Modifier.offset { IntOffset(0, scrollOffset) } أو Modifier.graphicsLayer { alpha = animatedAlpha }، فإن Compose يتخطى مرحلة التركيب تماماً وينفذ التعديل مباشرةً في مرحلة التخطيط أو الرسم على معالج الرسوميات."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي ملفات Baseline Profiles وكم تبلغ نسبة تسريعها لتطبيقات Jetpack Compose؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "بما أن Jetpack Compose يتم توزيعه كمكتبة برمجية مع التطبيق وليس جزءاً مدمجاً داخل نظام أندرويد نفسه، فإن مترجم ART يضطر لترجمة دوال Compose في وقت التشغيل (JIT) عند أول فتح للتطبيق مما يسبب تقطيعاً في البداية. توفر ملفات Baseline Profiles قائمة بالمسارات والدوال الحرجة ليقوم متجر Google Play بترجمتها مسبقاً إلى كود آلة أصيل (AOT Compilation) أثناء التثبيت، مما يسرّع إقلاع التطبيق والتمرير بنسبة 30% إلى 40%."
+        }
+      }
+    ]
+  }
+]
+</script>
+
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-arabic.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://connecttag.org/assets/fonts/cairo-latin.woff2?v=1.1.57" crossorigin>
+  <link rel="preload" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://connecttag.org/assets/css/bootstrap.min.css?v=1.1.57"></noscript>
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/styles.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/components.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/fontawesome.min.css?v=1.1.57">
+  <link rel="stylesheet" href="https://connecttag.org/assets/css/shared-styles.css?v=1.1.57">
+  <script src="https://connecttag.org/assets/js/components/components-bundle.js?v=1.1.57" defer></script>
+  <script src="https://connecttag.org/assets/js/components/blog-bundle.js?v=1.1.57" defer></script>
+
+  <!-- PWA & Mobile Optimization Tags -->
+  <link rel="icon" href="https://connecttag.org/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://connecttag.org/icon-192.png">
+  <link rel="manifest" href="https://connecttag.org/manifest.json">
+  <meta name="theme-color" content="#0052cc">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Consent Mode v2 (Default State before AdSense) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    if (!window.__CT_CONSENT_INITIALIZED__) {
+      window.__CT_CONSENT_INITIALIZED__ = true;
+      var savedChoice = null;
+      try { savedChoice = localStorage.getItem('ct_cookie_accepted'); } catch (e) {}
+      var granted = savedChoice === 'true' ? 'granted' : 'denied';
+      gtag('consent', 'default', {
+        'ad_storage': granted,
+        'ad_user_data': granted,
+        'ad_personalization': granted,
+        'analytics_storage': granted,
+        'wait_for_update': 500
+      });
+    }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5795447491202357" crossorigin="anonymous"></script>
+</head>
+<body data-target="#navbar-main">
+
+<site-preloader></site-preloader>
+<div id="home-content">
+<site-header></site-header>
+
+<main id="main-content">
+
+<article class="post-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <site-breadcrumb items='[{"title":"الرئيسية", "url":"https://connecttag.org/"}, {"title":"المدونة", "url":"https://connecttag.org/blog/"}, {"title":"تحسين أداء Jetpack Compose وإتقان Recomposition", "url":"https://connecttag.org/blog/jetpack-compose-performance-recomposition-guide"}]'></site-breadcrumb>
+        <h1>لماذا تتباطأ بعض واجهات <code>Jetpack Compose</code> أثناء التمرير؟ الدليل الهندسي لإتقان <code>Recomposition</code>، استقرار الأنواع (<code>Stability</code>)، و<code>Baseline Profiles</code></h1>
+        <site-article-meta date="08 نوفمبر 2026" updated="08 نوفمبر 2026" category="برمجة وتطوير" subcategory="تطوير الهواتف والأنظمة المتعددة"><span class="sr-only">تاريخ النشر: 08 نوفمبر 2026</span></site-article-meta>
+
+        <hr style="margin-top: 0;">
+        <img src="https://connecttag.org/upload/jetpack-compose-performance-recomposition-guide.webp?v=1.1.57" class="img-responsive" alt="الدليل الهندسي لتحسين أداء Jetpack Compose وإتقان Recomposition واستقرار الأنواع Stability" fetchpriority="high" width="1200" height="669" decoding="async">
+
+        <p class="lead">على شاشات الهواتف الحديثة التي تعمل بمعدل تحديث <strong><code>120Hz</code></strong>، لا يملك محرك الرسم سوى <strong><code>8.33 ملي ثانية فقط</code></strong> لإنجاز حسابات وإظهار كل إطار بصري (<code>Frame</code>). وعندما يتجاوز تنفيذ إحدى دوال <code>@Composable</code> هذا الهامش الزمني الضيق بسبب إعادة تركيب جماعية غير ضرورية (<code>Unnecessary Recomposition</code>)، يشعر المستخدم فوراً بتقطيع وتلكؤ أثناء تمرير القوائم الطويلة (<code>Jank / Dropped Frames</code>).</p>
+
+        <p>استكمالاً لما طرحناه في <a href="https://connecttag.org/blog/jetpack-compose-guide"><strong>الدليل الشامل لـ Jetpack Compose</strong></a> و<a href="https://connecttag.org/blog/kmp-mvi-architecture-state-guide"><strong>الدليل الهندسي لمعمارية MVI وإدارة الحالة التفاعلية</strong></a>، نغوص في هذا المرجع الهندسي في آلية عمل مترجم Compose (<code>Compose Compiler</code>) من الداخل: كيف يقرر ما إذا كانت الدالة قابلة للتخطي الذكي (<code>Smart Skipping</code>)، ولماذا تفشل القوائم القياسية <code>List&lt;T&gt;</code> في اختبار الاستقرار، ومتى تستخدم <code>derivedStateOf</code> بدلاً من <code>remember</code>، وكيف نوظف مكاتب <strong><code>mvi-lib-kmp</code></strong> و<strong><code>common-models</code></strong> و<strong><code>theme-effects-compose</code></strong> في <a href="https://connecttag.org/company/projects/libraries/"><strong>قسم المكاتب البرمجية في كونكت تاق</strong></a> لضمان أداء ثابت بسرعة 120 إطاراً في الثانية.</p>
+
+        <div class="summary-box">
+          <div class="summary-title"><i class="fa-solid fa-gauge-high"></i> خلاصة تنفيذية سريعة (Key Takeaways)</div>
+          <ul class="summary-list">
+            <li><strong>التخطي الذكي (<code>Smart Recomposition</code>) يعتمد على استقرار المدخلات:</strong> لا يستطيع Compose تخطي إعادة تشغيل دالة <code>@Composable</code> إلا إذا كانت <strong>جميع معاملاتها مستقرة (<code>Stable</code>)</strong> ولم تتغير قيمها مقارنةً بالإطار السابق.</li>
+            <li><strong>واجهة <code>List&lt;T&gt;</code> غير مستقرة افتراضياً:</strong> لأن <code>List</code> في كوتلن قد تشير في وقت التشغيل إلى <code>ArrayList</code> قابلة للتعديل، يعيد المترجم رسم أي مكون يستقبلها دائماً؛ والحل هو استخدام <code>ImmutableList</code> أو وسم الكلاس بـ <code>@Immutable</code> أو تفعيل <code>Strong Skipping Mode</code>.</li>
+            <li><strong>أجّل قراءة الحالة إلى مرحلة التخطيط أو الرسم:</strong> تمرير الحالة المتغيرة باستمرار (مثل إزاحة التمرير أو الشفافية) داخل دالة لامدا <code>Modifier.offset { ... }</code> أو <code>Modifier.graphicsLayer { ... }</code> يتخطى مرحلة التركيب (<code>Composition</code>) بالكامل!</li>
+            <li><strong>مفتاح <code>key</code> في <code>LazyColumn</code> إلزامي:</strong> غياب <code>key = { item.id }</code> في القوائم الديناميكية يجبر Compose على إعادة بناء كافة العناصر عند إضافة أو حذف عنصر واحد في أعلى القائمة.</li>
+          </ul>
+        </div>
+
+        <div class="toc-container">
+          <div class="toc-title"><i class="fa-solid fa-list-ol"></i> محتويات الدليل الهندسي:</div>
+          <ul class="toc-list">
+            <li><a href="#section-1">1. مراحل الإطار الثلاث في Compose (Composition → Layout → Drawing) وتأجيل قراءة الحالة</a></li>
+            <li><a href="#section-2">2. كيف يعمل مترجم Compose؟ تشريح الاستقرار (Stability) و@Immutable وStrong Skipping</a></li>
+            <li><a href="#section-3">3. جدول المقارنة الهندسية: متى تستخدم remember مقابل derivedStateOf والـ Lambda Modifiers؟</a></li>
+            <li><a href="#section-4">4. القواعد الذهبية لتسريع القوائم الطويلة (LazyColumn Keys &amp; ContentType) وBaseline Profiles</a></li>
+            <li><a href="#section-5">5. التطبيق العملي عبر مكاتب كونكت تاق (mvi-lib-kmp وcommon-models وtheme-effects-compose)</a></li>
+            <li><a href="#section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</a></li>
+          </ul>
+        </div>
+
+        <h2 id="section-1">1. مراحل الإطار الثلاث في Compose (Composition → Layout → Drawing) وتأجيل قراءة الحالة</h2>
+        <p>لفهم سبب تباطؤ الواجهات وكيفية علاجه جذرياً، يجب أن تدرك أن كل إطار بصري في <code>Jetpack Compose</code> و<a href="https://connecttag.org/blog/compose-multiplatform-shared-ui-android-ios-desktop-guide"><code>Compose Multiplatform</code></a> يمر بثلاث مراحل متتابعة باتجاه واحد:</p>
+
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
+          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-layer-group"></i> المراحل الثلاث لرسم كل إطار في Jetpack Compose (The 3 Phases of a Frame)
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px;">
+            <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #7dd3fc; font-size: 16px; margin-bottom: 6px;">1. مرحلة التركيب (Composition)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">ماذا سنعرض؟ (What to show)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">تنفيذ دوال <code>@Composable</code> وبناء شجرة عقد الواجهة في جدول الفتحات (<code>Slot Table</code>). هي المرحلة <strong>الأعلى تكلفة على المعالج</strong> عند تكرارها كل إطار.</p>
+            </div>
+
+            <div style="background: rgba(16, 185, 129, 0.12); border-right: 4px solid #34d399; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #6ee7b7; font-size: 16px; margin-bottom: 6px;">2. مرحلة التخطيط (Layout)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">أين سنضع كل عنصر؟ (Where to place)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">قياس أبعاد كل عقدة (<code>Measure</code>) وتحديد إحداثيات موقعها <code>(X, Y)</code> على الشاشة (<code>Place</code>) في مسحة واحدة سريعة (<code>Single-Pass Measurement</code>).</p>
+            </div>
+
+            <div style="background: rgba(245, 158, 11, 0.12); border-right: 4px solid #fbbf24; padding: 16px; border-radius: 10px;">
+              <div style="font-weight: 800; color: #fde68a; font-size: 16px; margin-bottom: 6px;">3. مرحلة الرسم (Drawing)</div>
+              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">كيف نرسم البكسلات؟ (How to render)</div>
+              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">إصدار أوامر الرسم المباشرة على لوحة <code>Canvas</code> (أو طبقة <code>Skia/Impeller</code>) لتحريك الألوان والظلال والشفافية بأقل عبء ممكن.</p>
+            </div>
+          </div>
+        </div>
+
+        <p><strong>السر الهندسي الأول (تأجيل قراءة الحالة — <code>Deferring State Reads</code>):</strong> يتتبع نظام <code>Snapshot System</code> في Compose اللحظة التي تقرأ فيها قيمة متغير <code>State&lt;T&gt;</code>. إذا قرأت إزاحة التمرير أو قيمة التحريك مباشرةً كرقم داخل جسم الدالة <code>Modifier.offset(y = scrollOffset.dp)</code>، فإنك تجبر Compose على إعادة تنفيذ المرحلة الأولى (<code>Composition</code>) ثم الثانية ثم الثالثة في كل إطار! أما إذا مرّرت القراءة داخل دالة لامدا، فإن القراءة لا تحدث إلا في مرحلة التخطيط أو الرسم:</p>
+
+<pre style="direction: ltr; text-align: left; background: #0f172a; color: #f8fafc; padding: 18px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.7;"><code>// ❌ Anti-Pattern: Reading state during Composition forces Recomposition on EVERY frame!
+val scrollY by remember { derivedStateOf { listState.firstVisibleItemScrollOffset } }
+Box(modifier = Modifier.offset(y = scrollY.dp))
+
+// ✅ Engineering Best Practice: Defer state read to the Layout phase via Lambda Modifier
+// Zero Recomposition! Only Layout &amp; Draw phases run at 120fps.
+Box(
+    modifier = Modifier.offset {
+        IntOffset(x = 0, y = listState.firstVisibleItemScrollOffset)
+    }
+)
+
+// ✅ Defer alpha/scale/rotation to the Drawing phase via graphicsLayer {}
+Box(
+    modifier = Modifier.graphicsLayer {
+        alpha = animatedAlphaState.value
+        translationY = parallaxOffsetState.value
+    }
+)</code></pre>
+
+        <h2 id="section-2">2. كيف يعمل مترجم Compose؟ تشريح الاستقرار (Stability) و@Immutable وStrong Skipping</h2>
+        <p>أثناء ترجمة الكود، يفحص مترجم <code>Compose Compiler</code> كل كلاس يتم تمريره كمعامل لدالة <code>@Composable</code> ويصنفه إلى فئتين:</p>
+
+        <ol>
+          <li><strong>الأنواع المستقرة (<code>Stable / Immutable Types</code>):</strong> تشمل الأنواع الأولية (<code>Int</code>, <code>Long</code>, <code>Boolean</code>, <code>Float</code>, <code>String</code>)، ودوال اللامدا، والكلاسات البيانية (<code>data class</code>) التي تكون جميع خصائصها معرّفة بـ <code>val</code> ومن أنواع مستقرة. عندما تستقبل الدالة معاملات مستقرة فقط، يضع المترجم عليها وسم <strong><code>Skippable</code></strong>؛ أي إذا لم تتغير قيمة المعامل، يتخطى Compose إعادة رسمها تماماً.</li>
+          <li><strong>فخ المجموعات القياسية غير المستقرة (<code>Unstable Collections Trap</code>):</strong> إذا أضفت خاصية <code>val items: List&lt;Product&gt;</code> داخل كلاس الحالة، سيصنف المترجم الكلاس بالكامل على أنه <strong>غير مستقر (<code>Unstable</code>)</strong>! السبب هو أن <code>List</code> في كوتلن هي واجهة فقط، وقد يمرر المطور خلفها كائن <code>ArrayList</code> قابل للتعديل:
+<pre style="direction: ltr; text-align: left; background: #0f172a; color: #f8fafc; padding: 18px; border-radius: 12px; overflow-x: auto; font-size: 13.5px; line-height: 1.7;"><code>import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+
+// ✅ Solution 1: Annotate your UI State class with @Immutable (Contract with the compiler)
+@Immutable
+data class CatalogUiState(
+    val isLoading: Boolean = false,
+    val products: List&lt;ProductItem&gt; = emptyList(),
+    val selectedCategory: String = "الكل"
+)
+
+// ✅ Solution 2: Use kotlinx.collections.immutable.ImmutableList for guaranteed immutability
+data class OrderSummaryState(
+    val lines: ImmutableList&lt;OrderLine&gt; = persistentListOf()
+)</code></pre>
+          </li>
+          <li><strong>وضع التخطي القوي (<code>Strong Skipping Mode</code> في Kotlin 2.0+):</strong> في الإصدارات الحديثة من مترجم Compose المدمج مع <code>Kotlin K2</code>، أصبح وضع <code>Strong Skipping</code> مفعلاً افتراضياً؛ حيث يقارن المترجم المعاملات غير المستقرة عبر مقارنة المرجع في الذاكرة (<code>Referential Equality ===</code>)، بينما يقارن المعاملات المستقرة عبر دالة المساواة البنيوية (<code>Structural Equality .equals()</code>)، مع حفظ دوال اللامدا تلقائياً بـ <code>remember</code>.</li>
+        </ol>
+
+        <h2 id="section-3">3. جدول المقارنة الهندسية: متى تستخدم remember مقابل derivedStateOf والـ Lambda Modifiers؟</h2>
+        <p>يخلط كثير من المطورين بين استخدام <code>remember(key)</code> و<code>derivedStateOf</code>. يوضح الجدول الهندسي التالي القاعدة الحاسمة لاختيار الأداة الصحيحة في كل سيناريو:</p>
+
+        <div class="table-responsive" style="margin: 24px 0;">
+          <table class="table table-bordered" style="background: #fff; border-radius: 12px; overflow: hidden;">
+            <thead style="background: #0f172a; color: #fff;">
+              <tr>
+                <th style="padding: 14px; text-align: right;">الأداة البرمجية</th>
+                <th style="padding: 14px; text-align: right;">متى تُستخدم هندسياً؟</th>
+                <th style="padding: 14px; text-align: right;">مثال تطبيقي صحيح</th>
+                <th style="padding: 14px; text-align: right;">الخطأ الشائع الذي يجب تجنبه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;"><code>remember(key1) { ... }</code></td>
+                <td style="padding: 12px;">حفظ نتيجة عملية حسابية مكلفة بحيث يُعاد حسابها <strong>فقط عندما يتغير <code>key1</code></strong> (تغير المدخل يساوي تغير المخرج).</td>
+                <td style="padding: 12px;">فلترة أو ترتيب قائمة منتجات عند تغير نص البحث أو القسم: <code>remember(query, list) { list.filter(...) }</code></td>
+                <td style="padding: 12px; color: #b91c1c;">تمرير متغير يتغير في كل إطار مثل <code>listState.firstVisibleItemIndex</code> كـ <code>key</code>.</td>
+              </tr>
+              <tr style="background: #f0fdf4;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;"><code>remember { derivedStateOf { ... } }</code></td>
+                <td style="padding: 12px;">عندما <strong>تتغير الحالة المصدرية بتردد عالٍ جداً</strong>، بينما النتيجة المشتقة لا تتغير إلا نادراً.</td>
+                <td style="padding: 12px;">إظهار زر «العودة للأعلى» عندما يتجاوز التمرير العنصر الأول: <code>derivedStateOf { listState.firstVisibleItemIndex &gt; 0 }</code></td>
+                <td style="padding: 12px; color: #b91c1c;">استخدامها لدمج متغيرين عاديين يتغيران بنفس وتيرة النتيجة (يُضيف عبئاً غير مبرر).</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;"><code>rememberUpdatedState(newValue)</code></td>
+                <td style="padding: 12px;">التقاط أحدث قيمة لمعامل أو دالة رد نداء (<code>Callback</code>) داخل <code>LaunchedEffect(Unit)</code> طويل الأمد دون إعادة تشغيله.</td>
+                <td style="padding: 12px;">شاشة بداية (<code>Splash Timer</code>) أو مستمع أحداث يستدعي <code>onTimeout()</code> المحدثة بعد انتهاء المؤقت.</td>
+                <td style="padding: 12px; color: #b91c1c;">وضع دالة <code>onEvent</code> مباشرةً كمفتاح لـ <code>LaunchedEffect</code> مما يعيد تصفير المؤقت عند كل رسم.</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; font-weight: 800; color: #0f172a;"><code>Modifier.drawWithCache { ... }</code></td>
+                <td style="padding: 12px;">تخزين كائنات الرسم المكلفة مثل <code>Path</code> و<code>Brush</code> و<code>Shader</code> مؤقتاً بحيث لا يُعاد إنشاؤها إلا إذا تغير حجم مساحة الرسم.</td>
+                <td style="padding: 12px;">رسم الخلفيات المتدرجة والتوهج الزجاجي والرسوم البيانية المخصصة بسرعة <code>120fps</code>.</td>
+                <td style="padding: 12px; color: #b91c1c;">إنشاء كائنات <code>Paint()</code> أو <code>LinearGradient</code> جديدة داخل <code>drawBehind</code> في كل إطار.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="section-4">4. القواعد الذهبية لتسريع القوائم الطويلة (LazyColumn Keys &amp; ContentType) وBaseline Profiles</h2>
+        <p>تُعدّ القوائم الكسولة (<code>LazyColumn</code> و<code>LazyVerticalGrid</code>) المصدر الأول لمشاكل الأداء إذا أُهملت ثلاثة إعدادات جوهرية فيها:</p>
+
+        <ol>
+          <li><strong>تحديد <code>key</code> فريد وثابت لكل عنصر:</strong> افتراضياً، يعتمد <code>LazyColumn</code> على موقع العنصر في القائمة (<code>Index</code>) كمعرّف له. فإذا أُضيف عنصر جديد في أعلى القائمة، تتغير أرقام مواقع كافة العناصر تحته، فيعيد Compose رسم الشاشة بالكامل! بينما بتمرير <code>key = { item -&gt; item.id }</code>، يدرك المحرك أن العناصر القديمة تحركت للأسفل فقط دون أن تتغير بياناتها.</li>
+          <li><strong>تحديد <code>contentType</code> لإعادة تدوير العقد المتشابهة:</strong> عندما تحتوي القائمة على أنواع متعددة من البطاقات (مثلاً: عنوان قسم، بطاقة مقال، إعلان)، فإن تحديد <code>contentType = { item -&gt; item.viewType }</code> يسمح لـ Compose بإعادة استخدام التراكيب المخزنة (<code>Subcomposition Reuse</code>) بين البطاقات من نفس النوع بكفاءة قصوى.</li>
+          <li><strong>توليد ملفات <code>Baseline Profiles</code> لتسريع الإقلاع والتمرير بنسبة 40%:</strong> أضف وحدة <code>BaselineProfileGenerator</code> إلى مشروعك لتوليد ملف <code>baseline-prof.txt</code> يُرفق تلقائياً داخل حزمة <code>AAB</code>، مما يتيح لنظام أندرويد ترجمة دوال Compose الحرجة مسبقاً (<code>AOT</code>) عند التثبيت دون انتظار التفسير الفوري (<code>JIT</code>).</li>
+        </ol>
+
+        <h2 id="section-5">5. التطبيق العملي عبر مكاتب كونكت تاق (mvi-lib-kmp وcommon-models وtheme-effects-compose)</h2>
+        <p>لتجنيب فرق التطوير الوقوع في فخاخ عدم استقرار الحالة أو بطء رسم المؤثرات البصرية، صمم الفريق الهندسي في <strong>كونكت تاق</strong> مجموعة مكاتب قياسية مصممة بأعلى معايير الأداء:</p>
+
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd; border-radius: 16px; padding: 26px; margin: 28px 0;">
+          <h3 style="margin-top: 0; color: #1e3a8a; font-weight: 800; font-size: 20px;"><i class="fa-solid fa-cubes"></i> مكاتب Compose وKMP عالية الأداء في كونكت تاق:</h3>
+          <ul style="color: #1e293b; line-height: 1.9; margin-bottom: 20px;">
+            <li><strong>مكتبة <code>common-models</code> ومكتبة <code>mvi-lib-kmp</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #0052cc;">قسم المكاتب البرمجية</a>:</strong> توفر عقود <code>UiState</code> و<code>CollectionResult</code> الموسومة مسبقاً بمعايير الاستقرار الصارمة، مما يضمن تخطي إعادة الرسم (<code>100% Skippable Composables</code>) في كافة شاشات التطبيق.</li>
+            <li><strong>مكتبة <code>theme-effects-compose</code> في <a href="https://connecttag.org/company/projects/libraries/" style="font-weight: 800; color: #0052cc;">قسم المكاتب البرمجية</a>:</strong> محرك مؤثرات بصرية مبني بـ <code>drawWithCache</code> لتوليد التدرجات اللونية المتحركة (<code>Mesh Gradients</code>) والتوهج الزجاجي (<code>Glassmorphism</code>) في مرحلة الرسم مباشرةً دون التسبب في أي <code>Recomposition</code>.</li>
+            <li><strong><a href="https://connecttag.org/company/services/web-app-development" style="font-weight: 800; color: #0052cc;">خدمة تطوير تطبيقات الهواتف والأنظمة المتعددة</a>:</strong> بناء وتحديث تطبيقات الأندرويد و<code>Compose Multiplatform</code> بأداء أصيل وتجربة استخدام فائقة السلاسة.</li>
+          </ul>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="https://connecttag.org/company/projects/libraries/" class="btn btn-primary" style="background: #0052cc; border: none; padding: 10px 22px; border-radius: 10px; font-weight: 700;">
+              <i class="fa-solid fa-code"></i> استكشف مكاتب Compose وKMP
+            </a>
+            <a href="https://connecttag.org/blog/kmp-mvi-architecture-state-guide" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-diagram-project"></i> دليل معمارية MVI في KMP
+            </a>
+            <a href="https://connecttag.org/company/services/web-app-development" class="btn btn-default" style="border-color: #0052cc; color: #0052cc; padding: 10px 22px; border-radius: 10px; font-weight: 700; background: #fff;">
+              <i class="fa-solid fa-mobile-screen"></i> خدمة تطوير التطبيقات
+            </a>
+          </div>
+        </div>
+
+        <h2 id="section-6">6. الأسئلة الشائعة والمصادر الهندسية المعتمدة</h2>
+
+        <div class="faq-section" style="margin-top: 24px;">
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> لماذا يعتبر مترجم Jetpack Compose قائمة List&lt;T&gt; القياسية في كوتلن غير مستقرة (Unstable) ويعيد رسمها دائماً؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">لأن واجهة <code>List&lt;T&gt;</code> في لغة Kotlin هي واجهة للقراءة فقط ولكن يمكن أن يكون الكائن الفعلي خلفها في وقت التشغيل قائمة قابلة للتعديل مثل <code>ArrayList</code> أو <code>MutableList</code>! وبما أن مترجم Compose لا يملك ضماناً في وقت الترجمة بأن عناصر القائمة لم تتغير من مكان آخر بدون تغيير المرجع، فإنه يصنفها كـ <code>Unstable</code> ولا يتخطى إعادة تركيب الدالة إلا إذا استخدمت <code>ImmutableList</code> أو غلفتها بكلاس يحمل وسم <code>@Immutable</code> أو فعلت ميزة <code>Strong Skipping Mode</code>.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما الفرق الهندسي بين remember(key) وderivedStateOf ومتى أستخدم كلاً منهما؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">تُستخدم <code>remember(key)</code> عندما تريد إعادة حساب قيمة في كل مرة يتغير فيها المتغير <code>key</code> بالضبط (تتغير المدخلات بنفس وتيرة المخرجات). أما <code>derivedStateOf</code> فتُستخدم عندما تتغير المدخلات بسرعة عالية جداً (مثل إزاحة التمرير في <code>LazyListState</code> كل إطار)، بينما النتيجة المنطقية التي تهم الواجهة (مثل: هل تجاوز المستخدم العنصر الأول <code>true/false</code>) لا تتغير إلا نادراً.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> كيف يساعد تأجيل قراءة الحالة (Deferring State Reads) عبر Lambda Modifiers في منع التقطيع أثناء التحريك؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">يمر كل إطار في Compose بثلاث مراحل: التركيب (<code>Composition</code>)، التخطيط (<code>Layout</code>)، ثم الرسم (<code>Drawing</code>). إذا قرأت قيمة متغيرة باستمرار مباشرةً داخل جسم الدالة <code>@Composable</code>، فستجبر النظام على تنفيذ المراحل الثلاث كلها في كل إطار! أما عند تمرير القراءة داخل دالة لامدا مثل <code>Modifier.offset { IntOffset(0, scrollOffset) }</code> أو <code>Modifier.graphicsLayer { alpha = animatedAlpha }</code>، فإن Compose يتخطى مرحلة التركيب تماماً وينفذ التعديل مباشرةً في مرحلة التخطيط أو الرسم.</p>
+          </div>
+
+          <div class="faq-item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; margin-bottom: 14px;">
+            <h4 style="margin-top: 0; color: #0f172a; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-circle-question" style="color: #0052cc;"></i> ما هي ملفات Baseline Profiles وكم تبلغ نسبة تسريعها لتطبيقات Jetpack Compose؟</h4>
+            <p style="margin-bottom: 0; color: #334155;">بما أن <code>Jetpack Compose</code> يتم توزيعه كمكتبة برمجية مع التطبيق وليس جزءاً مدمجاً داخل نظام أندرويد نفسه، فإن مترجم <code>ART</code> يضطر لترجمة دوال Compose في وقت التشغيل (<code>JIT</code>) عند أول فتح للتطبيق. توفر ملفات <code>Baseline Profiles</code> قائمة بالمسارات الحرجة ليقوم متجر Google Play بترجمتها مسبقاً إلى كود آلة أصيل (<code>AOT Compilation</code>) أثناء التثبيت، مما يسرّع إقلاع التطبيق والتمرير بنسبة <code>30% إلى 40%</code>.</p>
+          </div>
+        </div>
+
+        <!-- صندوق المصادر والمراجع الرسمية -->
+        <aside class="ct-editorial-references" aria-label="المصادر والوثائق الهندسية المعتمدة" style="background: #f8fafc; border: 1px solid #cbd5e1; border-right: 4px solid #0052cc; border-radius: 14px; padding: 22px; margin-top: 32px;">
+          <h4 style="margin-top: 0; color: #1e293b; font-weight: 800; font-size: 17px;"><i class="fa-solid fa-book-bookmark" style="color: #0052cc;"></i> المصادر والوثائق الهندسية المعتمدة (Official Android &amp; JetBrains Docs):</h4>
+          <ul style="margin-bottom: 0; color: #334155; font-size: 14.5px; line-height: 1.8;">
+            <li><strong>Android Developers — Jetpack Compose Performance &amp; Stability Guide:</strong> <a href="https://developer.android.com/develop/ui/compose/performance/stability" target="_blank" rel="noopener noreferrer">Official Guide to Stability, Smart Recomposition, and Strong Skipping Mode in Compose</a>.</li>
+            <li><strong>Android Developers — Jetpack Compose Phases &amp; Deferred State Reads:</strong> <a href="https://developer.android.com/develop/ui/compose/phases" target="_blank" rel="noopener noreferrer">Optimizing Composition, Layout, and Drawing Phases</a>.</li>
+            <li><strong>Android Developers — Baseline Profiles for Jetpack Compose:</strong> الدليل الرسمي لإعداد ملفات تعريف الخط الأساسي للترجمة المسبقة <code>AOT</code>.</li>
+          </ul>
+        </aside>
+
+        <site-author-box name="علي الرحبي" avatar="https://connecttag.org/upload/author/ali.webp" link="https://connecttag.org/blog/authors/ali"><span class="sr-only">الكاتب: علي الرحبي</span></site-author-box>
+        <site-share-buttons></site-share-buttons>
+        <site-related-posts ids="kmp-mvi-architecture-state-guide, jetpack-compose-guide, compose-multiplatform-shared-ui-android-ios-desktop-guide"></site-related-posts>
+      </div>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<site-footer></site-footer>
+</div>
+<cookie-consent></cookie-consent>
+</body>
+</html>
