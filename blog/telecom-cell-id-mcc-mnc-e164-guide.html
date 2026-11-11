@@ -451,6 +451,34 @@ function normalizeYemenPhoneToE164(rawInput) {
               <li>
                 <strong>تحليل التغطية ومسح الأبراج ميدانياً:</strong> يمكنك استخدام <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/">تطبيق طيف (Tayf Spectrum) لمسح وتحليل الشبكات الخلوية والواي فاي</a> لقراءة معرّفات الخلية الحية (<code>MCC/MNC</code>, <code>TAC</code>, <code>ECI</code>, <code>PCI</code>) ومؤشرات جودة الإشارة (<code>RSRP</code> و<code>SINR</code>)، أو الاستعانة بـ <a href="https://connecttag.org/company/services/telecom-intelligence">خدمة ذكاء الاتصالات ومسح الأبراج للمؤسسات</a>.
               </li>
+
+        <!-- Tayf Spectrum App Recommendation CTA -->
+        <div class="ct-app-cta-card" style="background: #ffffff; border: 1px solid #e2e8f0; border-right: 5px solid #0052cc; border-radius: 16px; padding: 24px; margin: 28px 0; box-shadow: 0 4px 20px rgba(0, 82, 204, 0.08);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
+            <div style="flex-shrink: 0;">
+              <img src="https://connecttag.org/company/projects/apps/tayf-spectrum/assets/img/tayf-store-icon-512x512.webp?v=1.1.60" alt="أيقونة تطبيق طيف للمسح الميداني" width="76" height="76" style="border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.06); object-fit: cover;" loading="lazy" decoding="async">
+            </div>
+            <div style="flex: 1; min-width: 260px;">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <span style="background: #eff6ff; color: #0052cc; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px;"><i class="fa-solid fa-wifi" aria-hidden="true" style="margin-left: 4px;"></i> مسح وتحليل الشبكات</span>
+                <span style="background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px;"><i class="fa-brands fa-google-play" aria-hidden="true" style="margin-left: 4px;"></i> متوفر الآن على Google Play</span>
+              </div>
+              <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin: 0 0 8px;">حمّل تطبيق «طيف» (Tayf Spectrum) للمسح الميداني على هاتفك</h3>
+              <p style="color: #475569; font-size: 14px; line-height: 1.65; margin: 0 0 16px;">
+                تطبيق هندسي متكامل ومجاني من كونكت تاق لمراقبة وتحليل الشبكات الخلوية (Cellular) وWi-Fi وBluetooth محلياً؛ يتيح لك قياس مؤشرات التغطية الحقيقية (RSRP وSINR وRSSI)، ومعرفة أرقام الأبراج والترددات، وتنظيم جلسات مسح ميداني شاملة دون الحاجة لإنشاء حساب أو إرسال بياناتك لخوادم خارجية.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <a href="https://play.google.com/store/apps/details?id=com.network.tayf" target="_blank" rel="noopener" class="btn" style="background: #0052cc; color: #ffffff !important; padding: 9px 20px; border-radius: 10px; font-weight: 700; font-size: 13.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(0, 82, 204, 0.25);">
+                  <i class="fa-brands fa-google-play" aria-hidden="true"></i> التحميل عبر متجر Google Play
+                </a>
+                <a href="https://connecttag.org/company/projects/apps/tayf-spectrum/" class="btn" style="background: #ffffff; color: #0052cc !important; border: 1.5px solid #0052cc; padding: 9px 18px; border-radius: 10px; font-weight: 700; font-size: 13.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                  <i class="fa-solid fa-circle-info" aria-hidden="true"></i> بطاقة التطبيق والمواصفات
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
               <li>
                 <strong>مكتبة التحقق وتطبيع الأرقام للمطورين (<code>phone-lib-kmp</code>):</strong> بدلاً من كتابة تعابير نمطية (<code>Regex</code>) يدوية لكل دولة، يمكنك دمج مكتبتنا البرمجية العابرة للمنصات ضمن <a href="https://connecttag.org/company/projects/libraries/">مكتبات وحزم كونكت تاق البرمجية (phone-lib-kmp)</a> للتحقق من أرقام الهواتف وتحديد شركة الاتصالات وتوليد صيغة <code>E.164</code> تلقائياً في تطبيقات أندرويد و<code>Kotlin Multiplatform</code>.
               </li>
