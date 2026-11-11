@@ -246,34 +246,34 @@
         <p>عند الدخول إلى صفحة حالة الشبكة في مودم <code>4G LTE</code> (كما شرحنا في <a href="https://connecttag.org/blog/yemen-4g-modem-settings-security-guide">دليل ضبط إعدادات مودم يمن فورجي 4G</a>)، ستجد أربعة مصطلحات هندسية معيارية حددتها منظمة <code>3GPP</code>. لفهم الفرق بينها، تخيّل أنك تستمع إلى متحدث في قاعة مزدحمة:</p>
 
         <!-- بطاقات توضيحية للمؤشرات الأربعة -->
-        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);">
-          <h3 style="color: #38bdf8; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
-            <i class="fa-solid fa-wave-square"></i> الفرق الهندسي والتمثيل الواقعي لمؤشرات إشارة 4G LTE الأربعة
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-top: 4px solid #0052cc; border-radius: 16px; padding: 28px 24px; margin: 28px 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);">
+          <h3 style="color: #0052cc; margin-top: 0; margin-bottom: 18px; font-weight: 800; font-size: 19px;">
+            <i class="fa-solid fa-wave-square" aria-hidden="true"></i> الفرق الهندسي والتمثيل الواقعي لمؤشرات إشارة 4G LTE الأربعة
           </h3>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 15px;">
-            <div style="background: rgba(56, 189, 248, 0.12); border-right: 4px solid #38bdf8; padding: 16px; border-radius: 10px;">
-              <div style="font-weight: 800; color: #7dd3fc; font-size: 16px; margin-bottom: 6px;">1. مؤشر RSRP (قوة الإشارة الصافية)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Power</div>
-              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس قوة إشارة المرجع القادمة من البرج المتصل به تحديداً دون ضجيج. في مثال القاعة: <strong>هو مدى ارتفاع صوت الشخص الذي يحدثك</strong>. يحدد مدى قربك أو بعدك عن البرج.</p>
+            <div style="background: #ffffff; border: 1px solid #e0f2fe; border-right: 4px solid #0284c7; padding: 16px; border-radius: 10px; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.05);">
+              <div style="font-weight: 800; color: #0369a1; font-size: 16px; margin-bottom: 6px;">1. مؤشر RSRP (قوة الإشارة الصافية)</div>
+              <div style="font-size: 12px; color: #64748b; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Power</div>
+              <p style="margin: 0; font-size: 13.5px; color: #334155; line-height: 1.65;">يقيس قوة إشارة المرجع القادمة من البرج المتصل به تحديداً دون ضجيج. في مثال القاعة: <strong>هو مدى ارتفاع صوت الشخص الذي يحدثك</strong>. يحدد مدى قربك أو بعدك عن البرج.</p>
             </div>
 
-            <div style="background: rgba(16, 185, 129, 0.12); border-right: 4px solid #34d399; padding: 16px; border-radius: 10px;">
-              <div style="font-weight: 800; color: #6ee7b7; font-size: 16px; margin-bottom: 6px;">2. مؤشر SINR (نقاء الإشارة من التشويش)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Signal-to-Interference-plus-Noise Ratio</div>
-              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس الفارق بين قوة صوت البرج ومستوى الضوضاء والتداخل من الأبراج المجاورة. في مثال القاعة: <strong>هو مدى هدوء الغرفة حولكما</strong>. هو العامل رقم 1 الذي يحدد سرعة التحميل (<code>Modulation MCS</code>).</p>
+            <div style="background: #ffffff; border: 1px solid #d1fae5; border-right: 4px solid #059669; padding: 16px; border-radius: 10px; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.05);">
+              <div style="font-weight: 800; color: #047857; font-size: 16px; margin-bottom: 6px;">2. مؤشر SINR (نقاء الإشارة من التشويش)</div>
+              <div style="font-size: 12px; color: #64748b; margin-bottom: 8px; direction: ltr; text-align: right;">Signal-to-Interference-plus-Noise Ratio</div>
+              <p style="margin: 0; font-size: 13.5px; color: #334155; line-height: 1.65;">يقيس الفارق بين قوة صوت البرج ومستوى الضوضاء والتداخل من الأبراج المجاورة. في مثال القاعة: <strong>هو مدى هدوء الغرفة حولكما</strong>. هو العامل رقم 1 الذي يحدد سرعة التحميل (<code>Modulation MCS</code>).</p>
             </div>
 
-            <div style="background: rgba(245, 158, 11, 0.12); border-right: 4px solid #fbbf24; padding: 16px; border-radius: 10px;">
-              <div style="font-weight: 800; color: #fde68a; font-size: 16px; margin-bottom: 6px;">3. مؤشر RSRQ (جودة وحمل القطاع)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Quality</div>
-              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يربط بين قوة الإشارة المرجعية (<code>RSRP</code>) وإجمالي الطاقة في القناة (<code>RSSI</code>) وعدد الكتل الترددية. يكشف لك مدى <strong>ازدحام البرج بالمستخدمين</strong> في ساعات الذروة.</p>
+            <div style="background: #ffffff; border: 1px solid #fef3c7; border-right: 4px solid #d97706; padding: 16px; border-radius: 10px; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.05);">
+              <div style="font-weight: 800; color: #b45309; font-size: 16px; margin-bottom: 6px;">3. مؤشر RSRQ (جودة وحمل القطاع)</div>
+              <div style="font-size: 12px; color: #64748b; margin-bottom: 8px; direction: ltr; text-align: right;">Reference Signal Received Quality</div>
+              <p style="margin: 0; font-size: 13.5px; color: #334155; line-height: 1.65;">يربط بين قوة الإشارة المرجعية (<code>RSRP</code>) وإجمالي الطاقة في القناة (<code>RSSI</code>) وعدد الكتل الترددية. يكشف لك مدى <strong>ازدحام البرج بالمستخدمين</strong> في ساعات الذروة.</p>
             </div>
 
-            <div style="background: rgba(192, 132, 252, 0.12); border-right: 4px solid #c084fc; padding: 16px; border-radius: 10px;">
-              <div style="font-weight: 800; color: #e9d5ff; font-size: 16px; margin-bottom: 6px;">4. مؤشر RSSI (إجمالي الطاقة المستقبلة)</div>
-              <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px; direction: ltr; text-align: right;">Received Signal Strength Indicator</div>
-              <p style="margin: 0; font-size: 13.5px; color: #e2e8f0; line-height: 1.65;">يقيس مجموع كل الإشارات والضوضاء والتداخلات في التردد دفعة واحدة. يُستخدم بشكل أساسي لقياس <strong>قوة إشارة شبكات الواي فاي (Wi-Fi)</strong>، لكنه لا يكفي وحده لتقييم جودة <code>4G</code>.</p>
+            <div style="background: #ffffff; border: 1px solid #f3e8ff; border-right: 4px solid #9333ea; padding: 16px; border-radius: 10px; box-shadow: 0 2px 8px rgba(147, 51, 234, 0.05);">
+              <div style="font-weight: 800; color: #7e22ce; font-size: 16px; margin-bottom: 6px;">4. مؤشر RSSI (إجمالي الطاقة المستقبلة)</div>
+              <div style="font-size: 12px; color: #64748b; margin-bottom: 8px; direction: ltr; text-align: right;">Received Signal Strength Indicator</div>
+              <p style="margin: 0; font-size: 13.5px; color: #334155; line-height: 1.65;">يقيس مجموع كل الإشارات والضوضاء والتداخلات في التردد دفعة واحدة. يُستخدم بشكل أساسي لقياس <strong>قوة إشارة شبكات الواي فاي (Wi-Fi)</strong>، لكنه لا يكفي وحده لتقييم جودة <code>4G</code>.</p>
             </div>
           </div>
         </div>
